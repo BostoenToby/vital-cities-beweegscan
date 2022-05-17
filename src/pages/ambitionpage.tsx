@@ -1,9 +1,9 @@
+import { graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import { ArrowDown } from "lucide-react"
+import { ArrowDown, ExternalLink } from "lucide-react"
 import * as React from "react"
 
 function AmbitionPage () {
-
   return (
     <main>
       <header className="relative top-0 left-0 w-full h-auto mb-8">
@@ -69,8 +69,54 @@ function AmbitionPage () {
           </div>
         </div>
       </section>
+      <section className="px-16 mb-16 pb-8 bg-neutral">
+        <h2 className="text-3xl font-bold mb-4 pt-4">Interessante bronnen</h2>
+        <p className="w-3/5 mb-6 ">We maken je graag wegwijs in wat bronnen en instrumenten om de omgevint te analyseren en te ontwerpen op vlak van wandel- en fietsvriendelijkheid</p>
+        <div className="flex justify-between">
+          <div className="h-40 w-1/5 bg-white p-4">
+            <div className="flex space-x-2">
+              <h3 className="underline font-semibold text-[17px] mb-1">Walkabilityscore-tool</h3>
+              <ExternalLink />
+            </div>
+            <p className="text-gray">Deze tool van Vito in opdracht van Gezond Leven brengt de walkabilityscore voor elke hectare in Vlaanderen en Brussel in kaart.</p>
+          </div>
+          <div className="h-40 w-1/5 bg-white p-4">
+            <div className="flex space-x-2">
+              <h3 className="underline font-semibold text-[17px] mb-1">The benefits of cycling</h3>
+              <ExternalLink />
+            </div>
+            <p className="text-gray">Dit rapport van de ECF toont aan welke economische voordelen Europa kan halen uit het investeren in een sterk fietsbeleid.</p>
+          </div>
+          <div className="h-40 w-1/5 bg-white p-4">
+            <div className="flex space-x-2">
+              <h3 className="underline font-semibold text-[17px] mb-1">Handboek sterk fietsbeleid</h3>
+              <ExternalLink />
+            </div>
+            <p className="text-gray">Dit rapport van Fietsberaad bundelt inzichten en tips voor een lokaal beleid dat méér mensen op de fiets wilt.</p>
+          </div>
+          <div className="h-auto w-1/5 bg-white p-4">
+            <div className="flex space-x-2">
+              <h3 className="underline font-semibold text-[17px] mb-1">Quickscan fietsbeleid</h3>
+              <ExternalLink />
+            </div>
+            <p className="text-gray">Deze quickscan van Fietsberaad geeft inzicht in het lokale fietsbeleid aan de hand van een vragenlijst rond 6 thema's.</p>
+          </div>
+        </div>
+      </section>
     </main>
   )
 }
+
+export const query = graphql`
+  query {
+    allBeweegscanXlsxCuS10 {
+      edges {
+        node {
+          Gemeente
+        }
+      }
+    }
+  }
+`
 
 export default AmbitionPage
