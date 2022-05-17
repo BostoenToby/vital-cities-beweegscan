@@ -25,14 +25,12 @@
     "lucide-react": "^0.45.0",
     "npm-install-missing": "^0.1.4",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-native": "^0.68.2"
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@types/node": "^17.0.31",
     "@types/react": "^17.0.44",
     "@types/react-dom": "^17.0.16",
-    "@types/react-native": "^0.67.7",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.13",
     "prettier": "^2.6.2",

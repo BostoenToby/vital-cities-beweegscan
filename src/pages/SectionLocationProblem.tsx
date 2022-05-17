@@ -4,10 +4,9 @@
 // copy paste dit naar de main ambitionpage
 
 import React from 'react'
-import {Text} from 'react-native'
 
 export default () => {
     return (
-        <Text>Wat is de huidige situatie in </Text>
+        <main></main>
     )
 }
