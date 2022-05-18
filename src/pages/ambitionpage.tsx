@@ -4,17 +4,77 @@ import scrollTo from "gatsby-plugin-smoothscroll"
 import { ArrowDown, ExternalLink, FileText, Mail, Phone } from "lucide-react"
 import * as React from "react"
 import { useEffect, useState } from "react"
-import { searchList } from "../components/autoComplete"
+import { allResults, searchList } from "../components/autoComplete"
 import DonutChart from "../components/donutChart"
 
 function AmbitionPage () {
   const [suggestions, setSuggestions] = React.useState<string[]>()
   const [typed, setTyped] = React.useState<string>("")
+  const [info, setInfo] = useState<PersonalInfo>({
+    place: '',
+    firstName: '',
+    lastName: '',
+    mail: ''
+  })
+
+  const [error, setErrors] = useState<FormError>({
+    placeError: '',
+    firstNameError: '',
+    lastNameError: '',
+    mailError: ''
+  })
 
   const changeTyped = async(value: string) => {
     console.log("change")
     console.log(value)
     setTyped(value)
+  }
+
+  const checkInfo = async() => {
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(info.mail)){
+      setErrors((currentErrors: FormError) => {
+        currentErrors.mailError = "Dit is geen geldig mail adres"
+        return {...currentErrors}
+      })
+    } else {
+      setErrors((currentErrors: FormError) => {
+        currentErrors.mailError = ""
+        return {...currentErrors}
+      })
+    }
+    if(info.firstName.length < 2){
+      setErrors((currentErrors: FormError) => {
+        currentErrors.firstNameError = "Moet min. 2 letters zijn"
+        return {...currentErrors}
+      })
+    } else {
+      setErrors((currentErrors: FormError) => {
+        currentErrors.firstNameError = ""
+        return {...currentErrors}
+      })
+    }
+    if(info.lastName.length < 2){
+      setErrors((currentErrors: FormError) => {
+        currentErrors.lastNameError = "Moet min. 2 letters zijn"
+        return {...currentErrors}
+      })
+    } else {
+      setErrors((currentErrors: FormError) => {
+        currentErrors.lastNameError = ""
+        return {...currentErrors}
+      })
+    }
+    if(!allResults.includes(info.place)){
+      setErrors((currentErrors: FormError) => {
+        currentErrors.placeError = "Deze plaats is niet geldig"
+        return {...currentErrors}
+      })
+    } else {
+      setErrors((currentErrors: FormError) => {
+        currentErrors.placeError = ""
+        return {...currentErrors}
+      })
+    }
   }
 
   useEffect(() => {
@@ -298,8 +358,14 @@ function AmbitionPage () {
                 setTyped(ev.target.value)
                 let list = searchList(ev.target.value)
                 setSuggestions(list)
-                }} />
-              <ul className="absolute z-10 mt-14">
+                }} 
+                onInput={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
+                //@ts-ignore
+                u.place = e.target.value
+                return {...u}
+            })}/>
+              {error.placeError && (<p className="text-red font-semibold text-sm">{error.placeError}</p>)}
+              <ul className="absolute z-20 mt-14">
                 {suggestions?.map((val: string, index: number) => {
                   if(index < 7){
                     return(<li key={val} className={`z-10 bg-white px-2 py-1 w-48 border border-lightGray hover:bg-neutral`} onClick={() => changeTyped(val)}>{val}</li>)
@@ -309,19 +375,34 @@ function AmbitionPage () {
             </div>
             <div className="flex flex-col">
               <label htmlFor="Voornaam">Voornaam:</label>
-              <input type="text" id="Voornaam" className="w-48 px-2 py-1 border border-lightGray active:border-gray outline-none focus-within:border-gray" placeholder="Voornaam" />
+              <input type="text" id="Voornaam" className="w-48 px-2 py-1 border border-lightGray active:border-gray outline-none focus-within:border-gray" placeholder="Voornaam" onInput={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
+                //@ts-ignore
+                u.firstName = e.target.value
+                return {...u}
+            })}/>
+              {error.firstNameError && (<p className="text-red font-semibold text-sm">{error.firstNameError}</p>)}
             </div>
             <div className="flex flex-col">
               <label htmlFor="Naam">Naam:</label>
-              <input type="text" id="Naam" className="w-48 px-2 py-1 border border-lightGray active:border-gray outline-none focus-within:border-gray" placeholder="Naam" />
+              <input type="text" id="Naam" className="w-48 px-2 py-1 border border-lightGray active:border-gray outline-none focus-within:border-gray" placeholder="Naam" onInput={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
+                //@ts-ignore
+                u.lastName = e.target.value
+                return {...u}
+            })}/>
+              {error.lastNameError && (<p className="text-red font-semibold text-sm">{error.lastNameError}</p>)}
             </div>
           </div>
           <div className="flex flex-col">
             <label htmlFor="Mail">E-mail:</label>
-            <input type="text" id="Mail" className="px-2 py-1 border border-lightGray active:border-gray outline-none focus-within:border-gray w-1/2" placeholder="E-mail" />
+            <input type="text" id="Mail" className="px-2 py-1 border border-lightGray active:border-gray outline-none focus-within:border-gray w-1/2" placeholder="E-mail" onInput={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
+                //@ts-ignore
+                u.mail = e.target.value
+                return {...u}
+            })}/>
+            {error.mailError && (<p className="text-red font-semibold text-sm">{error.mailError}</p>)}
           </div>
           
-          <button className="bg-pink text-white px-2 py-1 mt-4 z-0">Maak rapport</button>
+          <button className="bg-pink text-white px-2 py-1 mt-4 z-0" onClick={() => checkInfo()}>Maak rapport</button>
         </div>
       </section>
       <footer className="bg-mediumPurple">
