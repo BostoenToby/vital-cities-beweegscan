@@ -7,7 +7,7 @@ import DonutChart from "../components/donutChart"
 
 function AmbitionPage () {
   return (
-    <main>
+    <main className="font-poppins">
       <header className="relative top-0 left-0 w-full h-screen mb-8 flex">
           <section className="bg-purple w-full z-10 relative">
             <div className="mb-32 flex">
@@ -37,11 +37,11 @@ function AmbitionPage () {
           <StaticImage src="../images/Instagram.png" alt="Instagram" className="absolute right-8 top-[440px]" />
       </header>
 
-      <section className="flex font-poppins mx-20 mt-32 gap-28">
+      <section className="flex  mx-20 mt-32 gap-28">
         <div className="flex flex-col max-w-xl pr-10">
-            <label className="text-3xl font-black">
+            <h2 className="text-3xl font-black">
                 Wat is de huidige situatie in
-            </label>
+            </h2>
             <select className="text-3xl font-black text-purple -ml-1 underline underline-offset-4">
                 <option>het Vlaams gewest</option>
             </select>
@@ -58,86 +58,86 @@ function AmbitionPage () {
             </label>
             <table>
                 <tr>
-                <td className="p-2">
-                    <div className="flex items-center">
-                    <div className="w-12 h-12 mb-2">
-                        <DonutChart percentage={44} />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium">Staat straten & pleinen</label>
-                        <label className="text-pink font-bold">44%</label>
-                    </div>
-                    </div>
-                </td>
-                <td className="p-2">
-                    <div className="flex items-center">
-                    <div className="w-12 h-12 mb-2">
-                        <DonutChart percentage={54} />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium">Staat voetpaden</label>
-                        <label className="text-pink font-bold">54%</label>
-                    </div>
-                    </div>
-                </td>
-                <td className="p-2">
-                    <div className="flex items-center">
-                    <div className="w-12 h-12 mb-2">
-                        <DonutChart percentage={59} />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium">Staat fietspaden</label>
-                        <label className="text-pink font-bold">59%</label>
-                    </div>
-                    </div>
-                </td>
+                  <td className="p-2">
+                      <div className="flex items-center">
+                      <div className="w-12 h-12 mb-2">
+                          <DonutChart percentage={44} />
+                      </div>
+                      <div className="flex flex-col">
+                          <label className="text-sm font-medium">Staat straten & pleinen</label>
+                          <label className="text-pink font-bold">44%</label>
+                      </div>
+                      </div>
+                  </td>
+                  <td className="p-2">
+                      <div className="flex items-center">
+                      <div className="w-12 h-12 mb-2">
+                          <DonutChart percentage={54} />
+                      </div>
+                      <div className="flex flex-col">
+                          <label className="text-sm font-medium">Staat voetpaden</label>
+                          <label className="text-pink font-bold">54%</label>
+                      </div>
+                      </div>
+                  </td>
+                  <td className="p-2">
+                      <div className="flex items-center">
+                      <div className="w-12 h-12 mb-2">
+                          <DonutChart percentage={59} />
+                      </div>
+                      <div className="flex flex-col">
+                          <label className="text-sm font-medium">Staat fietspaden</label>
+                          <label className="text-pink font-bold">59%</label>
+                      </div>
+                      </div>
+                  </td>
                 </tr>
 
                 <tr>
-                <td className="p-2">
-                    <div className="flex items-center">
-                    <div className="w-12 h-12 mb-2">
-                        <DonutChart percentage={55} />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium">Genoeg fietspaden</label>
-                        <label className="text-pink font-bold">55%</label>
-                    </div>
-                    </div>
-                </td>
-                <td className="p-2">
-                    <div className="flex items-center">
-                    <div className="w-12 h-12 mb-2">
-                        <DonutChart percentage={60} />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium">Fietsinfrastructuur</label>
-                        <label className="text-pink font-bold">60%</label>
-                    </div>
-                    </div>
-                </td>
-                <td className="p-2">
-                    <div className="flex items-center">
-                    <div className="w-12 h-12 mb-2">
-                        <DonutChart percentage={57}/>
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="text-sm font-medium">Veilig fietsen</label>
-                        <label className="text-pink font-bold">57%</label>
-                    </div>
-                    </div>
-                </td>
+                  <td className="p-2">
+                      <div className="flex items-center">
+                      <div className="w-12 h-12 mb-2">
+                          <DonutChart percentage={55} />
+                      </div>
+                      <div className="flex flex-col">
+                          <label className="text-sm font-medium">Genoeg fietspaden</label>
+                          <label className="text-pink font-bold">55%</label>
+                      </div>
+                      </div>
+                  </td>
+                  <td className="p-2">
+                      <div className="flex items-center">
+                      <div className="w-12 h-12 mb-2">
+                          <DonutChart percentage={60} />
+                      </div>
+                      <div className="flex flex-col">
+                          <label className="text-sm font-medium">Fietsinfrastructuur</label>
+                          <label className="text-pink font-bold">60%</label>
+                      </div>
+                      </div>
+                  </td>
+                  <td className="p-2">
+                      <div className="flex items-center">
+                      <div className="w-12 h-12 mb-2">
+                          <DonutChart percentage={57}/>
+                      </div>
+                      <div className="flex flex-col">
+                          <label className="text-sm font-medium">Veilig fietsen</label>
+                          <label className="text-pink font-bold">57%</label>
+                      </div>
+                      </div>
+                  </td>
                 </tr>
             </table>
         </div>
     </section>
     <section className="flex flex-col items-center font-poppins mt-32 mx-20 mb-32">
-        <label className="text-3xl font-black mb-5">Wat is het probleem?</label>
+        <h2 className="text-3xl font-bold mb-5">Wat is het probleem?</h2>
         <p className="mb-5">
             Als routes geen goede verbinding maken met voorzieningen en werk of school, als ze onveilig zijn of door een weinig aantrekkelijke
             stadsomgeving gaan, zijn mensen niet geneigd om ze te gebruiken. Als je fiets of wandelt, voel je je namelijk kwetsbaarder dan in je auto. 
         </p>
-        <p className="font-black">
+        <p className="font-bold">
             Bij een gebrek aan veilige en/of aantrekkelijke routes zullen mensen dan eerder kiezen voor de auto.
         </p>
     </section>
@@ -147,21 +147,21 @@ function AmbitionPage () {
         <p className="w-3/5 mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corporis mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita</p>
         <div className="flex justify-between">
           <div className="bg-lightPink skew-x-12 max-w-sm">
-            <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12"><b className="text-3xl text-purple">€1</b> die men investeert in fiets-infrastructuur leidt tot <b className="text-3xl text-purple">€14 return</b></p>
+            <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12"><b className="text-2xl text-purple">€1</b> die men investeert in fiets-infrastructuur leidt tot <b className="text-3xl text-purple">€14 return</b></p>
           </div>
           <div className="bg-lightPink skew-x-12 max-w-sm">
-            <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12">Fietsers consumeren <b className="text-3xl text-purple">€20 meer</b> op uitstap.</p>
+            <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12">Fietsers consumeren <b className="text-2xl text-purple">€20 meer</b> op uitstap.</p>
           </div>
-          <div className="bg-lightPink skew-x-12 max-w-sm">
-            <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12">Waar meer fietsers en wandelaars op straat zijn is er <b className="text-3xl text-purple">minder criminaliteit</b></p>
+          <div className="bg-lightPink skew-x-12 max-w-md">
+            <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12">Waar meer fietsers en wandelaars op straat zijn is er <b className="text-2xl text-purple">minder criminaliteit</b></p>
           </div>
         </div>
         <div className="flex space-x-20 mt-8">
           <div className="bg-lightPink skew-x-12 max-w-lg">
-              <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12">Fietsers en voetgangers zijn tot <b className="text-3xl text-purple">30% meer</b> geneigd om <b className="text-3xl text-purple">lokaal te kopen</b> dan automobilisten</p>
+              <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12">Fietsers en voetgangers zijn tot <b className="text-2xl text-purple">30% meer</b> geneigd om <b className="text-3xl text-purple">lokaal te kopen</b> dan automobilisten</p>
           </div>
-          <div className="bg-lightPink skew-x-12 max-w-sm">
-              <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12">Buurten met meer paden, pleinen en parken hebben <b className="text-3xl text-purple">meer wandelaars</b></p>
+          <div className="bg-lightPink skew-x-12 max-w-md">
+              <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12">Buurten met meer paden, pleinen en parken hebben <b className="text-2xl text-purple">meer wandelaars</b></p>
           </div>
         </div>
       </section>
@@ -170,16 +170,16 @@ function AmbitionPage () {
         <h2 className="text-3xl font-bold mb-4"><span className="underline decoration-green">Hoe</span> kunnen we dit oplossen?</h2>
         <p className="w-3/5 mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corporis mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita</p>
         <div className="flex justify-between">
-          <div className="bg-lightGreen skew-x-12 max-w-[250px]">
+          <div className="bg-lightGreen skew-x-12 max-w-[275px]">
             <p className="px-6 py-2 line-clamp-2 text-green -skew-x-12 font-semibold">Voldoende fietsen- stallingen voorzien</p>
           </div>
-          <div className="bg-lightGreen skew-x-12 max-w-[250px]">
+          <div className="bg-lightGreen skew-x-12 max-w-[275px]">
             <p className="px-6 py-2 line-clamp-2 text-green -skew-x-12 font-semibold">Alles moet in een goede staat zijn & blijven</p>
           </div>
-          <div className="bg-lightGreen skew-x-12 max-w-[250px]">
+          <div className="bg-lightGreen skew-x-12 max-w-[275px]">
             <p className="px-6 py-2 line-clamp-2 text-green -skew-x-12 font-semibold">Inzetten op aan- trekkelijkheid en veiligheid</p>
           </div>
-          <div className="bg-lightGreen skew-x-12 max-w-[250px]">
+          <div className="bg-lightGreen skew-x-12 max-w-[275px]">
             <p className="px-6 py-2 line-clamp-2 text-green -skew-x-12 font-semibold">Zo weinig mogelijk obstakels en drempels</p>
           </div>
         </div>
