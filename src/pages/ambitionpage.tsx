@@ -3,9 +3,25 @@ import { StaticImage } from "gatsby-plugin-image"
 import scrollTo from "gatsby-plugin-smoothscroll"
 import { ArrowDown, ExternalLink, FileText } from "lucide-react"
 import * as React from "react"
+import { useEffect, useState } from "react"
+import { searchList } from "../components/autoComplete"
 import DonutChart from "../components/donutChart"
 
 function AmbitionPage () {
+  const [suggestions, setSuggestions] = useState<string[]>()
+  const [typed, setTyped] = useState<string>("")
+
+  const changeTyped = async(value: string) => {
+    console.log("change")
+    console.log(value)
+    setTyped(value)
+  }
+
+  useEffect(() => {
+    let list = searchList(typed)
+    setSuggestions(list)
+  }, [typed])
+
   return (
     <main>
       <header className="relative top-0 left-0 w-full h-screen mb-8 flex">
@@ -29,6 +45,7 @@ function AmbitionPage () {
           <div className="absolute top-6 right-20 space-x-5">
             <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg">
               <a href="https://vitalcities.be/">Ambities</a>
+              {/* Keer terug naar overzicht met ambities/landingspage */}
             </button>
             <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg" onClick={() => scrollTo('#Practises')}>Good practices</button>
           </div>
@@ -188,7 +205,7 @@ function AmbitionPage () {
       <section className="flex pb-8 w-full items-center" id="CallToAction">
         <StaticImage src='../images/CallToAction.png' alt="Picture of girls riding a bike" className="w-3/4 h-auto ml-16" />
         <div className="p-8 bg-lightxPink h-3/4 mr-16">
-          <h2 className="font-bold text-4xl pb-4">Wil je graag weten wat we in jouw stad kunnen verbeteren?</h2>
+          {/* <h2 className="font-bold text-4xl pb-4">Wil je graag weten wat we in jouw stad kunnen verbeteren?</h2>
           <p className="pb-3 text-lg">Om een volledige scan van jouw gemeente te laten maken en een gepersonaliseerd stappenplan te ontvangen, schrijf je in op onze wachtlijst!</p>
           <div className="flex justify-between pb-3">
             <input type="text" placeholder="Vul je e-mailadres in..." className="w-4/5 p-2 px-4" />
@@ -198,7 +215,26 @@ function AmbitionPage () {
           <div className="flex space-x-1">
             <FileText className="text-purple" />
             <p className="text-purple underline font-semibold">Duik in het volledig onderzoek</p>
+          </div> */}
+          <h2 className="font-bold text-4xl pb-4">Benieuwd naar de beweegvriendelijkheid van jouw stad of gemeente?</h2>
+          <h4 className="font-semibold text-3xl pb-4">Download hier een rapport</h4>
+          <p className="pb-2 text-lg">Vul onderstaande gegevens in en ontvang in jouw mailbox het rapport.</p>
+
+          <div className="pb-3 flex flex-col" id="autoComplete">
+            <label htmlFor="Stad">Postcode of stad</label>
+            <input type="text" id="Stad" className="w-1/4 px-2" name="mijnStad" placeholder="Postcode/Stad" value={typed} onChange={(ev: any) => {
+              setTyped(ev.target.value)
+              let list = searchList(ev.target.value)
+              setSuggestions(list)
+              }} />
+            <ul className="relative z-10">
+              {suggestions?.map((val: string, index: number) => {
+                return(<li key={val} className="relative z-10" onClick={() => changeTyped(val)}>{val}</li>)
+              })}
+            </ul>
           </div>
+          
+          <button className="bg-pink text-white px-2 py-1">Maak rapport</button>
         </div>
       </section>
 
