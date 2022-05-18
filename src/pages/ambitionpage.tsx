@@ -206,21 +206,21 @@ function AmbitionPage () {
         <h2 className="text-3xl font-bold mb-4 pt-4">Interessante bronnen</h2>
         <p className="w-3/5 mb-6 ">We maken je graag wegwijs in wat bronnen en instrumenten om de omgevint te analyseren en te ontwerpen op vlak van wandel- en fietsvriendelijkheid</p>
         <div className="flex justify-between">
-          <div className="h-40 w-1/5 bg-white p-4">
+          <div className="h-auto w-1/5 bg-white p-4">
             <div className="flex space-x-2">
               <h3 className="underline font-semibold text-[17px] mb-1">Walkabilityscore-tool</h3>
               <ExternalLink />
             </div>
             <p className="text-gray">Deze tool van Vito in opdracht van Gezond Leven brengt de walkabilityscore voor elke hectare in Vlaanderen en Brussel in kaart.</p>
           </div>
-          <div className="h-40 w-1/5 bg-white p-4">
+          <div className="h-auto w-1/5 bg-white p-4">
             <div className="flex space-x-2">
               <h3 className="underline font-semibold text-[17px] mb-1">The benefits of cycling</h3>
               <ExternalLink />
             </div>
             <p className="text-gray">Dit rapport van de ECF toont aan welke economische voordelen Europa kan halen uit het investeren in een sterk fietsbeleid.</p>
           </div>
-          <div className="h-40 w-1/5 bg-white p-4">
+          <div className="h-auto w-1/5 bg-white p-4">
             <div className="flex space-x-2">
               <h3 className="underline font-semibold text-[17px] mb-1">Handboek sterk fietsbeleid</h3>
               <ExternalLink />

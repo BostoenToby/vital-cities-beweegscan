@@ -6,6 +6,12 @@ module.exports = {
         poppins: ['Poppins', 'sans-serif']
       }
     },
+    screens: {
+      'mobile': '576px',
+      'tabletportrait': '768px',
+      'tabletlandscape': '992px',
+      'desktop': '1280px'
+    },
     colors: {
       neutral: '#F8FAFC',
       gray: '#475569',
