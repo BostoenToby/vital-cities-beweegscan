@@ -1,15 +1,15 @@
 import { graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import scrollTo from "gatsby-plugin-smoothscroll"
-import { ArrowDown, ExternalLink, FileText } from "lucide-react"
+import { ArrowDown, ExternalLink, FileText, Mail, Phone } from "lucide-react"
 import * as React from "react"
 import { useEffect, useState } from "react"
 import { searchList } from "../components/autoComplete"
 import DonutChart from "../components/donutChart"
 
 function AmbitionPage () {
-  const [suggestions, setSuggestions] = useState<string[]>()
-  const [typed, setTyped] = useState<string>("")
+  const [suggestions, setSuggestions] = React.useState<string[]>()
+  const [typed, setTyped] = React.useState<string>("")
 
   const changeTyped = async(value: string) => {
     console.log("change")
@@ -202,42 +202,6 @@ function AmbitionPage () {
         </div>
       </section>
 
-      <section className="flex pb-8 w-full items-center" id="CallToAction">
-        <StaticImage src='../images/CallToAction.png' alt="Picture of girls riding a bike" className="w-3/4 h-auto ml-16" />
-        <div className="p-8 bg-lightxPink h-3/4 mr-16">
-          {/* <h2 className="font-bold text-4xl pb-4">Wil je graag weten wat we in jouw stad kunnen verbeteren?</h2>
-          <p className="pb-3 text-lg">Om een volledige scan van jouw gemeente te laten maken en een gepersonaliseerd stappenplan te ontvangen, schrijf je in op onze wachtlijst!</p>
-          <div className="flex justify-between pb-3">
-            <input type="text" placeholder="Vul je e-mailadres in..." className="w-4/5 p-2 px-4" />
-            <button className="bg-pink text-white font-semibold p-2 px-4">Schrijf je in!</button>
-          </div>
-          <p className="text-lg pb-4">Wil je graag eerst meer weten over ons onderzoek en de cijfers in detail bekijken? Klik dan hieronder door naar het volledige onderzoek.</p>
-          <div className="flex space-x-1">
-            <FileText className="text-purple" />
-            <p className="text-purple underline font-semibold">Duik in het volledig onderzoek</p>
-          </div> */}
-          <h2 className="font-bold text-4xl pb-4">Benieuwd naar de beweegvriendelijkheid van jouw stad of gemeente?</h2>
-          <h4 className="font-semibold text-3xl pb-4">Download hier een rapport</h4>
-          <p className="pb-2 text-lg">Vul onderstaande gegevens in en ontvang in jouw mailbox het rapport.</p>
-
-          <div className="pb-3 flex flex-col" id="autoComplete">
-            <label htmlFor="Stad">Postcode of stad</label>
-            <input type="text" id="Stad" className="w-1/4 px-2" name="mijnStad" placeholder="Postcode/Stad" value={typed} onChange={(ev: any) => {
-              setTyped(ev.target.value)
-              let list = searchList(ev.target.value)
-              setSuggestions(list)
-              }} />
-            <ul className="relative z-10">
-              {suggestions?.map((val: string, index: number) => {
-                return(<li key={val} className="relative z-10" onClick={() => changeTyped(val)}>{val}</li>)
-              })}
-            </ul>
-          </div>
-          
-          <button className="bg-pink text-white px-2 py-1">Maak rapport</button>
-        </div>
-      </section>
-
       <section className="px-16 pb-16 bg-neutral">
         <h2 className="text-3xl font-bold mb-4 pt-4">Interessante bronnen</h2>
         <p className="w-3/5 mb-6 ">We maken je graag wegwijs in wat bronnen en instrumenten om de omgevint te analyseren en te ontwerpen op vlak van wandel- en fietsvriendelijkheid</p>
@@ -273,41 +237,108 @@ function AmbitionPage () {
         </div>
       </section>
 
-      <section className="bg-mediumPurple px-16 pb-16" id="Practises">
+      <section className="px-16 pb-16" id="Practises">
         <div className="flex items-center justify-between pt-24 mb-2">
-          <h2 className="font-bold text-white text-4xl">Relevante good practices</h2>
+          <h2 className="font-bold text-4xl">Relevante good practices</h2>
           {/* <button className="bg-mediumPurple border p-2 text-pink border-pink">Alle cases</button> */}
         </div>
-        <p className="text-white mb-6">Je wil je door nog meer good practices laten inspireren? Ontdek ze <span className="underline text-pink font-semibold">hier</span></p>
+        <p className="mb-6">Je wil je door nog meer good practices laten inspireren? Ontdek ze <span className="underline text-pink font-semibold">hier</span></p>
         <div className="flex justify-between space-x-10">
           <div>
             <StaticImage src="../images/RelevantCases.png" alt="Relevant cases" className="relative w-full"/>
             <div className="flex items-center relative bottom-3 left-3">
               <div className="bg-pink -skew-x-12 max-w-max mb-2">
-                  <p className="text-white px-2 skew-x-12 font-bold">actief bewegen</p>
+                  <p className="px-2 skew-x-12 font-bold">actief bewegen</p>
               </div>
               <div className="bg-yellow -skew-x-12 max-w-max mb-2">
-                  <p className="text-white px-2 skew-x-12 font-bold">20 september 2020</p>
+                  <p className="px-2 skew-x-12 font-bold">20 september 2020</p>
               </div>
             </div>
-            <h3 className="font-semibold text-white text-3xl pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-            <p className="text-white pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus.</p>
+            <h3 className="font-semibold text-3xl pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+            <p className="pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus.</p>
           </div>
           <div>
             <StaticImage src="../images/RelevantCases.png" alt="Relevant cases" className="relative w-full"/>
             <div className="flex items-center relative bottom-3 left-3">
               <div className="bg-pink -skew-x-12 max-w-max mb-2">
-                  <p className="text-white px-2 skew-x-12 font-bold">actief bewegen</p>
+                  <p className="px-2 skew-x-12 font-bold">actief bewegen</p>
               </div>
               <div className="bg-yellow -skew-x-12 max-w-max mb-2">
-                  <p className="text-white px-2 skew-x-12 font-bold">20 september 2020</p>
+                  <p className="px-2 skew-x-12 font-bold">20 september 2020</p>
               </div>
             </div>
-            <h3 className="font-semibold text-white text-3xl pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-            <p className="text-white pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus.</p>
+            <h3 className="font-semibold text-3xl pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+            <p className="pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus.</p>
           </div>
         </div>
       </section>
+
+      <section className="bg-mediumPurple flex py-6 w-full items-center" id="CallToAction">
+        <StaticImage src='../images/CallToAction.png' alt="Picture of girls riding a bike" className="w-3/4 h-full ml-16 border border-r-0 border-mediumPurple" />
+        <div className="p-8 bg-lightxPink h-full mr-16">
+          {/* <h2 className="font-bold text-4xl pb-4">Wil je graag weten wat we in jouw stad kunnen verbeteren?</h2>
+          <p className="pb-3 text-lg">Om een volledige scan van jouw gemeente te laten maken en een gepersonaliseerd stappenplan te ontvangen, schrijf je in op onze wachtlijst!</p>
+          <div className="flex justify-between pb-3">
+            <input type="text" placeholder="Vul je e-mailadres in..." className="w-4/5 p-2 px-4" />
+            <button className="bg-pink text-white font-semibold p-2 px-4">Schrijf je in!</button>
+          </div>
+          <p className="text-lg pb-4">Wil je graag eerst meer weten over ons onderzoek en de cijfers in detail bekijken? Klik dan hieronder door naar het volledige onderzoek.</p>
+          <div className="flex space-x-1">
+            <FileText className="text-purple" />
+            <p className="text-purple underline font-semibold">Duik in het volledig onderzoek</p>
+          </div> */}
+          <h2 className="font-bold text-4xl pb-4">Benieuwd naar de beweegvriendelijkheid van jouw stad of gemeente?</h2>
+          <h4 className="font-semibold text-2xl pb-4">Download hier een rapport</h4>
+          <p className="pb-2 text-lg">Vul onderstaande gegevens in en ontvang in jouw mailbox het rapport.</p>
+
+          <div className="pb-3 flex z-0 justify-between" id="autoComplete">
+            <div className="flex flex-col">
+              <label htmlFor="Stad">Postcode of stad:</label>
+              <input type="text" id="Stad" className="z-20 relative w-48 px-2 py-1 border border-lightGray active:border-gray outline-none focus-within:border-gray" placeholder="Postcode/Stad" value={typed} onChange={(ev: any) => {
+                setTyped(ev.target.value)
+                let list = searchList(ev.target.value)
+                setSuggestions(list)
+                }} />
+              <ul className="absolute z-10 mt-14">
+                {suggestions?.map((val: string, index: number) => {
+                  if(index < 7){
+                    return(<li key={val} className={`z-10 bg-white px-2 py-1 w-48 border border-lightGray hover:bg-neutral`} onClick={() => changeTyped(val)}>{val}</li>)
+                  }
+                })}
+              </ul>
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="Voornaam">Voornaam:</label>
+              <input type="text" id="Voornaam" className="w-48 px-2 py-1 border border-lightGray active:border-gray outline-none focus-within:border-gray" placeholder="Voornaam" />
+            </div>
+            <div className="flex flex-col">
+              <label htmlFor="Naam">Naam:</label>
+              <input type="text" id="Naam" className="w-48 px-2 py-1 border border-lightGray active:border-gray outline-none focus-within:border-gray" placeholder="Naam" />
+            </div>
+          </div>
+          <div className="flex flex-col">
+            <label htmlFor="Mail">E-mail:</label>
+            <input type="text" id="Mail" className="px-2 py-1 border border-lightGray active:border-gray outline-none focus-within:border-gray w-1/2" placeholder="E-mail" />
+          </div>
+          
+          <button className="bg-pink text-white px-2 py-1 mt-4 z-0">Maak rapport</button>
+        </div>
+      </section>
+      <footer className="bg-mediumPurple">
+        <div className="bg-lightPink mx-16 px-8 py-8">
+          <h2 className="text-2xl font-semibold">Vital Cities kan nog veel meer voor jou betekenen</h2>
+          <p>Je zoekt nog meer inspiratie? Die vind je op onze <a href="https://vitalcities.be/" className="underline text-pink">website</a></p>
+          <p>Je hebt een onderzoeksvraag? Contacteer Lore Cuypers, projectleider van Vital Cities via volgende middelen</p>
+          <div className="flex space-x-1 py-2">
+            <Mail />
+            <a href="mailto:vitalcities@gmail.com" className="underline text-pink">lore.cuypers@vitalcities.be</a>
+          </div>
+          <div className="flex space-x-1">
+            <Phone />
+            <p>+32 485 98 89 02</p>
+          </div>
+        </div>
+      </footer>
     </main>
   )
 }
