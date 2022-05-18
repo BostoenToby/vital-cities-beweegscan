@@ -1,29 +1,36 @@
 import { graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import scrollTo from "gatsby-plugin-smoothscroll"
 import { ArrowDown, ExternalLink, FileText } from "lucide-react"
 import * as React from "react"
 
 function AmbitionPage () {
   return (
     <main>
-      <header className="relative top-0 left-0 w-full h-auto mb-8">
-          <section className="bg-purple w-1/2 z-10 relative">
-            <div className="mb-40 flex">
-              <div className="bg-yellow h-24 w-32 z-10 absolute top-0 left-0"></div>
-              <StaticImage src="../images/test.png" alt="Logo of Vital Cities" className="w-32 h-auto z-20 absolute top-4 left-20"/>
+      <header className="relative top-0 left-0 w-full h-screen mb-8 flex">
+          <section className="bg-purple w-full z-10 relative">
+            <div className="mb-32 flex">
+              <div className="bg-yellow h-24 w-32 absolute z-10 top-0 left-0"></div>
+              <StaticImage src="../images/test.png" alt="Logo of Vital Cities" className="w-32 h-auto z-20 relative top-4 left-20"/>
             </div>
   
-            <div className="ml-16 pb-16">
+            <div className="ml-16 pb-10">
               <div className="bg-pink -skew-x-12 max-w-max mb-4">
-                <p className="text-white p-2 skew-x-12 font-bold">actief bewegen</p>
+                <p className="text-white px-2 skew-x-12 font-bold">actief bewegen</p>
               </div>
-              <h1 className="text-white text-7xl max-w-2xl font-bold mb-8">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
-              <p className="text-white text-[27px] max-w-2xl mb-12">Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een actieve levensstijl en faciliteren mensen om lopend of fietsend naar voorzieningen of het werk of school voorzieningen te gaan</p>
+              <h1 className="text-white text-6xl max-w-2xl font-bold mb-8">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
+              <p className="text-white text-2xl max-w-2xl mb-12">Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een actieve levensstijl en faciliteren mensen om lopend of fietsend naar voorzieningen of het werk of school voorzieningen te gaan</p>
               <p className="text-lightPurple font-semibold mb-2">scroll</p>
               <ArrowDown className="text-lightPurple"/>
             </div>
           </section>
-          <StaticImage src="../images/HeaderPictureActiveMovement.png" alt="Logo of Vital Cities" className="w-auto h-auto z-0 absolute right-20 top-10"/>
+          <div className="h-full"><StaticImage src="../images/HeaderPictureActiveMovement.png" alt="Logo of Vital Cities" className="z-0 right-20 top-20 h-4/5 relative"/></div>
+          <div className="absolute top-6 right-20 space-x-5">
+            <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg">
+              <a href="https://vitalcities.be/">Ambities</a>
+            </button>
+            <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg" onClick={() => scrollTo('#Practises')}>Good practices</button>
+          </div>
           <StaticImage src="../images/Facebook.png" alt="Facebook" className="absolute right-8 top-[380px]" />
           <StaticImage src="../images/Twitter.png" alt="Twitter" className="absolute right-8 top-[410px]" />
           <StaticImage src="../images/Instagram.png" alt="Instagram" className="absolute right-8 top-[440px]" />
@@ -72,7 +79,7 @@ function AmbitionPage () {
         </div>
       </section>
 
-      <section className="flex pb-8 w-full items-center">
+      <section className="flex pb-8 w-full items-center" id="CallToAction">
         <StaticImage src='../images/CallToAction.png' alt="Picture of girls riding a bike" className="w-3/4 h-auto ml-16" />
         <div className="p-8 bg-lightxPink h-3/4 mr-16">
           <h2 className="font-bold text-4xl pb-4">Wil je graag weten wat we in jouw stad kunnen verbeteren?</h2>
@@ -124,7 +131,7 @@ function AmbitionPage () {
         </div>
       </section>
 
-      <section className="bg-mediumPurple px-16 pb-16">
+      <section className="bg-mediumPurple px-16 pb-16" id="Practises">
         <div className="flex items-center justify-between pt-24 mb-2">
           <h2 className="font-bold text-white text-4xl">Relevante good practices</h2>
           {/* <button className="bg-mediumPurple border p-2 text-pink border-pink">Alle cases</button> */}
