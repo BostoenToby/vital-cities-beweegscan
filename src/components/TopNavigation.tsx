@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 
 export default () => {
   return (
-    <nav className="flex h-24 w-full flex-row border-b-2 border-dark border-opacity-60 drop-shadow-sm">
+    <nav className="sticky top-0 flex h-24 w-full flex-row border-b-2 border-dark border-opacity-60 bg-white drop-shadow-sm">
       <div className="flex h-full w-32 flex-col justify-center bg-yellow">
         <div className="absolute left-16 flex h-20 w-auto">
           <Logo />

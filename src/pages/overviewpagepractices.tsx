@@ -6,9 +6,9 @@ export default () => {
   return (
     <div>
       <TopNavigation />
-      <main>
-        <header>
-          <h1></h1>
+      <main className="h-screen px-32 py-16">
+        <header className="flex flex-row">
+          <h1 className="Poppins text-5xl font-bold text-dark">Cases</h1>
           <select></select>
         </header>
         {/* // grid */}
