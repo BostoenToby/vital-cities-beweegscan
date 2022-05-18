@@ -12,7 +12,7 @@ function AmbitionPage () {
           <section className="bg-purple w-full z-10 relative">
             <div className="mb-32 flex">
               <div className="bg-yellow h-24 w-32 absolute z-10 top-0 left-0"></div>
-              <StaticImage src="../images/test.png" alt="Logo of Vital Cities" className="w-32 h-auto z-20 relative top-4 left-20"/>
+              <a href="https://vitalcities.be/"><StaticImage src="../images/test.png" alt="Logo of Vital Cities" className="w-32 h-auto z-20 relative top-4 left-20"/></a>
             </div>
   
             <div className="ml-16 pb-10">
