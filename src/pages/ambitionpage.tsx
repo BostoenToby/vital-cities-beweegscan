@@ -1,6 +1,6 @@
 import { graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import { ArrowDown, ExternalLink } from "lucide-react"
+import { ArrowDown, ExternalLink, FileText } from "lucide-react"
 import * as React from "react"
 
 function AmbitionPage () {
@@ -100,6 +100,22 @@ function AmbitionPage () {
               <ExternalLink />
             </div>
             <p className="text-gray">Deze quickscan van Fietsberaad geeft inzicht in het lokale fietsbeleid aan de hand van een vragenlijst rond 6 thema's.</p>
+          </div>
+        </div>
+      </section>
+      <section className="flex pb-8 w-full items-center">
+        <StaticImage src='../images/CallToAction.png' alt="Picture of girls riding a bike" className="w-3/4 h-auto ml-16" />
+        <div className="p-8 bg-lightxPink h-3/4 mr-16">
+          <h2 className="font-bold text-4xl pb-4">Wil je graag weten wat we in jouw stad kunnen verbeteren?</h2>
+          <p className="pb-3 text-lg">Om een volledige scan van jouw gemeente te laten maken en een gepersonaliseerd stappenplan te ontvangen, schrijf je in op onze wachtlijst!</p>
+          <div className="flex justify-between pb-3">
+            <input type="text" placeholder="Vul je e-mailadres in..." className="w-4/5 p-2 px-4" />
+            <button className="bg-pink text-white font-semibold p-2 px-4">Schrijf je in!</button>
+          </div>
+          <p className="text-lg pb-4">Wil je graag eerst meer weten over ons onderzoek en de cijfers in detail bekijken? Klik dan hieronder door naar het volledige onderzoek.</p>
+          <div className="flex space-x-1">
+            <FileText className="text-purple" />
+            <p className="text-purple underline font-semibold">Duik in het volledig onderzoek</p>
           </div>
         </div>
       </section>
