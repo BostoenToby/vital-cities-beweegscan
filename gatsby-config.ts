@@ -13,9 +13,23 @@ const config: GatsbyConfig = {
         path: path.join(__dirname, 'src', 'images')
       }
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `${__dirname}/src/data/`,
+      }
+    },
+    {
+      resolve: `gatsby-transformer-excel`,
+      options: {
+        raw: false
+      }
+    },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`, 
-    `gatsby-plugin-sharp`],
+    `gatsby-plugin-sharp`,
+  ],
 }
 
 export default config
