@@ -14,30 +14,30 @@ function AmbitionPage () {
               <div className="bg-yellow h-24 w-32 absolute z-10 top-0 left-0"></div>
               <a href="https://vitalcities.be/"><StaticImage src="../images/test.png" alt="Logo of Vital Cities" className="w-32 h-auto z-20 relative top-4 left-20"/></a>
             </div>
-  
+
             <div className="ml-16 pb-10">
               <div className="bg-pink -skew-x-12 max-w-max mb-4">
                 <p className="text-white px-2 skew-x-12 font-bold">actief bewegen</p>
               </div>
-              <h1 className="text-white text-6xl max-w-2xl font-bold mb-8">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
-              <p className="text-white text-2xl max-w-2xl mb-12">Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een actieve levensstijl en faciliteren mensen om lopend of fietsend naar voorzieningen of het werk of school voorzieningen te gaan</p>
+              <h1 className="text-white text-6xl max-w-2xl font-bold mb-8 mobile:text-2xl tabletportrait:text-5xl tabletlandscape:text-4xl">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
+              <p className="text-white text-2xl max-w-2xl mb-12 mobile:text-sm tabletportrait:text-lg tabletlandscape:text-xl">Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een actieve levensstijl en faciliteren mensen om lopend of fietsend naar voorzieningen of het werk of school voorzieningen te gaan</p>
               <p className="text-lightPurple font-semibold mb-2">scroll</p>
               <ArrowDown className="text-lightPurple"/>
             </div>
           </section>
-          <div className="h-full"><StaticImage src="../images/HeaderPictureActiveMovement.png" alt="Logo of Vital Cities" className="z-0 right-20 top-20 h-4/5 relative"/></div>
-          <div className="absolute top-6 right-20 space-x-5">
-            <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg">
+          <div className="h-full mobile:hidden"><StaticImage src="../images/HeaderPictureActiveMovement.png" alt="Logo of Vital Cities" className="z-0 right-20 top-20 h-4/5 relative"/></div>
+          <div className="absolute top-6 right-20 space-x-5 mobile:mt-24">
+            <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative">
               <a href="https://vitalcities.be/">Ambities</a>
             </button>
-            <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg" onClick={() => scrollTo('#Practises')}>Good practices</button>
+            <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative" onClick={() => scrollTo('#Practises')}>Good practices</button>
           </div>
           <StaticImage src="../images/Facebook.png" alt="Facebook" className="absolute right-8 top-[380px]" />
           <StaticImage src="../images/Twitter.png" alt="Twitter" className="absolute right-8 top-[410px]" />
           <StaticImage src="../images/Instagram.png" alt="Instagram" className="absolute right-8 top-[440px]" />
       </header>
 
-      <section className="flex  mx-20 mt-32 gap-28">
+      <section className="grid grid-cols-2 mx-20 mt-32 gap-28 mobile:grid-cols-1 tabletportrait:grid-cols-1 tabletlandscape:grid-cols-1">
         <div className="flex flex-col max-w-xl pr-10">
             <h2 className="text-3xl font-black">
                 Wat is de huidige situatie in
