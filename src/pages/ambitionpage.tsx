@@ -28,6 +28,7 @@ function AmbitionPage () {
           <StaticImage src="../images/Twitter.png" alt="Twitter" className="absolute right-8 top-[410px]" />
           <StaticImage src="../images/Instagram.png" alt="Instagram" className="absolute right-8 top-[440px]" />
       </header>
+
       <section className="mx-16 mb-16">
         <h2 className="text-3xl font-bold mb-4"><span className="underline decoration-lightPurple">Waarom</span> moeten we dit oplossen?</h2>
         <p className="w-3/5 mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corporis mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita</p>
@@ -51,6 +52,7 @@ function AmbitionPage () {
           </div>
         </div>
       </section>
+
       <section className="mx-16 mb-16">
         <h2 className="text-3xl font-bold mb-4"><span className="underline decoration-green">Hoe</span> kunnen we dit oplossen?</h2>
         <p className="w-3/5 mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corporis mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita</p>
@@ -69,7 +71,25 @@ function AmbitionPage () {
           </div>
         </div>
       </section>
-      <section className="px-16 mb-16 pb-8 bg-neutral">
+
+      <section className="flex pb-8 w-full items-center">
+        <StaticImage src='../images/CallToAction.png' alt="Picture of girls riding a bike" className="w-3/4 h-auto ml-16" />
+        <div className="p-8 bg-lightxPink h-3/4 mr-16">
+          <h2 className="font-bold text-4xl pb-4">Wil je graag weten wat we in jouw stad kunnen verbeteren?</h2>
+          <p className="pb-3 text-lg">Om een volledige scan van jouw gemeente te laten maken en een gepersonaliseerd stappenplan te ontvangen, schrijf je in op onze wachtlijst!</p>
+          <div className="flex justify-between pb-3">
+            <input type="text" placeholder="Vul je e-mailadres in..." className="w-4/5 p-2 px-4" />
+            <button className="bg-pink text-white font-semibold p-2 px-4">Schrijf je in!</button>
+          </div>
+          <p className="text-lg pb-4">Wil je graag eerst meer weten over ons onderzoek en de cijfers in detail bekijken? Klik dan hieronder door naar het volledige onderzoek.</p>
+          <div className="flex space-x-1">
+            <FileText className="text-purple" />
+            <p className="text-purple underline font-semibold">Duik in het volledig onderzoek</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="px-16 pb-16 bg-neutral">
         <h2 className="text-3xl font-bold mb-4 pt-4">Interessante bronnen</h2>
         <p className="w-3/5 mb-6 ">We maken je graag wegwijs in wat bronnen en instrumenten om de omgevint te analyseren en te ontwerpen op vlak van wandel- en fietsvriendelijkheid</p>
         <div className="flex justify-between">
@@ -103,19 +123,39 @@ function AmbitionPage () {
           </div>
         </div>
       </section>
-      <section className="flex pb-8 w-full items-center">
-        <StaticImage src='../images/CallToAction.png' alt="Picture of girls riding a bike" className="w-3/4 h-auto ml-16" />
-        <div className="p-8 bg-lightxPink h-3/4 mr-16">
-          <h2 className="font-bold text-4xl pb-4">Wil je graag weten wat we in jouw stad kunnen verbeteren?</h2>
-          <p className="pb-3 text-lg">Om een volledige scan van jouw gemeente te laten maken en een gepersonaliseerd stappenplan te ontvangen, schrijf je in op onze wachtlijst!</p>
-          <div className="flex justify-between pb-3">
-            <input type="text" placeholder="Vul je e-mailadres in..." className="w-4/5 p-2 px-4" />
-            <button className="bg-pink text-white font-semibold p-2 px-4">Schrijf je in!</button>
+
+      <section className="bg-mediumPurple px-16 pb-16">
+        <div className="flex items-center justify-between pt-24 mb-2">
+          <h2 className="font-bold text-white text-4xl">Relevante good practices</h2>
+          {/* <button className="bg-mediumPurple border p-2 text-pink border-pink">Alle cases</button> */}
+        </div>
+        <p className="text-white mb-6">Je wil je door nog meer good practices laten inspireren? Ontdek ze <span className="underline text-pink font-semibold">hier</span></p>
+        <div className="flex justify-between space-x-10">
+          <div>
+            <StaticImage src="../images/RelevantCases.png" alt="Relevant cases" className="relative w-full"/>
+            <div className="flex items-center relative bottom-3 left-3">
+              <div className="bg-pink -skew-x-12 max-w-max mb-2">
+                  <p className="text-white px-2 skew-x-12 font-bold">actief bewegen</p>
+              </div>
+              <div className="bg-yellow -skew-x-12 max-w-max mb-2">
+                  <p className="text-white px-2 skew-x-12 font-bold">20 september 2020</p>
+              </div>
+            </div>
+            <h3 className="font-semibold text-white text-3xl pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+            <p className="text-white pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus.</p>
           </div>
-          <p className="text-lg pb-4">Wil je graag eerst meer weten over ons onderzoek en de cijfers in detail bekijken? Klik dan hieronder door naar het volledige onderzoek.</p>
-          <div className="flex space-x-1">
-            <FileText className="text-purple" />
-            <p className="text-purple underline font-semibold">Duik in het volledig onderzoek</p>
+          <div>
+            <StaticImage src="../images/RelevantCases.png" alt="Relevant cases" className="relative w-full"/>
+            <div className="flex items-center relative bottom-3 left-3">
+              <div className="bg-pink -skew-x-12 max-w-max mb-2">
+                  <p className="text-white px-2 skew-x-12 font-bold">actief bewegen</p>
+              </div>
+              <div className="bg-yellow -skew-x-12 max-w-max mb-2">
+                  <p className="text-white px-2 skew-x-12 font-bold">20 september 2020</p>
+              </div>
+            </div>
+            <h3 className="font-semibold text-white text-3xl pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+            <p className="text-white pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus.</p>
           </div>
         </div>
       </section>
