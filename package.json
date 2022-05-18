@@ -16,6 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "chart.js": "^3.7.1",
     "gatsby": "^4.14.0",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-image": "^2.14.1",
@@ -25,12 +26,15 @@
     "lucide-react": "^0.45.0",
     "npm-install-missing": "^0.1.4",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-chartjs-2": "^4.1.0",
+    "react-dom": "^17.0.1",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@types/node": "^17.0.31",
     "@types/react": "^17.0.44",
     "@types/react-dom": "^17.0.16",
+    "@types/webfontloader": "^1.6.34",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.13",
     "prettier": "^2.6.2",

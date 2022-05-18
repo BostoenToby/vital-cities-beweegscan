@@ -3,7 +3,11 @@ module.exports = {
     '**/*.{tsx,html}'
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif']
+      }
+    },
     colors: {
       'pink': "#e7358b",
       'purple': "#492784",
