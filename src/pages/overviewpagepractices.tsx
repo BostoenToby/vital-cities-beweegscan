@@ -6,8 +6,8 @@ export default () => {
   return (
     <div>
       <nav className="h-24 w-full">
-        <div className="h-full w-32">
-          <div className="h-16 w-32">
+        <div className="flex h-full w-32 flex-col justify-center bg-yellow">
+          <div className="absolute left-16 flex h-16 w-32">
             <Logo />
           </div>
         </div>
@@ -19,7 +19,7 @@ export default () => {
             <a>Beweegscan</a>
           </li>
           <li>
-            <a>Onze cases</a>
+            <a>Good practices</a>
           </li>
           <li>
             <a>Over ons</a>
