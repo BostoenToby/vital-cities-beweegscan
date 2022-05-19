@@ -1,11 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../assets/tailwind.css'
 import TopNavigation from '../components/TopNavigation'
 import { Link } from 'gatsby'
-
-const testJSON = [{}, {}, {}, {}, {}, {}]
+import { testJSON } from '../data/testPractices'
+import PracticeCard from '../components/PracticeCard'
+import TestPractice from '../interfaces/testPractice'
 
 export default () => {
+  const [practices, setPractices] = useState<TestPractice[]>()
+
+  useEffect(() => {
+    setPractices(testJSON)
+  }, [])
+
+  useEffect(() => {
+    if (practices) {
+      console.log(practices)
+    }
+  }, [practices])
+
   return (
     <div>
       <TopNavigation />
@@ -16,334 +29,31 @@ export default () => {
           </h1>
           <div className="my-auto">
             <select className="Poppins text-2xl font-semibold text-purple">
-              <option>Actief bewegen & verplaatsen</option>
-              <option>Verbonden stadskern</option>
-              <option>Fiets- & wandelroutes</option>
-              <option>Sporten</option>
-              <option>Spelen</option>
-              <option>Ontmoeten</option>
-              <option>Groen</option>
-              <option>Technologie & data</option>
-              <option>Transversaal beleid</option>
-              <option>Participatie & inspraak</option>
+              <option value="actief bewegen">
+                Actief bewegen & verplaatsen
+              </option>
+              <option value="verbonden stadkern">Verbonden stadskern</option>
+              <option value="fiets- en wandelroutes">
+                Fiets- & wandelroutes
+              </option>
+              <option value="sporten">Sporten</option>
+              <option value="spelen">Spelen</option>
+              <option value="ontmoeten">Ontmoeten</option>
+              <option value="groen">Groen</option>
+              <option value="technologie/data">Technologie & data</option>
+              <option value="transversaal">Transversaal beleid</option>
+              <option value="participatie">Participatie & inspraak</option>
             </select>
           </div>
         </header>
         {/* // grid */}
-        <div className="gap grid grid-cols-3 gap-14">
-          <div className="max-w-lg">
-            <section className="mb-8 h-80">
-              {/* // image placeholder */}
-              <div className="h-full w-full bg-gray opacity-50"></div>
-              <div className="Poppins relative bottom-5 left-4 flex flex-row text-base font-bold text-white">
-                <div className="-skew-x-12 bg-pink py-2 px-4">
-                  actief bewegen
-                </div>
-                <div className="-skew-x-12 bg-yellow py-2 px-4">
-                  20 december 2021
-                </div>
-              </div>
-            </section>
-            <section className="Poppins mb-4">
-              <h2 className="mb-4 text-2xl font-bold text-black line-clamp-2">
-                Aalst: Beweegvriendelijke omgeving als vast onderdeel van
-                stadsvernieuwing
-              </h2>
-              <p className="text-base font-medium text-dark opacity-90 line-clamp-6">
-                In een procesnota (Stad Aalst, 2020) worden een aantal
-                belangrijke principes gebundeld om toe te passen bij
-                stadsvernieuwingstrajecten die bijdragen tot duurzaam
-                samenleven. Een aantal principes zijn een hefboom voor
-                beweegvriendelijke gemeentes. Die principeszijn gebaseerd op de
-                ervaring om woonzorgwijk Mijlbeek te creëren in het kader van de
-                zorgproeftuin AIPA (Ageing in Place Aalst, nu Zorglab Aalst) in
-                2015. Samen met ouderen en betrokken actoren werden
-                aandachtspunten gebundeld in functie van levenslang wonen.
-                Hieruit ontstond het concept van woonzorgwijken voor een
-                verouderende bevolking. Deze principes zijn nu juridisch
-                verankerd in de ruimtelijk uitvoeringsplannen (RUP’s) voor alle
-                standvernieuwingsprojecten. Hierdoor worden ze meer afdwingbaar.
-              </p>
-            </section>
-            <button className="Poppin text-lg font-bold text-purple text-opacity-90">
-              <Link to="/">Lees meer</Link>
-              <div className="h-[3px] w-full bg-purple opacity-30"></div>
-            </button>
+        {practices && practices.length >= 1 ? (
+          <div className="gap grid grid-cols-3 gap-x-14 gap-y-20">
+            {practices.map((e, i) => (
+              <PracticeCard practice={e} key={e.id} />
+            ))}
           </div>
-          <div className="max-w-lg">
-            <section className="mb-8 h-80">
-              {/* // image placeholder */}
-              <div className="h-full w-full bg-gray opacity-50"></div>
-              <div className="Poppins relative bottom-5 left-4 flex flex-row text-base font-bold text-white">
-                <div className="-skew-x-12 bg-pink py-2 px-4">
-                  actief bewegen
-                </div>
-                <div className="-skew-x-12 bg-yellow py-2 px-4">
-                  20 december 2021
-                </div>
-              </div>
-            </section>
-            <section className="Poppins mb-4">
-              <h2 className="mb-4 text-2xl font-bold text-black line-clamp-2">
-                Aalst: Beweegvriendelijke omgeving als vast onderdeel van
-                stadsvernieuwing
-              </h2>
-              <p className="text-base font-medium text-dark opacity-90 line-clamp-6">
-                In een procesnota (Stad Aalst, 2020) worden een aantal
-                belangrijke principes gebundeld om toe te passen bij
-                stadsvernieuwingstrajecten die bijdragen tot duurzaam
-                samenleven. Een aantal principes zijn een hefboom voor
-                beweegvriendelijke gemeentes. Die principeszijn gebaseerd op de
-                ervaring om woonzorgwijk Mijlbeek te creëren in het kader van de
-                zorgproeftuin AIPA (Ageing in Place Aalst, nu Zorglab Aalst) in
-                2015. Samen met ouderen en betrokken actoren werden
-                aandachtspunten gebundeld in functie van levenslang wonen.
-                Hieruit ontstond het concept van woonzorgwijken voor een
-                verouderende bevolking. Deze principes zijn nu juridisch
-                verankerd in de ruimtelijk uitvoeringsplannen (RUP’s) voor alle
-                standvernieuwingsprojecten. Hierdoor worden ze meer afdwingbaar.
-              </p>
-            </section>
-            <button className="Poppin text-lg font-bold text-purple text-opacity-90">
-              <Link to="/">Lees meer</Link>
-              <div className="h-[3px] w-full bg-purple opacity-30"></div>
-            </button>
-          </div>
-          <div className="max-w-lg">
-            <section className="mb-8 h-80">
-              {/* // image placeholder */}
-              <div className="h-full w-full bg-gray opacity-50"></div>
-              <div className="Poppins relative bottom-5 left-4 flex flex-row text-base font-bold text-white">
-                <div className="-skew-x-12 bg-pink py-2 px-4">
-                  actief bewegen
-                </div>
-                <div className="-skew-x-12 bg-yellow py-2 px-4">
-                  20 december 2021
-                </div>
-              </div>
-            </section>
-            <section className="Poppins mb-4">
-              <h2 className="mb-4 text-2xl font-bold text-black line-clamp-2">
-                Aalst: Beweegvriendelijke omgeving als vast onderdeel van
-                stadsvernieuwing
-              </h2>
-              <p className="text-base font-medium text-dark opacity-90 line-clamp-6">
-                In een procesnota (Stad Aalst, 2020) worden een aantal
-                belangrijke principes gebundeld om toe te passen bij
-                stadsvernieuwingstrajecten die bijdragen tot duurzaam
-                samenleven. Een aantal principes zijn een hefboom voor
-                beweegvriendelijke gemeentes. Die principeszijn gebaseerd op de
-                ervaring om woonzorgwijk Mijlbeek te creëren in het kader van de
-                zorgproeftuin AIPA (Ageing in Place Aalst, nu Zorglab Aalst) in
-                2015. Samen met ouderen en betrokken actoren werden
-                aandachtspunten gebundeld in functie van levenslang wonen.
-                Hieruit ontstond het concept van woonzorgwijken voor een
-                verouderende bevolking. Deze principes zijn nu juridisch
-                verankerd in de ruimtelijk uitvoeringsplannen (RUP’s) voor alle
-                standvernieuwingsprojecten. Hierdoor worden ze meer afdwingbaar.
-              </p>
-            </section>
-            <button className="Poppin text-lg font-bold text-purple text-opacity-90">
-              <Link to="/">Lees meer</Link>
-              <div className="h-[3px] w-full bg-purple opacity-30"></div>
-            </button>
-          </div>
-          <div className="max-w-lg">
-            <section className="mb-8 h-80">
-              {/* // image placeholder */}
-              <div className="h-full w-full bg-gray opacity-50"></div>
-              <div className="Poppins relative bottom-5 left-4 flex flex-row text-base font-bold text-white">
-                <div className="-skew-x-12 bg-pink py-2 px-4">
-                  actief bewegen
-                </div>
-                <div className="-skew-x-12 bg-yellow py-2 px-4">
-                  20 december 2021
-                </div>
-              </div>
-            </section>
-            <section className="Poppins mb-4">
-              <h2 className="mb-4 text-2xl font-bold text-black line-clamp-2">
-                Aalst: Beweegvriendelijke omgeving als vast onderdeel van
-                stadsvernieuwing
-              </h2>
-              <p className="text-base font-medium text-dark opacity-90 line-clamp-6">
-                In een procesnota (Stad Aalst, 2020) worden een aantal
-                belangrijke principes gebundeld om toe te passen bij
-                stadsvernieuwingstrajecten die bijdragen tot duurzaam
-                samenleven. Een aantal principes zijn een hefboom voor
-                beweegvriendelijke gemeentes. Die principeszijn gebaseerd op de
-                ervaring om woonzorgwijk Mijlbeek te creëren in het kader van de
-                zorgproeftuin AIPA (Ageing in Place Aalst, nu Zorglab Aalst) in
-                2015. Samen met ouderen en betrokken actoren werden
-                aandachtspunten gebundeld in functie van levenslang wonen.
-                Hieruit ontstond het concept van woonzorgwijken voor een
-                verouderende bevolking. Deze principes zijn nu juridisch
-                verankerd in de ruimtelijk uitvoeringsplannen (RUP’s) voor alle
-                standvernieuwingsprojecten. Hierdoor worden ze meer afdwingbaar.
-              </p>
-            </section>
-            <button className="Poppin text-lg font-bold text-purple text-opacity-90">
-              <Link to="/">Lees meer</Link>
-              <div className="h-[3px] w-full bg-purple opacity-30"></div>
-            </button>
-          </div>
-          <div className="max-w-lg">
-            <section className="mb-8 h-80">
-              {/* // image placeholder */}
-              <div className="h-full w-full bg-gray opacity-50"></div>
-              <div className="Poppins relative bottom-5 left-4 flex flex-row text-base font-bold text-white">
-                <div className="-skew-x-12 bg-pink py-2 px-4">
-                  actief bewegen
-                </div>
-                <div className="-skew-x-12 bg-yellow py-2 px-4">
-                  20 december 2021
-                </div>
-              </div>
-            </section>
-            <section className="Poppins mb-4">
-              <h2 className="mb-4 text-2xl font-bold text-black line-clamp-2">
-                Aalst: Beweegvriendelijke omgeving als vast onderdeel van
-                stadsvernieuwing
-              </h2>
-              <p className="text-base font-medium text-dark opacity-90 line-clamp-6">
-                In een procesnota (Stad Aalst, 2020) worden een aantal
-                belangrijke principes gebundeld om toe te passen bij
-                stadsvernieuwingstrajecten die bijdragen tot duurzaam
-                samenleven. Een aantal principes zijn een hefboom voor
-                beweegvriendelijke gemeentes. Die principeszijn gebaseerd op de
-                ervaring om woonzorgwijk Mijlbeek te creëren in het kader van de
-                zorgproeftuin AIPA (Ageing in Place Aalst, nu Zorglab Aalst) in
-                2015. Samen met ouderen en betrokken actoren werden
-                aandachtspunten gebundeld in functie van levenslang wonen.
-                Hieruit ontstond het concept van woonzorgwijken voor een
-                verouderende bevolking. Deze principes zijn nu juridisch
-                verankerd in de ruimtelijk uitvoeringsplannen (RUP’s) voor alle
-                standvernieuwingsprojecten. Hierdoor worden ze meer afdwingbaar.
-              </p>
-            </section>
-            <button className="Poppin text-lg font-bold text-purple text-opacity-90">
-              <Link to="/">Lees meer</Link>
-              <div className="h-[3px] w-full bg-purple opacity-30"></div>
-            </button>
-          </div>
-          <div className="max-w-lg">
-            <section className="mb-8 h-80">
-              {/* // image placeholder */}
-              <div className="h-full w-full bg-gray opacity-50"></div>
-              <div className="Poppins relative bottom-5 left-4 flex flex-row text-base font-bold text-white">
-                <div className="-skew-x-12 bg-pink py-2 px-4">
-                  actief bewegen
-                </div>
-                <div className="-skew-x-12 bg-yellow py-2 px-4">
-                  20 december 2021
-                </div>
-              </div>
-            </section>
-            <section className="Poppins mb-4">
-              <h2 className="mb-4 text-2xl font-bold text-black line-clamp-2">
-                Aalst: Beweegvriendelijke omgeving als vast onderdeel van
-                stadsvernieuwing
-              </h2>
-              <p className="text-base font-medium text-dark opacity-90 line-clamp-6">
-                In een procesnota (Stad Aalst, 2020) worden een aantal
-                belangrijke principes gebundeld om toe te passen bij
-                stadsvernieuwingstrajecten die bijdragen tot duurzaam
-                samenleven. Een aantal principes zijn een hefboom voor
-                beweegvriendelijke gemeentes. Die principeszijn gebaseerd op de
-                ervaring om woonzorgwijk Mijlbeek te creëren in het kader van de
-                zorgproeftuin AIPA (Ageing in Place Aalst, nu Zorglab Aalst) in
-                2015. Samen met ouderen en betrokken actoren werden
-                aandachtspunten gebundeld in functie van levenslang wonen.
-                Hieruit ontstond het concept van woonzorgwijken voor een
-                verouderende bevolking. Deze principes zijn nu juridisch
-                verankerd in de ruimtelijk uitvoeringsplannen (RUP’s) voor alle
-                standvernieuwingsprojecten. Hierdoor worden ze meer afdwingbaar.
-              </p>
-            </section>
-            <button className="Poppin text-lg font-bold text-purple text-opacity-90">
-              <Link to="/">Lees meer</Link>
-              <div className="h-[3px] w-full bg-purple opacity-30"></div>
-            </button>
-          </div>
-          <div className="max-w-lg">
-            <section className="mb-8 h-80">
-              {/* // image placeholder */}
-              <div className="h-full w-full bg-gray opacity-50"></div>
-              <div className="Poppins relative bottom-5 left-4 flex flex-row text-base font-bold text-white">
-                <div className="-skew-x-12 bg-pink py-2 px-4">
-                  actief bewegen
-                </div>
-                <div className="-skew-x-12 bg-yellow py-2 px-4">
-                  20 december 2021
-                </div>
-              </div>
-            </section>
-            <section className="Poppins mb-4">
-              <h2 className="mb-4 text-2xl font-bold text-black line-clamp-2">
-                Aalst: Beweegvriendelijke omgeving als vast onderdeel van
-                stadsvernieuwing
-              </h2>
-              <p className="text-base font-medium text-dark opacity-90 line-clamp-6">
-                In een procesnota (Stad Aalst, 2020) worden een aantal
-                belangrijke principes gebundeld om toe te passen bij
-                stadsvernieuwingstrajecten die bijdragen tot duurzaam
-                samenleven. Een aantal principes zijn een hefboom voor
-                beweegvriendelijke gemeentes. Die principeszijn gebaseerd op de
-                ervaring om woonzorgwijk Mijlbeek te creëren in het kader van de
-                zorgproeftuin AIPA (Ageing in Place Aalst, nu Zorglab Aalst) in
-                2015. Samen met ouderen en betrokken actoren werden
-                aandachtspunten gebundeld in functie van levenslang wonen.
-                Hieruit ontstond het concept van woonzorgwijken voor een
-                verouderende bevolking. Deze principes zijn nu juridisch
-                verankerd in de ruimtelijk uitvoeringsplannen (RUP’s) voor alle
-                standvernieuwingsprojecten. Hierdoor worden ze meer afdwingbaar.
-              </p>
-            </section>
-            <button className="Poppin text-lg font-bold text-purple text-opacity-90">
-              <Link to="/">Lees meer</Link>
-              <div className="h-[3px] w-full bg-purple opacity-30"></div>
-            </button>
-          </div>
-          <div className="max-w-lg">
-            <section className="mb-8 h-80">
-              {/* // image placeholder */}
-              <div className="h-full w-full bg-gray opacity-50"></div>
-              <div className="Poppins relative bottom-5 left-4 flex flex-row text-base font-bold text-white">
-                <div className="-skew-x-12 bg-pink py-2 px-4">
-                  actief bewegen
-                </div>
-                <div className="-skew-x-12 bg-yellow py-2 px-4">
-                  20 december 2021
-                </div>
-              </div>
-            </section>
-            <section className="Poppins mb-4">
-              <h2 className="mb-4 text-2xl font-bold text-black line-clamp-2">
-                Aalst: Beweegvriendelijke omgeving als vast onderdeel van
-                stadsvernieuwing
-              </h2>
-              <p className="text-base font-medium text-dark opacity-90 line-clamp-6">
-                In een procesnota (Stad Aalst, 2020) worden een aantal
-                belangrijke principes gebundeld om toe te passen bij
-                stadsvernieuwingstrajecten die bijdragen tot duurzaam
-                samenleven. Een aantal principes zijn een hefboom voor
-                beweegvriendelijke gemeentes. Die principeszijn gebaseerd op de
-                ervaring om woonzorgwijk Mijlbeek te creëren in het kader van de
-                zorgproeftuin AIPA (Ageing in Place Aalst, nu Zorglab Aalst) in
-                2015. Samen met ouderen en betrokken actoren werden
-                aandachtspunten gebundeld in functie van levenslang wonen.
-                Hieruit ontstond het concept van woonzorgwijken voor een
-                verouderende bevolking. Deze principes zijn nu juridisch
-                verankerd in de ruimtelijk uitvoeringsplannen (RUP’s) voor alle
-                standvernieuwingsprojecten. Hierdoor worden ze meer afdwingbaar.
-              </p>
-            </section>
-            <button className="Poppin text-lg font-bold text-purple text-opacity-90">
-              <Link to="/">Lees meer</Link>
-              <div className="h-[3px] w-full bg-purple opacity-30"></div>
-            </button>
-          </div>
-        </div>
+        ) : null}
       </main>
       <footer>{/* // footer wanneer die er is */}</footer>
     </div>
