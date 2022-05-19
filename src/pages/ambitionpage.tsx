@@ -85,41 +85,41 @@ function AmbitionPage () {
   return (
     <main className="font-poppins">
       <header className="relative top-0 left-0 w-full h-auto mb-8 flex">
-          <section className="bg-purple w-full z-10 relative">
-            <div className="mb-28 flex">
-              <div className="bg-yellow h-16 w-20 absolute z-10 top-0 left-0"></div>
-              <a href="https://vitalcities.be/"><StaticImage src="../images/logo_03.png" alt="Logo of Vital Cities" className="w-20 h-auto z-20 relative top-3 left-16"/></a>
-            </div>
-
-            <div className="ml-16 pb-10 tabletlandscape:ml-12">
-              <div className="bg-pink -skew-x-12 max-w-max mb-5">
-                <p className="text-white text-xs py-1 px-2 skew-x-12 font-bold">actief bewegen</p>
-              </div>
-              <h1 className="text-white text-5xl max-w-2xl font-xxbold mr-16 mb-8 tabletlandscape:text-4xl tabletlandscape:mr-12 tabletportrait:text-4xl mobile:text-2xl">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
-              <p className="text-white text-lg leading-6 font-xlight mr-16 opacity-75 max-w-2xl mb-12 tabletlandscape:text-lg tabletlandscape:mr-12 tabletportrait:text-sm mobile:text-xs">Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een actieve levensstijl en faciliteren mensen om lopend of fietsend naar voorzieningen of het werk of school voorzieningen te gaan</p>
-              <p className="text-lightPurple font-semibold mb-2">scroll</p>
-              <ArrowDown className="text-lightPurple"/>
-            </div>
-          </section>
-          <div className="h-fullr"><StaticImage src="../images/HeaderPictureActiveMovement.png" alt="Logo of Vital Cities" className="z-0 right-20 top-20 h-4/5 relative tabletlandscape:top-32 tabletportrait:hidden"/></div>
-          <div className="absolute top-6 right-20 space-x-5 xmobile:top-20 xmobile:left-14">
-            <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative">
-              <a href="https://vitalcities.be/">Ambities</a>
-              {/* Keer terug naar overzicht met ambities/landingspage */}
-            </button>
-            <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative" onClick={() => scrollTo('#Practises')}>Good practices</button>
+        <section className="bg-purple w-full z-10 relative">
+          <div className="mb-28 flex">
+            <div className="bg-yellow h-16 w-20 absolute z-10 top-0 left-0"></div>
+            <a href="https://vitalcities.be/"><StaticImage src="../images/logo_03.png" alt="Logo of Vital Cities" className="w-20 h-auto z-20 relative top-3 left-16"/></a>
           </div>
-          <StaticImage src="../images/Facebook.png" alt="Facebook" className="absolute right-8 top-[380px]" />
-          <StaticImage src="../images/Twitter.png" alt="Twitter" className="absolute right-8 top-[410px]" />
-          <StaticImage src="../images/Instagram.png" alt="Instagram" className="absolute right-8 top-[440px]" />
+
+          <div className="ml-16 pb-10 tabletlandscape:ml-12">
+            <div className="bg-pink -skew-x-12 max-w-max mb-5">
+              <p className="text-white text-xs py-1 px-2 skew-x-12 font-bold">actief bewegen</p>
+            </div>
+            <h1 className="text-white text-5xl max-w-2xl font-xxbold mr-16 mb-8 tabletlandscape:text-4xl tabletlandscape:mr-12 tabletportrait:text-4xl mobile:text-2xl">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
+            <p className="text-white text-lg leading-6 font-xlight mr-16 opacity-75 max-w-2xl mb-12 tabletlandscape:text-lg tabletlandscape:mr-12 tabletportrait:text-sm mobile:text-xs">Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een actieve levensstijl en faciliteren mensen om lopend of fietsend naar voorzieningen of het werk of school voorzieningen te gaan</p>
+            <p className="text-lightPurple font-semibold mb-2">scroll</p>
+            <ArrowDown className="text-lightPurple"/>
+          </div>
+        </section>
+        <div className="h-full"><StaticImage src="../images/HeaderPictureActiveMovement.png" alt="Logo of Vital Cities" className="z-0 right-20 top-20 h-4/5 relative tabletlandscape:top-32 tabletportrait:hidden"/></div>
+        <div className="absolute top-6 right-20 space-x-5 xmobile:top-20 xmobile:left-14">
+          <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative">
+            <a href="https://vitalcities.be/">Ambities</a>
+            {/* Keer terug naar overzicht met ambities/landingspage */}
+          </button>
+          <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative" onClick={() => scrollTo('#Practises')}>Good practices</button>
+        </div>
+        <StaticImage src="../images/Facebook.png" alt="Facebook" className="absolute right-8 top-[380px]" />
+        <StaticImage src="../images/Twitter.png" alt="Twitter" className="absolute right-8 top-[410px]" />
+        <StaticImage src="../images/Instagram.png" alt="Instagram" className="absolute right-8 top-[440px]" />
       </header>
 
-      <section className="grid grid-cols-2 mx-20 mt-32 gap-28 mobile:grid-cols-1 tabletportrait:grid-cols-1 tabletlandscape:grid-cols-1">
-        <div className="flex flex-col max-w-xl pr-10">
+      <section className="grid grid-cols-2 mx-16 mt-32 gap-28 mobile:grid-cols-1 tabletportrait:grid-cols-1 tabletlandscape:grid-cols-1">
+        <div className="flex flex-col">
             <h2 className="text-3xl font-xxbold">
                 Wat is de huidige situatie in
             </h2>
-            <select className="text-3xl font-xxbold text-purple -ml-1 underline underline-offset-4">
+            <select className="text-3xl font-xxbold text-purple -ml-1 w-fit underline underline-offset-4 pr-0">
                 <option>het Vlaams gewest</option>
             </select>
             <label className="mt-5 font-medium">
@@ -130,11 +130,11 @@ function AmbitionPage () {
             </label>
         </div>
         <div className="self-end">
-            <label className="opacity-50 text-sm font-xxbold font-mono pl-4">
-                HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ... 
+            <label className="opacity-50 text-sm font-xxbold font-mono ml-4 tabletportrait:ml-0">
+              HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ... 
             </label>
-            <table>
-                <tr>
+            <table className="text-sm font-medium tabletportrait:text-xs">
+              <tr>
                   <td className="p-2">
                       <div className="flex items-center">
                       <div className="w-12 h-12 mb-2">
@@ -207,17 +207,17 @@ function AmbitionPage () {
                 </tr>
             </table>
         </div>
-    </section>
-    <section className="flex flex-col items-center font-poppins mt-32 mx-20 mb-32">
-        <h2 className="text-3xl font-bold mb-5">Wat is het probleem?</h2>
-        <p className="mb-5">
-            Als routes geen goede verbinding maken met voorzieningen en werk of school, als ze onveilig zijn of door een weinig aantrekkelijke
-            stadsomgeving gaan, zijn mensen niet geneigd om ze te gebruiken. Als je fiets of wandelt, voel je je namelijk kwetsbaarder dan in je auto. 
-        </p>
-        <p className="font-bold">
-            Bij een gebrek aan veilige en/of aantrekkelijke routes zullen mensen dan eerder kiezen voor de auto.
-        </p>
-    </section>
+      </section>
+      <section className="flex flex-col items-center text-center font-poppins mt-32 mx-16 mb-32">
+          <h2 className="text-3xl font-bold mb-5">Wat is het probleem?</h2>
+          <p className="mb-5">
+              Als routes geen goede verbinding maken met voorzieningen en werk of school, als ze onveilig zijn of door een weinig aantrekkelijke
+              stadsomgeving gaan, zijn mensen niet geneigd om ze te gebruiken. Als je fiets of wandelt, voel je je namelijk kwetsbaarder dan in je auto. 
+          </p>
+          <p className="font-bold">
+              Bij een gebrek aan veilige en/of aantrekkelijke routes zullen mensen dan eerder kiezen voor de auto.
+          </p>
+      </section>
 
       <section className="mx-16 mb-16">
         <h2 className="text-3xl font-bold mb-4"><span className="underline decoration-lightPurple">Waarom</span> moeten we dit oplossen?</h2>
