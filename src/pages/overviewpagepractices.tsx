@@ -13,11 +13,11 @@ export default () => {
     setPractices(testJSON)
   }, [])
 
-  useEffect(() => {
-    if (practices) {
-      console.log(practices)
-    }
-  }, [practices])
+  // useEffect(() => {
+  //   if (practices) {
+  //     console.log(practices)
+  //   }
+  // }, [practices])
 
   return (
     <div>

@@ -20,7 +20,7 @@ export default ({ practice }: { practice: TestPractice }) => {
           </div>
         </section>
         <section className="mb-4 font-poppins">
-          <h2 className="mb-4 text-2xl font-semibold text-black line-clamp-2">
+          <h2 className="mb-4 text-2xl font-semibold text-dark line-clamp-2">
             {practice.titel}
           </h2>
           <p className="text-base font-medium text-dark opacity-90 line-clamp-6">
@@ -28,7 +28,7 @@ export default ({ practice }: { practice: TestPractice }) => {
           </p>
         </section>
       </div>
-      <button className="Poppin w-[85px] text-lg font-semibold text-purple text-opacity-90">
+      <button className="w-[93px] font-poppins text-lg font-semibold text-purple text-opacity-90">
         <Link to="/detailscase/" state={{ practice: practice }}>
           Lees meer
         </Link>

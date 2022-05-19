@@ -56,15 +56,14 @@ export const testJSON: TestPractice[] = [
       {
         header: 'Wat',
         body: `In een procesnota (Stad Aalst, 2020) worden een aantal belangrijke principes gebundeld om toe te passen bij stadsvernieuwingstrajecten die bijdragen tot duurzaam samenleven. Een aantal principes zijn een hefboom voor beweegvriendelijke gemeentes. Die principes zijn gebaseerd op de ervaring om woonzorgwijk Mijlbeek te creëren in het kader van de zorgproeftuin AIPA (Ageing in Place Aalst, nu Zorglab Aalst) in 2015. Samen met ouderen en betrokken actoren werden aandachtspunten gebundeld in functie van levenslang wonen. Hieruit ontstond het concept van woonzorgwijken voor een verouderende bevolking. Deze principes zijn nu juridisch verankerd in de ruimtelijk uitvoeringsplannen (RUP’s) voor alle standvernieuwingsprojecten. Hierdoor worden ze meer afdwingbaar.
-          Er worden zes principes gedefinieerd in de procesnota om te komen tot een leefbare buurt waar levenslang leven mogelijk wordt:
-          1. Zorgen voor een doelgroepenmix
-          2. Levensloop bestendig wonen en innovatief bouwen
-          3. Toegankelijkheid voor iedereen
-          4. Gezonde buitenomgeving
-          5. Multifunctioneel dienstenaanbod
-          6. Regionale excellentie op vlak van zorg, gezondheid, sport en recreatie
-          2
-          In het kader van beweegvriendelijke gemeentes geven we meer uitleg bij drie van die principes omdat ze bijdragen tot de zeven ambities die door Vital Cities beschreven worden als belangrijk om te komen tot beweegvriendelijke gemeentes: toegankelijkheid voor iedereen, gezonde buitenomgeving en excellentie op vlak van sport en recreatie.`,
+        Er worden zes principes gedefinieerd in de procesnota om te komen tot een leefbare buurt waar levenslang leven mogelijk wordt:
+        1. Zorgen voor een doelgroepenmix
+        2. Levensloop bestendig wonen en innovatief bouwen
+        3. Toegankelijkheid voor iedereen
+        4. Gezonde buitenomgeving
+        5. Multifunctioneel dienstenaanbod
+        6. Regionale excellentie op vlak van zorg, gezondheid, sport en recreatie
+        In het kader van beweegvriendelijke gemeentes geven we meer uitleg bij drie van die principes omdat ze bijdragen tot de zeven ambities die door Vital Cities beschreven worden als belangrijk om te komen tot beweegvriendelijke gemeentes: toegankelijkheid voor iedereen, gezonde buitenomgeving en excellentie op vlak van sport en recreatie.`,
       },
       {
         header: '1. Toegankelijkheid voor iedereen',

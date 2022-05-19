@@ -8,12 +8,13 @@ export default interface TestPractice {
   datum: string
 }
 
-interface Paragraaf {
+export interface Paragraaf {
   header: string
   body: string
 }
 
-interface Bron {
+export interface Bron {
   naam: string
   url: string
 }
+
