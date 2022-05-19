@@ -51,7 +51,7 @@ export default () => {
           <div className="gap grid grid-cols-3 gap-x-14 gap-y-20">
             {practices.map((e, i) => (
               <PracticeCard practice={e} key={e.id} />
-            ))}{' '}
+            ))}
           </div>
         ) : null}
       </main>

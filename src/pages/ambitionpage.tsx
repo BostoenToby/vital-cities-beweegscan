@@ -4,7 +4,7 @@ import scrollTo from "gatsby-plugin-smoothscroll"
 import { ArrowDown, ExternalLink, FileText, Mail, Phone } from "lucide-react"
 import * as React from "react"
 import { useEffect, useState } from "react"
-import { allResults, searchList } from "../components/autoComplete"
+import { allResults, searchList } from "../utils/autoComplete"
 import DonutChart from "../components/donutChart"
 
 function AmbitionPage () {
