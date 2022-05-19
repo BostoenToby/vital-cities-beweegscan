@@ -84,25 +84,25 @@ function AmbitionPage () {
 
   return (
     <main className="font-poppins">
-      <header className="relative top-0 left-0 w-full h-screen mb-8 flex">
+      <header className="relative top-0 left-0 w-full h-auto mb-8 flex">
           <section className="bg-purple w-full z-10 relative">
-            <div className="mb-32 flex">
-              <div className="bg-yellow h-24 w-32 absolute z-10 top-0 left-0"></div>
-              <a href="https://vitalcities.be/"><StaticImage src="../images/test.png" alt="Logo of Vital Cities" className="w-32 h-auto z-20 relative top-4 left-20"/></a>
+            <div className="mb-28 flex">
+              <div className="bg-yellow h-16 w-20 absolute z-10 top-0 left-0"></div>
+              <a href="https://vitalcities.be/"><StaticImage src="../images/logo_03.png" alt="Logo of Vital Cities" className="w-20 h-auto z-20 relative top-3 left-16"/></a>
             </div>
 
-            <div className="ml-16 pb-10">
-              <div className="bg-pink -skew-x-12 max-w-max mb-4">
-                <p className="text-white px-2 skew-x-12 font-bold">actief bewegen</p>
+            <div className="ml-16 pb-10 tabletlandscape:ml-12">
+              <div className="bg-pink -skew-x-12 max-w-max mb-5">
+                <p className="text-white text-xs py-1 px-2 skew-x-12 font-bold">actief bewegen</p>
               </div>
-              <h1 className="text-white text-6xl max-w-2xl font-bold mb-8 mobile:text-2xl tabletportrait:text-5xl tabletlandscape:text-4xl">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
-              <p className="text-white text-2xl max-w-2xl mb-12 mobile:text-sm tabletportrait:text-lg tabletlandscape:text-xl">Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een actieve levensstijl en faciliteren mensen om lopend of fietsend naar voorzieningen of het werk of school voorzieningen te gaan</p>
+              <h1 className="text-white text-5xl max-w-2xl font-xxbold mr-16 mb-8 tabletlandscape:text-4xl tabletlandscape:mr-12 tabletportrait:text-4xl mobile:text-2xl">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
+              <p className="text-white text-lg leading-6 font-xlight mr-16 opacity-75 max-w-2xl mb-12 tabletlandscape:text-lg tabletlandscape:mr-12 tabletportrait:text-sm mobile:text-xs">Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een actieve levensstijl en faciliteren mensen om lopend of fietsend naar voorzieningen of het werk of school voorzieningen te gaan</p>
               <p className="text-lightPurple font-semibold mb-2">scroll</p>
               <ArrowDown className="text-lightPurple"/>
             </div>
           </section>
-          <div className="h-full mobile:hidden"><StaticImage src="../images/HeaderPictureActiveMovement.png" alt="Logo of Vital Cities" className="z-0 right-20 top-20 h-4/5 relative"/></div>
-          <div className="absolute top-6 right-20 space-x-5 mobile:mt-24">
+          <div className="h-fullr"><StaticImage src="../images/HeaderPictureActiveMovement.png" alt="Logo of Vital Cities" className="z-0 right-20 top-20 h-4/5 relative tabletlandscape:top-32 tabletportrait:hidden"/></div>
+          <div className="absolute top-6 right-20 space-x-5 xmobile:top-20 xmobile:left-14">
             <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative">
               <a href="https://vitalcities.be/">Ambities</a>
               {/* Keer terug naar overzicht met ambities/landingspage */}
@@ -116,10 +116,10 @@ function AmbitionPage () {
 
       <section className="grid grid-cols-2 mx-20 mt-32 gap-28 mobile:grid-cols-1 tabletportrait:grid-cols-1 tabletlandscape:grid-cols-1">
         <div className="flex flex-col max-w-xl pr-10">
-            <h2 className="text-3xl font-black">
+            <h2 className="text-3xl font-xxbold">
                 Wat is de huidige situatie in
             </h2>
-            <select className="text-3xl font-black text-purple -ml-1 underline underline-offset-4">
+            <select className="text-3xl font-xxbold text-purple -ml-1 underline underline-offset-4">
                 <option>het Vlaams gewest</option>
             </select>
             <label className="mt-5 font-medium">
@@ -130,7 +130,7 @@ function AmbitionPage () {
             </label>
         </div>
         <div className="self-end">
-            <label className="opacity-50 text-sm font-black font-mono pl-4">
+            <label className="opacity-50 text-sm font-xxbold font-mono pl-4">
                 HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ... 
             </label>
             <table>

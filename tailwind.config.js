@@ -6,7 +6,19 @@ module.exports = {
         poppins: ['Poppins', 'sans-serif']
       }
     },
+    fontWeight: {
+      xxlight: 100,
+      xlight: 200,
+      light: 300,
+      normal: 400,
+      medium: 500,
+      semibold: 600,
+      bold: 700,
+      xbold: 800,
+      xxbold: 900
+    },
     screens: {
+      'xmobile': {'max': '500px'},
       'mobile': {'max': '576px'},
       'tabletportrait': {'max': '768px'},
       'tabletlandscape': {'max': '992px'},
