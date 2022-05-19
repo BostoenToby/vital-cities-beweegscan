@@ -13,22 +13,22 @@ export default () => {
     setPractices(testJSON)
   }, [])
 
-  useEffect(() => {
-    if (practices) {
-      console.log(practices)
-    }
-  }, [practices])
+  // useEffect(() => {
+  //   if (practices) {
+  //     console.log(practices)
+  //   }
+  // }, [practices])
 
   return (
     <div>
       <TopNavigation />
       <main className="mx-auto my-16 w-full max-w-[104rem] px-10">
         <header className="mb-14 flex flex-row justify-between">
-          <h1 className="Poppins text-5xl font-bold text-dark">
+          <h1 className="font-poppins text-5xl font-bold text-dark">
             Good practices
           </h1>
           <div className="my-auto">
-            <select className="Poppins text-2xl font-semibold text-purple">
+            <select className="font-poppins text-2xl font-semibold text-purple">
               <option value="actief bewegen">
                 Actief bewegen & verplaatsen
               </option>

@@ -11,23 +11,23 @@ export default () => {
           <Logo />
         </div>
       </div>
-      <ul className="my-auto ml-32 flex flex-row">
-        <li className="text-Poppins mr-14 text-2xl font-medium text-dark">
+      <ul className="my-auto ml-32 flex flex-row font-poppins">
+        <li className="mr-14 text-2xl font-medium text-dark">
           <Link activeStyle={{ color: '#E7348C' }} to="/ambitionpage">
             Home
           </Link>
         </li>
-        <li className="text-Poppins mr-14 text-2xl font-medium text-dark">
+        <li className=" font mr-14 text-2xl font-medium text-dark">
           <Link activeStyle={{ color: '#E7348C' }} to="/">
             Beweegscan
           </Link>
         </li>
-        <li className="text-Poppins mr-14 text-2xl font-medium text-dark">
+        <li className=" mr-14 text-2xl font-medium text-dark">
           <Link activeStyle={{ color: '#E7348C' }} to="/overviewpagepractices">
             Good practices
           </Link>
         </li>
-        <li className="text-Poppins mr-14 text-2xl font-medium text-dark">
+        <li className="mr-14 text-2xl font-medium text-dark">
           <Link activeStyle={{ color: '#E7348C' }} to="/">
             Over ons
           </Link>
@@ -37,7 +37,7 @@ export default () => {
         <button className="relative z-auto h-14 rounded-xl border-2 border-purple bg-pink">
           <div className="absolute top-1 left-1 z-[-1] h-full w-full rounded-xl bg-purple"></div>
           <Link
-            className="text-Poppins px-6 text-2xl font-medium text-white"
+            className="px-6 font-poppins text-2xl font-medium text-white"
             to="/"
           >
             Contacteer ons
