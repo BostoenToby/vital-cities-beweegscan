@@ -4,6 +4,9 @@ module.exports = {
     extend: {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif']
+      },
+      height: {
+        '128': '52rem'
       }
     },
     fontWeight: {
@@ -18,11 +21,14 @@ module.exports = {
       xxbold: 900
     },
     screens: {
-      'xmobile': {'max': '500px'},
-      'mobile': {'max': '576px'},
-      'tabletportrait': {'max': '768px'},
-      'tabletlandscape': {'max': '992px'},
-      'desktop': {'max': '1280px'}
+      'mobileS': {'min': '320px'},
+      'mobileM': {'min': '375px'},
+      'mobileL': {'min': '425px'},
+      'mobile': {'min': '576px'},
+      'tabletportrait': {'min': '768px'},
+      'laptop': {'min': '1024px'},
+      'laptopL': {'min': '1440px'},
+      '4K': {'min': '2560'}
     },
     colors: {
       neutral: '#F8FAFC',
