@@ -3,7 +3,7 @@ import * as React from 'react'
 import { graphql, StaticQuery, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { render } from 'react-dom'
-import Tag from './tag'
+import Tag from './Tag'
 
 export default function RevPrac({image, imageAlt, leftTagText, leftTagColorBg, leftTagColorText, rightTagText, rightTagColorBg, rightTagColorText, title, subTitle}: {image: string, imageAlt: string, leftTagText: string, leftTagColorBg: string, leftTagColorText: string, rightTagText: string, rightTagColorBg: string, rightTagColorText: string, title: string, subTitle: string}) {
   const [img, setImg] = React.useState<any>()
