@@ -10,7 +10,7 @@ export default ({ practice }: { practice: TestPractice }) => {
         <section className="mb-8 h-80">
           {/* // image placeholder */}
           <div className="h-full w-full bg-gray opacity-50"></div>
-          <div className="Poppins relative bottom-5 left-4 flex flex-row text-base font-bold text-white">
+          <div className=" relative bottom-5 left-4 flex flex-row font-poppins text-base font-semibold text-white">
             <div className="-skew-x-12 bg-pink py-2 px-4">
               {practice.themas[0]}
             </div>
@@ -19,8 +19,8 @@ export default ({ practice }: { practice: TestPractice }) => {
             </div>
           </div>
         </section>
-        <section className="Poppins mb-4">
-          <h2 className="mb-4 text-2xl font-bold text-black line-clamp-2">
+        <section className="mb-4 font-poppins">
+          <h2 className="mb-4 text-2xl font-semibold text-black line-clamp-2">
             {practice.titel}
           </h2>
           <p className="text-base font-medium text-dark opacity-90 line-clamp-6">
@@ -28,7 +28,7 @@ export default ({ practice }: { practice: TestPractice }) => {
           </p>
         </section>
       </div>
-      <button className="Poppin w-[85px] text-lg font-bold text-purple text-opacity-90">
+      <button className="Poppin w-[85px] text-lg font-semibold text-purple text-opacity-90">
         <Link to="/detailscase/" state={{ practice: practice }}>
           Lees meer
         </Link>

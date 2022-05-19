@@ -21,14 +21,18 @@ export default ({ location }: { location: any }) => {
           <ChevronLeft className="mr-6 text-dark opacity-70" />
           <button
             onClick={() => navigate(-1)}
-            className="Poppins text-2xl font-semibold text-purple"
+            className=" font-poppins text-2xl font-semibold text-purple"
           >
             naar alle good practices
           </button>
         </header>
         <section className="flex h-[520px] w-full flex-row">
-          <div className="w-1/2"></div>
-          <div className="h-full w-1/2"></div>
+          <div className="w-1/2 bg-purple bg-opacity-10 font-poppins">
+            <h1>{practice?.titel}</h1>
+          </div>
+          <div className="h-full w-1/2">
+            <div className="h-full w-full bg-gray opacity-50"></div>
+          </div>
         </section>
         <section></section>
       </main>
