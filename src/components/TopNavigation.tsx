@@ -37,7 +37,7 @@ export default () => {
   }
 
   return (
-    <div className="sticky top-0 z-10">
+    <div className="sticky top-0 z-10 w-max navbreak:w-screen">
       {isFullsize ? (
         <nav className="flex h-24 w-full flex-row border-b-2 border-dark border-opacity-60 bg-white drop-shadow-sm">
           <div className="flex h-full w-32 flex-col justify-center bg-yellow">
