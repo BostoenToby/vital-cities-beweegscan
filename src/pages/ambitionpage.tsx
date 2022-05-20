@@ -85,23 +85,23 @@ function AmbitionPage () {
   return (
     <main className="font-poppins">
       <header className="relative top-0 left-0 mb-8 flex">
-        <section className="bg-purple h-auto z-10 relative laptop:h-screen">
+        <section className="bg-purple h-auto z-10 relative">
           <div className="mb-28 flex">
             <div className="bg-yellow h-16 w-20 absolute z-10 top-0 left-0"></div>
             <a href="https://vitalcities.be/"><StaticImage src="../images/logo_03.png" alt="Logo of Vital Cities" className="w-20 h-auto z-20 relative top-3 left-16"/></a>
           </div>
 
-          <div className="mx-10 pb-10 mobileM:mx-8">
+          <div className="mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
             <div className="bg-pink -skew-x-12 max-w-max mb-5">
               <p className="text-white text-xs py-1 px-2 skew-x-12 font-bold">actief bewegen</p>
             </div>
-            <h1 className="text-white text-3xl leading-tight max-w-2xl font-xxbold mb-8 tabletportrait:text-5xl laptop:text-6xl">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
+            <h1 className="text-white text-3xl leading-tight max-w-2xl font-xxbold mb-8 tabletportrait:text-5xl laptop:text-xl laptopL:text-7xl">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
             <p className="text-white text-xl leading-6 font-xlight opacity-75 max-w-2xl mb-12 laptop:text-2xl">Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een actieve levensstijl en faciliteren mensen om lopend of fietsend naar voorzieningen of het werk of school voorzieningen te gaan</p>
             <p className="text-lightPurple font-semibold mb-2">scroll</p>
             <ArrowDown className="text-lightPurple"/>
           </div>
         </section>
-        <div className="h-full"><StaticImage src="../images/HeaderPictureActiveMovement.png" alt="header picture" className="z-0 h-128 object-cover right-20 top-20 relative hidden tabletlandscape:top-32 tabletportrait:block"/></div>
+        <div className="h-full"><StaticImage src="../images/HeaderPictureActiveMovement.png" alt="header picture" className="z-0 object-cover right-20 top-20 relative hidden tabletportrait:h-tablet tabletportrait:block laptop:h-laptop"/></div>
         <div className="absolute top-24 mx-10 space-x-3 tabletportrait:top-8 tabletportrait:right-10">
           <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-neutral hover:text-pink">
             <a href="https://vitalcities.be/">Ambities</a>
@@ -109,7 +109,7 @@ function AmbitionPage () {
           </button>
           <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-neutral hover:text-pink" onClick={() => scrollTo('#Practises')}>Good practices</button>
         </div>
-        <div className="fles z-30">
+        <div className="flex z-30">
           <StaticImage src="../images/Facebook.png" alt="Facebook" className="absolute right-4 top-[380px] tabletportrait:right-12" />
           <StaticImage src="../images/Twitter.png" alt="Twitter" className="absolute right-4 top-[410px] tabletportrait:right-12" />
           <StaticImage src="../images/Instagram.png" alt="Instagram" className="absolute right-4 top-[440px] tabletportrait:right-12" />

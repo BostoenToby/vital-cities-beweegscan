@@ -6,7 +6,8 @@ module.exports = {
         poppins: ['Poppins', 'sans-serif']
       },
       height: {
-        '128': '52rem'
+        'tablet': '38rem',
+        'laptop': '42rem',
       }
     },
     fontWeight: {
