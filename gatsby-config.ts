@@ -37,9 +37,10 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
-        forceBase64Format: `png, jpg, webp`,
+        forceBase64Format: `png`,
         defaults: {
-          formats: ['png', 'jpeg', 'webp', 'svg']
+          formats: ['png'],
+          toFormat: `png`
         }
       }
     },
