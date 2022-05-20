@@ -135,7 +135,7 @@ export default ({ location }: { location: any }) => {
                             {e.naam ? e.naam : e.url}
                           </a>
                         ) : (
-                          <a className=" font-poppins text-lg font-semibold text-purple underline">
+                          <a className=" font-poppins text-lg font-semibold text-purple">
                             {e.naam}
                           </a>
                         )}

@@ -14,7 +14,7 @@ export default ({ practice }: { practice: TestPractice }) => {
             <div className="-skew-x-12 bg-pink py-2 px-4">
               {practice.themas[0]}
             </div>
-            <div className="-skew-x-12 bg-yellow py-2 px-4">
+            <div className="-skew-x-12 bg-purple py-2 px-4">
               {practice.datum}
             </div>
           </div>
