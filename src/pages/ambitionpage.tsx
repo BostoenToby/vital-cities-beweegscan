@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import scrollTo from "gatsby-plugin-smoothscroll"
-import { ArrowDown, ExternalLink, FileText, Mail, Phone } from "lucide-react"
+import { ArrowDown, ExternalLink, Mail, Phone } from "lucide-react"
 import * as React from "react"
 import { useEffect, useState } from "react"
 import { allResults, searchList } from "../utils/autoComplete"
@@ -101,7 +101,7 @@ function AmbitionPage () {
             <ArrowDown className="text-lightPurple animate-bounce"/>
           </div>
         </section>
-        <div className="h-full"><StaticImage src="../images/HeaderPictureActiveMovement.png" alt="header picture" className="z-0 object-cover right-20 top-20 relative hidden tabletportrait:h-tablet tabletportrait:block laptop:h-laptop"/></div>
+        <div className="h-full"><StaticImage src="../images/headerpictureactivemovement.png" alt="header picture" className="z-0 object-cover right-20 top-20 relative hidden tabletportrait:h-tablet tabletportrait:block laptop:h-laptop"/></div>
         <div className="absolute top-24 mx-8 space-x-3 tabletportrait:top-8 tabletportrait:right-10">
           <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-neutral hover:text-pink">
             <a href="https://vitalcities.be/">Ambities</a>
@@ -111,9 +111,9 @@ function AmbitionPage () {
         </div>        
       </header>
       <div className="flex flex-col items-center gap-4 fixed top-[450px] right-4">
-        <a href="https://www.facebook.com/VitalCitiesHowest/"><StaticImage src="../images/Facebook.png" alt="Facebook" /></a>
-        <a href=""><StaticImage src="../images/Twitter.png" alt="Twitter"/></a>
-        <a href="https://www.instagram.com/vital.cities/?hl=nl"><StaticImage src="../images/Instagram.png" alt="Instagram" /></a> 
+        <a href="https://www.facebook.com/VitalCitiesHowest/"><StaticImage src="../images/facebook.png" alt="Facebook" /></a>
+        <a href=""><StaticImage src="../images/twitter.png" alt="Twitter"/></a>
+        <a href="https://www.instagram.com/vital.cities/?hl=nl"><StaticImage src="../images/instagram.png" alt="Instagram" /></a> 
       </div>
       <section className="grid grid-cols-1 mx-14 mt-32 gap-16 laptopL:mt-36">
         <div className="flex flex-col">
@@ -321,7 +321,7 @@ function AmbitionPage () {
         <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">Je wil je door nog meer good practices laten inspireren? Ontdek ze <span className="underline text-pink font-semibold">hier</span></p>
         <div className="grid grid-cols-1 gap-16 mobile:grid-cols-2 text-sm tabletportrait:text-lg laptop:text-xl">
           <div>
-            <StaticImage src="../images/RelevantCases.png" alt="Relevant cases" className="relative w-auto"/>
+            <StaticImage src="../images/relevantcases.png" alt="Relevant cases" className="relative w-auto"/>
             <div className="flex items-center text-xs relative bottom-3 left-3 tabletportrait:text-sm laptop:text-lg">
               <div className="bg-pink -skew-x-12 max-w-max mb-2">
                   <p className="px-2 skew-x-12 font-bold">actief bewegen</p>
@@ -334,7 +334,7 @@ function AmbitionPage () {
             <p className="pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus.</p>
           </div>
           <div>
-            <StaticImage src="../images/RelevantCases.png" alt="Relevant cases" className="relative w-auto"/>
+            <StaticImage src="../images/relevantcases.png" alt="Relevant cases" className="relative w-auto"/>
             <div className="flex items-center text-xs relative bottom-3 left-3 tabletportrait:text-sm laptop:text-lg">
               <div className="bg-pink -skew-x-12 max-w-max mb-2">
                   <p className="px-2 skew-x-12 font-bold">actief bewegen</p>
