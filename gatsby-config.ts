@@ -39,8 +39,7 @@ const config: GatsbyConfig = {
       options: {
         forceBase64Format: `png`,
         defaults: {
-          formats: ['png'],
-          toFormat: `png`
+          formats: ['png']
         }
       }
     },
