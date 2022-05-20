@@ -125,7 +125,7 @@ function AmbitionPage () {
           <select className="text-2xl font-xxbold text-purple -ml-1 w-fit underline underline-offset-2 decoration-lightxPurple pr-0 tabletportrait:text-3xl laptop:text-4xl laptop:mt-2">
               <option className="">het Vlaams gewest</option>
           </select>
-          <label className="mt-5 font-medium text-sm tabletportrait:text-lg last:text-xl">
+          <label className="mt-5 font-medium text-sm tabletportrait:text-lg laptop:text-xl">
               In het Vlaams gewest is <span className="font-semibold">ongeveer de helft of meer van de
               inwoners</span> <span className="text-pink font-semibold">niet tevreden</span> over de staat, veiligheid en
               aantrekkelijkheid van straten, pleinen, wandel- en fietspaden
