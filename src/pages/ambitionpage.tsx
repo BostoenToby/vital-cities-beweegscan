@@ -4,8 +4,8 @@ import scrollTo from "gatsby-plugin-smoothscroll"
 import { ArrowDown, ExternalLink, Mail, Phone } from "lucide-react"
 import * as React from "react"
 import { useEffect, useState } from "react"
+import DonutChart from "../componentsSmall/donutchart"
 import { allResults, searchList } from "../utils/autoComplete"
-import DonutChart from "../components/donutChart"
 
 function AmbitionPage () {
   const [suggestions, setSuggestions] = React.useState<string[]>()

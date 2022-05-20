@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/tailwind.css'
-import TopNavigation from '../components/TopNavigation'
+import TopNavigation from '../componentsSmall/topnavigation'
 import { Link } from 'gatsby'
 import { testJSON } from '../data/testPractices'
-import PracticeCard from '../components/PracticeCard'
+import PracticeCard from '../componentsSmall/practicecard'
 import TestPractice from '../interfaces/testPractice'
 import { ChevronDown } from 'lucide-react'
 

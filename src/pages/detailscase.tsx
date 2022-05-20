@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/tailwind.css'
-import TopNavigation from '../components/TopNavigation'
+import TopNavigation from '../componentsSmall/topnavigation'
 import { Link } from 'gatsby'
 import TestPractice from '../interfaces/testPractice'
 import { ChevronLeft } from 'lucide-react'
 import { navigate } from 'gatsby'
-import ThemaCard from '../components/ThemaCard'
-import PracticeParagraph from '../components/PracticeParagraph'
+import ThemaCard from '../componentsSmall/themacard'
+import PracticeParagraph from '../componentsSmall/practiseparagraph'
 import { findIndexesSubstring } from '../utils/practiceFunctions'
 
 export default ({ location }: { location: any }) => {

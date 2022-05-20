@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/tailwind.css'
-import Logo from '../components/Logo'
+
 import { Link } from 'gatsby'
 import {
   Menu,
@@ -10,7 +10,9 @@ import {
   Twitter,
   Instagram,
 } from 'lucide-react'
-import LogoAlt from './LogoAlt'
+import Logo from './logo'
+import Logoalt from './logoalt'
+
 
 export default () => {
   const [isFullsize, setFullsize] = useState(false)
@@ -110,7 +112,7 @@ export default () => {
                 onClick={() => handleSideBar()}
               />
               <div className="absolute right-4 top-4 flex h-20 w-auto">
-                <LogoAlt />
+                <Logoalt />
               </div>
             </header>
             <ul className="font-poppins">
