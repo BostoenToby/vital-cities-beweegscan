@@ -29,7 +29,8 @@ module.exports = {
       'tabletportrait': {'min': '768px'},
       'laptop': {'min': '1024px'},
       'laptopL': {'min': '1440px'},
-      '4K': {'min': '2560'}
+      '4K': {'min': '2560'},
+      'navbreak': {'min': '1304px'}
     },
     colors: {
       neutral: '#F8FAFC',
