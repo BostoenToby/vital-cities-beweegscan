@@ -108,15 +108,13 @@ function AmbitionPage () {
             {/* Keer terug naar overzicht met ambities/landingspage */}
           </button>
           <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-neutral hover:text-pink" onClick={() => scrollTo('#Practises')}>Good practices</button>
-        </div>
-        <div className="flex z-30">
-          <StaticImage src="../images/Facebook.png" alt="Facebook" className="absolute right-4 top-[380px] tabletportrait:right-12" />
-          <StaticImage src="../images/Twitter.png" alt="Twitter" className="absolute right-4 top-[410px] tabletportrait:right-12" />
-          <StaticImage src="../images/Instagram.png" alt="Instagram" className="absolute right-4 top-[440px] tabletportrait:right-12" />
-        </div>
-        
+        </div>        
       </header>
-
+      <div className="flex flex-col items-center gap-4 fixed top-[550px] right-4">
+        <a href="https://www.facebook.com/VitalCitiesHowest/"><StaticImage src="../images/Facebook.png" alt="Facebook" /></a>
+        <a href=""><StaticImage src="../images/Twitter.png" alt="Twitter"/></a>
+        <a href="https://www.instagram.com/vital.cities/?hl=nl"><StaticImage src="../images/Instagram.png" alt="Instagram" /></a> 
+      </div>
       <section className="grid grid-cols-1 mx-14 mt-32 gap-16 laptopL:mt-36">
         <div className="flex flex-col">
           <h2 className="text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl">
