@@ -102,7 +102,7 @@ function AmbitionPage () {
           </div>
         </section>
         <div className="h-full"><StaticImage src="../images/HeaderPictureActiveMovement.png" alt="header picture" className="z-0 object-cover right-20 top-20 relative hidden tabletportrait:h-tablet tabletportrait:block laptop:h-laptop"/></div>
-        <div className="absolute top-24 mx-10 space-x-3 tabletportrait:top-8 tabletportrait:right-10">
+        <div className="absolute top-24 mx-8 space-x-3 tabletportrait:top-8 tabletportrait:right-10">
           <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-neutral hover:text-pink">
             <a href="https://vitalcities.be/">Ambities</a>
             {/* Keer terug naar overzicht met ambities/landingspage */}
@@ -117,12 +117,12 @@ function AmbitionPage () {
         
       </header>
 
-      <section className="grid grid-cols-1 mx-16 mt-32 gap-16 laptopL:mt-36">
+      <section className="grid grid-cols-1 mx-14 mt-32 gap-16 laptopL:mt-36">
         <div className="flex flex-col">
-          <h2 className="text-2xl font-xxbold tabletportrait:text-3xl laptop:text-4xl">
+          <h2 className="text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl">
               Wat is de huidige situatie in
           </h2>
-          <select className="text-2xl font-xxbold text-purple -ml-1 w-fit underline underline-offset-2 decoration-lightxPurple pr-0 tabletportrait:text-3xl laptop:text-4xl laptop:mt-2">
+          <select className="text-xl font-xxbold text-purple -ml-1 w-fit underline underline-offset-2 decoration-lightxPurple pr-0 tabletportrait:text-3xl laptop:text-4xl laptop:mt-2">
               <option className="">het Vlaams gewest</option>
           </select>
           <label className="mt-5 font-medium text-sm tabletportrait:text-lg laptop:text-xl">
@@ -209,7 +209,7 @@ function AmbitionPage () {
       </section>
 
       <section className="flex flex-col items-center text-center font-poppins mt-32 mx-16 mb-32">
-        <h2 className="text-2xl font-bold mb-5 tabletportrait:text-3xl laptop:text-4xl">Wat is het probleem?</h2>
+        <h2 className="text-xl font-bold mb-5 tabletportrait:text-3xl laptop:text-4xl">Wat is het probleem?</h2>
         <p className="mb-5 text-sm tabletportrait:text-lg laptop:text-xl">
             Als routes geen goede verbinding maken met voorzieningen en werk of school, als ze onveilig zijn of door een weinig aantrekkelijke
             stadsomgeving gaan, zijn mensen niet geneigd om ze te gebruiken. Als je fiets of wandelt, voel je je namelijk kwetsbaarder dan in je auto. 
@@ -220,7 +220,7 @@ function AmbitionPage () {
       </section>
 
       <section className="mx-16 mb-16">
-        <h2 className="text-2xl font-bold mb-4 tabletportrait:text-3xl laptop:text-4xl"><span className="underline decoration-lightPurple">Waarom</span> moeten we dit oplossen?</h2>
+        <h2 className="text-xl font-bold mb-4 tabletportrait:text-3xl laptop:text-4xl"><span className="underline decoration-lightPurple">Waarom</span> moeten we dit oplossen?</h2>
         <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-2xl laptop:w-4/5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corporis mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita</p>
         <div className="grid grid-cols-1 gap-6 text-sm tabletportrait:text-lg laptop:text-xl laptop:grid-cols-2 laptopL:grid-cols-3">
           <div className="flex items-center justify-center bg-lightPink skew-x-12 max-w-sm">
@@ -262,7 +262,7 @@ function AmbitionPage () {
       </section>
 
       <section className="mx-16 mb-16">
-        <h2 className="text-2xl font-bold mb-4 tabletportrait:text-3xl laptop:text-4xl"><span className="underline decoration-green">Hoe</span> kunnen we dit oplossen?</h2>
+        <h2 className="text-xl font-bold mb-4 tabletportrait:text-3xl laptop:text-4xl"><span className="underline decoration-green">Hoe</span> kunnen we dit oplossen?</h2>
         <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl laptop:w-4/5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corporis mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita</p>
         <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
           <div className="flex items-center justify-center bg-lightGreen skew-x-12 max-w-[275px]">
@@ -281,7 +281,7 @@ function AmbitionPage () {
       </section>
 
       <section className="px-16 pb-16 bg-neutral">
-        <h2 className="text-2xl font-bold mb-4 pt-4 tabletportrait:text-3xl laptop:text-4xl">Interessante bronnen</h2>
+        <h2 className="text-xl font-bold mb-4 pt-4 tabletportrait:text-3xl laptop:text-4xl">Interessante bronnen</h2>
         <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl laptop:w-4/5">We maken je graag wegwijs in wat bronnen en instrumenten om de omgevint te analyseren en te ontwerpen op vlak van wandel- en fietsvriendelijkheid</p>
         <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
           <div className="h-auto bg-white p-6">
@@ -317,7 +317,7 @@ function AmbitionPage () {
 
       <section className="px-16 pb-16" id="Practises">
         <div className="flex items-center justify-between pt-24 mb-2">
-          <h2 className="font-bold text-2xl tabletportrait:text-3xl laptop:text-4xl">Relevante good practices</h2>
+          <h2 className="font-bold text-xl tabletportrait:text-3xl laptop:text-4xl">Relevante good practices</h2>
           {/* <button className="bg-mediumPurple border p-2 text-pink border-pink">Alle cases</button> */}
         </div>
         <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">Je wil je door nog meer good practices laten inspireren? Ontdek ze <span className="underline text-pink font-semibold">hier</span></p>

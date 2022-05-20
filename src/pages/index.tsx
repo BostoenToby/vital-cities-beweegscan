@@ -1,8 +1,6 @@
 import * as React from "react"
 import '../assets/tailwind.css'
 // import {load} from 'webfontloader'; 
-import DonutChart from "../components/donutChart"
-import SectionLocationProblem from "./SectionLocationProblem"
 import { StaticImage } from "gatsby-plugin-image"
 import { ArrowDown, ExternalLink, Mail, Phone } from "lucide-react"
 import { allResults, searchList } from "../utils/autoComplete"
