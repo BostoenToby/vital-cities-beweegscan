@@ -5,16 +5,16 @@ import { Link } from 'gatsby'
 
 export default ({ practice }: { practice: TestPractice }) => {
   return (
-    <div className="flex max-w-lg flex-col justify-between">
+    <div className="flex flex-col justify-between gridbreak:max-w-lg">
       <div>
-        <section className="mb-8 h-80">
+        <section className=" mb-[6.5rem] h-80 gridbreak:mb-8">
           {/* // image placeholder */}
-          <div className="h-full w-full bg-gray opacity-50"></div>
-          <div className=" relative bottom-5 left-4 flex flex-row font-poppins text-base font-semibold text-white">
-            <div className="-skew-x-12 bg-pink py-2 px-4">
+          <div className="mb-4 h-full w-full bg-gray opacity-50 gridbreak:mb-0"></div>
+          <div className=" flex flex-col font-poppins text-base font-semibold text-white gridbreak:relative gridbreak:bottom-5 gridbreak:left-4 gridbreak:flex-row">
+            <div className="bg-pink py-2 px-4 gridbreak:-skew-x-12">
               {practice.themas[0]}
             </div>
-            <div className="-skew-x-12 bg-purple py-2 px-4">
+            <div className="bg-purple py-2 px-4 gridbreak:-skew-x-12">
               {practice.datum}
             </div>
           </div>
