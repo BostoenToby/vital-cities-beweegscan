@@ -34,6 +34,15 @@ const config: GatsbyConfig = {
         raw: false
       }
     },
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        forceBase64Format: `png`,
+        defaults: {
+          formats: ['png']
+        }
+      }
+    },
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`, 
     `gatsby-plugin-sharp`,
