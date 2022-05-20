@@ -95,7 +95,7 @@ function AmbitionPage () {
             <div className="bg-pink -skew-x-12 max-w-max mb-5">
               <p className="text-white text-xs py-1 px-2 skew-x-12 font-bold">actief bewegen</p>
             </div>
-            <h1 className="text-white text-3xl leading-tight max-w-2xl font-xxbold mb-8 tabletportrait:text-5xl laptop:text-xl laptopL:text-7xl">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
+            <h1 className="text-white text-3xl leading-tight max-w-2xl font-xxbold mb-8 tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
             <p className="text-white text-xl leading-6 font-xlight opacity-75 max-w-2xl mb-12 laptop:text-2xl">Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een actieve levensstijl en faciliteren mensen om lopend of fietsend naar voorzieningen of het werk of school voorzieningen te gaan</p>
             <p className="text-lightPurple font-semibold mb-2">scroll</p>
             <ArrowDown className="text-lightPurple"/>
