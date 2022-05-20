@@ -110,7 +110,7 @@ function AmbitionPage () {
           <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-neutral hover:text-pink" onClick={() => scrollTo('#Practises')}>Good practices</button>
         </div>        
       </header>
-      <div className="flex flex-col items-center gap-4 fixed top-[550px] right-4">
+      <div className="flex flex-col items-center gap-4 fixed top-[450px] right-4">
         <a href="https://www.facebook.com/VitalCitiesHowest/"><StaticImage src="../images/Facebook.png" alt="Facebook" /></a>
         <a href=""><StaticImage src="../images/Twitter.png" alt="Twitter"/></a>
         <a href="https://www.instagram.com/vital.cities/?hl=nl"><StaticImage src="../images/Instagram.png" alt="Instagram" /></a> 
@@ -350,7 +350,7 @@ function AmbitionPage () {
       </section>
 
       <section className="bg-mediumPurple flex py-2 px-2 items-center" id="CallToAction">
-        <StaticImage src='../images/CallToAction.png' alt="Picture of girls riding a bike" className="h-auto ml-16 border border-r-0 border-mediumPurple hidden" />
+        <StaticImage src='../images/CallToAction.png' alt="Picture of girls riding a bike" className="h-auto ml-16 border border-r-0 border-mediumPurple hidden laptop:block" />
         <div className="p-8 h-auto text-white">
           {/* <h2 className="font-bold text-4xl pb-4">Wil je graag weten wat we in jouw stad kunnen verbeteren?</h2>
           <p className="pb-3 text-lg">Om een volledige scan van jouw gemeente te laten maken en een gepersonaliseerd stappenplan te ontvangen, schrijf je in op onze wachtlijst!</p>
@@ -367,7 +367,7 @@ function AmbitionPage () {
           <h4 className="font-semibold text-lg pb-4 tabletportrait:text-xl">Download hier een rapport</h4>
           <p className="pb-4 text-sm tabletportrait:text-lg">Vul onderstaande gegevens in en ontvang in jouw mailbox het rapport.</p>
 
-          <div className="grid grid-cols-1 gap-4 pb-3 z-0 text-sm desktop:grid-cols-3 tabletportrait:text-lg tabletportrait:grid-cols-3" id="autoComplete">
+          <div className="grid grid-cols-1 gap-4 pb-3 z-0 text-sm desktop:grid-cols-3 tabletportrait:text-lg tabletportrait:grid-cols-3 laptop:grid-cols-1 laptopL:grid-cols-3" id="autoComplete">
             <div className="flex flex-col">
               <label htmlFor="Stad">Postcode of stad:</label>
               <input type="text" id="Stad" className="z-20 relative w-48 px-2 py-1 border border-lightGray active:border-gray outline-none focus-within:border-gray" placeholder="Postcode/Stad" value={typed} onChange={(ev: any) => {
