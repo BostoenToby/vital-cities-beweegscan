@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/tailwind.css'
-import Logo from '../components/Logo'
+
 import { Link } from 'gatsby'
 import {
   Menu,
@@ -10,7 +10,9 @@ import {
   Twitter,
   Instagram,
 } from 'lucide-react'
-import LogoAlt from './LogoAlt'
+import Logo from './logo'
+import Logoalt from './logoalt'
+
 
 export default () => {
   const [isFullsize, setFullsize] = useState(false)
@@ -37,7 +39,7 @@ export default () => {
   }
 
   return (
-    <div className="sticky top-0 z-10">
+    <div className="sticky top-0 z-10 w-max navbreak:w-screen">
       {isFullsize ? (
         <nav className="flex h-24 w-full flex-row border-b-2 border-dark border-opacity-60 bg-white drop-shadow-sm">
           <div className="flex h-full w-32 flex-col justify-center bg-yellow">
@@ -110,7 +112,7 @@ export default () => {
                 onClick={() => handleSideBar()}
               />
               <div className="absolute right-4 top-4 flex h-20 w-auto">
-                <LogoAlt />
+                <Logoalt />
               </div>
             </header>
             <ul className="font-poppins">

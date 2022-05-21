@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/tailwind.css'
-import TopNavigation from '../components/TopNavigation'
+import TopNavigation from '../components/topnavigation'
 import { Link } from 'gatsby'
 import { testJSON } from '../data/testPractices'
-import PracticeCard from '../components/PracticeCard'
+import PracticeCard from '../components/practicecard'
 import TestPractice from '../interfaces/testPractice'
 import { ChevronDown } from 'lucide-react'
 
@@ -50,9 +50,9 @@ export default () => {
   return (
     <div>
       <TopNavigation />
-      <main className="mx-auto my-16 w-full max-w-[104rem] px-10">
-        <header className="mb-14 flex flex-row justify-between">
-          <h1 className="font-poppins text-5xl font-bold text-dark">
+      <main className="mx-auto my-8 w-full max-w-[104rem] px-5 gridbreak:my-16 gridbreak:px-10">
+        <header className="mb-14 flex flex-col gridbreak:flex-row gridbreak:justify-between">
+          <h1 className="mb-4 font-poppins text-5xl font-bold text-dark gridbreak:mb-0">
             Good practices
           </h1>
           <div className="my-auto">
@@ -61,7 +61,7 @@ export default () => {
               <select
                 value={selected}
                 onChange={(event) => handleSelect(event)}
-                className="appearance-none border-none p-2 pb-8 pr-8 font-poppins text-2xl font-semibold text-dark text-opacity-70 outline-none group-focus-within:text-purple group-active:text-purple"
+                className="w-max appearance-none border-none p-2 pb-8 pr-8 font-poppins text-2xl font-semibold text-dark text-opacity-70 outline-none group-focus-within:text-purple group-active:text-purple"
               >
                 <option value="alle practices">Alle practices</option>
                 <option value="actief bewegen">
@@ -86,7 +86,7 @@ export default () => {
         </header>
         {/* // grid */}
         {currentPractices && currentPractices.length >= 1 ? (
-          <div className="gap grid grid-cols-3 gap-x-14 gap-y-20">
+          <div className="flex flex-col gap-y-20 gridbreak:grid gridbreak:grid-cols-2 gridbreak:gap-x-10 navbreak:grid-cols-3 navbreak:gap-x-14">
             {currentPractices.map((e, i) => (
               <PracticeCard practice={e} key={e.id} />
             ))}

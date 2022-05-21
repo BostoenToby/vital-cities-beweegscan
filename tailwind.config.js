@@ -3,12 +3,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif']
+        poppins: ['Poppins', 'sans-serif'],
       },
       height: {
-        'tablet': '38rem',
-        'laptop': '42rem',
-      }
+        tablet: '38rem',
+        laptop: '42rem',
+      },
     },
     fontWeight: {
       xxlight: 100,
@@ -19,18 +19,20 @@ module.exports = {
       semibold: 600,
       bold: 700,
       xbold: 800,
-      xxbold: 900
+      xxbold: 900,
     },
     screens: {
-      'mobileS': {'min': '320px'},
-      'mobileM': {'min': '375px'},
-      'mobileL': {'min': '425px'},
-      'mobile': {'min': '576px'},
-      'tabletportrait': {'min': '768px'},
-      'laptop': {'min': '1024px'},
-      'laptopL': {'min': '1440px'},
-      '4K': {'min': '2560'},
-      'navbreak': {'min': '1304px'}
+      mobileS: { min: '320px' },
+      mobileM: { min: '375px' },
+      mobileL: { min: '425px' },
+      mobile: { min: '576px' },
+      tabletportrait: { min: '768px' },
+      gridbreak: { min: '872px' },
+      laptop: { min: '1024px' },
+      columnbreak: { min: '1136px' },
+      navbreak: { min: '1304px' },
+      laptopL: { min: '1440px' },
+      '4K': { min: '2560' },
     },
     colors: {
       neutral: '#F8FAFC',
@@ -42,7 +44,7 @@ module.exports = {
       purple: '#492784',
       mediumPurple: '#613F9D',
       lightPurple: '#8262BA',
-      lightxPurple:'#ded5ed',
+      lightxPurple: '#ded5ed',
       green: '#02866C',
       lightGreen: '#EAFAF7',
       yellow: '#f2c123',

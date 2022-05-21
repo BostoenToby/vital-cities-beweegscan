@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/tailwind.css'
-import TopNavigation from '../components/TopNavigation'
+import TopNavigation from '../components/topnavigation'
 import { Link } from 'gatsby'
 import TestPractice from '../interfaces/testPractice'
 import { ChevronLeft } from 'lucide-react'
 import { navigate } from 'gatsby'
-import ThemaCard from '../components/ThemaCard'
-import PracticeParagraph from '../components/PracticeParagraph'
+import ThemaCard from '../components/themacard'
+import PracticeParagraph from '../components/practiseparagraph'
 import { findIndexesSubstring } from '../utils/practiceFunctions'
 
 export default ({ location }: { location: any }) => {
@@ -63,21 +63,21 @@ export default ({ location }: { location: any }) => {
   }, [practice])
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <TopNavigation />
-      <main className="mx-auto my-20 max-w-[104rem] px-10">
+      <main className="mx-auto my-10 max-w-[104rem] px-5 gridbreak:px-10 columnbreak:my-20">
         <header className="mb-11 flex flex-row items-center text-center">
           <ChevronLeft className="mr-6 text-dark opacity-70" />
           <button
             onClick={() => navigate(-1)}
-            className=" font-poppins text-2xl font-semibold text-purple"
+            className=" font-poppins text-lg font-semibold text-purple columnbreak:text-2xl"
           >
             naar alle good practices
           </button>
         </header>
-        <section className="flex h-[520px] w-full flex-row items-center">
-          <div className="h-max w-1/2 bg-purple bg-opacity-10 p-14 pb-10 font-poppins">
-            <h1 className="mb-5 font-poppins text-5xl font-bold text-dark">
+        <section className="flex w-full flex-col-reverse columnbreak:h-[520px] columnbreak:flex-row columnbreak:items-center">
+          <div className="h-max w-full bg-purple bg-opacity-10 p-7 pb-5 font-poppins columnbreak:w-1/2 columnbreak:p-14 columnbreak:pb-10">
+            <h1 className="mb-5 font-poppins text-2xl font-bold text-dark columnbreak:text-5xl">
               {practice?.titel}
             </h1>
             <div>
@@ -97,7 +97,7 @@ export default ({ location }: { location: any }) => {
               ) : null}
             </div>
           </div>
-          <div className="h-full w-1/2">
+          <div className="h-[calc(100vw-40px)] max-h-[520px] w-full columnbreak:w-1/2">
             <div className="h-full w-full bg-gray opacity-50"></div>
           </div>
         </section>
@@ -105,13 +105,13 @@ export default ({ location }: { location: any }) => {
           {practice &&
           practice.paragrafen &&
           practice.paragrafen.length >= 1 ? (
-            <div className="columns-2 gap-x-12 px-6 py-14">
+            <div className="gap-x-12 px-2 py-14 columnbreak:columns-2 columnbreak:px-6">
               {practice.warning ? (
                 <div className="mb-8 bg-lightRed p-4 font-poppins">
-                  <h2 className="mb-1 text-3xl font-bold text-dark">
+                  <h2 className="mb-1 text-2xl font-bold text-dark columnbreak:text-3xl">
                     {practice.warning.header}
                   </h2>
-                  <p className="ml-2 text-lg font-medium text-dark">
+                  <p className="ml-2 text-base font-medium text-dark columnbreak:text-lg">
                     {practice.warning.body}
                   </p>
                 </div>
@@ -121,7 +121,7 @@ export default ({ location }: { location: any }) => {
               ))}
               {practice.extra && practice.extra.length >= 1 ? (
                 <div>
-                  <h2 className="mb-6 text-3xl font-bold text-purple">
+                  <h2 className="mb-6 text-2xl font-bold text-purple columnbreak:text-3xl">
                     Meer weten
                   </h2>
                   <ul>
@@ -129,13 +129,13 @@ export default ({ location }: { location: any }) => {
                       <li className="mb-6">
                         {e.url ? (
                           <a
-                            className=" font-poppins text-lg font-semibold text-purple underline"
+                            className=" font-poppins text-base font-semibold text-purple underline columnbreak:text-lg"
                             href={e.url}
                           >
                             {e.naam ? e.naam : e.url}
                           </a>
                         ) : (
-                          <a className=" font-poppins text-lg font-semibold text-purple">
+                          <a className=" column-break:text-lg font-poppins text-base font-semibold text-purple">
                             {e.naam}
                           </a>
                         )}
