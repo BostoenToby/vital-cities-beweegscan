@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import scrollTo from "gatsby-plugin-smoothscroll"
-import { ArrowDown, ChevronDown, Copyright, ExternalLink, FileText, Mail, Phone } from "lucide-react"
+import { ArrowDown, ChevronDown, Copyright, ExternalLink, Facebook, FileText, Instagram, Mail, Phone, Twitter } from "lucide-react"
 import * as React from "react"
 import { useEffect, useState } from "react"
 import DonutChart from "../components/donutChart"
@@ -112,9 +112,12 @@ function AmbitionPage () {
         </div>        
       </header>
       <div className="flex flex-col items-center gap-4 fixed top-[450px] right-4">
-        <a href="https://www.facebook.com/VitalCitiesHowest/"><StaticImage src="../images/facebook.png" alt="Facebook" /></a>
-        <a href=""><StaticImage src="../images/twitter.png" alt="Twitter"/></a>
-        <a href="https://www.instagram.com/vital.cities/?hl=nl"><StaticImage src="../images/instagram.png" alt="Instagram" /></a> 
+        {/* <a href="https://www.facebook.com/VitalCitiesHowest/"><StaticImage src="../images/facebook.png" alt="Facebook" className="stroke-pink"/></a> */}
+        <a href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a>
+        {/* <a href=""><StaticImage src="../images/twitter.png" alt="Twitter"/></a> */}
+        <a href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a>
+        {/* <a href="https://www.instagram.com/vital.cities/?hl=nl"><StaticImage src="../images/instagram.png" alt="Instagram" /></a>  */}
+        <a href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a>
       </div>
 
       <section className="grid grid-cols-1 mx-14 mt-32 gap-16 laptopL:mt-36" id="Location">
