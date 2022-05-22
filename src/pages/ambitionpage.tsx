@@ -1,4 +1,4 @@
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import scrollTo from "gatsby-plugin-smoothscroll"
 import { ArrowDown, ChevronDown, Copyright, ExternalLink, Facebook, FileText, Instagram, Mail, Phone, Twitter } from "lucide-react"
@@ -105,18 +105,15 @@ function AmbitionPage () {
         <div className="h-full"><StaticImage src="../images/headerpictureactivemovement.png" alt="header picture" className="z-0 object-cover right-20 top-20 relative hidden tabletportrait:h-tablet tabletportrait:block laptop:h-laptop"/></div>
         <div className="absolute top-24 mx-8 space-x-3 tabletportrait:top-8 tabletportrait:right-10">
           <button tabIndex={-1} className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple">
-            <a href="https://vitalcities.be/">Ambities</a>
+            <Link to="..">Ambities</Link>
             {/* Keer terug naar overzicht met ambities/landingspage */}
           </button>
           <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple" onClick={() => scrollTo('#Practices')}>Good practices</button>
         </div>        
       </header>
       <div className="flex flex-col items-center gap-4 fixed top-[450px] right-4">
-        {/* <a href="https://www.facebook.com/VitalCitiesHowest/"><StaticImage src="../images/facebook.png" alt="Facebook" className="stroke-pink"/></a> */}
         <a href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a>
-        {/* <a href=""><StaticImage src="../images/twitter.png" alt="Twitter"/></a> */}
         <a href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a>
-        {/* <a href="https://www.instagram.com/vital.cities/?hl=nl"><StaticImage src="../images/instagram.png" alt="Instagram" /></a>  */}
         <a href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a>
       </div>
 
@@ -246,26 +243,6 @@ function AmbitionPage () {
               <p className="px-6 py-3 text-purple -skew-x-12 desktop:line-clamp-2">Buurten met meer paden, pleinen en parken hebben <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">meer wandelaars</b></p>
           </div>
         </div>
-        
-        {/* <div className="flex justify-between">
-          <div className="bg-lightPink skew-x-12 max-w-sm">
-            <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12"><b className="text-2xl text-purple">€1</b> die men investeert in fiets-infrastructuur leidt tot <b className="text-3xl text-purple">€14 return</b></p>
-          </div>
-          <div className="bg-lightPink skew-x-12 max-w-sm">
-            <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12">Fietsers consumeren <b className="text-2xl text-purple">€20 meer</b> op uitstap.</p>
-          </div>
-          <div className="bg-lightPink skew-x-12 max-w-md">
-            <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12">Waar meer fietsers en wandelaars op straat zijn is er <b className="text-2xl text-purple">minder criminaliteit</b></p>
-          </div>
-        </div>
-        <div className="flex space-x-20 mt-8">
-          <div className="bg-lightPink skew-x-12 max-w-lg">
-              <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12">Fietsers en voetgangers zijn tot <b className="text-2xl text-purple">30% meer</b> geneigd om <b className="text-3xl text-purple">lokaal te kopen</b> dan automobilisten</p>
-          </div>
-          <div className="bg-lightPink skew-x-12 max-w-md">
-              <p className="px-6 py-2 line-clamp-2 text-purple -skew-x-12">Buurten met meer paden, pleinen en parken hebben <b className="text-2xl text-purple">meer wandelaars</b></p>
-          </div>
-        </div> */}
       </section>
 
       <section className="mx-16 mb-16">
@@ -327,7 +304,7 @@ function AmbitionPage () {
           <h2 className="font-bold text-xl tabletportrait:text-3xl laptop:text-4xl">Relevante good practices</h2>
           {/* <button className="bg-mediumPurple border p-2 text-pink border-pink">Alle cases</button> */}
         </div>
-        <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">Je wil je door nog meer good practices laten inspireren? Ontdek ze <span className="underline text-pink font-semibold">hier</span></p>
+        <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">Je wil je door nog meer good practices laten inspireren? Ontdek ze <Link to="/overviewpagepractices" className="underline text-pink font-semibold">hier</Link></p>
         <div className="grid grid-cols-1 gap-16 mobile:grid-cols-2 text-sm tabletportrait:text-lg laptop:text-xl">
           <div>
             <StaticImage src="../images/relevantcases.png" alt="Relevant cases" className="relative w-auto"/>

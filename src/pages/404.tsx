@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import { ArrowDown } from "lucide-react"
+import { ArrowDown, Facebook, Instagram, Twitter } from "lucide-react"
 
 // styles
 const pageStyles = {
@@ -51,9 +51,9 @@ const NotFoundPage = () => {
               <a href="https://vitalcities.be">Ambities</a>
             </button>
           </div>
-          <StaticImage src="../images/facebook.png" alt="Facebook" className="absolute right-8 top-[380px]" />
-          <StaticImage src="../images/twitter.png" alt="Twitter" className="absolute right-8 top-[410px]" />
-          <StaticImage src="../images/instagram.png" alt="Instagram" className="absolute right-8 top-[440px]" />
+          <a href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a>
+          <a href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a>
+          <a href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a>
       </header>
     </main>
   )
