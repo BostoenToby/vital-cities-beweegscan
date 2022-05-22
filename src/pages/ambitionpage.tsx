@@ -472,16 +472,4 @@ function AmbitionPage () {
   )
 }
 
-export const query = graphql`
-  query {
-    allBeweegscanXlsxCuS10 {
-      edges {
-        node {
-          Gemeente
-        }
-      }
-    }
-  }
-`
-
 export default AmbitionPage
