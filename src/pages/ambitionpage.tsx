@@ -455,7 +455,7 @@ function AmbitionPage () {
        </div>
        
         <div className="grid grid-cols-2 gap-4 text-center items-center">
-          <a href="https://www.howest.be/nl"><StaticImage src='../images/howest logo_wit.png' alt="Howest logo" className="w-14 tabletportrait:w-20"/></a>
+          <a href="https://www.howest.be/nl"><StaticImage src='../images/howest-logo_wit.png' alt="Howest logo" className="w-14 tabletportrait:w-20"/></a>
           <a href="https://vitalcities.be/"><StaticImage src='../images/logo_03.png' alt="Vital Cities logo" className="w-14 tabletportrait:w-20"/></a>
         </div>
       
