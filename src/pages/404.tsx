@@ -42,7 +42,7 @@ const NotFoundPage = () => {
               <p className="text-white text-2xl max-w-2xl mb-12 mobile:text-sm tabletportrait:text-lg tabletlandscape:text-xl">Deze url bestaat jammer genoeg niet. Klik <a href="https://vitalcities.be/" className="text-pink underline">hier</a> om terug te keren naar de ambities van Vital Cities</p>
             </div>
           </section>
-          <div className="h-full mobile:hidden"><StaticImage src="../images/HeaderPictureActiveMovement.png" alt="Logo of Vital Cities" className="z-0 right-20 top-20 h-4/5 relative"/></div>
+          <div className="h-full mobile:hidden"><StaticImage src="../images/headerpictureactivemovement.png" alt="Logo of Vital Cities" className="z-0 right-20 top-20 h-4/5 relative"/></div>
           <div className="absolute top-6 right-20 space-x-5 mobile:mt-24">
             <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative">
               <a href="https://vitalcities.be/">Vital Cities</a>
@@ -51,9 +51,9 @@ const NotFoundPage = () => {
               <a href="https://vitalcities.be">Ambities</a>
             </button>
           </div>
-          <StaticImage src="../images/Facebook.png" alt="Facebook" className="absolute right-8 top-[380px]" />
-          <StaticImage src="../images/Twitter.png" alt="Twitter" className="absolute right-8 top-[410px]" />
-          <StaticImage src="../images/Instagram.png" alt="Instagram" className="absolute right-8 top-[440px]" />
+          <StaticImage src="../images/facebook.png" alt="Facebook" className="absolute right-8 top-[380px]" />
+          <StaticImage src="../images/twitter.png" alt="Twitter" className="absolute right-8 top-[410px]" />
+          <StaticImage src="../images/instagram.png" alt="Instagram" className="absolute right-8 top-[440px]" />
       </header>
     </main>
   )

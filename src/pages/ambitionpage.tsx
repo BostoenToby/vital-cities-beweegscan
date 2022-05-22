@@ -4,7 +4,7 @@ import scrollTo from "gatsby-plugin-smoothscroll"
 import { ArrowDown, ChevronDown, Copyright, ExternalLink, Facebook, FileText, Instagram, Mail, Phone, Twitter } from "lucide-react"
 import * as React from "react"
 import { useEffect, useState } from "react"
-import DonutChart from "../components/donutChart"
+import DonutChart from "../components/donutchart"
 
 import { allResults, searchList } from "../utils/autoComplete"
 
@@ -359,7 +359,7 @@ function AmbitionPage () {
       </section>
 
       <section className="bg-mediumPurple flex py-2 px-2 items-center" id="CallToAction">
-        <StaticImage src='../images/CallToAction.png' alt="Picture of girls riding a bike" className="h-auto ml-16 border border-r-0 border-mediumPurple hidden laptop:block" />
+        <StaticImage src='../images/calltoaction.png' alt="Picture of girls riding a bike" className="h-auto ml-16 border border-r-0 border-mediumPurple hidden laptop:block" />
         <div className="p-8 h-auto text-white">
           {/* <h2 className="font-bold text-4xl pb-4">Wil je graag weten wat we in jouw stad kunnen verbeteren?</h2>
           <p className="pb-3 text-lg">Om een volledige scan van jouw gemeente te laten maken en een gepersonaliseerd stappenplan te ontvangen, schrijf je in op onze wachtlijst!</p>
