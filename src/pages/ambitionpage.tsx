@@ -89,6 +89,12 @@ function AmbitionPage () {
 
   return (
     <main className="font-poppins selection:bg-pink selection:text-white">
+      <div className="flex flex-col items-center gap-4 fixed top-[350px] right-4">
+        <div className="bg-white rounded-lg p-[2px]"><a href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a></div>
+        <div className="bg-white rounded-lg p-[2px]"><a href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a></div>
+        <div className="bg-white rounded-lg p-[2px]"><a href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a></div>
+      </div>
+
       <header className="relative top-0 left-0 mb-8 flex">
         <section className="bg-purple h-auto z-10 relative">
           <div className="mb-28 flex">
@@ -113,11 +119,6 @@ function AmbitionPage () {
           <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple" onClick={() => scrollTo('#Practices')}>Good practices</button>
         </div>        
       </header>
-      <div className="flex flex-col items-center gap-4 fixed top-[450px] right-4">
-        <div className="bg-white rounded-lg p-1"><a href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a></div>
-        <div className="bg-white rounded-lg p-1"><a href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a></div>
-        <div className="bg-white rounded-lg p-1"><a href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a></div>
-      </div>
 
       <section className="grid grid-cols-1 mx-14 mt-32 gap-16 laptopL:mt-36" id="Location">
         <div className="flex flex-col">
@@ -289,8 +290,8 @@ function AmbitionPage () {
         </div>
       </section>
 
-      <section className="bg-mediumPurple flex py-2 px-2 items-center" id="CallToAction">
-        <StaticImage src='../images/calltoaction.png' alt="Picture of girls riding a bike" className="h-auto ml-16 border border-r-0 border-mediumPurple hidden laptop:block" />
+      <section className="bg-mediumPurple flex py-2 px-4 items-center" id="CallToAction">
+        <StaticImage src='../images/calltoaction.png' alt="Picture of girls riding a bike" className="h-auto ml-14 border border-r-0 border-mediumPurple hidden laptop:block" />
         <div className="p-8 h-auto text-white">
           <h2 className="font-bold text-xl pb-4 tabletportrait:text-2xl">Benieuwd naar de beweegvriendelijkheid van jouw stad of gemeente?</h2>
           <h4 className="font-semibold text-lg pb-4 tabletportrait:text-xl">Download hier een rapport</h4>

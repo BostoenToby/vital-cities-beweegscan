@@ -12,6 +12,12 @@ const IndexPage = () => {
   return (
     // <AmbitionPage />
     <div className="font-poppins">
+      <div className="flex flex-col items-center gap-4 fixed top-[350px] right-4">
+        <div className="bg-white rounded-lg p-[2px]"><a href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a></div>
+        <div className="bg-white rounded-lg p-[2px]"><a href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a></div>
+        <div className="bg-white rounded-lg p-[2px]"><a href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a></div>
+      </div>
+
       <header className="relative top-0 left-0 mb-8 flex h-screen">
         <section className="bg-purple h-auto z-10 relative">
           <div className="mb-28 flex">
@@ -28,22 +34,22 @@ const IndexPage = () => {
         </section>
         <div className="h-screen"><StaticImage src="../images/beweegscan.jpg" alt="header picture" className="z-0 object-cover right-20 top-5 relative hidden tabletportrait:h-[575px] tabletportrait:block laptopL:h-laptop"/></div>      
       </header>
-      <div className="flex flex-col items-center gap-4 fixed top-[450px] right-4">
+      {/* <div className="flex flex-col items-center gap-4 fixed top-[450px] right-4">
         <a href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a>
         <a href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a>
         <a href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a>
-      </div>
+      </div> */}
       <section className="mx-16">
         <h2 className="text-xl font-bold mb-4 tabletportrait:text-3xl laptop:text-4xl">Over de beweegscan</h2>
         <p className="mb-2">Een beweegvriendelijke leefomgeving is een omgeving die mensen faciliteert en stimuleert om te bewegen, te spelen, te sporten en te ontmoeten. Als je dus wil bouwen aan een beweegvriendelijke leefomgeving, dan kan je werk maken van de volgende ambities.</p>
         <div className="grid grid-cols-1 gap-4 flex-col mb-8 tabletportrait:grid-cols-2 laptop:grid-cols-3 4K:grid-cols-4">
-          <Ambitionblock text="Ambitie 1. Actief bewegen en verplaatsen" />
-          <Ambitionblock text="Ambitie 2. Verbonden stadskern" />
-          <Ambitionblock text="Ambitie 3. Aantrekkelijke en veilige wandel- en fietsroutes" />
-          <Ambitionblock text="Ambitie 4. Stad en buurt als sportplein" />
-          <Ambitionblock text="Ambitie 5. Stad en buurt als speelplein" />
-          <Ambitionblock text="Ambitie 6. Stad en buurt als ontmoetingsplek" />
-          <Ambitionblock text="Ambitie 7. Bruikbaar, gevarieerd en voldoende groen" />
+          <Ambitionblock header="Ambitie 1." text="Actief bewegen en verplaatsen" />
+          <Ambitionblock header="Ambitie 2." text="Verbonden stadskern" />
+          <Ambitionblock header="Ambitie 3." text="Aantrekkelijke en veilige wandel- en fietsroutes" />
+          <Ambitionblock header="Ambitie 4." text="Stad en buurt als sportplein" />
+          <Ambitionblock header="Ambitie 5." text="Stad en buurt als speelplein" />
+          <Ambitionblock header="Ambitie 6." text="Stad en buurt als ontmoetingsplek" />
+          <Ambitionblock header="Ambitie 7." text="Bruikbaar, gevarieerd en voldoende groen" />
         </div>
         <h2 className="text-xl font-bold mb-4 tabletportrait:text-3xl laptop:text-4xl">In een oogopslag</h2>
         <p className="mb-2">In welke mate jouw stad of gemeente elk van deze ambities vandaag al waarmaakt: dat ontdek je met de Beweegscan van Vital Cities</p>
