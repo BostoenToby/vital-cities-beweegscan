@@ -114,9 +114,9 @@ function AmbitionPage () {
         </div>        
       </header>
       <div className="flex flex-col items-center gap-4 fixed top-[450px] right-4">
-        <a href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a>
-        <a href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a>
-        <a href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a>
+        <div className="bg-white rounded-lg p-1"><a href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a></div>
+        <div className="bg-white rounded-lg p-1"><a href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a></div>
+        <div className="bg-white rounded-lg p-1"><a href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a></div>
       </div>
 
       <section className="grid grid-cols-1 mx-14 mt-32 gap-16 laptopL:mt-36" id="Location">
