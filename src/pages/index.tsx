@@ -16,6 +16,7 @@ import Topnavigation from '../components/topnavigation'
 import { Bron } from '../interfaces/testPractice'
 import AmbitionPage from './ambitionpage'
 import Pdf from '../components/pdf'
+import { graphql } from 'gatsby'
 
 // remove excel files because this can't be processed by Linux
 
