@@ -1,4 +1,3 @@
-import { StaticImage } from 'gatsby-plugin-image'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 import {
   ArrowDown,
@@ -28,9 +27,9 @@ const IndexPage = () => {
 
   return (
     // <AmbitionPage />
-    <div className="font-poppins">
+    <div className="font-poppins selection:bg-pink selection:text-white">
       <Topnavigation section="#Contact" />
-      <div className="fixed top-[350px] right-4 flex flex-col items-center gap-4">
+      {/* <div className="fixed top-[350px] right-4 flex flex-col items-center gap-4">
         <div className="rounded-lg bg-white p-[2px]">
           <a href="https://www.facebook.com/VitalCitiesHowest/">
             <Facebook className="fill-black stroke-0 hover:fill-pink" />
@@ -46,7 +45,7 @@ const IndexPage = () => {
             <Instagram className="stroke-black hover:stroke-pink" />
           </a>
         </div>
-      </div>
+      </div> */}
 
       <header className="relative top-0 left-0 mb-8 flex h-screen">
         <section className="relative z-10 h-auto bg-purple">

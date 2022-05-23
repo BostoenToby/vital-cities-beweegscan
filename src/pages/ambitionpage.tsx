@@ -104,23 +104,6 @@ function AmbitionPage() {
   return (
     <main className="font-poppins selection:bg-pink selection:text-white">
       <Topnavigation section="#CallToAction" />
-      <div className="fixed top-[350px] right-4 flex flex-col items-center gap-4">
-        <div className="rounded-lg bg-white p-[2px]">
-          <a href="https://www.facebook.com/VitalCitiesHowest/">
-            <Facebook className="fill-black stroke-0 hover:fill-pink" />
-          </a>
-        </div>
-        <div className="rounded-lg bg-white p-[2px]">
-          <a href="">
-            <Twitter className="fill-black stroke-0 hover:fill-pink" />
-          </a>
-        </div>
-        <div className="rounded-lg bg-white p-[2px]">
-          <a href="https://www.instagram.com/vital.cities/?hl=nl">
-            <Instagram className="stroke-black hover:stroke-pink" />
-          </a>
-        </div>
-      </div>
 
       <header className="relative top-0 left-0 mb-8 flex">
         <section className="relative z-10 h-auto bg-purple">
@@ -157,6 +140,24 @@ function AmbitionPage() {
           <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple" onClick={() => scrollTo('#Practices')}>Good practices</button>
         </div>         */}
       </header>
+
+      <div className="fixed top-[350px] right-4 flex flex-col items-center gap-4">
+        <div className="rounded-lg bg-white p-[2px]">
+          <a href="https://www.facebook.com/VitalCitiesHowest/">
+            <Facebook className="fill-black stroke-0 hover:fill-pink" />
+          </a>
+        </div>
+        <div className="rounded-lg bg-white p-[2px]">
+          <a href="">
+            <Twitter className="fill-black stroke-0 hover:fill-pink" />
+          </a>
+        </div>
+        <div className="rounded-lg bg-white p-[2px]">
+          <a href="https://www.instagram.com/vital.cities/?hl=nl">
+            <Instagram className="stroke-black hover:stroke-pink" />
+          </a>
+        </div>
+      </div>
 
       <section
         className="mx-14 mt-32 grid grid-cols-1 gap-16 laptopL:mt-36"
@@ -412,7 +413,7 @@ function AmbitionPage() {
           Je wil je door nog meer good practices laten inspireren? Ontdek ze{' '}
           <Link
             to="/overviewpagepractices"
-            className="font-semibold text-pink underline"
+            className="font-semibold text-pink underline hover:text-purple focus:text-purple"
           >
             hier
           </Link>
@@ -543,7 +544,7 @@ function AmbitionPage() {
             />
 
             <button
-              className="z-0 mt-8 border-2 border-pink bg-pink px-2 py-1 text-white hover:bg-white hover:text-pink"
+              className="z-0 mt-8 border-2 border-pink bg-pink px-2 py-1 text-white hover:bg-white hover:text-pink focus:bg-white focus:text-pink focus:font-semibold"
               onClick={() => checkInfo()}
             >
               Maak rapport

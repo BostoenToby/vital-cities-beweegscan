@@ -50,7 +50,7 @@ export default ({ section }: { section: string }) => {
             </a>
           </div>
           <ul className="my-auto ml-32 flex flex-row font-poppins">
-            <li className="mr-14 text-2xl font-medium text-dark">
+            <li className="mr-14 text-2xl font-medium text-dark hover:text-purple">
               <Link activeStyle={{ color: '#E7348C' }} to="/">
                 Home
               </Link>
