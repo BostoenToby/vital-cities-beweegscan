@@ -12,12 +12,18 @@ import {
 } from 'lucide-react'
 import Logo from './logo'
 import Logoalt from './logoalt'
+import { useLocation } from '@reach/router'
 
 export default ({ section }: { section: string }) => {
   const [isFullsize, setFullsize] = useState(false)
   const [showSideNav, setShowSideNav] = useState(false)
+  const [isAmbitions, setIsAmbitions] = useState(false)
+  const [showAmbitions, setShowAmbitions] = useState(false)
+
+  const location = useLocation()
 
   useEffect(() => {
+    checkIfAmbitions()
     if (typeof window !== 'undefined') {
       const updateSize = () => {
         if (window.innerWidth > 1304) {
@@ -37,6 +43,19 @@ export default ({ section }: { section: string }) => {
     setShowSideNav(!showSideNav)
   }
 
+  const handleAmbitions = () => {
+    setShowAmbitions(!showAmbitions)
+    console.log(showAmbitions)
+  }
+
+  const checkIfAmbitions = () => {
+    if (location.pathname == '/ambitionpage') {
+      setIsAmbitions(true)
+    } else {
+      setIsAmbitions(false)
+    }
+  }
+
   return (
     <div className="sticky top-0 z-20 w-max navbreak:w-screen">
       {isFullsize ? (
@@ -51,26 +70,56 @@ export default ({ section }: { section: string }) => {
           </div>
           <ul className="my-auto ml-32 flex flex-row font-poppins">
             <li className="mr-14 text-2xl font-medium text-dark">
-              <Link activeStyle={{ color: '#E7348C' }} to="/">
+              <Link
+                activeStyle={{ color: '#E7348C' }}
+                to="/"
+                className="hover:text-mediumPurple"
+              >
                 Home
               </Link>
             </li>
             <li className=" mr-14 text-2xl font-medium text-dark">
-              <Link activeStyle={{ color: '#E7348C' }} to="/ambitionpage">
-                Beweegscan
-              </Link>
+              <button
+                className={`hover:text-mediumPurple ${
+                  isAmbitions ? 'text-pink' : ''
+                }`}
+                onClick={() => handleAmbitions()}
+              >
+                Ambities
+              </button>
+              {showAmbitions ? (
+                <ul className=" absolute top-[4.5rem] rounded-md border-[1px] border-lightGray bg-white drop-shadow-lg">
+                  <li className=" rounded-t-md border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                    <Link to="/ambitionpage">Actief bewegen & verplaatsen</Link>
+                  </li>
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-lightGray hover:text-mediumPurple">
+                    <Link to="/ambitionpage">verbonden stadskern</Link>
+                  </li>
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-lightGray hover:text-mediumPurple">
+                    <Link to="/ambitionpage">Fiets- & wandelroutes</Link>
+                  </li>
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-lightGray hover:text-mediumPurple">
+                    <Link to="/ambitionpage">Sporten</Link>
+                  </li>
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-lightGray hover:text-mediumPurple">
+                    <Link to="/ambitionpage">Spelen</Link>
+                  </li>
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-lightGray hover:text-mediumPurple">
+                    <Link to="/ambitionpage">Ontmoeten</Link>
+                  </li>
+                  <li className="  rounded-b-md p-4 text-lg font-medium text-dark hover:bg-lightGray hover:text-mediumPurple">
+                    <Link to="/ambitionpage">Groen</Link>
+                  </li>
+                </ul>
+              ) : null}
             </li>
             <li className=" mr-14 text-2xl font-medium text-dark">
               <Link
                 activeStyle={{ color: '#E7348C' }}
                 to="/overviewpagepractices"
+                className="hover:text-mediumPurple"
               >
                 Good practices
-              </Link>
-            </li>
-            <li className="mr-14 text-2xl font-medium text-dark">
-              <Link activeStyle={{ color: '#E7348C' }} to="#">
-                Over ons
               </Link>
             </li>
           </ul>
