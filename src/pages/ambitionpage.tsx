@@ -1,83 +1,97 @@
-import { graphql, Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
-import scrollTo from "gatsby-plugin-smoothscroll"
-import { ArrowDown, ChevronDown, Copyright, ExternalLink, Facebook, FileText, Instagram, Mail, Phone, Twitter } from "lucide-react"
-import * as React from "react"
-import { useEffect, useState } from "react"
-import DonutChart from "../components/donutchart"
-import Input from "../components/input"
-import Intsrc from "../components/Intsrc"
-import RevPrac from "../components/revprac"
-import Tag from "../components/tag"
+import { graphql, Link } from 'gatsby'
+import { StaticImage } from 'gatsby-plugin-image'
+import scrollTo from 'gatsby-plugin-smoothscroll'
+import {
+  ArrowDown,
+  ChevronDown,
+  Copyright,
+  ExternalLink,
+  Facebook,
+  FileText,
+  Instagram,
+  Mail,
+  Phone,
+  Twitter,
+} from 'lucide-react'
+import * as React from 'react'
+import { useEffect, useState } from 'react'
+import DonutChart from '../components/donutchart'
+import Input from '../components/input'
+import Intsrc from '../components/Intsrc'
+import RevPrac from '../components/revprac'
+import Tag from '../components/tag'
+import Topnavigation from '../components/topnavigation'
+import Contactsection from '../components/contactsection'
+import Footer from '../components/footer'
 
-import { allResults, searchList } from "../utils/autoComplete"
+import { allResults, searchList } from '../utils/autoComplete'
 
-function AmbitionPage () {
+function AmbitionPage() {
   const [suggestions, setSuggestions] = React.useState<string[]>()
-  const [typed, setTyped] = React.useState<string>("")
+  const [typed, setTyped] = React.useState<string>('')
   const [info, setInfo] = useState<PersonalInfo>({
     place: '',
     firstName: '',
     lastName: '',
-    mail: ''
+    mail: '',
   })
 
   const [error, setErrors] = useState<FormError>({
     placeError: '',
     firstNameError: '',
     lastNameError: '',
-    mailError: ''
+    mailError: '',
   })
 
-  const changeTyped = async(value: string) => {
-    console.log("change")
+  const changeTyped = async (value: string) => {
+    console.log('change')
     console.log(value)
     setTyped(value)
   }
 
-  const checkInfo = async() => {
-    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(info.mail)){
+  const checkInfo = async () => {
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(info.mail)) {
       setErrors((currentErrors: FormError) => {
-        currentErrors.mailError = "Dit is geen geldig mail adres"
-        return {...currentErrors}
+        currentErrors.mailError = 'Dit is geen geldig mail adres'
+        return { ...currentErrors }
       })
     } else {
       setErrors((currentErrors: FormError) => {
-        currentErrors.mailError = ""
-        return {...currentErrors}
+        currentErrors.mailError = ''
+        return { ...currentErrors }
       })
     }
-    if(info.firstName.length < 2){
+    if (info.firstName.length < 2) {
       setErrors((currentErrors: FormError) => {
-        currentErrors.firstNameError = "Moet min. 2 letters zijn"
-        return {...currentErrors}
+        currentErrors.firstNameError = 'Moet min. 2 letters zijn'
+        return { ...currentErrors }
       })
     } else {
       setErrors((currentErrors: FormError) => {
-        currentErrors.firstNameError = ""
-        return {...currentErrors}
+        currentErrors.firstNameError = ''
+        return { ...currentErrors }
       })
     }
-    if(info.lastName.length < 2){
+    if (info.lastName.length < 2) {
       setErrors((currentErrors: FormError) => {
-        currentErrors.lastNameError = "Moet min. 2 letters zijn"
-        return {...currentErrors}
+        currentErrors.lastNameError = 'Moet min. 2 letters zijn'
+        return { ...currentErrors }
       })
     } else {
       setErrors((currentErrors: FormError) => {
-        currentErrors.lastNameError = ""
-        return {...currentErrors}
+        currentErrors.lastNameError = ''
+        return { ...currentErrors }
       })
     }
-    if(!allResults.includes(info.place)){
+    if (!allResults.includes(info.place)) {
       setErrors((currentErrors: FormError) => {
-        currentErrors.placeError = "Deze plaats is niet geldig"
-        return {...currentErrors}
+        currentErrors.placeError = 'Deze plaats is niet geldig'
+        return { ...currentErrors }
       })
     } else {
       setErrors((currentErrors: FormError) => {
-        currentErrors.placeError = ""
-        return {...currentErrors}
+        currentErrors.placeError = ''
+        return { ...currentErrors }
       })
     }
   }
@@ -89,294 +103,457 @@ function AmbitionPage () {
 
   return (
     <main className="font-poppins selection:bg-pink selection:text-white">
+      <Topnavigation section="#CallToAction" />
+      <div className="fixed top-[350px] right-4 flex flex-col items-center gap-4">
+        <div className="rounded-lg bg-white p-[2px]">
+          <a href="https://www.facebook.com/VitalCitiesHowest/">
+            <Facebook className="fill-black stroke-0 hover:fill-pink" />
+          </a>
+        </div>
+        <div className="rounded-lg bg-white p-[2px]">
+          <a href="">
+            <Twitter className="fill-black stroke-0 hover:fill-pink" />
+          </a>
+        </div>
+        <div className="rounded-lg bg-white p-[2px]">
+          <a href="https://www.instagram.com/vital.cities/?hl=nl">
+            <Instagram className="stroke-black hover:stroke-pink" />
+          </a>
+        </div>
+      </div>
+
       <header className="relative top-0 left-0 mb-8 flex">
-        <section className="bg-purple h-auto z-10 relative">
+        <section className="relative z-10 h-auto bg-purple">
           <div className="mb-28 flex">
-            <div className="bg-yellow h-16 w-20 absolute z-10 top-0 left-0"></div>
-            <a tabIndex={1} href="https://vitalcities.be/"><StaticImage src="../images/logo_03.png" alt="Logo of Vital Cities" className="w-20 h-auto z-20 relative top-3 left-16"/></a>
+            {/* <div className="bg-yellow h-16 w-20 absolute z-10 top-0 left-0"></div>
+            <a href="https://vitalcities.be/"><StaticImage src="../images/logo_03.png" alt="Logo of Vital Cities" className="w-20 h-auto z-20 relative top-3 left-16"/></a> */}
           </div>
 
           <div className="mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
             <Tag text="Actief bewegen" colorBg="pink" colorText="white" />
-            <h1 className="text-white text-3xl leading-tight max-w-2xl font-xxbold mb-8 tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
-            <p className="text-white text-xl leading-6 font-xlight opacity-75 max-w-2xl mb-12 laptop:text-2xl">Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een actieve levensstijl en faciliteren mensen om lopend of fietsend naar voorzieningen of het werk of school voorzieningen te gaan</p>
-            <p className="text-lightPurple font-semibold mb-2">scroll</p>
-            <ArrowDown className="text-lightPurple animate-bounce"/>
+            <h1 className="mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">
+              Aantrekkelijke & veilige wandel- & fietsroutes
+            </h1>
+            <p className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
+              Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een
+              actieve levensstijl en faciliteren mensen om lopend of fietsend
+              naar voorzieningen of het werk of school voorzieningen te gaan
+            </p>
+            <p className="mb-2 font-semibold text-lightPurple">scroll</p>
+            <ArrowDown className="animate-bounce text-lightPurple" />
           </div>
         </section>
-        <div className="h-full"><StaticImage src="../images/headerpictureactivemovement.png" alt="header picture" className="z-0 object-cover right-20 top-20 relative hidden tabletportrait:h-tablet tabletportrait:block laptop:h-laptop"/></div>
-        <div className="absolute top-24 mx-8 space-x-3 tabletportrait:top-8 tabletportrait:right-10">
-          <button tabIndex={-1} className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple focus-within:bg-purple">
-            <Link tabIndex={2} to=".." className="focus:bg-purple">Ambities</Link>
-            {/* Keer terug naar overzicht met ambities/landingspage */}
+        <div className="h-full align-middle">
+          <StaticImage
+            src="../images/headerpictureactivemovement.png"
+            alt="header picture"
+            className="relative top-14 right-20 z-0 hidden items-center object-cover align-middle tabletportrait:block tabletportrait:h-tablet laptop:h-laptop"
+          />
+        </div>
+        {/* <div className="absolute top-24 mx-8 space-x-3 tabletportrait:top-8 tabletportrait:right-10">
+          <button tabIndex={-1} className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple">
+            <Link to="..">Ambities</Link>
           </button>
-          <button tabIndex={3} className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple focus:bg-purple" onClick={() => scrollTo('#Practices')}>Good practices</button>
-        </div>        
+          <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple" onClick={() => scrollTo('#Practices')}>Good practices</button>
+        </div>         */}
       </header>
 
-      <div className="flex flex-col items-center gap-4 fixed top-[350px] right-4">
-        <div className="bg-white rounded-lg p-[2px]"><a tabIndex={4} href="https://www.facebook.com/VitalCitiesHowest/" className="focus-within:fill-pink"><Facebook className="stroke-0 fill-black hover:fill-pink focus:fill-pink"/></a></div>
-        <div className="bg-white rounded-lg p-[2px]"><a tabIndex={5} href="" className="focus-within:fill-pink"><Twitter className="stroke-0 fill-black hover:fill-pink focus:fill-pink"/></a></div>
-        <div className="bg-white rounded-lg p-[2px]"><a tabIndex={6} href="https://www.instagram.com/vital.cities/?hl=nl" className="focus-within:stroke-pink"><Instagram className="stroke-black hover:stroke-pink focus:stroke-pink"/></a></div>
-      </div>
-
-      <section className="grid grid-cols-1 mx-14 mt-32 gap-16 laptopL:mt-36" id="Location">
+      <section
+        className="mx-14 mt-32 grid grid-cols-1 gap-16 laptopL:mt-36"
+        id="Location"
+      >
         <div className="flex flex-col">
           <h2 className="text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl">
-              Wat is de huidige situatie in
+            Wat is de huidige situatie in
           </h2>
           <div className="flex items-center">
-            <select className="text-xl font-xxbold text-purple appearance-none -ml-1 w-fit underline underline-offset-2 decoration-lightxPurple pr-0 hover:text-pink hover:decoration-pink focus:text-pink focus:decoration-pink tabletportrait:text-3xl laptop:text-4xl laptop:mt-2">
+            <select className="-ml-1 w-fit appearance-none pr-0 text-xl font-xxbold text-purple underline decoration-lightxPurple underline-offset-2 hover:text-pink hover:decoration-pink focus:text-pink focus:decoration-pink tabletportrait:text-3xl laptop:mt-2 laptop:text-4xl">
               <option className="text-xl">het Vlaams gewest</option>
             </select>
-            <ChevronDown className="stroke-purple mt-3 h-8 w-8 hover:stroke-pink focus:stroke-pink"/>
+            <ChevronDown className="mt-3 h-8 w-8 stroke-purple hover:stroke-pink focus:stroke-pink" />
           </div>
-          
-          <label className="mt-5 font-medium text-sm tabletportrait:text-lg laptop:text-xl">
-              In het Vlaams gewest is <span className="font-semibold">ongeveer de helft of meer van de
-              inwoners</span> <span className="text-pink font-semibold">niet tevreden</span> over de staat, veiligheid en
-              aantrekkelijkheid van straten, pleinen, wandel- en fietspaden
-              (dus een samenvatting van alle cijfers). 
+
+          <label className="mt-5 text-sm font-medium tabletportrait:text-lg laptop:text-xl">
+            In het Vlaams gewest is{' '}
+            <span className="font-semibold">
+              ongeveer de helft of meer van de inwoners
+            </span>{' '}
+            <span className="font-semibold text-pink">niet tevreden</span> over
+            de staat, veiligheid en aantrekkelijkheid van straten, pleinen,
+            wandel- en fietspaden (dus een samenvatting van alle cijfers).
           </label>
         </div>
         <div>
-            <label className="opacity-50 text-xs font-xxbold font-mono tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
-              HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ... 
-            </label>
-            <div className="grid grid-cols-1 text-sm font-medium tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl">
-              
-                <div className="p-2">
-                    <div className="flex items-center">
-                    <div className="w-14 h-14 mb-2 laptop:w-20 laptop:h-20">
-                        <DonutChart percentage={44} />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium">Staat straten & pleinen</label>
-                        <label className="text-pink font-bold">44%</label>
-                    </div>
-                    </div>
+          <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
+            HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ...
+          </label>
+          <div className="grid grid-cols-1 text-sm font-medium tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl">
+            <div className="p-2">
+              <div className="flex items-center">
+                <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
+                  <DonutChart percentage={44} />
                 </div>
-                <div className="p-2">
-                    <div className="flex items-center">
-                    <div className="w-14 h-14 mb-2 laptop:w-20 laptop:h-20">
-                        <DonutChart percentage={54} />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium">Staat voetpaden</label>
-                        <label className="text-pink font-bold">54%</label>
-                    </div>
-                    </div>
+                <div className="flex flex-col">
+                  <label className="font-medium">Staat straten & pleinen</label>
+                  <label className="font-bold text-pink">44%</label>
                 </div>
-                <div className="p-2">
-                    <div className="flex items-center">
-                    <div className="w-14 h-14 mb-2 laptop:w-20 laptop:h-20">
-                        <DonutChart percentage={59} />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium">Staat fietspaden</label>
-                        <label className="text-pink font-bold">59%</label>
-                    </div>
-                    </div>
-                </div>
-                <div className="p-2">
-                    <div className="flex items-center">
-                    <div className="w-14 h-14 mb-2 laptop:w-20 laptop:h-20">
-                        <DonutChart percentage={55} />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium">Genoeg fietspaden</label>
-                        <label className="text-pink font-bold">55%</label>
-                    </div>
-                    </div>
-                </div>
-                <div className="p-2">
-                    <div className="flex items-center">
-                    <div className="w-14 h-14 mb-2 laptop:w-20 laptop:h-20">
-                        <DonutChart percentage={60} />
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium">Fietsinfrastructuur</label>
-                        <label className="text-pink font-bold">60%</label>
-                    </div>
-                    </div>
-                </div>
-                <div className="p-2">
-                    <div className="flex items-center">
-                    <div className="w-14 h-14 mb-2 laptop:w-20 laptop:h-20">
-                        <DonutChart percentage={57}/>
-                    </div>
-                    <div className="flex flex-col">
-                        <label className="font-medium">Veilig fietsen</label>
-                        <label className="text-pink font-bold">57%</label>
-                    </div>
-                    </div>
-                </div>
+              </div>
             </div>
+            <div className="p-2">
+              <div className="flex items-center">
+                <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
+                  <DonutChart percentage={54} />
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium">Staat voetpaden</label>
+                  <label className="font-bold text-pink">54%</label>
+                </div>
+              </div>
+            </div>
+            <div className="p-2">
+              <div className="flex items-center">
+                <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
+                  <DonutChart percentage={59} />
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium">Staat fietspaden</label>
+                  <label className="font-bold text-pink">59%</label>
+                </div>
+              </div>
+            </div>
+            <div className="p-2">
+              <div className="flex items-center">
+                <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
+                  <DonutChart percentage={55} />
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium">Genoeg fietspaden</label>
+                  <label className="font-bold text-pink">55%</label>
+                </div>
+              </div>
+            </div>
+            <div className="p-2">
+              <div className="flex items-center">
+                <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
+                  <DonutChart percentage={60} />
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium">Fietsinfrastructuur</label>
+                  <label className="font-bold text-pink">60%</label>
+                </div>
+              </div>
+            </div>
+            <div className="p-2">
+              <div className="flex items-center">
+                <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
+                  <DonutChart percentage={57} />
+                </div>
+                <div className="flex flex-col">
+                  <label className="font-medium">Veilig fietsen</label>
+                  <label className="font-bold text-pink">57%</label>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="flex flex-col items-center text-center font-poppins mt-32 mx-16 mb-32" id="Problem">
-        <h2 className="text-xl font-bold mb-5 tabletportrait:text-3xl laptop:text-4xl">Wat is het probleem?</h2>
+      <section
+        className="mx-16 mt-32 mb-32 flex flex-col items-center text-center font-poppins"
+        id="Problem"
+      >
+        <h2 className="mb-5 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+          Wat is het probleem?
+        </h2>
         <p className="mb-5 text-sm tabletportrait:text-lg laptop:text-xl">
-            Als routes geen goede verbinding maken met voorzieningen en werk of school, als ze onveilig zijn of door een weinig aantrekkelijke
-            stadsomgeving gaan, zijn mensen niet geneigd om ze te gebruiken. Als je fiets of wandelt, voel je je namelijk kwetsbaarder dan in je auto. 
+          Als routes geen goede verbinding maken met voorzieningen en werk of
+          school, als ze onveilig zijn of door een weinig aantrekkelijke
+          stadsomgeving gaan, zijn mensen niet geneigd om ze te gebruiken. Als
+          je fiets of wandelt, voel je je namelijk kwetsbaarder dan in je auto.
         </p>
-        <p className="font-bold text-sm tabletportrait:text-lg laptop:text-xl">
-            Bij een gebrek aan veilige en/of aantrekkelijke routes zullen mensen dan eerder kiezen voor de auto.
+        <p className="text-sm font-bold tabletportrait:text-lg laptop:text-xl">
+          Bij een gebrek aan veilige en/of aantrekkelijke routes zullen mensen
+          dan eerder kiezen voor de auto.
         </p>
       </section>
 
-      <section className="mx-16 mb-16" id="Solution" >
-        <h2 className="text-xl font-bold mb-4 tabletportrait:text-3xl laptop:text-4xl"><span className="underline decoration-lightPurple">Waarom</span> moeten we dit oplossen?</h2>
-        <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-2xl laptop:w-4/5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corporis mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita</p>
-        <div className="grid grid-cols-1 gap-6 text-sm tabletportrait:text-lg laptop:text-xl laptop:grid-cols-2 laptopL:grid-cols-3">
-          <div className="flex items-center justify-center bg-lightPink skew-x-12 max-w-sm">
-            <p className="px-6 py-3 text-purple -skew-x-12 desktop:line-clamp-2"><b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">€1</b> die men investeert in fiets-infrastructuur leidt tot <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">€14 return</b></p>
+      <section className="mx-16 mb-16" id="Solution">
+        <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+          <span className="underline decoration-lightPurple">Waarom</span>{' '}
+          moeten we dit oplossen?
+        </h2>
+        <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-2xl">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corporis
+          mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita
+        </p>
+        <div className="grid grid-cols-1 gap-6 text-sm tabletportrait:text-lg laptop:grid-cols-2 laptop:text-xl laptopL:grid-cols-3">
+          <div className="flex max-w-sm skew-x-12 items-center justify-center bg-lightPink">
+            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
+              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
+                €1
+              </b>{' '}
+              die men investeert in fiets-infrastructuur leidt tot{' '}
+              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
+                €14 return
+              </b>
+            </p>
           </div>
-          <div className="flex items-center justify-center bg-lightPink skew-x-12 max-w-sm">
-            <p className="px-6 py-3 text-purple -skew-x-12 desktop:line-clamp-2">Fietsers consumeren <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">€20 meer</b> op uitstap.</p>
+          <div className="flex max-w-sm skew-x-12 items-center justify-center bg-lightPink">
+            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
+              Fietsers consumeren{' '}
+              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
+                €20 meer
+              </b>{' '}
+              op uitstap.
+            </p>
           </div>
-          <div className="flex items-center justify-center bg-lightPink skew-x-12 max-w-md">
-            <p className="px-6 py-3 text-purple -skew-x-12 desktop:line-clamp-2">Waar meer fietsers en wandelaars op straat zijn is er <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">minder criminaliteit</b></p>
+          <div className="flex max-w-md skew-x-12 items-center justify-center bg-lightPink">
+            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
+              Waar meer fietsers en wandelaars op straat zijn is er{' '}
+              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
+                minder criminaliteit
+              </b>
+            </p>
           </div>
-          <div className="flex items-center justify-center bg-lightPink skew-x-12 max-w-lg">
-              <p className="px-6 py-3 text-purple -skew-x-12 desktop:line-clamp-2">Fietsers en voetgangers zijn tot <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">30% meer</b> geneigd om <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">lokaal te kopen</b> dan automobilisten</p>
+          <div className="flex max-w-lg skew-x-12 items-center justify-center bg-lightPink">
+            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
+              Fietsers en voetgangers zijn tot{' '}
+              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
+                30% meer
+              </b>{' '}
+              geneigd om{' '}
+              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
+                lokaal te kopen
+              </b>{' '}
+              dan automobilisten
+            </p>
           </div>
-          <div className="flex items-center justify-center bg-lightPink skew-x-12 max-w-md">
-              <p className="px-6 py-3 text-purple -skew-x-12 desktop:line-clamp-2">Buurten met meer paden, pleinen en parken hebben <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">meer wandelaars</b></p>
+          <div className="flex max-w-md skew-x-12 items-center justify-center bg-lightPink">
+            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
+              Buurten met meer paden, pleinen en parken hebben{' '}
+              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
+                meer wandelaars
+              </b>
+            </p>
           </div>
         </div>
       </section>
 
       <section className="mx-16 mb-16">
-        <h2 className="text-xl font-bold mb-4 tabletportrait:text-3xl laptop:text-4xl"><span className="underline decoration-green">Hoe</span> kunnen we dit oplossen?</h2>
-        <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl laptop:w-4/5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corporis mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita</p>
+        <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+          <span className="underline decoration-green">Hoe</span> kunnen we dit
+          oplossen?
+        </h2>
+        <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corporis
+          mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita
+        </p>
         <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
-          <div className="flex items-center justify-center bg-lightGreen skew-x-12 max-w-[275px]">
-            <p className="px-6 py-3 text-green -skew-x-12 font-medium desktop:line-clamp-2">Voldoende fietsen- stallingen voorzien</p>
+          <div className="flex max-w-[275px] skew-x-12 items-center justify-center bg-lightGreen">
+            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 font-medium text-green">
+              Voldoende fietsen- stallingen voorzien
+            </p>
           </div>
-          <div className="flex items-center justify-center bg-lightGreen skew-x-12 max-w-[275px]">
-            <p className="px-6 py-3 text-green -skew-x-12 font-medium desktop:line-clamp-2">Alles moet in een goede staat zijn & blijven</p>
+          <div className="flex max-w-[275px] skew-x-12 items-center justify-center bg-lightGreen">
+            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 font-medium text-green">
+              Alles moet in een goede staat zijn & blijven
+            </p>
           </div>
-          <div className="flex items-center justify-center bg-lightGreen skew-x-12 max-w-[275px]">
-            <p className="px-6 py-3 text-green -skew-x-12 font-medium desktop:line-clamp-2">Inzetten op aan- trekkelijkheid en veiligheid</p>
+          <div className="flex max-w-[275px] skew-x-12 items-center justify-center bg-lightGreen">
+            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 font-medium text-green">
+              Inzetten op aan- trekkelijkheid en veiligheid
+            </p>
           </div>
-          <div className="flex items-center justify-center bg-lightGreen skew-x-12 max-w-[275px]">
-            <p className="px-6 py-3 text-green -skew-x-12 font-medium desktop:line-clamp-2">Zo weinig mogelijk obstakels en drempels</p>
+          <div className="flex max-w-[275px] skew-x-12 items-center justify-center bg-lightGreen">
+            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 font-medium text-green">
+              Zo weinig mogelijk obstakels en drempels
+            </p>
           </div>
         </div>
       </section>
 
-      <section className="px-16 pb-16 bg-neutral" id="Resources">
-        <h2 className="text-xl font-bold mb-4 pt-4 tabletportrait:text-3xl laptop:text-4xl">Interessante bronnen</h2>
-        <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl laptop:w-4/5">We maken je graag wegwijs in wat bronnen en instrumenten om de omgevint te analyseren en te ontwerpen op vlak van wandel- en fietsvriendelijkheid</p>
+      <section className="bg-neutral px-16 pb-16" id="Resources">
+        <h2 className="mb-4 pt-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+          Interessante bronnen
+        </h2>
+        <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl">
+          We maken je graag wegwijs in wat bronnen en instrumenten om de
+          omgevint te analyseren en te ontwerpen op vlak van wandel- en
+          fietsvriendelijkheid
+        </p>
         <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
-          <Intsrc title="Walkabilityscore-tool" text="Deze tool van Vito in opdracht van Gezond Leven brengt de walkabilityscore voor elke hectare in Vlaanderen en Brussel in kaart." />
-          <Intsrc title="The benefits of cycling" text="Dit rapport van de ECF toont aan welke economische voordelen Europa kan halen uit het investeren in een sterk fietsbeleid." />
-          <Intsrc title="Handboek sterk fietsbeleid" text="Dit rapport van Fietsberaad bundelt inzichten en tips voor een lokaal beleid dat méér mensen op de fiets wilt." />
-          <Intsrc title="Quickscan fietsbeleid" text="Deze quickscan van Fietsberaad heeft inzicht in het lokale fietsbeleid aan de hand van een vragenlijst rond 6 thema's." />
+          <Intsrc
+            title="Walkabilityscore-tool"
+            text="Deze tool van Vito in opdracht van Gezond Leven brengt de walkabilityscore voor elke hectare in Vlaanderen en Brussel in kaart."
+          />
+          <Intsrc
+            title="The benefits of cycling"
+            text="Dit rapport van de ECF toont aan welke economische voordelen Europa kan halen uit het investeren in een sterk fietsbeleid."
+          />
+          <Intsrc
+            title="Handboek sterk fietsbeleid"
+            text="Dit rapport van Fietsberaad bundelt inzichten en tips voor een lokaal beleid dat méér mensen op de fiets wilt."
+          />
+          <Intsrc
+            title="Quickscan fietsbeleid"
+            text="Deze quickscan van Fietsberaad heeft inzicht in het lokale fietsbeleid aan de hand van een vragenlijst rond 6 thema's."
+          />
         </div>
       </section>
 
       <section className="px-16 pb-16" id="Practices">
-        <div className="flex items-center justify-between pt-24 mb-2">
-          <h2 className="font-bold text-xl tabletportrait:text-3xl laptop:text-4xl">Relevante good practices</h2>
+        <div className="mb-2 flex items-center justify-between pt-24">
+          <h2 className="text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+            Relevante good practices
+          </h2>
           {/* <button className="bg-mediumPurple border p-2 text-pink border-pink">Alle cases</button> */}
         </div>
-        <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">Je wil je door nog meer good practices laten inspireren? Ontdek ze <Link to="/overviewpagepractices" className="underline text-pink font-semibold hover:text-purple focus:text-purple">hier</Link></p>
-        <div className="grid grid-cols-1 gap-16 mobile:grid-cols-2 text-sm tabletportrait:text-lg laptop:text-xl">
-          <RevPrac image="relevantcases.png" imageAlt="Relevant cases" leftTagText="Actief bewegen" leftTagColorBg="pink" leftTagColorText="black" rightTagText="20 september 2020" rightTagColorBg="yellow" rightTagColorText="black" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit." subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."/>
-          <RevPrac image="relevantcases.png" imageAlt="Relevant cases" leftTagText="Actief bewegen" leftTagColorBg="pink" leftTagColorText="black" rightTagText="20 september 2020" rightTagColorBg="yellow" rightTagColorText="black" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit." subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."/>
+        <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">
+          Je wil je door nog meer good practices laten inspireren? Ontdek ze{' '}
+          <Link
+            to="/overviewpagepractices"
+            className="font-semibold text-pink underline"
+          >
+            hier
+          </Link>
+        </p>
+        <div className="grid grid-cols-1 gap-16 text-sm mobile:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
+          <RevPrac
+            image="relevantcases.png"
+            imageAlt="Relevant cases"
+            leftTagText="Actief bewegen"
+            leftTagColorBg="pink"
+            leftTagColorText="black"
+            rightTagText="20 september 2020"
+            rightTagColorBg="yellow"
+            rightTagColorText="black"
+            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
+          />
+          <RevPrac
+            image="relevantcases.png"
+            imageAlt="Relevant cases"
+            leftTagText="Actief bewegen"
+            leftTagColorBg="pink"
+            leftTagColorText="black"
+            rightTagText="20 september 2020"
+            rightTagColorBg="yellow"
+            rightTagColorText="black"
+            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
+          />
         </div>
       </section>
 
-      <section className="bg-mediumPurple flex py-2 px-4 items-center" id="CallToAction">
-        <StaticImage src='../images/calltoaction.png' alt="Picture of girls riding a bike" className="h-auto ml-14 border border-r-0 border-mediumPurple hidden laptop:block" />
-        <div className="p-8 h-auto text-white">
-          <h2 className="font-bold text-xl pb-4 tabletportrait:text-2xl">Benieuwd naar de beweegvriendelijkheid van jouw stad of gemeente?</h2>
-          <h4 className="font-semibold text-lg pb-4 tabletportrait:text-xl">Download hier een rapport</h4>
-          <p className="pb-4 text-sm tabletportrait:text-lg">Vul onderstaande gegevens in en ontvang in jouw mailbox het rapport.</p>
+      <section
+        className="flex items-center bg-mediumPurple py-2 px-4"
+        id="CallToAction"
+      >
+        <StaticImage
+          src="../images/calltoaction.png"
+          alt="Picture of girls riding a bike"
+          className="ml-14 hidden h-auto border border-r-0 border-mediumPurple laptop:block"
+        />
+        <div className="h-auto p-8 text-white">
+          <h2 className="pb-4 text-xl font-bold tabletportrait:text-2xl">
+            Benieuwd naar de beweegvriendelijkheid van jouw stad of gemeente?
+          </h2>
+          <h4 className="pb-4 text-lg font-semibold tabletportrait:text-xl">
+            Download hier een rapport
+          </h4>
+          <p className="pb-4 text-sm tabletportrait:text-lg">
+            Vul onderstaande gegevens in en ontvang in jouw mailbox het rapport.
+          </p>
 
-          <div className="grid grid-cols-1 gap-4 pb-3 z-0 text-sm desktop:grid-cols-3 tabletportrait:text-lg tabletportrait:grid-cols-3 laptop:grid-cols-1 laptopL:grid-cols-3" id="autoComplete">
-            <div className="flex flex-col max-w-min">
+          <div
+            className="desktop:grid-cols-3 z-0 grid grid-cols-1 gap-4 pb-3 text-sm tabletportrait:grid-cols-3 tabletportrait:text-lg laptop:grid-cols-1 laptopL:grid-cols-3"
+            id="autoComplete"
+          >
+            <div className="flex max-w-min flex-col">
               <label htmlFor="Stad">Postcode of stad:</label>
-              <input type="text" id="Stad" className="z-20 relative w-48 px-2 py-1 border-2 text-black border-lightPink active:border-pink outline-none focus-within:border-pink hover:border-pink peer" placeholder="Postcode/Stad" value={typed} onChange={(ev: any) => {
-                setTyped(ev.target.value)
-                let list = searchList(ev.target.value)
-                setSuggestions(list)
-                }} 
-                onInput={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
-                //@ts-ignore
-                u.place = e.target.value
-                return {...u}
-                })}/>
-              {error.placeError && (<p className="text-red font-semibold text-sm">{error.placeError}</p>)}
+              <input
+                type="text"
+                id="Stad"
+                className="peer relative z-20 w-48 border-2 border-lightPink px-2 py-1 text-black outline-none focus-within:border-pink hover:border-pink active:border-pink"
+                placeholder="Postcode/Stad"
+                value={typed}
+                onChange={(ev: any) => {
+                  setTyped(ev.target.value)
+                  let list = searchList(ev.target.value)
+                  setSuggestions(list)
+                }}
+                onInput={(e: React.FormEvent<HTMLInputElement>) =>
+                  setInfo((u: PersonalInfo) => {
+                    //@ts-ignore
+                    u.place = e.target.value
+                    return { ...u }
+                  })
+                }
+              />
+              {error.placeError && (
+                <p className="text-sm font-semibold text-red">
+                  {error.placeError}
+                </p>
+              )}
               <ul className="absolute z-40 mt-16">
                 {suggestions?.map((val: string, index: number) => {
-                  if(index < 7){
-                    return(<li key={val} className={`z-50 bg-white text-black px-2 py-1 w-48 border border-lightGray hover:bg-neutral hover:cursor-pointer :not(:hover):hidden`} onClick={() => changeTyped(val)}>{val}</li>)
+                  if (index < 7) {
+                    return (
+                      <li
+                        key={val}
+                        className={`:not(:hover):hidden z-50 w-48 border border-lightGray bg-white px-2 py-1 text-black hover:cursor-pointer hover:bg-neutral`}
+                        onClick={() => changeTyped(val)}
+                      >
+                        {val}
+                      </li>
+                    )
                   }
                 })}
               </ul>
             </div>
-          <Input label="Voornaam" callback={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
-                //@ts-ignore
-                u.firstName = e.target.value
-                return {...u}
-            })}/>
-          <Input label="Naam" callback={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
-                //@ts-ignore
-                u.lastName = e.target.value
-                return {...u}
-            })}/>
-            <Input label="E-mail" callback={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
-                //@ts-ignore
-                u.mail = e.target.value
-                return {...u}
-            })}/>
-          
-          <button className="bg-pink text-white px-2 py-1 mt-8 z-0 border-pink border-2 hover:bg-white hover:text-pink focus:bg-white focus:text-pink focus:font-semibold" onClick={() => checkInfo()}>Maak rapport</button>
-        </div>
-      </div>
-      </section>
-      
-      
-      <div className="bg-dark px-8 py-8">
-        <h2 className="text-lg text-white font-semibold mb-2 tabletportrait:text-xl">Vital Cities kan nog veel meer voor jou betekenen</h2>
-        <div className="text-xs tabletportrait:text-sm">
-          <p className="text-white">Je zoekt nog meer inspiratie? Die vind je op onze <a href="https://vitalcities.be/" className="underline text-pink hover:text-lightPurple focus:text-lightPurple">website</a>.</p>
-          <p className="text-white">Je hebt een onderzoeksvraag? Contacteer Lore Cuypers, projectleider van Vital Cities via volgende middelen.</p>
-          <div className="flex space-x-2 py-2 text-white">
-            <Mail />
-            <a href="mailto:vitalcities@gmail.com" className="underline text-pink hover:text-lightPurple focus:text-lightPurple">lore.cuypers@vitalcities.be</a>
-          </div>
-          <div className="flex space-x-2 text-white">
-            <Phone />
-            <p>+32 485 98 89 02</p>
-          </div>
-        </div>
-      </div>
+            <Input
+              label="Voornaam"
+              callback={(e: React.FormEvent<HTMLInputElement>) =>
+                setInfo((u: PersonalInfo) => {
+                  //@ts-ignore
+                  u.firstName = e.target.value
+                  return { ...u }
+                })
+              }
+            />
+            <Input
+              label="Naam"
+              callback={(e: React.FormEvent<HTMLInputElement>) =>
+                setInfo((u: PersonalInfo) => {
+                  //@ts-ignore
+                  u.lastName = e.target.value
+                  return { ...u }
+                })
+              }
+            />
+            <Input
+              label="E-mail"
+              callback={(e: React.FormEvent<HTMLInputElement>) =>
+                setInfo((u: PersonalInfo) => {
+                  //@ts-ignore
+                  u.mail = e.target.value
+                  return { ...u }
+                })
+              }
+            />
 
-      <footer className="grid grid-cols-1 bg-black text-white text-xs px-8 py-8 gap-6 tabletportrait:grid-cols-3">
-       <div className="flex gap-1 h-auto justify-center items-center tabletportrait:justify-start">
-         <Copyright className="w-4 h-4" />
-         <p>2022 Vital Cities, All rights reserved</p>
-       </div>
-       
-        <div className="grid grid-cols-2 gap-4 text-center items-center">
-          <a href="https://www.howest.be/nl"><StaticImage src='../images/howest-logo_wit.png' alt="Howest logo" className="w-14 tabletportrait:w-20"/></a>
-          <a href="https://vitalcities.be/"><StaticImage src='../images/logo_03.png' alt="Vital Cities logo" className="w-14 tabletportrait:w-20"/></a>
+            <button
+              className="z-0 mt-8 border-2 border-pink bg-pink px-2 py-1 text-white hover:bg-white hover:text-pink"
+              onClick={() => checkInfo()}
+            >
+              Maak rapport
+            </button>
+          </div>
         </div>
-      
-       
-       <div className="flex flex-col items-center tabletportrait:items-end">
-         <a href="#Location" className="hover:text-pink active:text-lightPurple focus:text-pink">Sitatie a.d.h.v. locatie</a>
-         <a href="#Problem" className="hover:text-pink active:text-lightPurple focus:text-pink">Probleem</a>
-         <a href="#Solution" className="hover:text-pink active:text-lightPurple focus:text-pink">Oplossing</a>
-         <a href="#Resources" className="hover:text-pink active:text-lightPurple focus:text-pink">Bronnen</a>
-         <a href="#Practices" className="hover:text-pink active:text-lightPurple focus:text-pink">Practices</a>
-       </div>
-      </footer>
+      </section>
+
+      <Contactsection />
+      <Footer nav={true} />
     </main>
   )
 }

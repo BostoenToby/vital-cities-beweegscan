@@ -1,5 +1,5 @@
-import type { GatsbyConfig } from "gatsby"
-import path from "path"
+import type { GatsbyConfig } from 'gatsby'
+import path from 'path'
 
 const config: GatsbyConfig = {
   siteMetadata: {
@@ -10,43 +10,52 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Poppins', 'Droid Serif']
-        }
-      }
+          families: ['Poppins', 'Droid Serif'],
+        },
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: path.join(__dirname, 'src', 'images')
-      }
+        path: path.join(__dirname, 'src', 'images'),
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `data`,
         path: `${__dirname}/src/data/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/markdown-pages`
       }
     },
     {
       resolve: `gatsby-transformer-excel`,
       options: {
-        raw: false
-      }
+        raw: false,
+      },
     },
     {
       resolve: `gatsby-plugin-sharp`,
       options: {
         forceBase64Format: `png`,
         defaults: {
-          formats: ['png']
-        }
-      }
+          formats: ['png'],
+        },
+      },
     },
     `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`, 
+    `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-smoothscroll`
+    `gatsby-plugin-smoothscroll`,
+    `gatsby-plugin-netlify-cms`,
+    `gatsby-transformer-remark`
   ],
 }
 

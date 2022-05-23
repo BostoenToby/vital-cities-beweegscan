@@ -13,8 +13,7 @@ import {
 import Logo from './logo'
 import Logoalt from './logoalt'
 
-
-export default () => {
+export default ({ section }: { section: string }) => {
   const [isFullsize, setFullsize] = useState(false)
   const [showSideNav, setShowSideNav] = useState(false)
 
@@ -39,13 +38,16 @@ export default () => {
   }
 
   return (
-    <div className="sticky top-0 z-10 w-max navbreak:w-screen">
+    <div className="sticky top-0 z-20 w-max navbreak:w-screen">
       {isFullsize ? (
         <nav className="flex h-24 w-full flex-row border-b-2 border-dark border-opacity-60 bg-white drop-shadow-sm">
           <div className="flex h-full w-32 flex-col justify-center bg-yellow">
-            <div className="absolute left-16 flex h-20 w-auto">
+            <a
+              className="absolute left-16 flex h-20 w-auto"
+              href="https://vitalcities.be/"
+            >
               <Logo />
-            </div>
+            </a>
           </div>
           <ul className="my-auto ml-32 flex flex-row font-poppins">
             <li className="mr-14 text-2xl font-medium text-dark">
@@ -67,22 +69,19 @@ export default () => {
               </Link>
             </li>
             <li className="mr-14 text-2xl font-medium text-dark">
-              <Link activeStyle={{ color: '#E7348C' }} to="/">
+              <Link activeStyle={{ color: '#E7348C' }} to="#">
                 Over ons
               </Link>
             </li>
           </ul>
-          <div className="my-auto mr-16 ml-auto">
+          <a href={section} className="my-auto mr-16 ml-auto">
             <button className="relative z-auto h-14 rounded-xl border-2 border-purple bg-pink">
               <div className="absolute top-1 left-1 z-[-1] h-full w-full rounded-xl bg-purple"></div>
-              <Link
-                className="px-6 font-poppins text-2xl font-medium text-white"
-                to="/"
-              >
+              <p className="px-6 font-poppins text-2xl font-medium text-white">
                 Contacteer ons
-              </Link>
+              </p>
             </button>
-          </div>
+          </a>
         </nav>
       ) : (
         <div>
@@ -95,9 +94,12 @@ export default () => {
                   onClick={() => handleSideBar()}
                 />
               </div>
-              <div className="absolute left-16 flex h-20 w-auto">
+              <a
+                className="absolute left-16 flex h-20 w-auto"
+                href="https://vitalcities.be/"
+              >
                 <Logo />
-              </div>
+              </a>
             </div>
           </nav>
           <nav
@@ -111,9 +113,12 @@ export default () => {
                 className="text-white"
                 onClick={() => handleSideBar()}
               />
-              <div className="absolute right-4 top-4 flex h-20 w-auto">
+              <a
+                className="absolute right-4 flex h-20 w-auto"
+                href="https://vitalcities.be/"
+              >
                 <Logoalt />
-              </div>
+              </a>
             </header>
             <ul className="font-poppins">
               <li className="my-6 text-2xl font-medium text-white">
@@ -138,22 +143,31 @@ export default () => {
                 </Link>
               </li>
               <li className="my-6 text-2xl font-medium text-white">
-                <Link to="/" className="flex flex-row items-center">
+                <Link to="#" className="flex flex-row items-center">
                   <p>Over ons</p>
                   <ChevronRight size={24} className="ml-6 text-white" />
                 </Link>
               </li>
-              <li className="my-6 text-2xl font-medium text-white">
-                <Link to="/" className="flex flex-row items-center">
+              <li
+                className="my-6 text-2xl font-medium text-white"
+                onClick={() => handleSideBar()}
+              >
+                <a href={section} className="flex flex-row items-center">
                   <p>Contacteer ons</p>
                   <ChevronRight size={24} className="ml-6 text-white" />
-                </Link>
+                </a>
               </li>
             </ul>
             <footer className="mt-16 flex flex-row">
-              <Facebook size={24} className=" mr-10 text-white" />
-              <Twitter size={24} className=" mr-10 text-white" />
-              <Instagram size={24} className=" mr-10 text-white" />
+              <a href="https://www.facebook.com/VitalCitiesHowest/">
+                <Facebook size={24} className=" mr-10 text-white" />
+              </a>
+              <a href="#">
+                <Twitter size={24} className=" mr-10 text-white" href="#" />
+              </a>
+              <a href="https://www.instagram.com/vital.cities/?hl=nl">
+                <Instagram size={24} className=" mr-10 text-white" />
+              </a>
             </footer>
           </nav>
         </div>
