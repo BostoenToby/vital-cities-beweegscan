@@ -88,22 +88,22 @@ export default ({ section }: { section: string }) => {
                   <li className=" rounded-t-md border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
                     <Link to="/ambitionpage">Actief bewegen & verplaatsen</Link>
                   </li>
-                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-lightGray hover:text-mediumPurple">
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
                     <Link to="/ambitionpage">verbonden stadskern</Link>
                   </li>
-                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-lightGray hover:text-mediumPurple">
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
                     <Link to="/ambitionpage">Fiets- & wandelroutes</Link>
                   </li>
-                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-lightGray hover:text-mediumPurple">
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
                     <Link to="/ambitionpage">Sporten</Link>
                   </li>
-                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-lightGray hover:text-mediumPurple">
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
                     <Link to="/ambitionpage">Spelen</Link>
                   </li>
-                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-lightGray hover:text-mediumPurple">
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
                     <Link to="/ambitionpage">Ontmoeten</Link>
                   </li>
-                  <li className="  rounded-b-md p-4 text-lg font-medium text-dark hover:bg-lightGray hover:text-mediumPurple">
+                  <li className="  rounded-b-md p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
                     <Link to="/ambitionpage">Groen</Link>
                   </li>
                 </ul>
@@ -120,8 +120,8 @@ export default ({ section }: { section: string }) => {
             </li>
           </ul>
           <a href={section} className="my-auto mr-16 ml-auto">
-            <button className="relative z-auto h-14 rounded-xl border-2 border-purple bg-pink hover:border-pink hover:bg-purple">
-              <div className="absolute top-1 left-1 z-[-1] h-full w-full rounded-xl bg-purple hover:bg-pink"></div>
+            <button className="group relative z-auto h-14 rounded-xl border-2 border-purple bg-pink hover:border-pink hover:bg-purple">
+              <div className="absolute top-1 left-1 z-[-1] h-full w-full rounded-xl bg-purple group-hover:bg-pink"></div>
               <p className="px-6 font-poppins text-2xl font-medium text-white">
                 Contacteer ons
               </p>
@@ -173,10 +173,40 @@ export default ({ section }: { section: string }) => {
                 </Link>
               </li>
               <li className="my-6 text-2xl font-medium text-white">
-                <Link to="/ambitionpage" className="flex flex-row items-center">
-                  <p>Beweegscan</p>
+                <button
+                  className="flex flex-row items-center"
+                  onClick={() => handleAmbitions()}
+                >
+                  <p>Ambities</p>
                   <ChevronRight size={24} className="ml-6 text-white" />
-                </Link>
+                </button>
+                {showAmbitions ? (
+                  <ul className="mt-4 ml-2 text-lg font-medium text-white">
+                    <li className="p-2 hover:opacity-80">
+                      <Link to="/ambitionpage">
+                        Actief bewegen & verplaatsen
+                      </Link>
+                    </li>
+                    <li className="p-2 hover:opacity-80">
+                      <Link to="/ambitionpage">verbonden stadskern</Link>
+                    </li>
+                    <li className="p-2 hover:opacity-90">
+                      <Link to="/ambitionpage">Fiets- & wandelroutes</Link>
+                    </li>
+                    <li className="p-2 hover:opacity-80">
+                      <Link to="/ambitionpage">Sporten</Link>
+                    </li>
+                    <li className="p-2 hover:opacity-80">
+                      <Link to="/ambitionpage">Spelen</Link>
+                    </li>
+                    <li className="p-2 hover:opacity-80">
+                      <Link to="/ambitionpage">Ontmoeten</Link>
+                    </li>
+                    <li className="p-2 hover:opacity-80">
+                      <Link to="/ambitionpage">Groen</Link>
+                    </li>
+                  </ul>
+                ) : null}
               </li>
               <li className="my-6 text-2xl font-medium text-white">
                 <Link
@@ -184,12 +214,6 @@ export default ({ section }: { section: string }) => {
                   className="flex flex-row items-center"
                 >
                   <p>Good practices</p>
-                  <ChevronRight size={24} className="ml-6 text-white" />
-                </Link>
-              </li>
-              <li className="my-6 text-2xl font-medium text-white">
-                <Link to="#" className="flex flex-row items-center">
-                  <p>Over ons</p>
                   <ChevronRight size={24} className="ml-6 text-white" />
                 </Link>
               </li>
