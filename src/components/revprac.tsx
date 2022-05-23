@@ -33,13 +33,13 @@ export default function RevPrac({image, imageAlt, leftTagText, leftTagColorBg, l
     return (
       <div>
         {img != "" && (
-          <GatsbyImage image={img} alt="Test" />
+          <GatsbyImage image={img} alt="Test" className="relative w-auto"/>
         )}
-        <div className="flex items-center relative bottom-3 left-3">
+        <div className="flex items-center text-xs relative bottom-3 left-3 tabletportrait:text-sm laptop:text-lg">
           <Tag text={leftTagText} colorBg={leftTagColorBg} colorText={leftTagColorText} />
           <Tag text={rightTagText} colorBg={rightTagColorBg} colorText={rightTagColorText}/>
         </div>
-        <h3 className="font-semibold text-3xl pl-3">{title}</h3>
+        <h3 className="font-semibold text-3xl pl-3 mb-3">{title}</h3>
         <p className="pl-3">{subTitle}</p>
       </div>
     )

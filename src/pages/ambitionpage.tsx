@@ -5,6 +5,10 @@ import { ArrowDown, ChevronDown, Copyright, ExternalLink, Facebook, FileText, In
 import * as React from "react"
 import { useEffect, useState } from "react"
 import DonutChart from "../components/donutchart"
+import Input from "../components/input"
+import Intsrc from "../components/Intsrc"
+import RevPrac from "../components/revprac"
+import Tag from "../components/tag"
 
 import { allResults, searchList } from "../utils/autoComplete"
 
@@ -93,9 +97,7 @@ function AmbitionPage () {
           </div>
 
           <div className="mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
-            <div className="bg-pink -skew-x-12 max-w-max mb-5">
-              <p className="text-white text-xs py-1 px-2 skew-x-12 font-bold">actief bewegen</p>
-            </div>
+            <Tag text="Actief bewegen" colorBg="pink" colorText="white" />
             <h1 className="text-white text-3xl leading-tight max-w-2xl font-xxbold mb-8 tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">Aantrekkelijke & veilige wandel- & fietsroutes</h1>
             <p className="text-white text-xl leading-6 font-xlight opacity-75 max-w-2xl mb-12 laptop:text-2xl">Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een actieve levensstijl en faciliteren mensen om lopend of fietsend naar voorzieningen of het werk of school voorzieningen te gaan</p>
             <p className="text-lightPurple font-semibold mb-2">scroll</p>
@@ -268,34 +270,10 @@ function AmbitionPage () {
         <h2 className="text-xl font-bold mb-4 pt-4 tabletportrait:text-3xl laptop:text-4xl">Interessante bronnen</h2>
         <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl laptop:w-4/5">We maken je graag wegwijs in wat bronnen en instrumenten om de omgevint te analyseren en te ontwerpen op vlak van wandel- en fietsvriendelijkheid</p>
         <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
-          <div className="h-auto bg-white p-6">
-            <div className="flex space-x-2">
-              <h3 className="underline font-semibold text-[17px] mb-1">Walkabilityscore-tool</h3>
-              <ExternalLink />
-            </div>
-            <p className="text-gray">Deze tool van Vito in opdracht van Gezond Leven brengt de walkabilityscore voor elke hectare in Vlaanderen en Brussel in kaart.</p>
-          </div>
-          <div className="h-auto bg-white p-6">
-            <div className="flex space-x-2">
-              <h3 className="underline font-semibold text-[17px] mb-1">The benefits of cycling</h3>
-              <ExternalLink />
-            </div>
-            <p className="text-gray">Dit rapport van de ECF toont aan welke economische voordelen Europa kan halen uit het investeren in een sterk fietsbeleid.</p>
-          </div>
-          <div className="h-auto bg-white p-6">
-            <div className="flex space-x-2">
-              <h3 className="underline font-semibold text-[17px] mb-1">Handboek sterk fietsbeleid</h3>
-              <ExternalLink />
-            </div>
-            <p className="text-gray">Dit rapport van Fietsberaad bundelt inzichten en tips voor een lokaal beleid dat méér mensen op de fiets wilt.</p>
-          </div>
-          <div className="h-auto bg-white p-6">
-            <div className="flex space-x-2">
-              <h3 className="underline font-semibold text-[17px] mb-1">Quickscan fietsbeleid</h3>
-              <ExternalLink />
-            </div>
-            <p className="text-gray">Deze quickscan van Fietsberaad geeft inzicht in het lokale fietsbeleid aan de hand van een vragenlijst rond 6 thema's.</p>
-          </div>
+          <Intsrc title="Walkabilityscore-tool" text="Deze tool van Vito in opdracht van Gezond Leven brengt de walkabilityscore voor elke hectare in Vlaanderen en Brussel in kaart." />
+          <Intsrc title="The benefits of cycling" text="Dit rapport van de ECF toont aan welke economische voordelen Europa kan halen uit het investeren in een sterk fietsbeleid." />
+          <Intsrc title="Handboek sterk fietsbeleid" text="Dit rapport van Fietsberaad bundelt inzichten en tips voor een lokaal beleid dat méér mensen op de fiets wilt." />
+          <Intsrc title="Quickscan fietsbeleid" text="Deze quickscan van Fietsberaad heeft inzicht in het lokale fietsbeleid aan de hand van een vragenlijst rond 6 thema's." />
         </div>
       </section>
 
@@ -306,57 +284,22 @@ function AmbitionPage () {
         </div>
         <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">Je wil je door nog meer good practices laten inspireren? Ontdek ze <Link to="/overviewpagepractices" className="underline text-pink font-semibold">hier</Link></p>
         <div className="grid grid-cols-1 gap-16 mobile:grid-cols-2 text-sm tabletportrait:text-lg laptop:text-xl">
-          <div>
-            <StaticImage src="../images/relevantcases.png" alt="Relevant cases" className="relative w-auto"/>
-            <div className="flex items-center text-xs relative bottom-3 left-3 tabletportrait:text-sm laptop:text-lg">
-              <div className="bg-pink -skew-x-12 max-w-max mb-2">
-                  <p className="px-2 skew-x-12 font-bold">actief bewegen</p>
-              </div>
-              <div className="bg-yellow -skew-x-12 max-w-max mb-2">
-                  <p className="px-2 skew-x-12 font-bold">20 september 2020</p>
-              </div>
-            </div>
-            <h3 className="font-semibold text-xl pl-3 mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-            <p className="pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus.</p>
-          </div>
-          <div>
-            <StaticImage src="../images/relevantcases.png" alt="Relevant cases" className="relative w-auto"/>
-            <div className="flex items-center text-xs relative bottom-3 left-3 tabletportrait:text-sm laptop:text-lg">
-              <div className="bg-pink -skew-x-12 max-w-max mb-2">
-                  <p className="px-2 skew-x-12 font-bold">actief bewegen</p>
-              </div>
-              <div className="bg-yellow -skew-x-12 max-w-max mb-2">
-                  <p className="px-2 skew-x-12 font-bold">20 september 2020</p>
-              </div>
-            </div>
-            <h3 className="font-semibold text-xl pl-3 mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
-            <p className="pl-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus.</p>
-          </div>
+          <RevPrac image="relevantcases.png" imageAlt="Relevant cases" leftTagText="Actief bewegen" leftTagColorBg="pink" leftTagColorText="black" rightTagText="20 september 2020" rightTagColorBg="yellow" rightTagColorText="black" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit." subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."/>
+          <RevPrac image="relevantcases.png" imageAlt="Relevant cases" leftTagText="Actief bewegen" leftTagColorBg="pink" leftTagColorText="black" rightTagText="20 september 2020" rightTagColorBg="yellow" rightTagColorText="black" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit." subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."/>
         </div>
       </section>
 
       <section className="bg-mediumPurple flex py-2 px-2 items-center" id="CallToAction">
         <StaticImage src='../images/calltoaction.png' alt="Picture of girls riding a bike" className="h-auto ml-16 border border-r-0 border-mediumPurple hidden laptop:block" />
         <div className="p-8 h-auto text-white">
-          {/* <h2 className="font-bold text-4xl pb-4">Wil je graag weten wat we in jouw stad kunnen verbeteren?</h2>
-          <p className="pb-3 text-lg">Om een volledige scan van jouw gemeente te laten maken en een gepersonaliseerd stappenplan te ontvangen, schrijf je in op onze wachtlijst!</p>
-          <div className="flex justify-between pb-3">
-            <input type="text" placeholder="Vul je e-mailadres in..." className="w-4/5 p-2 px-4" />
-            <button className="bg-pink text-white font-semibold p-2 px-4">Schrijf je in!</button>
-          </div>
-          <p className="text-lg pb-4">Wil je graag eerst meer weten over ons onderzoek en de cijfers in detail bekijken? Klik dan hieronder door naar het volledige onderzoek.</p>
-          <div className="flex space-x-1">
-            <FileText className="text-purple" />
-            <p className="text-purple underline font-semibold">Duik in het volledig onderzoek</p>
-          </div> */}
           <h2 className="font-bold text-xl pb-4 tabletportrait:text-2xl">Benieuwd naar de beweegvriendelijkheid van jouw stad of gemeente?</h2>
           <h4 className="font-semibold text-lg pb-4 tabletportrait:text-xl">Download hier een rapport</h4>
           <p className="pb-4 text-sm tabletportrait:text-lg">Vul onderstaande gegevens in en ontvang in jouw mailbox het rapport.</p>
 
           <div className="grid grid-cols-1 gap-4 pb-3 z-0 text-sm desktop:grid-cols-3 tabletportrait:text-lg tabletportrait:grid-cols-3 laptop:grid-cols-1 laptopL:grid-cols-3" id="autoComplete">
-            <div className="flex flex-col">
+            <div className="flex flex-col max-w-min">
               <label htmlFor="Stad">Postcode of stad:</label>
-              <input type="text" id="Stad" className="z-20 relative w-48 px-2 py-1 border-2 border-lightPink active:border-pink outline-none focus-within:border-pink hover:border-pink" placeholder="Postcode/Stad" value={typed} onChange={(ev: any) => {
+              <input type="text" id="Stad" className="z-20 relative w-48 px-2 py-1 border-2 text-black border-lightPink active:border-pink outline-none focus-within:border-pink hover:border-pink peer" placeholder="Postcode/Stad" value={typed} onChange={(ev: any) => {
                 setTyped(ev.target.value)
                 let list = searchList(ev.target.value)
                 setSuggestions(list)
@@ -367,45 +310,33 @@ function AmbitionPage () {
                 return {...u}
                 })}/>
               {error.placeError && (<p className="text-red font-semibold text-sm">{error.placeError}</p>)}
-              <ul className="absolute z-20 mt-14">
+              <ul className="absolute z-40 mt-16">
                 {suggestions?.map((val: string, index: number) => {
                   if(index < 7){
-                    return(<li key={val} className={`z-10 bg-white px-2 py-1 w-48 border border-lightGray hover:bg-neutral`} onClick={() => changeTyped(val)}>{val}</li>)
+                    return(<li key={val} className={`z-50 bg-white text-black px-2 py-1 w-48 border border-lightGray hover:bg-neutral hover:cursor-pointer :not(:hover):hidden`} onClick={() => changeTyped(val)}>{val}</li>)
                   }
                 })}
               </ul>
             </div>
-            <div className="flex flex-col">
-              <label htmlFor="Voornaam">Voornaam:</label>
-              <input type="text" id="Voornaam" className="w-48 px-2 py-1 border-2 border-lightPink active:border-pink outline-none focus-within:border-pink hover:border-pink" placeholder="Voornaam" onInput={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
+          <Input label="Voornaam" callback={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
                 //@ts-ignore
                 u.firstName = e.target.value
                 return {...u}
-              })}/>
-              {error.firstNameError && (<p className="text-red font-semibold text-sm">{error.firstNameError}</p>)}
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="Naam">Naam:</label>
-              <input type="text" id="Naam" className="w-48 px-2 py-1 border-2 border-lightPink active:border-pink outline-none focus-within:border-pink hover:border-pink" placeholder="Naam" onInput={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
+            })}/>
+          <Input label="Naam" callback={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
                 //@ts-ignore
                 u.lastName = e.target.value
                 return {...u}
-              })}/>
-              {error.lastNameError && (<p className="text-red font-semibold text-sm">{error.lastNameError}</p>)}
-            </div>
-          </div>
-          <div className="flex flex-col text-sm pt-2 tabletportrait:text-lg">
-            <label htmlFor="Mail">E-mail:</label>
-            <input type="text" id="Mail" className="px-2 py-1 border-2 w-1/2 border-lightPink active:border-pink outline-none focus-within:border-pink hover:border-pink" placeholder="E-mail" onInput={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
+            })}/>
+            <Input label="E-mail" callback={(e: React.FormEvent<HTMLInputElement>) => setInfo((u: PersonalInfo) => {
                 //@ts-ignore
                 u.mail = e.target.value
                 return {...u}
             })}/>
-            {error.mailError && (<p className="text-red font-semibold text-sm">{error.mailError}</p>)}
-          </div>
           
-          <button className="bg-pink text-white px-2 py-1 mt-8 z-0 hover:bg-white hover:text-pink hover:border-2 hover:border-pink" onClick={() => checkInfo()}>Maak rapport</button>
+          <button className="bg-pink text-white px-2 py-1 mt-8 z-0 border-pink border-2 hover:bg-white hover:text-pink" onClick={() => checkInfo()}>Maak rapport</button>
         </div>
+      </div>
       </section>
       
       
