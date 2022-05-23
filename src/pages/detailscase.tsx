@@ -8,6 +8,8 @@ import { navigate } from 'gatsby'
 import ThemaCard from '../components/themacard'
 import PracticeParagraph from '../components/practiseparagraph'
 import { findIndexesSubstring } from '../utils/practiceFunctions'
+import Contactsection from '../components/contactsection'
+import Footer from '../components/footer'
 
 export default ({ location }: { location: any }) => {
   const [practice, setPractice] = useState<TestPractice>()
@@ -64,7 +66,7 @@ export default ({ location }: { location: any }) => {
 
   return (
     <div className="overflow-x-hidden">
-      <TopNavigation />
+      <TopNavigation section="#Contact" />
       <main className="mx-auto my-10 max-w-[104rem] px-5 gridbreak:px-10 columnbreak:my-20">
         <header className="mb-11 flex flex-row items-center text-center">
           <ChevronLeft className="mr-6 text-dark opacity-70" />
@@ -148,6 +150,10 @@ export default ({ location }: { location: any }) => {
           ) : null}
         </section>
       </main>
+      <div id="Contact">
+        <Contactsection />
+        <Footer nav={false} />
+      </div>
     </div>
   )
 }
