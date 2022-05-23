@@ -50,17 +50,17 @@ export default ({ section }: { section: string }) => {
             </a>
           </div>
           <ul className="my-auto ml-32 flex flex-row font-poppins">
-            <li className="mr-14 text-2xl font-medium text-dark hover:text-purple">
+            <li className="mr-14 text-2xl font-medium text-dark hover:text-mediumPurple">
               <Link activeStyle={{ color: '#E7348C' }} to="/">
                 Home
               </Link>
             </li>
-            <li className=" mr-14 text-2xl font-medium text-dark">
+            <li className=" mr-14 text-2xl font-medium text-dark hover:text-mediumPurple">
               <Link activeStyle={{ color: '#E7348C' }} to="/ambitionpage">
                 Beweegscan
               </Link>
             </li>
-            <li className=" mr-14 text-2xl font-medium text-dark">
+            <li className=" mr-14 text-2xl font-medium text-dark hover:text-mediumPurple">
               <Link
                 activeStyle={{ color: '#E7348C' }}
                 to="/overviewpagepractices"
@@ -68,15 +68,15 @@ export default ({ section }: { section: string }) => {
                 Good practices
               </Link>
             </li>
-            <li className="mr-14 text-2xl font-medium text-dark">
+            <li className="mr-14 text-2xl font-medium text-dark hover:text-mediumPurple">
               <Link activeStyle={{ color: '#E7348C' }} to="#">
                 Over ons
               </Link>
             </li>
           </ul>
           <a href={section} className="my-auto mr-16 ml-auto">
-            <button className="relative z-auto h-14 rounded-xl border-2 border-purple bg-pink">
-              <div className="absolute top-1 left-1 z-[-1] h-full w-full rounded-xl bg-purple"></div>
+            <button className="relative z-auto h-14 rounded-xl border-2 border-purple bg-pink hover:border-pink hover:bg-purple">
+              <div className="absolute top-1 left-1 z-[-1] h-full w-full rounded-xl bg-purple hover:bg-pink"></div>
               <p className="px-6 font-poppins text-2xl font-medium text-white">
                 Contacteer ons
               </p>
