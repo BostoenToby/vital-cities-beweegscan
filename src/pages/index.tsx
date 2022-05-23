@@ -1,3 +1,4 @@
+import { graphql } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 import {
@@ -15,15 +16,31 @@ import Footer from '../components/footer'
 import Topnavigation from '../components/topnavigation'
 import { Bron } from '../interfaces/testPractice'
 import AmbitionPage from './ambitionpage'
+import Pdf from '../components/pdf'
 
 // remove excel files because this can't be processed by Linux
 
-const IndexPage = () => {
+const IndexPage = ({data}: {data: any}) => {
   const bottomNav: Bron[] = [
     { naam: 'Over de beweegscan', url: '#Location' },
     { naam: 'In een oogopslag', url: '#Problem' },
     { naam: 'Inspirerend', url: '#Solution' },
   ]
+
+  const [intSources, setIntSources] = React.useState<string[]>()
+
+  const { allMarkdownRemark} = data
+  const { nodes, html } = allMarkdownRemark
+
+  React.useEffect(() => {
+    console.log({nodes})
+    let listSources: string[] = []
+    for(let item of nodes){
+      console.log(item.frontmatter.title)
+      listSources.push(item.frontmatter.title)
+    }
+    setIntSources(listSources)
+  }, [])
 
   return (
     // <AmbitionPage />
@@ -49,21 +66,15 @@ const IndexPage = () => {
 
       <header className="relative top-0 left-0 mb-8 flex h-screen">
         <section className="relative z-10 h-auto bg-purple">
-          <div className="mb-28 flex">
-            {/* <div className="absolute top-0 left-0 z-10 h-16 w-20 bg-yellow"></div>
-            <a href="https://vitalcities.be/">
-              <StaticImage
-                src="../images/logo_03.png"
-                alt="Logo of Vital Cities"
-                className="relative top-3 left-16 z-20 h-auto w-20"
-              />
-            </a> */}
-          </div>
-
           <div className="mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
             <h1 className="mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">
               Beweegscan van Vital Cities
             </h1>
+            {intSources && intSources.map((item: any) => (
+              <div>
+                <h1>{item}</h1>
+              </div>
+            ))}
             <h2 className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
               Meet de beweegvriendelijkheid van jouw stad of gemeente en vind de
               inspiratie om die nog te verbeteren
@@ -158,8 +169,27 @@ const IndexPage = () => {
         {/* <Contactsection /> */}
         <Footer nav={true} items={bottomNav} />
       </div>
+      <div>
+        {/* <h1>{frontmatter.title}</h1>
+        <p>{frontmatter.date}</p> */}
+      </div>
+      {/* <div dangerouslySetInnerHTML={{ __html: html }}></div> */}
     </div>
   )
 }
 
 export default IndexPage
+
+export const pageQuery = graphql`
+  query{
+    allMarkdownRemark {
+      nodes {
+        frontmatter {
+          title
+          slug
+          date
+        }
+      }
+    }
+  }
+`
