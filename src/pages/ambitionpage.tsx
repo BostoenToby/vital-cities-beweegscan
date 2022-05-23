@@ -475,7 +475,7 @@ function AmbitionPage() {
               <input
                 type="text"
                 id="Stad"
-                className="peer relative z-20 w-48 border-2 border-lightPink px-2 py-1 text-black outline-none focus-within:border-pink hover:border-pink active:border-pink"
+                className="peer w-48 border-2 border-lightPink px-2 py-1 text-black outline-none focus-within:border-pink hover:border-pink active:border-pink"
                 placeholder="Postcode/Stad"
                 value={typed}
                 onChange={(ev: any) => {
