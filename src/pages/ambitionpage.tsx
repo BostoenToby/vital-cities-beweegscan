@@ -89,17 +89,11 @@ function AmbitionPage () {
 
   return (
     <main className="font-poppins selection:bg-pink selection:text-white">
-      <div className="flex flex-col items-center gap-4 fixed top-[350px] right-4">
-        <div className="bg-white rounded-lg p-[2px]"><a href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a></div>
-        <div className="bg-white rounded-lg p-[2px]"><a href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a></div>
-        <div className="bg-white rounded-lg p-[2px]"><a href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a></div>
-      </div>
-
       <header className="relative top-0 left-0 mb-8 flex">
         <section className="bg-purple h-auto z-10 relative">
           <div className="mb-28 flex">
             <div className="bg-yellow h-16 w-20 absolute z-10 top-0 left-0"></div>
-            <a href="https://vitalcities.be/"><StaticImage src="../images/logo_03.png" alt="Logo of Vital Cities" className="w-20 h-auto z-20 relative top-3 left-16"/></a>
+            <a tabIndex={1} href="https://vitalcities.be/"><StaticImage src="../images/logo_03.png" alt="Logo of Vital Cities" className="w-20 h-auto z-20 relative top-3 left-16"/></a>
           </div>
 
           <div className="mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
@@ -112,13 +106,19 @@ function AmbitionPage () {
         </section>
         <div className="h-full"><StaticImage src="../images/headerpictureactivemovement.png" alt="header picture" className="z-0 object-cover right-20 top-20 relative hidden tabletportrait:h-tablet tabletportrait:block laptop:h-laptop"/></div>
         <div className="absolute top-24 mx-8 space-x-3 tabletportrait:top-8 tabletportrait:right-10">
-          <button tabIndex={-1} className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple">
-            <Link to="..">Ambities</Link>
+          <button tabIndex={-1} className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple focus-within:bg-purple">
+            <Link tabIndex={2} to=".." className="focus:bg-purple">Ambities</Link>
             {/* Keer terug naar overzicht met ambities/landingspage */}
           </button>
-          <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple" onClick={() => scrollTo('#Practices')}>Good practices</button>
+          <button tabIndex={3} className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple focus:bg-purple" onClick={() => scrollTo('#Practices')}>Good practices</button>
         </div>        
       </header>
+
+      <div className="flex flex-col items-center gap-4 fixed top-[350px] right-4">
+        <div className="bg-white rounded-lg p-[2px]"><a tabIndex={4} href="https://www.facebook.com/VitalCitiesHowest/" className="focus-within:fill-pink"><Facebook className="stroke-0 fill-black hover:fill-pink focus:fill-pink"/></a></div>
+        <div className="bg-white rounded-lg p-[2px]"><a tabIndex={5} href="" className="focus-within:fill-pink"><Twitter className="stroke-0 fill-black hover:fill-pink focus:fill-pink"/></a></div>
+        <div className="bg-white rounded-lg p-[2px]"><a tabIndex={6} href="https://www.instagram.com/vital.cities/?hl=nl" className="focus-within:stroke-pink"><Instagram className="stroke-black hover:stroke-pink focus:stroke-pink"/></a></div>
+      </div>
 
       <section className="grid grid-cols-1 mx-14 mt-32 gap-16 laptopL:mt-36" id="Location">
         <div className="flex flex-col">
@@ -283,7 +283,7 @@ function AmbitionPage () {
           <h2 className="font-bold text-xl tabletportrait:text-3xl laptop:text-4xl">Relevante good practices</h2>
           {/* <button className="bg-mediumPurple border p-2 text-pink border-pink">Alle cases</button> */}
         </div>
-        <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">Je wil je door nog meer good practices laten inspireren? Ontdek ze <Link to="/overviewpagepractices" className="underline text-pink font-semibold">hier</Link></p>
+        <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">Je wil je door nog meer good practices laten inspireren? Ontdek ze <Link to="/overviewpagepractices" className="underline text-pink font-semibold hover:text-purple focus:text-purple">hier</Link></p>
         <div className="grid grid-cols-1 gap-16 mobile:grid-cols-2 text-sm tabletportrait:text-lg laptop:text-xl">
           <RevPrac image="relevantcases.png" imageAlt="Relevant cases" leftTagText="Actief bewegen" leftTagColorBg="pink" leftTagColorText="black" rightTagText="20 september 2020" rightTagColorBg="yellow" rightTagColorText="black" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit." subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."/>
           <RevPrac image="relevantcases.png" imageAlt="Relevant cases" leftTagText="Actief bewegen" leftTagColorBg="pink" leftTagColorText="black" rightTagText="20 september 2020" rightTagColorBg="yellow" rightTagColorText="black" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit." subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."/>
@@ -335,7 +335,7 @@ function AmbitionPage () {
                 return {...u}
             })}/>
           
-          <button className="bg-pink text-white px-2 py-1 mt-8 z-0 border-pink border-2 hover:bg-white hover:text-pink" onClick={() => checkInfo()}>Maak rapport</button>
+          <button className="bg-pink text-white px-2 py-1 mt-8 z-0 border-pink border-2 hover:bg-white hover:text-pink focus:bg-white focus:text-pink focus:font-semibold" onClick={() => checkInfo()}>Maak rapport</button>
         </div>
       </div>
       </section>
@@ -344,11 +344,11 @@ function AmbitionPage () {
       <div className="bg-dark px-8 py-8">
         <h2 className="text-lg text-white font-semibold mb-2 tabletportrait:text-xl">Vital Cities kan nog veel meer voor jou betekenen</h2>
         <div className="text-xs tabletportrait:text-sm">
-          <p className="text-white">Je zoekt nog meer inspiratie? Die vind je op onze <a href="https://vitalcities.be/" className="underline text-pink hover:text-lightPurple">website</a>.</p>
+          <p className="text-white">Je zoekt nog meer inspiratie? Die vind je op onze <a href="https://vitalcities.be/" className="underline text-pink hover:text-lightPurple focus:text-lightPurple">website</a>.</p>
           <p className="text-white">Je hebt een onderzoeksvraag? Contacteer Lore Cuypers, projectleider van Vital Cities via volgende middelen.</p>
           <div className="flex space-x-2 py-2 text-white">
             <Mail />
-            <a href="mailto:vitalcities@gmail.com" className="underline text-pink hover:text-lightPurple">lore.cuypers@vitalcities.be</a>
+            <a href="mailto:vitalcities@gmail.com" className="underline text-pink hover:text-lightPurple focus:text-lightPurple">lore.cuypers@vitalcities.be</a>
           </div>
           <div className="flex space-x-2 text-white">
             <Phone />
@@ -370,11 +370,11 @@ function AmbitionPage () {
       
        
        <div className="flex flex-col items-center tabletportrait:items-end">
-         <a href="#Location" className="hover:text-pink active:text-lightPurple">Sitatie a.d.h.v. locatie</a>
-         <a href="#Problem" className="hover:text-pink active:text-lightPurple">Probleem</a>
-         <a href="#Solution" className="hover:text-pink active:text-lightPurple">Oplossing</a>
-         <a href="#Resources" className="hover:text-pink active:text-lightPurple">Bronnen</a>
-         <a href="#Practices" className="hover:text-pink active:text-lightPurple">Practices</a>
+         <a href="#Location" className="hover:text-pink active:text-lightPurple focus:text-pink">Sitatie a.d.h.v. locatie</a>
+         <a href="#Problem" className="hover:text-pink active:text-lightPurple focus:text-pink">Probleem</a>
+         <a href="#Solution" className="hover:text-pink active:text-lightPurple focus:text-pink">Oplossing</a>
+         <a href="#Resources" className="hover:text-pink active:text-lightPurple focus:text-pink">Bronnen</a>
+         <a href="#Practices" className="hover:text-pink active:text-lightPurple focus:text-pink">Practices</a>
        </div>
       </footer>
     </main>
