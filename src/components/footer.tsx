@@ -49,7 +49,7 @@ export default ({
             <a
               key={i}
               href={e.url}
-              className="hover:text-pink active:text-lightPurple"
+              className="hover:text-pink active:text-lightPurple focus:text-pink"
             >
               {e.naam}
             </a>

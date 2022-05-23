@@ -12,12 +12,18 @@ import {
 } from 'lucide-react'
 import Logo from './logo'
 import Logoalt from './logoalt'
+import { useLocation } from '@reach/router'
 
 export default ({ section }: { section: string }) => {
   const [isFullsize, setFullsize] = useState(false)
   const [showSideNav, setShowSideNav] = useState(false)
+  const [isAmbitions, setIsAmbitions] = useState(false)
+  const [showAmbitions, setShowAmbitions] = useState(false)
+
+  const location = useLocation()
 
   useEffect(() => {
+    checkIfAmbitions()
     if (typeof window !== 'undefined') {
       const updateSize = () => {
         if (window.innerWidth > 1304) {
@@ -37,6 +43,19 @@ export default ({ section }: { section: string }) => {
     setShowSideNav(!showSideNav)
   }
 
+  const handleAmbitions = () => {
+    setShowAmbitions(!showAmbitions)
+    console.log(showAmbitions)
+  }
+
+  const checkIfAmbitions = () => {
+    if (location.pathname == '/ambitionpage') {
+      setIsAmbitions(true)
+    } else {
+      setIsAmbitions(false)
+    }
+  }
+
   return (
     <div className="sticky top-0 z-20 w-max navbreak:w-screen">
       {isFullsize ? (
@@ -50,33 +69,59 @@ export default ({ section }: { section: string }) => {
             </a>
           </div>
           <ul className="my-auto ml-32 flex flex-row font-poppins">
-            <li className="mr-14 text-2xl font-medium text-dark">
+            <li className="mr-14 text-2xl font-medium text-dark hover:text-mediumPurple">
               <Link activeStyle={{ color: '#E7348C' }} to="/">
                 Home
               </Link>
             </li>
             <li className=" mr-14 text-2xl font-medium text-dark">
-              <Link activeStyle={{ color: '#E7348C' }} to="/ambitionpage">
-                Beweegscan
-              </Link>
+              <button
+                className={`hover:text-mediumPurple ${
+                  isAmbitions ? 'text-pink' : ''
+                }`}
+                onClick={() => handleAmbitions()}
+              >
+                Ambities
+              </button>
+              {showAmbitions ? (
+                <ul className=" absolute top-[4.5rem] rounded-md border-[1px] border-lightGray bg-white drop-shadow-lg">
+                  <li className=" rounded-t-md border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                    <Link to="/ambitionpage">Actief bewegen & verplaatsen</Link>
+                  </li>
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                    <Link to="/ambitionpage">verbonden stadskern</Link>
+                  </li>
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                    <Link to="/ambitionpage">Fiets- & wandelroutes</Link>
+                  </li>
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                    <Link to="/ambitionpage">Sporten</Link>
+                  </li>
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                    <Link to="/ambitionpage">Spelen</Link>
+                  </li>
+                  <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                    <Link to="/ambitionpage">Ontmoeten</Link>
+                  </li>
+                  <li className="  rounded-b-md p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                    <Link to="/ambitionpage">Groen</Link>
+                  </li>
+                </ul>
+              ) : null}
             </li>
-            <li className=" mr-14 text-2xl font-medium text-dark">
+            <li className=" mr-14 text-2xl font-medium text-dark hover:text-mediumPurple">
               <Link
                 activeStyle={{ color: '#E7348C' }}
                 to="/overviewpagepractices"
+                className="hover:text-mediumPurple"
               >
                 Good practices
               </Link>
             </li>
-            <li className="mr-14 text-2xl font-medium text-dark">
-              <Link activeStyle={{ color: '#E7348C' }} to="#">
-                Over ons
-              </Link>
-            </li>
           </ul>
           <a href={section} className="my-auto mr-16 ml-auto">
-            <button className="relative z-auto h-14 rounded-xl border-2 border-purple bg-pink">
-              <div className="absolute top-1 left-1 z-[-1] h-full w-full rounded-xl bg-purple"></div>
+            <button className="group relative z-auto h-14 rounded-xl border-2 border-purple bg-pink hover:border-pink hover:bg-purple">
+              <div className="absolute top-1 left-1 z-[-1] h-full w-full rounded-xl bg-purple group-hover:bg-pink"></div>
               <p className="px-6 font-poppins text-2xl font-medium text-white">
                 Contacteer ons
               </p>
@@ -128,10 +173,40 @@ export default ({ section }: { section: string }) => {
                 </Link>
               </li>
               <li className="my-6 text-2xl font-medium text-white">
-                <Link to="/ambitionpage" className="flex flex-row items-center">
-                  <p>Beweegscan</p>
+                <button
+                  className="flex flex-row items-center"
+                  onClick={() => handleAmbitions()}
+                >
+                  <p>Ambities</p>
                   <ChevronRight size={24} className="ml-6 text-white" />
-                </Link>
+                </button>
+                {showAmbitions ? (
+                  <ul className="mt-4 ml-2 text-lg font-medium text-white">
+                    <li className="p-2 hover:opacity-80">
+                      <Link to="/ambitionpage">
+                        Actief bewegen & verplaatsen
+                      </Link>
+                    </li>
+                    <li className="p-2 hover:opacity-80">
+                      <Link to="/ambitionpage">verbonden stadskern</Link>
+                    </li>
+                    <li className="p-2 hover:opacity-90">
+                      <Link to="/ambitionpage">Fiets- & wandelroutes</Link>
+                    </li>
+                    <li className="p-2 hover:opacity-80">
+                      <Link to="/ambitionpage">Sporten</Link>
+                    </li>
+                    <li className="p-2 hover:opacity-80">
+                      <Link to="/ambitionpage">Spelen</Link>
+                    </li>
+                    <li className="p-2 hover:opacity-80">
+                      <Link to="/ambitionpage">Ontmoeten</Link>
+                    </li>
+                    <li className="p-2 hover:opacity-80">
+                      <Link to="/ambitionpage">Groen</Link>
+                    </li>
+                  </ul>
+                ) : null}
               </li>
               <li className="my-6 text-2xl font-medium text-white">
                 <Link
@@ -139,12 +214,6 @@ export default ({ section }: { section: string }) => {
                   className="flex flex-row items-center"
                 >
                   <p>Good practices</p>
-                  <ChevronRight size={24} className="ml-6 text-white" />
-                </Link>
-              </li>
-              <li className="my-6 text-2xl font-medium text-white">
-                <Link to="#" className="flex flex-row items-center">
-                  <p>Over ons</p>
                   <ChevronRight size={24} className="ml-6 text-white" />
                 </Link>
               </li>

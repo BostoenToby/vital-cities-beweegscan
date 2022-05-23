@@ -1,5 +1,3 @@
-import { graphql } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
 import scrollTo from 'gatsby-plugin-smoothscroll'
 import {
   ArrowDown,
@@ -9,6 +7,7 @@ import {
   Twitter,
 } from 'lucide-react'
 import * as React from 'react'
+import { StaticImage } from "gatsby-plugin-image"
 import '../assets/tailwind.css'
 import Ambitionblock from '../components/ambitionblock'
 import Contactsection from '../components/contactsection'
@@ -44,9 +43,9 @@ const IndexPage = ({data}: {data: any}) => {
 
   return (
     // <AmbitionPage />
-    <div className="font-poppins">
+    <div className="font-poppins selection:bg-pink selection:text-white">
       <Topnavigation section="#Contact" />
-      <div className="fixed top-[350px] right-4 flex flex-col items-center gap-4">
+      {/* <div className="fixed top-[350px] right-4 flex flex-col items-center gap-4">
         <div className="rounded-lg bg-white p-[2px]">
           <a href="https://www.facebook.com/VitalCitiesHowest/">
             <Facebook className="fill-black stroke-0 hover:fill-pink" />
@@ -62,7 +61,7 @@ const IndexPage = ({data}: {data: any}) => {
             <Instagram className="stroke-black hover:stroke-pink" />
           </a>
         </div>
-      </div>
+      </div> */}
 
       <header className="relative top-0 left-0 mb-8 flex h-screen">
         <section className="relative z-10 h-auto bg-purple">
@@ -91,11 +90,11 @@ const IndexPage = ({data}: {data: any}) => {
           />
         </div>
       </header>
-      {/* <div className="flex flex-col items-center gap-4 fixed top-[450px] right-4">
-        <a href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a>
-        <a href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a>
-        <a href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a>
-      </div> */}
+      <div className="flex flex-col items-center gap-4 fixed top-[350px] right-4">
+        <div className="bg-white rounded-lg p-[2px]"><a tabIndex={2} href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a></div>
+        <div className="bg-white rounded-lg p-[2px]"><a tabIndex={3} href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a></div>
+        <div className="bg-white rounded-lg p-[2px]"><a tabIndex={4} href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a></div>
+      </div>
       <section className="mx-16">
         <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
           Over de beweegscan
