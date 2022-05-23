@@ -29,6 +29,13 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/markdown-pages`
+      }
+    },
+    {
       resolve: `gatsby-transformer-excel`,
       options: {
         raw: false,
@@ -47,6 +54,8 @@ const config: GatsbyConfig = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-smoothscroll`,
+    `gatsby-plugin-netlify-cms`,
+    `gatsby-transformer-remark`
   ],
 }
 
