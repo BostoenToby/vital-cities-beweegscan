@@ -560,3 +560,17 @@ function AmbitionPage() {
 }
 
 export default AmbitionPage
+
+// export const HoeQuery = graphql`
+//   query{
+//     allMarkdownRemark {
+//       nodes {
+//         frontmatter {
+//           title
+//           slug
+//           date
+//         }
+//       }
+//     }
+//   }
+// `

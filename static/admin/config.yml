@@ -7,12 +7,27 @@ media_folder: static/assets
 public_folder: /assets
 
 collections:
-  - name: blog
-    label: Blog
-    folder: blog
+  - name: Waarom
+    label: Waarom oplossen?
+    folder: src/WaaromOpl
     create: true
     fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: datetime }
+      - { name: ambition, label: Ambition }
+      - { name: text, label: Text, widget: markdown }
+
+  - name: Hoe
+    label: Hoe oplossen?
+    folder: src/HoeOpl
+    create: true
+    fields: 
+      - { name: ambition, label: Ambition }
+      - { name: text, label: Text, widget: markdown }
+
+  - name: IntBron
+    label: Interessante bronnen
+    folder: src/IntBron
+    create: true
+    fields:
       - { name: title, label: Title }
+      - { name: link, label: Link }
       - { name: body, label: Body, widget: markdown }

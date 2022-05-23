@@ -29,18 +29,18 @@ const IndexPage = ({data}: {data: any}) => {
 
   const [intSources, setIntSources] = React.useState<string[]>()
 
-  const { allMarkdownRemark} = data
-  const { nodes, html } = allMarkdownRemark
+  // const { allMarkdownRemark} = data
+  // const { nodes, html } = allMarkdownRemark
 
-  React.useEffect(() => {
-    console.log({nodes})
-    let listSources: string[] = []
-    for(let item of nodes){
-      console.log(item.frontmatter.title)
-      listSources.push(item.frontmatter.title)
-    }
-    setIntSources(listSources)
-  }, [])
+  // React.useEffect(() => {
+  //   console.log({nodes})
+  //   let listSources: string[] = []
+  //   for(let item of nodes){
+  //     console.log(item.frontmatter.title)
+  //     listSources.push(item.frontmatter.title)
+  //   }
+  //   setIntSources(listSources)
+  // }, [])
 
   return (
     // <AmbitionPage />
@@ -70,11 +70,6 @@ const IndexPage = ({data}: {data: any}) => {
             <h1 className="mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">
               Beweegscan van Vital Cities
             </h1>
-            {intSources && intSources.map((item: any) => (
-              <div>
-                <h1>{item}</h1>
-              </div>
-            ))}
             <h2 className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
               Meet de beweegvriendelijkheid van jouw stad of gemeente en vind de
               inspiratie om die nog te verbeteren
@@ -180,16 +175,16 @@ const IndexPage = ({data}: {data: any}) => {
 
 export default IndexPage
 
-export const pageQuery = graphql`
-  query{
-    allMarkdownRemark {
-      nodes {
-        frontmatter {
-          title
-          slug
-          date
-        }
-      }
-    }
-  }
-`
+// export const pageQuery = graphql`
+//   query{
+//     allMarkdownRemark {
+//       nodes {
+//         frontmatter {
+//           title
+//           slug
+//           date
+//         }
+//       }
+//     }
+//   }
+// `

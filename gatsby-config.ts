@@ -31,8 +31,8 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-pages`,
-        path: `${__dirname}/src/markdown-pages`
+        name: `WaaromOpl`,
+        path: `${__dirname}/src/WaaromOpl`
       }
     },
     {
