@@ -25,8 +25,14 @@ import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
 
 import { allResults, searchList } from '../utils/autoComplete'
+import { goodPractice, HoeWaarom, intBron } from '../interfaces/cmsInterfaces'
+import Textblock from '../components/textblock'
 
-function AmbitionPage() {
+function AmbitionPage({data}: {data: any}) {
+  const [intBronnen, setIntBronnen] = React.useState<intBron[]>()
+  const [hows, setHows] = React.useState<HoeWaarom[]>()
+  const [whys, setWhys] = React.useState<HoeWaarom[]>()
+  const [goodPracs, setGoodPracs] = React.useState<goodPractice[]>()
   const [suggestions, setSuggestions] = React.useState<string[]>()
   const [typed, setTyped] = React.useState<string>('')
   const [info, setInfo] = useState<PersonalInfo>({
@@ -96,10 +102,58 @@ function AmbitionPage() {
     }
   }
 
+  const { allMarkdownRemark} = data
+  const { nodes, html } = allMarkdownRemark
+
   useEffect(() => {
     let list = searchList(typed)
     setSuggestions(list)
   }, [typed])
+
+  useEffect(() => {
+    let bronnen: intBron[] = []
+    let hoeList: HoeWaarom[] = []
+    let waaromList: HoeWaarom[] = []
+    let goodPracs : goodPractice[] = []
+    for(let item of nodes){
+      if(item.parent.internal.description.includes("intbron")){
+        let bron = {
+          'title': item.frontmatter.title,
+          'link': item.frontmatter.link,
+          'text': item.frontmatter.text
+        }
+        bronnen.push(bron)
+      } else if(item.parent.internal.description.includes("hoeopl")){
+        let hoe = {
+          ambition: item.frontmatter.ambition,
+          text: item.frontmatter.text
+        }
+        hoeList.push(hoe)
+      } else if(item.parent.internal.description.includes("waaromopl")){
+        let waarom = {
+          ambition: item.frontmatter.ambition,
+          text: item.frontmatter.text
+        }
+        waaromList.push(waarom)
+      } else if(item.parent.internal.description.includes("goodprac")){
+        let themesList = item.frontmatter.themes.split(/\r?\n/)
+        let extraList = item.frontmatter.extra.split(/\r?\n/)
+        let prac = {
+          title: item.frontmatter.title,
+          date: item.frontmatter.date,
+          themes: themesList,
+          text: item.frontmatter.text,
+          extra: extraList
+        }
+        goodPracs.push(prac)
+      }
+    }
+    setIntBronnen(bronnen)
+    setHows(hoeList)
+    setWhys(waaromList)
+    setGoodPracs(goodPracs)
+    
+  }, [nodes])
 
   return (
     <main className="font-poppins selection:bg-pink selection:text-white">
@@ -288,7 +342,10 @@ function AmbitionPage() {
           mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita
         </p>
         <div className="grid grid-cols-1 gap-6 text-sm tabletportrait:text-lg laptop:grid-cols-2 laptop:text-xl laptopL:grid-cols-3">
-          <div className="flex max-w-sm skew-x-12 items-center justify-center bg-lightPink">
+          {whys && whys.map((item: any) => (
+            <Textblock text={item.text} bgColor="lightPink" textColor="purple" bold={false}/>
+          ))}
+          {/* <div className="flex max-w-sm skew-x-12 items-center justify-center bg-lightPink">
             <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
               <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
                 €1
@@ -336,7 +393,7 @@ function AmbitionPage() {
                 meer wandelaars
               </b>
             </p>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -350,26 +407,9 @@ function AmbitionPage() {
           mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita
         </p>
         <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
-          <div className="flex max-w-[275px] skew-x-12 items-center justify-center bg-lightGreen">
-            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 font-medium text-green">
-              Voldoende fietsen- stallingen voorzien
-            </p>
-          </div>
-          <div className="flex max-w-[275px] skew-x-12 items-center justify-center bg-lightGreen">
-            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 font-medium text-green">
-              Alles moet in een goede staat zijn & blijven
-            </p>
-          </div>
-          <div className="flex max-w-[275px] skew-x-12 items-center justify-center bg-lightGreen">
-            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 font-medium text-green">
-              Inzetten op aan- trekkelijkheid en veiligheid
-            </p>
-          </div>
-          <div className="flex max-w-[275px] skew-x-12 items-center justify-center bg-lightGreen">
-            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 font-medium text-green">
-              Zo weinig mogelijk obstakels en drempels
-            </p>
-          </div>
+          {hows && hows.map((item: HoeWaarom) => (
+            <Textblock text={item.text} bgColor="lightGreen" textColor="green" bold={true} />
+          ))}
         </div>
       </section>
 
@@ -383,22 +423,9 @@ function AmbitionPage() {
           fietsvriendelijkheid
         </p>
         <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
-          <Intsrc
-            title="Walkabilityscore-tool"
-            text="Deze tool van Vito in opdracht van Gezond Leven brengt de walkabilityscore voor elke hectare in Vlaanderen en Brussel in kaart."
-          />
-          <Intsrc
-            title="The benefits of cycling"
-            text="Dit rapport van de ECF toont aan welke economische voordelen Europa kan halen uit het investeren in een sterk fietsbeleid."
-          />
-          <Intsrc
-            title="Handboek sterk fietsbeleid"
-            text="Dit rapport van Fietsberaad bundelt inzichten en tips voor een lokaal beleid dat méér mensen op de fiets wilt."
-          />
-          <Intsrc
-            title="Quickscan fietsbeleid"
-            text="Deze quickscan van Fietsberaad heeft inzicht in het lokale fietsbeleid aan de hand van een vragenlijst rond 6 thema's."
-          />
+          {intBronnen && intBronnen.map((item: intBron) => (
+            <Intsrc title={item.title} text={item.text} link={item.link}/>
+          ))}
         </div>
       </section>
 
@@ -561,16 +588,23 @@ function AmbitionPage() {
 
 export default AmbitionPage
 
-// export const HoeQuery = graphql`
-//   query{
-//     allMarkdownRemark {
-//       nodes {
-//         frontmatter {
-//           title
-//           slug
-//           date
-//         }
-//       }
-//     }
-//   }
-// `
+export const IntBronQuery = graphql`
+  query{
+    allMarkdownRemark {
+      nodes {
+        frontmatter {
+         title
+         link
+         text
+         ambition
+        	text
+       }
+       parent {
+         internal {
+           description
+         }
+       }
+      }
+    }
+  }
+`

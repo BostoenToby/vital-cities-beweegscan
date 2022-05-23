@@ -31,15 +31,9 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `WaaromOpl`,
-        path: `${__dirname}/src/WaaromOpl`
+        name: `intbron`,
+        path: `${__dirname}/src/cms`
       }
-    },
-    {
-      resolve: `gatsby-transformer-excel`,
-      options: {
-        raw: false,
-      },
     },
     {
       resolve: `gatsby-plugin-sharp`,

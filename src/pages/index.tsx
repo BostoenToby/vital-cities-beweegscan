@@ -27,21 +27,6 @@ const IndexPage = ({data}: {data: any}) => {
     { naam: 'Inspirerend', url: '#Solution' },
   ]
 
-  const [intSources, setIntSources] = React.useState<string[]>()
-
-  // const { allMarkdownRemark} = data
-  // const { nodes, html } = allMarkdownRemark
-
-  // React.useEffect(() => {
-  //   console.log({nodes})
-  //   let listSources: string[] = []
-  //   for(let item of nodes){
-  //     console.log(item.frontmatter.title)
-  //     listSources.push(item.frontmatter.title)
-  //   }
-  //   setIntSources(listSources)
-  // }, [])
-
   return (
     // <AmbitionPage />
     <div className="font-poppins selection:bg-pink selection:text-white">

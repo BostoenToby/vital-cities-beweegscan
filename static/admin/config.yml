@@ -9,7 +9,7 @@ public_folder: /assets
 collections:
   - name: Waarom
     label: Waarom oplossen?
-    folder: src/WaaromOpl
+    folder: src/cms/waaromopl
     create: true
     fields:
       - { name: ambition, label: Ambitie }
@@ -17,7 +17,7 @@ collections:
 
   - name: Hoe
     label: Hoe oplossen?
-    folder: src/HoeOpl
+    folder: src/cms/hoeopl
     create: true
     fields: 
       - { name: ambition, label: Ambitie }
@@ -25,7 +25,7 @@ collections:
 
   - name: IntBron
     label: Interessante bronnen
-    folder: src/IntBron
+    folder: src/cms/intbron
     create: true
     fields:
       - { name: title, label: Titel }
@@ -34,11 +34,11 @@ collections:
 
   - name: GoodPractices
     label: Good Practices
-    folder: src/GoodPrac
+    folder: src/cms/goodprac
     create: true
     fields:
       - { name: title, label: Title}
+      - { name: date, label: Datum, widget: datetime }
       - { name: themes, label: Thema's}
       - { name: text, label: Tekst, widget: markdown}
       - { name: extra, label: Extra, widget: markdown }
-      - { name: date, label: Datum, widget: datetime }
