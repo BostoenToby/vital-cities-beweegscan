@@ -28,26 +28,8 @@ const IndexPage = ({data}: {data: any}) => {
   ]
 
   return (
-    // <AmbitionPage />
     <div className="font-poppins selection:bg-pink selection:text-white">
       <Topnavigation section="#Contact" />
-      {/* <div className="fixed top-[350px] right-4 flex flex-col items-center gap-4">
-        <div className="rounded-lg bg-white p-[2px]">
-          <a href="https://www.facebook.com/VitalCitiesHowest/">
-            <Facebook className="fill-black stroke-0 hover:fill-pink" />
-          </a>
-        </div>
-        <div className="rounded-lg bg-white p-[2px]">
-          <a href="">
-            <Twitter className="fill-black stroke-0 hover:fill-pink" />
-          </a>
-        </div>
-        <div className="rounded-lg bg-white p-[2px]">
-          <a href="https://www.instagram.com/vital.cities/?hl=nl">
-            <Instagram className="stroke-black hover:stroke-pink" />
-          </a>
-        </div>
-      </div> */}
 
       <header className="relative top-0 left-0 mb-8 flex h-screen">
         <section className="relative z-10 h-auto bg-purple">
@@ -146,30 +128,10 @@ const IndexPage = ({data}: {data: any}) => {
         </p>
       </section>
       <div id="Contact">
-        {/* <Contactsection /> */}
         <Footer nav={true} items={bottomNav} />
       </div>
-      <div>
-        {/* <h1>{frontmatter.title}</h1>
-        <p>{frontmatter.date}</p> */}
-      </div>
-      {/* <div dangerouslySetInnerHTML={{ __html: html }}></div> */}
     </div>
   )
 }
 
 export default IndexPage
-
-// export const pageQuery = graphql`
-//   query{
-//     allMarkdownRemark {
-//       nodes {
-//         frontmatter {
-//           title
-//           slug
-//           date
-//         }
-//       }
-//     }
-//   }
-// `

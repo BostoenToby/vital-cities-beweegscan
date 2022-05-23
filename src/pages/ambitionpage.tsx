@@ -1,6 +1,5 @@
 import { graphql, Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
-import scrollTo from 'gatsby-plugin-smoothscroll'
 import {
   ArrowDown,
   ChevronDown,
@@ -41,7 +40,6 @@ function AmbitionPage({data}: {data: any}) {
     lastName: '',
     mail: '',
   })
-
   const [error, setErrors] = useState<FormError>({
     placeError: '',
     firstNameError: '',
@@ -161,11 +159,6 @@ function AmbitionPage({data}: {data: any}) {
 
       <header className="relative top-0 left-0 mb-8 flex">
         <section className="relative z-10 h-auto bg-purple">
-          <div className="mb-28 flex">
-            {/* <div className="bg-yellow h-16 w-20 absolute z-10 top-0 left-0"></div>
-            <a href="https://vitalcities.be/"><StaticImage src="../images/logo_03.png" alt="Logo of Vital Cities" className="w-20 h-auto z-20 relative top-3 left-16"/></a> */}
-          </div>
-
           <div className="mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
             <Tag text="Actief bewegen" colorBg="pink" colorText="white" />
             <h1 className="mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">
@@ -187,12 +180,6 @@ function AmbitionPage({data}: {data: any}) {
             className="relative top-14 right-20 z-0 hidden items-center object-cover align-middle tabletportrait:block tabletportrait:h-tablet laptop:h-laptop"
           />
         </div>
-        {/* <div className="absolute top-24 mx-8 space-x-3 tabletportrait:top-8 tabletportrait:right-10">
-          <button tabIndex={-1} className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple">
-            <Link to="..">Ambities</Link>
-          </button>
-          <button className="bg-pink text-white font-semibold px-2 py-1 drop-shadow-lg z-20 relative hover:bg-purple" onClick={() => scrollTo('#Practices')}>Good practices</button>
-        </div>         */}
       </header>
 
       <div className="fixed top-[350px] right-4 flex flex-col items-center gap-4">
@@ -433,8 +420,7 @@ function AmbitionPage({data}: {data: any}) {
         <div className="mb-2 flex items-center justify-between pt-24">
           <h2 className="text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
             Relevante good practices
-          </h2>
-          {/* <button className="bg-mediumPurple border p-2 text-pink border-pink">Alle cases</button> */}
+          </h2>        
         </div>
         <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">
           Je wil je door nog meer good practices laten inspireren? Ontdek ze{' '}

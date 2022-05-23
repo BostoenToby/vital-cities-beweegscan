@@ -19,12 +19,6 @@ export default () => {
     setCurrentPractices(testJSON)
   }, [])
 
-  // useEffect(() => {
-  //   if (practices) {
-  //     console.log(practices)
-  //   }
-  // }, [practices])
-
   useEffect(() => {
     if (selected && originalPractices && originalPractices.length >= 1) {
       console.log(selected)
