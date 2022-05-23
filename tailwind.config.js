@@ -32,7 +32,7 @@ module.exports = {
       columnbreak: { min: '1136px' },
       navbreak: { min: '1304px' },
       laptopL: { min: '1440px' },
-      '4K': { min: '2560' },
+      '4K': { min: '2560px' },
     },
     colors: {
       neutral: '#F8FAFC',

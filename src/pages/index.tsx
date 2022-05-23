@@ -11,7 +11,7 @@ import AmbitionPage from "./ambitionpage"
 const IndexPage = () => {
   return (
     // <AmbitionPage />
-    <div>
+    <div className="font-poppins">
       <header className="relative top-0 left-0 mb-8 flex h-screen">
         <section className="bg-purple h-auto z-10 relative">
           <div className="mb-28 flex">
@@ -26,7 +26,7 @@ const IndexPage = () => {
             <ArrowDown className="text-lightPurple animate-bounce"/>
           </div>
         </section>
-        <div className="h-screen"><StaticImage src="../images/beweegscan.jpg" alt="header picture" className="z-0 object-cover right-20 top-5 relative hidden tabletportrait:h-tablet tabletportrait:block laptop:h-laptop"/></div>      
+        <div className="h-screen"><StaticImage src="../images/beweegscan.jpg" alt="header picture" className="z-0 object-cover right-20 top-5 relative hidden tabletportrait:h-[575px] tabletportrait:block laptopL:h-laptop"/></div>      
       </header>
       <div className="flex flex-col items-center gap-4 fixed top-[450px] right-4">
         <a href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a>
@@ -36,7 +36,7 @@ const IndexPage = () => {
       <section className="mx-16">
         <h2 className="text-xl font-bold mb-4 tabletportrait:text-3xl laptop:text-4xl">Over de beweegscan</h2>
         <p className="mb-2">Een beweegvriendelijke leefomgeving is een omgeving die mensen faciliteert en stimuleert om te bewegen, te spelen, te sporten en te ontmoeten. Als je dus wil bouwen aan een beweegvriendelijke leefomgeving, dan kan je werk maken van de volgende ambities.</p>
-        <div className="grid grid-cols-4 grid-rows-2 gap-4 flex-col mb-8">
+        <div className="grid grid-cols-1 gap-4 flex-col mb-8 tabletportrait:grid-cols-2 laptop:grid-cols-3 4K:grid-cols-4">
           <Ambitionblock text="Ambitie 1. Actief bewegen en verplaatsen" />
           <Ambitionblock text="Ambitie 2. Verbonden stadskern" />
           <Ambitionblock text="Ambitie 3. Aantrekkelijke en veilige wandel- en fietsroutes" />
@@ -66,11 +66,9 @@ const IndexPage = () => {
       
        
        <div className="flex flex-col items-center tabletportrait:items-end">
-         <a href="#Location" className="hover:text-pink active:text-lightPurple">Sitatie a.d.h.v. locatie</a>
-         <a href="#Problem" className="hover:text-pink active:text-lightPurple">Probleem</a>
-         <a href="#Solution" className="hover:text-pink active:text-lightPurple">Oplossing</a>
-         <a href="#Resources" className="hover:text-pink active:text-lightPurple">Bronnen</a>
-         <a href="#Practices" className="hover:text-pink active:text-lightPurple">Practices</a>
+         <a href="#Location" className="hover:text-pink active:text-lightPurple">Over de beweegscan</a>
+         <a href="#Problem" className="hover:text-pink active:text-lightPurple">In een oogopslag</a>
+         <a href="#Solution" className="hover:text-pink active:text-lightPurple">Inspirerend</a>
        </div>
       </footer>
     </div>
