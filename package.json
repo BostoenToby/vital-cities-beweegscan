@@ -27,6 +27,7 @@
     "gatsby-source-filesystem": "^4.14.0",
     "gatsby-transformer-excel": "^4.14.0",
     "gatsby-transformer-sharp": "^4.14.0",
+    "jspdf": "^2.5.1",
     "lucide-react": "^0.45.0",
     "npm-install-missing": "^0.1.4",
     "react": "^17.0.1",
