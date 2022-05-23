@@ -6,6 +6,8 @@ import { testJSON } from '../data/testPractices'
 import PracticeCard from '../components/practicecard'
 import TestPractice from '../interfaces/testPractice'
 import { ChevronDown } from 'lucide-react'
+import Contactsection from '../components/contactsection'
+import Footer from '../components/footer'
 
 export default () => {
   const [originalPractices, setOriginalPractices] = useState<TestPractice[]>()
@@ -49,7 +51,7 @@ export default () => {
 
   return (
     <div>
-      <TopNavigation />
+      <TopNavigation section="#Contact" />
       <main className="mx-auto my-8 w-full max-w-[104rem] px-5 gridbreak:my-16 gridbreak:px-10">
         <header className="mb-14 flex flex-col gridbreak:flex-row gridbreak:justify-between">
           <h1 className="mb-4 font-poppins text-5xl font-bold text-dark gridbreak:mb-0">
@@ -93,7 +95,10 @@ export default () => {
           </div>
         ) : null}
       </main>
-      <footer>{/* // footer wanneer die er is */}</footer>
+      <div id="Contact">
+        <Contactsection />
+        <Footer nav={false} />
+      </div>
     </div>
   )
 }
