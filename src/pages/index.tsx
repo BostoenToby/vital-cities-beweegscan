@@ -1,11 +1,4 @@
-import scrollTo from 'gatsby-plugin-smoothscroll'
-import {
-  ArrowDown,
-  Copyright,
-  Facebook,
-  Instagram,
-  Twitter,
-} from 'lucide-react'
+import { ArrowDown } from 'lucide-react'
 import * as React from 'react'
 import { StaticImage } from "gatsby-plugin-image"
 import '../assets/tailwind.css'
@@ -21,12 +14,6 @@ import { graphql } from 'gatsby'
 // remove excel files because this can't be processed by Linux
 
 const IndexPage = ({data}: {data: any}) => {
-  const bottomNav: Bron[] = [
-    { naam: 'Over de beweegscan', url: '#Location' },
-    { naam: 'In een oogopslag', url: '#Problem' },
-    { naam: 'Inspirerend', url: '#Solution' },
-  ]
-
   return (
     <div className="font-poppins selection:bg-pink selection:text-white">
       <Topnavigation section="#Contact" />
@@ -53,11 +40,6 @@ const IndexPage = ({data}: {data: any}) => {
           />
         </div>
       </header>
-      <div className="flex flex-col items-center gap-4 fixed top-[350px] right-4">
-        <div className="bg-white rounded-lg p-[2px]"><a tabIndex={2} href="https://www.facebook.com/VitalCitiesHowest/"><Facebook className="fill-black hover:fill-pink stroke-0"/></a></div>
-        <div className="bg-white rounded-lg p-[2px]"><a tabIndex={3} href=""><Twitter className="fill-black hover:fill-pink stroke-0"/></a></div>
-        <div className="bg-white rounded-lg p-[2px]"><a tabIndex={4} href="https://www.instagram.com/vital.cities/?hl=nl"><Instagram className="stroke-black hover:stroke-pink"/></a></div>
-      </div>
       <section className="mx-16">
         <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
           Over de beweegscan
@@ -117,7 +99,7 @@ const IndexPage = ({data}: {data: any}) => {
           Inspirerend
         </h2>
         <p className="mb-2">
-          De inzichten die voorneomde cijfers jou geven, vullen we aan met
+          De inzichten die voornoemde cijfers jou geven, vullen we aan met
           andere onderzoeksresultaten, proven tools en good practises. Zij
           zullen jou beslist inspireren om de beweegvriendelijkheid van jouw
           stad of gemeente nog te verbeteren.
@@ -128,7 +110,7 @@ const IndexPage = ({data}: {data: any}) => {
         </p>
       </section>
       <div id="Contact">
-        <Footer nav={true} items={bottomNav} />
+        <Footer />
       </div>
     </div>
   )

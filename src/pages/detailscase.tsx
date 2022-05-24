@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/tailwind.css'
 import TopNavigation from '../components/topnavigation'
-import { Link } from 'gatsby'
 import TestPractice from '../interfaces/testPractice'
 import { ChevronLeft } from 'lucide-react'
 import { navigate } from 'gatsby'
@@ -68,13 +67,13 @@ export default ({ location }: { location: any }) => {
     <div className="overflow-x-hidden">
       <TopNavigation section="#Contact" />
       <main className="mx-auto my-10 max-w-[104rem] px-5 gridbreak:px-10 columnbreak:my-20">
-        <header className="mb-11 flex flex-row items-center text-center">
-          <ChevronLeft className="mr-6 text-dark opacity-70" />
+        <header>
           <button
-            onClick={() => navigate(-1)}
-            className=" font-poppins text-lg font-semibold text-purple columnbreak:text-2xl"
+            onClick={() => navigate('../overviewpagepractices')}
+            className="mb-11 flex flex-row items-center text-center"
           >
-            naar alle good practices
+            <ChevronLeft className="mr-6 text-dark opacity-70" />
+            <p className="font-poppins text-lg font-semibold text-purple columnbreak:text-2xl">naar overzicht van alle good practices</p>
           </button>
         </header>
         <section className="flex w-full flex-col-reverse columnbreak:h-[520px] columnbreak:flex-row columnbreak:items-center">
@@ -97,6 +96,7 @@ export default ({ location }: { location: any }) => {
                   ))}
                 </div>
               ) : null}
+              <div className="flex flex-wrap"><ThemaCard thema={String(practice?.datum)}/></div>
             </div>
           </div>
           <div className="h-[calc(100vw-40px)] max-h-[520px] w-full columnbreak:w-1/2">
@@ -152,7 +152,7 @@ export default ({ location }: { location: any }) => {
       </main>
       <div id="Contact">
         <Contactsection />
-        <Footer nav={false} />
+        <Footer />
       </div>
     </div>
   )

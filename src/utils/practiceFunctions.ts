@@ -1,10 +1,17 @@
+export const months: string[] = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
+
 export const getColor = (thema: string): string => {
+  console.log(thema)
   if (
     ['transversaal', 'technologie/data', 'participatie'].includes(
       thema.toLowerCase(),
     )
   ) {
     return 'purple'
+  } else if (
+    months.find(element => {if(thema.toLowerCase().includes(element)){return true}})
+  ) {
+    return 'yellow'
   } else {
     return 'pink'
   }

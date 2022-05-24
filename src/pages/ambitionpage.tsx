@@ -1,17 +1,6 @@
 import { graphql, Link } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
-import {
-  ArrowDown,
-  ChevronDown,
-  Copyright,
-  ExternalLink,
-  Facebook,
-  FileText,
-  Instagram,
-  Mail,
-  Phone,
-  Twitter,
-} from 'lucide-react'
+import { ArrowDown, ChevronDown } from 'lucide-react'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import DonutChart from '../components/donutchart'
@@ -22,7 +11,6 @@ import Tag from '../components/tag'
 import Topnavigation from '../components/topnavigation'
 import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
-
 import { allResults, searchList } from '../utils/autoComplete'
 import { goodPractice, HoeWaarom, intBron } from '../interfaces/cmsInterfaces'
 import Textblock from '../components/textblock'
@@ -181,25 +169,6 @@ function AmbitionPage({data}: {data: any}) {
           />
         </div>
       </header>
-
-      <div className="fixed top-[350px] right-4 flex flex-col items-center gap-4">
-        <div className="rounded-lg bg-white p-[2px]">
-          <a href="https://www.facebook.com/VitalCitiesHowest/">
-            <Facebook className="fill-black stroke-0 hover:fill-pink" />
-          </a>
-        </div>
-        <div className="rounded-lg bg-white p-[2px]">
-          <a href="">
-            <Twitter className="fill-black stroke-0 hover:fill-pink" />
-          </a>
-        </div>
-        <div className="rounded-lg bg-white p-[2px]">
-          <a href="https://www.instagram.com/vital.cities/?hl=nl">
-            <Instagram className="stroke-black hover:stroke-pink" />
-          </a>
-        </div>
-      </div>
-
       <section
         className="mx-14 mt-32 grid grid-cols-1 gap-16 laptopL:mt-36"
         id="Location"
@@ -472,8 +441,8 @@ function AmbitionPage({data}: {data: any}) {
           <h2 className="pb-4 text-xl font-bold tabletportrait:text-2xl">
             Benieuwd naar de beweegvriendelijkheid van jouw stad of gemeente?
           </h2>
-          <h4 className="pb-4 text-lg font-semibold tabletportrait:text-xl">
-            Download hier een rapport
+          <h4 className="pb-4 text-lg font-semibold tabletportrait:text-xl text-pink">
+            Download hier jouw rapport
           </h4>
           <p className="pb-4 text-sm tabletportrait:text-lg">
             Vul onderstaande gegevens in en ontvang in jouw mailbox het rapport.
@@ -567,7 +536,7 @@ function AmbitionPage({data}: {data: any}) {
       </section>
 
       <Contactsection />
-      <Footer nav={true} />
+      <Footer />
     </main>
   )
 }

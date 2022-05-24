@@ -25,7 +25,7 @@ export default () => {
       let practices = originalPractices
       let result: TestPractice[] = []
 
-      if (selected !== 'alle practices') {
+      if (selected !== 'filter practices') {
         practices.forEach((p) => {
           if (p.themas.includes(selected)) {
             result.push(p)
@@ -59,7 +59,7 @@ export default () => {
                 onChange={(event) => handleSelect(event)}
                 className="w-max appearance-none border-none p-2 pb-8 pr-8 font-poppins text-2xl font-semibold text-dark text-opacity-70 outline-none group-focus-within:text-purple group-active:text-purple"
               >
-                <option value="alle practices">Alle practices</option>
+                <option value="filter practices">Filter practices</option>
                 <option value="actief bewegen">
                   Actief bewegen & verplaatsen
                 </option>
@@ -91,7 +91,7 @@ export default () => {
       </main>
       <div id="Contact">
         <Contactsection />
-        <Footer nav={false} />
+        <Footer />
       </div>
     </div>
   )

@@ -6,9 +6,6 @@ import {
   Menu,
   X,
   ChevronRight,
-  Facebook,
-  Twitter,
-  Instagram,
 } from 'lucide-react'
 import Logo from './logo'
 import Logoalt from './logoalt'
@@ -69,11 +66,6 @@ export default ({ section }: { section: string }) => {
             </a>
           </div>
           <ul className="my-auto ml-32 flex flex-row font-poppins">
-            <li className="mr-14 text-2xl font-medium text-dark hover:text-mediumPurple">
-              <Link activeStyle={{ color: '#E7348C' }} to="/">
-                Home
-              </Link>
-            </li>
             <li className=" mr-14 text-2xl font-medium text-dark">
               <button
                 className={`hover:text-mediumPurple ${
@@ -118,15 +110,10 @@ export default ({ section }: { section: string }) => {
                 Good practices
               </Link>
             </li>
+            <li className="mr-14 text-2xl font-medium text-dark hover:text-mediumPurple">
+              <a href={section} className="hover:text-mediumPurple">Contact</a>
+            </li>
           </ul>
-          <a href={section} className="my-auto mr-16 ml-auto">
-            <button className="group relative z-auto h-14 rounded-xl border-2 border-purple bg-pink hover:border-pink hover:bg-purple">
-              <div className="absolute top-1 left-1 z-[-1] h-full w-full rounded-xl bg-purple group-hover:bg-pink"></div>
-              <p className="px-6 font-poppins text-2xl font-medium text-white">
-                Contacteer ons
-              </p>
-            </button>
-          </a>
         </nav>
       ) : (
         <div>
@@ -166,12 +153,6 @@ export default ({ section }: { section: string }) => {
               </a>
             </header>
             <ul className="font-poppins">
-              <li className="my-6 text-2xl font-medium text-white">
-                <Link to="/" className="flex flex-row items-center">
-                  <p>Home</p>
-                  <ChevronRight size={24} className="ml-6 text-white" />
-                </Link>
-              </li>
               <li className="my-6 text-2xl font-medium text-white">
                 <button
                   className="flex flex-row items-center"
@@ -222,22 +203,11 @@ export default ({ section }: { section: string }) => {
                 onClick={() => handleSideBar()}
               >
                 <a href={section} className="flex flex-row items-center">
-                  <p>Contacteer ons</p>
+                  <p>Contact</p>
                   <ChevronRight size={24} className="ml-6 text-white" />
                 </a>
               </li>
             </ul>
-            <footer className="mt-16 flex flex-row">
-              <a href="https://www.facebook.com/VitalCitiesHowest/">
-                <Facebook size={24} className=" mr-10 text-white" />
-              </a>
-              <a href="#">
-                <Twitter size={24} className=" mr-10 text-white" href="#" />
-              </a>
-              <a href="https://www.instagram.com/vital.cities/?hl=nl">
-                <Instagram size={24} className=" mr-10 text-white" />
-              </a>
-            </footer>
           </nav>
         </div>
       )}
