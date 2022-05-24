@@ -24,6 +24,7 @@ import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
 
 import { allResults, searchList } from '../utils/autoComplete'
+import Darkmodetoggle from '../components/darkmodetoggle'
 import { goodPractice, HoeWaarom, intBron } from '../interfaces/cmsInterfaces'
 import Textblock from '../components/textblock'
 
@@ -557,7 +558,7 @@ function AmbitionPage({data}: {data: any}) {
             />
 
             <button
-              className="z-0 mt-8 border-2 border-pink bg-pink px-2 py-1 text-white hover:bg-white hover:text-pink focus:bg-white focus:text-pink focus:font-semibold"
+              className="z-0 mt-8 border-2 border-pink bg-pink px-2 py-1 text-white hover:bg-white hover:text-pink focus:bg-white focus:font-semibold focus:text-pink"
               onClick={() => checkInfo()}
             >
               Maak rapport
