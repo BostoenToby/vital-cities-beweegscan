@@ -3,11 +3,7 @@ import '../assets/tailwind.css'
 import ThemeContext from '../context/themecontext'
 
 import { Link } from 'gatsby'
-import {
-  Menu,
-  X,
-  ChevronRight,
-} from 'lucide-react'
+import { Menu, X, ChevronRight } from 'lucide-react'
 import Logo from './logo'
 import Logoalt from './logoalt'
 import { useLocation } from '@reach/router'
@@ -58,7 +54,7 @@ export default ({ section }: { section: string }) => {
   return (
     <ThemeContext.Consumer>
       {(context) => (
-        <div className="sticky top-0 z-20 w-max navbreak:w-screen">
+        <div className="sticky top-0 z-20 w-max navbreak:w-full">
           {isFullsize ? (
             <nav className="flex h-24 w-full flex-row border-b-2 border-dark border-opacity-60 bg-white drop-shadow-sm">
               <div className="flex h-full w-32 flex-col justify-center bg-yellow">
@@ -117,12 +113,14 @@ export default ({ section }: { section: string }) => {
                   </Link>
                 </li>
                 <li className="mr-14 text-2xl font-medium text-dark hover:text-mediumPurple">
-                  <a className="hover:text-mediumPurple" href={section}>Contact</a>
-                </li>
-                <li className="flex items-center">
-                  <Darkmodetoggle />
+                  <a className="hover:text-mediumPurple" href={section}>
+                    Contact
+                  </a>
                 </li>
               </ul>
+              <div className="ml-auto mr-16 flex items-center">
+                <Darkmodetoggle />
+              </div>
             </nav>
           ) : (
             <div>
@@ -144,7 +142,7 @@ export default ({ section }: { section: string }) => {
                 </div>
               </nav>
               <nav
-                className={`fixed left-0 top-0 h-screen w-screen max-w-sm overflow-y-auto bg-purple pt-4 pr-4 pl-8 pb-8 ${
+                className={`fixed left-0 top-0 h-screen w-full max-w-sm overflow-y-auto bg-purple pt-4 pr-4 pl-8 pb-8 ${
                   !showSideNav ? 'hidden' : ''
                 }`}
               >

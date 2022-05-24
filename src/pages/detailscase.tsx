@@ -73,14 +73,19 @@ export default ({ location }: { location: any }) => {
             className="mb-11 flex flex-row items-center text-center"
           >
             <ChevronLeft className="mr-6 text-dark opacity-70" />
-            <p className="font-poppins text-lg font-semibold text-purple columnbreak:text-2xl">naar overzicht van alle good practices</p>
+            <p className="font-poppins text-lg font-semibold text-purple columnbreak:text-2xl">
+              naar overzicht van alle good practices
+            </p>
           </button>
         </header>
         <section className="flex w-full flex-col-reverse columnbreak:h-[520px] columnbreak:flex-row columnbreak:items-center">
           <div className="h-max w-full bg-purple bg-opacity-10 p-7 pb-5 font-poppins columnbreak:w-1/2 columnbreak:p-14 columnbreak:pb-10">
-            <h1 className="mb-5 font-poppins text-2xl font-bold text-dark columnbreak:text-5xl">
+            <h1 className="mb-5 text-2xl font-bold text-dark columnbreak:text-5xl">
               {practice?.titel}
             </h1>
+            <h3 className="mb-5 text-lg font-semibold text-purple">
+              {practice?.datum}
+            </h3>
             <div>
               {ambities && ambities.length >= 1 ? (
                 <div className="flex flex-row flex-wrap">
@@ -96,7 +101,6 @@ export default ({ location }: { location: any }) => {
                   ))}
                 </div>
               ) : null}
-              <div className="flex flex-wrap"><ThemaCard thema={String(practice?.datum)}/></div>
             </div>
           </div>
           <div className="h-[calc(100vw-40px)] max-h-[520px] w-full columnbreak:w-1/2">

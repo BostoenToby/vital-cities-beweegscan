@@ -8,10 +8,6 @@ export const getColor = (thema: string): string => {
     )
   ) {
     return 'purple'
-  } else if (
-    months.find(element => {if(thema.toLowerCase().includes(element)){return true}})
-  ) {
-    return 'yellow'
   } else {
     return 'pink'
   }
