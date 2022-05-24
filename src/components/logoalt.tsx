@@ -2,7 +2,12 @@ import * as React from 'react'
 import { SVGProps } from 'react'
 
 export default (props: SVGProps<SVGSVGElement>) => (
-  <svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 190 116" {...props}>
+  <svg
+    id="a"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 251 133"
+    {...props}
+  >
     <defs>
       <pattern
         id="k2"
@@ -10,7 +15,6 @@ export default (props: SVGProps<SVGSVGElement>) => (
         y={0}
         width={24}
         height={24}
-        patternTransform="translate(-30.5 -8.5)"
         patternUnits="userSpaceOnUse"
       >
         <path className="r" d="M0 0h24v24H0z" />
@@ -32,22 +36,22 @@ export default (props: SVGProps<SVGSVGElement>) => (
       style={{
         fill: '#fff',
       }}
-      d="M164.5 67.5H18.9l-7.51-59h145.59l7.52 59z"
+      d="M195 76H49.4l-7.51-59h145.59L195 76z"
     />
     <path
       id="c"
       style={{
         fill: '#e7358b',
       }}
-      d="M187.93 67.5H19.13l-16.24 40h168.8l16.24-40z"
+      d="M218.43 76H49.63l-16.24 40h168.8l16.24-40z"
     />
     <g id="d">
-      <path className="p" d="m136.5 87.44-14-8.94.06 18 13.94-9.06z" />
-      <path className="p" d="m149 87.44-14-8.94.06 18L149 87.44z" />
-      <path className="p" d="M148.5 78.5h7v18h-7z" />
+      <path className="p" d="M167 95.94 153 87l.06 18L167 95.94z" />
+      <path className="p" d="m179.5 95.94-14-8.94.06 18 13.94-9.06z" />
+      <path className="p" d="M179 87h7v18h-7z" />
     </g>
     <text
-      transform="matrix(1.01 0 0 1 35.5 96.16)"
+      transform="matrix(1.01 0 0 1 66 104.66)"
       style={{
         fontFamily: 'Poppins-SemiBold,Poppins',
         fontSize: '28.4px',
@@ -59,17 +63,17 @@ export default (props: SVGProps<SVGSVGElement>) => (
       </tspan>
     </text>
     <g id="e">
-      <path id="f" className="q" d="m29.5 22.66 28-.16-15.01 32L29.5 22.66z" />
-      <path id="g" className="q" d="M62 22.5h8v32h-8z" />
-      <path id="h" className="q" d="M74 23h24v8H74z" />
+      <path id="f" className="q" d="M60 31.16 88 31 72.99 63 60 31.16z" />
+      <path id="g" className="q" d="M92.5 31h8v32h-8z" />
+      <path id="h" className="q" d="M104.5 31.5h24v8h-24z" />
       <path
         id="i"
         className="q"
-        d="m123.41 54.19-28 .16 15.01-32 12.99 31.84z"
+        d="m153.91 62.69-28 .16 15.01-32 12.99 31.84z"
       />
-      <path id="j" className="q" d="M125.5 22.02h8v32h-8z" />
-      <path id="l" className="t2" d="M81.5 30.5h9v24h-9z" />
-      <path id="m" className="t2" d="M133 54v-9.5h17.5V54H133z" />
+      <path id="j" className="q" d="M156 30.52h8v32h-8z" />
+      <path id="l" className="t2" d="M112 39h9v24h-9z" />
+      <path id="m" className="t2" d="M163.5 62.5V53H181v9.5h-17.5z" />
     </g>
   </svg>
 )
