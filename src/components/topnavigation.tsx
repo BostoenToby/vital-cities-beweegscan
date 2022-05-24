@@ -8,6 +8,7 @@ import Logo from './logo'
 import Logoalt from './logoalt'
 import { useLocation } from '@reach/router'
 import Darkmodetoggle from './darkmodetoggle'
+import { text } from 'stream/consumers'
 
 export default ({ section }: { section: string }) => {
   const [isFullsize, setFullsize] = useState(false)
@@ -57,11 +58,17 @@ export default ({ section }: { section: string }) => {
         <div className="sticky top-0 z-20 w-max navbreak:w-full">
           {isFullsize ? (
             <nav
-              className={`flex h-24 w-full flex-row border-b-2 border-dark border-opacity-60 bg-white drop-shadow-sm ${
-                context.dark ? '' : ''
+              className={`flex h-24 w-full flex-row drop-shadow-sm ${
+                context.dark
+                  ? ' bg-darkGray'
+                  : 'border-b-2 border-dark border-opacity-60 bg-white'
               }`}
             >
-              <div className="flex h-full w-32 flex-col justify-center bg-yellow">
+              <div
+                className={`flex h-full w-32 flex-col justify-center ${
+                  context.dark ? 'bg-darkGray' : 'bg-yellow'
+                }`}
+              >
                 <a
                   className="absolute left-16 flex h-20 w-auto"
                   href="https://vitalcities.be/"
@@ -69,55 +76,126 @@ export default ({ section }: { section: string }) => {
                   {context.dark ? <Logoalt /> : <Logo />}
                 </a>
               </div>
-              <ul className="my-auto ml-32 flex flex-row font-poppins">
-                <li className=" mr-14 ">
+              <ul
+                className={`my-auto ml-32 flex flex-row font-poppins text-2xl font-medium ${
+                  context.dark ? 'text-white text-opacity-75' : 'text-dark'
+                }`}
+              >
+                <li className="mr-14">
                   <button
-                    className={`text-2xl font-medium text-dark hover:text-mediumPurple ${
-                      isAmbitions ? 'text-pink' : ''
-                    }`}
+                    className={
+                      context.dark
+                        ? isAmbitions
+                          ? 'text-white text-opacity-100'
+                          : 'hover:text-lightPurpleDesat'
+                        : isAmbitions
+                        ? 'text-pink'
+                        : 'hover:text-mediumPurple'
+                    }
                     onClick={() => handleAmbitions()}
                   >
                     Ambities
                   </button>
                   {showAmbitions ? (
-                    <ul className=" absolute top-[4.5rem] rounded-md border-[1px] border-lightGray bg-white drop-shadow-lg">
-                      <li className=" rounded-t-md border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                    <ul
+                      className={` absolute top-[4.5rem] rounded-md border-[1px] border-lightGray text-lg font-medium drop-shadow-lg ${
+                        context.dark
+                          ? 'border-opacity-50 bg-darkGray'
+                          : 'bg-white'
+                      }`}
+                    >
+                      <li
+                        className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
+                          context.dark
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple '
+                        }`}
+                      >
                         <Link to="/ambitionpage">
                           Actief bewegen & verplaatsen
                         </Link>
                       </li>
-                      <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                      <li
+                        className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
+                          context.dark
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple '
+                        }`}
+                      >
                         <Link to="/ambitionpage">verbonden stadskern</Link>
                       </li>
-                      <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                      <li
+                        className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
+                          context.dark
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple '
+                        }`}
+                      >
                         <Link to="/ambitionpage">Fiets- & wandelroutes</Link>
                       </li>
-                      <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                      <li
+                        className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
+                          context.dark
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple '
+                        }`}
+                      >
                         <Link to="/ambitionpage">Sporten</Link>
                       </li>
-                      <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                      <li
+                        className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
+                          context.dark
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple '
+                        }`}
+                      >
                         <Link to="/ambitionpage">Spelen</Link>
                       </li>
-                      <li className=" border-b-[1px] border-lightGray p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                      <li
+                        className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
+                          context.dark
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple '
+                        }`}
+                      >
                         <Link to="/ambitionpage">Ontmoeten</Link>
                       </li>
-                      <li className="  rounded-b-md p-4 text-lg font-medium text-dark hover:bg-neutral hover:text-mediumPurple">
+                      <li
+                        className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
+                          context.dark
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple '
+                        }`}
+                      >
                         <Link to="/ambitionpage">Groen</Link>
                       </li>
                     </ul>
                   ) : null}
                 </li>
-                <li className=" mr-14 text-2xl font-medium text-dark hover:text-mediumPurple">
+                <li className=" mr-14">
                   <Link
-                    activeStyle={{ color: '#E7348C' }}
+                    activeStyle={{
+                      color: context.dark ? '#ffffff' : '#E7348C',
+                    }}
                     to="/overviewpagepractices"
-                    className="hover:text-mediumPurple"
+                    className={
+                      context.dark
+                        ? 'hover:text-lightPurpleDesat'
+                        : 'hover:text-mediumPurple'
+                    }
                   >
                     Good practices
                   </Link>
                 </li>
-                <li className="mr-14 text-2xl font-medium text-dark hover:text-mediumPurple">
-                  <a className="hover:text-mediumPurple" href={section}>
+                <li className="mr-14 hover:text-mediumPurple">
+                  <a
+                    className={
+                      context.dark
+                        ? 'hover:text-lightPurpleDesat'
+                        : 'hover:text-mediumPurple'
+                    }
+                    href={section}
+                  >
                     Contact
                   </a>
                 </li>
@@ -129,11 +207,17 @@ export default ({ section }: { section: string }) => {
           ) : (
             <div>
               <nav className="h-24">
-                <div className="flex h-full w-32 flex-col justify-center bg-yellow">
+                <div
+                  className={`flex h-full w-32 flex-col justify-center ${
+                    context.dark ? 'bg-darkGray' : 'bg-yellow'
+                  }`}
+                >
                   <div>
                     <Menu
                       size={32}
-                      className="m-8 text-dark"
+                      className={`m-8 ${
+                        context.dark ? 'text-white' : 'text-dark'
+                      }`}
                       onClick={() => handleSideBar()}
                     />
                   </div>
@@ -146,9 +230,9 @@ export default ({ section }: { section: string }) => {
                 </div>
               </nav>
               <nav
-                className={`fixed left-0 top-0 h-screen w-full max-w-sm overflow-y-auto bg-purple pt-4 pr-4 pl-8 pb-8 ${
+                className={`fixed left-0 top-0 h-screen w-full max-w-sm overflow-y-auto pt-4 pr-4 pl-8 pb-8 ${
                   !showSideNav ? 'hidden' : ''
-                }`}
+                } ${context.dark ? 'bg-darkGray' : 'bg-purple'}`}
               >
                 <header className="mt-4 mb-16 flex flex-row">
                   <X

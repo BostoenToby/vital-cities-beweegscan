@@ -38,7 +38,7 @@ module.exports = {
       neutral: '#F8FAFC',
       gray: '#475569',
       lightGray: '#D3D3D3',
-      darkGray: '#707070',
+      darkGray: '#2E2E2E',
       pink: '#e7358b',
       lightPink: '#EEE3FF',
       lightxPink: '#F7F2FF',
