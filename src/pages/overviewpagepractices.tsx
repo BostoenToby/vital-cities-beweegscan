@@ -46,7 +46,7 @@ export default () => {
   return (
     <div>
       <TopNavigation section="#Contact" />
-      <main className="mx-auto my-8 w-full max-w-[104rem] px-5 gridbreak:my-16 gridbreak:px-10">
+      <main className="mx-auto my-8 w-full max-w-[104rem] px-3 gridbreak:my-16 gridbreak:px-10">
         <header className="mb-14 flex flex-col gridbreak:flex-row gridbreak:justify-between">
           <h1 className="mb-4 font-poppins text-5xl font-bold text-dark gridbreak:mb-0">
             Good practices

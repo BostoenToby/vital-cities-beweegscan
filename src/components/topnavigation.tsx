@@ -56,7 +56,11 @@ export default ({ section }: { section: string }) => {
       {(context) => (
         <div className="sticky top-0 z-20 w-max navbreak:w-full">
           {isFullsize ? (
-            <nav className="flex h-24 w-full flex-row border-b-2 border-dark border-opacity-60 bg-white drop-shadow-sm">
+            <nav
+              className={`flex h-24 w-full flex-row border-b-2 border-dark border-opacity-60 bg-white drop-shadow-sm ${
+                context.dark ? '' : ''
+              }`}
+            >
               <div className="flex h-full w-32 flex-col justify-center bg-yellow">
                 <a
                   className="absolute left-16 flex h-20 w-auto"
@@ -66,9 +70,9 @@ export default ({ section }: { section: string }) => {
                 </a>
               </div>
               <ul className="my-auto ml-32 flex flex-row font-poppins">
-                <li className=" mr-14 text-2xl font-medium text-dark">
+                <li className=" mr-14 ">
                   <button
-                    className={`hover:text-mediumPurple ${
+                    className={`text-2xl font-medium text-dark hover:text-mediumPurple ${
                       isAmbitions ? 'text-pink' : ''
                     }`}
                     onClick={() => handleAmbitions()}

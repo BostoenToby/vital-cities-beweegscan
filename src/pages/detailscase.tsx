@@ -66,7 +66,7 @@ export default ({ location }: { location: any }) => {
   return (
     <div className="overflow-x-hidden">
       <TopNavigation section="#Contact" />
-      <main className="mx-auto my-10 max-w-[104rem] px-5 gridbreak:px-10 columnbreak:my-20">
+      <main className="mx-auto my-10 max-w-[104rem] px-3 gridbreak:px-10 columnbreak:my-20">
         <header>
           <button
             onClick={() => navigate('../overviewpagepractices')}
