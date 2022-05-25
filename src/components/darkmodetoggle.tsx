@@ -9,9 +9,13 @@ export default () => {
       {(context) => (
         <button
           onClick={() => context.setDark(!context.dark)}
-          className="text-white hover:text-mediumPurple navbreak:text-black"
+          className={`text-white ${
+            context.dark
+              ? 'navbreak:text-white navbreak:hover:text-lightPurpleDesat'
+              : 'navbreak:text-black navbreak:hover:text-mediumPurple'
+          }`}
         >
-          {context.dark ? <Moon /> : <Sun />}
+          {context.dark ? <Moon size={32} /> : <Sun size={32} />}
         </button>
       )}
     </ThemeContext.Consumer>

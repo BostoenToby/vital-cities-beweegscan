@@ -1,6 +1,6 @@
 import { ArrowDown } from 'lucide-react'
 import * as React from 'react'
-import { StaticImage } from "gatsby-plugin-image"
+import { StaticImage } from 'gatsby-plugin-image'
 import '../assets/tailwind.css'
 import Ambitionblock from '../components/ambitionblock'
 import Contactsection from '../components/contactsection'
@@ -11,34 +11,37 @@ import AmbitionPage from './ambitionpage'
 import Pdf from '../components/pdf'
 import { graphql } from 'gatsby'
 
-const IndexPage = ({data}: {data: any}) => {
+// remove excel files because this can't be processed by Linux
+
+const IndexPage = ({ data }: { data: any }) => {
   return (
-    <div className="font-poppins selection:bg-pink selection:text-white">
+    <div className=" font-poppins font-light selection:bg-pink selection:text-white">
       <Topnavigation section="#Contact" />
-      <header className="relative top-0 left-0 mb-8 flex h-screen">
-        <section className="relative z-10 h-auto bg-purple">
-          <div className="mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
-            <h1 className="mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">
-              Beweegscan van Vital Cities
-            </h1>
-            <h2 className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
-              Meet de beweegvriendelijkheid van jouw stad of gemeente en vind de
-              inspiratie om die nog te verbeteren
-            </h2>
-            <p className="mb-2 font-semibold text-lightPurple">scroll</p>
-            <ArrowDown className="animate-bounce text-lightPurple" />
-          </div>
+      <div className="absolute top-0 left-0 h-24 w-full bg-purple tabletportrait:w-1/2"></div>
+      <div className="absolute top-0 right-0 hidden h-24 w-full bg-white tabletportrait:block tabletportrait:w-1/2"></div>
+      <div className="absolute top-0 right-0 hidden h-24 w-full bg-purple tabletportrait:block tabletportrait:w-1/2 columnbreak:bg-white"></div>
+      <header className="flex w-full flex-col columnbreak:flex-row columnbreak:items-center laptopXL:bg-purple">
+        <section className="h-full w-full bg-purple p-7 pb-5 columnbreak:w-1/2 columnbreak:p-14 columnbreak:pb-10">
+          <h1 className="mb-8 max-w-2xl font-raleway text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
+            Beweegscan van Vital Cities
+          </h1>
+          <p className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
+            Meet de beweegvriendelijkheid van jouw stad of gemeente en vind de
+            inspiratie om die nog te verbeteren
+          </p>
+          <p className="mb-2 font-semibold text-lightPurple">scroll</p>
+          <ArrowDown className="animate-bounce text-lightPurple" />
         </section>
-        <div className="h-screen">
+        <section className="h-full w-full columnbreak:w-1/2">
           <StaticImage
             src="../images/beweegscan.jpg"
             alt="header picture"
-            className="relative right-20 top-6 z-0 hidden object-cover tabletportrait:block tabletportrait:h-[575px] laptopL:h-laptop"
+            className="h-full w-full"
           />
-        </div>
+        </section>
       </header>
-      <section className="mx-16">
-        <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+      <main className="mx-4 my-8 mobile:mx-8 columnbreak:my-16 columnbreak:mx-16">
+        <h2 className="mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
           Over de beweegscan
         </h2>
         <p className="mb-2">
@@ -74,7 +77,7 @@ const IndexPage = ({data}: {data: any}) => {
             text="Bruikbaar, gevarieerd en voldoende groen"
           />
         </div>
-        <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+        <h2 className="mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
           In een oogopslag
         </h2>
         <p className="mb-2">
@@ -92,7 +95,7 @@ const IndexPage = ({data}: {data: any}) => {
           kan zijn (want beter scoort dan het Vlaams gemiddelde), dan wel wat
           nog beter kan (want minder goed scoort).
         </p>
-        <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+        <h2 className="mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
           Inspirerend
         </h2>
         <p className="mb-2">
@@ -105,8 +108,9 @@ const IndexPage = ({data}: {data: any}) => {
           Om je te laten inspireren: klik in het overzicht van de ambities op
           één ervan.
         </p>
-      </section>
+      </main>
       <div id="Contact">
+        <Contactsection />
         <Footer />
       </div>
     </div>

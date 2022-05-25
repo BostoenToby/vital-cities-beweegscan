@@ -13,7 +13,7 @@ export default () => {
            <StaticImage
              src="../images/howest-logo_wit.png"
              alt="Howest logo"
-             className="w-14 tabletportrait:w-20"
+             className="w-14 tabletportrait:w-20 tabletportrait:mr-36"
            />
          </a>
        <a href="https://vitalcities.be/">

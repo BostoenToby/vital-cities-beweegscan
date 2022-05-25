@@ -1,13 +1,18 @@
 module.exports = {
   content: ['**/*.{tsx,html}'],
+  important: true,
   theme: {
     extend: {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
+        raleway: [
+          'Raleway',
+          'sans-serif',
+        ],
       },
       height: {
-        tablet: '38rem',
-        laptop: '42rem',
+        tablet: '34rem',
+        laptop: '46rem',
       },
     },
     fontWeight: {
@@ -32,12 +37,14 @@ module.exports = {
       columnbreak: { min: '1136px' },
       navbreak: { min: '1304px' },
       laptopL: { min: '1440px' },
-      '4K': { min: '2560px' },
+      laptopXL: {min: '1680px'},
+      '4K': { min: '2184px' },
     },
     colors: {
       neutral: '#F8FAFC',
       gray: '#475569',
       lightGray: '#D3D3D3',
+      darkGray: '#2E2E2E',
       pink: '#e7358b',
       lightPink: '#EEE3FF',
       lightxPink: '#F7F2FF',
@@ -51,8 +58,14 @@ module.exports = {
       red: '#FF0000',
       white: '#ffffff',
       black: '#000000',
-      dark: '#121729',
+      dark: '#121212',
       lightRed: '#F6C4D3',
+      lightPurpleDesat: '#BB86FC',
+      purpleDesat: '#3E226D',
+      pinkDesat: '#BC2D73',
+      yellowDesat: '#CAA325',
+      grayGreen: '#455250',
+      redDesat: '#CF6679',
     },
   },
   plugins: [require('@tailwindcss/line-clamp')],

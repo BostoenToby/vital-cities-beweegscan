@@ -23,7 +23,7 @@ const config: GatsbyConfig = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Poppins', 'Droid Serif'],
+          families: ['Poppins', 'Raleway&display=swap', 'Droid Serif'],
         },
       },
     },
@@ -45,8 +45,8 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `intbron`,
-        path: `${__dirname}/src/cms`
-      }
+        path: `${__dirname}/src/cms`,
+      },
     },
     {
       resolve: `gatsby-plugin-sharp`,
@@ -62,7 +62,7 @@ const config: GatsbyConfig = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-netlify-cms`,
-    `gatsby-transformer-remark`
+    `gatsby-transformer-remark`,
   ],
 }
 

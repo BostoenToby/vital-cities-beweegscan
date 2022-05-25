@@ -9,6 +9,7 @@ import PracticeParagraph from '../components/practiseparagraph'
 import { findIndexesSubstring } from '../utils/practiceFunctions'
 import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
+import ThemeContext from '../context/themecontext'
 
 export default ({ location }: { location: any }) => {
   const [practice, setPractice] = useState<TestPractice>()
@@ -64,96 +65,138 @@ export default ({ location }: { location: any }) => {
   }, [practice])
 
   return (
-    <div className="overflow-x-hidden">
-      <TopNavigation section="#Contact" />
-      <main className="mx-auto my-10 max-w-[104rem] px-5 gridbreak:px-10 columnbreak:my-20">
-        <header>
-          <button
-            onClick={() => navigate('../overviewpagepractices')}
-            className="mb-11 flex flex-row items-center text-center"
-          >
-            <ChevronLeft className="mr-6 text-dark opacity-70" />
-            <p className="font-poppins text-lg font-semibold text-purple columnbreak:text-2xl">naar overzicht van alle good practices</p>
-          </button>
-        </header>
-        <section className="flex w-full flex-col-reverse columnbreak:h-[520px] columnbreak:flex-row columnbreak:items-center">
-          <div className="h-max w-full bg-purple bg-opacity-10 p-7 pb-5 font-poppins columnbreak:w-1/2 columnbreak:p-14 columnbreak:pb-10">
-            <h1 className="mb-5 font-poppins text-2xl font-bold text-dark columnbreak:text-5xl">
-              {practice?.titel}
-            </h1>
-            <div>
-              {ambities && ambities.length >= 1 ? (
-                <div className="flex flex-row flex-wrap">
-                  {ambities.map((e, i) => (
-                    <ThemaCard thema={e} />
-                  ))}
-                </div>
-              ) : null}
-              {overigeThemas && overigeThemas.length >= 1 ? (
-                <div className="flex flex-row flex-wrap">
-                  {overigeThemas.map((e, i) => (
-                    <ThemaCard thema={e} />
-                  ))}
-                </div>
-              ) : null}
-              <div className="flex flex-wrap"><ThemaCard thema={String(practice?.datum)}/></div>
-            </div>
-          </div>
-          <div className="h-[calc(100vw-40px)] max-h-[520px] w-full columnbreak:w-1/2">
-            <div className="h-full w-full bg-gray opacity-50"></div>
-          </div>
-        </section>
-        <section>
-          {practice &&
-          practice.paragrafen &&
-          practice.paragrafen.length >= 1 ? (
-            <div className="gap-x-12 px-2 py-14 columnbreak:columns-2 columnbreak:px-6">
-              {practice.warning ? (
-                <div className="mb-8 bg-lightRed p-4 font-poppins">
-                  <h2 className="mb-1 text-2xl font-bold text-dark columnbreak:text-3xl">
-                    {practice.warning.header}
-                  </h2>
-                  <p className="ml-2 text-base font-medium text-dark columnbreak:text-lg">
-                    {practice.warning.body}
-                  </p>
-                </div>
-              ) : null}
-              {practice.paragrafen.map((e, i) => (
-                <PracticeParagraph paragraaf={e} />
-              ))}
-              {practice.extra && practice.extra.length >= 1 ? (
+    <ThemeContext.Consumer>
+      {(context) => (
+        <div className={` ${context.dark ? 'bg-dark' : ''}`}>
+          <TopNavigation section="#Contact" />
+          <main className="mx-auto my-10 max-w-[104rem] px-3 font-poppins gridbreak:px-10 columnbreak:my-20">
+            <header>
+              <button
+                onClick={() => navigate('../overviewpagepractices')}
+                className="mb-11 flex flex-row items-center text-center"
+              >
+                <ChevronLeft
+                  className={`mr-6 opacity-70 ${
+                    context.dark ? 'text-white' : 'text-dark'
+                  }`}
+                />
+                <p
+                  className={` text-lg font-semibold columnbreak:text-2xl ${
+                    context.dark ? 'text-white text-opacity-90' : 'text-purple'
+                  }`}
+                >
+                  naar overzicht van alle good practices
+                </p>
+              </button>
+            </header>
+            <section className="flex w-full flex-col-reverse columnbreak:h-[520px] columnbreak:flex-row columnbreak:items-center">
+              <div
+                className={`h-max w-full  p-7 pb-5  columnbreak:w-1/2 columnbreak:p-14 columnbreak:pb-10 ${
+                  context.dark
+                    ? 'bg-white bg-opacity-[0.08]'
+                    : 'bg-purple bg-opacity-10'
+                }`}
+              >
+                <h1
+                  className={`mb-5 text-2xl font-bold columnbreak:text-5xl ${
+                    context.dark ? 'text-white' : 'text-dark '
+                  }`}
+                >
+                  {practice?.titel}
+                </h1>
+                <h3
+                  className={`mb-5 text-lg font-semibold  ${
+                    context.dark ? 'text-white text-opacity-75' : 'text-purple'
+                  }`}
+                >
+                  {practice?.datum}
+                </h3>
                 <div>
-                  <h2 className="mb-6 text-2xl font-bold text-purple columnbreak:text-3xl">
-                    Meer weten
-                  </h2>
-                  <ul>
-                    {practice.extra.map((e, i) => (
-                      <li className="mb-6">
-                        {e.url ? (
-                          <a
-                            className=" font-poppins text-base font-semibold text-purple underline columnbreak:text-lg"
-                            href={e.url}
+                  {ambities && ambities.length >= 1 ? (
+                    <div className="flex flex-row flex-wrap">
+                      {ambities.map((e, i) => (
+                        <ThemaCard thema={e} key={i} />
+                      ))}
+                    </div>
+                  ) : null}
+                  {overigeThemas && overigeThemas.length >= 1 ? (
+                    <div className="flex flex-row flex-wrap">
+                      {overigeThemas.map((e, i) => (
+                        <ThemaCard thema={e} key={i} />
+                      ))}
+                    </div>
+                  ) : null}
+                </div>
+              </div>
+              <div className="h-[calc(100vw-40px)] max-h-[520px] w-full columnbreak:w-1/2">
+                <div className="h-full w-full bg-gray opacity-50"></div>
+              </div>
+            </section>
+            <section>
+              {practice &&
+              practice.paragrafen &&
+              practice.paragrafen.length >= 1 ? (
+                <div className="gap-x-12 px-2 py-14 columnbreak:columns-2 columnbreak:px-6">
+                  {practice.warning ? (
+                    <div
+                      className={`mb-8 p-4 text-dark ${
+                        context.dark
+                          ? 'bg-redDesat bg-opacity-90'
+                          : 'bg-lightRed'
+                      }`}
+                    >
+                      <h2 className="mb-1 text-2xl font-bold columnbreak:text-3xl">
+                        {practice.warning.header}
+                      </h2>
+                      <p className="ml-2 text-base font-medium columnbreak:text-lg">
+                        {practice.warning.body}
+                      </p>
+                    </div>
+                  ) : null}
+                  {practice.paragrafen.map((e, i) => (
+                    <PracticeParagraph paragraaf={e} key={i} />
+                  ))}
+                  {practice.extra && practice.extra.length >= 1 ? (
+                    <div>
+                      <h2
+                        className={`mb-6 text-2xl font-bold columnbreak:text-3xl ${
+                          context.dark ? 'text-white' : 'text-purple'
+                        }`}
+                      >
+                        Meer weten
+                      </h2>
+                      <ul>
+                        {practice.extra.map((e, i) => (
+                          <li
+                            className={`mb-6 text-base font-semibold columnbreak:text-lg ${
+                              context.dark
+                                ? 'text-lightPurpleDesat text-opacity-80'
+                                : 'text-purple '
+                            }`}
+                            key={i}
                           >
-                            {e.naam ? e.naam : e.url}
-                          </a>
-                        ) : (
-                          <a className=" column-break:text-lg font-poppins text-base font-semibold text-purple">
-                            {e.naam}
-                          </a>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
+                            {e.url ? (
+                              <a className=" underline" href={e.url}>
+                                {e.naam ? e.naam : e.url}
+                              </a>
+                            ) : (
+                              <a>{e.naam}</a>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
                 </div>
               ) : null}
-            </div>
-          ) : null}
-        </section>
-      </main>
-      <div id="Contact">
-        <Contactsection />
-        <Footer />
-      </div>
-    </div>
+            </section>
+          </main>
+          <div id="Contact">
+            <Contactsection />
+            <Footer />
+          </div>
+        </div>
+      )}
+    </ThemeContext.Consumer>
   )
 }

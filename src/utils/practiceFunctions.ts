@@ -1,19 +1,22 @@
-export const months: string[] = ['januari', 'februari', 'maart', 'april', 'mei', 'juni', 'juli', 'augustus', 'september', 'oktober', 'november', 'december']
-
-export const getColor = (thema: string): string => {
-  console.log(thema)
+export const getColor = (thema: string, dark: boolean): string => {
+  console.log(dark)
   if (
     ['transversaal', 'technologie/data', 'participatie'].includes(
       thema.toLowerCase(),
     )
   ) {
-    return 'purple'
-  } else if (
-    months.find(element => {if(thema.toLowerCase().includes(element)){return true}})
-  ) {
-    return 'yellow'
+    if (dark) {
+      console.log('Ok')
+      return 'purpleDesat'
+    } else {
+      return 'purple'
+    }
   } else {
-    return 'pink'
+    if (dark) {
+      return 'pinkDesat'
+    } else {
+      return 'pink'
+    }
   }
 }
 
@@ -37,14 +40,29 @@ export const checkIfRegular = (header: string): boolean => {
   }
 }
 
-export const getParagraphBackground = (header: string): string => {
+export const getParagraphBackground = (
+  header: string,
+  dark: boolean,
+): string => {
   switch (header.toLowerCase()) {
     case 'hardware':
-      return 'bg-yellow bg-opacity-30'
+      if (dark) {
+        return 'bg-yellowDesat'
+      } else {
+        return 'bg-yellow bg-opacity-30'
+      }
     case 'software':
-      return 'bg-purple bg-opacity-30'
+      if (dark) {
+        return 'bg-purpleDesat'
+      } else {
+        return 'bg-purple bg-opacity-30'
+      }
     case 'orgware':
-      return 'bg-pink bg-opacity-30'
+      if (dark) {
+        return 'bg-pinkDesat'
+      } else {
+        return 'bg-pink bg-opacity-30'
+      }
     default:
       return 'bg-lightGray'
   }
