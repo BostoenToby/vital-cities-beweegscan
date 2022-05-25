@@ -22,7 +22,7 @@ export default ({ practice }: { practice: TestPractice }) => {
                   {practice.themas[0]}
                 </div>
                 <div
-                  className={`bg-purple py-2 px-4 gridbreak:-skew-x-12 ${
+                  className={`py-2 px-4 gridbreak:-skew-x-12 ${
                     context.dark ? 'bg-purpleDesat' : 'bg-purple'
                   }`}
                 >

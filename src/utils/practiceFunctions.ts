@@ -40,14 +40,29 @@ export const checkIfRegular = (header: string): boolean => {
   }
 }
 
-export const getParagraphBackground = (header: string): string => {
+export const getParagraphBackground = (
+  header: string,
+  dark: boolean,
+): string => {
   switch (header.toLowerCase()) {
     case 'hardware':
-      return 'bg-yellow bg-opacity-30'
+      if (dark) {
+        return 'bg-yellowDesat'
+      } else {
+        return 'bg-yellow bg-opacity-30'
+      }
     case 'software':
-      return 'bg-purple bg-opacity-30'
+      if (dark) {
+        return 'bg-purpleDesat'
+      } else {
+        return 'bg-purple bg-opacity-30'
+      }
     case 'orgware':
-      return 'bg-pink bg-opacity-30'
+      if (dark) {
+        return 'bg-pinkDesat'
+      } else {
+        return 'bg-pink bg-opacity-30'
+      }
     default:
       return 'bg-lightGray'
   }
