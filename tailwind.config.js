@@ -37,6 +37,7 @@ module.exports = {
       columnbreak: { min: '1136px' },
       navbreak: { min: '1304px' },
       laptopL: { min: '1440px' },
+      laptopXL: {min: '1680px'},
       '4K': { min: '2184px' },
     },
     colors: {

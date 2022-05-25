@@ -186,7 +186,7 @@ function AmbitionPage({ data }: { data: any }) {
       </header>
       <div className="mx-auto max-w-[104rem]">
         <section
-          className="mx-4 mt-32 grid grid-cols-1 gap-16 mobile:mx-8 columnbreak:mx-16 laptopL:mt-36"
+          className="laptop:16 tab mx-4 mt-8 grid grid-cols-1 gap-8 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-16 laptopL:mt-36"
           id="Location"
         >
           <div className="flex flex-col">
