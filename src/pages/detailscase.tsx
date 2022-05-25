@@ -66,7 +66,7 @@ export default ({ location }: { location: any }) => {
   return (
     <div className="overflow-x-hidden">
       <TopNavigation section="#Contact" />
-      <main className="mx-auto my-10 max-w-[104rem] px-5 gridbreak:px-10 columnbreak:my-20">
+      <main className="mx-auto my-10 max-w-[104rem] px-3 gridbreak:px-10 columnbreak:my-20">
         <header>
           <button
             onClick={() => navigate('../overviewpagepractices')}
@@ -90,14 +90,14 @@ export default ({ location }: { location: any }) => {
               {ambities && ambities.length >= 1 ? (
                 <div className="flex flex-row flex-wrap">
                   {ambities.map((e, i) => (
-                    <ThemaCard thema={e} />
+                    <ThemaCard thema={e} key={i} />
                   ))}
                 </div>
               ) : null}
               {overigeThemas && overigeThemas.length >= 1 ? (
                 <div className="flex flex-row flex-wrap">
                   {overigeThemas.map((e, i) => (
-                    <ThemaCard thema={e} />
+                    <ThemaCard thema={e} key={i} />
                   ))}
                 </div>
               ) : null}
@@ -123,7 +123,7 @@ export default ({ location }: { location: any }) => {
                 </div>
               ) : null}
               {practice.paragrafen.map((e, i) => (
-                <PracticeParagraph paragraaf={e} />
+                <PracticeParagraph paragraaf={e} key={i} />
               ))}
               {practice.extra && practice.extra.length >= 1 ? (
                 <div>
@@ -132,7 +132,7 @@ export default ({ location }: { location: any }) => {
                   </h2>
                   <ul>
                     {practice.extra.map((e, i) => (
-                      <li className="mb-6">
+                      <li className="mb-6" key={i}>
                         {e.url ? (
                           <a
                             className=" font-poppins text-base font-semibold text-purple underline columnbreak:text-lg"
