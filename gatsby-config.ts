@@ -1,11 +1,24 @@
 import type { GatsbyConfig } from 'gatsby'
 import path from 'path'
 
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 const config: GatsbyConfig = {
   siteMetadata: {
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
+    {
+      resolve: `gatsby-source-google-spreadsheet`,
+      options: {
+        spreadsheetId: process.env.SPREADSHEET_ID,
+        spreadsheetName: process.env.SPREADSHEET_NAME,
+        typePrefix: 'GS',
+        credentials: require('./credentials.json')
+      }
+    },
     {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {

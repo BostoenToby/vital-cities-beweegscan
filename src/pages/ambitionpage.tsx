@@ -1,4 +1,4 @@
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import { ArrowDown, ChevronDown } from 'lucide-react'
 import * as React from 'react'
@@ -15,8 +15,19 @@ import { allResults, searchList } from '../utils/autoComplete'
 import Darkmodetoggle from '../components/darkmodetoggle'
 import { goodPractice, HoeWaarom, intBron } from '../interfaces/cmsInterfaces'
 import Textblock from '../components/textblock'
+import { queryAmb1 } from '../utils/queryAmb1'
 
-function AmbitionPage({data}: {data: any}) {
+function AmbitionPage({location}: {location: any}) {
+  let data: any
+  console.log(location.state.ambition)
+  if(location.state.ambition == "Actief bewegen en verplaatsen"){
+    data = queryAmb1()
+    console.log({data})
+  } else {
+    data = ""
+  }
+  // const { allMarkdownRemark } = data.allMarkdownRemark
+  console.log({data})
   const [intBronnen, setIntBronnen] = React.useState<intBron[]>()
   const [hows, setHows] = React.useState<HoeWaarom[]>()
   const [whys, setWhys] = React.useState<HoeWaarom[]>()
@@ -88,9 +99,7 @@ function AmbitionPage({data}: {data: any}) {
       })
     }
   }
-
-  const { allMarkdownRemark} = data
-  const { nodes, html } = allMarkdownRemark
+  
 
   useEffect(() => {
     let list = searchList(typed)
@@ -98,11 +107,12 @@ function AmbitionPage({data}: {data: any}) {
   }, [typed])
 
   useEffect(() => {
+    console.log(location.state.ambition)
     let bronnen: intBron[] = []
     let hoeList: HoeWaarom[] = []
     let waaromList: HoeWaarom[] = []
     let goodPracs : goodPractice[] = []
-    for(let item of nodes){
+    for(let item of data.cms.nodes) {
       if(item.parent.internal.description.includes("intbron")){
         let bron = {
           'title': item.frontmatter.title,
@@ -139,8 +149,9 @@ function AmbitionPage({data}: {data: any}) {
     setHows(hoeList)
     setWhys(waaromList)
     setGoodPracs(goodPracs)
+    // TODO: all in one useState
     
-  }, [nodes])
+  }, [])
 
   return (
     <main className="font-poppins selection:bg-pink selection:text-white">
@@ -544,23 +555,23 @@ function AmbitionPage({data}: {data: any}) {
 
 export default AmbitionPage
 
-export const IntBronQuery = graphql`
-  query{
-    allMarkdownRemark {
-      nodes {
-        frontmatter {
-         title
-         link
-         text
-         ambition
-        	text
-       }
-       parent {
-         internal {
-           description
-         }
-       }
-      }
-    }
-  }
-`
+// export const IntBronQuery = graphql`
+//   query{
+//     allMarkdownRemark {
+//       nodes {
+//         frontmatter {
+//          title
+//          link
+//          text
+//          ambition
+//         	text
+//        }
+//        parent {
+//          internal {
+//            description
+//          }
+//        }
+//       }
+//     }
+//   }
+// `

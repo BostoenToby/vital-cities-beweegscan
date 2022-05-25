@@ -7,25 +7,29 @@ import Tag from './tag'
 
 
 export default function RevPrac({image, imageAlt, leftTagText, leftTagColorBg, leftTagColorText, rightTagText, rightTagColorBg, rightTagColorText, title, subTitle}: {image: string, imageAlt: string, leftTagText: string, leftTagColorBg: string, leftTagColorText: string, rightTagText: string, rightTagColorBg: string, rightTagColorText: string, title: string, subTitle: string}) {
+  const { allImageSharp } = useStaticQuery(
+    graphql`
+      query {
+        allImageSharp {
+          nodes {
+            gatsbyImageData
+          }
+        }
+      }
+    `
+  )
+  console.log({ allImageSharp })
+  
   const [img, setImg] = React.useState<any>()
   let node: number = 0
-    const data = useStaticQuery(graphql`
-      query HeaderQuery {
-        allImageSharp {
-            nodes {
-              gatsbyImageData
-            }
-        }
+  React.useEffect(() => {
+    for(let i of allImageSharp.nodes){
+      if(i.gatsbyImageData.images.fallback.src.includes(image)){
+        setImg(getImage(i))
       }
-    `)
-    React.useEffect(() => {
-      for(let i of data.allImageSharp.nodes){
-        if(i.gatsbyImageData.images.fallback.src.includes(image)){
-          setImg(getImage(i))
-        }
-        node += 1
-      }
-    }, [])
+      node += 1
+    }
+  }, [])
 
     React.useEffect(() => {
       console.log(img)
@@ -44,3 +48,14 @@ export default function RevPrac({image, imageAlt, leftTagText, leftTagColorBg, l
       </div>
     )
   }
+
+
+
+  // query HeaderQuery {
+  //   allImageSharp {
+  //       nodes {
+  //         gatsbyImageData
+  //       }
+  //   }
+  // }
+  // `

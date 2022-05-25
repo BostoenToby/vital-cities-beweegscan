@@ -11,13 +11,10 @@ import AmbitionPage from './ambitionpage'
 import Pdf from '../components/pdf'
 import { graphql } from 'gatsby'
 
-// remove excel files because this can't be processed by Linux
-
 const IndexPage = ({data}: {data: any}) => {
   return (
     <div className="font-poppins selection:bg-pink selection:text-white">
       <Topnavigation section="#Contact" />
-
       <header className="relative top-0 left-0 mb-8 flex h-screen">
         <section className="relative z-10 h-auto bg-purple">
           <div className="mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
