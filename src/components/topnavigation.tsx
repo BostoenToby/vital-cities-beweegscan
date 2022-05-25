@@ -31,7 +31,11 @@ export default ({ section }: { section: string }) => {
       updateSize()
 
       window.addEventListener('resize', updateSize)
-      return () => window.removeEventListener('resize', updateSize)
+      window.addEventListener('click', handleClick)
+      return () => {
+        window.removeEventListener('resize', updateSize)
+        window.removeEventListener('click', handleClick)
+      }
     }
   }, [])
 
@@ -42,6 +46,14 @@ export default ({ section }: { section: string }) => {
   const handleAmbitions = () => {
     setShowAmbitions(!showAmbitions)
     console.log(showAmbitions)
+  }
+
+  const handleClick = (e: any) => {
+    const isOutside = !e.target.closest('#ambitionsList')
+
+    if (isOutside) {
+      setShowAmbitions(false)
+    }
   }
 
   const checkIfAmbitions = () => {
@@ -81,7 +93,7 @@ export default ({ section }: { section: string }) => {
                   context.dark ? 'text-white text-opacity-75' : 'text-dark'
                 }`}
               >
-                <li className="mr-14">
+                <li className="mr-14" id="ambitionsList">
                   <button
                     className={
                       context.dark
@@ -230,7 +242,7 @@ export default ({ section }: { section: string }) => {
                   </a>
                 </div>
               </nav>
-              
+
               <nav
                 className={`fixed left-0 top-0 h-screen w-full max-w-sm overflow-y-auto pt-4 pr-4 pl-8 pb-8 ${
                   !showSideNav ? 'hidden' : ''
@@ -249,7 +261,7 @@ export default ({ section }: { section: string }) => {
                     <Logoalt />
                   </a>
                 </header>
-                <ul className="font-poppins">
+                <ul className="font-poppins" id="ambitionsList">
                   <li className="my-6 text-2xl font-medium text-white">
                     <button
                       className="flex flex-row items-center"
