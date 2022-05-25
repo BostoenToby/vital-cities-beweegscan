@@ -145,12 +145,14 @@ function AmbitionPage({data}: {data: any}) {
   return (
     <main className="font-poppins selection:bg-pink selection:text-white">
       <Topnavigation section="#CallToAction" />
-
-      <header className="relative top-0 left-0 mb-8 flex">
-        <section className="relative z-10 h-auto bg-purple">
+      <div className="absolute top-0 left-0 w-full h-24 bg-purple tabletportrait:w-1/2"></div>
+      <div className="absolute top-0 right-0 w-full h-24 bg-white hidden tabletportrait:w-1/2 tabletportrait:block"></div>
+      {/* <div className="absolute top-0 w-full h-24 bg-purple"></div> */}
+      <header className="relative top-0 z-10 left-0 mb-8 flex">
+        <section className="relative z-10 h-full bg-purple tabletportrait:w-1/2">
           <div className="pt-16 mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
             <Tag text="Actief bewegen" colorBg="pink" colorText="white" />
-            <h1 className="mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">
+            <h1 className="mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
               Aantrekkelijke & veilige wandel- & fietsroutes
             </h1>
             <p className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
@@ -162,11 +164,11 @@ function AmbitionPage({data}: {data: any}) {
             <ArrowDown className="animate-bounce text-lightPurple" />
           </div>
         </section>
-        <div className="h-full align-middle">
+        <div className="h-full align-middle tabletportrait:w-1/2">
           <StaticImage
             src="../images/headerpictureactivemovement.png"
             alt="header picture"
-            className="relative top-14 right-20 z-0 hidden items-center object-cover align-middle tabletportrait:block tabletportrait:h-tablet laptop:h-laptop"
+            className="relative top-4 right-16 z-0 hidden items-center object-cover align-middle tabletportrait:block tabletportrait:h-tablet laptop:h-laptop"
           />
         </div>
       </header>

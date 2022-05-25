@@ -206,6 +206,7 @@ export default ({ section }: { section: string }) => {
             </nav>
           ) : (
             <div>
+              {/* <div className="absolute z-0 top-0 w-full h-24 bg-purple"></div> */}
               <nav className="h-24">
                 <div
                   className={`flex h-full w-32 flex-col justify-center ${
@@ -229,6 +230,7 @@ export default ({ section }: { section: string }) => {
                   </a>
                 </div>
               </nav>
+              
               <nav
                 className={`fixed left-0 top-0 h-screen w-full max-w-sm overflow-y-auto pt-4 pr-4 pl-8 pb-8 ${
                   !showSideNav ? 'hidden' : ''
