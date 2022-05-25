@@ -17,7 +17,7 @@ import { goodPractice, HoeWaarom, intBron } from '../interfaces/cmsInterfaces'
 import Textblock from '../components/textblock'
 import { queryAmb1 } from '../utils/queryAmb1'
 
-function AmbitionPage({ data }: { data: any }) {
+function AmbitionPage({ location }: { location: any }) {
   const [intBronnen, setIntBronnen] = React.useState<intBron[]>()
   const [hows, setHows] = React.useState<HoeWaarom[]>()
   const [whys, setWhys] = React.useState<HoeWaarom[]>()
@@ -36,6 +36,17 @@ function AmbitionPage({ data }: { data: any }) {
     lastNameError: '',
     mailError: '',
   })
+
+  let data: any
+  console.log(location.state.ambition)
+  if(location.state.ambition == "Actief bewegen en verplaatsen"){
+    data = queryAmb1()
+    console.log({data})
+  } else {
+    data = ""
+  }
+  // const { allMarkdownRemark } = data.allMarkdownRemark
+  console.log({data})
 
   const changeTyped = async (value: string) => {
     console.log('change')
@@ -90,9 +101,6 @@ function AmbitionPage({ data }: { data: any }) {
     }
   }
 
-  const { allMarkdownRemark } = data
-  const { nodes, html } = allMarkdownRemark
-
   useEffect(() => {
     let list = searchList(typed)
     setSuggestions(list)
@@ -104,7 +112,7 @@ function AmbitionPage({ data }: { data: any }) {
     let hoeList: HoeWaarom[] = []
     let waaromList: HoeWaarom[] = []
     let goodPracs: goodPractice[] = []
-    for (let item of nodes) {
+    for (let item of data.cms.nodes) {
       if (item.parent.internal.description.includes('intbron')) {
         let bron = {
           title: item.frontmatter.title,
@@ -141,7 +149,7 @@ function AmbitionPage({ data }: { data: any }) {
     setHows(hoeList)
     setWhys(waaromList)
     setGoodPracs(goodPracs)
-  }, [nodes])
+  }, [])
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -587,24 +595,3 @@ function AmbitionPage({ data }: { data: any }) {
 }
 
 export default AmbitionPage
-
-export const IntBronQuery = graphql`
-  query {
-    allMarkdownRemark {
-      nodes {
-        frontmatter {
-          title
-          link
-          text
-          ambition
-          text
-        }
-        parent {
-          internal {
-            description
-          }
-        }
-      }
-    }
-  }
-`
