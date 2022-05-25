@@ -49,7 +49,7 @@ export default () => {
       {(context) => (
         <div className={context.dark ? 'bg-dark' : ''}>
           <TopNavigation section="#Contact" />
-          <main className="mx-auto my-8 w-full max-w-[104rem] px-3 font-poppins gridbreak:my-16 gridbreak:px-10">
+          <main className="mx-auto my-8 w-full max-w-[104rem] px-3 font-raleway gridbreak:my-16 gridbreak:px-10">
             <header className="mb-14 flex flex-col gridbreak:flex-row gridbreak:justify-between">
               <h1
                 className={`mb-4  text-5xl font-bold gridbreak:mb-0 ${

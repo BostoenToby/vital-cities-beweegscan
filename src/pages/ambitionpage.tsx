@@ -161,169 +161,177 @@ function AmbitionPage({ data }: { data: any }) {
       <Topnavigation section="#CallToAction" />
       <div className="absolute top-0 left-0 h-24 w-full bg-purple tabletportrait:w-1/2"></div>
       <div className="absolute top-0 right-0 hidden h-24 w-full bg-white tabletportrait:block tabletportrait:w-1/2"></div>
-      <header className="relative top-0 left-0 z-10 mb-8 flex">
-        <section className="relative z-10 h-full bg-purple tabletportrait:w-1/2">
-          <div className="mx-10 pt-16 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
-            <Tag text="Actief bewegen" colorBg="pink" colorText="white" />
-            <h1 className="font-raleway mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
-              Aantrekkelijke & veilige wandel- & fietsroutes
-            </h1>
-            <h2 className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
-              Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een
-              actieve levensstijl en faciliteren mensen om lopend of fietsend
-              naar voorzieningen of het werk of school voorzieningen te gaan
-            </h2>
-            <p className="mb-2 font-semibold text-lightPurple">scroll</p>
-            <ArrowDown className="animate-bounce text-lightPurple" />
-          </div>
+      <div className="absolute top-0 right-0 hidden h-24 w-full bg-purple tabletportrait:block tabletportrait:w-1/2 columnbreak:bg-white"></div>
+      <header className="flex w-full flex-col columnbreak:flex-row columnbreak:items-center 4K:bg-purple">
+        <section className="h-full w-full bg-purple p-7 pb-5 columnbreak:w-1/2 columnbreak:p-14 columnbreak:pb-10">
+          <Tag text="Actief bewegen" colorBg="pink" colorText="white" />
+          <h1 className="mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
+            Aantrekkelijke & veilige wandel- & fietsroutes
+          </h1>
+          <p className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
+            Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een
+            actieve levensstijl en faciliteren mensen om lopend of fietsend naar
+            voorzieningen of het werk of school voorzieningen te gaan
+          </p>
+          <p className="mb-2 font-semibold text-lightPurple">scroll</p>
+          <ArrowDown className="animate-bounce text-lightPurple" />
         </section>
-        <div className="h-full align-middle">
+        <section className="h-full w-full columnbreak:w-1/2">
           <StaticImage
             src="../images/headerpictureactivemovement.png"
             alt="header picture"
-            className="relative top-4 right-16 z-0 hidden items-center object-cover align-middle tabletportrait:block tabletportrait:h-tablet laptop:h-laptop"
+            className="h-full w-full"
           />
-        </div>
+        </section>
       </header>
-      <section
-        className="mx-14 mt-32 grid grid-cols-1 gap-16 laptopL:mt-36"
-        id="Location"
-      >
-        <div className="flex flex-col">
-          <h2 className="font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl">
-            Wat is de huidige situatie in
+      <div className="mx-auto max-w-[104rem]">
+        <section
+          className="mx-4 mt-32 grid grid-cols-1 gap-16 mobile:mx-8 columnbreak:mx-16 laptopL:mt-36"
+          id="Location"
+        >
+          <div className="flex flex-col">
+            <h2 className="text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl">
+              Wat is de huidige situatie in
+            </h2>
+            <div className="flex items-center">
+              <select className="-ml-1 w-fit appearance-none pr-0 text-xl font-xxbold text-purple underline decoration-lightxPurple underline-offset-2 hover:text-pink hover:decoration-pink focus:text-pink focus:decoration-pink tabletportrait:text-3xl laptop:mt-2 laptop:text-4xl">
+                <option className="text-xl">het Vlaams gewest</option>
+              </select>
+              <ChevronDown className="mt-3 h-8 w-8 stroke-purple hover:stroke-pink focus:stroke-pink" />
+            </div>
+
+            <label className="mt-5 text-sm font-medium tabletportrait:text-lg laptop:text-xl">
+              In het Vlaams gewest is{' '}
+              <span className="font-semibold">
+                ongeveer de helft of meer van de inwoners
+              </span>{' '}
+              <span className="font-semibold text-pink">niet tevreden</span>{' '}
+              over de staat, veiligheid en aantrekkelijkheid van straten,
+              pleinen, wandel- en fietspaden (dus een samenvatting van alle
+              cijfers).
+            </label>
+          </div>
+          <div>
+            <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
+              HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ...
+            </label>
+            <div className="grid grid-cols-1 text-sm font-medium tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl">
+              <div className="p-2">
+                <div className="flex items-center">
+                  <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
+                    <DonutChart percentage={44} />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="font-medium">
+                      Staat straten & pleinen
+                    </label>
+                    <label className="font-bold text-pink">44%</label>
+                  </div>
+                </div>
+              </div>
+              <div className="p-2">
+                <div className="flex items-center">
+                  <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
+                    <DonutChart percentage={54} />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="font-medium">Staat voetpaden</label>
+                    <label className="font-bold text-pink">54%</label>
+                  </div>
+                </div>
+              </div>
+              <div className="p-2">
+                <div className="flex items-center">
+                  <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
+                    <DonutChart percentage={59} />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="font-medium">Staat fietspaden</label>
+                    <label className="font-bold text-pink">59%</label>
+                  </div>
+                </div>
+              </div>
+              <div className="p-2">
+                <div className="flex items-center">
+                  <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
+                    <DonutChart percentage={55} />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="font-medium">Genoeg fietspaden</label>
+                    <label className="font-bold text-pink">55%</label>
+                  </div>
+                </div>
+              </div>
+              <div className="p-2">
+                <div className="flex items-center">
+                  <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
+                    <DonutChart percentage={60} />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="font-medium">Fietsinfrastructuur</label>
+                    <label className="font-bold text-pink">60%</label>
+                  </div>
+                </div>
+              </div>
+              <div className="p-2">
+                <div className="flex items-center">
+                  <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
+                    <DonutChart percentage={57} />
+                  </div>
+                  <div className="flex flex-col">
+                    <label className="font-medium">Veilig fietsen</label>
+                    <label className="font-bold text-pink">57%</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className="mx-4 mt-32 mb-32 flex flex-col items-center text-center font-poppins mobile:mx-8 columnbreak:mx-16"
+          id="Problem"
+        >
+          <h2 className="mb-5 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+            Wat is het probleem?
           </h2>
-          <div className="flex items-center">
-            <select className="-ml-1 w-fit appearance-none pr-0 text-xl font-xxbold text-purple underline decoration-lightxPurple underline-offset-2 hover:text-pink hover:decoration-pink focus:text-pink focus:decoration-pink tabletportrait:text-3xl laptop:mt-2 laptop:text-4xl">
-              <option className="font-raleway text-xl">het Vlaams gewest</option>
-            </select>
-            <ChevronDown className="mt-3 h-8 w-8 stroke-purple hover:stroke-pink focus:stroke-pink" />
-          </div>
+          <p className="mb-5 text-sm tabletportrait:text-lg laptop:text-xl">
+            Als routes geen goede verbinding maken met voorzieningen en werk of
+            school, als ze onveilig zijn of door een weinig aantrekkelijke
+            stadsomgeving gaan, zijn mensen niet geneigd om ze te gebruiken. Als
+            je fiets of wandelt, voel je je namelijk kwetsbaarder dan in je
+            auto.
+          </p>
+          <p className="text-sm font-bold tabletportrait:text-lg laptop:text-xl">
+            Bij een gebrek aan veilige en/of aantrekkelijke routes zullen mensen
+            dan eerder kiezen voor de auto.
+          </p>
+        </section>
 
-          <label className="mt-5 text-sm tabletportrait:text-lg laptop:text-xl">
-            In het Vlaams gewest is{' '}
-            <span className="font-semibold">
-              ongeveer de helft of meer van de inwoners
-            </span>{' '}
-            <span className="font-semibold text-pink">niet tevreden</span> over
-            de staat, veiligheid en aantrekkelijkheid van straten, pleinen,
-            wandel- en fietspaden (dus een samenvatting van alle cijfers).
-          </label>
-        </div>
-        <div>
-          <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
-            HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ...
-          </label>
-          <div className="grid grid-cols-1 text-sm font-medium tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl">
-            <div className="p-2">
-              <div className="flex items-center">
-                <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
-                  <DonutChart percentage={44} />
-                </div>
-                <div className="flex flex-col">
-                  <label className="font-medium">Staat straten & pleinen</label>
-                  <label className="font-bold text-pink">44%</label>
-                </div>
-              </div>
-            </div>
-            <div className="p-2">
-              <div className="flex items-center">
-                <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
-                  <DonutChart percentage={54} />
-                </div>
-                <div className="flex flex-col">
-                  <label className="font-medium">Staat voetpaden</label>
-                  <label className="font-bold text-pink">54%</label>
-                </div>
-              </div>
-            </div>
-            <div className="p-2">
-              <div className="flex items-center">
-                <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
-                  <DonutChart percentage={59} />
-                </div>
-                <div className="flex flex-col">
-                  <label className="font-medium">Staat fietspaden</label>
-                  <label className="font-bold text-pink">59%</label>
-                </div>
-              </div>
-            </div>
-            <div className="p-2">
-              <div className="flex items-center">
-                <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
-                  <DonutChart percentage={55} />
-                </div>
-                <div className="flex flex-col">
-                  <label className="font-medium">Genoeg fietspaden</label>
-                  <label className="font-bold text-pink">55%</label>
-                </div>
-              </div>
-            </div>
-            <div className="p-2">
-              <div className="flex items-center">
-                <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
-                  <DonutChart percentage={60} />
-                </div>
-                <div className="flex flex-col">
-                  <label className="font-medium">Fietsinfrastructuur</label>
-                  <label className="font-bold text-pink">60%</label>
-                </div>
-              </div>
-            </div>
-            <div className="p-2">
-              <div className="flex items-center">
-                <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
-                  <DonutChart percentage={57} />
-                </div>
-                <div className="flex flex-col">
-                  <label className="font-medium">Veilig fietsen</label>
-                  <label className="font-bold text-pink">57%</label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        className="mx-16 mt-32 mb-32 flex flex-col items-center text-center font-poppins"
-        id="Problem"
-      >
-        <h2 className="font-raleway mb-5 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
-          Wat is het probleem?
-        </h2>
-        <p className="mb-5 text-sm tabletportrait:text-lg laptop:text-xl">
-          Als routes geen goede verbinding maken met voorzieningen en werk of
-          school, als ze onveilig zijn of door een weinig aantrekkelijke
-          stadsomgeving gaan, zijn mensen niet geneigd om ze te gebruiken. Als
-          je fiets of wandelt, voel je je namelijk kwetsbaarder dan in je auto.
-        </p>
-        <p className="text-sm font-bold tabletportrait:text-lg laptop:text-xl">
-          Bij een gebrek aan veilige en/of aantrekkelijke routes zullen mensen
-          dan eerder kiezen voor de auto.
-        </p>
-      </section>
-
-      <section className="mx-16 mb-16" id="Solution">
-        <h2 className="font-raleway mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
-          <span className="underline decoration-lightPurple">Waarom</span>{' '}
-          moeten we dit oplossen?
-        </h2>
-        <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-2xl">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corporis
-          mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita
-        </p>
-        <div className="grid grid-cols-1 gap-6 text-sm tabletportrait:text-lg laptop:grid-cols-2 laptop:text-xl laptopL:grid-cols-3">
-          {whys &&
-            whys.map((item: any) => (
-              <Textblock
-                text={item.text}
-                bgColor="lightPink"
-                textColor="purple"
-                bold={false}
-              />
-            ))}
-          {/* <div className="flex max-w-sm skew-x-12 items-center justify-center bg-lightPink">
+        <section
+          className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16"
+          id="Solution"
+        >
+          <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+            <span className="underline decoration-lightPurple">Waarom</span>{' '}
+            moeten we dit oplossen?
+          </h2>
+          <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-2xl">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+            corporis mollitia veniam voluptatum! Molestias odio perspiciatis
+            porro expedita
+          </p>
+          <div className="grid grid-cols-1 gap-6 text-sm tabletportrait:text-lg laptop:grid-cols-2 laptop:text-xl laptopL:grid-cols-3">
+            {whys &&
+              whys.map((item: any) => (
+                <Textblock
+                  text={item.text}
+                  bgColor="lightPink"
+                  textColor="purple"
+                  bold={false}
+                />
+              ))}
+            {/* <div className="flex max-w-sm skew-x-12 items-center justify-center bg-lightPink">
             <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
               <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
                 €1
@@ -372,93 +380,100 @@ function AmbitionPage({ data }: { data: any }) {
               </b>
             </p>
           </div> */}
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section className="mx-16 mb-16">
-        <h2 className="font-raleway mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
-          <span className="underline decoration-green">Hoe</span> kunnen we dit
-          oplossen?
-        </h2>
-        <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas corporis
-          mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita
-        </p>
-        <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
-          {hows &&
-            hows.map((item: HoeWaarom) => (
-              <Textblock
-                text={item.text}
-                bgColor="lightGreen"
-                textColor="green"
-                bold={true}
-              />
-            ))}
-        </div>
-      </section>
-
-      <section className="bg-neutral px-16 pb-16" id="Resources">
-        <h2 className="font-raleway mb-4 pt-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
-          Interessante bronnen
-        </h2>
-        <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl">
-          We maken je graag wegwijs in wat bronnen en instrumenten om de
-          omgevint te analyseren en te ontwerpen op vlak van wandel- en
-          fietsvriendelijkheid
-        </p>
-        <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
-          {intBronnen &&
-            intBronnen.map((item: intBron) => (
-              <Intsrc title={item.title} text={item.text} link={item.link} />
-            ))}
-        </div>
-      </section>
-
-      <section className="px-16 pb-16" id="Practices">
-        <div className="mb-2 flex items-center justify-between pt-24">
-          <h2 className="font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
-            Relevante good practices
+        <section className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16">
+          <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+            <span className="underline decoration-green">Hoe</span> kunnen we
+            dit oplossen?
           </h2>
-        </div>
-        <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">
-          Je wil je door nog meer good practices laten inspireren? Ontdek ze{' '}
-          <Link
-            to="/overviewpagepractices"
-            className="font-semibold text-pink underline hover:text-purple focus:text-purple"
-          >
-            hier
-          </Link>
-        </p>
-        <div className="grid grid-cols-1 gap-16 text-sm mobile:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
-          <RevPrac
-            image="relevantcases.png"
-            imageAlt="Relevant cases"
-            leftTagText="Actief bewegen"
-            leftTagColorBg="pink"
-            leftTagColorText="black"
-            rightTagText="20 september 2020"
-            rightTagColorBg="yellow"
-            rightTagColorText="black"
-            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
-          />
-          <RevPrac
-            image="relevantcases.png"
-            imageAlt="Relevant cases"
-            leftTagText="Actief bewegen"
-            leftTagColorBg="pink"
-            leftTagColorText="black"
-            rightTagText="20 september 2020"
-            rightTagColorBg="yellow"
-            rightTagColorText="black"
-            title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-            subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
-          />
-        </div>
-      </section>
+          <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+            corporis mollitia veniam voluptatum! Molestias odio perspiciatis
+            porro expedita
+          </p>
+          <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
+            {hows &&
+              hows.map((item: HoeWaarom) => (
+                <Textblock
+                  text={item.text}
+                  bgColor="lightGreen"
+                  textColor="green"
+                  bold={true}
+                />
+              ))}
+          </div>
+        </section>
 
+        <section
+          className="bg-neutral px-4 pb-16 tabletportrait:px-8 columnbreak:px-16"
+          id="Resources"
+        >
+          <h2 className="mb-4 pt-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+            Interessante bronnen
+          </h2>
+          <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl">
+            We maken je graag wegwijs in wat bronnen en instrumenten om de
+            omgevint te analyseren en te ontwerpen op vlak van wandel- en
+            fietsvriendelijkheid
+          </p>
+          <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
+            {intBronnen &&
+              intBronnen.map((item: intBron) => (
+                <Intsrc title={item.title} text={item.text} link={item.link} />
+              ))}
+          </div>
+        </section>
+
+        <section
+          className="px-4 pb-16  tabletportrait:px-8 columnbreak:px-16"
+          id="Practices"
+        >
+          <div className="mb-2 flex items-center justify-between pt-24">
+            <h2 className="text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+              Relevante good practices
+            </h2>
+          </div>
+          <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">
+            Je wil je door nog meer good practices laten inspireren? Ontdek ze{' '}
+            <Link
+              to="/overviewpagepractices"
+              className="font-semibold text-pink underline hover:text-purple focus:text-purple"
+            >
+              hier
+            </Link>
+          </p>
+          <div className="grid grid-cols-1 gap-16 text-sm mobile:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
+            <RevPrac
+              image="relevantcases.png"
+              imageAlt="Relevant cases"
+              leftTagText="Actief bewegen"
+              leftTagColorBg="pink"
+              leftTagColorText="black"
+              rightTagText="20 september 2020"
+              rightTagColorBg="yellow"
+              rightTagColorText="black"
+              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
+            />
+            <RevPrac
+              image="relevantcases.png"
+              imageAlt="Relevant cases"
+              leftTagText="Actief bewegen"
+              leftTagColorBg="pink"
+              leftTagColorText="black"
+              rightTagText="20 september 2020"
+              rightTagColorBg="yellow"
+              rightTagColorText="black"
+              title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+              subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
+            />
+          </div>
+        </section>
+      </div>
       <section
-        className="flex items-center bg-mediumPurple py-2 px-4"
+        className="flex items-center justify-center bg-mediumPurple py-8 px-4"
         id="CallToAction"
       >
         <StaticImage
@@ -563,7 +578,6 @@ function AmbitionPage({ data }: { data: any }) {
           </div>
         </div>
       </section>
-
       <Contactsection />
       <Footer />
     </main>
