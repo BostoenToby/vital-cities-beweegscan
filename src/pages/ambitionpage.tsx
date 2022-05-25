@@ -148,7 +148,7 @@ function AmbitionPage({data}: {data: any}) {
 
       <header className="relative top-0 left-0 mb-8 flex">
         <section className="relative z-10 h-auto bg-purple">
-          <div className="mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
+          <div className="pt-16 mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
             <Tag text="Actief bewegen" colorBg="pink" colorText="white" />
             <h1 className="mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">
               Aantrekkelijke & veilige wandel- & fietsroutes
