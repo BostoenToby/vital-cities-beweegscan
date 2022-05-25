@@ -1,5 +1,6 @@
 import React from 'react'
 import '../assets/tailwind.css'
+import ThemeContext from '../context/themecontext'
 import { Paragraaf } from '../interfaces/testPractice'
 import {
   checkheader,
@@ -8,49 +9,75 @@ import {
 } from '../utils/practiceFunctions'
 
 export default ({ paragraaf }: { paragraaf: Paragraaf }) => {
-  if (checkIfRegular(paragraaf.header)) {
-    return (
-      <div className="break-inside-avoid-column font-poppins">
-        {checkheader(paragraaf.header) ? (
-          <h2 className="mb-6 text-2xl font-bold text-purple columnbreak:text-3xl">
-            {paragraaf.header}
-          </h2>
-        ) : null}
+  return (
+    <ThemeContext.Consumer>
+      {(context) => {
+        if (checkIfRegular(paragraaf.header)) {
+          return (
+            <div className="break-inside-avoid-column font-poppins">
+              {checkheader(paragraaf.header) ? (
+                <h2
+                  className={`mb-6 text-2xl font-bold columnbreak:text-3xl ${
+                    context.dark ? 'text-white' : 'text-purple '
+                  }`}
+                >
+                  {paragraaf.header}
+                </h2>
+              ) : null}
 
-        <p className="mb-8 whitespace-pre-line text-base text-dark columnbreak:text-lg">
-          {paragraaf.body}
-        </p>
-      </div>
-    )
-  } else if (!checkIfRegular(paragraaf.header)) {
-    return (
-      <div
-        className={`mb-8 p-4 font-poppins ${
-          paragraaf.header.toLowerCase() == 'tip' ? 'bg-lightGreen' : ''
-        }`}
-      >
-        <div className="w-max">
-          <h2
-            className={`text-2xl font-bold text-dark columnbreak:text-3xl ${
-              paragraaf.header.toLowerCase() == 'tip' ? 'mb-1' : ''
-            }`}
-          >
-            {`${paragraaf.header}:`}
-          </h2>
-          {paragraaf.header.toLowerCase() !== 'tip' ? (
+              <p
+                className={`mb-8 whitespace-pre-line text-base  columnbreak:text-lg ${
+                  context.dark ? 'text-white text-opacity-80' : 'text-dark'
+                }`}
+              >
+                {paragraaf.body}
+              </p>
+            </div>
+          )
+        } else if (!checkIfRegular(paragraaf.header)) {
+          return (
             <div
-              className={`mb-6 h-1 w-full ${getParagraphBackground(
-                paragraaf.header,
-              )}`}
-            ></div>
-          ) : null}
-        </div>
-        <p className="ml-2 whitespace-pre-line text-base text-dark columnbreak:text-lg">
-          {paragraaf.body}
-        </p>
-      </div>
-    )
-  } else {
-    return null
-  }
+              className={`mb-8 p-4 ${
+                context.dark ? 'text-white' : 'text-dark'
+              } ${
+                paragraaf.header.toLowerCase() == 'tip'
+                  ? context.dark
+                    ? 'bg-grayGreen bg-opacity-50'
+                    : 'bg-lightGreen bg-opacity-70'
+                  : ''
+              }`}
+            >
+              <div className="w-max">
+                <h2
+                  className={`text-2xl font-bold columnbreak:text-3xl ${
+                    paragraaf.header.toLowerCase() == 'tip' ? 'mb-1' : ''
+                  } ${context.dark ? '!opacity-90' : ''}`}
+                >
+                  {`${paragraaf.header}:`}
+                </h2>
+                {paragraaf.header.toLowerCase() !== 'tip' ? (
+                  <div
+                    className={`mb-6 h-1 w-full  ${getParagraphBackground(
+                      paragraaf.header,
+                      context.dark,
+                    )}`}
+                  ></div>
+                ) : null}
+              </div>
+              <p
+                className={`ml-2 whitespace-pre-line text-base columnbreak:text-lg ${
+                  context.dark ? '!opacity-80' : ''
+                }
+                `}
+              >
+                {paragraaf.body}
+              </p>
+            </div>
+          )
+        } else {
+          return null
+        }
+      }}
+    </ThemeContext.Consumer>
+  )
 }

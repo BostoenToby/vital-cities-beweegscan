@@ -1,5 +1,6 @@
 module.exports = {
   content: ['**/*.{tsx,html}'],
+  important: true,
   theme: {
     extend: {
       fontFamily: {
@@ -58,6 +59,8 @@ module.exports = {
       purpleDesat: '#3E226D',
       pinkDesat: '#BC2D73',
       yellowDesat: '#CAA325',
+      grayGreen: '#455250',
+      redDesat: '#CF6679',
     },
   },
   plugins: [require('@tailwindcss/line-clamp')],

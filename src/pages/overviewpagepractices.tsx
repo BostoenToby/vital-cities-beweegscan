@@ -26,7 +26,7 @@ export default () => {
       let practices = originalPractices
       let result: TestPractice[] = []
 
-      if (selected !== 'filter practices') {
+      if (selected !== 'filter practices' && selected !== 'alle practices') {
         practices.forEach((p) => {
           if (p.themas.includes(selected)) {
             result.push(p)
@@ -62,6 +62,7 @@ export default () => {
                 <span className="group relative block">
                   {/* note: I hate select  */}
                   <select
+                    defaultValue="filter practices"
                     value={selected}
                     onChange={(event) => handleSelect(event)}
                     className={`w-max appearance-none border-none p-2 pb-8 pr-8 text-2xl font-semibold outline-none   ${
@@ -71,10 +72,17 @@ export default () => {
                     }`}
                   >
                     <option
+                      disabled={true}
                       className={context.dark ? 'bg-darkGray' : ''}
                       value="filter practices"
                     >
                       Filter practices
+                    </option>
+                    <option
+                      className={context.dark ? 'bg-darkGray' : ''}
+                      value="alle practices"
+                    >
+                      Alle practices
                     </option>
                     <option
                       className={context.dark ? 'bg-darkGray' : ''}
