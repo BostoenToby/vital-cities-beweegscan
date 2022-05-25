@@ -165,7 +165,7 @@ function AmbitionPage({ data }: { data: any }) {
       <header className="flex w-full flex-col columnbreak:flex-row columnbreak:items-center 4K:bg-purple">
         <section className="h-full w-full bg-purple p-7 pb-5 columnbreak:w-1/2 columnbreak:p-14 columnbreak:pb-10">
           <Tag text="Actief bewegen" colorBg="pink" colorText="white" />
-          <h1 className="mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
+          <h1 className="mb-8 max-w-2xl font-raleway text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
             Aantrekkelijke & veilige wandel- & fietsroutes
           </h1>
           <p className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
@@ -190,7 +190,7 @@ function AmbitionPage({ data }: { data: any }) {
           id="Location"
         >
           <div className="flex flex-col">
-            <h2 className="text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl">
+            <h2 className="font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl">
               Wat is de huidige situatie in
             </h2>
             <div className="flex items-center">
@@ -292,7 +292,7 @@ function AmbitionPage({ data }: { data: any }) {
           className="mx-4 mt-32 mb-32 flex flex-col items-center text-center font-poppins mobile:mx-8 columnbreak:mx-16"
           id="Problem"
         >
-          <h2 className="mb-5 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+          <h2 className="mb-5 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
             Wat is het probleem?
           </h2>
           <p className="mb-5 text-sm tabletportrait:text-lg laptop:text-xl">
@@ -312,7 +312,7 @@ function AmbitionPage({ data }: { data: any }) {
           className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16"
           id="Solution"
         >
-          <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+          <h2 className="mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
             <span className="underline decoration-lightPurple">Waarom</span>{' '}
             moeten we dit oplossen?
           </h2>
@@ -384,7 +384,7 @@ function AmbitionPage({ data }: { data: any }) {
         </section>
 
         <section className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16">
-          <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+          <h2 className="mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
             <span className="underline decoration-green">Hoe</span> kunnen we
             dit oplossen?
           </h2>
@@ -410,7 +410,7 @@ function AmbitionPage({ data }: { data: any }) {
           className="bg-neutral px-4 pb-16 tabletportrait:px-8 columnbreak:px-16"
           id="Resources"
         >
-          <h2 className="mb-4 pt-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+          <h2 className="mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
             Interessante bronnen
           </h2>
           <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl">
@@ -431,7 +431,7 @@ function AmbitionPage({ data }: { data: any }) {
           id="Practices"
         >
           <div className="mb-2 flex items-center justify-between pt-24">
-            <h2 className="text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+            <h2 className="font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
               Relevante good practices
             </h2>
           </div>
@@ -482,10 +482,10 @@ function AmbitionPage({ data }: { data: any }) {
           className="ml-14 hidden h-auto border border-r-0 border-mediumPurple laptop:block"
         />
         <div className="h-auto p-8 text-white">
-          <h2 className="pb-4 text-xl font-bold tabletportrait:text-2xl">
+          <h2 className="pb-4 font-raleway text-xl font-bold tabletportrait:text-2xl">
             Benieuwd naar de beweegvriendelijkheid van jouw stad of gemeente?
           </h2>
-          <h4 className="pb-4 text-lg font-semibold text-pink tabletportrait:text-xl">
+          <h4 className="pb-4 font-raleway text-lg font-semibold text-pink tabletportrait:text-xl">
             Download hier jouw rapport
           </h4>
           <p className="pb-4 text-sm tabletportrait:text-lg">
