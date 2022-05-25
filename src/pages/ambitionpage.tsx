@@ -16,7 +16,7 @@ import Darkmodetoggle from '../components/darkmodetoggle'
 import { goodPractice, HoeWaarom, intBron } from '../interfaces/cmsInterfaces'
 import Textblock from '../components/textblock'
 
-function AmbitionPage({data}: {data: any}) {
+function AmbitionPage({ data }: { data: any }) {
   const [intBronnen, setIntBronnen] = React.useState<intBron[]>()
   const [hows, setHows] = React.useState<HoeWaarom[]>()
   const [whys, setWhys] = React.useState<HoeWaarom[]>()
@@ -89,7 +89,7 @@ function AmbitionPage({data}: {data: any}) {
     }
   }
 
-  const { allMarkdownRemark} = data
+  const { allMarkdownRemark } = data
   const { nodes, html } = allMarkdownRemark
 
   useEffect(() => {
@@ -101,28 +101,28 @@ function AmbitionPage({data}: {data: any}) {
     let bronnen: intBron[] = []
     let hoeList: HoeWaarom[] = []
     let waaromList: HoeWaarom[] = []
-    let goodPracs : goodPractice[] = []
-    for(let item of nodes){
-      if(item.parent.internal.description.includes("intbron")){
+    let goodPracs: goodPractice[] = []
+    for (let item of nodes) {
+      if (item.parent.internal.description.includes('intbron')) {
         let bron = {
-          'title': item.frontmatter.title,
-          'link': item.frontmatter.link,
-          'text': item.frontmatter.text
+          title: item.frontmatter.title,
+          link: item.frontmatter.link,
+          text: item.frontmatter.text,
         }
         bronnen.push(bron)
-      } else if(item.parent.internal.description.includes("hoeopl")){
+      } else if (item.parent.internal.description.includes('hoeopl')) {
         let hoe = {
           ambition: item.frontmatter.ambition,
-          text: item.frontmatter.text
+          text: item.frontmatter.text,
         }
         hoeList.push(hoe)
-      } else if(item.parent.internal.description.includes("waaromopl")){
+      } else if (item.parent.internal.description.includes('waaromopl')) {
         let waarom = {
           ambition: item.frontmatter.ambition,
-          text: item.frontmatter.text
+          text: item.frontmatter.text,
         }
         waaromList.push(waarom)
-      } else if(item.parent.internal.description.includes("goodprac")){
+      } else if (item.parent.internal.description.includes('goodprac')) {
         let themesList = item.frontmatter.themes.split(/\r?\n/)
         let extraList = item.frontmatter.extra.split(/\r?\n/)
         let prac = {
@@ -130,7 +130,7 @@ function AmbitionPage({data}: {data: any}) {
           date: item.frontmatter.date,
           themes: themesList,
           text: item.frontmatter.text,
-          extra: extraList
+          extra: extraList,
         }
         goodPracs.push(prac)
       }
@@ -139,17 +139,31 @@ function AmbitionPage({data}: {data: any}) {
     setHows(hoeList)
     setWhys(waaromList)
     setGoodPracs(goodPracs)
-    
   }, [nodes])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.addEventListener('click', handleClick)
+      return () => window.removeEventListener('click', handleClick)
+    }
+  }, [])
+
+  const handleClick = (e: any) => {
+    const isOutside = !e.target.closest('#inputStad')
+
+    if (isOutside) {
+      setSuggestions([])
+    }
+  }
 
   return (
     <main className="font-poppins selection:bg-pink selection:text-white">
       <Topnavigation section="#CallToAction" />
-      <div className="absolute top-0 left-0 w-full h-24 bg-purple tabletportrait:w-1/2"></div>
-      <div className="absolute top-0 right-0 w-full h-24 bg-white hidden tabletportrait:w-1/2 tabletportrait:block"></div>
-      <header className="relative top-0 z-10 left-0 mb-8 flex">
+      <div className="absolute top-0 left-0 h-24 w-full bg-purple tabletportrait:w-1/2"></div>
+      <div className="absolute top-0 right-0 hidden h-24 w-full bg-white tabletportrait:block tabletportrait:w-1/2"></div>
+      <header className="relative top-0 left-0 z-10 mb-8 flex">
         <section className="relative z-10 h-full bg-purple tabletportrait:w-1/2">
-          <div className="pt-16 mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
+          <div className="mx-10 pt-16 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
             <Tag text="Actief bewegen" colorBg="pink" colorText="white" />
             <h1 className="mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
               Aantrekkelijke & veilige wandel- & fietsroutes
@@ -300,9 +314,15 @@ function AmbitionPage({data}: {data: any}) {
           mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita
         </p>
         <div className="grid grid-cols-1 gap-6 text-sm tabletportrait:text-lg laptop:grid-cols-2 laptop:text-xl laptopL:grid-cols-3">
-          {whys && whys.map((item: any) => (
-            <Textblock text={item.text} bgColor="lightPink" textColor="purple" bold={false}/>
-          ))}
+          {whys &&
+            whys.map((item: any) => (
+              <Textblock
+                text={item.text}
+                bgColor="lightPink"
+                textColor="purple"
+                bold={false}
+              />
+            ))}
           {/* <div className="flex max-w-sm skew-x-12 items-center justify-center bg-lightPink">
             <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
               <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
@@ -365,9 +385,15 @@ function AmbitionPage({data}: {data: any}) {
           mollitia veniam voluptatum! Molestias odio perspiciatis porro expedita
         </p>
         <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
-          {hows && hows.map((item: HoeWaarom) => (
-            <Textblock text={item.text} bgColor="lightGreen" textColor="green" bold={true} />
-          ))}
+          {hows &&
+            hows.map((item: HoeWaarom) => (
+              <Textblock
+                text={item.text}
+                bgColor="lightGreen"
+                textColor="green"
+                bold={true}
+              />
+            ))}
         </div>
       </section>
 
@@ -381,9 +407,10 @@ function AmbitionPage({data}: {data: any}) {
           fietsvriendelijkheid
         </p>
         <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
-          {intBronnen && intBronnen.map((item: intBron) => (
-            <Intsrc title={item.title} text={item.text} link={item.link}/>
-          ))}
+          {intBronnen &&
+            intBronnen.map((item: intBron) => (
+              <Intsrc title={item.title} text={item.text} link={item.link} />
+            ))}
         </div>
       </section>
 
@@ -391,7 +418,7 @@ function AmbitionPage({data}: {data: any}) {
         <div className="mb-2 flex items-center justify-between pt-24">
           <h2 className="text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
             Relevante good practices
-          </h2>        
+          </h2>
         </div>
         <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">
           Je wil je door nog meer good practices laten inspireren? Ontdek ze{' '}
@@ -443,7 +470,7 @@ function AmbitionPage({data}: {data: any}) {
           <h2 className="pb-4 text-xl font-bold tabletportrait:text-2xl">
             Benieuwd naar de beweegvriendelijkheid van jouw stad of gemeente?
           </h2>
-          <h4 className="pb-4 text-lg font-semibold tabletportrait:text-xl text-pink">
+          <h4 className="pb-4 text-lg font-semibold text-pink tabletportrait:text-xl">
             Download hier jouw rapport
           </h4>
           <p className="pb-4 text-sm tabletportrait:text-lg">
@@ -454,7 +481,7 @@ function AmbitionPage({data}: {data: any}) {
             className="desktop:grid-cols-3 z-0 grid grid-cols-1 gap-4 pb-3 text-sm tabletportrait:grid-cols-3 tabletportrait:text-lg laptop:grid-cols-1 laptopL:grid-cols-3"
             id="autoComplete"
           >
-            <div className="flex max-w-min flex-col">
+            <div className="flex max-w-min flex-col" id="#inputStad">
               <label htmlFor="Stad">Postcode of stad:</label>
               <input
                 type="text"
@@ -546,21 +573,21 @@ function AmbitionPage({data}: {data: any}) {
 export default AmbitionPage
 
 export const IntBronQuery = graphql`
-  query{
+  query {
     allMarkdownRemark {
       nodes {
         frontmatter {
-         title
-         link
-         text
-         ambition
-        	text
-       }
-       parent {
-         internal {
-           description
-         }
-       }
+          title
+          link
+          text
+          ambition
+          text
+        }
+        parent {
+          internal {
+            description
+          }
+        }
       }
     }
   }
