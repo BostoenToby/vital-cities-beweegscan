@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.0",
+    "base-64": "^1.0.0",
     "chart.js": "^3.7.1",
     "gatsby": "^4.14.0",
     "gatsby-image": "^3.11.0",
