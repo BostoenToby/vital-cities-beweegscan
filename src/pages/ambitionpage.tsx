@@ -143,7 +143,7 @@ function AmbitionPage({data}: {data: any}) {
   }, [nodes])
 
   return (
-    <main className="font-poppins selection:bg-pink selection:text-white">
+    <main className="font-poppins font-light selection:bg-pink selection:text-white">
       <Topnavigation section="#CallToAction" />
       <div className="absolute top-0 left-0 w-full h-24 bg-purple tabletportrait:w-1/2"></div>
       <div className="absolute top-0 right-0 w-full h-24 bg-white hidden tabletportrait:w-1/2 tabletportrait:block"></div>
@@ -151,14 +151,14 @@ function AmbitionPage({data}: {data: any}) {
         <section className="relative z-10 h-full bg-purple tabletportrait:w-1/2">
           <div className="pt-16 mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
             <Tag text="Actief bewegen" colorBg="pink" colorText="white" />
-            <h1 className="mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
+            <h1 className="font-raleway mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
               Aantrekkelijke & veilige wandel- & fietsroutes
             </h1>
-            <p className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
+            <h2 className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
               Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een
               actieve levensstijl en faciliteren mensen om lopend of fietsend
               naar voorzieningen of het werk of school voorzieningen te gaan
-            </p>
+            </h2>
             <p className="mb-2 font-semibold text-lightPurple">scroll</p>
             <ArrowDown className="animate-bounce text-lightPurple" />
           </div>
@@ -176,17 +176,17 @@ function AmbitionPage({data}: {data: any}) {
         id="Location"
       >
         <div className="flex flex-col">
-          <h2 className="text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl">
+          <h2 className="font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl">
             Wat is de huidige situatie in
           </h2>
           <div className="flex items-center">
             <select className="-ml-1 w-fit appearance-none pr-0 text-xl font-xxbold text-purple underline decoration-lightxPurple underline-offset-2 hover:text-pink hover:decoration-pink focus:text-pink focus:decoration-pink tabletportrait:text-3xl laptop:mt-2 laptop:text-4xl">
-              <option className="text-xl">het Vlaams gewest</option>
+              <option className="font-raleway text-xl">het Vlaams gewest</option>
             </select>
             <ChevronDown className="mt-3 h-8 w-8 stroke-purple hover:stroke-pink focus:stroke-pink" />
           </div>
 
-          <label className="mt-5 text-sm font-medium tabletportrait:text-lg laptop:text-xl">
+          <label className="mt-5 text-sm tabletportrait:text-lg laptop:text-xl">
             In het Vlaams gewest is{' '}
             <span className="font-semibold">
               ongeveer de helft of meer van de inwoners
@@ -275,7 +275,7 @@ function AmbitionPage({data}: {data: any}) {
         className="mx-16 mt-32 mb-32 flex flex-col items-center text-center font-poppins"
         id="Problem"
       >
-        <h2 className="mb-5 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+        <h2 className="font-raleway mb-5 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
           Wat is het probleem?
         </h2>
         <p className="mb-5 text-sm tabletportrait:text-lg laptop:text-xl">
@@ -291,7 +291,7 @@ function AmbitionPage({data}: {data: any}) {
       </section>
 
       <section className="mx-16 mb-16" id="Solution">
-        <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+        <h2 className="font-raleway mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
           <span className="underline decoration-lightPurple">Waarom</span>{' '}
           moeten we dit oplossen?
         </h2>
@@ -356,7 +356,7 @@ function AmbitionPage({data}: {data: any}) {
       </section>
 
       <section className="mx-16 mb-16">
-        <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+        <h2 className="font-raleway mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
           <span className="underline decoration-green">Hoe</span> kunnen we dit
           oplossen?
         </h2>
@@ -372,7 +372,7 @@ function AmbitionPage({data}: {data: any}) {
       </section>
 
       <section className="bg-neutral px-16 pb-16" id="Resources">
-        <h2 className="mb-4 pt-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+        <h2 className="font-raleway mb-4 pt-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
           Interessante bronnen
         </h2>
         <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl">
@@ -389,7 +389,7 @@ function AmbitionPage({data}: {data: any}) {
 
       <section className="px-16 pb-16" id="Practices">
         <div className="mb-2 flex items-center justify-between pt-24">
-          <h2 className="text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+          <h2 className="font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
             Relevante good practices
           </h2>        
         </div>

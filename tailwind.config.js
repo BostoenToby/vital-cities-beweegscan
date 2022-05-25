@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
+        raleway: ["Raleway", 'sans-serif']
       },
       height: {
         tablet: '34rem',

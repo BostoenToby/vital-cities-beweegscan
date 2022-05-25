@@ -15,17 +15,17 @@ import { graphql } from 'gatsby'
 
 const IndexPage = ({data}: {data: any}) => {
   return (
-    <div className="font-poppins selection:bg-pink selection:text-white">
+    <div className="font-poppins font-light selection:bg-pink selection:text-white">
       <Topnavigation section="#Contact" />
       <div className="absolute top-0 left-0 w-full h-24 bg-purple tabletportrait:w-1/2"></div>
       <div className="absolute top-0 right-0 w-full h-24 bg-white hidden tabletportrait:w-1/2 tabletportrait:block"></div>
       <header className="relative top-0 left-0 mb-8 flex h-screen">
         <section className="relative z-10 h-auto bg-purple tabletportrait:w-1/2">
           <div className="mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
-            <h1 className="pt-16 mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">
+            <h1 className="font-raleway pt-16 mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">
               Beweegscan van Vital Cities
             </h1>
-            <h2 className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
+            <h2 className="font-raleway mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
               Meet de beweegvriendelijkheid van jouw stad of gemeente en vind de
               inspiratie om die nog te verbeteren
             </h2>
@@ -42,7 +42,7 @@ const IndexPage = ({data}: {data: any}) => {
         </div>
       </header>
       <section className="mx-16">
-        <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+        <h2 className="font-raleway mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
           Over de beweegscan
         </h2>
         <p className="mb-2">
@@ -78,7 +78,7 @@ const IndexPage = ({data}: {data: any}) => {
             text="Bruikbaar, gevarieerd en voldoende groen"
           />
         </div>
-        <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+        <h2 className="font-raleway mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
           In een oogopslag
         </h2>
         <p className="mb-2">
@@ -96,7 +96,7 @@ const IndexPage = ({data}: {data: any}) => {
           kan zijn (want beter scoort dan het Vlaams gemiddelde), dan wel wat
           nog beter kan (want minder goed scoort).
         </p>
-        <h2 className="mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+        <h2 className="font-raleway mb-4 text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
           Inspirerend
         </h2>
         <p className="mb-2">
