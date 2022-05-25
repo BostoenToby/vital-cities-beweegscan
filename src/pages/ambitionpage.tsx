@@ -147,7 +147,6 @@ function AmbitionPage({data}: {data: any}) {
       <Topnavigation section="#CallToAction" />
       <div className="absolute top-0 left-0 w-full h-24 bg-purple tabletportrait:w-1/2"></div>
       <div className="absolute top-0 right-0 w-full h-24 bg-white hidden tabletportrait:w-1/2 tabletportrait:block"></div>
-      {/* <div className="absolute top-0 w-full h-24 bg-purple"></div> */}
       <header className="relative top-0 z-10 left-0 mb-8 flex">
         <section className="relative z-10 h-full bg-purple tabletportrait:w-1/2">
           <div className="pt-16 mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
@@ -164,7 +163,7 @@ function AmbitionPage({data}: {data: any}) {
             <ArrowDown className="animate-bounce text-lightPurple" />
           </div>
         </section>
-        <div className="h-full align-middle tabletportrait:w-1/2">
+        <div className="h-full align-middle">
           <StaticImage
             src="../images/headerpictureactivemovement.png"
             alt="header picture"

@@ -17,9 +17,10 @@ const IndexPage = ({data}: {data: any}) => {
   return (
     <div className="font-poppins selection:bg-pink selection:text-white">
       <Topnavigation section="#Contact" />
-
+      <div className="absolute top-0 left-0 w-full h-24 bg-purple tabletportrait:w-1/2"></div>
+      <div className="absolute top-0 right-0 w-full h-24 bg-white hidden tabletportrait:w-1/2 tabletportrait:block"></div>
       <header className="relative top-0 left-0 mb-8 flex h-screen">
-        <section className="relative z-10 h-auto bg-purple">
+        <section className="relative z-10 h-auto bg-purple tabletportrait:w-1/2">
           <div className="mx-10 pb-10 mobileM:mx-8 tabletportrait:px-2 laptop:mx-16 laptopL:mx-20">
             <h1 className="pt-16 mb-8 max-w-2xl text-3xl font-xxbold leading-tight text-white tabletportrait:text-5xl laptop:text-6xl laptopL:text-7xl">
               Beweegscan van Vital Cities
@@ -32,7 +33,7 @@ const IndexPage = ({data}: {data: any}) => {
             <ArrowDown className="animate-bounce text-lightPurple" />
           </div>
         </section>
-        <div className="h-screen">
+        <div className="h-screen tabletportrait:w-1/2">
           <StaticImage
             src="../images/beweegscan.jpg"
             alt="header picture"
