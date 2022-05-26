@@ -48,6 +48,7 @@
     "@types/react-dom": "^17.0.16",
     "@types/webfontloader": "^1.6.34",
     "autoprefixer": "^10.4.7",
+    "netlify-cli": "^10.3.3",
     "postcss": "^8.4.13",
     "prettier": "^2.6.2",
     "prettier-plugin-tailwindcss": "^0.1.11",

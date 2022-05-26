@@ -4,3 +4,5 @@ public
 credentials.json
 .env.development
 .env.production
+# Local Netlify folder
+.netlify
