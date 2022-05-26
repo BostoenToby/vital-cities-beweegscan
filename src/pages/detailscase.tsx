@@ -67,9 +67,15 @@ export default ({ location }: { location: any }) => {
   return (
     <ThemeContext.Consumer>
       {(context) => (
-        <div className={` ${context.dark ? 'bg-dark' : ''}`}>
+        <div
+          className={`font-poppins selection:text-white ${
+            context.dark
+              ? 'bg-dark selection:bg-pinkDesat'
+              : 'selection:bg-pink'
+          }`}
+        >
           <TopNavigation section="#Contact" />
-          <main className="mx-auto my-10 max-w-[104rem] px-3 font-poppins gridbreak:px-10 columnbreak:my-20">
+          <main className="mx-auto my-10 max-w-[104rem] px-3  gridbreak:px-10 columnbreak:my-20">
             <header>
               <button
                 onClick={() => navigate('../overviewpagepractices')}
@@ -98,14 +104,14 @@ export default ({ location }: { location: any }) => {
                 }`}
               >
                 <h1
-                  className={`mb-5 text-2xl font-bold columnbreak:text-5xl ${
+                  className={`mb-5 font-raleway text-2xl font-bold columnbreak:text-5xl ${
                     context.dark ? 'text-white' : 'text-dark '
                   }`}
                 >
                   {practice?.titel}
                 </h1>
                 <h3
-                  className={`mb-5 text-lg font-semibold  ${
+                  className={`mb-5 font-raleway text-lg font-semibold  ${
                     context.dark ? 'text-white text-opacity-75' : 'text-purple'
                   }`}
                 >
@@ -145,7 +151,7 @@ export default ({ location }: { location: any }) => {
                           : 'bg-lightRed'
                       }`}
                     >
-                      <h2 className="mb-1 text-2xl font-bold columnbreak:text-3xl">
+                      <h2 className="mb-1 font-raleway text-2xl font-bold columnbreak:text-3xl">
                         {practice.warning.header}
                       </h2>
                       <p className="ml-2 text-base font-medium columnbreak:text-lg">
@@ -159,7 +165,7 @@ export default ({ location }: { location: any }) => {
                   {practice.extra && practice.extra.length >= 1 ? (
                     <div>
                       <h2
-                        className={`mb-6 text-2xl font-bold columnbreak:text-3xl ${
+                        className={`mb-6 font-raleway text-2xl font-bold columnbreak:text-3xl ${
                           context.dark ? 'text-white' : 'text-purple'
                         }`}
                       >
@@ -194,6 +200,10 @@ export default ({ location }: { location: any }) => {
           <div id="Contact">
             <Contactsection />
             <Footer />
+          </div>
+          <div className="hidden bg-yellowDesat">
+            prevent color from being purged, because it's only used in
+            components rn
           </div>
         </div>
       )}

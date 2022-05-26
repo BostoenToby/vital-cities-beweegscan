@@ -17,7 +17,7 @@ export default ({ paragraaf }: { paragraaf: Paragraaf }) => {
             <div className="break-inside-avoid-column font-poppins">
               {checkheader(paragraaf.header) ? (
                 <h2
-                  className={`mb-6 text-2xl font-bold columnbreak:text-3xl ${
+                  className={`mb-6 font-raleway text-2xl font-bold columnbreak:text-3xl ${
                     context.dark ? 'text-white' : 'text-purple '
                   }`}
                 >
@@ -49,7 +49,7 @@ export default ({ paragraaf }: { paragraaf: Paragraaf }) => {
             >
               <div className="w-max">
                 <h2
-                  className={`text-2xl font-bold columnbreak:text-3xl ${
+                  className={`font-raleway text-2xl font-bold columnbreak:text-3xl ${
                     paragraaf.header.toLowerCase() == 'tip' ? 'mb-1' : ''
                   } ${context.dark ? '!opacity-90' : ''}`}
                 >

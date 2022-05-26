@@ -15,7 +15,7 @@ export default ({ practice }: { practice: TestPractice }) => {
               <div className="mb-4 h-full w-full bg-gray opacity-50 gridbreak:mb-0"></div>
               <div className=" flex flex-col font-poppins text-base font-semibold text-white gridbreak:relative gridbreak:bottom-5 gridbreak:left-4 gridbreak:flex-row">
                 <div
-                  className={`py-2 px-4 gridbreak:-skew-x-12 ${
+                  className={`py-2 px-4 gridbreak:-skew-x-12  ${
                     context.dark ? 'bg-pinkDesat' : 'bg-pink'
                   }`}
                 >
@@ -32,7 +32,7 @@ export default ({ practice }: { practice: TestPractice }) => {
             </section>
             <section className="mb-4 font-poppins">
               <h2
-                className={`mb-4 text-2xl font-semibold line-clamp-2 ${
+                className={`mb-4 font-raleway text-2xl font-semibold line-clamp-2 ${
                   context.dark ? 'text-white' : 'text-dark'
                 }`}
               >
