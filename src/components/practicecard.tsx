@@ -15,14 +15,14 @@ export default ({ practice }: { practice: TestPractice }) => {
               <div className="mb-4 h-full w-full bg-gray opacity-50 gridbreak:mb-0"></div>
               <div className=" flex flex-col font-poppins text-base font-semibold text-white gridbreak:relative gridbreak:bottom-5 gridbreak:left-4 gridbreak:flex-row">
                 <div
-                  className={`py-2 px-4 gridbreak:-skew-x-12  ${
+                  className={`py-1 px-2 gridbreak:-skew-x-12  ${
                     context.dark ? 'bg-pinkDesat' : 'bg-pink'
                   }`}
                 >
                   {practice.themas[0]}
                 </div>
                 <div
-                  className={`py-2 px-4 gridbreak:-skew-x-12 ${
+                  className={`py-1 px-2 gridbreak:-skew-x-12 ${
                     context.dark ? 'bg-purpleDesat' : 'bg-purple'
                   }`}
                 >

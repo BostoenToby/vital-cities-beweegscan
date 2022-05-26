@@ -1,9 +1,9 @@
 import * as React from "react"
 
-export default ({text, bgColor, textColor, bold}: {text: string, bgColor: string, textColor: string, bold: boolean}) => {
+export default ({classes, text}: {classes: string, text: string}) => {
     return(
-        <div className={`flex bg-${bgColor} skew-x-12 max-w-[275px] items-center justify-center`}>
-            <p className={`desktop:line-clamp-2 px-6 py-3 text-${textColor} -skew-x-12 ${bold? 'font-medium': ''}`}>{text}</p>
+        <div className={`flex skew-x-12 max-w-[275px] items-center justify-center ${classes}`}>
+            <p className="desktop:line-clamp-2 px-6 py-3 -skew-x-12">{text}</p>
         </div>
     )
 }

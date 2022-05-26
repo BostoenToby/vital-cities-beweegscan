@@ -44,7 +44,7 @@ const IndexPage = ({ data }: { data: any }) => {
             }`}
           ></div>
           <header
-            className={`flex w-full flex-col columnbreak:flex-row columnbreak:items-center laptopXL:bg-purple ${
+            className={`flex w-full flex-col columnbreak:flex-row columnbreak:items-center  ${
               context.dark
                 ? 'laptopXL:bg-white laptopXL:bg-opacity-[0.08]'
                 : 'laptopXL:bg-purple'
@@ -86,7 +86,6 @@ const IndexPage = ({ data }: { data: any }) => {
             </section>
           </header>
           <main className="mx-auto max-w-[104rem]">
-            {' '}
             <div
               className={`mx-4 my-8 mobile:mx-8 columnbreak:my-16 columnbreak:mx-16 ${
                 context.dark ? 'text-white' : 'text-dark'

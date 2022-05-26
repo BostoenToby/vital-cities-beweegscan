@@ -58,7 +58,7 @@ export default () => {
           <main className="mx-auto my-8 w-full max-w-[104rem] px-3  gridbreak:my-16 gridbreak:px-10">
             <header className="mb-14 flex flex-col gridbreak:flex-row gridbreak:justify-between">
               <h1
-                className={`mb-4  text-5xl font-bold gridbreak:mb-0 ${
+                className={`mb-4 font-raleway  text-5xl font-bold gridbreak:mb-0 ${
                   context.dark ? 'text-white text-opacity-90' : 'text-dark'
                 }`}
               >

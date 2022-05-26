@@ -18,14 +18,19 @@ import Textblock from '../components/textblock'
 import { navigate } from 'gatsby'
 import { ChevronLeft } from 'lucide-react'
 import ThemeContext from '../context/themecontext'
+import { text } from 'stream/consumers'
+import { PercentageData } from '../interfaces/data'
+import { testData } from '../data/testGraph'
+import Donutdata from '../components/donutdata'
 
 function AmbitionPage({ data }: { data: any }) {
-  const [intBronnen, setIntBronnen] = React.useState<intBron[]>()
-  const [hows, setHows] = React.useState<HoeWaarom[]>()
-  const [whys, setWhys] = React.useState<HoeWaarom[]>()
-  const [goodPracs, setGoodPracs] = React.useState<goodPractice[]>()
-  const [suggestions, setSuggestions] = React.useState<string[]>()
-  const [typed, setTyped] = React.useState<string>('')
+  const [intBronnen, setIntBronnen] = useState<intBron[]>()
+  const [hows, setHows] = useState<HoeWaarom[]>()
+  const [whys, setWhys] = useState<HoeWaarom[]>()
+  const [goodPracs, setGoodPracs] = useState<goodPractice[]>()
+  const [suggestions, setSuggestions] = useState<string[]>()
+  const [typed, setTyped] = useState<string>('')
+  const [graphData, setGraphData] = useState<PercentageData[]>()
   const [info, setInfo] = useState<PersonalInfo>({
     place: '',
     firstName: '',
@@ -145,6 +150,7 @@ function AmbitionPage({ data }: { data: any }) {
   }, [nodes])
 
   useEffect(() => {
+    setGraphData(testData)
     if (typeof window !== 'undefined') {
       window.addEventListener('click', handleClick)
       return () => window.removeEventListener('click', handleClick)
@@ -162,23 +168,66 @@ function AmbitionPage({ data }: { data: any }) {
   return (
     <ThemeContext.Consumer>
       {(context) => (
-        <main className="font-poppins font-light selection:bg-pink selection:text-white">
+        <main
+          className={`font-poppins font-light selection:text-white ${
+            context.dark
+              ? 'bg-dark selection:bg-pinkDesat '
+              : 'selection:bg-pink'
+          }`}
+        >
           <Topnavigation section="#CallToAction" />
-          <div className="absolute top-0 left-0 h-24 w-full bg-purple tabletportrait:w-1/2"></div>
-          <div className="absolute top-0 right-0 hidden h-24 w-full bg-white tabletportrait:block tabletportrait:w-1/2"></div>
-          <div className="absolute top-0 right-0 hidden h-24 w-full bg-purple tabletportrait:block tabletportrait:w-1/2 columnbreak:bg-white"></div>
-          <header className="flex w-full flex-col columnbreak:flex-row columnbreak:items-center 4K:bg-purple">
-            <section className="h-full w-full bg-purple p-7 pb-5 columnbreak:w-1/2 columnbreak:p-14 columnbreak:pb-10">
+          <div
+            className={`absolute top-0 left-0 h-24 w-full tabletportrait:w-1/2 ${
+              context.dark ? 'bg-white bg-opacity-[0.08]' : 'bg-purple'
+            }`}
+          ></div>
+          <div
+            className={`absolute top-0 right-0 hidden h-24 w-full tabletportrait:block tabletportrait:w-1/2 ${
+              context.dark ? 'bg-dark' : 'bg-white'
+            }`}
+          ></div>
+          <div
+            className={`absolute top-0 right-0 hidden h-24 w-full tabletportrait:block tabletportrait:w-1/2  ${
+              context.dark
+                ? 'bg-white bg-opacity-[0.08] columnbreak:bg-dark'
+                : 'bg-purple columnbreak:bg-white'
+            }`}
+          ></div>
+          <header
+            className={`flex w-full flex-col columnbreak:flex-row columnbreak:items-center ${
+              context.dark ? '4K:bg-white 4K:bg-opacity-[0.08]' : '4K:bg-purple'
+            }`}
+          >
+            <section
+              className={`h-full w-full p-7 pb-5 columnbreak:w-1/2 columnbreak:p-14 columnbreak:pb-10 ${
+                context.dark
+                  ? 'bg-white bg-opacity-[0.08] 4K:bg-opacity-0'
+                  : 'bg-purple'
+              }`}
+            >
               <button
                 onClick={() => navigate('../')}
                 className="mb-11 flex flex-row items-center text-center"
               >
                 <ChevronLeft className="mr-6 text-white opacity-70" />
-                <p className="text-lg font-semibold text-white text-opacity-90 columnbreak:text-2xl">
+                <p
+                  className={`text-lg font-semibold text-opacity-90 columnbreak:text-2xl ${
+                    context.dark
+                      ? 'text-white hover:text-lightPurpleDesat'
+                      : 'text-white hover:text-lightGray'
+                  }`}
+                >
                   naar overzicht ambities
                 </p>
               </button>
-              <Tag text="Actief bewegen" colorBg="pink" colorText="white" />
+              <Tag
+                text="Actief bewegen"
+                classes={
+                  context.dark
+                    ? 'bg-pinkDesat text-white'
+                    : 'bg-pink text-white'
+                }
+              />
               <h1 className="mb-8 max-w-2xl font-raleway text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
                 Aantrekkelijke & veilige wandel- & fietsroutes
               </h1>
@@ -187,8 +236,18 @@ function AmbitionPage({ data }: { data: any }) {
                 actieve levensstijl en faciliteren mensen om lopend of fietsend
                 naar voorzieningen of het werk of school voorzieningen te gaan
               </p>
-              <p className="mb-2 font-semibold text-lightPurple">scroll</p>
-              <ArrowDown className="animate-bounce text-lightPurple" />
+              <p
+                className={`mb-2 font-semibold ${
+                  context.dark ? 'text-lightPurpleDesat' : 'text-lightPurple'
+                }`}
+              >
+                scroll
+              </p>
+              <ArrowDown
+                className={`animate-bounce ${
+                  context.dark ? 'text-lightPurpleDesat' : 'text-lightPurple'
+                }`}
+              />
             </section>
             <section className="h-full w-full columnbreak:w-1/2">
               <StaticImage
@@ -198,127 +257,110 @@ function AmbitionPage({ data }: { data: any }) {
               />
             </section>
           </header>
-          <div className="mx-auto max-w-[104rem]">
+          <div
+            className={`mx-auto max-w-[104rem] ${
+              context.dark ? 'text-white' : 'text-dark'
+            }`}
+          >
             <section
               className="laptop:16 tab mx-4 mt-8 grid grid-cols-1 gap-8 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-16 laptopL:mt-36"
               id="Location"
             >
               <div className="flex flex-col">
-                <h2 className="font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl">
+                <h2
+                  className={`pb-2 font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
                   Wat is de huidige situatie in
                 </h2>
-                <div className="flex items-center">
-                  <select className="-ml-1 w-fit appearance-none pr-0 text-xl font-xxbold text-purple underline decoration-lightxPurple underline-offset-2 hover:text-pink hover:decoration-pink focus:text-pink focus:decoration-pink tabletportrait:text-3xl laptop:mt-2 laptop:text-4xl">
-                    <option className="text-xl">het Vlaams gewest</option>
+                <div className="group relative block w-max">
+                  <select
+                    className={`-ml-1 w-max appearance-none border-none pb-4 pr-8 text-xl font-xxbold  text-purple underline underline-offset-2 outline-none  tabletportrait:text-3xl laptop:text-4xl ${
+                      context.dark
+                        ? 'bg-dark decoration-darkGray hover:text-lightPurpleDesat hover:decoration-lightPurpleDesat focus:text-lightPurpleDesat focus:decoration-lightPurpleDesat'
+                        : 'decoration-lightxPurple hover:text-pink hover:decoration-pink focus:text-pink focus:decoration-pink'
+                    }`}
+                  >
+                    <option
+                      className={`text-xl ${context.dark ? 'bg-darkGray' : ''}`}
+                    >
+                      het Vlaams gewest
+                    </option>
+                    <option
+                      className={`text-xl ${context.dark ? 'bg-darkGray' : ''}`}
+                    >
+                      het Vlaams gewest
+                    </option>
                   </select>
-                  <ChevronDown className="mt-3 h-8 w-8 stroke-purple hover:stroke-pink focus:stroke-pink" />
+                  <ChevronDown
+                    className={`pointer-events-none absolute right-0 top-3 opacity-70 ${
+                      context.dark ? 'text-white' : 'text-dark'
+                    }`}
+                  />
                 </div>
 
-                <label className="mt-5 text-sm font-medium tabletportrait:text-lg laptop:text-xl">
+                <label
+                  className={`mt-5 text-sm font-medium tabletportrait:text-lg laptop:text-xl ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
                   In het Vlaams gewest is{' '}
                   <span className="font-semibold">
                     ongeveer de helft of meer van de inwoners
                   </span>{' '}
-                  <span className="font-semibold text-pink">niet tevreden</span>{' '}
+                  <span
+                    className={`font-semibold ${
+                      context.dark ? 'text-pinkDesat' : 'text-pink'
+                    }`}
+                  >
+                    niet tevreden
+                  </span>{' '}
                   over de staat, veiligheid en aantrekkelijkheid van straten,
                   pleinen, wandel- en fietspaden (dus een samenvatting van alle
                   cijfers).
                 </label>
               </div>
-              <div>
-                <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
-                  HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ...
-                </label>
-                <div className="grid grid-cols-1 text-sm font-medium tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl">
-                  <div className="p-2">
-                    <div className="flex items-center">
-                      <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
-                        <DonutChart percentage={44} />
-                      </div>
-                      <div className="flex flex-col">
-                        <label className="font-medium">
-                          Staat straten & pleinen
-                        </label>
-                        <label className="font-bold text-pink">44%</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2">
-                    <div className="flex items-center">
-                      <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
-                        <DonutChart percentage={54} />
-                      </div>
-                      <div className="flex flex-col">
-                        <label className="font-medium">Staat voetpaden</label>
-                        <label className="font-bold text-pink">54%</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2">
-                    <div className="flex items-center">
-                      <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
-                        <DonutChart percentage={59} />
-                      </div>
-                      <div className="flex flex-col">
-                        <label className="font-medium">Staat fietspaden</label>
-                        <label className="font-bold text-pink">59%</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2">
-                    <div className="flex items-center">
-                      <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
-                        <DonutChart percentage={55} />
-                      </div>
-                      <div className="flex flex-col">
-                        <label className="font-medium">Genoeg fietspaden</label>
-                        <label className="font-bold text-pink">55%</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2">
-                    <div className="flex items-center">
-                      <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
-                        <DonutChart percentage={60} />
-                      </div>
-                      <div className="flex flex-col">
-                        <label className="font-medium">
-                          Fietsinfrastructuur
-                        </label>
-                        <label className="font-bold text-pink">60%</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="p-2">
-                    <div className="flex items-center">
-                      <div className="mb-2 h-14 w-14 laptop:h-20 laptop:w-20">
-                        <DonutChart percentage={57} />
-                      </div>
-                      <div className="flex flex-col">
-                        <label className="font-medium">Veilig fietsen</label>
-                        <label className="font-bold text-pink">57%</label>
-                      </div>
-                    </div>
+              {graphData && graphData.length >= 1 ? (
+                <div>
+                  <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
+                    HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ...
+                  </label>
+                  <div className="grid grid-cols-1 text-sm font-medium tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl">
+                    {graphData?.map((e, i) => (
+                      <Donutdata data={e} key={e.label} />
+                    ))}
                   </div>
                 </div>
-              </div>
+              ) : null}
             </section>
-
             <section
               className="mx-4 mt-32 mb-32 flex flex-col items-center text-center font-poppins mobile:mx-8 columnbreak:mx-16"
               id="Problem"
             >
-              <h2 className="mb-5 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+              <h2
+                className={`mb-5 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                  context.dark ? 'opacity-90' : ''
+                }`}
+              >
                 Wat is het probleem?
               </h2>
-              <p className="mb-5 text-sm tabletportrait:text-lg laptop:text-xl">
+              <p
+                className={`mb-5 text-sm tabletportrait:text-lg laptop:text-xl ${
+                  context.dark ? 'opacity-75' : ''
+                }`}
+              >
                 Als routes geen goede verbinding maken met voorzieningen en werk
                 of school, als ze onveilig zijn of door een weinig
                 aantrekkelijke stadsomgeving gaan, zijn mensen niet geneigd om
                 ze te gebruiken. Als je fiets of wandelt, voel je je namelijk
                 kwetsbaarder dan in je auto.
               </p>
-              <p className="text-sm font-bold tabletportrait:text-lg laptop:text-xl">
+              <p
+                className={`text-sm font-bold tabletportrait:text-lg laptop:text-xl ${
+                  context.dark ? 'opacity-90' : ''
+                }`}
+              >
                 Bij een gebrek aan veilige en/of aantrekkelijke routes zullen
                 mensen dan eerder kiezen voor de auto.
               </p>
@@ -328,11 +370,19 @@ function AmbitionPage({ data }: { data: any }) {
               className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16"
               id="Solution"
             >
-              <h2 className="mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+              <h2
+                className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                  context.dark ? 'opacity-90' : ''
+                }`}
+              >
                 <span className="underline decoration-lightPurple">Waarom</span>{' '}
                 moeten we dit oplossen?
               </h2>
-              <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-2xl">
+              <p
+                className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-2xl ${
+                  context.dark ? 'opacity-75' : ''
+                }`}
+              >
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
                 corporis mollitia veniam voluptatum! Molestias odio perspiciatis
                 porro expedita
@@ -342,69 +392,30 @@ function AmbitionPage({ data }: { data: any }) {
                   whys.map((item: any) => (
                     <Textblock
                       text={item.text}
-                      bgColor="lightPink"
-                      textColor="purple"
-                      bold={false}
+                      classes={
+                        context.dark
+                          ? 'bg-lightPurpleDesat bg-opacity-[0.08] text-lightPurpleDesat'
+                          : 'bg-lightPink text-purple '
+                      }
                     />
                   ))}
-                {/* <div className="flex max-w-sm skew-x-12 items-center justify-center bg-lightPink">
-            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
-              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
-                €1
-              </b>{' '}
-              die men investeert in fiets-infrastructuur leidt tot{' '}
-              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
-                €14 return
-              </b>
-            </p>
-          </div>
-          <div className="flex max-w-sm skew-x-12 items-center justify-center bg-lightPink">
-            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
-              Fietsers consumeren{' '}
-              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
-                €20 meer
-              </b>{' '}
-              op uitstap.
-            </p>
-          </div>
-          <div className="flex max-w-md skew-x-12 items-center justify-center bg-lightPink">
-            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
-              Waar meer fietsers en wandelaars op straat zijn is er{' '}
-              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
-                minder criminaliteit
-              </b>
-            </p>
-          </div>
-          <div className="flex max-w-lg skew-x-12 items-center justify-center bg-lightPink">
-            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
-              Fietsers en voetgangers zijn tot{' '}
-              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
-                30% meer
-              </b>{' '}
-              geneigd om{' '}
-              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
-                lokaal te kopen
-              </b>{' '}
-              dan automobilisten
-            </p>
-          </div>
-          <div className="flex max-w-md skew-x-12 items-center justify-center bg-lightPink">
-            <p className="desktop:line-clamp-2 -skew-x-12 px-6 py-3 text-purple">
-              Buurten met meer paden, pleinen en parken hebben{' '}
-              <b className="text-xl text-purple tabletportrait:text-2xl laptop:text-3xl">
-                meer wandelaars
-              </b>
-            </p>
-          </div> */}
               </div>
             </section>
 
             <section className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16">
-              <h2 className="mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+              <h2
+                className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                  context.dark ? 'opacity-90' : ''
+                }`}
+              >
                 <span className="underline decoration-green">Hoe</span> kunnen
                 we dit oplossen?
               </h2>
-              <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl">
+              <p
+                className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
+                  context.dark ? 'opacity-75' : ''
+                }`}
+              >
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
                 corporis mollitia veniam voluptatum! Molestias odio perspiciatis
                 porro expedita
@@ -414,22 +425,34 @@ function AmbitionPage({ data }: { data: any }) {
                   hows.map((item: HoeWaarom) => (
                     <Textblock
                       text={item.text}
-                      bgColor="lightGreen"
-                      textColor="green"
-                      bold={true}
+                      classes={`font-medium ${
+                        context.dark
+                          ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
+                          : 'bg-lightGreen text-green'
+                      }`}
                     />
                   ))}
               </div>
             </section>
 
             <section
-              className="bg-neutral px-4 pb-16 tabletportrait:px-8 columnbreak:px-16"
+              className={`px-4 pb-16 tabletportrait:px-8 columnbreak:px-16 ${
+                context.dark ? '' : 'bg-neutral'
+              }`}
               id="Resources"
             >
-              <h2 className="mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+              <h2
+                className={`mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                  context.dark ? 'opacity-90' : ''
+                }`}
+              >
                 Interessante bronnen
               </h2>
-              <p className="mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl">
+              <p
+                className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
+                  context.dark ? 'opacity-75' : ''
+                }`}
+              >
                 We maken je graag wegwijs in wat bronnen en instrumenten om de
                 omgevint te analyseren en te ontwerpen op vlak van wandel- en
                 fietsvriendelijkheid
@@ -451,16 +474,28 @@ function AmbitionPage({ data }: { data: any }) {
               id="Practices"
             >
               <div className="mb-2 flex items-center justify-between pt-24">
-                <h2 className="font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl">
+                <h2
+                  className={`font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
                   Relevante good practices
                 </h2>
               </div>
-              <p className="mb-6 text-sm tabletportrait:text-lg laptop:text-xl">
+              <p
+                className={`mb-6 text-sm tabletportrait:text-lg laptop:text-xl ${
+                  context.dark ? 'opacity-75' : ''
+                }`}
+              >
                 Je wil je door nog meer good practices laten inspireren? Ontdek
                 ze{' '}
                 <Link
                   to="/overviewpagepractices"
-                  className="font-semibold text-pink underline hover:text-purple focus:text-purple"
+                  className={`font-semibold  ${
+                    context.dark
+                      ? 'text-pinkDesat hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
+                      : 'text-pink underline hover:text-purple focus:text-purple'
+                  }`}
                 >
                   hier
                 </Link>
@@ -494,23 +529,37 @@ function AmbitionPage({ data }: { data: any }) {
             </section>
           </div>
           <section
-            className="flex items-center justify-center bg-mediumPurple py-8 px-4"
+            className={`flex items-center justify-center py-8 px-4 ${
+              context.dark ? 'bg-white bg-opacity-[0.08]' : 'bg-mediumPurple'
+            }`}
             id="CallToAction"
           >
             <StaticImage
               src="../images/calltoaction.png"
               alt="Picture of girls riding a bike"
-              className="ml-14 hidden h-auto border border-r-0 border-mediumPurple laptop:block"
+              className="ml-14 hidden h-auto border laptop:block"
             />
             <div className="h-auto p-8 text-white">
-              <h2 className="pb-4 font-raleway text-xl font-bold tabletportrait:text-2xl">
+              <h2
+                className={`pb-4 font-raleway text-xl font-bold tabletportrait:text-2xl ${
+                  context.dark ? 'opacity-90' : ''
+                }`}
+              >
                 Benieuwd naar de beweegvriendelijkheid van jouw stad of
                 gemeente?
               </h2>
-              <h4 className="pb-4 font-raleway text-lg font-semibold text-pink tabletportrait:text-xl">
+              <h4
+                className={`pb-4 font-raleway text-lg font-semibold text-pink tabletportrait:text-xl ${
+                  context.dark ? 'text-pinkDesat opacity-90' : 'text-pink'
+                }`}
+              >
                 Download hier jouw rapport
               </h4>
-              <p className="pb-4 text-sm tabletportrait:text-lg">
+              <p
+                className={`pb-4 text-sm tabletportrait:text-lg ${
+                  context.dark ? 'opacity-90' : ''
+                }`}
+              >
                 Vul onderstaande gegevens in en ontvang in jouw mailbox het
                 rapport.
               </p>
@@ -524,7 +573,11 @@ function AmbitionPage({ data }: { data: any }) {
                   <input
                     type="text"
                     id="Stad"
-                    className="peer w-48 border-2 border-lightPink px-2 py-1 text-black outline-none focus-within:border-pink hover:border-pink active:border-pink"
+                    className={`peer w-48 border-2   px-2 py-1 outline-none  ${
+                      context.dark
+                        ? 'border-lightGray bg-dark text-white focus-within:border-lightPurpleDesat hover:border-lightPurpleDesat active:border-lightPurpleDesat'
+                        : ' border-lightPink text-dark focus-within:border-pink hover:border-pink active:border-pink'
+                    }`}
                     placeholder="Postcode/Stad"
                     value={typed}
                     onChange={(ev: any) => {
@@ -551,7 +604,11 @@ function AmbitionPage({ data }: { data: any }) {
                         return (
                           <li
                             key={val}
-                            className={`:not(:hover):hidden z-50 w-48 border border-lightGray bg-white px-2 py-1 text-black hover:cursor-pointer hover:bg-neutral`}
+                            className={`:not(:hover):hidden z-50 w-48 border border-lightGray px-2 py-1  hover:cursor-pointer  ${
+                              context.dark
+                                ? 'border-opacity-50 bg-darkGray text-white hover:bg-[#3F3F3F]'
+                                : 'bg-white text-dark hover:bg-neutral'
+                            }`}
                             onClick={() => changeTyped(val)}
                           >
                             {val}
@@ -593,7 +650,11 @@ function AmbitionPage({ data }: { data: any }) {
                 />
 
                 <button
-                  className="z-0 mt-8 border-2 border-pink bg-pink px-2 py-1 text-white hover:bg-white hover:text-pink focus:bg-white focus:font-semibold focus:text-pink"
+                  className={`z-0 mt-8 border-2  px-2 py-1 text-white  focus:font-semibold  ${
+                    context.dark
+                      ? 'border-pinkDesat bg-pinkDesat hover:bg-opacity-0 hover:text-pinkDesat focus:bg-white focus:bg-opacity-0 focus:text-pinkDesat'
+                      : 'border-pink bg-pink hover:bg-white hover:text-pink focus:bg-white focus:text-pink'
+                  }`}
                   onClick={() => checkInfo()}
                 >
                   Maak rapport

@@ -88,7 +88,9 @@ export default ({ location }: { location: any }) => {
                 />
                 <p
                   className={` text-lg font-semibold columnbreak:text-2xl ${
-                    context.dark ? 'text-white text-opacity-90' : 'text-purple'
+                    context.dark
+                      ? 'text-white text-opacity-90 hover:text-lightPurpleDesat'
+                      : 'text-purple hover:text-lightPurple'
                   }`}
                 >
                   naar overzicht van alle good practices

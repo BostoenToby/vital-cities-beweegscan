@@ -42,7 +42,7 @@ export default ({ paragraaf }: { paragraaf: Paragraaf }) => {
               } ${
                 paragraaf.header.toLowerCase() == 'tip'
                   ? context.dark
-                    ? 'bg-grayGreen bg-opacity-50'
+                    ? 'bg-lightGreen bg-opacity-[0.08] '
                     : 'bg-lightGreen bg-opacity-70'
                   : ''
               }`}
