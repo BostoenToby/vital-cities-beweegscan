@@ -31,8 +31,35 @@ export function queryAmb1 () {
                       }
                     }
                   }
-                
-                
+                  ambitie2: allGsVitalCitiesDataMoS12(filter: {jaar: {eq: "2020"}}) {
+                    edges {
+                      node {
+                        andere____
+                        auto____
+                        fiets____
+                        openbaarVervoer____
+                        teVoet____
+                      }
+                    }
+                  }
+                  ambitie3: allGsVitalCitiesDataMoS07(filter: {jaar: {eq: 2020}}) {
+                    edges {
+                      node {
+                        eens____
+                        neutraal____
+                        oneens____
+                      }
+                    }
+                  }
+                  ambitie4: allGsVitalCitiesDataMoS11(filter: {jaar: {eq: 2020}}) {
+                    edges {
+                      node {
+                        afEnToe____
+                        nooit_zelden____
+                        vaak_altijd____
+                      }
+                    }
+                  }
             }
         `
     )
