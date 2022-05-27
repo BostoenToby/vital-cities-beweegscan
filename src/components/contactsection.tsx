@@ -20,7 +20,11 @@ export default () => {
               Je zoekt nog meer inspiratie? Die vind je op onze{' '}
               <a
                 href="https://vitalcities.be/"
-                className="text-pink underline hover:text-lightPurple focus:text-lightPurple"
+                className={`text-pink underline  ${
+                  context.dark
+                    ? 'hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
+                    : 'hover:text-lightPurple focus:text-lightPurple'
+                }`}
               >
                 website
               </a>
@@ -34,7 +38,11 @@ export default () => {
               <Mail />
               <a
                 href="mailto:vitalcities@gmail.com"
-                className="text-pink underline hover:text-lightPurple focus:text-lightPurple"
+                className={`text-pink underline  ${
+                  context.dark
+                    ? 'hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
+                    : 'hover:text-lightPurple focus:text-lightPurple'
+                }`}
               >
                 lore.cuypers@vitalcities.be
               </a>
