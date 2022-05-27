@@ -5,10 +5,7 @@ module.exports = {
     extend: {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
-        raleway: [
-          'Raleway',
-          'sans-serif',
-        ],
+        raleway: ['Raleway', 'sans-serif'],
       },
       height: {
         tablet: '34rem',
@@ -37,8 +34,8 @@ module.exports = {
       columnbreak: { min: '1136px' },
       navbreak: { min: '1304px' },
       laptopL: { min: '1440px' },
-      laptopXL: {min: '1680px'},
-      '4K': { min: '2184px' },
+      laptopXL: { min: '1680px' },
+      '4K': { min: '2464px' },
     },
     colors: {
       neutral: '#F8FAFC',
