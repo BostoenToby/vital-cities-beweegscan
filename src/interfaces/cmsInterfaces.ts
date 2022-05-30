@@ -16,3 +16,8 @@ export interface goodPractice {
     text: string
     extra: string[]
 }
+
+export interface header {
+    title: string
+    subtitle: string
+}

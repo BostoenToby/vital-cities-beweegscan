@@ -13,7 +13,7 @@ import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
 import { allResults, searchList } from '../utils/autoComplete'
 import Darkmodetoggle from '../components/darkmodetoggle'
-import { goodPractice, HoeWaarom, intBron } from '../interfaces/cmsInterfaces'
+import { goodPractice, header, HoeWaarom, intBron } from '../interfaces/cmsInterfaces'
 import Textblock from '../components/textblock'
 import { navigate } from 'gatsby'
 import { ChevronLeft } from 'lucide-react'
@@ -393,6 +393,7 @@ function AmbitionPage({location}: {location: any}) {
   const [hows, setHows] = useState<HoeWaarom[]>()
   const [whys, setWhys] = useState<HoeWaarom[]>()
   const [goodPracs, setGoodPracs] = useState<goodPractice[]>()
+  const [header, setHeader] = useState<header>()
   const [suggestions, setSuggestions] = useState<string[]>()
   const [typed, setTyped] = useState<string>('')
   const [graphData, setGraphData] = useState<PercentageData[]>()
@@ -472,30 +473,37 @@ function AmbitionPage({location}: {location: any}) {
     let hoeList: HoeWaarom[] = []
     let waaromList: HoeWaarom[] = []
     let goodPracs: goodPractice[] = []
+    console.log("AMB")
+    console.log(location.state.ambition)
     for(let item of cms.nodes){
-      if(item.parent.internal.description.includes("hoeopl") && item.frontmatter.ambition == "Actief bewegen en verplaatsen"){
+      if(item.parent.internal.description.includes("hoeopl") && item.frontmatter.ambition == location.state.ambition){
         hoeList.push({
           text: item.frontmatter.text,
           ambition: item.frontmatter.ambition
         })
-      } else if(item.parent.internal.description.includes("waaromopl") && item.frontmatter.ambition == "Actief bewegen en verplaatsen"){
+      } else if(item.parent.internal.description.includes("waaromopl") && item.frontmatter.ambition == location.state.ambition){
         waaromList.push({
           text: item.frontmatter.text,
           ambition: item.frontmatter.ambition
         })
-      } else if(item.parent.internal.description.includes("intbron") && item.frontmatter.ambition == "Actief bewegen en verplaatsen"){
+      } else if(item.parent.internal.description.includes("intbron") && item.frontmatter.ambition == location.state.ambition){
         bronnen.push({
           title: item.frontmatter.title,
           link: item.frontmatter.link,
           text: item.frontmatter.text,
         })
-      } else if(item.parent.internal.description.includes("goodprac") && item.frontmatter.ambition == "Actief bewegen en verplaatsen"){
+      } else if(item.parent.internal.description.includes("goodprac") && item.frontmatter.ambition == location.state.ambition){
         goodPracs.push({
           title: item.frontmatter.title,
           date: item.frontmatter.date,
           themes: item.frontmatter.themes,
           text: item.frontmatter.text,
           extra: item.frontmatter.extra
+        })
+      } else if(item.parent.internal.description.includes("header") && item.frontmatter.ambition == location.state.ambition){
+        setHeader({
+          title: item.frontmatter.title,
+          subtitle: item.frontmatter.subtitle,
         })
       }
     }
@@ -586,12 +594,10 @@ function AmbitionPage({location}: {location: any}) {
                 }
               />
               <h1 className="mb-8 max-w-2xl font-raleway text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
-                Aantrekkelijke & veilige wandel- & fietsroutes
+                {header?.title}
               </h1>
               <p className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
-                Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een
-                actieve levensstijl en faciliteren mensen om lopend of fietsend
-                naar voorzieningen of het werk of school voorzieningen te gaan
+                {header?.subtitle}
               </p>
               <p
                 className={`mb-2 font-semibold ${
