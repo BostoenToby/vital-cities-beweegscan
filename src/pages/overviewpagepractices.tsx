@@ -14,8 +14,10 @@ export default () => {
   const [originalPractices, setOriginalPractices] = useState<TestPractice[]>()
   const [currentPractices, setCurrentPractices] = useState<TestPractice[]>()
   const [selected, setSelected] = useState<string>()
+  const [hasMounted, setHasMounted] = useState(false)
 
   useEffect(() => {
+    setHasMounted(true)
     setOriginalPractices(testJSON)
     setCurrentPractices(testJSON)
   }, [])
@@ -44,11 +46,15 @@ export default () => {
     setSelected(e.target.value)
   }
 
+  if (!hasMounted) {
+    return null
+  }
+
   return (
     <ThemeContext.Consumer>
       {(context) => (
         <div
-          className={`selection:text-white font-poppins ${
+          className={`font-poppins selection:text-white ${
             context.dark
               ? 'bg-dark selection:bg-pinkDesat'
               : 'selection:bg-pink'

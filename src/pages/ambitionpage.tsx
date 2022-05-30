@@ -29,6 +29,8 @@ import { testData } from '../data/testGraph'
 import Donutdata from '../components/donutdata'
 
 function AmbitionPage({ location }: { location: any }) {
+  const [hasMounted, setHasMounted] = useState(false)
+
   const {
     cms,
     ambitie1bench1,
@@ -588,6 +590,9 @@ function AmbitionPage({ location }: { location: any }) {
     let hoeList: HoeWaarom[] = []
     let waaromList: HoeWaarom[] = []
     let goodPracs: goodPractice[] = []
+
+    setHasMounted(true)
+
     for (let item of cms.nodes) {
       if (
         item.parent.internal.description.includes('hoeopl') &&
@@ -653,6 +658,10 @@ function AmbitionPage({ location }: { location: any }) {
     if (isOutside) {
       setSuggestions([])
     }
+  }
+
+  if (!hasMounted) {
+    return null
   }
 
   return (

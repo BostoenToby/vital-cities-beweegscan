@@ -15,10 +15,16 @@ export default ({ location }: { location: any }) => {
   const [practice, setPractice] = useState<TestPractice>()
   const [ambities, setAmbities] = useState<string[]>()
   const [overigeThemas, setOverigeThemas] = useState<string[]>()
+  const [hasMounted, setHasMounted] = useState(false)
 
   useEffect(() => {
+    setHasMounted(true)
     setPractice(location.state.practice)
   }, [])
+
+  if (!hasMounted){
+    return null
+  }
 
   useEffect(() => {
     if (practice && practice.themas && practice.themas.length >= 1) {
