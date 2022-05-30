@@ -7,6 +7,16 @@ media_folder: static/assets
 public_folder: /assets
 
 collections:
+  - name: Header
+    label: Header
+    folder: src/cms/header
+    create: true
+    fields:
+      - { name: ambition, label: Ambitie }
+      - { name: title, label: Titel }
+      - { name: subtitle, label: Subtitels }
+      - { name: image, label: Foto, widget: image }
+
   - name: Waarom
     label: Waarom oplossen?
     folder: src/cms/waaromopl
@@ -28,6 +38,7 @@ collections:
     folder: src/cms/intbron
     create: true
     fields:
+      - { name: ambition, label: Ambitie }
       - { name: title, label: Titel }
       - { name: link, label: Link }
       - { name: text, label: Tekst, widget: markdown }
@@ -37,7 +48,9 @@ collections:
     folder: src/cms/goodprac
     create: true
     fields:
+      - { name: ambition, label: Ambitie }
       - { name: title, label: Title}
+      - { name: image, label: Image, widget: image }
       - { name: date, label: Datum, widget: datetime }
       - { name: themes, label: Thema's}
       - { name: text, label: Tekst, widget: markdown}

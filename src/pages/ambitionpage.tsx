@@ -472,6 +472,33 @@ function AmbitionPage({location}: {location: any}) {
     let hoeList: HoeWaarom[] = []
     let waaromList: HoeWaarom[] = []
     let goodPracs: goodPractice[] = []
+    for(let item of cms.nodes){
+      if(item.parent.internal.description.includes("hoeopl") && item.frontmatter.ambition == "Actief bewegen en verplaatsen"){
+        hoeList.push({
+          text: item.frontmatter.text,
+          ambition: item.frontmatter.ambition
+        })
+      } else if(item.parent.internal.description.includes("waaromopl") && item.frontmatter.ambition == "Actief bewegen en verplaatsen"){
+        waaromList.push({
+          text: item.frontmatter.text,
+          ambition: item.frontmatter.ambition
+        })
+      } else if(item.parent.internal.description.includes("intbron") && item.frontmatter.ambition == "Actief bewegen en verplaatsen"){
+        bronnen.push({
+          title: item.frontmatter.title,
+          link: item.frontmatter.link,
+          text: item.frontmatter.text,
+        })
+      } else if(item.parent.internal.description.includes("goodprac") && item.frontmatter.ambition == "Actief bewegen en verplaatsen"){
+        goodPracs.push({
+          title: item.frontmatter.title,
+          date: item.frontmatter.date,
+          themes: item.frontmatter.themes,
+          text: item.frontmatter.text,
+          extra: item.frontmatter.extra
+        })
+      }
+    }
     setIntBronnen(bronnen)
     setHows(hoeList)
     setWhys(waaromList)
@@ -752,7 +779,9 @@ function AmbitionPage({location}: {location: any}) {
               </p>
               <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
                 {hows &&
-                  hows.map((item: HoeWaarom) => (
+                  hows.map((item: HoeWaarom) => {
+                    console.log(item)
+                    return(
                     <Textblock
                       text={item.text}
                       classes={`font-medium ${
@@ -761,7 +790,7 @@ function AmbitionPage({location}: {location: any}) {
                           : 'bg-lightGreen text-green'
                       }`}
                     />
-                  ))}
+                    )})}
               </div>
             </section>
 
@@ -831,7 +860,21 @@ function AmbitionPage({location}: {location: any}) {
                 </Link>
               </p>
               <div className="grid grid-cols-1 gap-16 text-sm mobile:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
-                <RevPrac
+                {goodPracs && goodPracs.map((item: any) => (
+                  <RevPrac 
+                  image="relevantcases"
+                  imageAlt="Relevant cases"
+                  leftTagText={item.themes}
+                  leftTagColorBg="pink"
+                  leftTagColorText="black"
+                  rightTagText={item.date}
+                  rightTagColorBg="yellow"
+                  rightTagColorText="black"
+                  title={item.title}
+                  subTitle={item.text}
+                  />
+                ))}
+                {/* <RevPrac
                   image="relevantcases.png"
                   imageAlt="Relevant cases"
                   leftTagText="Actief bewegen"
@@ -854,7 +897,7 @@ function AmbitionPage({location}: {location: any}) {
                   rightTagColorText="black"
                   title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                   subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
-                />
+                /> */}
               </div>
             </section>
           </div>
