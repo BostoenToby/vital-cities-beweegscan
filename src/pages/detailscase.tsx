@@ -10,6 +10,7 @@ import { findIndexesSubstring } from '../utils/practiceFunctions'
 import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
 import ThemeContext from '../context/themecontext'
+import FadeInSection from '../components/scrollytelling'
 
 export default ({ location }: { location: any }) => {
   const [practice, setPractice] = useState<TestPractice>()
@@ -97,107 +98,115 @@ export default ({ location }: { location: any }) => {
                 </p>
               </button>
             </header>
-            <section className="flex w-full flex-col-reverse columnbreak:h-[520px] columnbreak:flex-row columnbreak:items-center">
-              <div
-                className={`h-max w-full  p-7 pb-5  columnbreak:w-1/2 columnbreak:p-14 columnbreak:pb-10 ${
-                  context.dark
-                    ? 'bg-white bg-opacity-[0.08]'
-                    : 'bg-purple bg-opacity-10'
-                }`}
-              >
-                <h1
-                  className={`mb-5 font-raleway text-2xl font-bold columnbreak:text-5xl ${
-                    context.dark ? 'text-white' : 'text-dark '
+            <FadeInSection>
+              <section className="flex w-full flex-col-reverse columnbreak:h-[520px] columnbreak:flex-row columnbreak:items-center">
+                <div
+                  className={`h-max w-full  p-7 pb-5  columnbreak:w-1/2 columnbreak:p-14 columnbreak:pb-10 ${
+                    context.dark
+                      ? 'bg-white bg-opacity-[0.08]'
+                      : 'bg-purple bg-opacity-10'
                   }`}
                 >
-                  {practice?.titel}
-                </h1>
-                <h3
-                  className={`mb-5 font-raleway text-lg font-semibold  ${
-                    context.dark ? 'text-white text-opacity-75' : 'text-purple'
-                  }`}
-                >
-                  {practice?.datum}
-                </h3>
-                <div>
-                  {ambities && ambities.length >= 1 ? (
-                    <div className="flex flex-row flex-wrap">
-                      {ambities.map((e, i) => (
-                        <ThemaCard thema={e} key={i} />
-                      ))}
-                    </div>
-                  ) : null}
-                  {overigeThemas && overigeThemas.length >= 1 ? (
-                    <div className="flex flex-row flex-wrap">
-                      {overigeThemas.map((e, i) => (
-                        <ThemaCard thema={e} key={i} />
-                      ))}
-                    </div>
-                  ) : null}
+                  <h1
+                    className={`mb-5 font-raleway text-2xl font-bold columnbreak:text-5xl ${
+                      context.dark ? 'text-white' : 'text-dark '
+                    }`}
+                  >
+                    {practice?.titel}
+                  </h1>
+                  <h3
+                    className={`mb-5 font-raleway text-lg font-semibold  ${
+                      context.dark
+                        ? 'text-white text-opacity-75'
+                        : 'text-purple'
+                    }`}
+                  >
+                    {practice?.datum}
+                  </h3>
+                  <div>
+                    {ambities && ambities.length >= 1 ? (
+                      <div className="flex flex-row flex-wrap">
+                        {ambities.map((e, i) => (
+                          <ThemaCard thema={e} key={i} />
+                        ))}
+                      </div>
+                    ) : null}
+                    {overigeThemas && overigeThemas.length >= 1 ? (
+                      <div className="flex flex-row flex-wrap">
+                        {overigeThemas.map((e, i) => (
+                          <ThemaCard thema={e} key={i} />
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
                 </div>
-              </div>
-              <div className="h-[calc(100vw-40px)] max-h-[520px] w-full columnbreak:w-1/2">
-                <div className="h-full w-full bg-gray opacity-50"></div>
-              </div>
-            </section>
-            <section>
-              {practice &&
-              practice.paragrafen &&
-              practice.paragrafen.length >= 1 ? (
-                <div className="gap-x-12 px-2 py-14 columnbreak:columns-2 columnbreak:px-6">
-                  {practice.warning ? (
-                    <div
-                      className={`mb-8 p-4 text-dark ${
-                        context.dark
-                          ? 'bg-redDesat bg-opacity-90'
-                          : 'bg-lightRed'
-                      }`}
-                    >
-                      <h2 className="mb-1 font-raleway text-2xl font-bold columnbreak:text-3xl">
-                        {practice.warning.header}
-                      </h2>
-                      <p className="ml-2 text-base font-medium columnbreak:text-lg">
-                        {practice.warning.body}
-                      </p>
-                    </div>
-                  ) : null}
-                  {practice.paragrafen.map((e, i) => (
-                    <PracticeParagraph paragraaf={e} key={i} />
-                  ))}
-                  {practice.extra && practice.extra.length >= 1 ? (
-                    <div>
-                      <h2
-                        className={`mb-6 font-raleway text-2xl font-bold columnbreak:text-3xl ${
-                          context.dark ? 'text-white' : 'text-purple'
+                <div className="h-[calc(100vw-40px)] max-h-[520px] w-full columnbreak:w-1/2">
+                  <div className="h-full w-full bg-gray opacity-50"></div>
+                </div>
+              </section>
+            </FadeInSection>
+            <FadeInSection>
+              <section>
+                {practice &&
+                practice.paragrafen &&
+                practice.paragrafen.length >= 1 ? (
+                  <div className="gap-x-12 px-2 py-14 columnbreak:columns-2 columnbreak:px-6">
+                    {practice.warning ? (
+                      <div
+                        className={`mb-8 p-4 text-dark ${
+                          context.dark
+                            ? 'bg-redDesat bg-opacity-90'
+                            : 'bg-lightRed'
                         }`}
                       >
-                        Meer weten
-                      </h2>
-                      <ul>
-                        {practice.extra.map((e, i) => (
-                          <li
-                            className={`mb-6 text-base font-semibold columnbreak:text-lg ${
-                              context.dark
-                                ? 'text-lightPurpleDesat text-opacity-80'
-                                : 'text-purple '
-                            }`}
-                            key={i}
-                          >
-                            {e.url ? (
-                              <a className=" underline" href={e.url}>
-                                {e.naam ? e.naam : e.url}
-                              </a>
-                            ) : (
-                              <a>{e.naam}</a>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ) : null}
-                </div>
-              ) : null}
-            </section>
+                        <h2 className="mb-1 font-raleway text-2xl font-bold columnbreak:text-3xl">
+                          {practice.warning.header}
+                        </h2>
+                        <p className="ml-2 text-base font-medium columnbreak:text-lg">
+                          {practice.warning.body}
+                        </p>
+                      </div>
+                    ) : null}
+                    {practice.paragrafen.map((e, i) => (
+                      <FadeInSection>
+                        <PracticeParagraph paragraaf={e} key={i} />
+                      </FadeInSection>
+                    ))}
+                    {practice.extra && practice.extra.length >= 1 ? (
+                      <div>
+                        <h2
+                          className={`mb-6 font-raleway text-2xl font-bold columnbreak:text-3xl ${
+                            context.dark ? 'text-white' : 'text-purple'
+                          }`}
+                        >
+                          Meer weten
+                        </h2>
+                        <ul>
+                          {practice.extra.map((e, i) => (
+                            <li
+                              className={`mb-6 text-base font-semibold columnbreak:text-lg ${
+                                context.dark
+                                  ? 'text-lightPurpleDesat text-opacity-80'
+                                  : 'text-purple '
+                              }`}
+                              key={i}
+                            >
+                              {e.url ? (
+                                <a className=" underline" href={e.url}>
+                                  {e.naam ? e.naam : e.url}
+                                </a>
+                              ) : (
+                                <a>{e.naam}</a>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ) : null}
+                  </div>
+                ) : null}
+              </section>
+            </FadeInSection>
           </main>
           <div id="Contact">
             <Contactsection />
