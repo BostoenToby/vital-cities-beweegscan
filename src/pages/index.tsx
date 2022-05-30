@@ -1,5 +1,5 @@
 import { ArrowDown } from 'lucide-react'
-import * as React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StaticImage } from 'gatsby-plugin-image'
 import '../assets/tailwind.css'
 import Ambitionblock from '../components/ambitionblock'
@@ -15,6 +15,16 @@ import ThemeContext from '../context/themecontext'
 // remove excel files because this can't be processed by Linux
 
 const IndexPage = ({ data }: { data: any }) => {
+  const [hasMounted, setHasMounted] = useState(false)
+
+  useEffect(() => {
+    setHasMounted(true)
+  }, [])
+
+  if (!hasMounted) {
+    return null
+  }
+
   return (
     <ThemeContext.Consumer>
       {(context) => (
