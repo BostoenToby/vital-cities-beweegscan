@@ -25,7 +25,6 @@ export const ThemeProvider = ({ children }: { children: any }) => {
 }
 
 function getInitialTheme(): boolean {
-  if (typeof window !== 'undefined') {
     const persistentTheme = window.localStorage.getItem('color-mode')
     if (typeof persistentTheme === 'string') {
       const bool = persistentTheme === 'true'
@@ -36,6 +35,5 @@ function getInitialTheme(): boolean {
     if (hasMediaPreference) {
       return mql.matches ? true : false
     }
-  }
   return false
 }
