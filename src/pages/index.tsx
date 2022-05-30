@@ -138,46 +138,51 @@ const IndexPage = ({ data }: { data: any }) => {
                   />
                 </div>
               </FadeInSection>
-              <h2
-                className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                  context.dark ? 'opacity-90' : ''
-                }`}
-              >
-                In een oogopslag
-              </h2>
-              <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
-                In welke mate jouw stad of gemeente elk van deze ambities
-                vandaag al waarmaakt: dat ontdek je met de Beweegscan van Vital
-                Cities
-              </p>
-              <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
-                Met de handige zoekfunctie selecteer je voor elk van de ambities
-                van beweegvriendelijkheid, de voor jouw stad of gemeente
-                relevante cijfers uit de recentste Gemeente - en Stadsmonitor.
-                En zet je die af tegen het Vlaams gemiddelde.
-              </p>
-              <p className={`mb-8 ${context.dark ? 'opacity-75' : ''}`}>
-                Zo zie je in een oogopslag waarop jouw stad of gemeente terecht
-                trots kan zijn (want beter scoort dan het Vlaams gemiddelde),
-                dan wel wat nog beter kan (want minder goed scoort).
-              </p>
-              <h2
-                className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                  context.dark ? 'opacity-90' : ''
-                }`}
-              >
-                Inspirerend
-              </h2>
-              <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
-                De inzichten die voornoemde cijfers jou geven, vullen we aan met
-                andere onderzoeksresultaten, proven tools en good practises. Zij
-                zullen jou beslist inspireren om de beweegvriendelijkheid van
-                jouw stad of gemeente nog te verbeteren.
-              </p>
-              <p className={`mb-8 ${context.dark ? 'opacity-75' : ''}`}>
-                Om je te laten inspireren: klik in het overzicht van de ambities
-                op één ervan.
-              </p>
+              <FadeInSection>
+                <h2
+                  className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
+                  In een oogopslag
+                </h2>
+                <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
+                  In welke mate jouw stad of gemeente elk van deze ambities
+                  vandaag al waarmaakt: dat ontdek je met de Beweegscan van
+                  Vital Cities
+                </p>
+                <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
+                  Met de handige zoekfunctie selecteer je voor elk van de
+                  ambities van beweegvriendelijkheid, de voor jouw stad of
+                  gemeente relevante cijfers uit de recentste Gemeente - en
+                  Stadsmonitor. En zet je die af tegen het Vlaams gemiddelde.
+                </p>
+                <p className={`mb-8 ${context.dark ? 'opacity-75' : ''}`}>
+                  Zo zie je in een oogopslag waarop jouw stad of gemeente
+                  terecht trots kan zijn (want beter scoort dan het Vlaams
+                  gemiddelde), dan wel wat nog beter kan (want minder goed
+                  scoort).
+                </p>
+
+                <h2
+                  className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
+                  Inspirerend
+                </h2>
+                <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
+                  De inzichten die voornoemde cijfers jou geven, vullen we aan
+                  met andere onderzoeksresultaten, proven tools en good
+                  practises. Zij zullen jou beslist inspireren om de
+                  beweegvriendelijkheid van jouw stad of gemeente nog te
+                  verbeteren.
+                </p>
+                <p className={`mb-8 ${context.dark ? 'opacity-75' : ''}`}>
+                  Om je te laten inspireren: klik in het overzicht van de
+                  ambities op één ervan.
+                </p>
+              </FadeInSection>
             </div>
           </main>
           <div id="Contact">
