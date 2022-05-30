@@ -17,10 +17,6 @@ export const ThemeProvider = ({ children }: { children: any }) => {
     window.localStorage.setItem('color-mode', d.toString())
   }
 
-  useEffect(() => {
-    setDarkRaw(getInitialTheme())
-  }, [])
-
   return (
     <ThemeContext.Provider value={{ dark, setDark }}>
       {children}

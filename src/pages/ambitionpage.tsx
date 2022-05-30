@@ -13,7 +13,12 @@ import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
 import { allResults, searchList } from '../utils/autoComplete'
 import Darkmodetoggle from '../components/darkmodetoggle'
-import { goodPractice, header, HoeWaarom, intBron } from '../interfaces/cmsInterfaces'
+import {
+  goodPractice,
+  header,
+  HoeWaarom,
+  intBron,
+} from '../interfaces/cmsInterfaces'
 import Textblock from '../components/textblock'
 import { navigate } from 'gatsby'
 import { ChevronLeft } from 'lucide-react'
@@ -519,7 +524,6 @@ function AmbitionPage({ location }: { location: any }) {
     lastNameError: '',
     mailError: '',
   })
-  const [isClient, setIsClient] = useState(false)
 
   const changeTyped = async (value: string) => {
     console.log('change')
@@ -621,7 +625,10 @@ function AmbitionPage({ location }: { location: any }) {
           text: item.frontmatter.text,
           extra: item.frontmatter.extra,
         })
-      } else if(item.parent.internal.description.includes("header") && item.frontmatter.ambition == location.state.ambition){
+      } else if (
+        item.parent.internal.description.includes('header') &&
+        item.frontmatter.ambition == location.state.ambition
+      ) {
         setHeader({
           title: item.frontmatter.title,
           subtitle: item.frontmatter.subtitle,
@@ -638,7 +645,6 @@ function AmbitionPage({ location }: { location: any }) {
       window.addEventListener('click', handleClick)
       return () => window.removeEventListener('click', handleClick)
     }
-    setIsClient(true)
   }, [])
 
   const handleClick = (e: any) => {
@@ -650,7 +656,7 @@ function AmbitionPage({ location }: { location: any }) {
   }
 
   return (
-    <ThemeContext.Consumer key={isClient.toString()}>
+    <ThemeContext.Consumer>
       {(context) => (
         <main
           className={`font-poppins font-light selection:text-white ${
