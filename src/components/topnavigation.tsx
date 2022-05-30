@@ -123,7 +123,7 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage" state={{ ambition: "Actief bewegen & verplaatsen" }}>
+                        <Link to="/ambitionpage" state={{ ambition: "Actief bewegen en verplaatsen" }}>
                           Actief bewegen & verplaatsen
                         </Link>
                       </li>

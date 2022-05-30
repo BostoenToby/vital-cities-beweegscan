@@ -1,5 +1,6 @@
 ---
-ambition: Actief bewegen en verplaatsen
+ambition: 
+  - Actief bewegen en verplaatsen
 text: |-
   Buurten met meer paden, pleinen en
 

@@ -1,5 +1,6 @@
 ---
-ambition: Actief bewegen en verplaatsen
+ambition: 
+  - Actief bewegen en verplaatsen
 title: Aantrekkelijke & veilige wandel- & fietsroutes
 subtitle: Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een
   actieve levensstijl en faciliteren mensen om lopend of fietsend naar
