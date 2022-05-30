@@ -23,10 +23,44 @@ import { PercentageData } from '../interfaces/data'
 import { testData } from '../data/testGraph'
 import Donutdata from '../components/donutdata'
 
-function AmbitionPage({location}: {location: any}) {
-  const { cms, ambitie1bench1, ambitie1bench2, ambitie1bench3, ambitie1bench4, ambitie2bench1, ambitie2bench2, ambitie2bench3, ambitie2bench4, ambitie3bench1, ambitie3bench2, ambitie3bench3, ambitie3bench4, ambitie3bench5, ambitie3bench6, ambitie3bench7, ambitie4bench1, ambitie4bench2, ambitie4bench3, ambitie4bench4, ambitie4bench5, ambitie5bench1, ambitie5bench2, ambitie5bench3, ambitie6bench1, ambitie6bench2, ambitie6bench3, ambitie6bench4, ambitie6bench5, ambitie7bench1, ambitie7bench2, ambitie7bench3, ambitiebench4} = useStaticQuery(
+function AmbitionPage({ location }: { location: any }) {
+  const {
+    cms,
+    ambitie1bench1,
+    ambitie1bench2,
+    ambitie1bench3,
+    ambitie1bench4,
+    ambitie2bench1,
+    ambitie2bench2,
+    ambitie2bench3,
+    ambitie2bench4,
+    ambitie3bench1,
+    ambitie3bench2,
+    ambitie3bench3,
+    ambitie3bench4,
+    ambitie3bench5,
+    ambitie3bench6,
+    ambitie3bench7,
+    ambitie4bench1,
+    ambitie4bench2,
+    ambitie4bench3,
+    ambitie4bench4,
+    ambitie4bench5,
+    ambitie5bench1,
+    ambitie5bench2,
+    ambitie5bench3,
+    ambitie6bench1,
+    ambitie6bench2,
+    ambitie6bench3,
+    ambitie6bench4,
+    ambitie6bench5,
+    ambitie7bench1,
+    ambitie7bench2,
+    ambitie7bench3,
+    ambitiebench4,
+  } = useStaticQuery(
     graphql`
-      query{
+      query {
         cms: allMarkdownRemark {
           nodes {
             frontmatter {
@@ -43,7 +77,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-      ambitie1bench1: allGsVitalCitiesDataZoS03(filter: {jaar: {eq: 2020}}) {
+        ambitie1bench1: allGsVitalCitiesDataZoS03(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               dagelijks____
@@ -54,7 +90,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie1bench2: allGsVitalCitiesDataMoS12(filter: {jaar: {eq: "2020"}}) {
+        ambitie1bench2: allGsVitalCitiesDataMoS12(
+          filter: { jaar: { eq: "2020" } }
+        ) {
           edges {
             node {
               andere____
@@ -65,7 +103,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie1bench3: allGsVitalCitiesDataMoS07(filter: {jaar: {eq: 2020}}) {
+        ambitie1bench3: allGsVitalCitiesDataMoS07(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               eens____
@@ -74,7 +114,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie1bench4: allGsVitalCitiesDataMoS11(filter: {jaar: {eq: 2020}}) {
+        ambitie1bench4: allGsVitalCitiesDataMoS11(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               afEnToe____
@@ -83,7 +125,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie2bench1: allGsVitalCitiesDataMoS17(filter: {jaar: {eq: 2020}}) {
+        ambitie2bench1: allGsVitalCitiesDataMoS17(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               minstensMaandelijks____
@@ -92,7 +136,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie2bench2: allGsVitalCitiesDataMoS04(filter: {jaar: {eq: 2020}}) {
+        ambitie2bench2: allGsVitalCitiesDataMoS04(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               neutraal____
@@ -102,7 +148,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie2bench3: allGsVitalCitiesDataMoS09(
-          filter: {jaar: {eq: 2020}, item: {eq: "Autoluwe en autovrije zones"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Autoluwe en autovrije zones" }
+          }
         ) {
           edges {
             node {
@@ -114,7 +163,7 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie2bench4: allGsVitalCitiesDataMoS09(
-          filter: {jaar: {eq: 2020}, item: {eq: "Deelsystemen"}}
+          filter: { jaar: { eq: 2020 }, item: { eq: "Deelsystemen" } }
         ) {
           edges {
             node {
@@ -126,7 +175,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie3bench1: allGsVitalCitiesDataMoS01(
-          filter: {jaar: {eq: 2020}, item: {eq: "Fietspaden in goede staat"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Fietspaden in goede staat" }
+          }
         ) {
           edges {
             node {
@@ -138,7 +190,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie3bench2: allGsVitalCitiesDataMoS01(
-          filter: {jaar: {eq: 2020}, item: {eq: "Straten en pleinen in goede staat"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Straten en pleinen in goede staat" }
+          }
         ) {
           edges {
             node {
@@ -150,7 +205,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie3bench3: allGsVitalCitiesDataMoS01(
-          filter: {jaar: {eq: 2020}, item: {eq: "Voetpaden in goede staat"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Voetpaden in goede staat" }
+          }
         ) {
           edges {
             node {
@@ -161,7 +219,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie3bench4: allGsVitalCitiesDataMoS03(filter: {jaar: {eq: 2020}}) {
+        ambitie3bench4: allGsVitalCitiesDataMoS03(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               eens____
@@ -171,7 +231,7 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie3bench5: allGsVitalCitiesDataMoS09(
-          filter: {jaar: {eq: 2020}, item: {eq: "Fietsinfrastructuur"}}
+          filter: { jaar: { eq: 2020 }, item: { eq: "Fietsinfrastructuur" } }
         ) {
           edges {
             node {
@@ -182,7 +242,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie3bench6: allGsVitalCitiesDataMoS02(filter: {jaar: {eq: 2020}}) {
+        ambitie3bench6: allGsVitalCitiesDataMoS02(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               eens____
@@ -191,7 +253,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie3bench7: allGsVitalCitiesDataMoS06(filter: {jaar: {eq: 2020}}) {
+        ambitie3bench7: allGsVitalCitiesDataMoS06(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               eens____
@@ -200,7 +264,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie4bench1: allGsVitalCitiesDataCuS11(filter: {jaar: {eq: 2020}}) {
+        ambitie4bench1: allGsVitalCitiesDataCuS11(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               minstensMaandelijks____
@@ -210,7 +276,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie4bench2: allGsVitalCitiesDataCuS10(
-          filter: {jaar: {eq: 2020}, item: {eq: "Sporten in eigen gemeente"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Sporten in eigen gemeente" }
+          }
         ) {
           edges {
             node {
@@ -222,7 +291,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie4bench3: allGsVitalCitiesDataCuS10(
-          filter: {jaar: {eq: 2020}, item: {eq: "Sporten in andere gemeente"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Sporten in andere gemeente" }
+          }
         ) {
           edges {
             node {
@@ -233,7 +305,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie4bench4: allGsVitalCitiesDataCuS13(filter: {jaar: {eq: 2020}}) {
+        ambitie4bench4: allGsVitalCitiesDataCuS13(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               eens____
@@ -243,7 +317,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie4bench5: allGsVitalCitiesDataCuS12(
-          filter: {jaar: {eq: 2020}, item: {eq: "Tevredenheid over sportvoorzieningen"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Tevredenheid over sportvoorzieningen" }
+          }
         ) {
           edges {
             node {
@@ -255,7 +332,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie5bench1: allGsVitalCitiesDataCuS24(
-          filter: {jaar: {eq: 2020}, item: {eq: "Voldoende geschikte plekken voor jeugd"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Voldoende geschikte plekken voor jeugd" }
+          }
         ) {
           edges {
             node {
@@ -267,7 +347,12 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie5bench2: allGsVitalCitiesDataCuS24(
-          filter: {jaar: {eq: 2020}, item: {eq: "Voldoende speelvoorzieningen voor kinderen en jongeren"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: {
+              eq: "Voldoende speelvoorzieningen voor kinderen en jongeren"
+            }
+          }
         ) {
           edges {
             node {
@@ -278,7 +363,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie5bench3: allGsVitalCitiesDataCuS21(filter: {jaar: {eq: 2020}}) {
+        ambitie5bench3: allGsVitalCitiesDataCuS21(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               eens____
@@ -287,7 +374,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie6bench1: allGsVitalCitiesDataSaS18(filter: {jaar: {eq: 2020}}) {
+        ambitie6bench1: allGsVitalCitiesDataSaS18(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               eens____
@@ -297,7 +386,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie6bench2: allGsVitalCitiesDataSaS17(
-          filter: {jaar: {eq: 2020}, item: {eq: "Voldoende ontmoetingsplekken"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Voldoende ontmoetingsplekken" }
+          }
         ) {
           edges {
             node {
@@ -309,7 +401,7 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie6bench3: allGsVitalCitiesDataSaS17(
-          filter: {jaar: {eq: 2020}, item: {eq: "Voldoende rustplekken"}}
+          filter: { jaar: { eq: 2020 }, item: { eq: "Voldoende rustplekken" } }
         ) {
           edges {
             node {
@@ -321,7 +413,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie6bench4: allGsVitalCitiesDataSaS19(
-          filter: {jaar: {eq: 2020}, item: {eq: "Onveiligheidsgevoel buurt/wijk"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Onveiligheidsgevoel buurt/wijk" }
+          }
         ) {
           nodes {
             afEnToe____
@@ -331,7 +426,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie6bench5: allGsVitalCitiesDataSaS19(
-          filter: {jaar: {eq: 2020}, item: {eq: "Onveiligheidsgevoel gemeente/stad"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Onveiligheidsgevoel gemeente/stad" }
+          }
         ) {
           nodes {
             afEnToe____
@@ -341,7 +439,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie7bench1: allGsVitalCitiesDataKlS01(
-          filter: {jaar: {eq: 2020}, item: {eq: "Bezoek park, bos, groenzone in andere gemeente"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Bezoek park, bos, groenzone in andere gemeente" }
+          }
         ) {
           edges {
             node {
@@ -354,7 +455,10 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
         ambitie7bench2: allGsVitalCitiesDataKlS01(
-          filter: {jaar: {eq: 2020}, item: {eq: "Bezoek park, bos, groenzone in eigen gemeente"}}
+          filter: {
+            jaar: { eq: 2020 }
+            item: { eq: "Bezoek park, bos, groenzone in eigen gemeente" }
+          }
         ) {
           edges {
             node {
@@ -366,7 +470,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitie7bench3: allGsVitalCitiesDataKlS02(filter: {jaar: {eq: 2020}}) {
+        ambitie7bench3: allGsVitalCitiesDataKlS02(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               neutraal____
@@ -375,7 +481,9 @@ function AmbitionPage({location}: {location: any}) {
             }
           }
         }
-        ambitite7bench4: allGsVitalCitiesDataKlS03(filter: {jaar: {eq: 2020}}) {
+        ambitite7bench4: allGsVitalCitiesDataKlS03(
+          filter: { jaar: { eq: 2020 } }
+        ) {
           edges {
             node {
               eens____
@@ -385,7 +493,7 @@ function AmbitionPage({location}: {location: any}) {
           }
         }
       }
-    `
+    `,
   )
   console.log(cms)
   console.log(ambitie3bench4)
@@ -409,6 +517,7 @@ function AmbitionPage({location}: {location: any}) {
     lastNameError: '',
     mailError: '',
   })
+  const [isClient, setIsClient] = useState(false)
 
   const changeTyped = async (value: string) => {
     console.log('change')
@@ -473,32 +582,42 @@ function AmbitionPage({location}: {location: any}) {
     let hoeList: HoeWaarom[] = []
     let waaromList: HoeWaarom[] = []
     let goodPracs: goodPractice[] = []
-    console.log("AMB")
-    console.log(location.state.ambition)
-    for(let item of cms.nodes){
-      if(item.parent.internal.description.includes("hoeopl") && item.frontmatter.ambition == location.state.ambition){
+    for (let item of cms.nodes) {
+      if (
+        item.parent.internal.description.includes('hoeopl') &&
+        item.frontmatter.ambition == 'Actief bewegen en verplaatsen'
+      ) {
         hoeList.push({
           text: item.frontmatter.text,
-          ambition: item.frontmatter.ambition
+          ambition: item.frontmatter.ambition,
         })
-      } else if(item.parent.internal.description.includes("waaromopl") && item.frontmatter.ambition == location.state.ambition){
+      } else if (
+        item.parent.internal.description.includes('waaromopl') &&
+        item.frontmatter.ambition == 'Actief bewegen en verplaatsen'
+      ) {
         waaromList.push({
           text: item.frontmatter.text,
-          ambition: item.frontmatter.ambition
+          ambition: item.frontmatter.ambition,
         })
-      } else if(item.parent.internal.description.includes("intbron") && item.frontmatter.ambition == location.state.ambition){
+      } else if (
+        item.parent.internal.description.includes('intbron') &&
+        item.frontmatter.ambition == 'Actief bewegen en verplaatsen'
+      ) {
         bronnen.push({
           title: item.frontmatter.title,
           link: item.frontmatter.link,
           text: item.frontmatter.text,
         })
-      } else if(item.parent.internal.description.includes("goodprac") && item.frontmatter.ambition == location.state.ambition){
+      } else if (
+        item.parent.internal.description.includes('goodprac') &&
+        item.frontmatter.ambition == 'Actief bewegen en verplaatsen'
+      ) {
         goodPracs.push({
           title: item.frontmatter.title,
           date: item.frontmatter.date,
           themes: item.frontmatter.themes,
           text: item.frontmatter.text,
-          extra: item.frontmatter.extra
+          extra: item.frontmatter.extra,
         })
       } else if(item.parent.internal.description.includes("header") && item.frontmatter.ambition == location.state.ambition){
         setHeader({
@@ -511,14 +630,13 @@ function AmbitionPage({location}: {location: any}) {
     setHows(hoeList)
     setWhys(waaromList)
     setGoodPracs(goodPracs)
-  }, [])
 
-  useEffect(() => {
     setGraphData(testData)
     if (typeof window !== 'undefined') {
       window.addEventListener('click', handleClick)
       return () => window.removeEventListener('click', handleClick)
     }
+    setIsClient(true)
   }, [])
 
   const handleClick = (e: any) => {
@@ -529,9 +647,8 @@ function AmbitionPage({location}: {location: any}) {
     }
   }
 
-
   return (
-    <ThemeContext.Consumer>
+    <ThemeContext.Consumer key={isClient.toString()}>
       {(context) => (
         <main
           className={`font-poppins font-light selection:text-white ${
@@ -787,16 +904,17 @@ function AmbitionPage({location}: {location: any}) {
                 {hows &&
                   hows.map((item: HoeWaarom) => {
                     console.log(item)
-                    return(
-                    <Textblock
-                      text={item.text}
-                      classes={`font-medium ${
-                        context.dark
-                          ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
-                          : 'bg-lightGreen text-green'
-                      }`}
-                    />
-                    )})}
+                    return (
+                      <Textblock
+                        text={item.text}
+                        classes={`font-medium ${
+                          context.dark
+                            ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
+                            : 'bg-lightGreen text-green'
+                        }`}
+                      />
+                    )
+                  })}
               </div>
             </section>
 
@@ -866,20 +984,21 @@ function AmbitionPage({location}: {location: any}) {
                 </Link>
               </p>
               <div className="grid grid-cols-1 gap-16 text-sm mobile:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
-                {goodPracs && goodPracs.map((item: any) => (
-                  <RevPrac 
-                  image="relevantcases"
-                  imageAlt="Relevant cases"
-                  leftTagText={item.themes}
-                  leftTagColorBg="pink"
-                  leftTagColorText="black"
-                  rightTagText={item.date}
-                  rightTagColorBg="yellow"
-                  rightTagColorText="black"
-                  title={item.title}
-                  subTitle={item.text}
-                  />
-                ))}
+                {goodPracs &&
+                  goodPracs.map((item: any) => (
+                    <RevPrac
+                      image="relevantcases"
+                      imageAlt="Relevant cases"
+                      leftTagText={item.themes}
+                      leftTagColorBg="pink"
+                      leftTagColorText="black"
+                      rightTagText={item.date}
+                      rightTagColorBg="yellow"
+                      rightTagColorText="black"
+                      title={item.title}
+                      subTitle={item.text}
+                    />
+                  ))}
                 {/* <RevPrac
                   image="relevantcases.png"
                   imageAlt="Relevant cases"

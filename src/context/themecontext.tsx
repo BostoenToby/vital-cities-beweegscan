@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 const defaultState = {
   dark: false,
@@ -9,13 +9,17 @@ const ThemeContext = createContext(defaultState)
 export default ThemeContext
 
 export const ThemeProvider = ({ children }: { children: any }) => {
-  const [dark, setDarkRaw] = useState(getInitialTheme)
+  const [dark, setDarkRaw] = useState(() => getInitialTheme())
 
   const setDark = (d: boolean) => {
     setDarkRaw(d)
 
     window.localStorage.setItem('color-mode', d.toString())
   }
+
+  useEffect(() => {
+    setDarkRaw(getInitialTheme())
+  }, [])
 
   return (
     <ThemeContext.Provider value={{ dark, setDark }}>
