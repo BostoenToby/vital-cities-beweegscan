@@ -69,6 +69,8 @@ function AmbitionPage({ location }: { location: any }) {
               text
               ambition
               text
+              subtitle
+              image
             }
             parent {
               internal {
