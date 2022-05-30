@@ -9,7 +9,7 @@ const ThemeContext = createContext(defaultState)
 export default ThemeContext
 
 export const ThemeProvider = ({ children }: { children: any }) => {
-  const [dark, setDarkRaw] = useState(getInitialTheme)
+  const [dark, setDarkRaw] = useState(() => getInitialTheme())
 
   const setDark = (d: boolean) => {
     setDarkRaw(d)
