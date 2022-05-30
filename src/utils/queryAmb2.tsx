@@ -1,10 +1,11 @@
 import { graphql, useStaticQuery } from "gatsby";
+import * as React from 'react'
 
-export function queryAmb1 () {
+export function queryAmb2 () {
     const data = useStaticQuery(
         graphql`
             query {
-                cms: allMarkdownRemark {
+                cms: allMarkdownRemark(filter: {frontmatter: {ambition: {eq: "Verbonden stadskern"}}}) {
                     nodes {
                       frontmatter {
                         title
@@ -20,48 +21,52 @@ export function queryAmb1 () {
                       }
                     }
                   }
-                ambitie1: allGsVitalCitiesDataZoS03(filter: {jaar: {eq: 2020}}) {
+                  benchmark1: allGsVitalCitiesDataMoS17(filter: {jaar: {eq: 2020}}) {
                     edges {
                       node {
-                        dagelijks____
-                        meerdereKerenPerMaand____
+                        minstensMaandelijks____
                         minstensWekelijks____
-                        nooit_minderDan1KeerPerMaand____
-                        jaar
+                        nooit_eenUitzonderlijkeKeer____
                       }
                     }
                   }
-                  ambitie2: allGsVitalCitiesDataMoS12(filter: {jaar: {eq: "2020"}}) {
+                  benchmark2: allGsVitalCitiesDataMoS04(filter: {jaar: {eq: 2020}}) {
                     edges {
                       node {
-                        andere____
-                        auto____
-                        fiets____
-                        openbaarVervoer____
-                        teVoet____
+                        neutraal____
+                        oneens____
+                        eens____
                       }
                     }
                   }
-                  ambitie3: allGsVitalCitiesDataMoS07(filter: {jaar: {eq: 2020}}) {
+                  benchmark3: allGsVitalCitiesDataMoS09(
+                    filter: {jaar: {eq: 2020}, item: {eq: "Autoluwe en autovrije zones"}}
+                  ) {
                     edges {
                       node {
                         eens____
                         neutraal____
                         oneens____
+                        item
                       }
                     }
                   }
-                  ambitie4: allGsVitalCitiesDataMoS11(filter: {jaar: {eq: 2020}}) {
+                  benchmark4: allGsVitalCitiesDataMoS09(
+                    filter: {jaar: {eq: 2020}, item: {eq: "Deelsystemen"}}
+                  ) {
                     edges {
                       node {
-                        afEnToe____
-                        nooit_zelden____
-                        vaak_altijd____
+                        eens____
+                        neutraal____
+                        oneens____
+                        item
                       }
                     }
                   }
             }
         `
     )
-    return data
+    return(
+      <div></div>
+  )
 }

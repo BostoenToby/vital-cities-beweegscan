@@ -1,4 +1,4 @@
-import { graphql, Link } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
 import { ArrowDown, ChevronDown } from 'lucide-react'
 import * as React from 'react'
@@ -23,7 +23,372 @@ import { PercentageData } from '../interfaces/data'
 import { testData } from '../data/testGraph'
 import Donutdata from '../components/donutdata'
 
-function AmbitionPage({ data }: { data: any }) {
+function AmbitionPage({location}: {location: any}) {
+  const { cms, ambitie1bench1, ambitie1bench2, ambitie1bench3, ambitie1bench4, ambitie2bench1, ambitie2bench2, ambitie2bench3, ambitie2bench4, ambitie3bench1, ambitie3bench2, ambitie3bench3, ambitie3bench4, ambitie3bench5, ambitie3bench6, ambitie3bench7, ambitie4bench1, ambitie4bench2, ambitie4bench3, ambitie4bench4, ambitie4bench5, ambitie5bench1, ambitie5bench2, ambitie5bench3, ambitie6bench1, ambitie6bench2, ambitie6bench3, ambitie6bench4, ambitie6bench5, ambitie7bench1, ambitie7bench2, ambitie7bench3, ambitiebench4} = useStaticQuery(
+    graphql`
+      query{
+        cms: allMarkdownRemark {
+          nodes {
+            frontmatter {
+              title
+              link
+              text
+              ambition
+              text
+            }
+            parent {
+              internal {
+                description
+              }
+            }
+          }
+        }
+      ambitie1bench1: allGsVitalCitiesDataZoS03(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              dagelijks____
+              meerdereKerenPerMaand____
+              minstensWekelijks____
+              nooit_minderDan1KeerPerMaand____
+              jaar
+            }
+          }
+        }
+        ambitie1bench2: allGsVitalCitiesDataMoS12(filter: {jaar: {eq: "2020"}}) {
+          edges {
+            node {
+              andere____
+              auto____
+              fiets____
+              openbaarVervoer____
+              teVoet____
+            }
+          }
+        }
+        ambitie1bench3: allGsVitalCitiesDataMoS07(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+            }
+          }
+        }
+        ambitie1bench4: allGsVitalCitiesDataMoS11(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              afEnToe____
+              nooit_zelden____
+              vaak_altijd____
+            }
+          }
+        }
+        ambitie2bench1: allGsVitalCitiesDataMoS17(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              minstensMaandelijks____
+              minstensWekelijks____
+              nooit_eenUitzonderlijkeKeer____
+            }
+          }
+        }
+        ambitie2bench2: allGsVitalCitiesDataMoS04(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              neutraal____
+              oneens____
+              eens____
+            }
+          }
+        }
+        ambitie2bench3: allGsVitalCitiesDataMoS09(
+          filter: {jaar: {eq: 2020}, item: {eq: "Autoluwe en autovrije zones"}}
+        ) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+              item
+            }
+          }
+        }
+        ambitie2bench4: allGsVitalCitiesDataMoS09(
+          filter: {jaar: {eq: 2020}, item: {eq: "Deelsystemen"}}
+        ) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+              item
+            }
+          }
+        }
+        ambitie3bench1: allGsVitalCitiesDataMoS01(
+          filter: {jaar: {eq: 2020}, item: {eq: "Fietspaden in goede staat"}}
+        ) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+              item
+            }
+          }
+        }
+        ambitie3bench2: allGsVitalCitiesDataMoS01(
+          filter: {jaar: {eq: 2020}, item: {eq: "Straten en pleinen in goede staat"}}
+        ) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+              item
+            }
+          }
+        }
+        ambitie3bench3: allGsVitalCitiesDataMoS01(
+          filter: {jaar: {eq: 2020}, item: {eq: "Voetpaden in goede staat"}}
+        ) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+              item
+            }
+          }
+        }
+        ambitie3bench4: allGsVitalCitiesDataMoS03(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+            }
+          }
+        }
+        ambitie3bench5: allGsVitalCitiesDataMoS09(
+          filter: {jaar: {eq: 2020}, item: {eq: "Fietsinfrastructuur"}}
+        ) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+              item
+            }
+          }
+        }
+        ambitie3bench6: allGsVitalCitiesDataMoS02(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+            }
+          }
+        }
+        ambitie3bench7: allGsVitalCitiesDataMoS06(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+            }
+          }
+        }
+        ambitie4bench1: allGsVitalCitiesDataCuS11(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              minstensMaandelijks____
+              minstensWekelijks____
+              nooit_eenUitzonderlijkeKeer____
+            }
+          }
+        }
+        ambitie4bench2: allGsVitalCitiesDataCuS10(
+          filter: {jaar: {eq: 2020}, item: {eq: "Sporten in eigen gemeente"}}
+        ) {
+          edges {
+            node {
+              _12KeerOfMinder____
+              meerDan12Keer____
+              nooit____
+              item
+            }
+          }
+        }
+        ambitie4bench3: allGsVitalCitiesDataCuS10(
+          filter: {jaar: {eq: 2020}, item: {eq: "Sporten in andere gemeente"}}
+        ) {
+          edges {
+            node {
+              _12KeerOfMinder____
+              meerDan12Keer____
+              nooit____
+              item
+            }
+          }
+        }
+        ambitie4bench4: allGsVitalCitiesDataCuS13(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+            }
+          }
+        }
+        ambitie4bench5: allGsVitalCitiesDataCuS12(
+          filter: {jaar: {eq: 2020}, item: {eq: "Tevredenheid over sportvoorzieningen"}}
+        ) {
+          edges {
+            node {
+              neutraal____
+              ontevreden____
+              tevreden____
+              item
+            }
+          }
+        }
+        ambitie5bench1: allGsVitalCitiesDataCuS24(
+          filter: {jaar: {eq: 2020}, item: {eq: "Voldoende geschikte plekken voor jeugd"}}
+        ) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+              item
+            }
+          }
+        }
+        ambitie5bench2: allGsVitalCitiesDataCuS24(
+          filter: {jaar: {eq: 2020}, item: {eq: "Voldoende speelvoorzieningen voor kinderen en jongeren"}}
+        ) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+              item
+            }
+          }
+        }
+        ambitie5bench3: allGsVitalCitiesDataCuS21(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+            }
+          }
+        }
+        ambitie6bench1: allGsVitalCitiesDataSaS18(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+            }
+          }
+        }
+        ambitie6bench2: allGsVitalCitiesDataSaS17(
+          filter: {jaar: {eq: 2020}, item: {eq: "Voldoende ontmoetingsplekken"}}
+        ) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+              item
+            }
+          }
+        }
+        ambitie6bench3: allGsVitalCitiesDataSaS17(
+          filter: {jaar: {eq: 2020}, item: {eq: "Voldoende rustplekken"}}
+        ) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+              item
+            }
+          }
+        }
+        ambitie6bench4: allGsVitalCitiesDataSaS19(
+          filter: {jaar: {eq: 2020}, item: {eq: "Onveiligheidsgevoel buurt/wijk"}}
+        ) {
+          nodes {
+            afEnToe____
+            nooit_zelden____
+            vaak_altijd____
+            item
+          }
+        }
+        ambitie6bench5: allGsVitalCitiesDataSaS19(
+          filter: {jaar: {eq: 2020}, item: {eq: "Onveiligheidsgevoel gemeente/stad"}}
+        ) {
+          nodes {
+            afEnToe____
+            nooit_zelden____
+            vaak_altijd____
+            item
+          }
+        }
+        ambitie7bench1: allGsVitalCitiesDataKlS01(
+          filter: {jaar: {eq: 2020}, item: {eq: "Bezoek park, bos, groenzone in andere gemeente"}}
+        ) {
+          edges {
+            node {
+              meerDan12Keer____
+              nietAanwezigInDeEigenGemeente____
+              nooit____
+              tot12Keer____
+              item
+            }
+          }
+        }
+        ambitie7bench2: allGsVitalCitiesDataKlS01(
+          filter: {jaar: {eq: 2020}, item: {eq: "Bezoek park, bos, groenzone in eigen gemeente"}}
+        ) {
+          edges {
+            node {
+              meerDan12Keer____
+              nietAanwezigInDeEigenGemeente____
+              nooit____
+              tot12Keer____
+              item
+            }
+          }
+        }
+        ambitie7bench3: allGsVitalCitiesDataKlS02(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              neutraal____
+              ontevreden____
+              tevreden____
+            }
+          }
+        }
+        ambitite7bench4: allGsVitalCitiesDataKlS03(filter: {jaar: {eq: 2020}}) {
+          edges {
+            node {
+              eens____
+              neutraal____
+              oneens____
+            }
+          }
+        }
+      }
+    `
+  )
+  console.log(cms)
+  console.log(ambitie3bench4)
   const [intBronnen, setIntBronnen] = useState<intBron[]>()
   const [hows, setHows] = useState<HoeWaarom[]>()
   const [whys, setWhys] = useState<HoeWaarom[]>()
@@ -97,9 +462,6 @@ function AmbitionPage({ data }: { data: any }) {
     }
   }
 
-  const { allMarkdownRemark } = data
-  const { nodes, html } = allMarkdownRemark
-
   useEffect(() => {
     let list = searchList(typed)
     setSuggestions(list)
@@ -110,44 +472,11 @@ function AmbitionPage({ data }: { data: any }) {
     let hoeList: HoeWaarom[] = []
     let waaromList: HoeWaarom[] = []
     let goodPracs: goodPractice[] = []
-    for (let item of nodes) {
-      if (item.parent.internal.description.includes('intbron')) {
-        let bron = {
-          title: item.frontmatter.title,
-          link: item.frontmatter.link,
-          text: item.frontmatter.text,
-        }
-        bronnen.push(bron)
-      } else if (item.parent.internal.description.includes('hoeopl')) {
-        let hoe = {
-          ambition: item.frontmatter.ambition,
-          text: item.frontmatter.text,
-        }
-        hoeList.push(hoe)
-      } else if (item.parent.internal.description.includes('waaromopl')) {
-        let waarom = {
-          ambition: item.frontmatter.ambition,
-          text: item.frontmatter.text,
-        }
-        waaromList.push(waarom)
-      } else if (item.parent.internal.description.includes('goodprac')) {
-        let themesList = item.frontmatter.themes.split(/\r?\n/)
-        let extraList = item.frontmatter.extra.split(/\r?\n/)
-        let prac = {
-          title: item.frontmatter.title,
-          date: item.frontmatter.date,
-          themes: themesList,
-          text: item.frontmatter.text,
-          extra: extraList,
-        }
-        goodPracs.push(prac)
-      }
-    }
     setIntBronnen(bronnen)
     setHows(hoeList)
     setWhys(waaromList)
     setGoodPracs(goodPracs)
-  }, [nodes])
+  }, [])
 
   useEffect(() => {
     setGraphData(testData)
@@ -164,6 +493,7 @@ function AmbitionPage({ data }: { data: any }) {
       setSuggestions([])
     }
   }
+
 
   return (
     <ThemeContext.Consumer>
@@ -671,24 +1001,3 @@ function AmbitionPage({ data }: { data: any }) {
 }
 
 export default AmbitionPage
-
-export const IntBronQuery = graphql`
-  query {
-    allMarkdownRemark {
-      nodes {
-        frontmatter {
-          title
-          link
-          text
-          ambition
-          text
-        }
-        parent {
-          internal {
-            description
-          }
-        }
-      }
-    }
-  }
-`

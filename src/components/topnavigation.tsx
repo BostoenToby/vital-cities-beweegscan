@@ -123,7 +123,7 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage">
+                        <Link to="/ambitionpage" state={{ ambition: "Actief bewegen & verplaatsen" }}>
                           Actief bewegen & verplaatsen
                         </Link>
                       </li>
@@ -134,7 +134,7 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage">verbonden stadskern</Link>
+                        <Link to="/ambitionpage" state={{ ambition: "Verbonden stadskern" }}>verbonden stadskern</Link>
                       </li>
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
@@ -143,7 +143,7 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage">Fiets- & wandelroutes</Link>
+                        <Link to="/ambitionpage" state={{ ambition: "Aantrekkelijke & veilige wandel- & fietsroutes" }}>Fiets- & wandelroutes</Link>
                       </li>
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
@@ -152,7 +152,7 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage">Sporten</Link>
+                        <Link to="/ambitionpage" state={{ ambition: "Stad & buurt als sportplein" }}>Sporten</Link>
                       </li>
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
@@ -161,7 +161,7 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage">Spelen</Link>
+                        <Link to="/ambitionpage" state={{ ambition: "Stad & buurt als speelplein" }}>Spelen</Link>
                       </li>
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
@@ -170,7 +170,7 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage">Ontmoeten</Link>
+                        <Link to="/ambitionpage" state={{ ambition: "Stad & buurt als ontmoetingsplek" }}>Ontmoeten</Link>
                       </li>
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
@@ -179,7 +179,7 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage">Groen</Link>
+                        <Link to="/ambitionpage" state={{ ambition: "Bruikbaar, gevarieerd & voldoende groen" }}>Groen</Link>
                       </li>
                     </ul>
                   ) : null}
