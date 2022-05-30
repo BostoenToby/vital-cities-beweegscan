@@ -11,6 +11,7 @@ import AmbitionPage from './ambitionpage'
 import Pdf from '../components/pdf'
 import { graphql } from 'gatsby'
 import ThemeContext from '../context/themecontext'
+import FadeInSection from '../components/scrollytelling'
 
 // remove excel files because this can't be processed by Linux
 
@@ -105,33 +106,38 @@ const IndexPage = ({ data }: { data: any }) => {
                 beweegvriendelijke leefomgeving, dan kan je werk maken van de
                 volgende ambities.
               </p>
-              <div className="mb-8 grid grid-cols-1 flex-col gap-8 tabletportrait:grid-cols-2 laptop:grid-cols-3 4K:grid-cols-4">
-                <Ambitionblock
-                  header="Ambitie 1"
-                  text="Actief bewegen en verplaatsen"
-                />
-                <Ambitionblock header="Ambitie 2" text="Verbonden stadskern" />
-                <Ambitionblock
-                  header="Ambitie 3"
-                  text="Aantrekkelijke en veilige wandel- en fietsroutes"
-                />
-                <Ambitionblock
-                  header="Ambitie 4"
-                  text="Stad en buurt als sportplein"
-                />
-                <Ambitionblock
-                  header="Ambitie 5"
-                  text="Stad en buurt als speelplein"
-                />
-                <Ambitionblock
-                  header="Ambitie 6"
-                  text="Stad en buurt als ontmoetingsplek"
-                />
-                <Ambitionblock
-                  header="Ambitie 7"
-                  text="Bruikbaar, gevarieerd en voldoende groen"
-                />
-              </div>
+              <FadeInSection>
+                <div className="mb-8 grid grid-cols-1 flex-col gap-8 tabletportrait:grid-cols-2 laptop:grid-cols-3 4K:grid-cols-4">
+                  <Ambitionblock
+                    header="Ambitie 1"
+                    text="Actief bewegen en verplaatsen"
+                  />
+                  <Ambitionblock
+                    header="Ambitie 2"
+                    text="Verbonden stadskern"
+                  />
+                  <Ambitionblock
+                    header="Ambitie 3"
+                    text="Aantrekkelijke en veilige wandel- en fietsroutes"
+                  />
+                  <Ambitionblock
+                    header="Ambitie 4"
+                    text="Stad en buurt als sportplein"
+                  />
+                  <Ambitionblock
+                    header="Ambitie 5"
+                    text="Stad en buurt als speelplein"
+                  />
+                  <Ambitionblock
+                    header="Ambitie 6"
+                    text="Stad en buurt als ontmoetingsplek"
+                  />
+                  <Ambitionblock
+                    header="Ambitie 7"
+                    text="Bruikbaar, gevarieerd en voldoende groen"
+                  />
+                </div>
+              </FadeInSection>
               <h2
                 className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                   context.dark ? 'opacity-90' : ''
