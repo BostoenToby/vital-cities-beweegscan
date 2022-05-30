@@ -1,6 +1,8 @@
 ---
-ambition: 
-    - Actief bewegen en verplaatsen
+ambition:
+  - Aantrekkelijke en veilige wandel- en fietsroutes
+  - Bruikbaar, gevarieerd en voldoende groen
+  - Stad en buurt als speelplein
 title: Quickscan fietsbeleid
 link: https://fietsberaad.be/documenten/quick-scan-fietsbeleid/
 text: |-
