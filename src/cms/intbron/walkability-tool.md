@@ -1,6 +1,6 @@
 ---
 ambition: 
-  - Actief bewegen en verplaatsen
+    - Actief bewegen en verplaatsen
 title: Walkability-tool
 link: https://vito.be/nl/nieuws/walkability-analysetool-berekent-hoe-wandelvriendelijk-een-buurt
 text: |-

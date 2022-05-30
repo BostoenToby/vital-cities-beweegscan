@@ -45,7 +45,6 @@ export default ({ section }: { section: string }) => {
 
   const handleAmbitions = () => {
     setShowAmbitions(!showAmbitions)
-    console.log(showAmbitions)
   }
 
   const handleClick = (e: any) => {

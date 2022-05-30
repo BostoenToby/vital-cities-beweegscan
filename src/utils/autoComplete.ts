@@ -1,6 +1,5 @@
 export const searchList = (query: string) => {
   var result: string[] = []
-  console.log(query.toLowerCase())
   allResults.forEach((g) => {
     if (g.toLowerCase().startsWith(query.toLowerCase())) {
       result.push(g)

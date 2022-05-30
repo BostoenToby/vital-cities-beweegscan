@@ -24,7 +24,6 @@ export default () => {
 
   useEffect(() => {
     if (selected && originalPractices && originalPractices.length >= 1) {
-      console.log(selected)
       let practices = originalPractices
       let result: TestPractice[] = []
 

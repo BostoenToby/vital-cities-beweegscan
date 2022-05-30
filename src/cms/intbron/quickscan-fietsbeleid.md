@@ -1,6 +1,6 @@
 ---
 ambition: 
-  - Actief bewegen en verplaatsen
+    - Actief bewegen en verplaatsen
 title: Quickscan fietsbeleid
 link: https://fietsberaad.be/documenten/quick-scan-fietsbeleid/
 text: |-

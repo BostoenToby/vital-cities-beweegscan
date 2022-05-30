@@ -1,12 +1,10 @@
 export const getColor = (thema: string, dark: boolean): string => {
-  console.log(dark)
   if (
     ['transversaal', 'technologie/data', 'participatie'].includes(
       thema.toLowerCase(),
     )
   ) {
     if (dark) {
-      console.log('Ok')
       return 'purpleDesat'
     } else {
       return 'purple'

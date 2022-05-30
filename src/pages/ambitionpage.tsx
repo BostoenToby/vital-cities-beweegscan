@@ -30,6 +30,7 @@ import Donutdata from '../components/donutdata'
 
 function AmbitionPage({ location }: { location: any }) {
   const [hasMounted, setHasMounted] = useState(false)
+  const [locationAmb, setLocationAmb] = useState()
 
   const {
     cms,
@@ -73,8 +74,6 @@ function AmbitionPage({ location }: { location: any }) {
             frontmatter {
               title
               link
-              text
-              ambition
               text
               subtitle
               image
@@ -504,8 +503,10 @@ function AmbitionPage({ location }: { location: any }) {
       }
     `,
   )
-  console.log(cms)
-  console.log(ambitie3bench4)
+
+  console.log("TEST LOCATION")
+  console.log(location.state.ambition)
+
   const [intBronnen, setIntBronnen] = useState<intBron[]>()
   const [hows, setHows] = useState<HoeWaarom[]>()
   const [whys, setWhys] = useState<HoeWaarom[]>()
@@ -528,8 +529,6 @@ function AmbitionPage({ location }: { location: any }) {
   })
 
   const changeTyped = async (value: string) => {
-    console.log('change')
-    console.log(value)
     setTyped(value)
   }
 
@@ -586,6 +585,7 @@ function AmbitionPage({ location }: { location: any }) {
   }, [typed])
 
   useEffect(() => {
+    setLocationAmb(location.state.ambition)
     let bronnen: intBron[] = []
     let hoeList: HoeWaarom[] = []
     let waaromList: HoeWaarom[] = []
@@ -920,7 +920,6 @@ function AmbitionPage({ location }: { location: any }) {
               <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
                 {hows &&
                   hows.map((item: HoeWaarom) => {
-                    console.log(item)
                     return (
                       <Textblock
                         text={item.text}

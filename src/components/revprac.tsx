@@ -39,13 +39,10 @@ export default function RevPrac({
       }
     `,
   )
-  console.log({ allImageSharp })
 
   const [img, setImg] = React.useState<any>()
   let node: number = 0
   React.useEffect(() => {
-    console.log("Test revprac")
-    console.log(allImageSharp.nodes)
     for (let i of allImageSharp.nodes) {
       if (i.gatsbyImageData.images.fallback.src.includes(image)) {
         setImg(getImage(i))
@@ -54,9 +51,6 @@ export default function RevPrac({
     }
   }, [])
 
-  React.useEffect(() => {
-    console.log(img)
-  }, [img])
   return (
     <ThemeContext.Consumer>
       {(context) => (
