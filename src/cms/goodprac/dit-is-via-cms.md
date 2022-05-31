@@ -2,9 +2,6 @@
 thema:
   - actief bewegen
   - fiets- en wandelroutes
-themes: activiteit
-ambitions:
-  - Actief bewegen en verplaatsen
 title: Dit is via CMS
 image: /assets/relevantcases.png
 date: 2022-05-30T09:05:34.127Z

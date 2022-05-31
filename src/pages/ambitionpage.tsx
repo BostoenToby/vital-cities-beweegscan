@@ -34,6 +34,7 @@ import { getDataForAmbition } from '../utils/filterData'
 export default ({ location }: { location: any }) => {
   const [hasMounted, setHasMounted] = useState(false)
   const [locationAmb, setLocationAmb] = useState<string|undefined>(undefined)
+  const [locationShort, setLocationShort] = useState<string>()
   const [intBronnen, setIntBronnen] = useState<intBron[]>()
   const [img, setImg] = useState<any>()
   const [hows, setHows] = useState<HoeWaarom[]>()
@@ -60,6 +61,7 @@ export default ({ location }: { location: any }) => {
   useEffect(() => {
     setHasMounted(true)
     setLocationAmb(location.state.ambition)
+    setLocationShort(location.state.short)
 
     if (typeof window !== 'undefined') {
       window.addEventListener('click', handleClick)
@@ -109,6 +111,7 @@ export default ({ location }: { location: any }) => {
           nodes {
             frontmatter {
               ambition
+              ambitions
               date
               extra
               title
@@ -116,9 +119,9 @@ export default ({ location }: { location: any }) => {
               text
               subtitle
               image
-              themes
               tag
               boldpart
+              thema
             }
             parent {
               internal {
@@ -646,17 +649,23 @@ export default ({ location }: { location: any }) => {
     let goodPracs: goodPractice[] = []
 
     let loc: string
-    if(locationAmb == undefined){
+    let locshort: string
+    if(locationAmb == undefined || locationShort == undefined){
       loc = location.state.ambition
+      locshort = location.state.short
     } else {
       loc = locationAmb
+      locshort = locationShort
     }
     console.log(loc)
 
     for (let item of cms.nodes) {
+      if(item.frontmatter.ambitions == null){
+        item.frontmatter.ambitions = [""]
+      }
       if (
         item.parent.internal.description.includes('hoeopl') &&
-        (item.frontmatter.ambition == loc)
+        (item.frontmatter.ambition == loc || item.frontmatter.ambitions.includes(loc))
       ) {
         console.log(item.frontmatter.ambition)
         hoeList.push({
@@ -665,7 +674,7 @@ export default ({ location }: { location: any }) => {
         })
       } else if (
         item.parent.internal.description.includes('waaromopl') &&
-        (item.frontmatter.ambition == loc)
+        (item.frontmatter.ambition == loc || item.frontmatter.ambitions.includes(loc))
       ) {
         waaromList.push({
           text: item.frontmatter.text,
@@ -673,7 +682,7 @@ export default ({ location }: { location: any }) => {
         })
       } else if (
         item.parent.internal.description.includes('intbron') &&
-        (item.frontmatter.ambition == loc)
+        (item.frontmatter.ambition == loc || item.frontmatter.ambitions.includes(loc))
       ) {
         bronnen.push({
           title: item.frontmatter.title,
@@ -682,12 +691,12 @@ export default ({ location }: { location: any }) => {
         })
       } else if (
         item.parent.internal.description.includes('goodprac') &&
-        (item.frontmatter.ambition == loc)
+        (item.frontmatter.thema.includes(locshort))
       ) {
         goodPracs.push({
           title: item.frontmatter.title,
           date: item.frontmatter.date,
-          themes: item.frontmatter.themes,
+          themes: item.frontmatter.thema,
           text: item.frontmatter.text,
           extra: item.frontmatter.extra,
         })
@@ -708,7 +717,7 @@ export default ({ location }: { location: any }) => {
         }
       } else if (
         item.parent.internal.description.includes('problem') &&
-        (item.frontmatter.ambition == loc)
+        (item.frontmatter.ambition == loc || item.frontmatter.ambitions.includes(loc))
       ) {
         setProblem(
           {
@@ -719,7 +728,10 @@ export default ({ location }: { location: any }) => {
         console.log(item.frontmatter.text)
         console.log(item.frontmatter.boldpart)
       } else {
-        console.log({item})
+        if(item.parent.internal.description.includes('problem')){
+          console.log("CHECKING")
+          console.log({item})
+        }
         // console.log(item.frontmatter.ambition)
         // console.log(item.frontmatter.ambitions)
       }

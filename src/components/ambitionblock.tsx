@@ -2,14 +2,14 @@ import { Link } from 'gatsby'
 import * as React from 'react'
 import ThemeContext from '../context/themecontext'
 
-export default ({ header, text }: { header: string; text: string }) => {
+export default ({ header, text, shorttext }: { header: string; text: string, shorttext: string }) => {
   // switch statement die kijkt naar de text voor een icon?
   return (
     <ThemeContext.Consumer>
       {(context) => (
         <Link
           to="ambitionpage"
-          state={{ ambition: text }}
+          state={{ ambition: text, short: shorttext }}
           className={` flex min-h-[288px] flex-col justify-center   px-6 py-12 drop-shadow-sm ${
             context.dark
               ? ' bg-white bg-opacity-[0.06] hover:bg-opacity-10 focus:bg-opacity-10'

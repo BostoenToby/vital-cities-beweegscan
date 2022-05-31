@@ -121,30 +121,37 @@ const IndexPage = ({ data }: { data: any }) => {
                   <Ambitionblock
                     header="Ambitie 1"
                     text="Actief bewegen en verplaatsen"
+                    shorttext="actief bewegen"
                   />
                   <Ambitionblock
                     header="Ambitie 2"
                     text="Verbonden stadskern"
+                    shorttext="verbonden stadskern"
                   />
                   <Ambitionblock
                     header="Ambitie 3"
                     text="Aantrekkelijke en veilige wandel- en fietsroutes"
+                    shorttext="fiets- en wandelroutes"
                   />
                   <Ambitionblock
                     header="Ambitie 4"
                     text="Stad en buurt als sportplein"
+                    shorttext="sporten"
                   />
                   <Ambitionblock
                     header="Ambitie 5"
                     text="Stad en buurt als speelplein"
+                    shorttext="spelen"
                   />
                   <Ambitionblock
                     header="Ambitie 6"
                     text="Stad en buurt als ontmoetingsplek"
+                    shorttext="ontmoeten"
                   />
                   <Ambitionblock
                     header="Ambitie 7"
                     text="Bruikbaar, gevarieerd en voldoende groen"
+                    shorttext="groen"
                   />
                 </div>
               </FadeInSection>
