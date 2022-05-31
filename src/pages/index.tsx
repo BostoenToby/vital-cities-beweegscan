@@ -11,6 +11,7 @@ import AmbitionPage from './ambitionpage'
 import Pdf from '../components/pdf'
 import { graphql } from 'gatsby'
 import ThemeContext from '../context/themecontext'
+import FadeInSection from '../components/scrollytelling'
 
 // remove excel files because this can't be processed by Linux
 
@@ -115,73 +116,83 @@ const IndexPage = ({ data }: { data: any }) => {
                 beweegvriendelijke leefomgeving, dan kan je werk maken van de
                 volgende ambities.
               </p>
-              <div className="mb-8 grid grid-cols-1 flex-col gap-8 tabletportrait:grid-cols-2 laptop:grid-cols-3 4K:grid-cols-4">
-                <Ambitionblock
-                  header="Ambitie 1"
-                  text="Actief bewegen en verplaatsen"
-                />
-                <Ambitionblock header="Ambitie 2" text="Verbonden stadskern" />
-                <Ambitionblock
-                  header="Ambitie 3"
-                  text="Aantrekkelijke en veilige wandel- en fietsroutes"
-                />
-                <Ambitionblock
-                  header="Ambitie 4"
-                  text="Stad en buurt als sportplein"
-                />
-                <Ambitionblock
-                  header="Ambitie 5"
-                  text="Stad en buurt als speelplein"
-                />
-                <Ambitionblock
-                  header="Ambitie 6"
-                  text="Stad en buurt als ontmoetingsplek"
-                />
-                <Ambitionblock
-                  header="Ambitie 7"
-                  text="Bruikbaar, gevarieerd en voldoende groen"
-                />
-              </div>
-              <h2
-                className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                  context.dark ? 'opacity-90' : ''
-                }`}
-              >
-                In een oogopslag
-              </h2>
-              <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
-                In welke mate jouw stad of gemeente elk van deze ambities
-                vandaag al waarmaakt: dat ontdek je met de Beweegscan van Vital
-                Cities
-              </p>
-              <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
-                Met de handige zoekfunctie selecteer je voor elk van de ambities
-                van beweegvriendelijkheid, de voor jouw stad of gemeente
-                relevante cijfers uit de recentste Gemeente - en Stadsmonitor.
-                En zet je die af tegen het Vlaams gemiddelde.
-              </p>
-              <p className={`mb-8 ${context.dark ? 'opacity-75' : ''}`}>
-                Zo zie je in een oogopslag waarop jouw stad of gemeente terecht
-                trots kan zijn (want beter scoort dan het Vlaams gemiddelde),
-                dan wel wat nog beter kan (want minder goed scoort).
-              </p>
-              <h2
-                className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                  context.dark ? 'opacity-90' : ''
-                }`}
-              >
-                Inspirerend
-              </h2>
-              <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
-                De inzichten die voornoemde cijfers jou geven, vullen we aan met
-                andere onderzoeksresultaten, proven tools en good practises. Zij
-                zullen jou beslist inspireren om de beweegvriendelijkheid van
-                jouw stad of gemeente nog te verbeteren.
-              </p>
-              <p className={`mb-8 ${context.dark ? 'opacity-75' : ''}`}>
-                Om je te laten inspireren: klik in het overzicht van de ambities
-                op één ervan.
-              </p>
+              <FadeInSection>
+                <div className="mb-8 grid grid-cols-1 flex-col gap-8 tabletportrait:grid-cols-2 laptop:grid-cols-3 4K:grid-cols-4">
+                  <Ambitionblock
+                    header="Ambitie 1"
+                    text="Actief bewegen en verplaatsen"
+                  />
+                  <Ambitionblock
+                    header="Ambitie 2"
+                    text="Verbonden stadskern"
+                  />
+                  <Ambitionblock
+                    header="Ambitie 3"
+                    text="Aantrekkelijke en veilige wandel- en fietsroutes"
+                  />
+                  <Ambitionblock
+                    header="Ambitie 4"
+                    text="Stad en buurt als sportplein"
+                  />
+                  <Ambitionblock
+                    header="Ambitie 5"
+                    text="Stad en buurt als speelplein"
+                  />
+                  <Ambitionblock
+                    header="Ambitie 6"
+                    text="Stad en buurt als ontmoetingsplek"
+                  />
+                  <Ambitionblock
+                    header="Ambitie 7"
+                    text="Bruikbaar, gevarieerd en voldoende groen"
+                  />
+                </div>
+              </FadeInSection>
+              <FadeInSection>
+                <h2
+                  className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
+                  In een oogopslag
+                </h2>
+                <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
+                  In welke mate jouw stad of gemeente elk van deze ambities
+                  vandaag al waarmaakt: dat ontdek je met de Beweegscan van
+                  Vital Cities
+                </p>
+                <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
+                  Met de handige zoekfunctie selecteer je voor elk van de
+                  ambities van beweegvriendelijkheid, de voor jouw stad of
+                  gemeente relevante cijfers uit de recentste Gemeente - en
+                  Stadsmonitor. En zet je die af tegen het Vlaams gemiddelde.
+                </p>
+                <p className={`mb-8 ${context.dark ? 'opacity-75' : ''}`}>
+                  Zo zie je in een oogopslag waarop jouw stad of gemeente
+                  terecht trots kan zijn (want beter scoort dan het Vlaams
+                  gemiddelde), dan wel wat nog beter kan (want minder goed
+                  scoort).
+                </p>
+
+                <h2
+                  className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
+                  Inspirerend
+                </h2>
+                <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
+                  De inzichten die voornoemde cijfers jou geven, vullen we aan
+                  met andere onderzoeksresultaten, proven tools en good
+                  practises. Zij zullen jou beslist inspireren om de
+                  beweegvriendelijkheid van jouw stad of gemeente nog te
+                  verbeteren.
+                </p>
+                <p className={`mb-8 ${context.dark ? 'opacity-75' : ''}`}>
+                  Om je te laten inspireren: klik in het overzicht van de
+                  ambities op één ervan.
+                </p>
+              </FadeInSection>
             </div>
           </main>
           <div id="Contact">

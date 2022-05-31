@@ -9,6 +9,7 @@ import { ChevronDown } from 'lucide-react'
 import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
 import ThemeContext from '../context/themecontext'
+import FadeInSection from '../components/scrollytelling'
 
 export default () => {
   const [originalPractices, setOriginalPractices] = useState<TestPractice[]>()
@@ -175,7 +176,9 @@ export default () => {
             {currentPractices && currentPractices.length >= 1 ? (
               <div className="flex flex-col gap-y-20 gridbreak:grid gridbreak:grid-cols-2 gridbreak:gap-x-10 navbreak:grid-cols-3 navbreak:gap-x-14">
                 {currentPractices.map((e, i) => (
-                  <PracticeCard practice={e} key={e.id} />
+                  <FadeInSection>
+                    <PracticeCard practice={e} key={e.id} />
+                  </FadeInSection>
                 ))}
               </div>
             ) : null}
