@@ -755,7 +755,7 @@ function AmbitionPage({ location }: { location: any }) {
             </section>
             <section className="h-full w-full columnbreak:w-1/2">
               <StaticImage
-                src={`../../${header?.image}`}
+                src={`../../static/assets/${header?.image}`}
                 alt="header picture"
                 className="h-full w-full"
               />
