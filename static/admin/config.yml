@@ -57,10 +57,20 @@ collections:
     folder: src/cms/goodprac
     create: true
     fields:
-      - { name: ambition, label: Ambitie, widget: select, multiple: true, options: ["Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"] }
+      - { name: thema, label: Thema, widget: select, multiple: true, options: 
+       { label: "Actief bewegen en verplaatsen", value: "actief bewegen"}
+       { label: "Verbonden stadskern", value: "verbonden stadskern"}
+       { label: "Aantrekkelijke en veilige wandel- en fietsroutes", value: "fiets- en wandelroutes"}
+       { label: "Stad en buurt als sportplein", value: "sporten"}
+       { label: "Stad en buurt als speelplein", value: "spelen"}
+       { label: "Stad en buurt als ontmoetingsplek", value: "ontmoeten"}
+       { label: "Bruikbaar, gevarieerd en voldoende groen", value: "groen"}
+       { label: "Technologie/data", value: "technologie/data"}
+       { label: "Transversaal beleid", value: "transversaal"}
+       { label: "Participatie & inspraak", value: "participatie"}
+       }
       - { name: title, label: Title}
       - { name: image, label: Image, widget: image }
       - { name: date, label: Datum, widget: datetime }
-      - { name: themes, label: Thema's}
       - { name: text, label: Tekst, widget: markdown}
       - { name: extra, label: Extra, widget: markdown }
