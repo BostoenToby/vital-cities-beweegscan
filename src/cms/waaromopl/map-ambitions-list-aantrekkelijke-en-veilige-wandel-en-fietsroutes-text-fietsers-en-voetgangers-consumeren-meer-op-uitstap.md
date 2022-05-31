@@ -1,5 +1,5 @@
 ---
 ambitions:
   - Aantrekkelijke en veilige wandel- en fietsroutes
-text: Fietsers en voetgangers **consumeren meer** op uitstap
+text: Fietsers **consumeren meer** op uitstap
 ---
