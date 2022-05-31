@@ -1,6 +1,7 @@
 ---
 thema:
   - actief bewegen
+  - fiets- en wandelroutes
 themes: activiteit
 ambitions:
   - Actief bewegen en verplaatsen
