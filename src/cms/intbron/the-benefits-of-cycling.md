@@ -1,7 +1,7 @@
 ---
-ambitions: 
-  - Actief verplaatsen en bewegen
+ambitions:
   - Aantrekkelijke en veilige wandel- en fietsroutes
+  - Actief bewegen en verplaatsen
 title: The benefits of cycling
 link: https://ecf.com/sites/ecf.com/files/TheBenefitsOfCycling2018.pdf
 text: |-
