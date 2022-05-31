@@ -91,11 +91,17 @@ function AmbitionPage({ location }: { location: any }) {
             }
           }
         }
+        allImageSharp {
+          nodes {
+            gatsbyImageData
+          }
+        }
         ambitie1bench1: allGsVitalCitiesDataZoS03(
           filter: { jaar: { eq: 2020 } }
         ) {
           edges {
             node {
+              gemeente
               dagelijks____
               meerdereKerenPerMaand____
               minstensWekelijks____
@@ -109,6 +115,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               andere____
               auto____
               fiets____
@@ -122,6 +129,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -133,6 +141,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               afEnToe____
               nooit_zelden____
               vaak_altijd____
@@ -144,6 +153,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               minstensMaandelijks____
               minstensWekelijks____
               nooit_eenUitzonderlijkeKeer____
@@ -155,6 +165,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               neutraal____
               oneens____
               eens____
@@ -169,6 +180,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -181,6 +193,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -196,6 +209,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -211,6 +225,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -226,6 +241,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -238,6 +254,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -249,6 +266,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -261,6 +279,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -272,6 +291,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -283,6 +303,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               minstensMaandelijks____
               minstensWekelijks____
               nooit_eenUitzonderlijkeKeer____
@@ -297,6 +318,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               _12KeerOfMinder____
               meerDan12Keer____
               nooit____
@@ -312,6 +334,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               _12KeerOfMinder____
               meerDan12Keer____
               nooit____
@@ -324,6 +347,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -338,6 +362,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               neutraal____
               ontevreden____
               tevreden____
@@ -353,6 +378,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -370,6 +396,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -382,6 +409,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -393,6 +421,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -407,6 +436,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -419,6 +449,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -433,6 +464,7 @@ function AmbitionPage({ location }: { location: any }) {
           }
         ) {
           nodes {
+            gemeente
             afEnToe____
             nooit_zelden____
             vaak_altijd____
@@ -446,6 +478,7 @@ function AmbitionPage({ location }: { location: any }) {
           }
         ) {
           nodes {
+            gemeente
             afEnToe____
             nooit_zelden____
             vaak_altijd____
@@ -460,6 +493,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               meerDan12Keer____
               nietAanwezigInDeEigenGemeente____
               nooit____
@@ -476,6 +510,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               meerDan12Keer____
               nietAanwezigInDeEigenGemeente____
               nooit____
@@ -489,6 +524,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               neutraal____
               ontevreden____
               tevreden____
@@ -500,6 +536,7 @@ function AmbitionPage({ location }: { location: any }) {
         ) {
           edges {
             node {
+              gemeente
               eens____
               neutraal____
               oneens____
@@ -511,6 +548,7 @@ function AmbitionPage({ location }: { location: any }) {
   )
 
   const [intBronnen, setIntBronnen] = useState<intBron[]>()
+  const [img, setImg] = useState<any>()
   const [hows, setHows] = useState<HoeWaarom[]>()
   const [whys, setWhys] = useState<HoeWaarom[]>()
   const [goodPracs, setGoodPracs] = useState<goodPractice[]>()
@@ -754,11 +792,12 @@ function AmbitionPage({ location }: { location: any }) {
               />
             </section>
             <section className="h-full w-full columnbreak:w-1/2">
-              <StaticImage
-                src={`../../static/assets/${header?.image}`}
+              {/* <StaticImage
+                // src={`../../static/assets/${header?.image}`}
+                src="../images/beweegscan.jpg"
                 alt="header picture"
                 className="h-full w-full"
-              />
+              /> */}
             </section>
           </header>
           <div

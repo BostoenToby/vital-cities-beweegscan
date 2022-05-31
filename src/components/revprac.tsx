@@ -41,13 +41,11 @@ export default function RevPrac({
   )
 
   const [img, setImg] = React.useState<any>()
-  let node: number = 0
   React.useEffect(() => {
     for (let i of allImageSharp.nodes) {
       if (i.gatsbyImageData.images.fallback.src.includes(image)) {
         setImg(getImage(i))
       }
-      node += 1
     }
   }, [])
 
