@@ -72,11 +72,15 @@ function AmbitionPage({ location }: { location: any }) {
         cms: allMarkdownRemark {
           nodes {
             frontmatter {
+              ambition
+              date
+              extra
               title
               link
               text
               subtitle
               image
+              themes
             }
             parent {
               internal {
