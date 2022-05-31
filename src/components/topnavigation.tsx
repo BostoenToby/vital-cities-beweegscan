@@ -9,6 +9,7 @@ import Logoalt from './logoalt'
 import { useLocation } from '@reach/router'
 import Darkmodetoggle from './darkmodetoggle'
 import { text } from 'stream/consumers'
+import { type } from 'os'
 
 export default ({ section }: { section: string }) => {
   const [isFullsize, setFullsize] = useState(false)
@@ -60,6 +61,12 @@ export default ({ section }: { section: string }) => {
       setIsAmbitions(true)
     } else {
       setIsAmbitions(false)
+    }
+  }
+
+  const handleReload = () => {
+    if (typeof window !== 'undefined' && isAmbitions) {
+      window.location.reload()
     }
   }
 
@@ -122,7 +129,11 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage" state={{ ambition: "Actief bewegen en verplaatsen" }}>
+                        <Link
+                          onClick={() => handleReload()}
+                          to="/ambitionpage"
+                          state={{ ambition: 'Actief bewegen en verplaatsen' }}
+                        >
                           Actief bewegen & verplaatsen
                         </Link>
                       </li>
@@ -133,7 +144,13 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage" state={{ ambition: "Verbonden stadskern" }}>verbonden stadskern</Link>
+                        <Link
+                          onClick={() => handleReload()}
+                          to="/ambitionpage"
+                          state={{ ambition: 'Verbonden stadskern' }}
+                        >
+                          verbonden stadskern
+                        </Link>
                       </li>
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
@@ -142,7 +159,16 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage" state={{ ambition: "Aantrekkelijke & veilige wandel- & fietsroutes" }}>Fiets- & wandelroutes</Link>
+                        <Link
+                          onClick={() => handleReload()}
+                          to="/ambitionpage"
+                          state={{
+                            ambition:
+                              'Aantrekkelijke en veilige wandel- en fietsroutes',
+                          }}
+                        >
+                          Fiets- & wandelroutes
+                        </Link>
                       </li>
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
@@ -151,7 +177,13 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage" state={{ ambition: "Stad & buurt als sportplein" }}>Sporten</Link>
+                        <Link
+                          onClick={() => handleReload()}
+                          to="/ambitionpage"
+                          state={{ ambition: 'Stad en buurt als sportplein' }}
+                        >
+                          Sporten
+                        </Link>
                       </li>
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
@@ -160,7 +192,13 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage" state={{ ambition: "Stad & buurt als speelplein" }}>Spelen</Link>
+                        <Link
+                          onClick={() => handleReload()}
+                          to="/ambitionpage"
+                          state={{ ambition: 'Stad en buurt als speelplein' }}
+                        >
+                          Spelen
+                        </Link>
                       </li>
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
@@ -169,7 +207,15 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage" state={{ ambition: "Stad & buurt als ontmoetingsplek" }}>Ontmoeten</Link>
+                        <Link
+                          onClick={() => handleReload()}
+                          to="/ambitionpage"
+                          state={{
+                            ambition: 'Stad en buurt als ontmoetingsplek',
+                          }}
+                        >
+                          Ontmoeten
+                        </Link>
                       </li>
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
@@ -178,7 +224,16 @@ export default ({ section }: { section: string }) => {
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
-                        <Link to="/ambitionpage" state={{ ambition: "Bruikbaar, gevarieerd & voldoende groen" }}>Groen</Link>
+                        <Link
+                          onClick={() => handleReload()}
+                          to="/ambitionpage"
+                          state={{
+                            ambition:
+                              'Bruikbaar, gevarieerd en voldoende groen',
+                          }}
+                        >
+                          Groen
+                        </Link>
                       </li>
                     </ul>
                   ) : null}
