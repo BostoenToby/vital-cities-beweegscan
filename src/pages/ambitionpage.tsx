@@ -657,7 +657,6 @@ export default ({ location }: { location: any }) => {
       loc = locationAmb
       locshort = locationShort
     }
-    console.log(loc)
 
     for (let item of cms.nodes) {
       if (item.frontmatter.ambitions == null) {
@@ -668,7 +667,6 @@ export default ({ location }: { location: any }) => {
         (item.frontmatter.ambition == loc ||
           item.frontmatter.ambitions.includes(loc))
       ) {
-        console.log(item.frontmatter.ambition)
         hoeList.push({
           text: item.frontmatter.text,
           ambition: item.frontmatter.ambition,
@@ -731,15 +729,6 @@ export default ({ location }: { location: any }) => {
           text: item.frontmatter.text,
           bold: item.frontmatter.boldpart,
         })
-        console.log(item.frontmatter.text)
-        console.log(item.frontmatter.boldpart)
-      } else {
-        if (item.parent.internal.description.includes('problem')) {
-          console.log('CHECKING')
-          console.log({ item })
-        }
-        // console.log(item.frontmatter.ambition)
-        // console.log(item.frontmatter.ambitions)
       }
     }
     setIntBronnen(bronnen)
