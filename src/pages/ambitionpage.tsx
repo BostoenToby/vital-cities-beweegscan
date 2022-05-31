@@ -27,6 +27,7 @@ import { text } from 'stream/consumers'
 import { PercentageData } from '../interfaces/data'
 import { testData } from '../data/testGraph'
 import Donutdata from '../components/donutdata'
+import FadeInSection from '../components/scrollytelling'
 
 function AmbitionPage({ location }: { location: any }) {
   const [hasMounted, setHasMounted] = useState(false)
@@ -760,110 +761,287 @@ function AmbitionPage({ location }: { location: any }) {
               context.dark ? 'text-white' : 'text-dark'
             }`}
           >
-            <section
-              className="laptop:16 tab mx-4 mt-8 grid grid-cols-1 gap-8 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-16 laptopL:mt-36"
-              id="Location"
-            >
-              <div className="flex flex-col">
+            <FadeInSection>
+              <section
+                className="laptop:16 tab mx-4 mt-8 grid grid-cols-1 gap-8 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-16 laptopL:mt-36"
+                id="Location"
+              >
+                <div className="flex flex-col">
+                  <h2
+                    className={`pb-2 font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl ${
+                      context.dark ? 'opacity-90' : ''
+                    }`}
+                  >
+                    Wat is de huidige situatie in
+                  </h2>
+                  <div className="group relative block w-max">
+                    <select
+                      className={`-ml-1 w-max appearance-none border-none pb-4 pr-8 text-xl font-xxbold  text-purple underline underline-offset-2 outline-none  tabletportrait:text-3xl laptop:text-4xl ${
+                        context.dark
+                          ? 'bg-dark decoration-darkGray hover:text-lightPurpleDesat hover:decoration-lightPurpleDesat focus:text-lightPurpleDesat focus:decoration-lightPurpleDesat'
+                          : 'decoration-lightxPurple hover:text-pink hover:decoration-pink focus:text-pink focus:decoration-pink'
+                      }`}
+                    >
+                      <option
+                        className={`text-xl ${
+                          context.dark ? 'bg-darkGray' : ''
+                        }`}
+                      >
+                        het Vlaams gewest
+                      </option>
+                      <option
+                        className={`text-xl ${
+                          context.dark ? 'bg-darkGray' : ''
+                        }`}
+                      >
+                        het Vlaams gewest
+                      </option>
+                    </select>
+                    <ChevronDown
+                      className={`pointer-events-none absolute right-0 top-3 opacity-70 ${
+                        context.dark ? 'text-white' : 'text-dark'
+                      }`}
+                    />
+                  </div>
+
+                  <label
+                    className={`mt-5 text-sm font-medium tabletportrait:text-lg laptop:text-xl ${
+                      context.dark ? 'opacity-90' : ''
+                    }`}
+                  >
+                    In het Vlaams gewest is{' '}
+                    <span className="font-semibold">
+                      ongeveer de helft of meer van de inwoners
+                    </span>{' '}
+                    <span
+                      className={`font-semibold ${
+                        context.dark ? 'text-pinkDesat' : 'text-pink'
+                      }`}
+                    >
+                      niet tevreden
+                    </span>{' '}
+                    over de staat, veiligheid en aantrekkelijkheid van straten,
+                    pleinen, wandel- en fietspaden (dus een samenvatting van
+                    alle cijfers).
+                  </label>
+                </div>
+                {graphData && graphData.length >= 1 ? (
+                  <div>
+                    <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
+                      HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ...
+                    </label>
+                    <div className="grid grid-cols-1 text-sm font-medium tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl">
+                      {graphData?.map((e, i) => (
+                        <Donutdata data={e} key={e.label} />
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+              </section>
+            </FadeInSection>
+            <FadeInSection>
+              <section
+                className="mx-4 mt-32 mb-32 flex flex-col items-center text-center font-poppins mobile:mx-8 columnbreak:mx-16"
+                id="Problem"
+              >
                 <h2
-                  className={`pb-2 font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl ${
+                  className={`mb-5 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                     context.dark ? 'opacity-90' : ''
                   }`}
                 >
-                  Wat is de huidige situatie in
+                  Wat is het probleem?
                 </h2>
-                <div className="group relative block w-max">
-                  <select
-                    className={`-ml-1 w-max appearance-none border-none pb-4 pr-8 text-xl font-xxbold  text-purple underline underline-offset-2 outline-none  tabletportrait:text-3xl laptop:text-4xl ${
-                      context.dark
-                        ? 'bg-dark decoration-darkGray hover:text-lightPurpleDesat hover:decoration-lightPurpleDesat focus:text-lightPurpleDesat focus:decoration-lightPurpleDesat'
-                        : 'decoration-lightxPurple hover:text-pink hover:decoration-pink focus:text-pink focus:decoration-pink'
+                <p
+                  className={`mb-5 text-sm tabletportrait:text-lg laptop:text-xl ${
+                    context.dark ? 'opacity-75' : ''
+                  }`}
+                >
+                  Als routes geen goede verbinding maken met voorzieningen en
+                  werk of school, als ze onveilig zijn of door een weinig
+                  aantrekkelijke stadsomgeving gaan, zijn mensen niet geneigd om
+                  ze te gebruiken. Als je fiets of wandelt, voel je je namelijk
+                  kwetsbaarder dan in je auto.
+                </p>
+                <p
+                  className={`text-sm font-bold tabletportrait:text-lg laptop:text-xl ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
+                  Bij een gebrek aan veilige en/of aantrekkelijke routes zullen
+                  mensen dan eerder kiezen voor de auto.
+                </p>
+              </section>
+            </FadeInSection>
+            <FadeInSection>
+              <section
+                className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16"
+                id="Solution"
+              >
+                <h2
+                  className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
+                  <span className="underline decoration-lightPurple">
+                    Waarom
+                  </span>{' '}
+                  moeten we dit oplossen?
+                </h2>
+                <p
+                  className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-2xl ${
+                    context.dark ? 'opacity-75' : ''
+                  }`}
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+                  corporis mollitia veniam voluptatum! Molestias odio
+                  perspiciatis porro expedita
+                </p>
+                <div className="grid grid-cols-1 gap-6 text-sm tabletportrait:text-lg laptop:grid-cols-2 laptop:text-xl laptopL:grid-cols-3">
+                  {whys &&
+                    whys.map((item: any) => (
+                      <Textblock
+                        text={item.text}
+                        classes={
+                          context.dark
+                            ? 'bg-lightPurpleDesat bg-opacity-[0.08] text-lightPurpleDesat'
+                            : 'bg-lightPink text-purple '
+                        }
+                      />
+                    ))}
+                </div>
+              </section>
+            </FadeInSection>
+            <FadeInSection>
+              <section className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16">
+                <h2
+                  className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
+                  <span className="underline decoration-green">Hoe</span> kunnen
+                  we dit oplossen?
+                </h2>
+                <p
+                  className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
+                    context.dark ? 'opacity-75' : ''
+                  }`}
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
+                  corporis mollitia veniam voluptatum! Molestias odio
+                  perspiciatis porro expedita
+                </p>
+                <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
+                  {hows &&
+                    hows.map((item: HoeWaarom) => (
+                      <Textblock
+                        text={item.text}
+                        classes={`font-medium ${
+                          context.dark
+                            ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
+                            : 'bg-lightGreen text-green'
+                        }`}
+                      />
+                    ))}
+                </div>
+              </section>
+            </FadeInSection>
+            <FadeInSection>
+              <section
+                className={`px-4 pb-16 tabletportrait:px-8 columnbreak:px-16 ${
+                  context.dark ? '' : 'bg-neutral'
+                }`}
+                id="Resources"
+              >
+                <h2
+                  className={`mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
+                  Interessante bronnen
+                </h2>
+                <p
+                  className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
+                    context.dark ? 'opacity-75' : ''
+                  }`}
+                >
+                  We maken je graag wegwijs in wat bronnen en instrumenten om de
+                  omgevint te analyseren en te ontwerpen op vlak van wandel- en
+                  fietsvriendelijkheid
+                </p>
+                <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
+                  {intBronnen &&
+                    intBronnen.map((item: intBron) => (
+                      <Intsrc
+                        title={item.title}
+                        text={item.text}
+                        link={item.link}
+                      />
+                    ))}
+                </div>
+              </section>
+            </FadeInSection>
+            <FadeInSection>
+              <section
+                className="px-4 pb-16  tabletportrait:px-8 columnbreak:px-16"
+                id="Practices"
+              >
+                <div className="mb-2 flex items-center justify-between pt-24">
+                  <h2
+                    className={`font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                      context.dark ? 'opacity-90' : ''
                     }`}
                   >
-                    <option
-                      className={`text-xl ${context.dark ? 'bg-darkGray' : ''}`}
-                    >
-                      het Vlaams gewest
-                    </option>
-                    <option
-                      className={`text-xl ${context.dark ? 'bg-darkGray' : ''}`}
-                    >
-                      het Vlaams gewest
-                    </option>
-                  </select>
-                  <ChevronDown
-                    className={`pointer-events-none absolute right-0 top-3 opacity-70 ${
-                      context.dark ? 'text-white' : 'text-dark'
+                    Relevante good practices
+                  </h2>
+                </div>
+                <p
+                  className={`mb-6 text-sm tabletportrait:text-lg laptop:text-xl ${
+                    context.dark ? 'opacity-75' : ''
+                  }`}
+                >
+                  Je wil je door nog meer good practices laten inspireren?
+                  Ontdek ze{' '}
+                  <Link
+                    to="/overviewpagepractices"
+                    className={`font-semibold  ${
+                      context.dark
+                        ? 'text-pinkDesat hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
+                        : 'text-pink underline hover:text-purple focus:text-purple'
                     }`}
+                  >
+                    hier
+                  </Link>
+                </p>
+                <div className="grid grid-cols-1 gap-16 text-sm mobile:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
+                  <RevPrac
+                    image="relevantcases.png"
+                    imageAlt="Relevant cases"
+                    leftTagText="Actief bewegen"
+                    leftTagColorBg="pink"
+                    leftTagColorText="black"
+                    rightTagText="20 september 2020"
+                    rightTagColorBg="yellow"
+                    rightTagColorText="black"
+                    title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
+                  />
+                  <RevPrac
+                    image="relevantcases.png"
+                    imageAlt="Relevant cases"
+                    leftTagText="Actief bewegen"
+                    leftTagColorBg="pink"
+                    leftTagColorText="black"
+                    rightTagText="20 september 2020"
+                    rightTagColorBg="yellow"
+                    rightTagColorText="black"
+                    title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
                   />
                 </div>
-
-                <label
-                  className={`mt-5 text-sm font-medium tabletportrait:text-lg laptop:text-xl ${
-                    context.dark ? 'opacity-90' : ''
-                  }`}
-                >
-                  In het Vlaams gewest is{' '}
-                  <span className="font-semibold">
-                    ongeveer de helft of meer van de inwoners
-                  </span>{' '}
-                  <span
-                    className={`font-semibold ${
-                      context.dark ? 'text-pinkDesat' : 'text-pink'
-                    }`}
-                  >
-                    niet tevreden
-                  </span>{' '}
-                  over de staat, veiligheid en aantrekkelijkheid van straten,
-                  pleinen, wandel- en fietspaden (dus een samenvatting van alle
-                  cijfers).
-                </label>
-              </div>
-              {graphData && graphData.length >= 1 ? (
-                <div>
-                  <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
-                    HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ...
-                  </label>
-                  <div className="grid grid-cols-1 text-sm font-medium tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl">
-                    {graphData?.map((e, i) => (
-                      <Donutdata data={e} key={e.label} />
-                    ))}
-                  </div>
-                </div>
-              ) : null}
-            </section>
-            <section
-              className="mx-4 mt-32 mb-32 flex flex-col items-center text-center font-poppins mobile:mx-8 columnbreak:mx-16"
-              id="Problem"
-            >
-              <h2
-                className={`mb-5 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                  context.dark ? 'opacity-90' : ''
-                }`}
-              >
-                Wat is het probleem?
-              </h2>
-              <p
-                className={`mb-5 text-sm tabletportrait:text-lg laptop:text-xl ${
-                  context.dark ? 'opacity-75' : ''
-                }`}
-              >
-                Als routes geen goede verbinding maken met voorzieningen en werk
-                of school, als ze onveilig zijn of door een weinig
-                aantrekkelijke stadsomgeving gaan, zijn mensen niet geneigd om
-                ze te gebruiken. Als je fiets of wandelt, voel je je namelijk
-                kwetsbaarder dan in je auto.
-              </p>
-              <p
-                className={`text-sm font-bold tabletportrait:text-lg laptop:text-xl ${
-                  context.dark ? 'opacity-90' : ''
-                }`}
-              >
-                Bij een gebrek aan veilige en/of aantrekkelijke routes zullen
-                mensen dan eerder kiezen voor de auto.
-              </p>
-            </section>
-
+              </section>
+            </FadeInSection>
+          </div>
+          <FadeInSection>
             <section
               className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16"
               id="Solution"
@@ -939,62 +1117,25 @@ function AmbitionPage({ location }: { location: any }) {
               className={`px-4 pb-16 tabletportrait:px-8 columnbreak:px-16 ${
                 context.dark ? '' : 'bg-neutral'
               }`}
-              id="Resources"
+              id="CallToAction"
             >
-              <h2
-                className={`mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                  context.dark ? 'opacity-90' : ''
-                }`}
-              >
-                Interessante bronnen
-              </h2>
-              <p
-                className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
-                  context.dark ? 'opacity-75' : ''
-                }`}
-              >
-                We maken je graag wegwijs in wat bronnen en instrumenten om de
-                omgevint te analyseren en te ontwerpen op vlak van wandel- en
-                fietsvriendelijkheid
-              </p>
-              <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
-                {intBronnen &&
-                  intBronnen.map((item: intBron) => (
-                    <Intsrc
-                      title={item.title}
-                      text={item.text}
-                      link={item.link}
-                    />
-                  ))}
-              </div>
-            </section>
-
-            <section
-              className="px-4 pb-16  tabletportrait:px-8 columnbreak:px-16"
-              id="Practices"
-            >
-              <div className="mb-2 flex items-center justify-between pt-24">
+              <StaticImage
+                src="../images/calltoaction.png"
+                alt="Picture of girls riding a bike"
+                className="ml-14 hidden h-auto border laptop:block"
+              />
+              <div className="h-auto p-8 text-white">
                 <h2
-                  className={`font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                  className={`pb-4 font-raleway text-xl font-bold tabletportrait:text-2xl ${
                     context.dark ? 'opacity-90' : ''
                   }`}
                 >
-                  Relevante good practices
+                  Benieuwd naar de beweegvriendelijkheid van jouw stad of
+                  gemeente?
                 </h2>
-              </div>
-              <p
-                className={`mb-6 text-sm tabletportrait:text-lg laptop:text-xl ${
-                  context.dark ? 'opacity-75' : ''
-                }`}
-              >
-                Je wil je door nog meer good practices laten inspireren? Ontdek
-                ze{' '}
-                <Link
-                  to="/overviewpagepractices"
-                  className={`font-semibold  ${
-                    context.dark
-                      ? 'text-pinkDesat hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
-                      : 'text-pink underline hover:text-purple focus:text-purple'
+                <h4
+                  className={`pb-4 font-raleway text-lg font-semibold text-pink tabletportrait:text-xl ${
+                    context.dark ? 'text-pinkDesat opacity-90' : 'text-pink'
                   }`}
                 >
                   hier
@@ -1079,104 +1220,105 @@ function AmbitionPage({ location }: { location: any }) {
                 rapport.
               </p>
 
-              <div
-                className="desktop:grid-cols-3 z-0 grid grid-cols-1 gap-4 pb-3 text-sm tabletportrait:grid-cols-3 tabletportrait:text-lg laptop:grid-cols-1 laptopL:grid-cols-3"
-                id="autoComplete"
-              >
-                <div className="flex max-w-min flex-col" id="#inputStad">
-                  <label htmlFor="Stad">Postcode of stad:</label>
-                  <input
-                    type="text"
-                    id="Stad"
-                    className={`peer w-48 border-2   px-2 py-1 outline-none  ${
-                      context.dark
-                        ? 'border-lightGray bg-dark text-white focus-within:border-lightPurpleDesat hover:border-lightPurpleDesat active:border-lightPurpleDesat'
-                        : ' border-lightPink text-dark focus-within:border-pink hover:border-pink active:border-pink'
-                    }`}
-                    placeholder="Postcode/Stad"
-                    value={typed}
-                    onChange={(ev: any) => {
-                      setTyped(ev.target.value)
-                      let list = searchList(ev.target.value)
-                      setSuggestions(list)
-                    }}
-                    onInput={(e: React.FormEvent<HTMLInputElement>) =>
+                <div
+                  className="desktop:grid-cols-3 z-0 grid grid-cols-1 gap-4 pb-3 text-sm tabletportrait:grid-cols-3 tabletportrait:text-lg laptop:grid-cols-1 laptopL:grid-cols-3"
+                  id="autoComplete"
+                >
+                  <div className="flex max-w-min flex-col" id="#inputStad">
+                    <label htmlFor="Stad">Postcode of stad:</label>
+                    <input
+                      type="text"
+                      id="Stad"
+                      className={`peer w-48 border-2   px-2 py-1 outline-none  ${
+                        context.dark
+                          ? 'border-lightGray bg-dark text-white focus-within:border-lightPurpleDesat hover:border-lightPurpleDesat active:border-lightPurpleDesat'
+                          : ' border-lightPink text-dark focus-within:border-pink hover:border-pink active:border-pink'
+                      }`}
+                      placeholder="Postcode/Stad"
+                      value={typed}
+                      onChange={(ev: any) => {
+                        setTyped(ev.target.value)
+                        let list = searchList(ev.target.value)
+                        setSuggestions(list)
+                      }}
+                      onInput={(e: React.FormEvent<HTMLInputElement>) =>
+                        setInfo((u: PersonalInfo) => {
+                          //@ts-ignore
+                          u.place = e.target.value
+                          return { ...u }
+                        })
+                      }
+                    />
+                    {error.placeError && (
+                      <p className="text-sm font-semibold text-red">
+                        {error.placeError}
+                      </p>
+                    )}
+                    <ul className="absolute z-40 mt-16">
+                      {suggestions?.map((val: string, index: number) => {
+                        if (index < 7) {
+                          return (
+                            <li
+                              key={val}
+                              className={`:not(:hover):hidden z-50 w-48 border border-lightGray px-2 py-1  hover:cursor-pointer  ${
+                                context.dark
+                                  ? 'border-opacity-50 bg-darkGray text-white hover:bg-[#3F3F3F]'
+                                  : 'bg-white text-dark hover:bg-neutral'
+                              }`}
+                              onClick={() => changeTyped(val)}
+                            >
+                              {val}
+                            </li>
+                          )
+                        }
+                      })}
+                    </ul>
+                  </div>
+                  <Input
+                    label="Voornaam"
+                    callback={(e: React.FormEvent<HTMLInputElement>) =>
                       setInfo((u: PersonalInfo) => {
                         //@ts-ignore
-                        u.place = e.target.value
+                        u.firstName = e.target.value
                         return { ...u }
                       })
                     }
                   />
-                  {error.placeError && (
-                    <p className="text-sm font-semibold text-red">
-                      {error.placeError}
-                    </p>
-                  )}
-                  <ul className="absolute z-40 mt-16">
-                    {suggestions?.map((val: string, index: number) => {
-                      if (index < 7) {
-                        return (
-                          <li
-                            key={val}
-                            className={`:not(:hover):hidden z-50 w-48 border border-lightGray px-2 py-1  hover:cursor-pointer  ${
-                              context.dark
-                                ? 'border-opacity-50 bg-darkGray text-white hover:bg-[#3F3F3F]'
-                                : 'bg-white text-dark hover:bg-neutral'
-                            }`}
-                            onClick={() => changeTyped(val)}
-                          >
-                            {val}
-                          </li>
-                        )
-                      }
-                    })}
-                  </ul>
-                </div>
-                <Input
-                  label="Voornaam"
-                  callback={(e: React.FormEvent<HTMLInputElement>) =>
-                    setInfo((u: PersonalInfo) => {
-                      //@ts-ignore
-                      u.firstName = e.target.value
-                      return { ...u }
-                    })
-                  }
-                />
-                <Input
-                  label="Naam"
-                  callback={(e: React.FormEvent<HTMLInputElement>) =>
-                    setInfo((u: PersonalInfo) => {
-                      //@ts-ignore
-                      u.lastName = e.target.value
-                      return { ...u }
-                    })
-                  }
-                />
-                <Input
-                  label="E-mail"
-                  callback={(e: React.FormEvent<HTMLInputElement>) =>
-                    setInfo((u: PersonalInfo) => {
-                      //@ts-ignore
-                      u.mail = e.target.value
-                      return { ...u }
-                    })
-                  }
-                />
+                  <Input
+                    label="Naam"
+                    callback={(e: React.FormEvent<HTMLInputElement>) =>
+                      setInfo((u: PersonalInfo) => {
+                        //@ts-ignore
+                        u.lastName = e.target.value
+                        return { ...u }
+                      })
+                    }
+                  />
+                  <Input
+                    label="E-mail"
+                    callback={(e: React.FormEvent<HTMLInputElement>) =>
+                      setInfo((u: PersonalInfo) => {
+                        //@ts-ignore
+                        u.mail = e.target.value
+                        return { ...u }
+                      })
+                    }
+                  />
 
-                <button
-                  className={`z-0 mt-8 border-2  px-2 py-1 text-white  focus:font-semibold  ${
-                    context.dark
-                      ? 'border-pinkDesat bg-pinkDesat hover:bg-opacity-0 hover:text-pinkDesat focus:bg-white focus:bg-opacity-0 focus:text-pinkDesat'
-                      : 'border-pink bg-pink hover:bg-white hover:text-pink focus:bg-white focus:text-pink'
-                  }`}
-                  onClick={() => checkInfo()}
-                >
-                  Maak rapport
-                </button>
+                  <button
+                    className={`z-0 mt-8 border-2  px-2 py-1 text-white  focus:font-semibold  ${
+                      context.dark
+                        ? 'border-pinkDesat bg-pinkDesat hover:bg-opacity-0 hover:text-pinkDesat focus:bg-white focus:bg-opacity-0 focus:text-pinkDesat'
+                        : 'border-pink bg-pink hover:bg-white hover:text-pink focus:bg-white focus:text-pink'
+                    }`}
+                    onClick={() => checkInfo()}
+                  >
+                    Maak rapport
+                  </button>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </FadeInSection>
           <Contactsection />
           <Footer />
         </main>
