@@ -1,7 +1,8 @@
 ---
-ambitions: 
+ambitions:
   - Actief bewegen en verplaatsen
-title: Walkability-tool
+  - Aantrekkelijke en veilige wandel- en fietsroutes
+title: Walkabilityscore-tool
 link: https://vito.be/nl/nieuws/walkability-analysetool-berekent-hoe-wandelvriendelijk-een-buurt
 text: |-
   Deze tool van Vito in opdracht van
