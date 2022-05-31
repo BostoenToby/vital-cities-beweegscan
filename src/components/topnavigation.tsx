@@ -65,7 +65,9 @@ export default ({ section }: { section: string }) => {
   }
 
   const handleReload = () => {
-    console.log('OK')
+    if (typeof window !== 'undefined' && isAmbitions) {
+      window.location.reload()
+    }
   }
 
   return (
@@ -128,6 +130,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          onClick={() => handleReload()}
                           to="/ambitionpage"
                           state={{ ambition: 'Actief bewegen en verplaatsen' }}
                         >
@@ -142,6 +145,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          onClick={() => handleReload()}
                           to="/ambitionpage"
                           state={{ ambition: 'Verbonden stadskern' }}
                         >
@@ -156,6 +160,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          onClick={() => handleReload()}
                           to="/ambitionpage"
                           state={{
                             ambition:
@@ -173,6 +178,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          onClick={() => handleReload()}
                           to="/ambitionpage"
                           state={{ ambition: 'Stad en buurt als sportplein' }}
                         >
@@ -187,6 +193,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          onClick={() => handleReload()}
                           to="/ambitionpage"
                           state={{ ambition: 'Stad en buurt als speelplein' }}
                         >
@@ -201,6 +208,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          onClick={() => handleReload()}
                           to="/ambitionpage"
                           state={{
                             ambition: 'Stad en buurt als ontmoetingsplek',
@@ -217,6 +225,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          onClick={() => handleReload()}
                           to="/ambitionpage"
                           state={{
                             ambition:
