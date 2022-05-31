@@ -1,5 +1,5 @@
 ---
-ambition: 
+ambitions: 
   - Actief bewegen en verplaatsen
 title: Dit is via CMS
 image: /assets/relevantcases-min.png

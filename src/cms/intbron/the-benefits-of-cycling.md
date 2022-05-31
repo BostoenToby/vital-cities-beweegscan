@@ -1,5 +1,5 @@
 ---
-ambition: 
+ambitions: 
   - Actief verplaatsen en bewegen
   - Aantrekkelijke en veilige wandel- en fietsroutes
 title: The benefits of cycling

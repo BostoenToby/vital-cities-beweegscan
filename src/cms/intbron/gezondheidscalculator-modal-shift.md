@@ -1,5 +1,5 @@
 ---
-ambition:
+ambitions:
   - Actief bewegen en verplaatsen
   - Aantrekkelijke en veilige wandel- en fietsroutes
 title: Gezondheidscalculator modal shift

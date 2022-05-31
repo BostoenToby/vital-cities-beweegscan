@@ -1,5 +1,5 @@
 ---
-ambition:
+ambitions:
   - Aantrekkelijke en veilige wandel- en fietsroutes
   - Bruikbaar, gevarieerd en voldoende groen
   - Stad en buurt als speelplein

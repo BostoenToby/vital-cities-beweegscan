@@ -1,5 +1,5 @@
 ---
-ambition:
+ambitions:
   - Stad en buurt als speelplein
   - Stad en buurt als ontmoetingsplek
 text: |-

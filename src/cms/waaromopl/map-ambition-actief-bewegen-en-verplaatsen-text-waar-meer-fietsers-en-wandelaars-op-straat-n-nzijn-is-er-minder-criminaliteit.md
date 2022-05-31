@@ -1,5 +1,5 @@
 ---
-ambition: 
+ambitions: 
   - Actief bewegen en verplaatsen
 text: |-
   Waar meer fietsers en wandelaars op straat 

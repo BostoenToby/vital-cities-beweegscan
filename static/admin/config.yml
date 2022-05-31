@@ -3,7 +3,7 @@ backend:
   repo: BostoenToby/vital-cities-beweegscan
   branch: dev
 
-media_folder: static/assets
+media_folder: src/images
 public_folder: /assets
 
 collections:
@@ -23,7 +23,7 @@ collections:
     folder: src/cms/problem
     create: true
     fields:
-      - { name: ambition, label: Ambitie, widget: select, multiple: true, options: ["Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"] }
+      - { name: ambitions, label: Ambitie, widget: select, multiple: true, options: ["Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"] }
       - { name: text, label: Tekst }
       - { name: boldpart, label: Tekst vetjes}
 
@@ -32,7 +32,7 @@ collections:
     folder: src/cms/waaromopl
     create: true
     fields:
-      - { name: ambition, label: Ambitie, widget: select, multiple: false, options: ["Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"] }
+      - { name: ambitions, label: Ambitie, widget: select, multiple: true, options: ["Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"] }
       - { name: text, label: Tekst, widget: markdown }
 
   - name: Hoe
@@ -40,7 +40,7 @@ collections:
     folder: src/cms/hoeopl
     create: true
     fields: 
-      - { name: ambition, label: Ambitie, widget: select, multiple: true, options: ["Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"] }
+      - { name: ambitions, label: Ambitie, widget: select, multiple: true, options: ["Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"] }
       - { name: text, label: Tekst, widget: markdown }
 
   - name: IntBron
@@ -48,7 +48,7 @@ collections:
     folder: src/cms/intbron
     create: true
     fields:
-      - { name: ambition, label: Ambitie, widget: select, multiple: true, options: ["Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"] }
+      - { name: ambitions, label: Ambitie, widget: select, multiple: true, options: ["Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"] }
       - { name: title, label: Titel }
       - { name: link, label: Link }
       - { name: text, label: Tekst, widget: markdown }
@@ -58,17 +58,24 @@ collections:
     folder: src/cms/goodprac
     create: true
     fields:
+      # - name: thema
+      #   label: Thema
+      #   widget: select
+      #   multiple: true
+      #   options:
+      #     - { label: "Actief bewegen en verplaatsen", value: "Actief bewegen"}
+      #     - { label: "Verbonden stadskern", value: "verbonden stadskern"}
       - { name: thema, label: Thema, widget: select, multiple: true, options: 
-       { label: "Actief bewegen en verplaatsen", value: "actief bewegen"}
-       { label: "Verbonden stadskern", value: "verbonden stadskern"}
-       { label: "Aantrekkelijke en veilige wandel- en fietsroutes", value: "fiets- en wandelroutes"}
-       { label: "Stad en buurt als sportplein", value: "sporten"}
-       { label: "Stad en buurt als speelplein", value: "spelen"}
-       { label: "Stad en buurt als ontmoetingsplek", value: "ontmoeten"}
-       { label: "Bruikbaar, gevarieerd en voldoende groen", value: "groen"}
-       { label: "Technologie/data", value: "technologie/data"}
-       { label: "Transversaal beleid", value: "transversaal"}
-       { label: "Participatie & inspraak", value: "participatie"}
+          [{ label: "Actief bewegen en verplaatsen", value: "actief bewegen"},
+          { label: "Verbonden stadskern", value: "verbonden stadskern"},
+          { label: "Aantrekkelijke en veilige wandel- en fietsroutes", value: "fiets- en wandelroutes"},
+          { label: "Stad en buurt als sportplein", value: "sporten"},
+          { label: "Stad en buurt als speelplein", value: "spelen"},
+          { label: "Stad en buurt als ontmoetingsplek", value: "ontmoeten"},
+          { label: "Bruikbaar, gevarieerd en voldoende groen", value: "groen"},
+          { label: "Technologie/data", value: "technologie/data"},
+          { label: "Transversaal beleid", value: "transversaal"},
+          { label: "Participatie & inspraak", value: "participatie"}]
        }
       - { name: title, label: Title}
       - { name: image, label: Image, widget: image }

@@ -1,5 +1,5 @@
 ---
-ambition: 
+ambitions: 
   - Actief bewegen en verplaatsen
 text: |-
   Fietsers en voetgangers zijn tot **30% meer** geneigd
