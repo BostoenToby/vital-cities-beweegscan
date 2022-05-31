@@ -23,3 +23,8 @@ export interface header {
     image: string
     tag: string
 }
+
+export interface problem {
+    text: string
+    bold: string
+}

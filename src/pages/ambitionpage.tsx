@@ -18,6 +18,7 @@ import {
   header,
   HoeWaarom,
   intBron,
+  problem,
 } from '../interfaces/cmsInterfaces'
 import Textblock from '../components/textblock'
 import { navigate } from 'gatsby'
@@ -32,13 +33,14 @@ import { getDataForAmbition } from '../utils/filterData'
 
 export default ({ location }: { location: any }) => {
   const [hasMounted, setHasMounted] = useState(false)
-  const [locationAmb, setLocationAmb] = useState<string>()
+  const [locationAmb, setLocationAmb] = useState<string|undefined>(undefined)
   const [intBronnen, setIntBronnen] = useState<intBron[]>()
   const [img, setImg] = useState<any>()
   const [hows, setHows] = useState<HoeWaarom[]>()
   const [whys, setWhys] = useState<HoeWaarom[]>()
   const [goodPracs, setGoodPracs] = useState<goodPractice[]>()
   const [header, setHeader] = useState<header>()
+  const [problem, setProblem] = useState<problem>()
   const [suggestions, setSuggestions] = useState<string[]>()
   const [typed, setTyped] = useState<string>('')
   const [graphData, setGraphData] = useState<PercentageData[]>()
@@ -116,6 +118,7 @@ export default ({ location }: { location: any }) => {
               image
               themes
               tag
+              boldpart
             }
             parent {
               internal {
@@ -642,18 +645,27 @@ export default ({ location }: { location: any }) => {
     let waaromList: HoeWaarom[] = []
     let goodPracs: goodPractice[] = []
 
+    let loc: string
+    if(locationAmb == undefined){
+      loc = location.state.ambition
+    } else {
+      loc = locationAmb
+    }
+    console.log(loc)
+
     for (let item of cms.nodes) {
       if (
         item.parent.internal.description.includes('hoeopl') &&
-        item.frontmatter.ambition == locationAmb
+        (item.frontmatter.ambition == loc)
       ) {
+        console.log(item.frontmatter.ambition)
         hoeList.push({
           text: item.frontmatter.text,
           ambition: item.frontmatter.ambition,
         })
       } else if (
         item.parent.internal.description.includes('waaromopl') &&
-        item.frontmatter.ambition == locationAmb
+        (item.frontmatter.ambition == loc)
       ) {
         waaromList.push({
           text: item.frontmatter.text,
@@ -661,7 +673,7 @@ export default ({ location }: { location: any }) => {
         })
       } else if (
         item.parent.internal.description.includes('intbron') &&
-        item.frontmatter.ambition == locationAmb
+        (item.frontmatter.ambition == loc)
       ) {
         bronnen.push({
           title: item.frontmatter.title,
@@ -670,7 +682,7 @@ export default ({ location }: { location: any }) => {
         })
       } else if (
         item.parent.internal.description.includes('goodprac') &&
-        item.frontmatter.ambition == locationAmb
+        (item.frontmatter.ambition == loc)
       ) {
         goodPracs.push({
           title: item.frontmatter.title,
@@ -681,7 +693,7 @@ export default ({ location }: { location: any }) => {
         })
       } else if (
         item.parent.internal.description.includes('header') &&
-        item.frontmatter.ambition == locationAmb
+        (item.frontmatter.ambition == loc)
       ) {
         setHeader({
           title: item.frontmatter.title,
@@ -694,6 +706,22 @@ export default ({ location }: { location: any }) => {
             setImg(getImage(i))
           }
         }
+      } else if (
+        item.parent.internal.description.includes('problem') &&
+        (item.frontmatter.ambition == loc)
+      ) {
+        setProblem(
+          {
+            text: item.frontmatter.text,
+            bold: item.frontmatter.boldpart
+          }
+        )
+        console.log(item.frontmatter.text)
+        console.log(item.frontmatter.boldpart)
+      } else {
+        console.log({item})
+        // console.log(item.frontmatter.ambition)
+        // console.log(item.frontmatter.ambitions)
       }
     }
     setIntBronnen(bronnen)
@@ -946,19 +974,14 @@ export default ({ location }: { location: any }) => {
                     context.dark ? 'opacity-75' : ''
                   }`}
                 >
-                  Als routes geen goede verbinding maken met voorzieningen en
-                  werk of school, als ze onveilig zijn of door een weinig
-                  aantrekkelijke stadsomgeving gaan, zijn mensen niet geneigd om
-                  ze te gebruiken. Als je fiets of wandelt, voel je je namelijk
-                  kwetsbaarder dan in je auto.
+                  {problem?.text}
                 </p>
                 <p
                   className={`text-sm font-bold tabletportrait:text-lg laptop:text-xl ${
                     context.dark ? 'opacity-90' : ''
                   }`}
                 >
-                  Bij een gebrek aan veilige en/of aantrekkelijke routes zullen
-                  mensen dan eerder kiezen voor de auto.
+                  {problem?.bold}
                 </p>
               </section>
             </FadeInSection>

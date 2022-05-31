@@ -16,6 +16,7 @@ exports.createSchemaCustomization = ({ actions }: {actions: any}) => {
             extra: String
             date: String
             tag: String
+            boldpart: String
         }
     `
     createTypes(typeDefs)
