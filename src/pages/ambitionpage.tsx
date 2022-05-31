@@ -508,7 +508,7 @@ function AmbitionPage({ location }: { location: any }) {
     `,
   )
 
-  console.log("TEST LOCATION")
+  console.log('TEST LOCATION')
   console.log(location.state.ambition)
 
   const [intBronnen, setIntBronnen] = useState<intBron[]>()
