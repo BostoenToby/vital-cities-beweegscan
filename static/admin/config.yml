@@ -81,4 +81,4 @@ collections:
       - { name: image, label: Image, widget: image }
       - { name: date, label: Datum, widget: datetime }
       - { name: text, label: Tekst, widget: markdown}
-      - { name: warning, label: Warning, widget: markdown, optional: true}
+      - { name: warning, label: Warning, widget: markdown, required: false}
