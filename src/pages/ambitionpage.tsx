@@ -30,7 +30,7 @@ import Donutdata from '../components/donutdata'
 import FadeInSection from '../components/scrollytelling'
 import { getDataForAmbition } from '../utils/filterData'
 
-function AmbitionPage({ location }: { location: any }) {
+export default ({ location }: { location: any }) => {
   const [hasMounted, setHasMounted] = useState(false)
   const [locationAmb, setLocationAmb] = useState<string>()
   const [intBronnen, setIntBronnen] = useState<intBron[]>()
@@ -54,6 +54,16 @@ function AmbitionPage({ location }: { location: any }) {
     lastNameError: '',
     mailError: '',
   })
+
+  useEffect(() => {
+    setHasMounted(true)
+    setLocationAmb(location.state.ambition)
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('click', handleClick)
+      return () => window.removeEventListener('click', handleClick)
+    }
+  }, [])
 
   const {
     cms,
@@ -624,16 +634,6 @@ function AmbitionPage({ location }: { location: any }) {
     let list = searchList(typed)
     setSuggestions(list)
   }, [typed])
-
-  useEffect(() => {
-    setHasMounted(true)
-    setLocationAmb(location.state.ambition)
-
-    if (typeof window !== 'undefined') {
-      window.addEventListener('click', handleClick)
-      return () => window.removeEventListener('click', handleClick)
-    }
-  }, [])
 
   useEffect(() => {
     let bronnen: intBron[] = []
@@ -1286,5 +1286,3 @@ function AmbitionPage({ location }: { location: any }) {
     </ThemeContext.Consumer>
   )
 }
-
-export default AmbitionPage
