@@ -33,7 +33,7 @@ import { getDataForAmbition } from '../utils/filterData'
 
 export default ({ location }: { location: any }) => {
   const [hasMounted, setHasMounted] = useState(false)
-  const [locationAmb, setLocationAmb] = useState<string|undefined>(undefined)
+  const [locationAmb, setLocationAmb] = useState<string | undefined>(undefined)
   const [locationShort, setLocationShort] = useState<string>()
   const [intBronnen, setIntBronnen] = useState<intBron[]>()
   const [img, setImg] = useState<any>()
@@ -650,7 +650,7 @@ export default ({ location }: { location: any }) => {
 
     let loc: string
     let locshort: string
-    if(locationAmb == undefined || locationShort == undefined){
+    if (locationAmb == undefined || locationShort == undefined) {
       loc = location.state.ambition
       locshort = location.state.short
     } else {
@@ -660,12 +660,13 @@ export default ({ location }: { location: any }) => {
     console.log(loc)
 
     for (let item of cms.nodes) {
-      if(item.frontmatter.ambitions == null){
-        item.frontmatter.ambitions = [""]
+      if (item.frontmatter.ambitions == null) {
+        item.frontmatter.ambitions = ['']
       }
       if (
         item.parent.internal.description.includes('hoeopl') &&
-        (item.frontmatter.ambition == loc || item.frontmatter.ambitions.includes(loc))
+        (item.frontmatter.ambition == loc ||
+          item.frontmatter.ambitions.includes(loc))
       ) {
         console.log(item.frontmatter.ambition)
         hoeList.push({
@@ -674,7 +675,8 @@ export default ({ location }: { location: any }) => {
         })
       } else if (
         item.parent.internal.description.includes('waaromopl') &&
-        (item.frontmatter.ambition == loc || item.frontmatter.ambitions.includes(loc))
+        (item.frontmatter.ambition == loc ||
+          item.frontmatter.ambitions.includes(loc))
       ) {
         waaromList.push({
           text: item.frontmatter.text,
@@ -682,7 +684,8 @@ export default ({ location }: { location: any }) => {
         })
       } else if (
         item.parent.internal.description.includes('intbron') &&
-        (item.frontmatter.ambition == loc || item.frontmatter.ambitions.includes(loc))
+        (item.frontmatter.ambition == loc ||
+          item.frontmatter.ambitions.includes(loc))
       ) {
         bronnen.push({
           title: item.frontmatter.title,
@@ -691,7 +694,7 @@ export default ({ location }: { location: any }) => {
         })
       } else if (
         item.parent.internal.description.includes('goodprac') &&
-        (item.frontmatter.thema.includes(locshort))
+        item.frontmatter.thema.includes(locshort)
       ) {
         goodPracs.push({
           title: item.frontmatter.title,
@@ -702,7 +705,7 @@ export default ({ location }: { location: any }) => {
         })
       } else if (
         item.parent.internal.description.includes('header') &&
-        (item.frontmatter.ambition == loc)
+        item.frontmatter.ambition == loc
       ) {
         setHeader({
           title: item.frontmatter.title,
@@ -710,27 +713,30 @@ export default ({ location }: { location: any }) => {
           image: item.frontmatter.image,
           tag: item.frontmatter.tag,
         })
-        for(let i of allImages.nodes){
-          if(i.gatsbyImageData.images.fallback.src.includes(item.frontmatter.image)){
+        for (let i of allImages.nodes) {
+          if (
+            i.gatsbyImageData.images.fallback.src.includes(
+              item.frontmatter.image,
+            )
+          ) {
             setImg(getImage(i))
           }
         }
       } else if (
         item.parent.internal.description.includes('problem') &&
-        (item.frontmatter.ambition == loc || item.frontmatter.ambitions.includes(loc))
+        (item.frontmatter.ambition == loc ||
+          item.frontmatter.ambitions.includes(loc))
       ) {
-        setProblem(
-          {
-            text: item.frontmatter.text,
-            bold: item.frontmatter.boldpart
-          }
-        )
+        setProblem({
+          text: item.frontmatter.text,
+          bold: item.frontmatter.boldpart,
+        })
         console.log(item.frontmatter.text)
         console.log(item.frontmatter.boldpart)
       } else {
-        if(item.parent.internal.description.includes('problem')){
-          console.log("CHECKING")
-          console.log({item})
+        if (item.parent.internal.description.includes('problem')) {
+          console.log('CHECKING')
+          console.log({ item })
         }
         // console.log(item.frontmatter.ambition)
         // console.log(item.frontmatter.ambitions)
@@ -883,7 +889,11 @@ export default ({ location }: { location: any }) => {
                 alt="header picture"
                 className="h-full w-full"
               /> */}
-              <GatsbyImage image={img} alt="Header image" className="h-full w-full" />
+              <GatsbyImage
+                image={img}
+                alt="Header image"
+                className="h-full w-full"
+              />
             </section>
           </header>
           <div

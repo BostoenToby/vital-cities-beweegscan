@@ -17,11 +17,9 @@ export default ({ section }: { section: string }) => {
   const [isAmbitions, setIsAmbitions] = useState(false)
   const [showAmbitions, setShowAmbitions] = useState(false)
 
-  const location = useLocation()
-
   useEffect(() => {
-    checkIfAmbitions()
     if (typeof window !== 'undefined') {
+      checkIfAmbitions()
       const updateSize = () => {
         if (window.innerWidth > 1304) {
           setFullsize(true)
@@ -57,15 +55,15 @@ export default ({ section }: { section: string }) => {
   }
 
   const checkIfAmbitions = () => {
-    if (location.pathname == '/ambitionpage') {
+    if (window.location.pathname == '/ambitionpage/') {
       setIsAmbitions(true)
     } else {
       setIsAmbitions(false)
     }
   }
 
-  const handleReload = () => {
-    if (typeof window !== 'undefined' && isAmbitions) {
+  const handleLink = () => {
+    if (isAmbitions) {
       window.location.reload()
     }
   }
@@ -130,9 +128,12 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          onClick={() => handleReload()}
+                          onClick={() => handleLink()}
                           to="/ambitionpage/"
-                          state={{ ambition: 'Actief bewegen en verplaatsen', short: 'actief bewegen' }}
+                          state={{
+                            ambition: 'Actief bewegen en verplaatsen',
+                            short: 'actief bewegen',
+                          }}
                         >
                           Actief bewegen & verplaatsen
                         </Link>
@@ -145,9 +146,12 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          onClick={() => handleReload()}
+                          onClick={() => handleLink()}
                           to="/ambitionpage/"
-                          state={{ ambition: 'Verbonden stadskern', short: 'verbonden stadskern' }}
+                          state={{
+                            ambition: 'Verbonden stadskern',
+                            short: 'verbonden stadskern',
+                          }}
                         >
                           verbonden stadskern
                         </Link>
@@ -160,12 +164,12 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          onClick={() => handleReload()}
+                          onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
                             ambition:
                               'Aantrekkelijke en veilige wandel- en fietsroutes',
-                            short: 'fiets- en wandelroutes'
+                            short: 'fiets- en wandelroutes',
                           }}
                         >
                           Fiets- & wandelroutes
@@ -179,9 +183,12 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          onClick={() => handleReload()}
+                          onClick={() => handleLink()}
                           to="/ambitionpage/"
-                          state={{ ambition: 'Stad en buurt als sportplein', short: 'sporten' }}
+                          state={{
+                            ambition: 'Stad en buurt als sportplein',
+                            short: 'sporten',
+                          }}
                         >
                           Sporten
                         </Link>
@@ -194,9 +201,12 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          onClick={() => handleReload()}
+                          onClick={() => handleLink()}
                           to="/ambitionpage/"
-                          state={{ ambition: 'Stad en buurt als speelplein', short: 'spelen' }}
+                          state={{
+                            ambition: 'Stad en buurt als speelplein',
+                            short: 'spelen',
+                          }}
                         >
                           Spelen
                         </Link>
@@ -209,11 +219,11 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          onClick={() => handleReload()}
+                          onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
                             ambition: 'Stad en buurt als ontmoetingsplek',
-                            short: 'ontmoeten'
+                            short: 'ontmoeten',
                           }}
                         >
                           Ontmoeten
@@ -227,12 +237,12 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          onClick={() => handleReload()}
+                          onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
                             ambition:
                               'Bruikbaar, gevarieerd en voldoende groen',
-                            short: 'groen'
+                            short: 'groen',
                           }}
                         >
                           Groen
@@ -331,10 +341,11 @@ export default ({ section }: { section: string }) => {
                       <ul className="mt-4 ml-2 text-lg font-medium text-white">
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            onClick={() => handleReload()}
+                            onClick={() => handleLink()}
                             to="/ambitionpage/"
                             state={{
                               ambition: 'Actief bewegen en verplaatsen',
+                              short: 'actief bewegen',
                             }}
                           >
                             Actief bewegen & verplaatsen
@@ -342,20 +353,24 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            onClick={() => handleReload()}
+                            onClick={() => handleLink()}
                             to="/ambitionpage/"
-                            state={{ ambition: 'Verbonden stadskern' }}
+                            state={{
+                              ambition: 'Verbonden stadskern',
+                              short: 'verbonden stadskern',
+                            }}
                           >
                             verbonden stadskern
                           </Link>
                         </li>
                         <li className="p-2 hover:opacity-90">
                           <Link
-                            onClick={() => handleReload()}
+                            onClick={() => handleLink()}
                             to="/ambitionpage/"
                             state={{
                               ambition:
                                 'Aantrekkelijke en veilige wandel- en fietsroutes',
+                              short: 'fiets- en wandelroutes',
                             }}
                           >
                             Fiets- & wandelroutes
@@ -363,28 +378,35 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            onClick={() => handleReload()}
+                            onClick={() => handleLink()}
                             to="/ambitionpage/"
-                            state={{ ambition: 'Stad en buurt als sportplein' }}
+                            state={{
+                              ambition: 'Stad en buurt als sportplein',
+                              short: 'sporten',
+                            }}
                           >
                             Sporten
                           </Link>
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            onClick={() => handleReload()}
+                            onClick={() => handleLink()}
                             to="/ambitionpage/"
-                            state={{ ambition: 'Stad en buurt als speelplein' }}
+                            state={{
+                              ambition: 'Stad en buurt als speelplein',
+                              short: 'spelen',
+                            }}
                           >
                             Spelen
                           </Link>
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            onClick={() => handleReload()}
+                            onClick={() => handleLink()}
                             to="/ambitionpage/"
                             state={{
-                              ambition: 'Stad en buurt als ontmoetingsplek',
+                              ambition: 'Stad en buurt als speelplein',
+                              short: 'spelen',
                             }}
                           >
                             Ontmoeten
@@ -392,11 +414,12 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            onClick={() => handleReload()}
+                            onClick={() => handleLink()}
                             to="/ambitionpage/"
                             state={{
                               ambition:
                                 'Bruikbaar, gevarieerd en voldoende groen',
+                              short: 'groen',
                             }}
                           >
                             Groen
