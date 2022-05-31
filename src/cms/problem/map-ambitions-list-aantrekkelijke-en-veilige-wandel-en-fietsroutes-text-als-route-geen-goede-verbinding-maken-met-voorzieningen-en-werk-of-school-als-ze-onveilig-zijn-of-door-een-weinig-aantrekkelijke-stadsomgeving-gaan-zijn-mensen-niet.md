@@ -1,6 +1,5 @@
 ---
-ambitions:
-  - Aantrekkelijke en veilige wandel- en fietsroutes
+ambitions: Aantrekkelijke en veilige wandel- en fietsroutes
 text: Als route geen goede verbinding maken met voorzieningen en werk of school,
   als ze onveilig zijn of door een weinig aantrekkelijke stadsomgeving gaan,
   zijn mensen niet geneigd om ze te gebruiken. Als je fiets of wandelt, voel je
