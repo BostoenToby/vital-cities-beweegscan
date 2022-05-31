@@ -1,7 +1,7 @@
 ---
 ambition:
-    - Actief bewegen en verplaatsen
-    - Aantrekkelijke en veilige wandel- en fietsroutes
+  - Actief bewegen en verplaatsen
+  - Aantrekkelijke en veilige wandel- en fietsroutes
 title: Gezondheidscalculator modal shift
 link: https://www.zorg-en-gezondheid.be/gezondheidscalculator-modal-shift
 text: De modal shift tool kwam tot stand dankzij een samenwerking tussen het

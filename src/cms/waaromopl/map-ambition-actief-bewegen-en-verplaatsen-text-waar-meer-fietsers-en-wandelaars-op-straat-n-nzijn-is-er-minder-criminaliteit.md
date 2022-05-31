@@ -1,6 +1,6 @@
 ---
 ambition: 
-    - Actief bewegen en verplaatsen
+  - Actief bewegen en verplaatsen
 text: |-
   Waar meer fietsers en wandelaars op straat 
 

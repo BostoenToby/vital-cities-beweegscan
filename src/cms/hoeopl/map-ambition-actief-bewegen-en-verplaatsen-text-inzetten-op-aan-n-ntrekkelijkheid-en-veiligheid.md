@@ -1,6 +1,6 @@
 ---
 ambition: 
-    - Actief bewegen en verplaatsen
+  - Actief bewegen en verplaatsen
 text: |-
   Inzetten op aan-
 
