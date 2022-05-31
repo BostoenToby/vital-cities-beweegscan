@@ -327,27 +327,77 @@ export default ({ section }: { section: string }) => {
                     {showAmbitions ? (
                       <ul className="mt-4 ml-2 text-lg font-medium text-white">
                         <li className="p-2 hover:opacity-80">
-                          <Link to="/ambitionpage">
+                          <Link
+                            onClick={() => handleReload()}
+                            to="/ambitionpage"
+                            state={{
+                              ambition: 'Actief bewegen en verplaatsen',
+                            }}
+                          >
                             Actief bewegen & verplaatsen
                           </Link>
                         </li>
                         <li className="p-2 hover:opacity-80">
-                          <Link to="/ambitionpage">verbonden stadskern</Link>
+                          <Link
+                            onClick={() => handleReload()}
+                            to="/ambitionpage"
+                            state={{ ambition: 'Verbonden stadskern' }}
+                          >
+                            verbonden stadskern
+                          </Link>
                         </li>
                         <li className="p-2 hover:opacity-90">
-                          <Link to="/ambitionpage">Fiets- & wandelroutes</Link>
+                          <Link
+                            onClick={() => handleReload()}
+                            to="/ambitionpage"
+                            state={{
+                              ambition:
+                                'Aantrekkelijke en veilige wandel- en fietsroutes',
+                            }}
+                          >
+                            Fiets- & wandelroutes
+                          </Link>
                         </li>
                         <li className="p-2 hover:opacity-80">
-                          <Link to="/ambitionpage">Sporten</Link>
+                          <Link
+                            onClick={() => handleReload()}
+                            to="/ambitionpage"
+                            state={{ ambition: 'Stad en buurt als sportplein' }}
+                          >
+                            Sporten
+                          </Link>
                         </li>
                         <li className="p-2 hover:opacity-80">
-                          <Link to="/ambitionpage">Spelen</Link>
+                          <Link
+                            onClick={() => handleReload()}
+                            to="/ambitionpage"
+                            state={{ ambition: 'Stad en buurt als speelplein' }}
+                          >
+                            Spelen
+                          </Link>
                         </li>
                         <li className="p-2 hover:opacity-80">
-                          <Link to="/ambitionpage">Ontmoeten</Link>
+                          <Link
+                            onClick={() => handleReload()}
+                            to="/ambitionpage"
+                            state={{
+                              ambition: 'Stad en buurt als ontmoetingsplek',
+                            }}
+                          >
+                            Ontmoeten
+                          </Link>
                         </li>
                         <li className="p-2 hover:opacity-80">
-                          <Link to="/ambitionpage">Groen</Link>
+                          <Link
+                            onClick={() => handleReload()}
+                            to="/ambitionpage"
+                            state={{
+                              ambition:
+                                'Bruikbaar, gevarieerd en voldoende groen',
+                            }}
+                          >
+                            Groen
+                          </Link>
                         </li>
                       </ul>
                     ) : null}

@@ -28,10 +28,32 @@ import { PercentageData } from '../interfaces/data'
 import { testData } from '../data/testGraph'
 import Donutdata from '../components/donutdata'
 import FadeInSection from '../components/scrollytelling'
+import { getDataForAmbition } from '../utils/filterData'
 
 function AmbitionPage({ location }: { location: any }) {
   const [hasMounted, setHasMounted] = useState(false)
-  const [locationAmb, setLocationAmb] = useState()
+  const [locationAmb, setLocationAmb] = useState<string>()
+  const [intBronnen, setIntBronnen] = useState<intBron[]>()
+  const [img, setImg] = useState<any>()
+  const [hows, setHows] = useState<HoeWaarom[]>()
+  const [whys, setWhys] = useState<HoeWaarom[]>()
+  const [goodPracs, setGoodPracs] = useState<goodPractice[]>()
+  const [header, setHeader] = useState<header>()
+  const [suggestions, setSuggestions] = useState<string[]>()
+  const [typed, setTyped] = useState<string>('')
+  const [graphData, setGraphData] = useState<PercentageData[]>()
+  const [info, setInfo] = useState<PersonalInfo>({
+    place: '',
+    firstName: '',
+    lastName: '',
+    mail: '',
+  })
+  const [error, setErrors] = useState<FormError>({
+    placeError: '',
+    firstNameError: '',
+    lastNameError: '',
+    mailError: '',
+  })
 
   const {
     cms,
@@ -66,7 +88,7 @@ function AmbitionPage({ location }: { location: any }) {
     ambitie7bench1,
     ambitie7bench2,
     ambitie7bench3,
-    ambitiebench4,
+    ambitie7bench4,
   } = useStaticQuery(
     graphql`
       query {
@@ -531,7 +553,7 @@ function AmbitionPage({ location }: { location: any }) {
             }
           }
         }
-        ambitite7bench4: allGsVitalCitiesDataKlS03(
+        ambitie7bench4: allGsVitalCitiesDataKlS03(
           filter: { jaar: { eq: 2020 } }
         ) {
           edges {
@@ -546,28 +568,6 @@ function AmbitionPage({ location }: { location: any }) {
       }
     `,
   )
-
-  const [intBronnen, setIntBronnen] = useState<intBron[]>()
-  const [img, setImg] = useState<any>()
-  const [hows, setHows] = useState<HoeWaarom[]>()
-  const [whys, setWhys] = useState<HoeWaarom[]>()
-  const [goodPracs, setGoodPracs] = useState<goodPractice[]>()
-  const [header, setHeader] = useState<header>()
-  const [suggestions, setSuggestions] = useState<string[]>()
-  const [typed, setTyped] = useState<string>('')
-  const [graphData, setGraphData] = useState<PercentageData[]>()
-  const [info, setInfo] = useState<PersonalInfo>({
-    place: '',
-    firstName: '',
-    lastName: '',
-    mail: '',
-  })
-  const [error, setErrors] = useState<FormError>({
-    placeError: '',
-    firstNameError: '',
-    lastNameError: '',
-    mailError: '',
-  })
 
   const changeTyped = async (value: string) => {
     setTyped(value)
@@ -626,18 +626,25 @@ function AmbitionPage({ location }: { location: any }) {
   }, [typed])
 
   useEffect(() => {
+    setHasMounted(true)
     setLocationAmb(location.state.ambition)
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('click', handleClick)
+      return () => window.removeEventListener('click', handleClick)
+    }
+  }, [])
+
+  useEffect(() => {
     let bronnen: intBron[] = []
     let hoeList: HoeWaarom[] = []
     let waaromList: HoeWaarom[] = []
     let goodPracs: goodPractice[] = []
 
-    setHasMounted(true)
-
     for (let item of cms.nodes) {
       if (
         item.parent.internal.description.includes('hoeopl') &&
-        item.frontmatter.ambition == location.state.ambition
+        item.frontmatter.ambition == locationAmb
       ) {
         hoeList.push({
           text: item.frontmatter.text,
@@ -645,7 +652,7 @@ function AmbitionPage({ location }: { location: any }) {
         })
       } else if (
         item.parent.internal.description.includes('waaromopl') &&
-        item.frontmatter.ambition == location.state.ambition
+        item.frontmatter.ambition == locationAmb
       ) {
         waaromList.push({
           text: item.frontmatter.text,
@@ -653,7 +660,7 @@ function AmbitionPage({ location }: { location: any }) {
         })
       } else if (
         item.parent.internal.description.includes('intbron') &&
-        item.frontmatter.ambition == location.state.ambition
+        item.frontmatter.ambition == locationAmb
       ) {
         bronnen.push({
           title: item.frontmatter.title,
@@ -662,7 +669,7 @@ function AmbitionPage({ location }: { location: any }) {
         })
       } else if (
         item.parent.internal.description.includes('goodprac') &&
-        item.frontmatter.ambition == location.state.ambition
+        item.frontmatter.ambition == locationAmb
       ) {
         goodPracs.push({
           title: item.frontmatter.title,
@@ -673,15 +680,15 @@ function AmbitionPage({ location }: { location: any }) {
         })
       } else if (
         item.parent.internal.description.includes('header') &&
-        item.frontmatter.ambition == location.state.ambition
+        item.frontmatter.ambition == locationAmb
       ) {
         setHeader({
           title: item.frontmatter.title,
           subtitle: item.frontmatter.subtitle,
           image: item.frontmatter.image,
-          tag: item.frontmatter.tag
+          tag: item.frontmatter.tag,
         })
-        console.log("Test image")
+        console.log('Test image')
         console.log(item.frontmatter.image)
       }
     }
@@ -690,12 +697,46 @@ function AmbitionPage({ location }: { location: any }) {
     setWhys(waaromList)
     setGoodPracs(goodPracs)
 
-    setGraphData(testData)
-    if (typeof window !== 'undefined') {
-      window.addEventListener('click', handleClick)
-      return () => window.removeEventListener('click', handleClick)
+    if (locationAmb) {
+      const allAmbitionData: any[] = [
+        ambitie1bench1,
+        ambitie1bench2,
+        ambitie1bench3,
+        ambitie1bench4,
+        ambitie2bench1,
+        ambitie2bench2,
+        ambitie2bench3,
+        ambitie2bench4,
+        ambitie3bench1,
+        ambitie3bench2,
+        ambitie3bench3,
+        ambitie3bench4,
+        ambitie3bench5,
+        ambitie3bench6,
+        ambitie3bench7,
+        ambitie4bench1,
+        ambitie4bench2,
+        ambitie4bench3,
+        ambitie4bench4,
+        ambitie4bench5,
+        ambitie5bench1,
+        ambitie5bench2,
+        ambitie5bench3,
+        ambitie6bench1,
+        ambitie6bench2,
+        ambitie6bench3,
+        ambitie6bench4,
+        ambitie6bench5,
+        ambitie7bench1,
+        ambitie7bench2,
+        ambitie7bench3,
+        ambitie7bench4,
+      ]
+      console.log(allAmbitionData)
+
+      // getDataForAmbition(allAmbitionData, locationAmb)
     }
-  }, [])
+  }, [locationAmb])
 
   const handleClick = (e: any) => {
     const isOutside = !e.target.closest('#inputStad')
