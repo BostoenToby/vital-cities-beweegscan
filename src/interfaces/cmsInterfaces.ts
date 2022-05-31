@@ -20,4 +20,6 @@ export interface goodPractice {
 export interface header {
     title: string
     subtitle: string
+    image: string
+    tag: string
 }

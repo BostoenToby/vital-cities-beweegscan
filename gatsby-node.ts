@@ -14,6 +14,7 @@ exports.createSchemaCustomization = ({ actions }: {actions: any}) => {
             image: String
             extra: String
             date: String
+            tag: String
         }
     `
     createTypes(typeDefs)

@@ -16,6 +16,7 @@ collections:
       - { name: title, label: Titel }
       - { name: subtitle, label: Subtitels }
       - { name: image, label: Foto, widget: image }
+      - { name: tag, label: Tag }
 
   - name: Probleem
     label: Probleem

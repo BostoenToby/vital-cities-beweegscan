@@ -6,4 +6,5 @@ subtitle: Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een
   actieve levensstijl en faciliteren mensen om lopend of fietsend naar
   voorzieningen of heet werk of school voorzieningen te gaan
 image: /assets/verbonden-stadskern.png
+tag: fiets- en wandelroutes
 ---

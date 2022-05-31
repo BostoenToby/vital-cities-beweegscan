@@ -82,6 +82,7 @@ function AmbitionPage({ location }: { location: any }) {
               subtitle
               image
               themes
+              tag
             }
             parent {
               internal {
@@ -598,7 +599,7 @@ function AmbitionPage({ location }: { location: any }) {
     for (let item of cms.nodes) {
       if (
         item.parent.internal.description.includes('hoeopl') &&
-        item.frontmatter.ambition == 'Actief bewegen en verplaatsen'
+        item.frontmatter.ambition == location.state.ambition
       ) {
         hoeList.push({
           text: item.frontmatter.text,
@@ -606,7 +607,7 @@ function AmbitionPage({ location }: { location: any }) {
         })
       } else if (
         item.parent.internal.description.includes('waaromopl') &&
-        item.frontmatter.ambition == 'Actief bewegen en verplaatsen'
+        item.frontmatter.ambition == location.state.ambition
       ) {
         waaromList.push({
           text: item.frontmatter.text,
@@ -614,7 +615,7 @@ function AmbitionPage({ location }: { location: any }) {
         })
       } else if (
         item.parent.internal.description.includes('intbron') &&
-        item.frontmatter.ambition == 'Actief bewegen en verplaatsen'
+        item.frontmatter.ambition == location.state.ambition
       ) {
         bronnen.push({
           title: item.frontmatter.title,
@@ -623,7 +624,7 @@ function AmbitionPage({ location }: { location: any }) {
         })
       } else if (
         item.parent.internal.description.includes('goodprac') &&
-        item.frontmatter.ambition == 'Actief bewegen en verplaatsen'
+        item.frontmatter.ambition == location.state.ambition
       ) {
         goodPracs.push({
           title: item.frontmatter.title,
@@ -639,7 +640,11 @@ function AmbitionPage({ location }: { location: any }) {
         setHeader({
           title: item.frontmatter.title,
           subtitle: item.frontmatter.subtitle,
+          image: item.frontmatter.image,
+          tag: item.frontmatter.tag
         })
+        console.log("Test image")
+        console.log(item.frontmatter.image)
       }
     }
     setIntBronnen(bronnen)
@@ -722,7 +727,7 @@ function AmbitionPage({ location }: { location: any }) {
                 </p>
               </button>
               <Tag
-                text="Actief bewegen"
+                text={header?.tag!}
                 classes={
                   context.dark
                     ? 'bg-pinkDesat text-white'
@@ -750,7 +755,7 @@ function AmbitionPage({ location }: { location: any }) {
             </section>
             <section className="h-full w-full columnbreak:w-1/2">
               <StaticImage
-                src="../images/headerpictureactivemovement.png"
+                src={`../../${header?.image}`}
                 alt="header picture"
                 className="h-full w-full"
               />
