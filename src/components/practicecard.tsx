@@ -56,7 +56,7 @@ export default ({ practice }: { practice: TestPractice }) => {
                 : 'text-purple text-opacity-90'
             }`}
           >
-            <Link to="/detailscase/" state={{ practice: practice }}>
+            <Link to="/detailspractice/" state={{ practice: practice }}>
               Lees meer
             </Link>
             <div

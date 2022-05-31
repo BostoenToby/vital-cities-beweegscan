@@ -22,10 +22,6 @@ export default ({ location }: { location: any }) => {
     setPractice(location.state.practice)
   }, [])
 
-  if (!hasMounted){
-    return null
-  }
-
   useEffect(() => {
     if (practice && practice.themas && practice.themas.length >= 1) {
       let arrayA: string[] = []
@@ -69,6 +65,10 @@ export default ({ location }: { location: any }) => {
       setPractice(prac)
     }
   }, [practice])
+
+  if (!hasMounted) {
+    return null
+  }
 
   return (
     <ThemeContext.Consumer>
