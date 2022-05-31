@@ -7,7 +7,7 @@ exports.createSchemaCustomization = ({ actions }: {actions: any}) => {
 
         type Frontmatter {
             ambition: String
-            ambitions: [String!]
+            ambitions: [String]
             title: String
             link: String
             text: String

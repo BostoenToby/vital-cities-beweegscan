@@ -1,5 +1,5 @@
 ---
-ambitions: Actief bewegen en verplaatsen
+ambition: Actief bewegen en verplaatsen
 text: De maatschappelijke druk naar het reduceren van de luchtverontreiniging,
   minder geluidshinder, vlotte mobiliteit en een stressvrije omgeving neemt
   steeds toe. Toch regeert Koning Auto nog steeds.
