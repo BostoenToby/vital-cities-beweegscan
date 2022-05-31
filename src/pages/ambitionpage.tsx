@@ -932,16 +932,18 @@ function AmbitionPage({ location }: { location: any }) {
                 </p>
                 <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
                   {hows &&
-                    hows.map((item: HoeWaarom) => (
-                      <Textblock
-                        text={item.text}
-                        classes={`font-medium ${
-                          context.dark
-                            ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
-                            : 'bg-lightGreen text-green'
-                        }`}
-                      />
-                    ))}
+                    hows.map((item: HoeWaarom) => {
+                      return (
+                        <Textblock
+                          text={item.text}
+                          classes={`font-medium ${
+                            context.dark
+                              ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
+                              : 'bg-lightGreen text-green'
+                          }`}
+                        />
+                      )
+                    })}
                 </div>
               </section>
             </FadeInSection>
@@ -1013,151 +1015,22 @@ function AmbitionPage({ location }: { location: any }) {
                   </Link>
                 </p>
                 <div className="grid grid-cols-1 gap-16 text-sm mobile:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
-                  <RevPrac
-                    image="relevantcases.png"
-                    imageAlt="Relevant cases"
-                    leftTagText="Actief bewegen"
-                    leftTagColorBg="pink"
-                    leftTagColorText="black"
-                    rightTagText="20 september 2020"
-                    rightTagColorBg="yellow"
-                    rightTagColorText="black"
-                    title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
-                  />
-                  <RevPrac
-                    image="relevantcases.png"
-                    imageAlt="Relevant cases"
-                    leftTagText="Actief bewegen"
-                    leftTagColorBg="pink"
-                    leftTagColorText="black"
-                    rightTagText="20 september 2020"
-                    rightTagColorBg="yellow"
-                    rightTagColorText="black"
-                    title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                    subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
-                  />
-                </div>
-              </section>
-            </FadeInSection>
-          </div>
-          <FadeInSection>
-            <section
-              className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16"
-              id="Solution"
-            >
-              <h2
-                className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                  context.dark ? 'opacity-90' : ''
-                }`}
-              >
-                <span className="underline decoration-lightPurple">Waarom</span>{' '}
-                moeten we dit oplossen?
-              </h2>
-              <p
-                className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-2xl ${
-                  context.dark ? 'opacity-75' : ''
-                }`}
-              >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                corporis mollitia veniam voluptatum! Molestias odio perspiciatis
-                porro expedita
-              </p>
-              <div className="grid grid-cols-1 gap-6 text-sm tabletportrait:text-lg laptop:grid-cols-2 laptop:text-xl laptopL:grid-cols-3">
-                {whys &&
-                  whys.map((item: any) => (
-                    <Textblock
-                      text={item.text}
-                      classes={
-                        context.dark
-                          ? 'bg-lightPurpleDesat bg-opacity-[0.08] text-lightPurpleDesat'
-                          : 'bg-lightPink text-purple '
-                      }
-                    />
-                  ))}
-              </div>
-            </section>
-
-            <section className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16">
-              <h2
-                className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                  context.dark ? 'opacity-90' : ''
-                }`}
-              >
-                <span className="underline decoration-green">Hoe</span> kunnen
-                we dit oplossen?
-              </h2>
-              <p
-                className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
-                  context.dark ? 'opacity-75' : ''
-                }`}
-              >
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                corporis mollitia veniam voluptatum! Molestias odio perspiciatis
-                porro expedita
-              </p>
-              <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
-                {hows &&
-                  hows.map((item: HoeWaarom) => {
-                    return (
-                      <Textblock
-                        text={item.text}
-                        classes={`font-medium ${
-                          context.dark
-                            ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
-                            : 'bg-lightGreen text-green'
-                        }`}
+                  {goodPracs &&
+                    goodPracs.map((item: any) => (
+                      <RevPrac
+                        image="relevantcases"
+                        imageAlt="Relevant cases"
+                        leftTagText={item.themes}
+                        leftTagColorBg="pink"
+                        leftTagColorText="black"
+                        rightTagText={item.date}
+                        rightTagColorBg="yellow"
+                        rightTagColorText="black"
+                        title={item.title}
+                        subTitle={item.text}
                       />
-                    )
-                  })}
-              </div>
-            </section>
-
-            <section
-              className={`px-4 pb-16 tabletportrait:px-8 columnbreak:px-16 ${
-                context.dark ? '' : 'bg-neutral'
-              }`}
-              id="CallToAction"
-            >
-              <StaticImage
-                src="../images/calltoaction.png"
-                alt="Picture of girls riding a bike"
-                className="ml-14 hidden h-auto border laptop:block"
-              />
-              <div className="h-auto p-8 text-white">
-                <h2
-                  className={`pb-4 font-raleway text-xl font-bold tabletportrait:text-2xl ${
-                    context.dark ? 'opacity-90' : ''
-                  }`}
-                >
-                  Benieuwd naar de beweegvriendelijkheid van jouw stad of
-                  gemeente?
-                </h2>
-                <h4
-                  className={`pb-4 font-raleway text-lg font-semibold text-pink tabletportrait:text-xl ${
-                    context.dark ? 'text-pinkDesat opacity-90' : 'text-pink'
-                  }`}
-                >
-                  hier
-                </Link>
-              </p>
-              <div className="grid grid-cols-1 gap-16 text-sm mobile:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
-                {goodPracs &&
-                  goodPracs.map((item: any) => (
-                    <RevPrac
-                      image="relevantcases"
-                      imageAlt="Relevant cases"
-                      leftTagText={item.themes}
-                      leftTagColorBg="pink"
-                      leftTagColorText="black"
-                      rightTagText={item.date}
-                      rightTagColorBg="yellow"
-                      rightTagColorText="black"
-                      title={item.title}
-                      subTitle={item.text}
-                    />
-                  ))}
-                {/* <RevPrac
+                    ))}
+                  {/* <RevPrac
                   image="relevantcases.png"
                   imageAlt="Relevant cases"
                   leftTagText="Actief bewegen"
@@ -1181,44 +1054,46 @@ function AmbitionPage({ location }: { location: any }) {
                   title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                   subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
                 /> */}
-              </div>
-            </section>
+                </div>
+              </section>
+            </FadeInSection>
           </div>
-          <section
-            className={`flex items-center justify-center py-8 px-4 ${
-              context.dark ? 'bg-white bg-opacity-[0.08]' : 'bg-mediumPurple'
-            }`}
-            id="CallToAction"
-          >
-            <StaticImage
-              src="../images/calltoaction.png"
-              alt="Picture of girls riding a bike"
-              className="ml-14 hidden h-auto border laptop:block"
-            />
-            <div className="h-auto p-8 text-white">
-              <h2
-                className={`pb-4 font-raleway text-xl font-bold tabletportrait:text-2xl ${
-                  context.dark ? 'opacity-90' : ''
-                }`}
-              >
-                Benieuwd naar de beweegvriendelijkheid van jouw stad of
-                gemeente?
-              </h2>
-              <h4
-                className={`pb-4 font-raleway text-lg font-semibold text-pink tabletportrait:text-xl ${
-                  context.dark ? 'text-pinkDesat opacity-90' : 'text-pink'
-                }`}
-              >
-                Download hier jouw rapport
-              </h4>
-              <p
-                className={`pb-4 text-sm tabletportrait:text-lg ${
-                  context.dark ? 'opacity-90' : ''
-                }`}
-              >
-                Vul onderstaande gegevens in en ontvang in jouw mailbox het
-                rapport.
-              </p>
+          <FadeInSection>
+            <section
+              className={`flex items-center justify-center py-8 px-4 ${
+                context.dark ? 'bg-white bg-opacity-[0.08]' : 'bg-mediumPurple'
+              }`}
+              id="CallToAction"
+            >
+              <StaticImage
+                src="../images/calltoaction.png"
+                alt="Picture of girls riding a bike"
+                className="ml-14 hidden h-auto border laptop:block"
+              />
+              <div className="h-auto p-8 text-white">
+                <h2
+                  className={`pb-4 font-raleway text-xl font-bold tabletportrait:text-2xl ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
+                  Benieuwd naar de beweegvriendelijkheid van jouw stad of
+                  gemeente?
+                </h2>
+                <h4
+                  className={`pb-4 font-raleway text-lg font-semibold text-pink tabletportrait:text-xl ${
+                    context.dark ? 'text-pinkDesat opacity-90' : 'text-pink'
+                  }`}
+                >
+                  Download hier jouw rapport
+                </h4>
+                <p
+                  className={`pb-4 text-sm tabletportrait:text-lg ${
+                    context.dark ? 'opacity-90' : ''
+                  }`}
+                >
+                  Vul onderstaande gegevens in en ontvang in jouw mailbox het
+                  rapport.
+                </p>
 
                 <div
                   className="desktop:grid-cols-3 z-0 grid grid-cols-1 gap-4 pb-3 text-sm tabletportrait:grid-cols-3 tabletportrait:text-lg laptop:grid-cols-1 laptopL:grid-cols-3"
