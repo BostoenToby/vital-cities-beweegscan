@@ -1,5 +1,5 @@
 import { graphql, Link, useStaticQuery } from 'gatsby'
-import { StaticImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
 import { ArrowDown, ChevronDown } from 'lucide-react'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
@@ -67,6 +67,7 @@ export default ({ location }: { location: any }) => {
 
   const {
     cms,
+    allImages,
     ambitie1bench1,
     ambitie1bench2,
     ambitie1bench3,
@@ -123,7 +124,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        allImageSharp {
+        allImages: allImageSharp {
           nodes {
             gatsbyImageData
           }
@@ -688,8 +689,11 @@ export default ({ location }: { location: any }) => {
           image: item.frontmatter.image,
           tag: item.frontmatter.tag,
         })
-        console.log('Test image')
-        console.log(item.frontmatter.image)
+        for(let i of allImages.nodes){
+          if(i.gatsbyImageData.images.fallback.src.includes(item.frontmatter.image)){
+            setImg(getImage(i))
+          }
+        }
       }
     }
     setIntBronnen(bronnen)
@@ -839,6 +843,7 @@ export default ({ location }: { location: any }) => {
                 alt="header picture"
                 className="h-full w-full"
               /> */}
+              <GatsbyImage image={img} alt="Header image" className="h-full w-full" />
             </section>
           </header>
           <div
