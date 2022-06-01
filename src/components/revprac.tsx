@@ -79,7 +79,7 @@ export default function RevPrac({
           >
             {title}
           </h3>
-          <p className={`pl-3 ${context.dark ? 'opacity-75' : ''}`}>
+          <p className={`line-clamp-3 pl-3 ${context.dark ? 'opacity-75' : ''}`}>
             {subTitle}
           </p>
         </div>

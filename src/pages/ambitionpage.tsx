@@ -1162,7 +1162,7 @@ export default ({ location }: { location: any }) => {
                           rightTagColorBg="yellow"
                           rightTagColorText="black"
                           title={item.title}
-                          subTitle = {"change this later"}
+                          subTitle = {item.text}
                           // subTitle={item.text}
                         />
                         )

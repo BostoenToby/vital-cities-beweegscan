@@ -7,7 +7,7 @@ thema:
   - groen
   - transversaal
   - participatie
-title: Hangplek voor medi
+title: Hangplek voor meiden
 image: /hangplek-voor-meiden.png
 date: 2022-01-12T09:11:04.270Z
 text: >-
