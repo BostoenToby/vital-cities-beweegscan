@@ -60,6 +60,16 @@ export default ({ location }: { location: any }) => {
   })
 
   useEffect(() => {
+    setGraphData(
+      [
+        {percentage: 44, label: 'Staat straten & pleinen'},
+        {percentage: 54, label: 'Staat voetpaden'},
+        {percentage: 59, label: 'Staat fietspaden'},
+        {percentage: 55, label: 'Genoeg fietspaden'},
+        {percentage: 60, label: 'Fietsinfrastructuur'},
+        {percentage: 57, label: 'Veilig fietsen'}
+      ]
+    )
     setHasMounted(true)
     setLocationAmb(location.state.ambition)
     setLocationShort(location.state.short)
