@@ -1,8 +1,11 @@
-import { type } from 'os'
-
 export interface PercentageData {
   percentage: number
   label: string
+}
+
+export interface Benchmark {
+  label: string
+  data: any[]
 }
 
 // aanpassen!!!

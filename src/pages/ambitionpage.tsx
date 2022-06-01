@@ -60,16 +60,14 @@ export default ({ location }: { location: any }) => {
   })
 
   useEffect(() => {
-    setGraphData(
-      [
-        {percentage: 44, label: 'Staat straten & pleinen'},
-        {percentage: 54, label: 'Staat voetpaden'},
-        {percentage: 59, label: 'Staat fietspaden'},
-        {percentage: 55, label: 'Genoeg fietspaden'},
-        {percentage: 60, label: 'Fietsinfrastructuur'},
-        {percentage: 57, label: 'Veilig fietsen'}
-      ]
-    )
+    setGraphData([
+      { percentage: 44, label: 'Staat straten & pleinen' },
+      { percentage: 54, label: 'Staat voetpaden' },
+      { percentage: 59, label: 'Staat fietspaden' },
+      { percentage: 55, label: 'Genoeg fietspaden' },
+      { percentage: 60, label: 'Fietsinfrastructuur' },
+      { percentage: 57, label: 'Veilig fietsen' },
+    ])
     setHasMounted(true)
     setLocationAmb(location.state.ambition)
     setLocationShort(location.state.short)
@@ -157,6 +155,7 @@ export default ({ location }: { location: any }) => {
               minstensWekelijks____
               nooit_minderDan1KeerPerMaand____
               jaar
+              indicator
             }
           }
         }
@@ -171,6 +170,7 @@ export default ({ location }: { location: any }) => {
               fiets____
               openbaarVervoer____
               teVoet____
+              indicator
             }
           }
         }
@@ -183,6 +183,7 @@ export default ({ location }: { location: any }) => {
               eens____
               neutraal____
               oneens____
+              indicator
             }
           }
         }
@@ -195,6 +196,8 @@ export default ({ location }: { location: any }) => {
               afEnToe____
               nooit_zelden____
               vaak_altijd____
+              item
+              indicator
             }
           }
         }
@@ -207,6 +210,7 @@ export default ({ location }: { location: any }) => {
               minstensMaandelijks____
               minstensWekelijks____
               nooit_eenUitzonderlijkeKeer____
+              indicator
             }
           }
         }
@@ -219,6 +223,7 @@ export default ({ location }: { location: any }) => {
               neutraal____
               oneens____
               eens____
+              indicator
             }
           }
         }
@@ -235,6 +240,7 @@ export default ({ location }: { location: any }) => {
               neutraal____
               oneens____
               item
+              indicator
             }
           }
         }
@@ -248,6 +254,7 @@ export default ({ location }: { location: any }) => {
               neutraal____
               oneens____
               item
+              indicator
             }
           }
         }
@@ -264,6 +271,7 @@ export default ({ location }: { location: any }) => {
               neutraal____
               oneens____
               item
+              indicator
             }
           }
         }
@@ -280,6 +288,7 @@ export default ({ location }: { location: any }) => {
               neutraal____
               oneens____
               item
+              indicator
             }
           }
         }
@@ -296,6 +305,7 @@ export default ({ location }: { location: any }) => {
               neutraal____
               oneens____
               item
+              indicator
             }
           }
         }
@@ -308,6 +318,7 @@ export default ({ location }: { location: any }) => {
               eens____
               neutraal____
               oneens____
+              indicator
             }
           }
         }
@@ -321,6 +332,7 @@ export default ({ location }: { location: any }) => {
               neutraal____
               oneens____
               item
+              indicator
             }
           }
         }
@@ -333,6 +345,7 @@ export default ({ location }: { location: any }) => {
               eens____
               neutraal____
               oneens____
+              indicator
             }
           }
         }
@@ -345,6 +358,7 @@ export default ({ location }: { location: any }) => {
               eens____
               neutraal____
               oneens____
+              indicator
             }
           }
         }
@@ -357,6 +371,7 @@ export default ({ location }: { location: any }) => {
               minstensMaandelijks____
               minstensWekelijks____
               nooit_eenUitzonderlijkeKeer____
+              indicator
             }
           }
         }
@@ -373,6 +388,7 @@ export default ({ location }: { location: any }) => {
               meerDan12Keer____
               nooit____
               item
+              indicator
             }
           }
         }
@@ -389,6 +405,7 @@ export default ({ location }: { location: any }) => {
               meerDan12Keer____
               nooit____
               item
+              indicator
             }
           }
         }
@@ -401,6 +418,7 @@ export default ({ location }: { location: any }) => {
               eens____
               neutraal____
               oneens____
+              indicator
             }
           }
         }
@@ -417,6 +435,7 @@ export default ({ location }: { location: any }) => {
               ontevreden____
               tevreden____
               item
+              indicator
             }
           }
         }
@@ -433,6 +452,7 @@ export default ({ location }: { location: any }) => {
               neutraal____
               oneens____
               item
+              indicator
             }
           }
         }
@@ -451,6 +471,7 @@ export default ({ location }: { location: any }) => {
               neutraal____
               oneens____
               item
+              indicator
             }
           }
         }
@@ -463,6 +484,7 @@ export default ({ location }: { location: any }) => {
               eens____
               neutraal____
               oneens____
+              indicator
             }
           }
         }
@@ -475,6 +497,7 @@ export default ({ location }: { location: any }) => {
               eens____
               neutraal____
               oneens____
+              indicator
             }
           }
         }
@@ -491,6 +514,7 @@ export default ({ location }: { location: any }) => {
               neutraal____
               oneens____
               item
+              indicator
             }
           }
         }
@@ -504,6 +528,7 @@ export default ({ location }: { location: any }) => {
               neutraal____
               oneens____
               item
+              indicator
             }
           }
         }
@@ -519,6 +544,7 @@ export default ({ location }: { location: any }) => {
             nooit_zelden____
             vaak_altijd____
             item
+            indicator
           }
         }
         ambitie6bench5: allGsVitalCitiesDataSaS19(
@@ -533,6 +559,7 @@ export default ({ location }: { location: any }) => {
             nooit_zelden____
             vaak_altijd____
             item
+            indicator
           }
         }
         ambitie7bench1: allGsVitalCitiesDataKlS01(
@@ -549,6 +576,7 @@ export default ({ location }: { location: any }) => {
               nooit____
               tot12Keer____
               item
+              indicator
             }
           }
         }
@@ -566,6 +594,7 @@ export default ({ location }: { location: any }) => {
               nooit____
               tot12Keer____
               item
+              indicator
             }
           }
         }
@@ -578,6 +607,7 @@ export default ({ location }: { location: any }) => {
               neutraal____
               ontevreden____
               tevreden____
+              indicator
             }
           }
         }
@@ -590,6 +620,7 @@ export default ({ location }: { location: any }) => {
               eens____
               neutraal____
               oneens____
+              indicator
             }
           }
         }
@@ -599,12 +630,9 @@ export default ({ location }: { location: any }) => {
 
   const changeTyped = async (value: string) => {
     setTyped(value)
-    console.log(value)
   }
 
   const checkInfo = async () => {
-    console.log(info.place)
-    console.log(allResults)
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(info.mail)) {
       setErrors((currentErrors: FormError) => {
         currentErrors.mailError = 'Dit is geen geldig mail adres'
@@ -648,7 +676,6 @@ export default ({ location }: { location: any }) => {
         currentErrors.placeError = ''
         return { ...currentErrors }
       })
-      console.log(typed)
       genPDF()
     }
   }
@@ -664,97 +691,97 @@ export default ({ location }: { location: any }) => {
     let waaromList: HoeWaarom[] = []
     let goodPracs: goodPractice[] = []
 
-    let loc: string
-    let locshort: string
-    if (locationAmb == undefined || locationShort == undefined) {
-      loc = location.state.ambition
-      locshort = location.state.short
-    } else {
-      loc = locationAmb
-      locshort = locationShort
-    }
+    // let loc: string
+    // let locshort: string
+    // if (locationAmb == undefined || locationShort == undefined) {
+    //   loc = location.state.ambition
+    //   locshort = location.state.short
+    // } else {
+    //   loc = locationAmb
+    //   locshort = locationShort
+    // }
 
-    for (let item of cms.nodes) {
-      if (item.frontmatter.ambitions == null) {
-        item.frontmatter.ambitions = ['']
-      }
-      if (
-        item.parent.internal.description.includes('hoeopl') &&
-        (item.frontmatter.ambition == loc ||
-          item.frontmatter.ambitions.includes(loc))
-      ) {
-        hoeList.push({
-          text: item.frontmatter.text,
-          ambition: item.frontmatter.ambition,
-        })
-      } else if (
-        item.parent.internal.description.includes('waaromopl') &&
-        (item.frontmatter.ambition == loc ||
-          item.frontmatter.ambitions.includes(loc))
-      ) {
-        waaromList.push({
-          text: item.frontmatter.text,
-          ambition: item.frontmatter.ambition,
-        })
-      } else if (
-        item.parent.internal.description.includes('intbron') &&
-        (item.frontmatter.ambition == loc ||
-          item.frontmatter.ambitions.includes(loc))
-      ) {
-        bronnen.push({
-          title: item.frontmatter.title,
-          link: item.frontmatter.link,
-          text: item.frontmatter.text,
-        })
-      } else if (
-        item.parent.internal.description.includes('goodprac') &&
-        item.frontmatter.thema.includes(locshort)
-      ) {
-        // TODO: add good practises
-        goodPracs.push({
-          title: item.frontmatter.title,
-          date: item.frontmatter.date,
-          themes: item.frontmatter.thema,
-          text: item.frontmatter.text,
-          extra: item.frontmatter.extra,
-          image: item.frontmatter.image
-        })
-      } else if (
-        item.parent.internal.description.includes('header') &&
-        item.frontmatter.ambition == loc
-      ) {
-        setHeader({
-          title: item.frontmatter.title,
-          subtitle: item.frontmatter.subtitle,
-          image: item.frontmatter.image,
-          tag: item.frontmatter.tag,
-        })
-        for (let i of allImages.nodes) {
-          if (
-            i.gatsbyImageData.images.fallback.src.includes(
-              item.frontmatter.image,
-            )
-          ) {
-            setImg(getImage(i))
-          }
+    if (locationAmb && locationShort) {
+      for (let item of cms.nodes) {
+        if (item.frontmatter.ambitions == null) {
+          item.frontmatter.ambitions = ['']
         }
-      } else if (
-        item.parent.internal.description.includes('problem') &&
-        (item.frontmatter.ambition == loc ||
-          item.frontmatter.ambitions.includes(loc))
-      ) {
-        setProblem({
-          text: item.frontmatter.text,
-          bold: item.frontmatter.boldpart,
-        })
+        if (
+          item.parent.internal.description.includes('hoeopl') &&
+          (item.frontmatter.ambition == locationAmb ||
+            item.frontmatter.ambitions.includes(locationAmb))
+        ) {
+          hoeList.push({
+            text: item.frontmatter.text,
+            ambition: item.frontmatter.ambition,
+          })
+        } else if (
+          item.parent.internal.description.includes('waaromopl') &&
+          (item.frontmatter.ambition == locationAmb ||
+            item.frontmatter.ambitions.includes(locationAmb))
+        ) {
+          waaromList.push({
+            text: item.frontmatter.text,
+            ambition: item.frontmatter.ambition,
+          })
+        } else if (
+          item.parent.internal.description.includes('intbron') &&
+          (item.frontmatter.ambition == locationAmb ||
+            item.frontmatter.ambitions.includes(locationAmb))
+        ) {
+          bronnen.push({
+            title: item.frontmatter.title,
+            link: item.frontmatter.link,
+            text: item.frontmatter.text,
+          })
+        } else if (
+          item.parent.internal.description.includes('goodprac') &&
+          item.frontmatter.thema.includes(locationShort)
+        ) {
+          // TODO: add good practises
+          goodPracs.push({
+            title: item.frontmatter.title,
+            date: item.frontmatter.date,
+            themes: item.frontmatter.thema,
+            text: item.frontmatter.text,
+            extra: item.frontmatter.extra,
+            image: item.frontmatter.image,
+          })
+        } else if (
+          item.parent.internal.description.includes('header') &&
+          item.frontmatter.ambition == locationAmb
+        ) {
+          setHeader({
+            title: item.frontmatter.title,
+            subtitle: item.frontmatter.subtitle,
+            image: item.frontmatter.image,
+            tag: item.frontmatter.tag,
+          })
+          for (let i of allImages.nodes) {
+            if (
+              i.gatsbyImageData.images.fallback.src.includes(
+                item.frontmatter.image,
+              )
+            ) {
+              setImg(getImage(i))
+            }
+          }
+        } else if (
+          item.parent.internal.description.includes('problem') &&
+          (item.frontmatter.ambition == locationAmb ||
+            item.frontmatter.ambitions.includes(locationAmb))
+        ) {
+          setProblem({
+            text: item.frontmatter.text,
+            bold: item.frontmatter.boldpart,
+          })
+        }
       }
-    }
-    setIntBronnen(bronnen)
-    setHows(hoeList)
-    setWhys(waaromList)
-    setGoodPracs(goodPracs)
+      setIntBronnen(bronnen)
+      setHows(hoeList)
+      setWhys(waaromList)
+      setGoodPracs(goodPracs)
 
-    if (locationAmb) {
       const allAmbitionData: any[] = [
         ambitie1bench1,
         ambitie1bench2,
@@ -789,9 +816,7 @@ export default ({ location }: { location: any }) => {
         ambitie7bench3,
         ambitie7bench4,
       ]
-      console.log(allAmbitionData)
-      console.log(allAmbitionData[0].edges[0].node.dagelijks____)
-      getDataForAmbition(allAmbitionData, locationAmb)
+      getDataForAmbition(allAmbitionData, locationShort)
     }
   }, [locationAmb])
 
