@@ -1,1 +1,3 @@
-export const getDataForAmbition = (allData: any, ambition: string) => {}
+export const getDataForAmbition = (allData: any, ambition: string) => {
+    // allData.forEach
+}

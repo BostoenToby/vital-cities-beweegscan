@@ -648,6 +648,7 @@ export default ({ location }: { location: any }) => {
         currentErrors.placeError = ''
         return { ...currentErrors }
       })
+      console.log(typed)
       genPDF()
     }
   }
@@ -789,8 +790,8 @@ export default ({ location }: { location: any }) => {
         ambitie7bench4,
       ]
       console.log(allAmbitionData)
-
-      // getDataForAmbition(allAmbitionData, locationAmb)
+      console.log(allAmbitionData[0].edges[0].node.dagelijks____)
+      getDataForAmbition(allAmbitionData, locationAmb)
     }
   }, [locationAmb])
 
@@ -1114,18 +1115,16 @@ export default ({ location }: { location: any }) => {
                 <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
                   {intBronnen &&
                     intBronnen.map((item: intBron, val: number) => {
-                      if (val < 4){
-                        return(
+                      if (val < 4) {
+                        return (
                           <Intsrc
-                          title={item.title}
-                          text={item.text}
-                          link={item.link}
-                        />
+                            title={item.title}
+                            text={item.text}
+                            link={item.link}
+                          />
                         )
                       } else {
-                        return(
-                          <></>
-                        )
+                        return <></>
                       }
                     })}
                 </div>
@@ -1166,26 +1165,24 @@ export default ({ location }: { location: any }) => {
                 <div className="grid grid-cols-1 gap-16 text-sm mobile:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
                   {goodPracs &&
                     goodPracs.map((item: any, val: number) => {
-                      if (val < 2){
-                        return(
+                      if (val < 2) {
+                        return (
                           <RevPrac
-                          image={item.image}
-                          imageAlt="Relevant cases"
-                          leftTagText={header?.tag!}
-                          leftTagColorBg="pink"
-                          leftTagColorText="black"
-                          rightTagText={item.date}
-                          rightTagColorBg="yellow"
-                          rightTagColorText="black"
-                          title={item.title}
-                          subTitle = {item.text}
-                          // subTitle={item.text}
-                        />
+                            image={item.image}
+                            imageAlt="Relevant cases"
+                            leftTagText={header?.tag!}
+                            leftTagColorBg="pink"
+                            leftTagColorText="black"
+                            rightTagText={item.date}
+                            rightTagColorBg="yellow"
+                            rightTagColorText="black"
+                            title={item.title}
+                            subTitle={item.text}
+                            // subTitle={item.text}
+                          />
                         )
                       } else {
-                        return (
-                          <></>
-                        )
+                        return <></>
                       }
                     })}
                   {/* <RevPrac
