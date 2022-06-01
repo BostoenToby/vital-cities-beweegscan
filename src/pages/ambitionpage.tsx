@@ -694,6 +694,7 @@ export default ({ location }: { location: any }) => {
         item.parent.internal.description.includes('goodprac') &&
         item.frontmatter.thema.includes(locshort)
       ) {
+        // TODO: add good practises
         goodPracs.push({
           title: item.frontmatter.title,
           date: item.frontmatter.date,
@@ -1144,14 +1145,15 @@ export default ({ location }: { location: any }) => {
                       <RevPrac
                         image="relevantcases"
                         imageAlt="Relevant cases"
-                        leftTagText={item.themes}
+                        leftTagText={header?.tag!}
                         leftTagColorBg="pink"
                         leftTagColorText="black"
                         rightTagText={item.date}
                         rightTagColorBg="yellow"
                         rightTagColorText="black"
                         title={item.title}
-                        subTitle={item.text}
+                        subTitle = {"change this later"}
+                        // subTitle={item.text}
                       />
                     ))}
                   {/* <RevPrac

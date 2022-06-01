@@ -75,4 +75,8 @@ resources: >-
 
 
   Concrete (meet)instrumenten voor leefbare woonwijken in Nederland <https://aedes.nl/leefbare-en-veilige-wijken> ; minder gericht op bewegen wel op betrekken burgers en inrichten openbare ruimte.
+warning: |-
+  # Duidelijker beeld nodig
+
+  2015 Studio Dott: Creëren van woonzorgwijken
 ---
