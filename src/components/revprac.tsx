@@ -54,7 +54,7 @@ export default function RevPrac({
       {(context) => (
         <div>
           {img != '' && (
-            <GatsbyImage image={img} alt="Test" className="relative w-auto" />
+            <GatsbyImage image={img} alt="Test" className="relative w-full h-96" />
           )}
           <div className="relative bottom-3 left-3 flex items-center text-xs tabletportrait:text-sm laptop:text-lg">
             <Tag

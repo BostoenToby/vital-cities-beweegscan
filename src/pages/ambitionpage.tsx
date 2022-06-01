@@ -589,9 +589,12 @@ export default ({ location }: { location: any }) => {
 
   const changeTyped = async (value: string) => {
     setTyped(value)
+    console.log(value)
   }
 
   const checkInfo = async () => {
+    console.log(info.place)
+    console.log(allResults)
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(info.mail)) {
       setErrors((currentErrors: FormError) => {
         currentErrors.mailError = 'Dit is geen geldig mail adres'
@@ -703,6 +706,7 @@ export default ({ location }: { location: any }) => {
           themes: item.frontmatter.thema,
           text: item.frontmatter.text,
           extra: item.frontmatter.extra,
+          image: item.frontmatter.image
         })
       } else if (
         item.parent.internal.description.includes('header') &&
@@ -1284,7 +1288,14 @@ export default ({ location }: { location: any }) => {
                                   ? 'border-opacity-50 bg-darkGray text-white hover:bg-[#3F3F3F]'
                                   : 'bg-white text-dark hover:bg-neutral'
                               }`}
-                              onClick={() => changeTyped(val)}
+                              onClick={() => {
+                                changeTyped(val)
+                                setInfo((u: PersonalInfo) => {
+                                  //@ts-ignore
+                                  u.place = val
+                                  return { ...u }
+                                })
+                              }}
                             >
                               {val}
                             </li>
