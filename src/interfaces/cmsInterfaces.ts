@@ -11,7 +11,7 @@ export interface HoeWaarom {
 
 export interface goodPractice {
     title: string
-    date: string
+    date: Date
     themes: string[]
     text: string
     extra: string[]
