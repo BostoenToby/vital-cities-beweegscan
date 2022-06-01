@@ -1152,7 +1152,8 @@ export default ({ location }: { location: any }) => {
                         rightTagColorBg="yellow"
                         rightTagColorText="black"
                         title={item.title}
-                        subTitle={item.text}
+                        subTitle = {"change this later"}
+                        // subTitle={item.text}
                       />
                     ))}
                   {/* <RevPrac
