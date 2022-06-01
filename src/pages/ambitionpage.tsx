@@ -1097,13 +1097,21 @@ export default ({ location }: { location: any }) => {
                 </p>
                 <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
                   {intBronnen &&
-                    intBronnen.map((item: intBron) => (
-                      <Intsrc
-                        title={item.title}
-                        text={item.text}
-                        link={item.link}
-                      />
-                    ))}
+                    intBronnen.map((item: intBron, val: number) => {
+                      if (val < 4){
+                        return(
+                          <Intsrc
+                          title={item.title}
+                          text={item.text}
+                          link={item.link}
+                        />
+                        )
+                      } else {
+                        return(
+                          <></>
+                        )
+                      }
+                    })}
                 </div>
               </section>
             </FadeInSection>
@@ -1141,21 +1149,29 @@ export default ({ location }: { location: any }) => {
                 </p>
                 <div className="grid grid-cols-1 gap-16 text-sm mobile:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
                   {goodPracs &&
-                    goodPracs.map((item: any) => (
-                      <RevPrac
-                        image="relevantcases"
-                        imageAlt="Relevant cases"
-                        leftTagText={header?.tag!}
-                        leftTagColorBg="pink"
-                        leftTagColorText="black"
-                        rightTagText={item.date}
-                        rightTagColorBg="yellow"
-                        rightTagColorText="black"
-                        title={item.title}
-                        subTitle = {"change this later"}
-                        // subTitle={item.text}
-                      />
-                    ))}
+                    goodPracs.map((item: any, val: number) => {
+                      if (val < 2){
+                        return(
+                          <RevPrac
+                          image="relevantcases"
+                          imageAlt="Relevant cases"
+                          leftTagText={header?.tag!}
+                          leftTagColorBg="pink"
+                          leftTagColorText="black"
+                          rightTagText={item.date}
+                          rightTagColorBg="yellow"
+                          rightTagColorText="black"
+                          title={item.title}
+                          subTitle = {"change this later"}
+                          // subTitle={item.text}
+                        />
+                        )
+                      } else {
+                        return (
+                          <></>
+                        )
+                      }
+                    })}
                   {/* <RevPrac
                   image="relevantcases.png"
                   imageAlt="Relevant cases"
