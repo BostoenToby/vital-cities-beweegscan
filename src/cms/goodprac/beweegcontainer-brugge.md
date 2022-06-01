@@ -12,7 +12,7 @@ text: >-
   Onder #sportersbelevenmeer stelt de sportdienst van stad Brugge sinds maart 2020 een verplaatsbare beweegcontainer ter beschikking op geselecteerde plekken in de openbare ruimte waar burgers in, op of naast kunnen bewegen. Het is door iedereen gratis en vrij te gebruiken en past in het kader van buitenlucht fitnessen of ‘street workout’. De beweegcontainer bestaat uit losse en vaste onderdelen waarop/waaraan/waarmee verschillende oefeningen uitgevoerd kunnen worden. Hat accent ligt op krachtoefeningen aangevuld met coördinatie en lenigheid.
 
 
-  Om gebruik te stimuleren, wordt samengewerkt met een buurtactor zoals een hogeschool, sportclub, buurtsport… Studenten Sport en Bewegen van Howest zorgen in het kader van #BruggeBeweegt voor bijkomende initiatiesessies en ondersteunende oefeningen die te raadplegen zijn via de website van de Beweegcontainer. Daarnaast zijn ze verantwoordelijk voor het zoeken van gangmakers uit de buurt die ondersteund worden en met meer kennis van zaken andere leeftijdsgenoten meetrekken om fitheidsoefeningen te doen.
+  Om gebruik te stimuleren, wordt samengewerkt met een buurtactor zoals een hogeschool, sportclub, buurtsport… Studenten Sport en Bewegen van Howest zorgen in het kader van [\#BruggeBeweegt](https://vitalcities.be/publicaties/brugge-beweegt.html) voor bijkomende initiatiesessies en ondersteunende oefeningen die te raadplegen zijn via de website van de [Beweegcontainer](https://www.brugge.be/beweegcontainer). Daarnaast zijn ze verantwoordelijk voor het zoeken van gangmakers uit de buurt die ondersteund worden en met meer kennis van zaken andere leeftijdsgenoten meetrekken om fitheidsoefeningen te doen.
 
 
   # Een beloftevolle praktijk
