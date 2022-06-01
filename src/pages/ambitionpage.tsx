@@ -30,6 +30,7 @@ import { testData } from '../data/testGraph'
 import Donutdata from '../components/donutdata'
 import FadeInSection from '../components/scrollytelling'
 import { getDataForAmbition } from '../utils/filterData'
+import genPDF from '../components/pdf'
 
 export default ({ location }: { location: any }) => {
   const [hasMounted, setHasMounted] = useState(false)
@@ -634,6 +635,7 @@ export default ({ location }: { location: any }) => {
         currentErrors.placeError = ''
         return { ...currentErrors }
       })
+      genPDF()
     }
   }
 
@@ -1153,7 +1155,7 @@ export default ({ location }: { location: any }) => {
                       if (val < 2){
                         return(
                           <RevPrac
-                          image="relevantcases"
+                          image={item.image}
                           imageAlt="Relevant cases"
                           leftTagText={header?.tag!}
                           leftTagColorBg="pink"

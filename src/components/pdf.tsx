@@ -671,4 +671,4 @@ function pdf() {
   )
 }
 
-export default pdf
+export default genPDF
