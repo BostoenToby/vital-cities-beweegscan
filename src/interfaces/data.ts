@@ -8,19 +8,24 @@ export interface Benchmark {
   data: any[]
 }
 
+export interface Ambitie {
+  label: string
+  benchmarks: Benchmark[]
+}
+
 // aanpassen!!!
 // ambities of 1 ambitie => alle benchmarks voor die ambitie (edges) => ... (afhankelijk van benchmark) = Generic (nodes)
-export interface Data<P extends string, G extends string> {
-  current_ambition: benchmarks<P, G>
-}
+// export interface Data<P extends string, G extends string> {
+//   current_ambition: benchmarks<P, G>
+// }
 
-export type Generic<G extends string> = {
-  [g in G]: string
-}
+// export type Generic<G extends string> = {
+//   [g in G]: string
+// }
 
-export type benchmarks<P extends string, G extends string> = {
-  [p in P]: Generic<G>
-}
+// export type benchmarks<P extends string, G extends string> = {
+//   [p in P]: Generic<G>
+// }
 // betere aproach nodig!!!!!!!!!!!!
 
 // want vind je waar? (.txt voor google sheets)

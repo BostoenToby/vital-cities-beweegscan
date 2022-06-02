@@ -1,7 +1,6 @@
 import { Benchmark } from '../interfaces/data'
 
 export const getDataForAmbition = (allData: any, ambition: string) => {
-  console.log(allData)
   const relevantEdges: any[] = []
   const results: Benchmark[] = []
 
@@ -26,7 +25,7 @@ export const getDataForAmbition = (allData: any, ambition: string) => {
   })
 }
 
-const checkIndex = (index: number) => {
+const checkIndex = (index: number): string => {
   if (0 <= index && index <= 3) {
     return 'actief bewegen'
   } else if (4 <= index && index <= 7) {
