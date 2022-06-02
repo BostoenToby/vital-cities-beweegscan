@@ -681,6 +681,19 @@ export default ({ location }: { location: any }) => {
         return { ...currentErrors }
       })
       genPDF()
+      const to_send = {
+        name: `${info.firstName} ${info.lastName}`,
+        email: info.mail,
+        subject: "rapport beweegscan Vital Cities",
+        message: "This is a test"
+      }
+      const response = await fetch("../functions/sendmail", {
+        method: 'POST',
+        body: JSON.stringify(to_send)
+      })
+      if(!response.ok){
+        console.log("Mail didn't succeed")
+      }
     }
   }
 

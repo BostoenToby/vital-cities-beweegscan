@@ -7,8 +7,8 @@ exports.handler =  async ({event, context, callback}: {event: any, context: any,
     return `${k}: ${data[k]}`
   }).join("<br><br>");
   const mail_to_send = {
-    to: "me@rajrajhans.com",
-    from: email,
+    to: email,
+    from: "toby.bostoen@student.howest.be",
     subject: subject ? subject : 'New Entry from Contact Form',
     html: body,
   };
