@@ -1,7 +1,10 @@
 import { Benchmark } from '../interfaces/data'
 
+export const getAllData = (allData: any) => {
+  
+}
+
 export const getDataForAmbition = (allData: any, ambition: string) => {
-  console.log(allData)
   const relevantEdges: any[] = []
   const results: Benchmark[] = []
 
@@ -10,11 +13,12 @@ export const getDataForAmbition = (allData: any, ambition: string) => {
       relevantEdges.push(edge.edges)
     }
   })
-  console.log(relevantEdges)
 
   if (relevantEdges) {
+    let label = ''
+    let nodes: any[] = []
+
     relevantEdges.forEach((edge: any, index: number) => {
-      let label = ''
       if (
         typeof edge[0].node.item == 'undefined' ||
         (ambition == 'actief bewegen' && index == 3)
@@ -23,9 +27,15 @@ export const getDataForAmbition = (allData: any, ambition: string) => {
       } else {
         label = edge[0].node.item
       }
-      console.log(label)
+
+      edge.forEach((node: any) => {
+        nodes.push(node.node)
+      })
+
+      results.push({ label: label, data: nodes })
     })
   }
+  console.log(results)
 }
 
 const checkIndex = (index: number): string => {
