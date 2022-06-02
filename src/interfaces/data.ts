@@ -13,6 +13,7 @@ export interface Ambitie {
   benchmarks: Benchmark[]
 }
 
+
 // aanpassen!!!
 // ambities of 1 ambitie => alle benchmarks voor die ambitie (edges) => ... (afhankelijk van benchmark) = Generic (nodes)
 // export interface Data<P extends string, G extends string> {

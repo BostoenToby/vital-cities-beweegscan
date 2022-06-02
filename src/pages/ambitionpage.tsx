@@ -11,7 +11,7 @@ import Tag from '../components/tag'
 import Topnavigation from '../components/topnavigation'
 import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
-import { allResults, searchList } from '../utils/autoComplete'
+import { searchList } from '../utils/autoComplete'
 import Darkmodetoggle from '../components/darkmodetoggle'
 import {
   goodPractice,
@@ -35,6 +35,7 @@ import {
   getAllDataForCity,
   getDataForAmbition,
   getDataForCityAndAmbition,
+  getPdfData,
 } from '../utils/filterData'
 import genPDF from '../components/pdf'
 
@@ -638,17 +639,58 @@ export default ({ location }: { location: any }) => {
     `,
   )
 
+  const allAmbitionData: any[] = [
+    ambitie1bench1,
+    ambitie1bench2,
+    ambitie1bench3,
+    ambitie1bench4,
+    ambitie2bench1,
+    ambitie2bench2,
+    ambitie2bench3,
+    ambitie2bench4,
+    ambitie3bench1,
+    ambitie3bench2,
+    ambitie3bench3,
+    ambitie3bench4,
+    ambitie3bench5,
+    ambitie3bench6,
+    ambitie3bench7,
+    ambitie4bench1,
+    ambitie4bench2,
+    ambitie4bench3,
+    ambitie4bench4,
+    ambitie4bench5,
+    ambitie5bench1,
+    ambitie5bench2,
+    ambitie5bench3,
+    ambitie6bench1,
+    ambitie6bench2,
+    ambitie6bench3,
+    ambitie6bench4,
+    ambitie6bench5,
+    ambitie7bench1,
+    ambitie7bench2,
+    ambitie7bench3,
+    ambitie7bench4,
+  ]
+
   const changeTyped = async (value: string) => {
     setTyped(value)
   }
 
   const checkInfo = async () => {
+    let errorsMail = true
+    let errorsFirstname = true
+    let errorsLastname = true
+    let errorsPlace = true
+
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/.test(info.mail)) {
       setErrors((currentErrors: FormError) => {
-        currentErrors.mailError = 'Dit is geen geldig mail adres'
+        currentErrors.mailError = 'Dit is geen geldige email'
         return { ...currentErrors }
       })
     } else {
+      errorsMail = false
       setErrors((currentErrors: FormError) => {
         currentErrors.mailError = ''
         return { ...currentErrors }
@@ -660,6 +702,7 @@ export default ({ location }: { location: any }) => {
         return { ...currentErrors }
       })
     } else {
+      errorsFirstname = false
       setErrors((currentErrors: FormError) => {
         currentErrors.firstNameError = ''
         return { ...currentErrors }
@@ -671,12 +714,20 @@ export default ({ location }: { location: any }) => {
         return { ...currentErrors }
       })
     } else {
+      errorsLastname = false
       setErrors((currentErrors: FormError) => {
         currentErrors.lastNameError = ''
         return { ...currentErrors }
       })
     }
-    if (!allResults.includes(info.place)) {
+
+    getAllCities(allAmbitionData).forEach((city: string) => {
+      if (city.toLowerCase() == info.place.toLowerCase()) {
+        errorsPlace = false
+      }
+    })
+
+    if (errorsPlace) {
       setErrors((currentErrors: FormError) => {
         currentErrors.placeError = 'Deze plaats is niet geldig'
         return { ...currentErrors }
@@ -686,12 +737,16 @@ export default ({ location }: { location: any }) => {
         currentErrors.placeError = ''
         return { ...currentErrors }
       })
+    }
+
+    console.log(errorsMail, errorsFirstname, errorsLastname, errorsPlace)
+    if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
       genPDF()
     }
   }
 
   useEffect(() => {
-    let list = searchList(typed)
+    let list = searchList(allAmbitionData, typed, true)
     setSuggestions(list)
   }, [typed])
 
@@ -792,45 +847,12 @@ export default ({ location }: { location: any }) => {
       setWhys(waaromList)
       setGoodPracs(goodPracs)
 
-      const allAmbitionData: any[] = [
-        ambitie1bench1,
-        ambitie1bench2,
-        ambitie1bench3,
-        ambitie1bench4,
-        ambitie2bench1,
-        ambitie2bench2,
-        ambitie2bench3,
-        ambitie2bench4,
-        ambitie3bench1,
-        ambitie3bench2,
-        ambitie3bench3,
-        ambitie3bench4,
-        ambitie3bench5,
-        ambitie3bench6,
-        ambitie3bench7,
-        ambitie4bench1,
-        ambitie4bench2,
-        ambitie4bench3,
-        ambitie4bench4,
-        ambitie4bench5,
-        ambitie5bench1,
-        ambitie5bench2,
-        ambitie5bench3,
-        ambitie6bench1,
-        ambitie6bench2,
-        ambitie6bench3,
-        ambitie6bench4,
-        ambitie6bench5,
-        ambitie7bench1,
-        ambitie7bench2,
-        ambitie7bench3,
-        ambitie7bench4,
-      ]
       getDataForAmbition(allAmbitionData, locationShort)
       // getAllData(allAmbitionData)
       // getDataForCityAndAmbition(allAmbitionData, locationShort, 'Kortrijk')
       // getAllDataForCity(allAmbitionData, 'Kortrijk')
-      getAllCities(allAmbitionData)
+      // const cities = getAllCities(allAmbitionData)
+      // getPdfData(allAmbitionData, 'Kortrijk', 'Brugge')
     }
   }, [locationAmb])
 
@@ -1307,7 +1329,11 @@ export default ({ location }: { location: any }) => {
                       value={typed}
                       onChange={(ev: any) => {
                         setTyped(ev.target.value)
-                        let list = searchList(ev.target.value)
+                        let list = searchList(
+                          allAmbitionData,
+                          ev.target.value,
+                          true,
+                        )
                         setSuggestions(list)
                       }}
                       onInput={(e: React.FormEvent<HTMLInputElement>) =>
@@ -1350,37 +1376,57 @@ export default ({ location }: { location: any }) => {
                       })}
                     </ul>
                   </div>
-                  <Input
-                    label="Voornaam"
-                    callback={(e: React.FormEvent<HTMLInputElement>) =>
-                      setInfo((u: PersonalInfo) => {
-                        //@ts-ignore
-                        u.firstName = e.target.value
-                        return { ...u }
-                      })
-                    }
-                  />
-                  <Input
-                    label="Naam"
-                    callback={(e: React.FormEvent<HTMLInputElement>) =>
-                      setInfo((u: PersonalInfo) => {
-                        //@ts-ignore
-                        u.lastName = e.target.value
-                        return { ...u }
-                      })
-                    }
-                  />
-                  <Input
-                    label="E-mail"
-                    callback={(e: React.FormEvent<HTMLInputElement>) =>
-                      setInfo((u: PersonalInfo) => {
-                        //@ts-ignore
-                        u.mail = e.target.value
-                        return { ...u }
-                      })
-                    }
-                  />
-
+                  <div className="flex max-w-min flex-col">
+                    <Input
+                      label="Voornaam"
+                      callback={(e: React.FormEvent<HTMLInputElement>) =>
+                        setInfo((u: PersonalInfo) => {
+                          //@ts-ignore
+                          u.firstName = e.target.value
+                          return { ...u }
+                        })
+                      }
+                    />
+                    {error.firstNameError && (
+                      <p className="text-sm font-semibold text-red">
+                        {error.firstNameError}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex max-w-min flex-col">
+                    <Input
+                      label="Naam"
+                      callback={(e: React.FormEvent<HTMLInputElement>) =>
+                        setInfo((u: PersonalInfo) => {
+                          //@ts-ignore
+                          u.lastName = e.target.value
+                          return { ...u }
+                        })
+                      }
+                    />
+                    {error.lastNameError && (
+                      <p className="text-sm font-semibold text-red">
+                        {error.lastNameError}
+                      </p>
+                    )}
+                  </div>
+                  <div className="flex max-w-min flex-col">
+                    <Input
+                      label="E-mail"
+                      callback={(e: React.FormEvent<HTMLInputElement>) =>
+                        setInfo((u: PersonalInfo) => {
+                          //@ts-ignore
+                          u.mail = e.target.value
+                          return { ...u }
+                        })
+                      }
+                    />
+                    {error.mailError && (
+                      <p className="text-sm font-semibold text-red">
+                        {error.mailError}
+                      </p>
+                    )}
+                  </div>
                   <button
                     className={`z-0 mt-8 border-2  px-2 py-1 text-white  focus:font-semibold  ${
                       context.dark

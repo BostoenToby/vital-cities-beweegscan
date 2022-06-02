@@ -15,14 +15,26 @@ export const getAllCities = (allData: any) => {
 
   allData.forEach((edge: any) => {
     edge.edges.forEach((node: any) => {
-      if (!results.includes(node.node.gemeente)) {
-        results.push(node.node.gemeente)
+      if (!results.includes(node.node.gemeente.trim())) {
+        results.push(node.node.gemeente.trim())
       }
     })
   })
-  console.log(results)
 
   return results
+}
+
+export const getPdfData = (allData: any, city1: string, city2: string) => {
+  const dataCity1: Ambitie[] = getAllDataForCity(allData, city1)
+  const dataCity2: Ambitie[] = getAllDataForCity(allData, city2)
+
+  let combinedData: any = {}
+  combinedData[city1] = dataCity1
+  combinedData[city2] = dataCity2
+
+  console.log(combinedData)
+
+  return combinedData
 }
 
 export const getAllData = (allData: any) => {
@@ -33,7 +45,6 @@ export const getAllData = (allData: any) => {
 
     results.push({ label: ambition, benchmarks: ambitionResults[0].benchmarks })
   })
-  console.log(results)
 
   return results
 }
@@ -53,7 +64,6 @@ export const getAllDataForCity = (allData: any, city: string) => {
       benchmarks: ambitionResults[0].benchmarks,
     })
   })
-  console.log(results)
 
   return results
 }
@@ -108,8 +118,7 @@ export const getDataForCityAndAmbition = (
     benchmark.data.forEach((node: any) => {
       if (
         node.gemeente &&
-        node.gemeente.toLowerCase().replaceAll(' ', '') ==
-          city.toLowerCase().replaceAll(' ', '') &&
+        node.gemeente.toLowerCase().trim() == city.toLowerCase().trim() &&
         (bench.label == node.indicator || bench.label == node.item)
       ) {
         bench.data.push(node)
@@ -117,7 +126,6 @@ export const getDataForCityAndAmbition = (
     })
     results[0].benchmarks.push(bench)
   })
-  console.log(results)
 
   return results
 }
