@@ -15,7 +15,8 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "postinstall": "netlify-lambda install"
   },
   "dependencies": {
     "@netlify/functions": "^1.0.0",
