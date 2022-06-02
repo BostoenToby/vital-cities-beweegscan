@@ -2,8 +2,9 @@ import { builder, Handler } from '@netlify/functions'
 
 const myHandler: Handler = async (event, context) => {
   const sgMail = require('@sendgrid/mail');
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   console.log("This is a test for the function")
+  console.log(process.env.SENDGRID_API_KEY)
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const data = JSON.parse(String(event.body))
   const { email, subject } = data
   const body = Object.keys(data).map((k) => {
