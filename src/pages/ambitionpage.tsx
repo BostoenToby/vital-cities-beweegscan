@@ -29,7 +29,13 @@ import { PercentageData } from '../interfaces/data'
 import { testData } from '../data/testGraph'
 import Donutdata from '../components/donutdata'
 import FadeInSection from '../components/scrollytelling'
-import { getDataForAmbition } from '../utils/filterData'
+import {
+  getAllCities,
+  getAllData,
+  getAllDataForCity,
+  getDataForAmbition,
+  getDataForCityAndAmbition,
+} from '../utils/filterData'
 import genPDF from '../components/pdf'
 
 export default ({ location }: { location: any }) => {
@@ -821,6 +827,10 @@ export default ({ location }: { location: any }) => {
         ambitie7bench4,
       ]
       getDataForAmbition(allAmbitionData, locationShort)
+      // getAllData(allAmbitionData)
+      // getDataForCityAndAmbition(allAmbitionData, locationShort, 'Kortrijk')
+      // getAllDataForCity(allAmbitionData, 'Kortrijk')
+      getAllCities(allAmbitionData)
     }
   }, [locationAmb])
 
