@@ -1,7 +1,10 @@
+import { builder, Handler } from '@netlify/functions'
+
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-exports.handler =  async ({event, context, callback}: {event: any, context: any, callback: any}) => {
-  const data = JSON.parse(event.body)
+const myHandler: Handler = async (event, context) => {
+    console.log("This is a test for the function")
+  const data = JSON.parse(String(event.body))
   const { email, subject } = data
   const body = Object.keys(data).map((k) => {
     return `${k}: ${data[k]}`
@@ -25,3 +28,7 @@ exports.handler =  async ({event, context, callback}: {event: any, context: any,
     }
   }
 };
+
+const handler = builder(myHandler)
+
+export { handler }
