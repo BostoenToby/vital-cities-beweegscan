@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@netlify/functions": "^1.0.0",
+    "@sendgrid/mail": "^7.7.0",
     "@tailwindcss/line-clamp": "^0.4.0",
     "base-64": "^1.0.0",
     "chart.js": "^3.7.1",
