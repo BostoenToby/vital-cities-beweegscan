@@ -13,7 +13,6 @@ export interface Ambitie {
   benchmarks: Benchmark[]
 }
 
-
 // aanpassen!!!
 // ambities of 1 ambitie => alle benchmarks voor die ambitie (edges) => ... (afhankelijk van benchmark) = Generic (nodes)
 // export interface Data<P extends string, G extends string> {
@@ -51,3 +50,62 @@ export interface Ambitie {
 
 // bruikbaar, gevarieerd en voldoende groen: bezoek park bos groenzone eigen of andere gemeente => opgesplitst in: [bezoek park bos groenzone andere gemeente + bezoek park bos groenzone eigen gemeente], tevredenheid over natuur en groenvoorzieningen, voldoende groen buurt
 // [28-31]
+
+// mogelijke fields:
+
+// gemeente
+// dagelijks____
+// meerdereKerenPerMaand____
+// minstensWekelijks____
+// nooit_minderDan1KeerPerMaand____
+// jaar
+// indicator
+
+// gemeente
+// andere____
+// auto____
+// fiets____
+// openbaarVervoer____
+// teVoet____
+// indicator
+
+// gemeente
+// eens____
+// neutraal____
+// oneens____
+// indicator
+
+// gemeente
+// afEnToe____
+// nooit_zelden____
+// vaak_altijd____
+// item
+// indicator
+
+// gemeente
+// minstensMaandelijks____
+// minstensWekelijks____
+// nooit_eenUitzonderlijkeKeer____
+// indicator
+
+// gemeente
+// _12KeerOfMinder____
+// meerDan12Keer____
+// nooit____
+// item
+// indicator
+
+// gemeente
+// neutraal____
+// ontevreden____
+// tevreden____
+// item
+// indicator
+
+// gemeente
+// meerDan12Keer____
+// nietAanwezigInDeEigenGemeente____
+// nooit____
+// tot12Keer____
+// item
+// indicator

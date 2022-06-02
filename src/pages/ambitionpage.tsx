@@ -35,6 +35,7 @@ import {
   getAllDataForCity,
   getDataForAmbition,
   getDataForCityAndAmbition,
+  getGraphData,
   getPdfData,
 } from '../utils/filterData'
 import genPDF from '../components/pdf'
@@ -756,16 +757,6 @@ export default ({ location }: { location: any }) => {
     let waaromList: HoeWaarom[] = []
     let goodPracs: goodPractice[] = []
 
-    // let loc: string
-    // let locshort: string
-    // if (locationAmb == undefined || locationShort == undefined) {
-    //   loc = location.state.ambition
-    //   locshort = location.state.short
-    // } else {
-    //   loc = locationAmb
-    //   locshort = locationShort
-    // }
-
     if (locationAmb && locationShort) {
       for (let item of cms.nodes) {
         if (item.frontmatter.ambitions == null) {
@@ -849,7 +840,13 @@ export default ({ location }: { location: any }) => {
 
       getDataForAmbition(allAmbitionData, locationShort)
       // getAllData(allAmbitionData)
-      // getDataForCityAndAmbition(allAmbitionData, locationShort, 'Kortrijk')
+      // const testData = getDataForCityAndAmbition(
+      //   allAmbitionData,
+      //   locationShort,
+      //   'Kortrijk',
+      // )
+      getGraphData(allAmbitionData, locationShort, 'Kortrijk', '')
+      // console.log(testData)
       // getAllDataForCity(allAmbitionData, 'Kortrijk')
       // const cities = getAllCities(allAmbitionData)
       // getPdfData(allAmbitionData, 'Kortrijk', 'Brugge')

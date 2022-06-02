@@ -24,13 +24,47 @@ export const getAllCities = (allData: any) => {
   return results
 }
 
-export const getPdfData = (allData: any, city1: string, city2: string) => {
+export const getPdfData = (
+  allData: any,
+  city1: string,
+  city2: string | undefined,
+) => {
   const dataCity1: Ambitie[] = getAllDataForCity(allData, city1)
-  const dataCity2: Ambitie[] = getAllDataForCity(allData, city2)
+  const dataCity2: Ambitie[] = city2 ? getAllDataForCity(allData, city2) : []
 
   let combinedData: any = {}
   combinedData[city1] = dataCity1
-  combinedData[city2] = dataCity2
+
+  if (city2) {
+    combinedData[city2] = dataCity2
+  }
+
+  console.log(combinedData)
+
+  return combinedData
+}
+
+export const getGraphData = (
+  allData: any,
+  ambition: string,
+  city1: string,
+  city2: string | undefined,
+) => {
+  const dataCity1: Ambitie[] = getDataForCityAndAmbition(
+    allData,
+    ambition,
+    city1,
+  )
+  const dataCity2: Ambitie[] = city2
+    ? getDataForCityAndAmbition(allData, ambition, city2)
+    : []
+
+  let combinedData: any = {}
+  combinedData[city1] = dataCity1
+
+  if (city2) {
+    combinedData[city2] = dataCity2
+  }
 
   console.log(combinedData)
 
