@@ -688,7 +688,7 @@ export default ({ location }: { location: any }) => {
         subject: "rapport beweegscan Vital Cities",
         message: "This is a test"
       }
-      await axios.post("/.netlify/functions/sendmail", {
+      await axios.post("/.netlify/functions/sendmail/sendmail", {
         body: JSON.stringify(to_send)
       }).catch(function (error) {
         console.log(error);
