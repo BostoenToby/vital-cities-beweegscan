@@ -30,6 +30,4 @@ const myHandler: Handler = async (event, context) => {
   }
 };
 
-const handler = builder(myHandler)
-
-export { handler }
+exports.handler = builder(myHandler)
