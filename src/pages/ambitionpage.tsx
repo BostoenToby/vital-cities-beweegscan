@@ -538,13 +538,15 @@ export default ({ location }: { location: any }) => {
             item: { eq: "Onveiligheidsgevoel buurt/wijk" }
           }
         ) {
-          nodes {
-            gemeente
-            afEnToe____
-            nooit_zelden____
-            vaak_altijd____
-            item
-            indicator
+          edges {
+            node {
+              gemeente
+              afEnToe____
+              nooit_zelden____
+              vaak_altijd____
+              item
+              indicator
+            }
           }
         }
         ambitie6bench5: allGsVitalCitiesDataSaS19(
@@ -553,13 +555,15 @@ export default ({ location }: { location: any }) => {
             item: { eq: "Onveiligheidsgevoel gemeente/stad" }
           }
         ) {
-          nodes {
-            gemeente
-            afEnToe____
-            nooit_zelden____
-            vaak_altijd____
-            item
-            indicator
+          edges {
+            node {
+              gemeente
+              afEnToe____
+              nooit_zelden____
+              vaak_altijd____
+              item
+              indicator
+            }
           }
         }
         ambitie7bench1: allGsVitalCitiesDataKlS01(
