@@ -5,7 +5,7 @@ const {
     SENDGRID_FROM_EMAIL,
 } = process.env;
 
-exports.handler = async function (event: any, context: any, callback: Function) {
+exports.handler = async function (event, context, callback) {
     const { name, email, subject, message } = JSON.parse(event.body);
     client.setApiKey(SENDGRID_API_KEY)
 
@@ -22,7 +22,7 @@ exports.handler = async function (event: any, context: any, callback: Function) 
             statusCode: 200,
             body: 'Message sent'
         }
-    } catch(err: any){
+    } catch(err){
         return {
             statusCode: err.code,
             body: JSON.stringify({ msg: err.message })
