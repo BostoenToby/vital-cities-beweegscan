@@ -31,6 +31,7 @@ import Donutdata from '../components/donutdata'
 import FadeInSection from '../components/scrollytelling'
 import { getDataForAmbition } from '../utils/filterData'
 import genPDF from '../components/pdf'
+import axios from 'axios'
 
 export default ({ location }: { location: any }) => {
   const [hasMounted, setHasMounted] = useState(false)
@@ -687,13 +688,12 @@ export default ({ location }: { location: any }) => {
         subject: "rapport beweegscan Vital Cities",
         message: "This is a test"
       }
-      const response = await fetch(".netlify/functions/sendmail", {
-        method: 'POST',
+      await axios.post("/.netlify/functions/sendmail", {
         body: JSON.stringify(to_send)
-      })
-      if(!response.ok){
+      }).catch(function (error) {
+        console.log(error);
         console.log("Mail didn't succeed")
-      }
+      });
     }
   }
 
