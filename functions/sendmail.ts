@@ -14,7 +14,7 @@ const myHandler: Handler = async (event, context) => {
     to: email,
     from: "toby.bostoen@student.howest.be",
     subject: subject ? subject : 'New Entry from Contact Form',
-    html: body,
+    html: body
   };
   try{
     await sgMail.send(mail_to_send)
