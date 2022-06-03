@@ -42,16 +42,7 @@ import axios from 'axios'
 import Barchart from '../components/barchart'
 import Lottie, { useLottie } from 'lottie-react'
 import lightbulb from '../assets/animations/lightbulb.json'
-import leaf from '../assets/animations/leaf.json'
-import lock from '../assets/animations/lock.json'
-import youth from '../assets/animations/youth.json'
-import basket from '../assets/animations/basket.json'
-import old_person from '../assets/animations/old_person.json'
-import balance from '../assets/animations/balance.json'
-import bench from '../assets/animations/bench.json'
-import bike from '../assets/animations/bike.json'
-import bus from '../assets/animations/bus.json'
-import car_free from '../assets/animations/car_free.json'
+import long_arrow from '../assets/animations/long_arrow.json'
 import { colorify, flatten, getColors, replaceColor } from 'lottie-colorify'
 
 export default ({ location }: { location: any }) => {
@@ -1060,7 +1051,7 @@ export default ({ location }: { location: any }) => {
                       animationData={replaceColor(
                         '#000000',
                         '#492784',
-                        old_person,
+                        lightbulb,
                       )}
                     />
                   </div>
