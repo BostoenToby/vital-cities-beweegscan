@@ -744,14 +744,17 @@ export default ({ location }: { location: any }) => {
     console.log(errorsMail, errorsFirstname, errorsLastname, errorsPlace)
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
       genPDF()
-      const to_send = {
+      // const to_send = {
+      //   name: `${info.firstName} ${info.lastName}`,
+      //   email: info.mail,
+      //   subject: "rapport beweegscan Vital Cities",
+      //   message: "This is a test"
+      // }
+      await axios.post("/.netlify/functions/sendmail/sendmail.js", {
         name: `${info.firstName} ${info.lastName}`,
         email: info.mail,
         subject: "rapport beweegscan Vital Cities",
         message: "This is a test"
-      }
-      await axios.post("/.netlify/functions/sendmail/sendmail.js", {
-        body: JSON.stringify(to_send)
       }).catch(function (error) {
         console.log(error);
         console.log("Mail didn't succeed")
