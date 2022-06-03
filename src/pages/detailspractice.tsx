@@ -212,10 +212,6 @@ export default ({ location }: { location: any }) => {
             <Contactsection />
             <Footer />
           </div>
-          <div className="hidden bg-yellowDesat">
-            prevent color from being purged, because it's only used in
-            components rn
-          </div>
         </div>
       )}
     </ThemeContext.Consumer>
