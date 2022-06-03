@@ -295,7 +295,7 @@ export default ({ section }: { section: string }) => {
                   <div>
                     <Menu
                       size={32}
-                      className={`m-8 ${
+                      className={`m-8 cursor-pointer ${
                         context.dark ? 'text-white' : 'text-dark'
                       }`}
                       onClick={() => handleSideBar()}
@@ -318,7 +318,7 @@ export default ({ section }: { section: string }) => {
                 <header className="mt-4 mb-16 flex flex-row">
                   <X
                     size={32}
-                    className="text-white"
+                    className="text-white cursor-pointer"
                     onClick={() => handleSideBar()}
                   />
                   <a

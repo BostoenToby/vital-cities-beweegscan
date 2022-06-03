@@ -9,7 +9,7 @@ export default () => {
       {(context) => (
         <div
           className={`${
-            context.dark ? 'bg-white bg-opacity-[0.03]' : 'bg-dark'
+            context.dark ? 'bg-white bg-opacity-[0.03]' : 'bg-purple'
           } px-8 py-8`}
         >
           <h2 className="mb-2 text-lg font-semibold text-white tabletportrait:text-xl">

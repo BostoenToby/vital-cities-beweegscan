@@ -201,7 +201,7 @@ export default ({
           className={` flex min-h-[288px] flex-col justify-center   px-6 py-12 drop-shadow-sm ${
             context.dark
               ? ' bg-white bg-opacity-[0.06] hover:bg-opacity-10 focus:bg-opacity-10'
-              : 'border-[1px] border-darkGray border-opacity-25 bg-white hover:bg-darkGray  hover:bg-opacity-5 focus:bg-darkGray focus:bg-opacity-5'
+              : 'border-0 shadow-md bg-white hover:bg-darkGray  hover:bg-opacity-5 focus:bg-darkGray focus:bg-opacity-5'
           }`}
         >
           {getIcon(header.charAt(header.length - 1))}
