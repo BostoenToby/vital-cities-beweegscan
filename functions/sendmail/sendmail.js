@@ -12,7 +12,7 @@ exports.handler = async function (event, context, callback) {
     client.setApiKey(SENDGRID_API_KEY)
 
     const data = {
-        to: 'sigofoy785@game4hr.com',
+        to: 'toby.bostoen@student.howest.be',
         from: 'toby.bostoen@student.howest.be',
         subject: `This is a test`,
         html: `This is the message: ${message}`
