@@ -1,5 +1,8 @@
 module.exports = {
   content: ['**/*.{tsx,html}'],
+  safelist: [{
+    pattern: /w-\[.+%\]/
+  }],
   important: true,
   theme: {
     extend: {
