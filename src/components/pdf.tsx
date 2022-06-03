@@ -130,7 +130,7 @@ function genPDF(data: any) {
     doc.text('Rapport generator van', 40, 287)
 
     doc.setTextColor('#ffffff').setFontSize(10)
-    doc.text('{stad}', 40, 293)
+    doc.text(city1, 40, 293)
 
     doc.setTextColor('#ffffff').setFontSize(10)
     doc.text('pagina ' + page, 180, 285)
