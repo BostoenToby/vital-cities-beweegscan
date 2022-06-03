@@ -1,9 +1,12 @@
 import React from 'react'
 import '../assets/tailwind.css'
 import ThemeContext from '../context/themecontext'
+import { Ambitie, Benchmark } from '../interfaces/data'
 
-export default () => {
+export default (bench: Benchmark) => {
   return (
+
+
     <ThemeContext.Consumer>
       {(context) => (
         <div className="h-full w-full">

@@ -405,8 +405,8 @@ export default ({ section }: { section: string }) => {
                             onClick={() => handleLink()}
                             to="/ambitionpage/"
                             state={{
-                              ambition: 'Stad en buurt als speelplein',
-                              short: 'spelen',
+                              ambition: 'Stad en buurt als ontmoetingsplek',
+                              short: 'ontmoeten',
                             }}
                           >
                             Ontmoeten

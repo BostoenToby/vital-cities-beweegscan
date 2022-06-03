@@ -50,3 +50,71 @@ export interface Ambitie {
 
 // bruikbaar, gevarieerd en voldoende groen: bezoek park bos groenzone eigen of andere gemeente => opgesplitst in: [bezoek park bos groenzone andere gemeente + bezoek park bos groenzone eigen gemeente], tevredenheid over natuur en groenvoorzieningen, voldoende groen buurt
 // [28-31]
+
+// mogelijke fields:
+
+// gemeente
+// dagelijks____
+// meerdereKerenPerMaand____
+// minstensWekelijks____
+// nooit_minderDan1KeerPerMaand____
+// jaar
+// indicator
+// => beweegt niet minstens wekelijks
+// slecht = meerdereKerenPerMaand + nooit_minderDan1keerPerMaand
+
+// gemeente
+// andere____
+// auto____
+// fiets____
+// openbaarVervoer____
+// teVoet____
+// indicator
+// => slecht = auto
+
+// gemeente
+// eens____
+// neutraal____
+// oneens____
+// indicator
+// slecht = oneens
+
+// gemeente
+// afEnToe____
+// nooit_zelden____
+// vaak_altijd____
+// item
+// indicator
+// => let op voor MO_S_11: meerder nodes per chart
+
+// gemeente
+// minstensMaandelijks____
+// minstensWekelijks____
+// nooit_eenUitzonderlijkeKeer____
+// indicator
+// slecht = minstensMaandelijks + nooit_eenUitzonderlijkeKeer
+
+// gemeente
+// _12KeerOfMinder____
+// meerDan12Keer____
+// nooit____
+// item
+// indicator
+// slecht = nooit
+
+// gemeente
+// neutraal____
+// ontevreden____
+// tevreden____
+// item
+// indicator
+// slecht = ontevreden
+
+// gemeente
+// meerDan12Keer____
+// nietAanwezigInDeEigenGemeente____
+// nooit____
+// tot12Keer____
+// item
+// indicator
+// slecht = nietAanweigInDeEigenGemeente + nooit
