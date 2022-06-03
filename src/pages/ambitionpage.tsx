@@ -828,6 +828,7 @@ export default ({ location }: { location: any }) => {
       setGoodPracs(goodPracs)
 
       const testData = getDataForAmbition(allAmbitionData, locationShort)
+      console.log(allAmbitionData)
       setAllData(allAmbitionData)
       // const testData = getAllData(allAmbitionData)
       // const testData = getDataForCityAndAmbition(
