@@ -2,7 +2,7 @@ import * as React from 'react'
 import jsPDF from 'jspdf'
 // import Base64 from 'base-64'
 
-function genPDF() {
+function genPDF(data: any) {
   var page = 1
 
   function genRaleway() {

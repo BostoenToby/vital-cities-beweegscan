@@ -55,6 +55,7 @@ export default ({ location }: { location: any }) => {
   const [suggestions, setSuggestions] = useState<string[]>()
   const [typed, setTyped] = useState<string>('')
   const [graphData, setGraphData] = useState<PercentageData[]>()
+  const [allData, setAllData] = useState<any>()
   const [info, setInfo] = useState<PersonalInfo>({
     place: '',
     firstName: '',
@@ -743,7 +744,8 @@ export default ({ location }: { location: any }) => {
 
     console.log(errorsMail, errorsFirstname, errorsLastname, errorsPlace)
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
-      genPDF()
+      const data = getPdfData(allData, "Kortrijk", "Menen")
+      genPDF(data)
       // const to_send = {
       //   name: `${info.firstName} ${info.lastName}`,
       //   email: info.mail,
@@ -855,6 +857,7 @@ export default ({ location }: { location: any }) => {
       setGoodPracs(goodPracs)
 
       const testData = getDataForAmbition(allAmbitionData, locationShort)
+      setAllData(allAmbitionData)
       // const testData = getAllData(allAmbitionData)
       // const testData = getDataForCityAndAmbition(
       //   allAmbitionData,
