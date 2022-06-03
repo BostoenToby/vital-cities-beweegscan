@@ -109,27 +109,26 @@ export const getDataForAmbition = (allData: any, ambition: string) => {
     }
   })
 
-  if (relevantEdges) {
-    let label = ''
-    const nodes: any[] = []
+  let label = ''
+  const nodes: any[] = []
 
-    relevantEdges.forEach((edge: any, index: number) => {
-      if (
-        typeof edge[0].node.item == 'undefined' ||
-        (ambition == 'actief bewegen' && index == 3)
-      ) {
-        label = edge[0].node.indicator
-      } else {
-        label = edge[0].node.item
-      }
+  relevantEdges.forEach((edge: any, index: number) => {
+    if (
+      typeof edge[0].node.item == 'undefined' ||
+      (ambition == 'actief bewegen' && index == 3)
+    ) {
+      label = edge[0].node.indicator
+    } else {
+      label = edge[0].node.item
+    }
 
-      edge.forEach((node: any) => {
-        nodes.push(node.node)
-      })
-
-      benches.push({ label: label, data: nodes })
+    edge.forEach((node: any) => {
+      nodes.push(node.node)
     })
-  }
+
+    benches.push({ label: label, data: nodes })
+  })
+
   results.push({ label: ambition, benchmarks: benches })
 
   return removeSpacesCities(results)
