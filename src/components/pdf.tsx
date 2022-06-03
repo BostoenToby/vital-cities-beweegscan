@@ -175,7 +175,7 @@ function genPDF(data: any) {
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Voldoende fietsenstallingen', 10, 110)
     // doc.setFont('Raleway', 'normal')
-    doc.text('{%}', 10, 116)
+    doc.text(data[city1][2].benchmarks[5].data[0].eens____, 10, 116)
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Staat voetpaden', 90, 80)
@@ -216,7 +216,7 @@ function genPDF(data: any) {
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Voldoende fietsenstallingen', 10, 195)
     // doc.setFont('Raleway', 'normal')
-    doc.text('{%}', 10, 201)
+    doc.text(data[city2][2].benchmarks[5].data[0].eens____, 10, 201)
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Staat voetpaden', 90, 165)
@@ -290,11 +290,7 @@ function genPDF(data: any) {
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Actief bewegen', 10, 165)
     // doc.setFont('Raleway', 'normal')
-    doc.text(
-      data[city2][0].benchmarks[0].data[0].nooit_minderDan1KeerPerMaand____,
-      10,
-      171,
-    )
+    doc.text(data[city2][0].benchmarks[0].data[0].nooit_minderDan1KeerPerMaand____, 10, 171,)
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Veilig naar school', 10, 180)
@@ -349,14 +345,14 @@ function genPDF(data: any) {
     doc.text(data[city1][1].benchmarks[1].data[0].oneens____, 80, 86)
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
-    doc.text('Lidmaatschap deelsystem', 80, 95)
-    doc.setFont('Raleway', 'normal')
-    doc.text('{%}', 80, 101)
+    doc.text('Lidmaatschap deelsystemen', 80, 95)
+    // doc.setFont('Raleway', 'normal')
+    doc.text(data[city1][1].benchmarks[4].data[0].resultaatGemeente, 80, 101)
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Autovrije zones', 150, 80)
     // doc.setFont('Raleway', 'normal')
-    doc.text(data[city1][2].benchmarks[1].data[0].oneens____, 150, 86)
+    doc.text(data[city1][1].benchmarks[2].data[0].oneens____, 150, 86)
 
     doc.setTextColor('#111111').setFontSize(18).setFont('Raleway', 'normal')
     doc.text(`Gemiddelde in ${city2}`, 10, 145)
@@ -385,13 +381,13 @@ function genPDF(data: any) {
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Lidmaatschap deelsystemen', 80, 180)
-    doc.setFont('Raleway', 'normal')
-    doc.text('{%}', 80, 186)
+    // doc.setFont('Raleway', 'normal')
+    doc.text(data[city2][1].benchmarks[4].data[0].resultaatGemeente, 80, 186)
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Autovrije zones', 150, 165)
     // doc.setFont('Raleway', 'normal')
-    doc.text(data[city1][2].benchmarks[1].data[0].oneens____, 150, 171)
+    doc.text(data[city2][1].benchmarks[2].data[0].oneens____, 150, 171)
   }
 
   function ambitieSportplein() {
@@ -423,8 +419,8 @@ function genPDF(data: any) {
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Sportclubs/accomodaties', 80, 80)
-    doc.setFont('Raleway', 'normal')
-    doc.text('{%}', 80, 86)
+    // doc.setFont('Raleway', 'normal')
+    doc.text(data[city1][3].benchmarks[5].data[3].percentage, 80, 86)
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Tevreden sportvoorziening', 80, 95)
@@ -463,8 +459,8 @@ function genPDF(data: any) {
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Sportclubs/accomodaties', 80, 165)
-    doc.setFont('Raleway', 'normal')
-    doc.text('{%}', 80, 171)
+    // doc.setFont('Raleway', 'normal')
+    doc.text(data[city2][3].benchmarks[5].data[3].percentage, 80, 171)
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Tevreden sportvoorziening', 80, 180)
@@ -562,18 +558,18 @@ function genPDF(data: any) {
     // doc.setFont('Raleway', 'normal')
     doc.text(data[city1][5].benchmarks[0].data[0].oneens____, 10, 86)
 
-    if(data[city1][5].benchmarks[3].data[0]){
+    if(data[city1][5].benchmarks[3].data[0] && data[city2][5].benchmarks[3].data[0]){
       doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
-      doc.text('Onveiligheidsgevoel buurt', 170, 95)
+      doc.text('Onveiligheidsgevoel buurt', 10, 110)
       // doc.setFont('Raleway', 'normal')
-      doc.text(data[city1][5].benchmarks[3].data[0].oneens____, 170, 101)
+      doc.text(data[city1][5].benchmarks[3].data[0].nooit_zelden____, 10, 116)
     }
 
-    if(data[city1][5].benchmarks[4].data[0]){
+    if(data[city1][5].benchmarks[4].data[0] && data[city2][5].benchmarks[3].data[0]){
       doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
       doc.text('Onveiligheidsgevoel gemeente', 90, 95)
       // doc.setFont('Raleway', 'normal')
-      doc.text(data[city1][5].benchmarks[4].data[0].oneens____, 90, 101)
+      doc.text(data[city1][5].benchmarks[4].data[0].nooit_zelden____, 90, 101)
     }
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
@@ -597,18 +593,18 @@ function genPDF(data: any) {
     // doc.setFont('Raleway', 'normal')
     doc.text(data[city2][5].benchmarks[0].data[0].oneens____, 10, 171)
 
-    if(data[city1][5].benchmarks[3].data[0]){
+    if(data[city2][5].benchmarks[3].data[0]){
       doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
-      doc.text('Onveiligheidsgevoel buurt', 170, 180)
+      doc.text('Onveiligheidsgevoel buurt', 10, 195)
       // doc.setFont('Raleway', 'normal')
-      doc.text(data[city2][5].benchmarks[3].data[0].oneens____, 170, 186)
+      doc.text(data[city2][5].benchmarks[3].data[0].nooit_zelden____, 10, 201)
     }
 
-    if(data[city1][5].benchmarks[4].data[0]){
+    if(data[city2][5].benchmarks[4].data[0]){
       doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
       doc.text('Onveiligheidsgevoel gemeente', 90, 180)
       // doc.setFont('Raleway', 'normal')
-      doc.text(data[city2][5].benchmarks[4].data[0].oneens____, 90, 186)
+      doc.text(data[city2][5].benchmarks[4].data[0].nooit_zelden____, 90, 186)
     }
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')

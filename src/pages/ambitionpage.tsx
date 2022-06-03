@@ -103,6 +103,7 @@ export default ({ location }: { location: any }) => {
     ambitie2bench2,
     ambitie2bench3,
     ambitie2bench4,
+    ambitie2bench5,
     ambitie3bench1,
     ambitie3bench2,
     ambitie3bench3,
@@ -115,6 +116,9 @@ export default ({ location }: { location: any }) => {
     ambitie4bench3,
     ambitie4bench4,
     ambitie4bench5,
+    ambitie4bench6,
+    ambitie4bench7,
+    ambitie4bench8,
     ambitie5bench1,
     ambitie5bench2,
     ambitie5bench3,
@@ -215,17 +219,6 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie1bench5: allGsVitalCitiesDataMoS13(
-          filter: { jaar: { eq: "2020" } }
-        ) {
-          edges {
-            node {
-              resultaatGemeente
-              item
-              gemeente
-            }
-          }
-        }
         ambitie2bench1: allGsVitalCitiesDataMoS17(
           filter: { jaar: { eq: 2020 } }
         ) {
@@ -280,6 +273,17 @@ export default ({ location }: { location: any }) => {
               oneens____
               item
               indicator
+            }
+          }
+        }
+        ambitie2bench5: allGsVitalCitiesDataMoS13(
+          filter: { jaar: { eq: "2020" } }
+        ) {
+          edges {
+            node {
+              resultaatGemeente
+              item
+              gemeente
             }
           }
         }
@@ -464,33 +468,36 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie4bench6_1: allGsVitalCitiesDataCuS06(
+        ambitie4bench6: allGsVitalCitiesDataCuS06(
           filter: { jaar: { eq: "2020" } }
         ) {
           edges {
             node {
               verhoudingPer1000Inwoners
               gemeente
+              percentage
             }
           }
         }
-        ambitie4bench6_2: allGsVitalCitiesDataCuS07(
+        ambitie4bench7: allGsVitalCitiesDataCuS07(
           filter: { jaar: { eq: "2020" } }
         ) {
           edges {
             node {
               gemeente
               verhoudingPer1000Inwoners
+              percentage
             }
           }
         }
-        ambitie4bench6_3: allGsVitalCitiesDataCuS08(
+        ambitie4bench8: allGsVitalCitiesDataCuS08(
           filter: { jaar: { eq: "2020" } }
         ) {
           edges {
             node {
               verhoudingPer1000Inwoners
               gemeente
+              percentage
             }
           }
         }
@@ -696,6 +703,7 @@ export default ({ location }: { location: any }) => {
     ambitie2bench2,
     ambitie2bench3,
     ambitie2bench4,
+    ambitie2bench5,
     ambitie3bench1,
     ambitie3bench2,
     ambitie3bench3,
@@ -708,6 +716,9 @@ export default ({ location }: { location: any }) => {
     ambitie4bench3,
     ambitie4bench4,
     ambitie4bench5,
+    ambitie4bench6,
+    ambitie4bench7,
+    ambitie4bench8,
     ambitie5bench1,
     ambitie5bench2,
     ambitie5bench3,
@@ -789,7 +800,7 @@ export default ({ location }: { location: any }) => {
 
     console.log(errorsMail, errorsFirstname, errorsLastname, errorsPlace)
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
-      const data = getPdfData(allData, 'Kortrijk', 'Menen')
+      const data = getPdfData(allData, 'Antwerpen', 'Kortrijk')
       genPDF(data)
       // const to_send = {
       //   name: `${info.firstName} ${info.lastName}`,
