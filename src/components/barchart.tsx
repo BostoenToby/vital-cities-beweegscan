@@ -14,7 +14,7 @@ export default () => {
         jaar: 2020,
         meerdereKerenPerMaand____: '18%',
         minstensWekelijks____: '46%',
-        nooit_minderDan1KeerPerMaand____: '11%',
+        nooit_minderDan1KeerPerMaand____: '15%',
       },
     ],
   }
@@ -42,22 +42,30 @@ export default () => {
       <ThemeContext.Consumer>
         {(context) => (
           // split label so it can be put in a seperate column with max width
-          <section className="w-full">
-            <div className="flex h-8 w-full flex-row">
+          <section className="flex flex-col">
+            <div className="flex h-8 flex-row">
               <div
                 className={`h-full w-[${testJson.data[0]['nooit_minderDan1KeerPerMaand____']}] bg-pink`}
               ></div>
-              <div className='flex items-center'>
+              <div className="flex items-center">
                 <div className="relative left-2">
                   {testJson.data[0]['nooit_minderDan1KeerPerMaand____']}
                 </div>
               </div>
             </div>
             {/* enkel tweede bar indien tweede gemeente geselecteerd */}
-            <div>
-              <div></div>
-              <div></div>
-            </div>
+            {testJson2 ? (
+              <div className="flex h-8 flex-row mt-2">
+                <div
+                  className={`h-full w-[${testJson2.data[0]['nooit_minderDan1KeerPerMaand____']}] bg-purple`}
+                ></div>
+                <div className="flex items-center">
+                  <div className="relative left-2">
+                    {testJson2.data[0]['nooit_minderDan1KeerPerMaand____']}
+                  </div>
+                </div>
+              </div>
+            ) : null}
           </section>
         )}
       </ThemeContext.Consumer>

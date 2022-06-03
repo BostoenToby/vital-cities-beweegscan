@@ -1123,13 +1123,13 @@ export default ({ location }: { location: any }) => {
                         <Donutdata data={e} key={e.label} />
                       ))}
                     </div> */}
-                    <div className="flex flex-row pt-6">
-                      <div className="mr-4 flex w-max items-center">
-                        <label className="">Actief bewegen</label>
-                        {/* will become flex column */}
+                    <div className="grid grid-cols-5 grid-rows-2 items-center gap-y-6 pt-6">
+                      <label className="col-span-1 pr-2">Actief bewegen</label>
+                      <div className="col-span-4">
+                        <Barchart />
                       </div>
-                      <div className="w-full">
-                        {/* will become flex column */}
+                      <label className="col-span-1 pr-2">Actief bewegen</label>
+                      <div className="col-span-4">
                         <Barchart />
                       </div>
                     </div>
