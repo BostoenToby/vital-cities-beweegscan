@@ -67,7 +67,7 @@ export const getGraphData = (
   return combinedData
 }
 
-const getAllData = (allData: any) => {
+export const getAllData = (allData: any) => {
   const results: Ambitie[] = []
 
   ambitions.forEach((ambition: string) => {
@@ -98,7 +98,7 @@ export const getAllDataForCity = (allData: any, city: string) => {
   return results
 }
 
-const getDataForAmbition = (allData: any, ambition: string) => {
+export const getDataForAmbition = (allData: any, ambition: string) => {
   const relevantEdges: any[] = []
   const results: Ambitie[] = []
   const benches: Benchmark[] = []

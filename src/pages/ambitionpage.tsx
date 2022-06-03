@@ -32,6 +32,7 @@ import FadeInSection from '../components/scrollytelling'
 import {
   getAllCities,
   getAllDataForCity,
+  getDataForAmbition,
   getDataForCityAndAmbition,
   getGraphData,
   getPdfData,
@@ -743,7 +744,7 @@ export default ({ location }: { location: any }) => {
 
     console.log(errorsMail, errorsFirstname, errorsLastname, errorsPlace)
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
-      const data = getPdfData(allData, "Kortrijk", "Menen")
+      const data = getPdfData(allData, 'Kortrijk', 'Menen')
       genPDF(data)
       // const to_send = {
       //   name: `${info.firstName} ${info.lastName}`,
@@ -751,12 +752,14 @@ export default ({ location }: { location: any }) => {
       //   subject: "rapport beweegscan Vital Cities",
       //   message: "This is a test"
       // }
-      await axios.post("/.netlify/functions/sendmail/sendmail.js", {
-        message: "This is a test"
-      }).catch(function (error) {
-        console.log(error)
-        console.log("Mail didn't succeed")
-      });
+      await axios
+        .post('/.netlify/functions/sendmail/sendmail.js', {
+          message: 'This is a test',
+        })
+        .catch(function (error) {
+          console.log(error)
+          console.log("Mail didn't succeed")
+        })
     }
   }
 
@@ -860,12 +863,12 @@ export default ({ location }: { location: any }) => {
       //   locationShort,
       //   'Kortrijk',
       // )
-      const testData = getGraphData(
-        allAmbitionData,
-        locationShort,
-        'Vlaams Gewest',
-        '',
-      )
+      // const testData = getGraphData(
+      //   allAmbitionData,
+      //   locationShort,
+      //   'Vlaams Gewest',
+      //   '',
+      // )
       // const testData = getAllDataForCity(allAmbitionData, 'Kortrijk')
       // const cities = getAllCities(allAmbitionData)
       // const testData = getPdfData(allAmbitionData, 'Kortrijk', 'Brugge')
@@ -1062,7 +1065,7 @@ export default ({ location }: { location: any }) => {
                         <Donutdata data={e} key={e.label} />
                       ))}
                     </div> */}
-                    <div className='pt-6'>
+                    <div className="pt-6">
                       <Barchart />
                     </div>
                   </div>
