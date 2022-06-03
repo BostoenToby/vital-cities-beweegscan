@@ -77,7 +77,7 @@ export default () => {
                     defaultValue="filter practices"
                     value={selected}
                     onChange={(event) => handleSelect(event)}
-                    className={`w-max appearance-none border-none p-2 pb-8 pr-8 text-2xl font-semibold outline-none   ${
+                    className={`w-max appearance-none border-none p-2 pb-8 pr-8 text-lg font-semibold outline-none gridbreak:text-2xl   ${
                       context.dark
                         ? 'bg-dark text-white text-opacity-90 group-focus-within:text-opacity-100 group-active:text-opacity-100'
                         : 'text-dark text-opacity-70 group-focus-within:text-purple group-active:text-purple '

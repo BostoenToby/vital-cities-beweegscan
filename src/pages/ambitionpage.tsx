@@ -31,15 +31,14 @@ import Donutdata from '../components/donutdata'
 import FadeInSection from '../components/scrollytelling'
 import {
   getAllCities,
-  getAllData,
   getAllDataForCity,
-  getDataForAmbition,
   getDataForCityAndAmbition,
   getGraphData,
   getPdfData,
 } from '../utils/filterData'
 import genPDF from '../components/pdf'
 import axios from 'axios'
+import Barchart from '../components/barchart'
 
 export default ({ location }: { location: any }) => {
   const [hasMounted, setHasMounted] = useState(false)
@@ -861,12 +860,12 @@ export default ({ location }: { location: any }) => {
       //   locationShort,
       //   'Kortrijk',
       // )
-      // const testData = getGraphData(
-      //   allAmbitionData,
-      //   locationShort,
-      //   'Vlaams Gewest',
-      //   '',
-      // )
+      const testData = getGraphData(
+        allAmbitionData,
+        locationShort,
+        'Vlaams Gewest',
+        '',
+      )
       // const testData = getAllDataForCity(allAmbitionData, 'Kortrijk')
       // const cities = getAllCities(allAmbitionData)
       // const testData = getPdfData(allAmbitionData, 'Kortrijk', 'Brugge')
@@ -1058,10 +1057,13 @@ export default ({ location }: { location: any }) => {
                     <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
                       HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ...
                     </label>
-                    <div className="grid grid-cols-1 text-sm font-medium tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl">
+                    {/* <div className="grid grid-cols-1 text-sm font-medium tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl">
                       {graphData?.map((e, i) => (
                         <Donutdata data={e} key={e.label} />
                       ))}
+                    </div> */}
+                    <div className='pt-6'>
+                      <Barchart />
                     </div>
                   </div>
                 ) : null}
