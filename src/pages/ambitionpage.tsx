@@ -755,7 +755,7 @@ export default ({ location }: { location: any }) => {
       await axios.post("/.netlify/functions/sendmail/sendmail.js", {
         message: "This is a test"
       }).catch(function (error) {
-        console.log(error);
+        console.log(error)
         console.log("Mail didn't succeed")
       });
     }

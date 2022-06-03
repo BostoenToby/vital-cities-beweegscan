@@ -25,6 +25,7 @@ exports.handler = async function (event, context, callback) {
             body: 'Message sent'
         }
     } catch(err){
+        console.log(err)
         return {
             statusCode: err.code,
             body: JSON.stringify({ msg: err.message })
