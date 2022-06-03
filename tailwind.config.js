@@ -1,8 +1,9 @@
 module.exports = {
   content: ['**/*.{tsx,html}'],
-  safelist: [{
-    pattern: /w-\[.+%\]/
-  }],
+  safelist: [
+    'bg-yellowDesat',
+    ...[...Array(100).keys()].flatMap((i) => [`w-[${i + 1}%]`]),
+  ],
   important: true,
   theme: {
     extend: {
