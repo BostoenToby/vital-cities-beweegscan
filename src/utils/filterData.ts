@@ -39,8 +39,6 @@ export const getPdfData = (
     combinedData[city2] = dataCity2
   }
 
-  console.log(combinedData)
-
   return combinedData
 }
 
@@ -65,8 +63,6 @@ export const getGraphData = (
   if (city2) {
     combinedData[city2] = dataCity2
   }
-
-  console.log(combinedData)
 
   return combinedData
 }
@@ -136,7 +132,7 @@ export const getDataForAmbition = (allData: any, ambition: string) => {
   }
   results.push({ label: ambition, benchmarks: benches })
 
-  return results
+  return removeSpacesCities(results)
 }
 
 export const getDataForCityAndAmbition = (
@@ -161,7 +157,7 @@ export const getDataForCityAndAmbition = (
     results[0].benchmarks.push(bench)
   })
 
-  return results
+  return removeSpacesCities(results)
 }
 
 const checkIndex = (index: number): string => {
@@ -182,4 +178,16 @@ const checkIndex = (index: number): string => {
   } else {
     return 'no ambition found'
   }
+}
+
+const removeSpacesCities = (data: Ambitie[]) => {
+  data.forEach((amb: Ambitie) => {
+    amb.benchmarks.forEach((bench: Benchmark) => {
+      bench.data.forEach((node: any) => {
+        node.gemeente = node.gemeente.trim()
+      })
+    })
+  })
+
+  return data
 }

@@ -838,18 +838,25 @@ export default ({ location }: { location: any }) => {
       setWhys(waaromList)
       setGoodPracs(goodPracs)
 
-      getDataForAmbition(allAmbitionData, locationShort)
-      // getAllData(allAmbitionData)
+      const testData = getDataForAmbition(allAmbitionData, locationShort)
+      // const testData = getAllData(allAmbitionData)
       // const testData = getDataForCityAndAmbition(
       //   allAmbitionData,
       //   locationShort,
       //   'Kortrijk',
       // )
-      getGraphData(allAmbitionData, locationShort, 'Kortrijk', '')
-      // console.log(testData)
-      // getAllDataForCity(allAmbitionData, 'Kortrijk')
+      // const testData = getGraphData(
+      //   allAmbitionData,
+      //   locationShort,
+      //   'Vlaams Gewest',
+      //   '',
+      // )
+      // const testData = getAllDataForCity(allAmbitionData, 'Kortrijk')
       // const cities = getAllCities(allAmbitionData)
-      // getPdfData(allAmbitionData, 'Kortrijk', 'Brugge')
+      // const testData = getPdfData(allAmbitionData, 'Kortrijk', 'Brugge')
+      // console.log(cities)
+
+      console.log(testData)
     }
   }, [locationAmb])
 

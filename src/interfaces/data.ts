@@ -60,6 +60,8 @@ export interface Ambitie {
 // nooit_minderDan1KeerPerMaand____
 // jaar
 // indicator
+// => beweegt niet minstens wekelijks
+// slecht = meerdereKerenPerMaand + nooit_minderDan1keerPerMaand
 
 // gemeente
 // andere____
@@ -68,12 +70,14 @@ export interface Ambitie {
 // openbaarVervoer____
 // teVoet____
 // indicator
+// => slecht = auto
 
 // gemeente
 // eens____
 // neutraal____
 // oneens____
 // indicator
+// slecht = oneens
 
 // gemeente
 // afEnToe____
@@ -81,12 +85,14 @@ export interface Ambitie {
 // vaak_altijd____
 // item
 // indicator
+// => let op voor MO_S_11: meerder nodes per chart
 
 // gemeente
 // minstensMaandelijks____
 // minstensWekelijks____
 // nooit_eenUitzonderlijkeKeer____
 // indicator
+// slecht = minstensMaandelijks + nooit_eenUitzonderlijkeKeer
 
 // gemeente
 // _12KeerOfMinder____
@@ -94,6 +100,7 @@ export interface Ambitie {
 // nooit____
 // item
 // indicator
+// slecht = nooit
 
 // gemeente
 // neutraal____
@@ -101,6 +108,7 @@ export interface Ambitie {
 // tevreden____
 // item
 // indicator
+// slecht = ontevreden
 
 // gemeente
 // meerDan12Keer____
@@ -109,3 +117,4 @@ export interface Ambitie {
 // tot12Keer____
 // item
 // indicator
+// slecht = nietAanweigInDeEigenGemeente + nooit
