@@ -40,6 +40,19 @@ import {
 } from '../utils/filterData'
 import genPDF from '../components/pdf'
 import axios from 'axios'
+import Lottie, { useLottie } from 'lottie-react'
+import lightbulb from "../assets/animations/lightbulb.json"
+import leaf from "../assets/animations/leaf.json"
+import lock from "../assets/animations/lock.json"
+import youth from "../assets/animations/youth.json"
+import basket from "../assets/animations/basket.json"
+import old_person from "../assets/animations/old_person.json"
+import balance from "../assets/animations/balance.json"
+import bench from "../assets/animations/bench.json"
+import bike from "../assets/animations/bike.json"
+import bus from "../assets/animations/bus.json"
+import car_free from "../assets/animations/car_free.json"
+import { colorify, flatten, getColors, replaceColor } from 'lottie-colorify';
 
 export default ({ location }: { location: any }) => {
   const [hasMounted, setHasMounted] = useState(false)
@@ -888,6 +901,8 @@ export default ({ location }: { location: any }) => {
     return null
   }
 
+  console.log(getColors(lightbulb))
+
   return (
     <ThemeContext.Consumer>
       {(context) => (
@@ -991,10 +1006,13 @@ export default ({ location }: { location: any }) => {
           >
             <FadeInSection>
               <section
-                className="laptop:16 tab mx-4 mt-8 grid grid-cols-1 gap-8 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-16 laptopL:mt-36"
+                className="tab mx-4 mt-28 grid grid-cols-1 gap-8 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-16 laptop:16 laptopL:mt-36"
                 id="Location"
               >
                 <div className="flex flex-col">
+                  <div>
+                    <Lottie className='w-20 h-20' loop={true} animationData={replaceColor('#000000', '#492784', old_person)}/>
+                  </div>
                   <h2
                     className={`pb-2 font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl ${
                       context.dark ? 'opacity-90' : ''
