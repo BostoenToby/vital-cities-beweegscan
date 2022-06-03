@@ -4,6 +4,7 @@ import jsPDF from 'jspdf'
 
 function genPDF(data: any) {
   var page = 1
+  console.log(data)
 
   function genRaleway() {
     doc.addFileToVFS(

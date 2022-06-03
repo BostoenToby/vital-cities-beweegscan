@@ -753,9 +753,6 @@ export default ({ location }: { location: any }) => {
       //   message: "This is a test"
       // }
       await axios.post("/.netlify/functions/sendmail/sendmail.js", {
-        name: `${info.firstName} ${info.lastName}`,
-        email: info.mail,
-        subject: "rapport beweegscan Vital Cities",
         message: "This is a test"
       }).catch(function (error) {
         console.log(error);
