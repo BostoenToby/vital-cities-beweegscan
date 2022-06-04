@@ -19,9 +19,11 @@ export const searchList = (allData: any, query: string, limited: boolean) => {
     if (g.toLowerCase().startsWith(query.toLowerCase())) {
       result.push(g)
     }
-    if (g.toLowerCase() == query.toLowerCase()) {
-      let index = result.indexOf(g)
-      result.splice(index, 1)
+    if (limited) {
+      if (g.toLowerCase() == query.toLowerCase()) {
+        let index = result.indexOf(g)
+        result.splice(index, 1)
+      }
     }
   })
   if (result.length == filteredResults.length) {

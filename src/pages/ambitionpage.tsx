@@ -1,6 +1,6 @@
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
-import { ArrowDown, ChevronDown } from 'lucide-react'
+import { ArrowDown, ChevronDown, Search } from 'lucide-react'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import DonutChart from '../components/donutchart'
@@ -58,6 +58,16 @@ export default ({ location }: { location: any }) => {
   const [problem, setProblem] = useState<problem>()
   const [suggestions, setSuggestions] = useState<string[]>()
   const [typed, setTyped] = useState<string>('')
+  const [searchQuery, setSearchQuery] = useState<string>()
+  const [selectedCities, setSelectedCities] = useState<string[]>([
+    'Vlaams Gewest',
+    '',
+  ])
+  const [showCitySelection, setShowCitySelection] = useState<boolean[]>([
+    false,
+    false,
+  ])
+  const [filteredCities, setFilteredCities] = useState<string[]>()
   const [graphData, setGraphData] = useState<PercentageData[]>()
   const [allData, setAllData] = useState<any>()
   const [info, setInfo] = useState<PersonalInfo>({
@@ -728,6 +738,45 @@ export default ({ location }: { location: any }) => {
     ambitie7bench4,
   ]
 
+  const handleSearch = (input: any) => {
+    setSearchQuery(input)
+    console.log(selectedCities)
+    console.log(searchQuery)
+    const results = searchList(allAmbitionData, input, false)
+
+    if (results?.includes(selectedCities[0])) {
+      results.splice(results.indexOf(selectedCities[0]), 1)
+    }
+    if (results?.includes(selectedCities[1])) {
+      results.splice(results.indexOf(selectedCities[1]), 1)
+    }
+
+    setFilteredCities(results)
+  }
+
+  const handleCitySelectionShown = (index: number) => {
+    if (index == 0) {
+      setShowCitySelection([!showCitySelection[0], showCitySelection[1]])
+    } else {
+      setShowCitySelection([showCitySelection[0], !showCitySelection[1]])
+    }
+
+    setSearchQuery('')
+    setFilteredCities([])
+  }
+
+  const handleCitySelected = (c: string, index: number) => {
+    setSearchQuery('')
+    if (index == 0) {
+      setSelectedCities([c, selectedCities[1]])
+    } else {
+      setSelectedCities([selectedCities[0], c])
+    }
+
+    setShowCitySelection([false, false])
+    setFilteredCities([])
+  }
+
   const changeTyped = async (value: string) => {
     setTyped(value)
   }
@@ -797,12 +846,6 @@ export default ({ location }: { location: any }) => {
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
       const data = getPdfData(allData, 'Antwerpen', 'Kortrijk')
       genPDF(data)
-      // const to_send = {
-      //   name: `${info.firstName} ${info.lastName}`,
-      //   email: info.mail,
-      //   subject: "rapport beweegscan Vital Cities",
-      //   message: "This is a test"
-      // }
       await axios
         .post('/.netlify/functions/sendmail/sendmail.js', {
           message: 'This is a test',
@@ -1049,7 +1092,7 @@ export default ({ location }: { location: any }) => {
           >
             <FadeInSection>
               <section
-                className="tab laptop:16 mx-4 mt-28 grid grid-cols-1 gap-8 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-16 laptopL:mt-36"
+                className="tab laptop:16 mx-4 mt-28 grid grid-cols-1 gap-6 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-16 laptopL:mt-36"
                 id="Location"
               >
                 <div className="flex flex-col">
@@ -1069,58 +1112,136 @@ export default ({ location }: { location: any }) => {
                       context.dark ? 'opacity-90' : ''
                     }`}
                   >
-                    Wat is de huidige situatie in
+                    {`Huidige situatie in ${selectedCities[0]}`}
                   </h2>
-                  <div className="group relative block w-max">
-                    <select
-                      className={`-ml-1 w-max appearance-none border-none pb-4 pr-8 text-xl font-xxbold  text-purple underline underline-offset-2 outline-none  tabletportrait:text-3xl laptop:text-4xl ${
-                        context.dark
-                          ? 'bg-dark decoration-darkGray hover:text-lightPurpleDesat hover:decoration-lightPurpleDesat focus:text-lightPurpleDesat focus:decoration-lightPurpleDesat'
-                          : 'decoration-lightxPurple hover:text-pink hover:decoration-pink focus:text-pink focus:decoration-pink'
-                      }`}
-                    >
-                      <option
-                        className={`text-xl ${
-                          context.dark ? 'bg-darkGray' : ''
-                        }`}
-                      >
-                        het Vlaams gewest
-                      </option>
-                      <option
-                        className={`text-xl ${
-                          context.dark ? 'bg-darkGray' : ''
-                        }`}
-                      >
-                        het Vlaams gewest
-                      </option>
-                    </select>
-                    <ChevronDown
-                      className={`pointer-events-none absolute right-0 top-3 opacity-70 ${
-                        context.dark ? 'text-white' : 'text-dark'
-                      }`}
-                    />
+                  <div className="flex flex-row justify-between pt-6">
+                    <div className="flex flex-col">
+                      <label>Gemeente of cluster</label>
+                      <div>
+                        <div
+                          className="flex flex-row"
+                          onClick={() => handleCitySelectionShown(0)}
+                        >
+                          <input
+                            defaultValue="Vlaams Gewest"
+                            value={selectedCities[0]}
+                            className="pointer-events-none"
+                            placeholder="Maak een keuze"
+                          />
+                          <ChevronDown />
+                        </div>
+                        {showCitySelection[0] ? (
+                          <div className="absolute z-10 bg-white">
+                            <div className="flex flex-row">
+                              <input
+                                id="gemeente1"
+                                type="text"
+                                value={searchQuery}
+                                onChange={(e) => {
+                                  handleSearch(e.target.value)
+                                }}
+                              />
+                              <label htmlFor="gemeente1">
+                                <Search />
+                              </label>
+                            </div>
+                            <ul className="max-h-80 overflow-y-auto bg-white">
+                              {filteredCities && filteredCities?.length >= 1
+                                ? filteredCities.map((city, index) => (
+                                    <li
+                                      onClick={() =>
+                                        handleCitySelected(city, 0)
+                                      }
+                                      key={city}
+                                    >
+                                      {city}
+                                    </li>
+                                  ))
+                                : getAllCities(allAmbitionData).map((city) => {
+                                    if (
+                                      city !== selectedCities[0] &&
+                                      city !== selectedCities[1] &&
+                                      !searchQuery
+                                    ) {
+                                      return (
+                                        <li
+                                          onClick={() =>
+                                            handleCitySelected(city, 0)
+                                          }
+                                          key={city}
+                                        >
+                                          {city}
+                                        </li>
+                                      )
+                                    }
+                                  })}
+                            </ul>
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
+                    <div className="flex flex-col">
+                      <label>Vergelijk met...</label>
+                      <div>
+                        <div
+                          className="flex flex-row"
+                          onClick={() => handleCitySelectionShown(1)}
+                        >
+                          <input
+                            value={selectedCities[1]}
+                            className="pointer-events-none"
+                            placeholder="Maak een keuze"
+                          />
+                          <ChevronDown />
+                        </div>
+                        {showCitySelection[1] ? (
+                          <div className="absolute z-10 bg-white">
+                            <div className="flex flex-row">
+                              <input
+                                id="gemeente2"
+                                value={searchQuery}
+                                onChange={(e) => handleSearch(e.target.value)}
+                              />
+                              <label htmlFor="gemeente2">
+                                <Search />
+                              </label>
+                            </div>
+                            <ul className="max-h-80 overflow-y-auto">
+                              {filteredCities && filteredCities?.length >= 1
+                                ? filteredCities.map((city, index) => (
+                                    <li
+                                      onClick={() =>
+                                        handleCitySelected(city, 1)
+                                      }
+                                      key={city}
+                                    >
+                                      {city}
+                                    </li>
+                                  ))
+                                : getAllCities(allAmbitionData).map((city) => {
+                                    if (
+                                      city !== selectedCities[0] &&
+                                      city !== selectedCities[1] &&
+                                      !searchQuery
+                                    ) {
+                                      return (
+                                        <li
+                                          onClick={() =>
+                                            handleCitySelected(city, 1)
+                                          }
+                                          key={city}
+                                        >
+                                          {city}
+                                        </li>
+                                      )
+                                    }
+                                  })}
+                            </ul>
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
                   </div>
-
-                  <label
-                    className={`mt-5 text-sm font-medium tabletportrait:text-lg laptop:text-xl ${
-                      context.dark ? 'opacity-90' : ''
-                    }`}
-                  >
-                    In het Vlaams gewest is{' '}
-                    <span className="font-semibold">
-                      ongeveer de helft of meer van de inwoners
-                    </span>{' '}
-                    <span
-                      className={`font-semibold ${
-                        context.dark ? 'text-pinkDesat' : 'text-pink'
-                      }`}
-                    >
-                      niet tevreden
-                    </span>{' '}
-                    over de staat, veiligheid en aantrekkelijkheid van straten,
-                    pleinen, wandel- en fietspaden (dus een samenvatting van
-                    alle cijfers).
-                  </label>
                 </div>
                 {graphData && graphData.length >= 1 ? (
                   <div>
@@ -1132,7 +1253,7 @@ export default ({ location }: { location: any }) => {
                         <Donutdata data={e} key={e.label} />
                       ))}
                     </div> */}
-                    <div className="grid grid-cols-5 grid-rows-2 items-center gap-y-6 pt-6">
+                    <div className="grid grid-cols-5 grid-rows-2 items-center gap-y-6">
                       <label className="col-span-1 pr-2">Actief bewegen</label>
                       <div className="col-span-4">
                         <Barchart />
@@ -1415,7 +1536,7 @@ export default ({ location }: { location: any }) => {
                   id="autoComplete"
                 >
                   <div className="flex max-w-min flex-col" id="#inputStad">
-                    <label htmlFor="Stad">Postcode of stad:</label>
+                    <label htmlFor="Stad">Naam gemeente:</label>
                     <input
                       type="text"
                       id="Stad"
@@ -1424,7 +1545,7 @@ export default ({ location }: { location: any }) => {
                           ? 'border-lightGray bg-dark text-white focus-within:border-lightPurpleDesat hover:border-lightPurpleDesat active:border-lightPurpleDesat'
                           : ' border-lightPink text-dark focus-within:border-pink hover:border-pink active:border-pink'
                       }`}
-                      placeholder="Postcode/Stad"
+                      placeholder="stad/gemeente"
                       value={typed}
                       onChange={(ev: any) => {
                         setTyped(ev.target.value)

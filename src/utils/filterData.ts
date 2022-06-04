@@ -14,8 +14,13 @@ export const getAllCities = (allData: any) => {
   const results: string[] = []
 
   allData.forEach((edge: any) => {
+    // Herstappe zit in slechts 1 benchmark en is dus niet echt bruikbaar
     edge.edges.forEach((node: any) => {
-      if (!results.includes(node.node.gemeente.trim())) {
+      const resultsToLower = results.map((g) => g.toLowerCase())
+      if (
+        !resultsToLower.includes(node.node.gemeente.trim().toLowerCase()) &&
+        node.node.gemeente.toLowerCase() !== 'herstappe'
+      ) {
         results.push(node.node.gemeente.trim())
       }
     })
