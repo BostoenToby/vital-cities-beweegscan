@@ -1,5 +1,5 @@
 export interface PercentageData {
-  percentage: number
+  percentage: string
   label: string
 }
 
