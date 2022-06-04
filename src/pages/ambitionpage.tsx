@@ -25,7 +25,7 @@ import { navigate } from 'gatsby'
 import { ChevronLeft } from 'lucide-react'
 import ThemeContext from '../context/themecontext'
 import { text } from 'stream/consumers'
-import { PercentageData } from '../interfaces/data'
+import { Benchmark, PercentageData } from '../interfaces/data'
 import { testData } from '../data/testGraph'
 import Donutdata from '../components/donutdata'
 import FadeInSection from '../components/scrollytelling'
@@ -59,16 +59,13 @@ export default ({ location }: { location: any }) => {
   const [suggestions, setSuggestions] = useState<string[]>()
   const [typed, setTyped] = useState<string>('')
   const [searchQuery, setSearchQuery] = useState<string>()
-  const [selectedCities, setSelectedCities] = useState<string[]>([
-    'Vlaams Gewest',
-    '',
-  ])
+  const [selectedCities, setSelectedCities] = useState<string[]>(['', ''])
   const [showCitySelection, setShowCitySelection] = useState<boolean[]>([
     false,
     false,
   ])
   const [filteredCities, setFilteredCities] = useState<string[]>()
-  const [graphData, setGraphData] = useState<PercentageData[]>()
+  const [graphData, setGraphData] = useState<Benchmark[][]>()
   const [allData, setAllData] = useState<any>()
   const [info, setInfo] = useState<PersonalInfo>({
     place: '',
@@ -84,23 +81,38 @@ export default ({ location }: { location: any }) => {
   })
 
   useEffect(() => {
-    setGraphData([
-      { percentage: 44, label: 'Staat straten & pleinen' },
-      { percentage: 54, label: 'Staat voetpaden' },
-      { percentage: 59, label: 'Staat fietspaden' },
-      { percentage: 55, label: 'Genoeg fietspaden' },
-      { percentage: 60, label: 'Fietsinfrastructuur' },
-      { percentage: 57, label: 'Veilig fietsen' },
-    ])
     setHasMounted(true)
     setLocationAmb(location.state.ambition)
     setLocationShort(location.state.short)
+    setSelectedCities(['Vlaams Gewest', ''])
 
     if (typeof window !== 'undefined') {
       window.addEventListener('click', handleClick)
       return () => window.removeEventListener('click', handleClick)
     }
   }, [])
+
+  useEffect(() => {
+    if (selectedCities && locationShort) {
+      const data = getGraphData(
+        allAmbitionData,
+        locationShort,
+        selectedCities[0],
+        selectedCities[1],
+      )
+
+      console.log(data)
+
+      let benches1: Benchmark[] = data[selectedCities[0]][0].benchmarks
+      let benches2: Benchmark[] = []
+
+      if (selectedCities[1]) {
+        benches2 = data[selectedCities[1]][0].benchmarks
+      }
+
+      setGraphData([benches1, benches2])
+    }
+  }, [selectedCities])
 
   const {
     cms,
@@ -756,9 +768,9 @@ export default ({ location }: { location: any }) => {
 
   const handleCitySelectionShown = (index: number) => {
     if (index == 0) {
-      setShowCitySelection([!showCitySelection[0], showCitySelection[1]])
+      setShowCitySelection([!showCitySelection[0], false])
     } else {
-      setShowCitySelection([showCitySelection[0], !showCitySelection[1]])
+      setShowCitySelection([false, !showCitySelection[1]])
     }
 
     setSearchQuery('')
@@ -976,18 +988,21 @@ export default ({ location }: { location: any }) => {
   }, [locationAmb])
 
   const handleClick = (e: any) => {
-    const isOutside = !e.target.closest('#inputStad')
+    const isOutsideStad = !e.target.closest('#inputStad')
+    const isOutsideSelection1 = !e.target.closest('#gemeenteselector1')
+    const isOutsideSelection2 = !e.target.closest('#gemeenteselector2')
 
-    if (isOutside) {
+    if (isOutsideStad) {
       setSuggestions([])
+    }
+    if (isOutsideSelection1 && isOutsideSelection2) {
+      setShowCitySelection([false, false])
     }
   }
 
   if (!hasMounted) {
     return null
   }
-
-  console.log(getColors(lightbulb))
 
   return (
     <ThemeContext.Consumer>
@@ -1117,21 +1132,22 @@ export default ({ location }: { location: any }) => {
                   <div className="flex flex-row justify-between pt-6">
                     <div className="flex flex-col">
                       <label>Gemeente of cluster</label>
-                      <div>
+                      <div id="gemeenteselector1">
                         <div
                           className="flex flex-row"
                           onClick={() => handleCitySelectionShown(0)}
                         >
                           <input
-                            defaultValue="Vlaams Gewest"
+                            type="text"
                             value={selectedCities[0]}
                             className="pointer-events-none"
                             placeholder="Maak een keuze"
+                            readOnly
                           />
                           <ChevronDown />
                         </div>
                         {showCitySelection[0] ? (
-                          <div className="absolute z-10 bg-white">
+                          <div className="absolute z-20 bg-white">
                             <div className="flex flex-row">
                               <input
                                 id="gemeente1"
@@ -1182,12 +1198,14 @@ export default ({ location }: { location: any }) => {
                     </div>
                     <div className="flex flex-col">
                       <label>Vergelijk met...</label>
-                      <div>
+                      <div id="gemeenteselector2">
                         <div
                           className="flex flex-row"
                           onClick={() => handleCitySelectionShown(1)}
                         >
                           <input
+                            type="text"
+                            readOnly
                             value={selectedCities[1]}
                             className="pointer-events-none"
                             placeholder="Maak een keuze"
@@ -1195,9 +1213,10 @@ export default ({ location }: { location: any }) => {
                           <ChevronDown />
                         </div>
                         {showCitySelection[1] ? (
-                          <div className="absolute z-10 bg-white">
+                          <div className="absolute z-20 bg-white">
                             <div className="flex flex-row">
                               <input
+                                type="text"
                                 id="gemeente2"
                                 value={searchQuery}
                                 onChange={(e) => handleSearch(e.target.value)}
@@ -1248,20 +1267,26 @@ export default ({ location }: { location: any }) => {
                     <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
                       HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ...
                     </label>
-                    {/* <div className="grid grid-cols-1 text-sm font-medium tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl">
-                      {graphData?.map((e, i) => (
-                        <Donutdata data={e} key={e.label} />
-                      ))}
-                    </div> */}
-                    <div className="grid grid-cols-5 grid-rows-2 items-center gap-y-6">
-                      <label className="col-span-1 pr-2">Actief bewegen</label>
+                    <div className="grid auto-rows-fr grid-cols-5 items-center gap-y-6">
+                      {graphData[0].map((bench: Benchmark, index: number) => [
+                        <label className="col-span-1 pr-2" key={bench.label}>
+                          {bench.label}
+                        </label>,
+                        <div className="col-span-4">
+                          <Barchart
+                            benchCity1={bench}
+                            benchCity2={graphData[1][index]}
+                          />
+                        </div>,
+                      ])}
+                      {/* <label className="col-span-1 pr-2">Actief bewegen</label>
                       <div className="col-span-4">
-                        <Barchart />
+                        <Barchart benchCity1={} benchCity2={} />
                       </div>
                       <label className="col-span-1 pr-2">Actief bewegen</label>
                       <div className="col-span-4">
-                        <Barchart />
-                      </div>
+                        <Barchart benchCity1={} benchCity2={} />
+                      </div> */}
                     </div>
                   </div>
                 ) : null}
