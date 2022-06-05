@@ -11,7 +11,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
         personalizations: [{ 
             cc: [{
                     email: "toby.bostoen@student.howest.be"
-                }],
+                }]
         }],
         to: "toby.bostoen@student.howest.be",
         from: "toby.bostoen@student.howest.be",
