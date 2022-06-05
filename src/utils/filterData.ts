@@ -162,17 +162,17 @@ export const getDataForCityAndAmbition = (
 const checkIndex = (index: number): string => {
   if (0 <= index && index <= 3) {
     return 'actief bewegen'
-  } else if (4 <= index && index <= 8) {
+  } else if (4 <= index && index <= 9) {
     return 'verbonden stadskern'
-  } else if (9 <= index && index <= 15) {
+  } else if (10 <= index && index <= 16) {
     return 'fiets- en wandelroutes'
-  } else if (16 <= index && index <= 23) {
+  } else if (17 <= index && index <= 22) {
     return 'sporten'
-  } else if (24 <= index && index <= 26) {
+  } else if (23 <= index && index <= 25) {
     return 'spelen'
-  } else if (27 <= index && index <= 31) {
+  } else if (26 <= index && index <= 30) {
     return 'ontmoeten'
-  } else if (32 <= index && index <= 35) {
+  } else if (31 <= index && index <= 34) {
     return 'groen'
   } else {
     return 'no ambition found'

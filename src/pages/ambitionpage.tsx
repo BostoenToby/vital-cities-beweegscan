@@ -104,6 +104,7 @@ export default ({ location }: { location: any }) => {
     ambitie2bench3,
     ambitie2bench4,
     ambitie2bench5,
+    ambitie2bench6,
     ambitie3bench1,
     ambitie3bench2,
     ambitie3bench3,
@@ -117,8 +118,6 @@ export default ({ location }: { location: any }) => {
     ambitie4bench4,
     ambitie4bench5,
     ambitie4bench6,
-    ambitie4bench7,
-    ambitie4bench8,
     ambitie5bench1,
     ambitie5bench2,
     ambitie5bench3,
@@ -277,11 +276,30 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie2bench5: allGsVitalCitiesDataMoS13(
-          filter: { jaar: { eq: "2020" } }
+          filter: {
+            jaar: { eq: "2020" }
+            item: { eq: "Lidmaatschap autodelen" }
+          }
         ) {
           edges {
             node {
               resultaatGemeente
+              item
+              indicator
+              gemeente
+            }
+          }
+        }
+        ambitie2bench6: allGsVitalCitiesDataMoS13(
+          filter: {
+            jaar: { eq: "2020" }
+            item: { eq: "Lidmaatschap fietsdelen" }
+          }
+        ) {
+          edges {
+            node {
+              resultaatGemeente
+              indicator
               item
               gemeente
             }
@@ -468,34 +486,12 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie4bench6: allGsVitalCitiesDataCuS06(
+        ambitie4bench6: allGsVitalCitiesDataCuS07(
           filter: { jaar: { eq: "2020" } }
         ) {
           edges {
             node {
-              verhoudingPer1000Inwoners
-              gemeente
-              percentage
-            }
-          }
-        }
-        ambitie4bench7: allGsVitalCitiesDataCuS07(
-          filter: { jaar: { eq: "2020" } }
-        ) {
-          edges {
-            node {
-              gemeente
-              verhoudingPer1000Inwoners
-              percentage
-            }
-          }
-        }
-        ambitie4bench8: allGsVitalCitiesDataCuS08(
-          filter: { jaar: { eq: "2020" } }
-        ) {
-          edges {
-            node {
-              verhoudingPer1000Inwoners
+              indicator
               gemeente
               percentage
             }
@@ -704,6 +700,7 @@ export default ({ location }: { location: any }) => {
     ambitie2bench3,
     ambitie2bench4,
     ambitie2bench5,
+    ambitie2bench6,
     ambitie3bench1,
     ambitie3bench2,
     ambitie3bench3,
@@ -717,8 +714,6 @@ export default ({ location }: { location: any }) => {
     ambitie4bench4,
     ambitie4bench5,
     ambitie4bench6,
-    ambitie4bench7,
-    ambitie4bench8,
     ambitie5bench1,
     ambitie5bench2,
     ambitie5bench3,
@@ -911,8 +906,8 @@ export default ({ location }: { location: any }) => {
       setWhys(waaromList)
       setGoodPracs(goodPracs)
 
-      const testData = getDataForAmbition(allAmbitionData, locationShort)
-      console.log(allAmbitionData)
+      // const testData = getDataForAmbition(allAmbitionData, locationShort)
+      // console.log(allAmbitionData)
       setAllData(allAmbitionData)
       // const testData = getAllData(allAmbitionData)
       // const testData = getDataForCityAndAmbition(
@@ -926,12 +921,14 @@ export default ({ location }: { location: any }) => {
         'Vlaams Gewest',
         '',
       )
+      const pdfData = getPdfData(allAmbitionData, 'Vlaams Gewest', '')
       // const testData = getAllDataForCity(allAmbitionData, 'Kortrijk')
       // const cities = getAllCities(allAmbitionData)
       // const testData = getPdfData(allAmbitionData, 'Kortrijk', 'Brugge')
       // console.log(cities)
 
-      console.log(testData)
+      console.log(allAmbitionData)
+      console.log(pdfData)
     }
   }, [locationAmb])
 
