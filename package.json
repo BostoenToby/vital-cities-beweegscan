@@ -58,7 +58,7 @@
     "@types/webfontloader": "^1.6.34",
     "autoprefixer": "^10.4.7",
     "http-proxy-middleware": "^2.0.6",
-    "netlify-cli": "^10.3.3",
+    "netlify-cli": "^10.4.0",
     "netlify-lambda": "^2.0.15",
     "postcss": "^8.4.13",
     "prettier": "^2.6.2",
