@@ -99,12 +99,12 @@ export default ({
             <div className="flex h-8 flex-row">
               <div className={`h-[full] w-[${percentage1}] bg-pink`}>
                 <div
-                  className={`relative  flex h-full flex-col justify-center pl-2 ${
+                  className={`relative left-[100%] flex h-full max-w-[3rem] flex-col justify-center pl-2 font-semibold ${
                     p1bigger == 1
                       ? 'text-[#E30000]'
                       : p1bigger == -1
                       ? 'text-[#3E8968]'
-                      : 'text-dark'
+                      : 'text-dark opacity-75'
                   }`}
                 >
                   {percentage1}
@@ -116,12 +116,12 @@ export default ({
               <div className="mt-2 flex h-8 flex-row">
                 <div className={`h-full w-[${percentage2}] bg-purple`}>
                   <div
-                    className={`relative  ml-0 flex h-full flex-col justify-center pl-2  ${
+                    className={`relative left-[100%] ml-0  flex h-full max-w-[3rem] flex-col justify-center pl-2 font-semibold ${
                       p1bigger == -1
                         ? 'text-[#E30000]'
                         : p1bigger == 1
                         ? 'text-[#3E8968]'
-                        : 'text-dark'
+                        : 'text-dark opacity-75'
                     }`}
                   >
                     {percentage2}

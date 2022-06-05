@@ -1108,7 +1108,7 @@ export default ({ location }: { location: any }) => {
           >
             <FadeInSection>
               <section
-                className="tab laptop:16 mx-4 mt-28 grid grid-cols-1 gap-6 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-16 laptopL:mt-36"
+                className="tab laptop:16 mx-4 mt-28 grid grid-cols-1 gap-6 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-12 laptopL:mt-36"
                 id="Location"
               >
                 <div className="flex flex-col">
@@ -1130,42 +1130,49 @@ export default ({ location }: { location: any }) => {
                   >
                     {`Huidige situatie in ${selectedCities[0]}`}
                   </h2>
-                  <div className="flex flex-row justify-between pt-6">
-                    <div className="flex flex-col">
-                      <label>Gemeente of cluster</label>
-                      <div id="gemeenteselector1">
+                  <div className="flex flex-col pt-6 tabletportrait:flex-row tabletportrait:justify-between">
+                    <div className="relative flex w-full max-w-xs flex-col">
+                      <label className="text-lg font-bold  opacity-90">
+                        Gemeente of cluster
+                      </label>
+                      <div className="w-full" id="gemeenteselector1">
                         <div
-                          className="flex flex-row"
+                          className="mt-2 flex flex-row items-center justify-between border-[1px] border-dark border-opacity-25 py-2 px-4"
                           onClick={() => handleCitySelectionShown(0)}
                         >
-                          <input
-                            type="text"
-                            value={selectedCities[0]}
-                            className="pointer-events-none"
-                            placeholder="Maak een keuze"
-                            readOnly
-                          />
-                          <ChevronDown />
+                          <div className="flex flex-row items-center">
+                            <span className="mr-1 h-4  w-4 rounded-full bg-pink" />
+                            <input
+                              type="text"
+                              className="pointer-events-none text-lg font-medium "
+                              value={selectedCities[0]}
+                              placeholder="Maak een keuze"
+                              readOnly
+                            />
+                          </div>
+                          <ChevronDown className="ml-2" />
                         </div>
                         {showCitySelection[0] ? (
-                          <div className="absolute z-20 bg-white">
-                            <div className="flex flex-row">
+                          <div className="relative z-20 w-full border-[1px] border-t-0 border-dark border-opacity-25 bg-white pt-1 tabletportrait:absolute">
+                            <div className="m-1 mt-0 flex flex-row border-[1px] border-dark border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 focus-within:border-pinkDesat active:border-2 active:border-pinkDesat">
                               <input
                                 id="gemeente1"
                                 type="text"
+                                className="w-full appearance-none outline-none"
                                 value={searchQuery}
                                 onChange={(e) => {
                                   handleSearch(e.target.value)
                                 }}
                               />
                               <label htmlFor="gemeente1">
-                                <Search />
+                                <Search className="ml-2" />
                               </label>
                             </div>
-                            <ul className="max-h-80 overflow-y-auto bg-white">
+                            <ul className="max-h-80 w-full overflow-y-auto bg-white">
                               {filteredCities && filteredCities?.length >= 1
                                 ? filteredCities.map((city, index) => (
                                     <li
+                                      className="py-1 px-4 text-lg hover:bg-dark hover:bg-opacity-10"
                                       onClick={() =>
                                         handleCitySelected(city, 0)
                                       }
@@ -1182,6 +1189,7 @@ export default ({ location }: { location: any }) => {
                                     ) {
                                       return (
                                         <li
+                                          className="py-1 px-4 text-lg hover:bg-dark hover:bg-opacity-10"
                                           onClick={() =>
                                             handleCitySelected(city, 0)
                                           }
@@ -1197,39 +1205,48 @@ export default ({ location }: { location: any }) => {
                         ) : null}
                       </div>
                     </div>
-                    <div className="flex flex-col">
-                      <label>Vergelijk met...</label>
-                      <div id="gemeenteselector2">
+                    <div className="relative mt-4 flex w-full max-w-xs flex-col tabletportrait:mt-0">
+                      <label className="text-lg font-bold  opacity-90">
+                        Vergelijk met...
+                      </label>
+                      <div className="w-full" id="gemeenteselector2">
                         <div
-                          className="flex flex-row"
+                          className="mt-2 flex flex-row items-center justify-between border-[1px] border-dark border-opacity-25 py-2 px-4"
                           onClick={() => handleCitySelectionShown(1)}
                         >
-                          <input
-                            type="text"
-                            readOnly
-                            value={selectedCities[1]}
-                            className="pointer-events-none"
-                            placeholder="Maak een keuze"
-                          />
-                          <ChevronDown />
+                          <div className="flex flex-row items-center">
+                            <span className="mr-1 h-4  w-4 rounded-full bg-purple" />
+                            <input
+                              type="text"
+                              className="pointer-events-none text-lg font-medium "
+                              value={selectedCities[1]}
+                              placeholder="Maak een keuze"
+                              readOnly
+                            />
+                          </div>
+                          <ChevronDown className="ml-2" />
                         </div>
                         {showCitySelection[1] ? (
-                          <div className="absolute z-20 bg-white">
-                            <div className="flex flex-row">
+                          <div className="relative z-20 w-full border-[1px] border-t-0 border-dark border-opacity-25 bg-white pt-1 tabletportrait:absolute">
+                            <div className="m-1 mt-0 flex flex-row border-[1px] border-dark border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 focus-within:border-pinkDesat active:border-2 active:border-pinkDesat">
                               <input
+                                id="gemeente1"
                                 type="text"
-                                id="gemeente2"
+                                className="w-full appearance-none outline-none"
                                 value={searchQuery}
-                                onChange={(e) => handleSearch(e.target.value)}
+                                onChange={(e) => {
+                                  handleSearch(e.target.value)
+                                }}
                               />
                               <label htmlFor="gemeente2">
-                                <Search />
+                                <Search className="ml-2" />
                               </label>
                             </div>
-                            <ul className="max-h-80 overflow-y-auto">
+                            <ul className="max-h-80 w-full overflow-y-auto bg-white">
                               {filteredCities && filteredCities?.length >= 1
                                 ? filteredCities.map((city, index) => (
                                     <li
+                                      className="py-1 px-4 text-lg hover:bg-dark hover:bg-opacity-10"
                                       onClick={() =>
                                         handleCitySelected(city, 1)
                                       }
@@ -1246,6 +1263,7 @@ export default ({ location }: { location: any }) => {
                                     ) {
                                       return (
                                         <li
+                                          className="py-1 px-4 text-lg hover:bg-dark hover:bg-opacity-10"
                                           onClick={() =>
                                             handleCitySelected(city, 1)
                                           }
@@ -1265,18 +1283,18 @@ export default ({ location }: { location: any }) => {
                 </div>
                 {graphData && graphData.length >= 1 ? (
                   <div>
-                    <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
+                    <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:text-sm laptop:text-lg">
                       HOEVEEL % VAN INWONERS ...
                     </label>
-                    <div className="grid auto-rows-fr grid-cols-5 items-center">
+                    <div className="mt-4 flex flex-col gridbreak:grid gridbreak:auto-rows-fr gridbreak:grid-cols-5 gridbreak:items-center">
                       {graphData[0].map((bench: Benchmark, index: number) => [
                         <label
-                          className="col-span-1 py-4 pr-2"
+                          className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
                           key={bench.label}
                         >
                           {getLabelChart(bench.label)}
                         </label>,
-                        <div className="col-span-4 flex h-full flex-col justify-center border-l-2 border-dark border-opacity-50">
+                        <div className="col-span-4 flex h-full flex-col justify-center border-l-2 border-dark border-opacity-50 py-6">
                           <Barchart
                             benchCity1={bench}
                             benchCity2={graphData[1][index]}
