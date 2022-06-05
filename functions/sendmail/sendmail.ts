@@ -22,7 +22,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
         from: "toby.bostoen@student.howest.be",
         subject: 'This is a test',
         text: "This is a new test with axios and just fetch",
-        html: '<strong>This was not easy at all</strong>',
+        html: '<strong>This was not easy at all</strong>'
     }
 
     try{
