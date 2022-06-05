@@ -105,7 +105,7 @@ export default ({
       </ThemeContext.Consumer>
     )
   } else {
-    return <section>No data found</section>
+    return <section>geen data beschikbaar</section>
     // fix later
   }
 }

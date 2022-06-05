@@ -35,6 +35,7 @@ import {
   getDataForAmbition,
   getDataForCityAndAmbition,
   getGraphData,
+  getLabelChart,
   getPdfData,
 } from '../utils/filterData'
 import genPDF from '../components/pdf'
@@ -1265,12 +1266,12 @@ export default ({ location }: { location: any }) => {
                 {graphData && graphData.length >= 1 ? (
                   <div>
                     <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
-                      HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ...
+                      HOEVEEL % VAN INWONERS ...
                     </label>
                     <div className="grid auto-rows-fr grid-cols-5 items-center gap-y-6">
                       {graphData[0].map((bench: Benchmark, index: number) => [
                         <label className="col-span-1 pr-2" key={bench.label}>
-                          {bench.label}
+                          {getLabelChart(bench.label)}
                         </label>,
                         <div className="col-span-4">
                           <Barchart
