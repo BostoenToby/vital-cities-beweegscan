@@ -1268,12 +1268,15 @@ export default ({ location }: { location: any }) => {
                     <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
                       HOEVEEL % VAN INWONERS ...
                     </label>
-                    <div className="grid auto-rows-fr grid-cols-5 items-center gap-y-6">
+                    <div className="grid auto-rows-fr grid-cols-5 items-center">
                       {graphData[0].map((bench: Benchmark, index: number) => [
-                        <label className="col-span-1 pr-2" key={bench.label}>
+                        <label
+                          className="col-span-1 py-4 pr-2"
+                          key={bench.label}
+                        >
                           {getLabelChart(bench.label)}
                         </label>,
-                        <div className="col-span-4">
+                        <div className="col-span-4 flex h-full flex-col justify-center border-l-2 border-dark border-opacity-50">
                           <Barchart
                             benchCity1={bench}
                             benchCity2={graphData[1][index]}

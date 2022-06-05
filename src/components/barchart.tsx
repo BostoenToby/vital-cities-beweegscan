@@ -12,6 +12,7 @@ export default ({
 }) => {
   let percentage1 = ''
   let percentage2 = ''
+  let p1bigger = 0
 
   if (benchCity1.data.length == 1) {
     if (benchCity1.data[0].hasOwnProperty('nooit_minderDan1KeerPerMaand____')) {
@@ -79,24 +80,52 @@ export default ({
     }
   }
 
+  if (parseInt(percentage1) - 5 >= parseInt(percentage2)) {
+    p1bigger = 1
+  } else if (parseInt(percentage1) <= parseInt(percentage2) - 5) {
+    p1bigger = -1
+  } else {
+    p1bigger = 0
+  }
+
+  console.log(p1bigger)
+
   if (benchCity1.data.length == 1) {
     return (
       <ThemeContext.Consumer>
         {(context) => (
           // split label so it can be put in a seperate column with max width
-          <section className="flex flex-col">
+          <section className="mr-8 flex flex-col">
             <div className="flex h-8 flex-row">
-              <div className={`h-full w-[${percentage1}] bg-pink`}></div>
-              <div className="flex items-center">
-                <div className="relative left-2">{percentage1}</div>
+              <div className={`h-[full] w-[${percentage1}] bg-pink`}>
+                <div
+                  className={`relative  flex h-full flex-col justify-center pl-2 ${
+                    p1bigger == 1
+                      ? 'text-[#E30000]'
+                      : p1bigger == -1
+                      ? 'text-[#3E8968]'
+                      : 'text-dark'
+                  }`}
+                >
+                  {percentage1}
+                </div>
               </div>
             </div>
             {/* enkel tweede bar indien tweede gemeente geselecteerd */}
             {benchCity2 ? (
               <div className="mt-2 flex h-8 flex-row">
-                <div className={`h-full w-[${percentage2}] bg-purple`}></div>
-                <div className="flex items-center">
-                  <div className="relative left-2">{percentage2}</div>
+                <div className={`h-full w-[${percentage2}] bg-purple`}>
+                  <div
+                    className={`relative  ml-0 flex h-full flex-col justify-center pl-2  ${
+                      p1bigger == -1
+                        ? 'text-[#E30000]'
+                        : p1bigger == 1
+                        ? 'text-[#3E8968]'
+                        : 'text-dark'
+                    }`}
+                  >
+                    {percentage2}
+                  </div>
                 </div>
               </div>
             ) : null}
@@ -105,7 +134,7 @@ export default ({
       </ThemeContext.Consumer>
     )
   } else {
-    return <section>geen data beschikbaar</section>
+    return <section className="ml-4">geen data beschikbaar</section>
     // fix later
   }
 }
