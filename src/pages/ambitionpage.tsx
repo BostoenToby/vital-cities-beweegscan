@@ -804,7 +804,16 @@ export default ({ location }: { location: any }) => {
       //   message: "This is a test"
       // }
       await axios
-        .post('/.netlify/functions/sendmail/sendmail.js', {
+        .post('/.netlify/functions/sendmail.ts', {
+          message: 'This is a test',
+        })
+        .catch(function (error) {
+          console.log(error)
+          console.log("Mail didn't succeed")
+        })
+
+        await axios
+        .post('/.netlify/functions/sendmail/sendmail.ts', {
           message: 'This is a test',
         })
         .catch(function (error) {
