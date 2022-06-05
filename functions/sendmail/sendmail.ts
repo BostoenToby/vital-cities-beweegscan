@@ -8,16 +8,6 @@ exports.handler = async (event: any, context: any, callback: any) => {
     // const attachement = 
 
     const mail_to_send = {
-        personalizations: [
-            {
-               cc: [
-                   {
-                       email: 'sigofoy785@game4hr.com',
-                       name: 'testCC'
-                   }
-               ] 
-            }
-        ],
         to: "toby.bostoen@student.howest.be",
         from: "toby.bostoen@student.howest.be",
         subject: 'This is a test',
