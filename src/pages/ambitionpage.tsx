@@ -804,12 +804,12 @@ export default ({ location }: { location: any }) => {
       //   message: "This is a test"
       // }
 
-      fetch('/.netlify/functions/sendmail')
-      .then(() => console.log("The mail has been sent"))
-      .catch(function(error) {
-        console.log(error)
-        console.log("Mail didn't succeed")
-      }) 
+      // fetch('/.netlify/functions/sendmail')
+      // .then(() => console.log("The mail has been sent"))
+      // .catch(function(error) {
+      //   console.log(error)
+      //   console.log("Mail didn't succeed")
+      // }) 
 
       try {
         await axios.post('/.netlify/functions/sendmail',
