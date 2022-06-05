@@ -3,16 +3,21 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.handler = async (event: any, context: any, callback: any) => {
     console.log("Testing if this works")
-    // const body = JSON.parse(event.body)
-    // const message = body.message
+    const body = JSON.parse(event.body)
+    const message = body.message
     // const attachement = 
 
     const mail_to_send = {
+        personalizations: [{ 
+            cc: [{
+                    email: "toby.bostoen@student.howest.be"
+                }],
+        }],
         to: "toby.bostoen@student.howest.be",
         from: "toby.bostoen@student.howest.be",
-        subject: 'This is a test',
-        text: "This is a new test with axios and just fetch",
-        html: '<strong>This was not easy at all</strong>'
+        subject: 'This is a new test with json in the post',
+        text: message,
+        html: message
     }
 
     try{
