@@ -420,7 +420,7 @@ function genPDF(data: any) {
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Sportclubs/accomodaties', 80, 80)
     // doc.setFont('Raleway', 'normal')
-    doc.text(data[city1][3].benchmarks[5].data[3].percentage, 80, 86)
+    doc.text(data[city1][3].benchmarks[5].data[0].percentage, 80, 86)
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Tevreden sportvoorziening', 80, 95)
@@ -460,7 +460,7 @@ function genPDF(data: any) {
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Sportclubs/accomodaties', 80, 165)
     // doc.setFont('Raleway', 'normal')
-    doc.text(data[city2][3].benchmarks[5].data[3].percentage, 80, 171)
+    doc.text(data[city2][3].benchmarks[5].data[0].percentage, 80, 171)
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Tevreden sportvoorziening', 80, 180)
