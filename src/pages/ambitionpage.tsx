@@ -804,30 +804,18 @@ export default ({ location }: { location: any }) => {
       //   message: "This is a test"
       // }
 
-      fetch('/.netlify/functions/sendmail')
-      .then(() => console.log("The mail has been sent"))
-      .catch(function(error) {
-        console.log(error)
-        console.log("Mail didn't succeed")
-      }) 
+      // fetch('/.netlify/functions/sendmail')
+      // .then(() => console.log("The mail has been sent"))
+      // .catch(function(error) {
+      //   console.log(error)
+      //   console.log("Mail didn't succeed")
+      // }) 
 
-      // await axios
-      //   .post('/.netlify/functions/sendmail.ts', {
-      //     message: 'This is a test',
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error)
-      //     console.log("Mail didn't succeed")
-      //   })
-
-      //   await axios
-      //   .post('/.netlify/functions/sendmail/sendmail.ts', {
-      //     message: 'This is a test',
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error)
-      //     console.log("Mail didn't succeed")
-      //   })
+      axios.post('/.netlify/functions/sendmail',
+      {
+        message: "This is a test via Axios"
+      }
+      )
     }
   }
 

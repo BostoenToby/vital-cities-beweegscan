@@ -720,6 +720,16 @@ function genPDF(data: any) {
   footer()
 
   doc.save('BeweegscanRapport.pdf')
+  // const blobPDF = new Blob([ doc.output('blob')], { type: 'application/pdf' })
+  // TODO: geef pdf mee als param of in json om te versturen als attachement
+
+
+  // fetch('/.netlify/functions/sendmail')
+  //     .then(() => console.log("The mail has been sent"))
+  //     .catch(function(error) {
+  //       console.log(error)
+  //       console.log("Mail didn't succeed")
+  // }) 
 }
 
 function pdf() {
