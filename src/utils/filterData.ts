@@ -249,9 +249,9 @@ export const getLabelChart = (labelBench: string) => {
     case 'voldoende geschikte plekken voor jeugd':
       return 'wil meer plekken voor jeugd'
     case 'voldoende speelvoorzieningen voor kinderen en jongeren':
-      return 'wil meer speelvoorzieningen voor kinderen/jongeren'
+      return 'wil meer speelvoorzieningen voor kinderen en jongeren'
     case 'tevredenheid over veilig spelen':
-      return 'vindt de speelvoorzieningen/omgeving onveilig'
+      return 'vindt de speelvoorzieningen of omgeving onveilig'
 
     case 'zich thuis voelen in de buurt':
       return 'voelt zich niet thuis in buurt'
@@ -265,9 +265,9 @@ export const getLabelChart = (labelBench: string) => {
       return 'voelt zich onveilig in gemeente/stad'
 
     case 'bezoek park, bos, groenzone in andere gemeente':
-      return 'bezoekt nooit een park/bos/groenzone in andere gemeente'
+      return 'bezoekt nooit een park, bos of groenzone in andere gemeente'
     case 'bezoek park, bos, groenzone in eigen gemeente':
-      return 'bezoekt nooit een park/bos/groenzone in eigen gemeente'
+      return 'bezoekt nooit een park, bos of groenzone in eigen gemeente'
     case 'tevredenheid over natuur en groenvoorzieningen':
       return 'is ontevreden over natuur en groenvoorzieningen'
     case 'voldoende groen buurt':
