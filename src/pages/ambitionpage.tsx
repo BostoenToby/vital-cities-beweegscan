@@ -1131,20 +1131,30 @@ export default ({ location }: { location: any }) => {
                     {`Huidige situatie in ${selectedCities[0]}`}
                   </h2>
                   <div className="flex flex-col pt-6 tabletportrait:flex-row tabletportrait:justify-between">
-                    <div className="relative flex w-full max-w-xs flex-col">
+                    <div className="relative mt-4 flex w-full max-w-xs flex-col tabletportrait:mt-0">
                       <label className="text-lg font-bold  opacity-90">
                         Gemeente of cluster
                       </label>
-                      <div className="w-full" id="gemeenteselector1">
+                      <div className="w-full" id="gemeenteselector2">
                         <div
-                          className="mt-2 flex flex-row items-center justify-between border-[1px] border-dark border-opacity-25 py-2 px-4"
+                          className={`mt-2 flex flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
+                            context.dark
+                              ? 'border-lightGray bg-darkGray'
+                              : 'border-dark'
+                          }`}
                           onClick={() => handleCitySelectionShown(0)}
                         >
                           <div className="flex flex-row items-center">
-                            <span className="mr-1 h-4  w-4 rounded-full bg-pink" />
+                            <span
+                              className={`mr-1 h-4  w-4 rounded-full ${
+                                context.dark ? 'bg-pinkDesat' : 'bg-pink'
+                              }`}
+                            />
                             <input
                               type="text"
-                              className="pointer-events-none text-lg font-medium "
+                              className={`pointer-events-none text-lg font-medium ${
+                                context.dark ? 'bg-darkGray' : ''
+                              }`}
                               value={selectedCities[0]}
                               placeholder="Maak een keuze"
                               readOnly
@@ -1153,26 +1163,44 @@ export default ({ location }: { location: any }) => {
                           <ChevronDown className="ml-2" />
                         </div>
                         {showCitySelection[0] ? (
-                          <div className="relative z-20 w-full border-[1px] border-t-0 border-dark border-opacity-25 bg-white pt-1 tabletportrait:absolute">
-                            <div className="m-1 mt-0 flex flex-row border-[1px] border-dark border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 focus-within:border-pinkDesat active:border-2 active:border-pinkDesat">
+                          <div
+                            className={`relative z-20 w-full border-[1px] border-t-0  border-opacity-25  pt-1 tabletportrait:absolute ${
+                              context.dark
+                                ? 'border-lightGray bg-darkGray '
+                                : 'border-dark bg-white'
+                            }`}
+                          >
+                            <div
+                              className={`m-1 mt-0 flex flex-row border-[1px] border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 focus-within:border-pinkDesat active:border-2 active:border-pinkDesat ${
+                                context.dark
+                                  ? 'border-lightGray'
+                                  : 'border-dark '
+                              }`}
+                            >
                               <input
-                                id="gemeente1"
+                                id="gemeente2"
                                 type="text"
-                                className="w-full appearance-none outline-none"
+                                className={`w-full appearance-none outline-none ${
+                                  context.dark ? 'bg-darkGray' : ''
+                                }`}
                                 value={searchQuery}
                                 onChange={(e) => {
                                   handleSearch(e.target.value)
                                 }}
                               />
-                              <label htmlFor="gemeente1">
+                              <label htmlFor="gemeente2">
                                 <Search className="ml-2" />
                               </label>
                             </div>
-                            <ul className="max-h-80 w-full overflow-y-auto bg-white">
+                            <ul className="max-h-80 w-full overflow-y-auto">
                               {filteredCities && filteredCities?.length >= 1
                                 ? filteredCities.map((city, index) => (
                                     <li
-                                      className="py-1 px-4 text-lg hover:bg-dark hover:bg-opacity-10"
+                                      className={`py-1 px-4 text-lg hover:bg-opacity-10 ${
+                                        context.dark
+                                          ? 'hover:bg-lightGray'
+                                          : 'hover:bg-dark'
+                                      }`}
                                       onClick={() =>
                                         handleCitySelected(city, 0)
                                       }
@@ -1189,7 +1217,11 @@ export default ({ location }: { location: any }) => {
                                     ) {
                                       return (
                                         <li
-                                          className="py-1 px-4 text-lg hover:bg-dark hover:bg-opacity-10"
+                                          className={`py-1 px-4 text-lg hover:bg-opacity-10 ${
+                                            context.dark
+                                              ? 'hover:bg-lightGray'
+                                              : 'hover:bg-dark'
+                                          }`}
                                           onClick={() =>
                                             handleCitySelected(city, 0)
                                           }
@@ -1211,14 +1243,24 @@ export default ({ location }: { location: any }) => {
                       </label>
                       <div className="w-full" id="gemeenteselector2">
                         <div
-                          className="mt-2 flex flex-row items-center justify-between border-[1px] border-dark border-opacity-25 py-2 px-4"
+                          className={`mt-2 flex flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
+                            context.dark
+                              ? 'border-lightGray bg-darkGray'
+                              : 'border-dark'
+                          }`}
                           onClick={() => handleCitySelectionShown(1)}
                         >
                           <div className="flex flex-row items-center">
-                            <span className="mr-1 h-4  w-4 rounded-full bg-purple" />
+                            <span
+                              className={`mr-1 h-4  w-4 rounded-full ${
+                                context.dark ? 'bg-purpleDesat' : 'bg-purple'
+                              }`}
+                            />
                             <input
                               type="text"
-                              className="pointer-events-none text-lg font-medium "
+                              className={`pointer-events-none text-lg font-medium ${
+                                context.dark ? 'bg-darkGray' : ''
+                              }`}
                               value={selectedCities[1]}
                               placeholder="Maak een keuze"
                               readOnly
@@ -1227,12 +1269,26 @@ export default ({ location }: { location: any }) => {
                           <ChevronDown className="ml-2" />
                         </div>
                         {showCitySelection[1] ? (
-                          <div className="relative z-20 w-full border-[1px] border-t-0 border-dark border-opacity-25 bg-white pt-1 tabletportrait:absolute">
-                            <div className="m-1 mt-0 flex flex-row border-[1px] border-dark border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 focus-within:border-pinkDesat active:border-2 active:border-pinkDesat">
+                          <div
+                            className={`relative z-20 w-full border-[1px] border-t-0  border-opacity-25  pt-1 tabletportrait:absolute ${
+                              context.dark
+                                ? 'border-lightGray bg-darkGray '
+                                : 'border-dark bg-white'
+                            }`}
+                          >
+                            <div
+                              className={`m-1 mt-0 flex flex-row border-[1px] border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 focus-within:border-pinkDesat active:border-2 active:border-pinkDesat ${
+                                context.dark
+                                  ? 'border-lightGray'
+                                  : 'border-dark '
+                              }`}
+                            >
                               <input
-                                id="gemeente1"
+                                id="gemeente2"
                                 type="text"
-                                className="w-full appearance-none outline-none"
+                                className={`w-full appearance-none outline-none ${
+                                  context.dark ? 'bg-darkGray' : ''
+                                }`}
                                 value={searchQuery}
                                 onChange={(e) => {
                                   handleSearch(e.target.value)
@@ -1242,11 +1298,15 @@ export default ({ location }: { location: any }) => {
                                 <Search className="ml-2" />
                               </label>
                             </div>
-                            <ul className="max-h-80 w-full overflow-y-auto bg-white">
+                            <ul className="max-h-80 w-full overflow-y-auto">
                               {filteredCities && filteredCities?.length >= 1
                                 ? filteredCities.map((city, index) => (
                                     <li
-                                      className="py-1 px-4 text-lg hover:bg-dark hover:bg-opacity-10"
+                                      className={`py-1 px-4 text-lg hover:bg-opacity-10 ${
+                                        context.dark
+                                          ? 'hover:bg-lightGray'
+                                          : 'hover:bg-dark'
+                                      }`}
                                       onClick={() =>
                                         handleCitySelected(city, 1)
                                       }
@@ -1263,7 +1323,11 @@ export default ({ location }: { location: any }) => {
                                     ) {
                                       return (
                                         <li
-                                          className="py-1 px-4 text-lg hover:bg-dark hover:bg-opacity-10"
+                                          className={`py-1 px-4 text-lg hover:bg-opacity-10 ${
+                                            context.dark
+                                              ? 'hover:bg-lightGray'
+                                              : 'hover:bg-dark'
+                                          }`}
                                           onClick={() =>
                                             handleCitySelected(city, 1)
                                           }
@@ -1294,21 +1358,17 @@ export default ({ location }: { location: any }) => {
                         >
                           {getLabelChart(bench.label)}
                         </label>,
-                        <div className="col-span-4 flex h-full flex-col justify-center border-l-2 border-dark border-opacity-50 py-6">
+                        <div
+                          className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                            context.dark ? 'border-lightGray' : 'border-dark'
+                          }`}
+                        >
                           <Barchart
                             benchCity1={bench}
                             benchCity2={graphData[1][index]}
                           />
                         </div>,
                       ])}
-                      {/* <label className="col-span-1 pr-2">Actief bewegen</label>
-                      <div className="col-span-4">
-                        <Barchart benchCity1={} benchCity2={} />
-                      </div>
-                      <label className="col-span-1 pr-2">Actief bewegen</label>
-                      <div className="col-span-4">
-                        <Barchart benchCity1={} benchCity2={} />
-                      </div> */}
                     </div>
                   </div>
                 ) : null}

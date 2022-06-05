@@ -97,14 +97,22 @@ export default ({
           // split label so it can be put in a seperate column with max width
           <section className="mr-8 flex flex-col">
             <div className="flex h-8 flex-row">
-              <div className={`h-[full] w-[${percentage1}] bg-pink`}>
+              <div
+                className={`h-[full] w-[${percentage1}] ${
+                  context.dark ? 'bg-pinkDesat bg-opacity-80' : 'bg-pink'
+                }`}
+              >
                 <div
                   className={`relative left-[100%] flex h-full max-w-[3rem] flex-col justify-center pl-2 font-semibold ${
                     p1bigger == 1
                       ? 'text-[#E30000]'
                       : p1bigger == -1
                       ? 'text-[#3E8968]'
-                      : 'text-dark opacity-75'
+                      : `${
+                          context.dark
+                            ? 'text-white opacity-50'
+                            : 'text-dark opacity-75'
+                        }`
                   }`}
                 >
                   {percentage1}
@@ -114,14 +122,22 @@ export default ({
             {/* enkel tweede bar indien tweede gemeente geselecteerd */}
             {benchCity2 ? (
               <div className="mt-2 flex h-8 flex-row">
-                <div className={`h-full w-[${percentage2}] bg-purple`}>
+                <div
+                  className={`h-full w-[${percentage2}] ${
+                    context.dark ? 'bg-purpleDesat bg-opacity-80' : 'bg-purple'
+                  }`}
+                >
                   <div
                     className={`relative left-[100%] ml-0  flex h-full max-w-[3rem] flex-col justify-center pl-2 font-semibold ${
                       p1bigger == -1
                         ? 'text-[#E30000]'
                         : p1bigger == 1
                         ? 'text-[#3E8968]'
-                        : 'text-dark opacity-75'
+                        : `${
+                            context.dark
+                              ? 'text-white opacity-50'
+                              : 'text-dark opacity-75'
+                          }`
                     }`}
                   >
                     {percentage2}
