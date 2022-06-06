@@ -1,6 +1,6 @@
 import { graphql, Link, useStaticQuery } from 'gatsby'
 import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
-import { ArrowDown, ChevronDown } from 'lucide-react'
+import { ArrowDown, ChevronDown, Search } from 'lucide-react'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import DonutChart from '../components/donutchart'
@@ -25,7 +25,7 @@ import { navigate } from 'gatsby'
 import { ChevronLeft } from 'lucide-react'
 import ThemeContext from '../context/themecontext'
 import { text } from 'stream/consumers'
-import { PercentageData } from '../interfaces/data'
+import { Benchmark, PercentageData } from '../interfaces/data'
 import { testData } from '../data/testGraph'
 import Donutdata from '../components/donutdata'
 import FadeInSection from '../components/scrollytelling'
@@ -35,6 +35,7 @@ import {
   getDataForAmbition,
   getDataForCityAndAmbition,
   getGraphData,
+  getLabelChart,
   getPdfData,
 } from '../utils/filterData'
 import genPDF from '../components/pdf'
@@ -58,7 +59,14 @@ export default ({ location }: { location: any }) => {
   const [problem, setProblem] = useState<problem>()
   const [suggestions, setSuggestions] = useState<string[]>()
   const [typed, setTyped] = useState<string>('')
-  const [graphData, setGraphData] = useState<PercentageData[]>()
+  const [searchQuery, setSearchQuery] = useState<string>()
+  const [selectedCities, setSelectedCities] = useState<string[]>(['', ''])
+  const [showCitySelection, setShowCitySelection] = useState<boolean[]>([
+    false,
+    false,
+  ])
+  const [filteredCities, setFilteredCities] = useState<string[]>()
+  const [graphData, setGraphData] = useState<Benchmark[][]>()
   const [allData, setAllData] = useState<any>()
   const [info, setInfo] = useState<PersonalInfo>({
     place: '',
@@ -74,23 +82,38 @@ export default ({ location }: { location: any }) => {
   })
 
   useEffect(() => {
-    setGraphData([
-      { percentage: 44, label: 'Staat straten & pleinen' },
-      { percentage: 54, label: 'Staat voetpaden' },
-      { percentage: 59, label: 'Staat fietspaden' },
-      { percentage: 55, label: 'Genoeg fietspaden' },
-      { percentage: 60, label: 'Fietsinfrastructuur' },
-      { percentage: 57, label: 'Veilig fietsen' },
-    ])
     setHasMounted(true)
     setLocationAmb(location.state.ambition)
     setLocationShort(location.state.short)
+    setSelectedCities(['Vlaams Gewest', ''])
 
     if (typeof window !== 'undefined') {
       window.addEventListener('click', handleClick)
       return () => window.removeEventListener('click', handleClick)
     }
   }, [])
+
+  useEffect(() => {
+    if (selectedCities && locationShort) {
+      const data = getGraphData(
+        allAmbitionData,
+        locationShort,
+        selectedCities[0],
+        selectedCities[1],
+      )
+
+      console.log(data)
+
+      let benches1: Benchmark[] = data[selectedCities[0]][0].benchmarks
+      let benches2: Benchmark[] = []
+
+      if (selectedCities[1]) {
+        benches2 = data[selectedCities[1]][0].benchmarks
+      }
+
+      setGraphData([benches1, benches2])
+    }
+  }, [selectedCities])
 
   const {
     cms,
@@ -728,6 +751,45 @@ export default ({ location }: { location: any }) => {
     ambitie7bench4,
   ]
 
+  const handleSearch = (input: any) => {
+    setSearchQuery(input)
+    console.log(selectedCities)
+    console.log(searchQuery)
+    const results = searchList(allAmbitionData, input, false)
+
+    if (results?.includes(selectedCities[0])) {
+      results.splice(results.indexOf(selectedCities[0]), 1)
+    }
+    if (results?.includes(selectedCities[1])) {
+      results.splice(results.indexOf(selectedCities[1]), 1)
+    }
+
+    setFilteredCities(results)
+  }
+
+  const handleCitySelectionShown = (index: number) => {
+    if (index == 0) {
+      setShowCitySelection([!showCitySelection[0], false])
+    } else {
+      setShowCitySelection([false, !showCitySelection[1]])
+    }
+
+    setSearchQuery('')
+    setFilteredCities([])
+  }
+
+  const handleCitySelected = (c: string, index: number) => {
+    setSearchQuery('')
+    if (index == 0) {
+      setSelectedCities([c, selectedCities[1]])
+    } else {
+      setSelectedCities([selectedCities[0], c])
+    }
+
+    setShowCitySelection([false, false])
+    setFilteredCities([])
+  }
+
   const changeTyped = async (value: string) => {
     setTyped(value)
   }
@@ -944,18 +1006,21 @@ export default ({ location }: { location: any }) => {
   }, [locationAmb])
 
   const handleClick = (e: any) => {
-    const isOutside = !e.target.closest('#inputStad')
+    const isOutsideStad = !e.target.closest('#inputStad')
+    const isOutsideSelection1 = !e.target.closest('#gemeenteselector1')
+    const isOutsideSelection2 = !e.target.closest('#gemeenteselector2')
 
-    if (isOutside) {
+    if (isOutsideStad) {
       setSuggestions([])
+    }
+    if (isOutsideSelection1 && isOutsideSelection2) {
+      setShowCitySelection([false, false])
     }
   }
 
   if (!hasMounted) {
     return null
   }
-
-  console.log(getColors(lightbulb))
 
   return (
     <ThemeContext.Consumer>
@@ -1060,7 +1125,7 @@ export default ({ location }: { location: any }) => {
           >
             <FadeInSection>
               <section
-                className="tab laptop:16 mx-4 mt-28 grid grid-cols-1 gap-8 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-16 laptopL:mt-36"
+                className="tab laptop:16 mx-4 mt-28 grid grid-cols-1 gap-6 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-12 laptopL:mt-36"
                 id="Location"
               >
                 <div className="flex flex-col">
@@ -1080,78 +1145,247 @@ export default ({ location }: { location: any }) => {
                       context.dark ? 'opacity-90' : ''
                     }`}
                   >
-                    Wat is de huidige situatie in
+                    {`Huidige situatie in ${selectedCities[0]}`}
                   </h2>
-                  <div className="group relative block w-max">
-                    <select
-                      className={`-ml-1 w-max appearance-none border-none pb-4 pr-8 text-xl font-xxbold  text-purple underline underline-offset-2 outline-none  tabletportrait:text-3xl laptop:text-4xl ${
-                        context.dark
-                          ? 'bg-dark decoration-darkGray hover:text-lightPurpleDesat hover:decoration-lightPurpleDesat focus:text-lightPurpleDesat focus:decoration-lightPurpleDesat'
-                          : 'decoration-lightxPurple hover:text-pink hover:decoration-pink focus:text-pink focus:decoration-pink'
-                      }`}
-                    >
-                      <option
-                        className={`text-xl ${
-                          context.dark ? 'bg-darkGray' : ''
-                        }`}
-                      >
-                        het Vlaams gewest
-                      </option>
-                      <option
-                        className={`text-xl ${
-                          context.dark ? 'bg-darkGray' : ''
-                        }`}
-                      >
-                        het Vlaams gewest
-                      </option>
-                    </select>
-                    <ChevronDown
-                      className={`pointer-events-none absolute right-0 top-3 opacity-70 ${
-                        context.dark ? 'text-white' : 'text-dark'
-                      }`}
-                    />
+                  <div className="flex flex-col pt-6 tabletportrait:flex-row tabletportrait:justify-between">
+                    <div className="relative mt-4 flex w-full max-w-xs flex-col tabletportrait:mt-0">
+                      <label className="text-lg font-bold  opacity-90">
+                        Gemeente of cluster
+                      </label>
+                      <div className="w-full" id="gemeenteselector2">
+                        <div
+                          className={`mt-2 flex flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
+                            context.dark
+                              ? 'border-lightGray bg-darkGray'
+                              : 'border-dark'
+                          }`}
+                          onClick={() => handleCitySelectionShown(0)}
+                        >
+                          <div className="flex flex-row items-center">
+                            <span
+                              className={`mr-1 h-4  w-4 rounded-full ${
+                                context.dark ? 'bg-pinkDesat' : 'bg-pink'
+                              }`}
+                            />
+                            <input
+                              type="text"
+                              className={`pointer-events-none text-lg font-medium ${
+                                context.dark ? 'bg-darkGray' : ''
+                              }`}
+                              value={selectedCities[0]}
+                              placeholder="Maak een keuze"
+                              readOnly
+                            />
+                          </div>
+                          <ChevronDown className="ml-2" />
+                        </div>
+                        {showCitySelection[0] ? (
+                          <div
+                            className={`relative z-20 w-full border-[1px] border-t-0  border-opacity-25  pt-1 tabletportrait:absolute ${
+                              context.dark
+                                ? 'border-lightGray bg-darkGray '
+                                : 'border-dark bg-white'
+                            }`}
+                          >
+                            <div
+                              className={`m-1 mt-0 flex flex-row border-[1px] border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 focus-within:border-pinkDesat active:border-2 active:border-pinkDesat ${
+                                context.dark
+                                  ? 'border-lightGray'
+                                  : 'border-dark '
+                              }`}
+                            >
+                              <input
+                                id="gemeente2"
+                                type="text"
+                                className={`w-full appearance-none outline-none ${
+                                  context.dark ? 'bg-darkGray' : ''
+                                }`}
+                                value={searchQuery}
+                                onChange={(e) => {
+                                  handleSearch(e.target.value)
+                                }}
+                              />
+                              <label htmlFor="gemeente2">
+                                <Search className="ml-2" />
+                              </label>
+                            </div>
+                            <ul className="max-h-80 w-full overflow-y-auto">
+                              {filteredCities && filteredCities?.length >= 1
+                                ? filteredCities.map((city, index) => (
+                                    <li
+                                      className={`py-1 px-4 text-lg hover:bg-opacity-10 ${
+                                        context.dark
+                                          ? 'hover:bg-lightGray'
+                                          : 'hover:bg-dark'
+                                      }`}
+                                      onClick={() =>
+                                        handleCitySelected(city, 0)
+                                      }
+                                      key={city}
+                                    >
+                                      {city}
+                                    </li>
+                                  ))
+                                : getAllCities(allAmbitionData).map((city) => {
+                                    if (
+                                      city !== selectedCities[0] &&
+                                      city !== selectedCities[1] &&
+                                      !searchQuery
+                                    ) {
+                                      return (
+                                        <li
+                                          className={`py-1 px-4 text-lg hover:bg-opacity-10 ${
+                                            context.dark
+                                              ? 'hover:bg-lightGray'
+                                              : 'hover:bg-dark'
+                                          }`}
+                                          onClick={() =>
+                                            handleCitySelected(city, 0)
+                                          }
+                                          key={city}
+                                        >
+                                          {city}
+                                        </li>
+                                      )
+                                    }
+                                  })}
+                            </ul>
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
+                    <div className="relative mt-4 flex w-full max-w-xs flex-col tabletportrait:mt-0">
+                      <label className="text-lg font-bold  opacity-90">
+                        Vergelijk met...
+                      </label>
+                      <div className="w-full" id="gemeenteselector2">
+                        <div
+                          className={`mt-2 flex flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
+                            context.dark
+                              ? 'border-lightGray bg-darkGray'
+                              : 'border-dark'
+                          }`}
+                          onClick={() => handleCitySelectionShown(1)}
+                        >
+                          <div className="flex flex-row items-center">
+                            <span
+                              className={`mr-1 h-4  w-4 rounded-full ${
+                                context.dark ? 'bg-purpleDesat' : 'bg-purple'
+                              }`}
+                            />
+                            <input
+                              type="text"
+                              className={`pointer-events-none text-lg font-medium ${
+                                context.dark ? 'bg-darkGray' : ''
+                              }`}
+                              value={selectedCities[1]}
+                              placeholder="Maak een keuze"
+                              readOnly
+                            />
+                          </div>
+                          <ChevronDown className="ml-2" />
+                        </div>
+                        {showCitySelection[1] ? (
+                          <div
+                            className={`relative z-20 w-full border-[1px] border-t-0  border-opacity-25  pt-1 tabletportrait:absolute ${
+                              context.dark
+                                ? 'border-lightGray bg-darkGray '
+                                : 'border-dark bg-white'
+                            }`}
+                          >
+                            <div
+                              className={`m-1 mt-0 flex flex-row border-[1px] border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 focus-within:border-pinkDesat active:border-2 active:border-pinkDesat ${
+                                context.dark
+                                  ? 'border-lightGray'
+                                  : 'border-dark '
+                              }`}
+                            >
+                              <input
+                                id="gemeente2"
+                                type="text"
+                                className={`w-full appearance-none outline-none ${
+                                  context.dark ? 'bg-darkGray' : ''
+                                }`}
+                                value={searchQuery}
+                                onChange={(e) => {
+                                  handleSearch(e.target.value)
+                                }}
+                              />
+                              <label htmlFor="gemeente2">
+                                <Search className="ml-2" />
+                              </label>
+                            </div>
+                            <ul className="max-h-80 w-full overflow-y-auto">
+                              {filteredCities && filteredCities?.length >= 1
+                                ? filteredCities.map((city, index) => (
+                                    <li
+                                      className={`py-1 px-4 text-lg hover:bg-opacity-10 ${
+                                        context.dark
+                                          ? 'hover:bg-lightGray'
+                                          : 'hover:bg-dark'
+                                      }`}
+                                      onClick={() =>
+                                        handleCitySelected(city, 1)
+                                      }
+                                      key={city}
+                                    >
+                                      {city}
+                                    </li>
+                                  ))
+                                : getAllCities(allAmbitionData).map((city) => {
+                                    if (
+                                      city !== selectedCities[0] &&
+                                      city !== selectedCities[1] &&
+                                      !searchQuery
+                                    ) {
+                                      return (
+                                        <li
+                                          className={`py-1 px-4 text-lg hover:bg-opacity-10 ${
+                                            context.dark
+                                              ? 'hover:bg-lightGray'
+                                              : 'hover:bg-dark'
+                                          }`}
+                                          onClick={() =>
+                                            handleCitySelected(city, 1)
+                                          }
+                                          key={city}
+                                        >
+                                          {city}
+                                        </li>
+                                      )
+                                    }
+                                  })}
+                            </ul>
+                          </div>
+                        ) : null}
+                      </div>
+                    </div>
                   </div>
-
-                  <label
-                    className={`mt-5 text-sm font-medium tabletportrait:text-lg laptop:text-xl ${
-                      context.dark ? 'opacity-90' : ''
-                    }`}
-                  >
-                    In het Vlaams gewest is{' '}
-                    <span className="font-semibold">
-                      ongeveer de helft of meer van de inwoners
-                    </span>{' '}
-                    <span
-                      className={`font-semibold ${
-                        context.dark ? 'text-pinkDesat' : 'text-pink'
-                      }`}
-                    >
-                      niet tevreden
-                    </span>{' '}
-                    over de staat, veiligheid en aantrekkelijkheid van straten,
-                    pleinen, wandel- en fietspaden (dus een samenvatting van
-                    alle cijfers).
-                  </label>
                 </div>
                 {graphData && graphData.length >= 1 ? (
                   <div>
-                    <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:ml-2 tabletportrait:text-sm laptop:text-lg">
-                      HOEVEEL % VAN DE INWONERS IS NIET TEVREDEN OVER ...
+                    <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:text-sm laptop:text-lg">
+                      HOEVEEL % VAN INWONERS ...
                     </label>
-                    {/* <div className="grid grid-cols-1 text-sm font-medium tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl">
-                      {graphData?.map((e, i) => (
-                        <Donutdata data={e} key={e.label} />
-                      ))}
-                    </div> */}
-                    <div className="grid grid-cols-5 grid-rows-2 items-center gap-y-6 pt-6">
-                      <label className="col-span-1 pr-2">Actief bewegen</label>
-                      <div className="col-span-4">
-                        <Barchart />
-                      </div>
-                      <label className="col-span-1 pr-2">Actief bewegen</label>
-                      <div className="col-span-4">
-                        <Barchart />
-                      </div>
+                    <div className="mt-4 flex flex-col gridbreak:grid gridbreak:auto-rows-fr gridbreak:grid-cols-5 gridbreak:items-center">
+                      {graphData[0].map((bench: Benchmark, index: number) => [
+                        <label
+                          className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                          key={bench.label}
+                        >
+                          {getLabelChart(bench.label)}
+                        </label>,
+                        <div
+                          className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                            context.dark ? 'border-lightGray' : 'border-dark'
+                          }`}
+                        >
+                          <Barchart
+                            benchCity1={bench}
+                            benchCity2={graphData[1][index]}
+                          />
+                        </div>,
+                      ])}
                     </div>
                   </div>
                 ) : null}
@@ -1426,7 +1660,7 @@ export default ({ location }: { location: any }) => {
                   id="autoComplete"
                 >
                   <div className="flex max-w-min flex-col" id="#inputStad">
-                    <label htmlFor="Stad">Postcode of stad:</label>
+                    <label htmlFor="Stad">Naam gemeente:</label>
                     <input
                       type="text"
                       id="Stad"
@@ -1435,7 +1669,7 @@ export default ({ location }: { location: any }) => {
                           ? 'border-lightGray bg-dark text-white focus-within:border-lightPurpleDesat hover:border-lightPurpleDesat active:border-lightPurpleDesat'
                           : ' border-lightPink text-dark focus-within:border-pink hover:border-pink active:border-pink'
                       }`}
-                      placeholder="Postcode/Stad"
+                      placeholder="stad/gemeente"
                       value={typed}
                       onChange={(ev: any) => {
                         setTyped(ev.target.value)
