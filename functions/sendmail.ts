@@ -7,7 +7,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
     console.log("Testing if this works")
 
     const mail_to_send = {
-        cc: "toby.bostoen@student.howest.be",
+        cc: "sigofoy785@game4hr.com",
         from: "toby.bostoen@student.howest.be",
         subject: 'This is a new test with json in the post',
         text: "This is a text message",
