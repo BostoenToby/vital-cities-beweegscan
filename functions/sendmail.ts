@@ -20,7 +20,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
     personilizations[0].to.email = "toby.bostoen@student.howest.be"
 
     const mail_to_send = {
-        personilizations,
+        personalizations: personilizations,
         from: "toby.bostoen@student.howest.be",
         subject: 'This is a new test with json in the post',
         text: message,
