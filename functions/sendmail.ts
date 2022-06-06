@@ -8,17 +8,28 @@ exports.handler = async (event: any, context: any, callback: any) => {
     // const attachement = 
 
     const mail_to_send = {
-        personalizations: [{ 
-            cc: [{
-                    email: "toby.bostoen@student.howest.be"
-                }]
-        }],
-        to: "toby.bostoen@student.howest.be",
+        personalizations: [
+            { 
+                cc: [
+                    {
+                        email: "toby.bostoen@student.howest.be"
+                    }
+                ],
+            },
+            {
+                to: [
+                    {
+                        email: "toby.bostoen@student.howest.be"
+                    }
+                ]
+            }
+        ],
         from: "toby.bostoen@student.howest.be",
         subject: 'This is a new test with json in the post',
         text: message,
         html: message
     }
+    // TODO: fix json error at personalizations --> bad request so probably it's a json error
 
     try{
         await sgMail.send(mail_to_send).then(() => console.log("Email sent!!!"))
