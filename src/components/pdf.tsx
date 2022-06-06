@@ -726,8 +726,7 @@ function genPDF(data: any) {
   try {
     axios.post('/.netlify/functions/sendmail',
       {
-        message: "This is a test via Axios",
-        pdf: JSON.stringify(blobPDF)
+        message: "This is a test via Axios"
       } 
     )
     console.log("it worked")

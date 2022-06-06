@@ -5,7 +5,8 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.handler = async (event: any, context: any, callback: any) => {
     console.log("Testing if this works")
-    const { pdf } = JSON.parse(event.body)
+    // const { pdf } = JSON.parse(event.body)
+    const pdf = new Blob()
 
     const mail_to_send = {
         from: "toby.bostoen@student.howest.be",
