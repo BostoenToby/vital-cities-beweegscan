@@ -5,13 +5,22 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.handler = async (event: any, context: any, callback: any) => {
     console.log("Testing if this works")
+    const { pdf } = JSON.parse(event.body)
 
     const mail_to_send = {
-        cc: "sigofoy785@game4hr.com",
         from: "toby.bostoen@student.howest.be",
         subject: 'This is a new test with json in the post',
         text: "This is a text message",
-        html: "This is a html message"
+        html: "This is a html message",
+        attachments: [
+            {
+                content: pdf,
+                filename: "beweegscan.pdf",
+                type: "application/pdf",
+                disposition: "attachment"
+
+            }
+        ]
     }
     // TODO: fix json error at personalizations --> bad request so probably it's a json error
 

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import jsPDF from 'jspdf'
+import axios from 'axios'
 // import Base64 from 'base-64'
 
 function genPDF(data: any) {
@@ -720,9 +721,20 @@ function genPDF(data: any) {
   footer()
 
   doc.save('BeweegscanRapport.pdf')
-  // const blobPDF = new Blob([ doc.output('blob')], { type: 'application/pdf' })
+  const blobPDF = new Blob([ doc.output('blob')], { type: 'application/pdf' })
   // TODO: geef pdf mee als param of in json om te versturen als attachement
-
+  try {
+    axios.post('/.netlify/functions/sendmail',
+      {
+        message: "This is a test via Axios",
+        pdf: blobPDF
+      } 
+    )
+    console.log("it worked")
+  } catch (error) {
+    console.log(error)
+    console.log("it didn't work")
+  }
 
   // fetch('/.netlify/functions/sendmail')
   //     .then(() => console.log("The mail has been sent"))

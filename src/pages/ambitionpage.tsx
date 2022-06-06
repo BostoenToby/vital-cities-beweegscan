@@ -873,17 +873,17 @@ export default ({ location }: { location: any }) => {
       //   console.log("Mail didn't succeed")
       // }) 
 
-      try {
-        await axios.post('/.netlify/functions/sendmail',
-          {
-            message: "This is a test via Axios"
-          } 
-        )
-        console.log("it worked")
-      } catch (error) {
-        console.log(error)
-        console.log("it didn't work")
-      }
+      // try {
+      //   await axios.post('/.netlify/functions/sendmail',
+      //     {
+      //       message: "This is a test via Axios"
+      //     } 
+      //   )
+      //   console.log("it worked")
+      // } catch (error) {
+      //   console.log(error)
+      //   console.log("it didn't work")
+      // }
     }
   }
 
