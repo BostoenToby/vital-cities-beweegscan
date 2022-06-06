@@ -4,7 +4,6 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.handler = async (event: any, context: any, callback: any) => {
-    console.log("Testing if this works")
     // const { pdf } = JSON.parse(event.body)
     const pdf = new Blob()
 

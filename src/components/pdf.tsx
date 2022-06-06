@@ -3,7 +3,7 @@ import jsPDF from 'jspdf'
 import axios from 'axios'
 // import Base64 from 'base-64'
 
-function genPDF(data: any) {
+async function genPDF(data: any) {
   var page = 1
   console.log(data)
   const city1 = Object.keys(data)[0]
@@ -724,7 +724,7 @@ function genPDF(data: any) {
   const blobPDF = new Blob([ doc.output('blob')], { type: 'application/pdf' })
   // TODO: geef pdf mee als param of in json om te versturen als attachement
   try {
-    axios.post('/.netlify/functions/sendmail',
+    await axios.post('/.netlify/functions/sendmail',
       {
         message: "This is a test via Axios"
       } 
