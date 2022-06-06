@@ -8,19 +8,19 @@ exports.handler = async (event: any, context: any, callback: any) => {
     const body = JSON.parse(event.body)
     const message = body.message
     // const attachement = 
-    let personilizations: Personlization[] = [{
-        to: {
-            email: ""
-        },
-        cc: {
-            email: ""
-        }
-    }]
-    personilizations[0].cc.email = "toby.bostoen@student.howest.be"
-    personilizations[0].to.email = "toby.bostoen@student.howest.be"
+    // let personilizations: Personlization[] = [{
+    //     to: {
+    //         email: ""
+    //     },
+    //     cc: {
+    //         email: ""
+    //     }
+    // }]
+    // personilizations[0].cc.email = "toby.bostoen@student.howest.be"
+    // personilizations[0].to.email = "toby.bostoen@student.howest.be"
 
     const mail_to_send = {
-        personalizations: personilizations,
+        cc: "toby.bostoen@student.howest.be",
         from: "toby.bostoen@student.howest.be",
         subject: 'This is a new test with json in the post',
         text: message,
