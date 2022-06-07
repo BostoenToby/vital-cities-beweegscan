@@ -77,7 +77,7 @@ export default ({ section }: { section: string }) => {
               className={`flex h-24 w-full flex-row drop-shadow-sm ${
                 context.dark
                   ? ' bg-darkGray'
-                  : 'border-b-2 border-dark border-opacity-60 bg-white'
+                  : 'border-b-2 border-purple bg-white'
               }`}
             >
               <div
