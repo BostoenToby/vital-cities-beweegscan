@@ -1507,7 +1507,7 @@ export default ({ location }: { location: any }) => {
                       )
                     }
                   })}
-                <div className="grid grid-cols-1 gap-6 text-sm tabletportrait:text-lg laptop:grid-cols-2 laptop:text-xl laptopL:grid-cols-3">
+                <div className="grid grid-cols-1 gap-6 justify-center text-sm tabletportrait:text-lg tabletportrait:grid-cols-2 laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
                   {whys &&
                     whys.map((item: any) => (
                       <Textblock
@@ -1524,7 +1524,7 @@ export default ({ location }: { location: any }) => {
             </FadeInSection>
             <FadeInSection>
               <section className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16">
-                  {titles?.map((item: ambitionTitle) => {
+                {titles?.map((item: ambitionTitle) => {
                     console.log(titles)
                     if(item.title.includes("Hoe") && (item.ambitions.includes(String(locationAmb)) || item.ambitions.includes("Algemene ambitie"))){
                       return(
@@ -1539,7 +1539,7 @@ export default ({ location }: { location: any }) => {
                       )
                     }
                   })}
-                <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
+                <div className="grid grid-cols-1 gap-6 justify-center tabletportrait:text-lg tabletportrait:grid-cols-2 laptop:grid-cols-3 laptopL:grid-cols-4">
                   {hows &&
                     hows.map((item: HoeWaarom) => {
                       return (
