@@ -6,37 +6,13 @@ const sgMail = require('@sendgrid/mail')
 
 exports.handler = async (event: any, context: any, callback: any) => {
 
-    const { pdf, pdfUrl, mail, city, message } = JSON.parse(event.body)
-
-    function b64toBlob(b64Data: string, contentType: any, sliceSize: any) {
-        contentType = contentType || '';
-        sliceSize = sliceSize || 512;
-
-        var byteCharacters = atob(b64Data);
-        var byteArrays = [];
-
-        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-            var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-            var byteNumbers = new Array(slice.length);
-            for (var i = 0; i < slice.length; i++) {
-                byteNumbers[i] = slice.charCodeAt(i);
-            }
-
-            var byteArray = new Uint8Array(byteNumbers);
-
-            byteArrays.push(byteArray);
-        }
-
-        var blob = new Blob(byteArrays, { type: contentType });
-        return blob;
-    }
+    const { pdf, mail, city } = JSON.parse(event.body)
 
     sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
     const mail_to_send = {
         from: "toby.bostoen@student.howest.be",
-        to: "toby.bostoen@student.howest.be",
+        to: mail,
         cc: "robbe.saelens@student.howest.be",
         subject: 'Rapport over de beweegvriendelijkheid van jouw stad of gemeente',
         templateId: 'd-576874eea4064991ba604911edead40f',

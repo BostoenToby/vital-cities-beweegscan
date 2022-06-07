@@ -7,7 +7,6 @@ import { Buffer } from 'buffer';
 async function genPDF(dataPDF: any) {
   var page = 1
   const data = dataPDF.data
-  console.log(dataPDF)
   const city1 = Object.keys(data)[0]
   const city2 = Object.keys(data)[1]
 
@@ -730,12 +729,12 @@ async function genPDF(dataPDF: any) {
   async function sendgridMail(baseString: any) {
     try {
       console.log(baseString)
+      console.log(data.city)
       return await axios.post('/.netlify/functions/sendmail',
         {
-          message: "This is a test via Axios",
-          mail: data.mail,
-          city: data.city,
-          pdf: baseString,
+          mail: dataPDF.mail,
+          city: dataPDF.city,
+          pdf: baseString
         } 
       )
     } catch (error) {
