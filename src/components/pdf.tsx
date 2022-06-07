@@ -734,7 +734,7 @@ async function genPDF(dataPDF: any) {
     reader.onload = function(){
       var dataUrl: string = String(reader.result)
       var base64 = dataUrl.split(',')[1]
-      console.log(base64)
+      return base64
     }
   }
 
