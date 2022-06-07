@@ -75,6 +75,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
                     disposition: 'attachment'
                 }]
             }
+            return "Succeed"
         }
     })
 
