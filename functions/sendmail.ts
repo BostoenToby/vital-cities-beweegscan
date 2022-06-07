@@ -1,3 +1,4 @@
+import { atob } from "buffer";
 import { Personlization } from "../src/interfaces/sendgrid";
 
 const sgMail = require('@sendgrid/mail')
@@ -6,7 +7,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
 
     const { pdf, mail, city, message } = JSON.parse(event.body)
 
-    function b64toBlob(b64Data: any, contentType: any, sliceSize: any) {
+    function b64toBlob(b64Data: string, contentType: any, sliceSize: any) {
         contentType = contentType || '';
         sliceSize = sliceSize || 512;
 
