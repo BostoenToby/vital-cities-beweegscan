@@ -71,14 +71,16 @@ resources: >-
   # Meer weten
 
 
-  Rosens Roda Matta-park in Malmö, Zweden :
+  [Rosens Roda Matta-park in Malmö, Zweden (charter-equality.eu)]
 
-  <https://charter-equality.eu/exemple-de-bonnes-pratiques/urban-planning-on-girls-conditions.html> 
+  (https://charter-equality.eu/exemple-de-bonnes-pratiques/urban-planning-on-girls-conditions.html)
+   
+  [Rosens Roda Matta-park in Malmö, Zweden (balticurbanlab.eu)]
 
-  <https://www.balticurbanlab.eu/goodpractices/involvement-youth-public-space-planning-malmö> 
+  (https://www.balticurbanlab.eu/goodpractices/involvement-youth-public-space-planning-malmö) 
 
 
-  Wenen, voorbeelden en praktijken ivm gendermainstreaming in de publieke ruimte: 
+  [Wenen, voorbeelden en praktijken ivm gendermainstreaming in de publieke ruimte] 
 
-  <https://www.wien.gv.at/english/administration/gendermainstreaming/examples/parks.html>
+  (https://www.wien.gv.at/english/administration/gendermainstreaming/examples/parks.html)
 ---
