@@ -2,7 +2,7 @@
 ambitions:
   - Actief bewegen en verplaatsen
 text: |-
-  Promoot actief transport
+  Zet in op een veilige school-,
 
-  binnen je stad of gemeente.
+  werk- en woonomgeving.
 ---
