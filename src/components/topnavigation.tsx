@@ -295,7 +295,7 @@ export default ({ section }: { section: string }) => {
                   <div>
                     <Menu
                       size={32}
-                      className={`m-8 cursor-pointer ${
+                      className={`m-8 cursor-pointer hover:text-pink ${
                         context.dark ? 'text-white' : 'text-dark'
                       }`}
                       onClick={() => handleSideBar()}
@@ -318,7 +318,7 @@ export default ({ section }: { section: string }) => {
                 <header className="mt-4 mb-16 flex flex-row">
                   <X
                     size={32}
-                    className="text-white cursor-pointer"
+                    className="text-white cursor-pointer hover:text-pink"
                     onClick={() => handleSideBar()}
                   />
                   <a
@@ -329,7 +329,7 @@ export default ({ section }: { section: string }) => {
                   </a>
                 </header>
                 <ul className="font-poppins" id="ambitionsList">
-                  <li className="my-6 text-2xl font-medium text-white">
+                  <li className="my-6 text-2xl font-medium text-white hover:text-pink">
                     <button
                       className="flex flex-row items-center"
                       onClick={() => handleAmbitions()}
@@ -428,7 +428,7 @@ export default ({ section }: { section: string }) => {
                       </ul>
                     ) : null}
                   </li>
-                  <li className="my-6 text-2xl font-medium text-white">
+                  <li className="my-6 text-2xl font-medium text-white hover:text-pink">
                     <Link
                       to="/overviewpagepractices"
                       className="flex flex-row items-center"
@@ -438,7 +438,7 @@ export default ({ section }: { section: string }) => {
                     </Link>
                   </li>
                   <li
-                    className="my-6 text-2xl font-medium text-white"
+                    className="my-6 text-2xl font-medium text-white hover:text-pink"
                     onClick={() => handleSideBar()}
                   >
                     <a href={section} className="flex flex-row items-center">
