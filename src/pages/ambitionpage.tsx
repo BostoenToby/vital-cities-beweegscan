@@ -171,6 +171,7 @@ export default ({ location }: { location: any }) => {
               tag
               boldpart
               thema
+              resources
             }
             parent {
               internal {
@@ -935,6 +936,7 @@ export default ({ location }: { location: any }) => {
           item.parent.internal.description.includes('goodprac') &&
           item.frontmatter.thema.includes(locationShort)
         ) {
+          console.log(item.frontmatter)
           // TODO: add good practises
           goodPracs.push({
             title: item.frontmatter.title,
@@ -943,6 +945,7 @@ export default ({ location }: { location: any }) => {
             text: item.frontmatter.text,
             extra: item.frontmatter.extra,
             image: item.frontmatter.image,
+            resources: item.frontmatter.resources
           })
         } else if (
           item.parent.internal.description.includes('header') &&

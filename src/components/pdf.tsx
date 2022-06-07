@@ -1,6 +1,7 @@
 import * as React from 'react'
 import jsPDF from 'jspdf'
 import axios from 'axios'
+import { Buffer } from 'buffer';
 // import Base64 from 'base-64'
 
 async function genPDF(data: any) {
