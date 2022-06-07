@@ -32,52 +32,42 @@ exports.handler = async (event: any, context: any, callback: any) => {
         return blob;
     }
 
-    const pdfBlob = b64toBlob(pdf, "application/pdf", 512)
     sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
-    let mail_to_send
-
-    await request(pdfUrl, { encoding: null }, (err: any, res: any, body: any) => {
-        if(err) {return err}
-        if(body){
-            const textBuffered = Buffer.from(body)
-            mail_to_send = {
-                from: "toby.bostoen@student.howest.be",
-                to: "toby.bostoen@student.howest.be",
-                cc: "robbe.saelens@student.howest.be",
-                subject: 'Rapport over de beweegvriendelijkheid van jouw stad of gemeente',
-                text: `Beste, \n\n
-                Bedankt voor jouw interesse in het rapport over de beweegvriendelijkheid van {Kortrijk} dat de Beweegscan van Vital Cities voor jou heeft gegenereerd. 
-                \n
-                In het rapport dat je in de bijlage vindt, lees je voor elk van de ambities die je op het vlak van de beweegvriendelijkheid kan nastreven, het oordeel van de bewonders van {kortrijk} (zoals gemeten in de Gemeente- en Stadsmonitor). 
-                \n
-                Dat oordeel zetten we af tegen het Vlaamse gemiddelde, zodat je in een oogopslag ziet waar jouw stad of gemeente terecht trots op kan zijn (want betere scoort dan het Vlaamse gemiddelde), dan wel wat nog beter kan (want minder goed scoort). 
-                \n
-                We hopen dat deze inzichten - plus de vele onderzoeksrapporten, tools en cases die we aanreiken in de Beweegscan die je op onze webstek vindt (wwww.vitalcities.be/beweegscan) - jou inspireren. 
-                \n\n
-                Hartelijke groet, \n 
-                Het onderzoeksteam van Vital Cities`,
-                html: `Beste, \n\n
-                Bedankt voor jouw interesse in het rapport over de beweegvriendelijkheid van {Kortrijk} dat de Beweegscan van Vital Cities voor jou heeft gegenereerd. 
-                \n
-                In het rapport dat je in de bijlage vindt, lees je voor elk van de ambities die je op het vlak van de beweegvriendelijkheid kan nastreven, het oordeel van de bewonders van {kortrijk} (zoals gemeten in de Gemeente- en Stadsmonitor). 
-                \n
-                Dat oordeel zetten we af tegen het Vlaamse gemiddelde, zodat je in een oogopslag ziet waar jouw stad of gemeente terecht trots op kan zijn (want betere scoort dan het Vlaamse gemiddelde), dan wel wat nog beter kan (want minder goed scoort). 
-                \n
-                We hopen dat deze inzichten - plus de vele onderzoeksrapporten, tools en cases die we aanreiken in de Beweegscan die je op onze webstek vindt (wwww.vitalcities.be/beweegscan) - jou inspireren. 
-                \n\n
-                Hartelijke groet, \n 
-                Het onderzoeksteam van Vital Cities`,
-                attachments: [{
-                    filename: 'Beweegscan.pdf',
-                    content: textBuffered.toString('base64'),
-                    type: 'application/pdf',
-                    disposition: 'attachment'
-                }]
-            }
-            return "Succeed"
-        }
-    })
+    const mail_to_send = {
+        from: "toby.bostoen@student.howest.be",
+        to: "toby.bostoen@student.howest.be",
+        cc: "robbe.saelens@student.howest.be",
+        subject: 'Rapport over de beweegvriendelijkheid van jouw stad of gemeente',
+        text: `Beste, \n\n
+        Bedankt voor jouw interesse in het rapport over de beweegvriendelijkheid van {Kortrijk} dat de Beweegscan van Vital Cities voor jou heeft gegenereerd. 
+        \n
+        In het rapport dat je in de bijlage vindt, lees je voor elk van de ambities die je op het vlak van de beweegvriendelijkheid kan nastreven, het oordeel van de bewonders van {kortrijk} (zoals gemeten in de Gemeente- en Stadsmonitor). 
+        \n
+        Dat oordeel zetten we af tegen het Vlaamse gemiddelde, zodat je in een oogopslag ziet waar jouw stad of gemeente terecht trots op kan zijn (want betere scoort dan het Vlaamse gemiddelde), dan wel wat nog beter kan (want minder goed scoort). 
+        \n
+        We hopen dat deze inzichten - plus de vele onderzoeksrapporten, tools en cases die we aanreiken in de Beweegscan die je op onze webstek vindt (wwww.vitalcities.be/beweegscan) - jou inspireren. 
+        \n\n
+        Hartelijke groet, \n 
+        Het onderzoeksteam van Vital Cities`,
+        html: `Beste, \n\n
+        Bedankt voor jouw interesse in het rapport over de beweegvriendelijkheid van {Kortrijk} dat de Beweegscan van Vital Cities voor jou heeft gegenereerd. 
+        \n
+        In het rapport dat je in de bijlage vindt, lees je voor elk van de ambities die je op het vlak van de beweegvriendelijkheid kan nastreven, het oordeel van de bewonders van {kortrijk} (zoals gemeten in de Gemeente- en Stadsmonitor). 
+        \n
+        Dat oordeel zetten we af tegen het Vlaamse gemiddelde, zodat je in een oogopslag ziet waar jouw stad of gemeente terecht trots op kan zijn (want betere scoort dan het Vlaamse gemiddelde), dan wel wat nog beter kan (want minder goed scoort). 
+        \n
+        We hopen dat deze inzichten - plus de vele onderzoeksrapporten, tools en cases die we aanreiken in de Beweegscan die je op onze webstek vindt (wwww.vitalcities.be/beweegscan) - jou inspireren. 
+        \n\n
+        Hartelijke groet, \n 
+        Het onderzoeksteam van Vital Cities`,
+        attachments: [{
+            filename: 'Beweegscan.pdf',
+            content: pdf,
+            type: 'application/pdf',
+            disposition: 'attachment'
+        }]
+    }
 
     try{
         await sgMail.send(mail_to_send).then(() => console.log("Email sent!!!"))
