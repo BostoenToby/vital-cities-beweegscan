@@ -9,7 +9,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
         from: "toby.bostoen@student.howest.be",
         subject: 'This is a new test with json in the post',
         text: `This is a text message, Open this link for the pdf --> ${localStorage["pdf"]}`,
-        html: "This is a html message",
+        html: "This is a html message"
     }
     // TODO: fix json error at personalizations --> bad request so probably it's a json error
 
