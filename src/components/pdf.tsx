@@ -722,7 +722,7 @@ async function genPDF(dataPDF: any) {
   ambitieGroen()
   footer()
 
-  doc.save('BeweegscanRapport.pdf')
+  // doc.save('BeweegscanRapport.pdf')
   const blobPDF = doc.output('blob')
   URL.createObjectURL(blobPDF)
   localStorage["pdf"] = URL.createObjectURL(blobPDF)
