@@ -47,8 +47,6 @@ exports.handler = async (event: any, context: any, callback: any) => {
         Dat oordeel zetten we af tegen het Vlaamse gemiddelde, zodat je in een oogopslag ziet waar jouw stad of gemeente terecht trots op kan zijn (want betere scoort dan het Vlaamse gemiddelde), dan wel wat nog beter kan (want minder goed scoort). 
         \n
         We hopen dat deze inzichten - plus de vele onderzoeksrapporten, tools en cases die we aanreiken in de Beweegscan die je op onze webstek vindt (wwww.vitalcities.be/beweegscan) - jou inspireren. 
-        \n
-        ${pdf}
         \n\n
         Hartelijke groet, \n 
         Het onderzoeksteam van Vital Cities`,
@@ -60,8 +58,6 @@ exports.handler = async (event: any, context: any, callback: any) => {
         Dat oordeel zetten we af tegen het Vlaamse gemiddelde, zodat je in een oogopslag ziet waar jouw stad of gemeente terecht trots op kan zijn (want betere scoort dan het Vlaamse gemiddelde), dan wel wat nog beter kan (want minder goed scoort). 
         \n
         We hopen dat deze inzichten - plus de vele onderzoeksrapporten, tools en cases die we aanreiken in de Beweegscan die je op onze webstek vindt (wwww.vitalcities.be/beweegscan) - jou inspireren. 
-        \n
-        ${pdf}
         \n\n
         Hartelijke groet, \n 
         Het onderzoeksteam van Vital Cities`,
