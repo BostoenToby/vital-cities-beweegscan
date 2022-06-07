@@ -311,8 +311,8 @@ export default ({ section }: { section: string }) => {
               </nav>
 
               <nav
-                className={`fixed left-0 top-0 h-screen w-full max-w-sm overflow-y-auto pt-4 pr-4 pl-8 pb-8 ${
-                  !showSideNav ? 'hidden' : ''
+                className={`fixed -left-96 top-0 h-screen w-full max-w-sm overflow-y-auto pt-4 pr-4 pl-8 pb-8 transition-all duration-75 ${
+                  !showSideNav ? '' : 'left-0'
                 } ${context.dark ? 'bg-darkGray' : 'bg-purple'}`}
               >
                 <header className="mt-4 mb-16 flex flex-row">
