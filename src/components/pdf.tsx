@@ -738,12 +738,19 @@ async function genPDF(data: any) {
   // const base64PDF = btoa(blobPDF)
   // TODO: geef pdf mee als param of in json om te versturen als attachement
   try {
-    await axios.post('/.netlify/functions/sendmail',
+    return await axios.post('/.netlify/functions/sendmail',
       {
         message: "This is a test via Axios",
         pdf: localStorage["pdf"]
       } 
-    )
+    ).then((response) => ({
+      statusCode: 200,
+      body: JSON.stringify(response.data),
+    }))
+    .catch((error) => ({
+        statusCode: 500,
+        body: JSON.stringify(error.message),
+    }));
     console.log("it worked")
   } catch (error) {
     console.log(error)
