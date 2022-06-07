@@ -65,7 +65,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
             filename: 'Beweegscan.pdf',
             content: pdfBlob,
             type: 'application/pdf',
-            disposition: "attachment",
+            disposition: "attachment"
         }]
     }
 
