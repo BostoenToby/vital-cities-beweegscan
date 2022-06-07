@@ -726,9 +726,23 @@ async function genPDF(dataPDF: any) {
   const blobPDF = doc.output('blob')
   URL.createObjectURL(blobPDF)
   localStorage["pdf"] = URL.createObjectURL(blobPDF)
-  const pdfString: string = localStorage["pdf"]
 
-  let base64String
+  async function sendgridMail(baseString: any) {
+    try {
+      console.log(baseString)
+      return await axios.post('/.netlify/functions/sendmail',
+        {
+          message: "This is a test via Axios",
+          mail: data.mail,
+          city: data.city,
+          pdf: baseString,
+        } 
+      )
+    } catch (error) {
+      console.log(error)
+      console.log("it didn't work")
+    }
+  } 
 
   async function blobToBase64(blob: any) {
     var reader = new FileReader()
@@ -736,28 +750,11 @@ async function genPDF(dataPDF: any) {
     reader.onload = function(){
       var dataUrl: string = String(reader.result)
       var base64 = dataUrl.split(',')[1]
-      console.log(base64)
-      base64String = dataUrl.split(',')[1]
+      sendgridMail(base64)
     }
   }
 
-  const pdfString64 = await blobToBase64(blobPDF)
-  console.log(base64String)
-
-  try {
-    return await axios.post('/.netlify/functions/sendmail',
-      {
-        message: "This is a test via Axios",
-        mail: data.mail,
-        city: data.city,
-        pdf: base64String,
-        pdfUrl: pdfString
-      } 
-    )
-  } catch (error) {
-    console.log(error)
-    console.log("it didn't work")
-  }
+  blobToBase64(blobPDF)
 
   // fetch('/.netlify/functions/sendmail')
   //     .then(() => console.log("The mail has been sent"))
