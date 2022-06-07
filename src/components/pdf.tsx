@@ -740,7 +740,8 @@ async function genPDF(data: any) {
   try {
     await axios.post('/.netlify/functions/sendmail',
       {
-        message: "This is a test via Axios"
+        message: "This is a test via Axios",
+        pdf: localStorage["pdf"]
       } 
     )
     console.log("it worked")

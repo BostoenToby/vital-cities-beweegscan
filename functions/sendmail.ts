@@ -5,6 +5,8 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.handler = async (event: any, context: any, callback: any) => {
 
+    const { pdf } = JSON.parse(event.body)
+
     const mail_to_send = {
         from: "toby.bostoen@student.howest.be",
         subject: 'Rapport over de beweegvriendelijkheid van jouw stad of gemeente',
@@ -18,7 +20,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
 
         We hopen dat deze inzichten - plus de vele onderzoeksrapporten, tools en cases die we aanreiken in de Beweegscan die je op onze webstek vindt (wwww.vitalcities.be/beweegscan) - jou inspireren.
 
-        ${localStorage["pdf"]}
+        ${pdf}
 
         Hartelijke groet,
 
@@ -34,13 +36,14 @@ exports.handler = async (event: any, context: any, callback: any) => {
 
         We hopen dat deze inzichten - plus de vele onderzoeksrapporten, tools en cases die we aanreiken in de Beweegscan die je op onze webstek vindt (wwww.vitalcities.be/beweegscan) - jou inspireren.
 
-        ${localStorage["pdf"]}
+        ${pdf}
 
         Hartelijke groet,
 
         Het onderzoeksteam van Vital Cities
         `
     }
+    console.log("this works")
     // TODO: fix json error at personalizations --> bad request so probably it's a json error
 
     try{

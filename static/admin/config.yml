@@ -25,7 +25,7 @@ collections:
     fields: 
       - { name: title, label: Titel }
       - { name: subtitle, label: Subtitel }
-      - { name: page, label: Pagina, widget: select, multiple: false, options: ["Ambitie pagina", "Landings pagina"]}
+      - { name: section, label: Sectie, widget: select, multiple: false, options: ["Waarom", "Hoe", "Interessante bronnen", "Relevante good practises"]}
 
   - name: Probleem
     label: Probleem
