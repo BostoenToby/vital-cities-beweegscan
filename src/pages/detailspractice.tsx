@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/tailwind.css'
 import TopNavigation from '../components/topnavigation'
-import TestPractice from '../interfaces/testPractice'
+import Practice from '../interfaces/data'
 import { ChevronLeft } from 'lucide-react'
 import { navigate } from 'gatsby'
 import ThemaCard from '../components/themacard'
@@ -15,7 +15,7 @@ import FadeInSection from '../components/scrollytelling'
 // NOTE TO SELF: FADE-IN ON A P SECTION SPLIT BETWEEN 2 COLUMNS IS NOT A GOOD IDEA
 
 export default ({ location }: { location: any }) => {
-  const [practice, setPractice] = useState<TestPractice>()
+  const [practice, setPractice] = useState<Practice>()
   const [ambities, setAmbities] = useState<string[]>()
   const [overigeThemas, setOverigeThemas] = useState<string[]>()
   const [hasMounted, setHasMounted] = useState(false)
@@ -154,22 +154,6 @@ export default ({ location }: { location: any }) => {
               practice.paragrafen &&
               practice.paragrafen.length >= 1 ? (
                 <div className="gap-x-12 px-2 py-14 columnbreak:columns-2 columnbreak:px-6">
-                  {practice.warning ? (
-                    <div
-                      className={`mb-8 p-4 text-dark ${
-                        context.dark
-                          ? 'bg-redDesat bg-opacity-90'
-                          : 'bg-lightRed'
-                      }`}
-                    >
-                      <h2 className="mb-1 font-raleway text-2xl font-bold columnbreak:text-3xl">
-                        {practice.warning.header}
-                      </h2>
-                      <p className="ml-2 text-base font-medium columnbreak:text-lg">
-                        {practice.warning.body}
-                      </p>
-                    </div>
-                  ) : null}
                   {practice.paragrafen.map((e, i) => (
                     <PracticeParagraph paragraaf={e} key={i} />
                   ))}

@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { graphql, StaticQuery, useStaticQuery } from 'gatsby'
+import { graphql, Link, StaticQuery, useStaticQuery } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { render } from 'react-dom'
 import Tag from './tag'
 import ThemeContext from '../context/themecontext'
+import Practice from '../interfaces/data'
 
 export default function RevPrac({
   image,
@@ -11,22 +12,14 @@ export default function RevPrac({
   leftTagText,
   leftTagColorBg,
   leftTagColorText,
-  rightTagText,
-  rightTagColorBg,
-  rightTagColorText,
-  title,
-  subTitle,
+  practice,
 }: {
   image: string
   imageAlt: string
   leftTagText: string
   leftTagColorBg: string
   leftTagColorText: string
-  rightTagText: string
-  rightTagColorBg: string
-  rightTagColorText: string
-  title: string
-  subTitle: string
+  practice: Practice
 }) {
   const { allImageSharp } = useStaticQuery(
     graphql`
@@ -52,9 +45,18 @@ export default function RevPrac({
   return (
     <ThemeContext.Consumer>
       {(context) => (
-        <div>
+        <Link
+          to="/detailspractice/"
+          state={{
+            practice: practice,
+          }}
+        >
           {img != '' && (
-            <GatsbyImage image={img} alt="Test" className="relative w-full h-96" />
+            <GatsbyImage
+              image={img}
+              alt="Test"
+              className="relative h-96 w-full"
+            />
           )}
           <div className="relative bottom-3 left-3 flex items-center text-xs tabletportrait:text-sm laptop:text-lg">
             <Tag
@@ -63,26 +65,20 @@ export default function RevPrac({
                 context.dark ? 'bg-pinkDesat text-white' : 'bg-pink text-white'
               }
             />
-            <Tag
-              text={rightTagText}
-              classes={
-                context.dark
-                  ? 'bg-purpleDesat text-white'
-                  : 'bg-purple text-white'
-              }
-            />
           </div>
           <h3
             className={`mb-3 pl-3 text-3xl font-semibold ${
               context.dark ? 'opacity-90' : ''
             }`}
           >
-            {title}
+            {practice.titel}
           </h3>
-          <p className={`line-clamp-3 pl-3 ${context.dark ? 'opacity-75' : ''}`}>
-            {subTitle}
+          <p
+            className={`pl-3 line-clamp-3 ${context.dark ? 'opacity-75' : ''}`}
+          >
+            {practice.paragrafen[0].body}
           </p>
-        </div>
+        </Link>
       )}
     </ThemeContext.Consumer>
   )

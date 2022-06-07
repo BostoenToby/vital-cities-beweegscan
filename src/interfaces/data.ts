@@ -9,6 +9,7 @@ export default interface Practice {
   extra: Bron[]
   paragrafen: Paragraaf[]
   datum: string
+  image: string
 }
 
 export interface Paragraaf {
