@@ -15,7 +15,8 @@ export interface goodPractice {
     themes: string[]
     text: string
     extra: string[]
-    image: string
+    image: string,
+    resources: string
 }
 
 export interface header {

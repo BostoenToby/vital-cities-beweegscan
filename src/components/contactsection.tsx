@@ -37,14 +37,14 @@ export default () => {
             <div className="flex space-x-2 py-2 text-white">
               <Mail />
               <a
-                href="mailto:vitalcities@gmail.com"
+                href="mailto:lore.cuypers@howest.be"
                 className={`text-pink underline  ${
                   context.dark
                     ? 'hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
                     : 'hover:text-lightPurple focus:text-lightPurple'
                 }`}
               >
-                lore.cuypers@vitalcities.be
+                lore.cuypers@howest.be
               </a>
             </div>
             <div className="flex space-x-2 text-white">

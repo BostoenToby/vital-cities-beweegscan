@@ -171,6 +171,7 @@ export default ({ location }: { location: any }) => {
               tag
               boldpart
               thema
+              resources
             }
             parent {
               internal {
@@ -873,17 +874,17 @@ export default ({ location }: { location: any }) => {
       //   console.log("Mail didn't succeed")
       // }) 
 
-      try {
-        await axios.post('/.netlify/functions/sendmail',
-          {
-            message: "This is a test via Axios"
-          } 
-        )
-        console.log("it worked")
-      } catch (error) {
-        console.log(error)
-        console.log("it didn't work")
-      }
+      // try {
+      //   await axios.post('/.netlify/functions/sendmail',
+      //     {
+      //       message: "This is a test via Axios"
+      //     } 
+      //   )
+      //   console.log("it worked")
+      // } catch (error) {
+      //   console.log(error)
+      //   console.log("it didn't work")
+      // }
     }
   }
 
@@ -935,6 +936,7 @@ export default ({ location }: { location: any }) => {
           item.parent.internal.description.includes('goodprac') &&
           item.frontmatter.thema.includes(locationShort)
         ) {
+          console.log(item.frontmatter)
           // TODO: add good practises
           goodPracs.push({
             title: item.frontmatter.title,
@@ -943,6 +945,7 @@ export default ({ location }: { location: any }) => {
             text: item.frontmatter.text,
             extra: item.frontmatter.extra,
             image: item.frontmatter.image,
+            resources: item.frontmatter.resources
           })
         } else if (
           item.parent.internal.description.includes('header') &&
@@ -1529,7 +1532,7 @@ export default ({ location }: { location: any }) => {
                   }`}
                 >
                   We maken je graag wegwijs in wat bronnen en instrumenten om de
-                  omgevint te analyseren en te ontwerpen op vlak van wandel- en
+                  omgeving te analyseren en te ontwerpen op vlak van wandel- en
                   fietsvriendelijkheid
                 </p>
                 <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">

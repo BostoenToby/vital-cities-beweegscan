@@ -83,12 +83,12 @@ resources: >-
   # Meer weten
 
 
-  Kind & Samenleving, Kind en Ruimte, editie 7, maart 2015, 
+  [Kind & Samenleving, Kind en Ruimte, editie 7, maart 2015]
+
+  (https://k-s.be/medialibrary/purl/nl/5528441/kind%20en%20ruimte%20editie%207%20.pdf)
 
 
-  <https://k-s.be/medialibrary/purl/nl/5528441/kind%20en%20ruimte%20editie%207%20.pdf>
+  [Wouter Verhaert, Trefdag Kind in de Stad, Stadsatelier ‘Veilig op straat’, 4 februari 2014.] 
 
-
-
-  Wouter Verhaert, Trefdag Kind in de Stad, Stadsatelier ‘Veilig op straat’, 4 februari 2014. <https://www.youtube.com/watch?v=t64Kx2HiQw4>
+  (<https://www.youtube.com/watch?v=t64Kx2HiQw4>)
 ---

@@ -1,8 +1,10 @@
 import * as React from 'react'
 import jsPDF from 'jspdf'
+import axios from 'axios'
+import { Buffer } from 'buffer';
 // import Base64 from 'base-64'
 
-function genPDF(data: any) {
+async function genPDF(data: any) {
   var page = 1
   console.log(data)
   const city1 = Object.keys(data)[0]
@@ -720,9 +722,40 @@ function genPDF(data: any) {
   footer()
 
   doc.save('BeweegscanRapport.pdf')
-  // const blobPDF = new Blob([ doc.output('blob')], { type: 'application/pdf' })
+  const blobPDF = doc.output('blob')
+  URL.createObjectURL(blobPDF)
+  localStorage["pdf"] = URL.createObjectURL(blobPDF)
+  
+  // const base64PDF = btoa(unescape(encodeURIComponent(blobPDF)))
+  // var reader = new FileReader()
+  // let result: string = ""
+  // reader.onload = function() {
+  //   result += reader.result
+  // }
+  // const blobText = reader.readAsText(blobPDF, "base64") 
+  // console.log(result)
+  // console.log(blobText)
+  // const base64PDF = btoa(blobPDF)
   // TODO: geef pdf mee als param of in json om te versturen als attachement
-
+  try {
+    return await axios.post('/.netlify/functions/sendmail',
+      {
+        message: "This is a test via Axios",
+        pdf: localStorage["pdf"]
+      } 
+    ).then((response) => ({
+      statusCode: 200,
+      body: JSON.stringify(response.data),
+    }))
+    .catch((error) => ({
+        statusCode: 500,
+        body: JSON.stringify(error.message),
+    }));
+    console.log("it worked")
+  } catch (error) {
+    console.log(error)
+    console.log("it didn't work")
+  }
 
   // fetch('/.netlify/functions/sendmail')
   //     .then(() => console.log("The mail has been sent"))

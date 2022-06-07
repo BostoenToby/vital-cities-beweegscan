@@ -1,36 +1,31 @@
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+import { Personlization } from "../src/interfaces/sendgrid";
+
+const sgMail = require('@sendgrid/mail')
 
 exports.handler = async (event: any, context: any, callback: any) => {
-    console.log("Testing if this works")
-    const body = JSON.parse(event.body)
-    const message = body.message
-    // const attachement = 
+
+    const { pdf } = JSON.parse(event.body)
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
     const mail_to_send = {
-        personalizations: [{ 
-            cc: [{
-                    email: "toby.bostoen@student.howest.be"
-                }]
-        }],
-        to: "toby.bostoen@student.howest.be",
         from: "toby.bostoen@student.howest.be",
-        subject: 'This is a new test with json in the post',
-        text: message,
-        html: message
+        subject: 'Rapport over de beweegvriendelijkheid van jouw stad of gemeente',
+        text: `Beste, Bedankt voor jouw interesse in het rapport over de beweegvriendelijkheid van {Kortrijk} dat de Beweegscan van Vital Cities voor jou heeft gegenereerd. In het rapport dat je in de bijlage vindt, lees je voor elk van de ambities die je op het vlak van de beweegvriendelijkheid kan nastreven, het oordeel van de bewonders van {kortrijk} (zoals gemeten in de Gemeente- en Stadsmonitor). Dat oordeel zetten we af tegen het Vlaamse gemiddelde, zodat je in een oogopslag ziet waar jouw stad of gemeente terecht trots op kan zijn (want betere scoort dan het Vlaamse gemiddelde), dan wel wat nog beter kan (want minder goed scoort). We hopen dat deze inzichten - plus de vele onderzoeksrapporten, tools en cases die we aanreiken in de Beweegscan die je op onze webstek vindt (wwww.vitalcities.be/beweegscan) - jou inspireren. ${pdf} Hartelijke groet, Het onderzoeksteam van Vital Cities`,
+        html: `Beste, Bedankt voor jouw interesse in het rapport over de beweegvriendelijkheid van {Kortrijk} dat de Beweegscan van Vital Cities voor jou heeft gegenereerd. In het rapport dat je in de bijlage vindt, lees je voor elk van de ambities die je op het vlak van de beweegvriendelijkheid kan nastreven, het oordeel van de bewonders van {kortrijk} (zoals gemeten in de Gemeente- en Stadsmonitor). Dat oordeel zetten we af tegen het Vlaamse gemiddelde, zodat je in een oogopslag ziet waar jouw stad of gemeente terecht trots op kan zijn (want betere scoort dan het Vlaamse gemiddelde), dan wel wat nog beter kan (want minder goed scoort). We hopen dat deze inzichten - plus de vele onderzoeksrapporten, tools en cases die we aanreiken in de Beweegscan die je op onze webstek vindt (wwww.vitalcities.be/beweegscan) - jou inspireren. ${pdf} Hartelijke groet, Het onderzoeksteam van Vital Cities`
     }
+    // TODO: fix json error at personalizations --> bad request so probably it's a json error
 
     try{
         await sgMail.send(mail_to_send).then(() => console.log("Email sent!!!"))
 
         return{
             statusCode: 200,
-            body: "Message sent successfully"
+            body: JSON.stringify("Message sent successfully")
         }
     } catch(e: any){
         return{
             statusCode: e.code,
-            body: e.message
+            body: JSON.stringify(e.message)
         }
     }
 }
