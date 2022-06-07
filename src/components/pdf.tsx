@@ -724,9 +724,22 @@ async function genPDF(dataPDF: any) {
 
   doc.save('BeweegscanRapport.pdf')
   const blobPDF = doc.output('blob')
-  URL.createObjectURL(blobPDF)
-  localStorage["pdf"] = URL.createObjectURL(blobPDF)
-  const pdfString: string = localStorage["pdf"]
+  // URL.createObjectURL(blobPDF)
+  // localStorage["pdf"] = URL.createObjectURL(blobPDF)
+  // const pdfString: string = localStorage["pdf"]
+
+  function blobToBase64(blob: any) {
+    var reader = new FileReader()
+    reader.readAsDataURL(blob)
+    reader.onload = function(){
+      var dataUrl: string = String(reader.result)
+      var base64 = dataUrl.split(',')[1]
+      console.log(base64)
+    }
+  }
+
+  const pdfString64 = blobToBase64(blobPDF)
+  console.log(pdfString64)
 
   try {
     return await axios.post('/.netlify/functions/sendmail',
@@ -734,7 +747,7 @@ async function genPDF(dataPDF: any) {
         message: "This is a test via Axios",
         mail: data.mail,
         city: data.city,
-        pdf: pdfString
+        pdf: pdfString64
       } 
     ).then((response) => ({
       statusCode: 200,
