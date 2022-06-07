@@ -4,7 +4,7 @@ import TopNavigation from '../components/topnavigation'
 import { Link } from 'gatsby'
 import { testJSON } from '../data/testPractices'
 import PracticeCard from '../components/practicecard'
-import TestPractice from '../interfaces/testPractice'
+import TestPractice from '../interfaces/data'
 import { ChevronDown } from 'lucide-react'
 import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
@@ -177,7 +177,7 @@ export default () => {
               <div className="flex flex-col gap-y-20 gridbreak:grid gridbreak:grid-cols-2 gridbreak:gap-x-10 navbreak:grid-cols-3 navbreak:gap-x-14">
                 {currentPractices.map((e, i) => (
                   <FadeInSection>
-                    <PracticeCard practice={e} key={e.id} />
+                    <PracticeCard practice={e} key={e.titel} />
                   </FadeInSection>
                 ))}
               </div>

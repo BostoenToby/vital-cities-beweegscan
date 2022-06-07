@@ -47,7 +47,8 @@ import Lottie, { useLottie } from 'lottie-react'
 import lightbulb from '../assets/animations/lightbulb.json'
 import long_arrow from '../assets/animations/long_arrow.json'
 import { colorify, flatten, getColors, replaceColor } from 'lottie-colorify'
-import { Paragraaf } from '../interfaces/testPractice'
+import { Bron, Paragraaf } from '../interfaces/data'
+import { url } from 'inspector'
 
 export default ({ location }: { location: any }) => {
   const [hasMounted, setHasMounted] = useState(false)
@@ -84,7 +85,7 @@ export default ({ location }: { location: any }) => {
     lastNameError: '',
     mailError: '',
   })
-  const [practices, setPractices] = useState<Practice>()
+  const [practices, setPractices] = useState<Practice[]>()
 
   useEffect(() => {
     setHasMounted(true)
@@ -887,10 +888,12 @@ export default ({ location }: { location: any }) => {
           extra: [],
           paragrafen: [],
           datum: '',
+          image: '',
         }
 
         practice.titel = p.title
         practice.themas = p.themes
+        practice.image = p.image
 
         const datum = new Date(p.date)
         practice.datum = `${datum.getDate()} ${getMonthFromIndex(
@@ -911,24 +914,49 @@ export default ({ location }: { location: any }) => {
           const par: Paragraaf = {
             //@ts-ignore
             header: titles[index],
-            body: paragraaf.replaceAll('*', '•'),
+            body: paragraaf,
+            // body: paragraaf.replace(/\*[^*]/g, '•'),
           }
           parResults.push(par)
         })
 
         practice.paragrafen = parResults
 
-        let regLinks = p.resources.match(/[^\(]<.+>[^\)]/g)
+        let regLinks = p.resources.match(/[^(]<.+>/g)
         let hyperLinks = p.resources.match(/\[.+\] ?\n?\(.+\)/g)
+        let processedLinks: Bron[] = []
 
-        console.log(p.resources)
-        console.log(regLinks)
-        console.log(hyperLinks)
+        regLinks?.forEach((link: string) => {
+          const bron: Bron = {
+            naam: '',
+            url: link.replaceAll('\n', '').replace(/^</, '').replace(/>$/, ''),
+          }
+
+          processedLinks.push(bron)
+        })
+        hyperLinks?.forEach((link: string) => {
+          const l = link.split(/\] ?\n?\(/)
+          let url = ''
+
+          const naam = l[0].replace(/^\[/, '')
+          if (l[1]) {
+            url = l[1].replace(/\)$/, '').replace(/^</, '').replace(/>$/, '')
+          }
+
+          const bron: Bron = {
+            naam: naam,
+            url: url,
+          }
+
+          processedLinks.push(bron)
+        })
+        practice.extra = processedLinks
 
         data.push(practice)
       })
 
       console.log(data)
+      setPractices(data)
     }
   }, [goodPracs])
 
@@ -1016,14 +1044,15 @@ export default ({ location }: { location: any }) => {
             bold: item.frontmatter.boldpart,
           })
         } else if (
-          item.parent.internal.description.includes('titels') 
-          && (item.frontmatter.ambitions.includes('Algemene ambitie') || item.frontmatter.ambitions.includes(locationAmb))
+          item.parent.internal.description.includes('titels') &&
+          (item.frontmatter.ambitions.includes('Algemene ambitie') ||
+            item.frontmatter.ambitions.includes(locationAmb))
         ) {
           titles.push({
             title: item.frontmatter.title,
             subtitle: item.frontmatter.subtitle,
             section: item.frontmatter.section,
-            ambitions: item.frontmatter.ambitions
+            ambitions: item.frontmatter.ambitions,
           })
         }
       }
@@ -1182,7 +1211,7 @@ export default ({ location }: { location: any }) => {
                 <div className="flex flex-col">
                   <div className="flex items-center justify-between gap-4">
                     <h2
-                      className={`flex flex-col justify-end h-full pb-2 font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl ${
+                      className={`flex h-full flex-col justify-end pb-2 font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl ${
                         context.dark ? 'opacity-90' : ''
                       }`}
                     >
@@ -1493,21 +1522,26 @@ export default ({ location }: { location: any }) => {
                 id="Solution"
               >
                 {titles?.map((item: ambitionTitle) => {
-                    console.log(titles)
-                    if(item.title.includes("Waarom")){
-                      return(
-                        <>
-                          <h2 className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                  console.log(titles)
+                  if (item.title.includes('Waarom')) {
+                    return (
+                      <>
+                        <h2
+                          className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                             context.dark ? 'opacity-90' : ''
-                          }`}>{item.title}</h2>
-                          <p className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
+                          }`}
+                        >
+                          {item.title}
+                        </h2>
+                        <p
+                          className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
                             context.dark ? 'opacity-75' : ''
                           }`}>{item.subtitle}</p>
                         </>
                       )
                     }
                   })}
-                <div className="grid grid-cols-1 gap-6 text-sm tabletportrait:text-lg laptop:grid-cols-2 laptop:text-xl laptopL:grid-cols-3">
+                <div className="grid grid-cols-1 gap-6 justify-center text-sm tabletportrait:text-lg tabletportrait:grid-cols-2 laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
                   {whys &&
                     whys.map((item: any) => (
                       <Textblock
@@ -1524,22 +1558,26 @@ export default ({ location }: { location: any }) => {
             </FadeInSection>
             <FadeInSection>
               <section className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16">
-                  {titles?.map((item: ambitionTitle) => {
+                {titles?.map((item: ambitionTitle) => {
                     console.log(titles)
                     if(item.title.includes("Hoe") && (item.ambitions.includes(String(locationAmb)) || item.ambitions.includes("Algemene ambitie"))){
                       return(
                         <>
                           <h2 className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                             context.dark ? 'opacity-90' : ''
-                          }`}>{item.title}</h2>
-                          <p className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
+                          }`}
+                        >
+                          {item.title}
+                        </h2>
+                        <p
+                          className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
                             context.dark ? 'opacity-75' : ''
                           }`}>{item.subtitle}</p>
                         </>
                       )
                     }
                   })}
-                <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
+                <div className="grid grid-cols-1 gap-6 justify-center tabletportrait:text-lg tabletportrait:grid-cols-2 laptop:grid-cols-3 laptopL:grid-cols-4">
                   {hows &&
                     hows.map((item: HoeWaarom) => {
                       return (
@@ -1564,28 +1602,28 @@ export default ({ location }: { location: any }) => {
                 id="Resources"
               >
                 {titles?.map((item: ambitionTitle) => {
-                    console.log(titles)
-                    if(item.title.includes("bronnen")){
-                      return(
-                        <>
-                          <h2
-                            className={`mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                              context.dark ? 'opacity-90' : ''
-                            }`}
-                          >
-                            {item.title}
-                          </h2>
-                          <p
-                            className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
-                              context.dark ? 'opacity-75' : ''
-                            }`}
-                          >
-                            {item.subtitle}
-                          </p>
-                        </>
-                      )
-                    }
-                  })}
+                  console.log(titles)
+                  if (item.title.includes('bronnen')) {
+                    return (
+                      <>
+                        <h2
+                          className={`mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                            context.dark ? 'opacity-90' : ''
+                          }`}
+                        >
+                          {item.title}
+                        </h2>
+                        <p
+                          className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
+                            context.dark ? 'opacity-75' : ''
+                          }`}
+                        >
+                          {item.subtitle}
+                        </p>
+                      </>
+                    )
+                  }
+                })}
                 <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
                   {intBronnen &&
                     intBronnen.map((item: intBron, val: number) => {
@@ -1637,8 +1675,9 @@ export default ({ location }: { location: any }) => {
                   </Link>
                 </p>
                 <div className="grid grid-cols-1 gap-16 text-sm mobile:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
-                  {goodPracs &&
-                    goodPracs.map((item: any, val: number) => {
+                  {practices &&
+                    practices.length >= 1 &&
+                    practices.map((item: Practice, val: number) => {
                       if (val < 2) {
                         return (
                           <RevPrac
@@ -1647,41 +1686,13 @@ export default ({ location }: { location: any }) => {
                             leftTagText={header?.tag!}
                             leftTagColorBg="pink"
                             leftTagColorText="black"
-                            rightTagText={item.date}
-                            rightTagColorBg="yellow"
-                            rightTagColorText="black"
-                            title={item.title}
-                            subTitle={item.text}
+                            practice={item}
                           />
                         )
                       } else {
                         return <></>
                       }
                     })}
-                  {/* <RevPrac
-                  image="relevantcases.png"
-                  imageAlt="Relevant cases"
-                  leftTagText="Actief bewegen"
-                  leftTagColorBg="pink"
-                  leftTagColorText="black"
-                  rightTagText="20 september 2020"
-                  rightTagColorBg="yellow"
-                  rightTagColorText="black"
-                  title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                  subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
-                />
-                <RevPrac
-                  image="relevantcases.png"
-                  imageAlt="Relevant cases"
-                  leftTagText="Actief bewegen"
-                  leftTagColorBg="pink"
-                  leftTagColorText="black"
-                  rightTagText="20 september 2020"
-                  rightTagColorBg="yellow"
-                  rightTagColorText="black"
-                  title="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                  subTitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Luctus tristique ornare duis in bibendum nunc amet, adipiscing. Quis laoreet cursus purus."
-                /> */}
                 </div>
               </section>
             </FadeInSection>
