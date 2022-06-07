@@ -52,8 +52,7 @@ resources: >-
   # Meer weten
 
 
-  Agentschap Binnenlands Bestuur (2019). BinnenBand. Lokaal transversaal beleid. Uitdagingen en kansen voor armoedebestrijding, integratie en gelijke kansen.
+  [Agentschap Binnenlands Bestuur (2019). BinnenBand. Lokaal transversaal beleid. Uitdagingen en kansen voor armoedebestrijding, integratie en gelijke kansen.]
 
-
-  [https://www.kenniscentrumvlaamsesteden.be/Gedeelde%20%20documenten/2019/Binnenband_februari_2019.pdf ](https://www.kenniscentrumvlaamsesteden.be/Gedeelde%20%20documenten/2019/Binnenband_februari_2019.pdf)
+  (https://www.kenniscentrumvlaamsesteden.be/Gedeelde%20%20documenten/2019/Binnenband_februari_2019.pdf)
 ---
