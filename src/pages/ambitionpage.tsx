@@ -1128,28 +1128,43 @@ export default ({ location }: { location: any }) => {
           >
             <FadeInSection>
               <section
-                className="tab laptop:16 mx-4 mt-28 grid grid-cols-1 gap-6 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-12 laptopL:mt-36"
+                className="tab mx-4 mt-16 grid grid-cols-1 gap-6 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-12 laptopL:mt-20"
                 id="Location"
               >
                 <div className="flex flex-col">
-                  <div>
-                    <Lottie
-                      className="h-20 w-20"
-                      loop={true}
-                      animationData={replaceColor(
-                        '#000000',
-                        '#492784',
-                        lightbulb,
-                      )}
-                    />
+                  <div className='flex items-center gap-4 justify-between'>
+                    <h2
+                      className={`pb-2 font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl ${
+                        context.dark ? 'opacity-90' : ''
+                      }`}
+                    >
+                      {`Huidige situatie in ${selectedCities[0]}`}
+                    </h2>
+                    <div className='hidden text-sm mr-2 tabletportrait:flex tabletportrait:flex-col laptopL:text-lg'>
+                      <div className='rotate-12'>
+                        <Lottie
+                          className="h-10 w-10 m-auto laptopL:h-20 laptopL:w-20"
+                          loop={true}
+                          animationData={replaceColor(
+                            '#000000',
+                            '#91959c',
+                            lightbulb,
+                          )}
+                        />
+                        <p className='text-[#91959c] text-center'>Selecteer hier <br></br> je stad/gemeente</p>
+                      </div>
+                      <Lottie
+                        className="-rotate-12 h-28 w-28 mr-24 laptopL:h-36 laptopL:w-36"
+                        loop={true}
+                        animationData={replaceColor(
+                          '#000000',
+                          '#91959c',
+                          long_arrow,
+                        )}
+                      />
+                    </div>
                   </div>
-                  <h2
-                    className={`pb-2 font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl ${
-                      context.dark ? 'opacity-90' : ''
-                    }`}
-                  >
-                    {`Huidige situatie in ${selectedCities[0]}`}
-                  </h2>
+                  
                   <div className="flex flex-col pt-6 tabletportrait:flex-row tabletportrait:justify-between">
                     <div className="relative mt-4 flex w-full max-w-xs flex-col tabletportrait:mt-0">
                       <label className="text-lg font-bold  opacity-90">
