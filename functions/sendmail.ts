@@ -4,10 +4,7 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.handler = async (event: any, context: any, callback: any) => {
-    // const { pdf } = JSON.parse(event.body)
-    const pdf = new Blob()
-    const pdfString = JSON.stringify(pdf)
-    let pdfString64 = Buffer.from(pdfString).toString("base64")
+    const { pdf } = JSON.parse(event.body)
 
     const mail_to_send = {
         from: "toby.bostoen@student.howest.be",
@@ -16,7 +13,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
         html: "This is a html message",
         attachments: [
             {
-              content: pdfString64,
+              content: pdf,
               filename: "attachment.pdf",
               type: "application/pdf",
               disposition: "attachment"

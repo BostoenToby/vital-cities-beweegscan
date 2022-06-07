@@ -722,11 +722,14 @@ async function genPDF(data: any) {
 
   doc.save('BeweegscanRapport.pdf')
   const blobPDF = new Blob([ doc.output('blob')], { type: 'application/pdf' })
+  const pdfString = JSON.stringify(blobPDF)
+  const pdfString64 = Buffer.from(pdfString).toString("base64")
   // TODO: geef pdf mee als param of in json om te versturen als attachement
   try {
     await axios.post('/.netlify/functions/sendmail',
       {
-        message: "This is a test via Axios"
+        message: "This is a test via Axios",
+        pdf: pdfString64
       } 
     )
     console.log("it worked")
