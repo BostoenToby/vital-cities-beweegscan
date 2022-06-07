@@ -14,6 +14,7 @@ import Footer from '../components/footer'
 import { searchList } from '../utils/autoComplete'
 import Darkmodetoggle from '../components/darkmodetoggle'
 import {
+  ambitionTitle,
   goodPractice,
   header,
   HoeWaarom,
@@ -51,6 +52,7 @@ export default ({ location }: { location: any }) => {
   const [locationAmb, setLocationAmb] = useState<string | undefined>(undefined)
   const [locationShort, setLocationShort] = useState<string>()
   const [intBronnen, setIntBronnen] = useState<intBron[]>()
+  const [titles, setTitles] = useState<ambitionTitle[]>()
   const [img, setImg] = useState<any>()
   const [hows, setHows] = useState<HoeWaarom[]>()
   const [whys, setWhys] = useState<HoeWaarom[]>()
@@ -867,31 +869,6 @@ export default ({ location }: { location: any }) => {
         mail: info.mail
       }
       genPDF(pdfData)
-      // const to_send = {
-      //   name: `${info.firstName} ${info.lastName}`,
-      //   email: info.mail,
-      //   subject: "rapport beweegscan Vital Cities",
-      //   message: "This is a test"
-      // }
-
-      // fetch('/.netlify/functions/sendmail')
-      // .then(() => console.log("The mail has been sent"))
-      // .catch(function(error) {
-      //   console.log(error)
-      //   console.log("Mail didn't succeed")
-      // }) 
-
-      // try {
-      //   await axios.post('/.netlify/functions/sendmail',
-      //     {
-      //       message: "This is a test via Axios"
-      //     } 
-      //   )
-      //   console.log("it worked")
-      // } catch (error) {
-      //   console.log(error)
-      //   console.log("it didn't work")
-      // }
     }
   }
 
@@ -905,6 +882,7 @@ export default ({ location }: { location: any }) => {
     let hoeList: HoeWaarom[] = []
     let waaromList: HoeWaarom[] = []
     let goodPracs: goodPractice[] = []
+    let titles: ambitionTitle[] = []
 
     if (locationAmb && locationShort) {
       for (let item of cms.nodes) {
@@ -982,12 +960,23 @@ export default ({ location }: { location: any }) => {
             text: item.frontmatter.text,
             bold: item.frontmatter.boldpart,
           })
+        } else if (
+          item.parent.internal.description.includes('titels') 
+          && (item.frontmatter.ambitions.includes('Algemene ambitie') || item.frontmatter.ambitions.includes(locationAmb))
+        ) {
+          titles.push({
+            title: item.frontmatter.title,
+            subtitle: item.frontmatter.subtitle,
+            section: item.frontmatter.section,
+            ambitions: item.frontmatter.ambitions
+          })
         }
       }
       setIntBronnen(bronnen)
       setHows(hoeList)
       setWhys(waaromList)
       setGoodPracs(goodPracs)
+      setTitles(titles)
 
       // const testData = getDataForAmbition(allAmbitionData, locationShort)
       // console.log(allAmbitionData)
@@ -1449,25 +1438,21 @@ export default ({ location }: { location: any }) => {
                 className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16"
                 id="Solution"
               >
-                <h2
-                  className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                    context.dark ? 'opacity-90' : ''
-                  }`}
-                >
-                  <span className="underline decoration-lightPurple">
-                    Waarom
-                  </span>{' '}
-                  moeten we dit oplossen?
-                </h2>
-                <p
-                  className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-2xl ${
-                    context.dark ? 'opacity-75' : ''
-                  }`}
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                  corporis mollitia veniam voluptatum! Molestias odio
-                  perspiciatis porro expedita
-                </p>
+                {titles?.map((item: ambitionTitle) => {
+                    console.log(titles)
+                    if(item.title.includes("Waarom")){
+                      return(
+                        <>
+                          <h2 className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                            context.dark ? 'opacity-90' : ''
+                          }`}>{item.title}</h2>
+                          <p className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
+                            context.dark ? 'opacity-75' : ''
+                          }`}>{item.subtitle}</p>
+                        </>
+                      )
+                    }
+                  })}
                 <div className="grid grid-cols-1 gap-6 text-sm tabletportrait:text-lg laptop:grid-cols-2 laptop:text-xl laptopL:grid-cols-3">
                   {whys &&
                     whys.map((item: any) => (
@@ -1485,23 +1470,21 @@ export default ({ location }: { location: any }) => {
             </FadeInSection>
             <FadeInSection>
               <section className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16">
-                <h2
-                  className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                    context.dark ? 'opacity-90' : ''
-                  }`}
-                >
-                  <span className="underline decoration-green">Hoe</span> kunnen
-                  we dit oplossen?
-                </h2>
-                <p
-                  className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
-                    context.dark ? 'opacity-75' : ''
-                  }`}
-                >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas
-                  corporis mollitia veniam voluptatum! Molestias odio
-                  perspiciatis porro expedita
-                </p>
+                  {titles?.map((item: ambitionTitle) => {
+                    console.log(titles)
+                    if(item.title.includes("Hoe") && (item.ambitions.includes(String(locationAmb)) || item.ambitions.includes("Algemene ambitie"))){
+                      return(
+                        <>
+                          <h2 className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                            context.dark ? 'opacity-90' : ''
+                          }`}>{item.title}</h2>
+                          <p className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
+                            context.dark ? 'opacity-75' : ''
+                          }`}>{item.subtitle}</p>
+                        </>
+                      )
+                    }
+                  })}
                 <div className="grid grid-cols-1 gap-6 tabletportrait:text-lg laptop:grid-cols-2 laptopL:grid-cols-4">
                   {hows &&
                     hows.map((item: HoeWaarom) => {
@@ -1526,22 +1509,29 @@ export default ({ location }: { location: any }) => {
                 }`}
                 id="Resources"
               >
-                <h2
-                  className={`mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                    context.dark ? 'opacity-90' : ''
-                  }`}
-                >
-                  Interessante bronnen
-                </h2>
-                <p
-                  className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
-                    context.dark ? 'opacity-75' : ''
-                  }`}
-                >
-                  We maken je graag wegwijs in wat bronnen en instrumenten om de
-                  omgeving te analyseren en te ontwerpen op vlak van wandel- en
-                  fietsvriendelijkheid
-                </p>
+                {titles?.map((item: ambitionTitle) => {
+                    console.log(titles)
+                    if(item.title.includes("bronnen")){
+                      return(
+                        <>
+                          <h2
+                            className={`mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                              context.dark ? 'opacity-90' : ''
+                            }`}
+                          >
+                            {item.title}
+                          </h2>
+                          <p
+                            className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
+                              context.dark ? 'opacity-75' : ''
+                            }`}
+                          >
+                            {item.subtitle}
+                          </p>
+                        </>
+                      )
+                    }
+                  })}
                 <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
                   {intBronnen &&
                     intBronnen.map((item: intBron, val: number) => {

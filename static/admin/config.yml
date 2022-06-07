@@ -26,7 +26,7 @@ collections:
       - { name: title, label: Titel }
       - { name: subtitle, label: Subtitel }
       - { name: section, label: Sectie, widget: select, multiple: false, options: ["Waarom", "Hoe", "Interessante bronnen", "Relevante good practises"]}
-      - { name: ambition, label: Ambitie, widget: select, multiple: true, options: ["Algemene ambitie", "Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"]}
+      - { name: ambitions, label: Ambitie, widget: select, multiple: true, options: ["Algemene ambitie", "Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"]}
 
   - name: Probleem
     label: Probleem

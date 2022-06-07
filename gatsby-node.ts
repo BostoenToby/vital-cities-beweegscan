@@ -9,6 +9,8 @@ exports.createSchemaCustomization = ({ actions }: {actions: any}) => {
             ambition: String
             ambitions: [String]
             title: String
+            subtitle: String
+            section: String
             link: String
             text: String
             subtitle: String

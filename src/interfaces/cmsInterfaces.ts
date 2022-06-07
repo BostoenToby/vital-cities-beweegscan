@@ -30,3 +30,10 @@ export interface problem {
     text: string
     bold: string
 }
+
+export interface ambitionTitle {
+    title: string
+    subtitle: string
+    section: string
+    ambitions: string[]
+}
