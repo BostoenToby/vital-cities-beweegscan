@@ -4,9 +4,10 @@ import axios from 'axios'
 import { Buffer } from 'buffer';
 // import Base64 from 'base-64'
 
-async function genPDF(data: any) {
+async function genPDF(dataPDF: any) {
   var page = 1
-  console.log(data)
+  const data = dataPDF.data
+  console.log(dataPDF)
   const city1 = Object.keys(data)[0]
   const city2 = Object.keys(data)[1]
 
@@ -731,6 +732,8 @@ async function genPDF(data: any) {
     return await axios.post('/.netlify/functions/sendmail',
       {
         message: "This is a test via Axios",
+        mail: data.mail,
+        city: data.city,
         pdf: pdfString
       } 
     ).then((response) => ({
