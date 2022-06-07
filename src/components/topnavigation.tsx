@@ -172,7 +172,7 @@ export default ({ section }: { section: string }) => {
                             short: 'fiets- en wandelroutes',
                           }}
                         >
-                          Fiets- & wandelroutes
+                          Wandel- & fietsroutes
                         </Link>
                       </li>
                       <li
@@ -318,7 +318,7 @@ export default ({ section }: { section: string }) => {
                 <header className="mt-4 mb-16 flex flex-row">
                   <X
                     size={32}
-                    className="text-white cursor-pointer"
+                    className="cursor-pointer text-white"
                     onClick={() => handleSideBar()}
                   />
                   <a
@@ -373,7 +373,7 @@ export default ({ section }: { section: string }) => {
                               short: 'fiets- en wandelroutes',
                             }}
                           >
-                            Fiets- & wandelroutes
+                            Wandel- & fietsroutes
                           </Link>
                         </li>
                         <li className="p-2 hover:opacity-80">
