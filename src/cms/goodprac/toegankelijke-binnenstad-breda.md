@@ -42,13 +42,13 @@ resources: >-
   # Meer weten
 
 
-  ‘People aren’t disabled, their city is’: inside Europe’s most accessible city, The Guardian, 28 mei 2019, <https://www.theguardian.com/cities/2019/may/28/people-arent-disabled-their-city-is-inside-europes-most-accessible-city>.
+  [‘People aren’t disabled, their city is’: inside Europe’s most accessible city, The Guardian, 28 mei 2019] (https://www.theguardian.com/cities/2019/may/28/people-arent-disabled-their-city-is-inside-europes-most-accessible-city)
 
 
-
-  Inter Vlaanderen (Private Stichting Toegankelijk Vlaanderen) is een expertisecentrum in toegankelijkheid en Universal Design: <https://inter.vlaanderen>
-
+  [Inter Vlaanderen (Private Stichting Toegankelijk Vlaanderen)] (https://inter.vlaanderen)
 
 
-  Deze vademecum van Agentschap Wegen en Verkeer biedt ontwerpers, uitvoerders en wegbeheerders inzichten in ontwerp en onderhoud van toegankelijke openbare ruimte en wegen: <https://www.vlaanderen.be/publicaties/toegankelijk-publiek-domein-vademecum>
+  [Deze vademecum van Agentschap Wegen en Verkeer biedt ontwerpers, uitvoerders en wegbeheerders inzichten in ontwerp en onderhoud van toegankelijke openbare ruimte en wegen] 
+
+  (https://www.vlaanderen.be/publicaties/toegankelijk-publiek-domein-vademecum)
 ---

@@ -125,33 +125,40 @@ resources: >-
   # Meer weten
 
 
-  \#[Wildebraskids](https://www.wildebras.org/) [info@wildebras.org](mailto:info@wildebras.org) [Facebook](https://www.facebook.com/search/top?q=wildebras) [Instagram](https://www.instagram.com/wildebraswildebras/)
+  [#Wildebraskids](https://www.wildebras.org/) 
 
+
+  [info@wildebras.org](mailto:info@wildebras.org) 
+
+
+  [Facebook](https://www.facebook.com/search/top?q=wildebras) 
+
+
+  [Instagram](https://www.instagram.com/wildebraswildebras/)
 
 
   Iyer, V., Enthoven, C.A., Klaver, C.C.W., Mulder, E.H., Soeterbroek, A., & Leden (2020). Zicht op Buiten. Natuurlijk naar buiten!: de gevolgen van weinig buiten spelen door kinderen en jeugd. Netwerk Zicht op Buiten.
 
 
-  Postma, L.R. (2016). Nature experiences and nature connection of children in urban natural playgrounds in the Netherlands. \[masterthesis]
+  Postma, L.R. (2016). Nature experiences and nature connection of children in urban natural playgrounds in the Netherlands. \[masterthesis\]
 
 
-
-  Speelnatuurnetwerk Vlaanderen [De Springzaad](https://www.springzaad.be/) met een [speelnatuurkaart](http://www.springzaad.be/speelnatuurkaart/) voor Vlaanderen
-
+  [Speelnatuurnetwerk Vlaanderen De Springzaad](https://www.springzaad.be/) 
 
 
-  Inspiratie om [voortuinen](<https://k-s.be/medialibrary/purl/nl/2095135/Kinderen & voortuinen - Bouwstenen en inspiratie voor kindgerichte voortuinen.pdf>) kind- en spelvriendelijker te maken in de overgang tussen private en publieke ruimte van Kind en Samenleving.
+  [speelnatuurkaart voor Vlaanderen](http://www.springzaad.be/speelnatuurkaart/) 
 
 
-
-  Inspiratie en aandachtspunten aanleggen [natuurspeelplekken](http://www.coolnature.nl/) in bebouwde omgeving 
-
+  [Inspiratie om voortuinen kind- en spelvriendelijker te maken in de overgang tussen private en publieke ruimte van Kind en Samenleving.](<https://k-s.be/medialibrary/purl/nl/2095135/Kinderen & voortuinen - Bouwstenen en inspiratie voor kindgerichte voortuinen.pdf>) 
 
 
-  Belang van natuurlijke speelplaatsen op school en leren in de natuur
+  [Inspiratie en aandachtspunten aanleggen natuurspeelplekken in bebouwde omgeving ](http://www.coolnature.nl/) 
 
 
-  <https://naturalearning.org/research/> 
+  [Belang van natuurlijke speelplaatsen op school en leren in de natuur]
+
+  (https://naturalearning.org/research/) 
+
 
   <https://www.platformbuitenspelen.nl/whitepaper>
 ---
