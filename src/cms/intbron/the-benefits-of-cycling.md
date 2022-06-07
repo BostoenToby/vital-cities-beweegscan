@@ -3,7 +3,7 @@ ambitions:
   - Aantrekkelijke en veilige wandel- en fietsroutes
   - Actief bewegen en verplaatsen
 title: The benefits of cycling
-link: https://ecf.com/sites/ecf.com/files/TheBenefitsOfCycling2018.pdf
+link: https://ecf.com/resources/cycling-facts-and-figures
 text: |-
   Dit rapport van de European Cycling Federation toont aan
 
