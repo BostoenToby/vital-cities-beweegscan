@@ -1,4 +1,4 @@
-import { atob } from "buffer";
+import { atob, Blob } from "buffer";
 import { Personlization } from "../src/interfaces/sendgrid";
 
 const sgMail = require('@sendgrid/mail')
