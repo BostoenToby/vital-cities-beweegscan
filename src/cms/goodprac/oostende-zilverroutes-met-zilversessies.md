@@ -115,9 +115,7 @@ resources: >-
   [www.oostende.be/zilverroutes](www.oostende.be/zilverroutes)
 
 
+  [Decorte, A., Cuypers, L. & Pelgrims, E. (2020). Beweegroutes: Hype of hefboom voor oudere en minder mobiele burgers? \[White paper\]. Howest.] 
 
-  Decorte, A., Cuypers, L. & Pelgrims, E. (2020). Beweegroutes: Hype of hefboom voor oudere en minder mobiele burgers? \[White paper]. Howest. 
-
-
-  <https://vitalcities.be/onewebmedia/Vital%20Cities%20White%20paper%20Beweegroutes%202020.pdf>
+  (https://vitalcities.be/onewebmedia/Vital%20Cities%20White%20paper%20Beweegroutes%202020.pdf)
 ---

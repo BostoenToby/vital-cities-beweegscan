@@ -21,8 +21,7 @@ resources: >-
   # Meer weten
 
 
-  [https://www.rotterdam.nl/wonen-leven/innovaties/ ](https://www.rotterdam.nl/wonen-leven/innovaties/)
-
+  <https://www.rotterdam.nl/wonen-leven/innovaties/>
 
 
   <https://www.bigsoundsystems.be/product/blacklight-basketbal-glow-in-the-dark/>
