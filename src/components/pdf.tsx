@@ -740,7 +740,7 @@ async function genPDF(data: any) {
   try {
     await axios.post('/.netlify/functions/sendmail',
       {
-        message: "This is a test via Axios",
+        message: "This is a test via Axios"
       } 
     )
     console.log("it worked")
