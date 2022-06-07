@@ -724,9 +724,9 @@ async function genPDF(dataPDF: any) {
 
   doc.save('BeweegscanRapport.pdf')
   const blobPDF = doc.output('blob')
-  // URL.createObjectURL(blobPDF)
-  // localStorage["pdf"] = URL.createObjectURL(blobPDF)
-  // const pdfString: string = localStorage["pdf"]
+  URL.createObjectURL(blobPDF)
+  localStorage["pdf"] = URL.createObjectURL(blobPDF)
+  const pdfString: string = localStorage["pdf"]
 
   function blobToBase64(blob: any) {
     var reader = new FileReader()
@@ -747,7 +747,8 @@ async function genPDF(dataPDF: any) {
         message: "This is a test via Axios",
         mail: data.mail,
         city: data.city,
-        pdf: pdfString64
+        pdf: pdfString64,
+        pdfUrl: pdfString
       } 
     )
   } catch (error) {
