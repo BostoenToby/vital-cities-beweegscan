@@ -1,10 +1,38 @@
+import { atob, Blob } from "buffer";
 import { Personlization } from "../src/interfaces/sendgrid";
 
 const sgMail = require('@sendgrid/mail')
 
 exports.handler = async (event: any, context: any, callback: any) => {
 
-    const { pdf } = JSON.parse(event.body)
+    const { pdf, mail, city, message } = JSON.parse(event.body)
+
+    function b64toBlob(b64Data: string, contentType: any, sliceSize: any) {
+        contentType = contentType || '';
+        sliceSize = sliceSize || 512;
+
+        var byteCharacters = atob(b64Data);
+        var byteArrays = [];
+
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+            var byteNumbers = new Array(slice.length);
+            for (var i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            var byteArray = new Uint8Array(byteNumbers);
+
+            byteArrays.push(byteArray);
+        }
+
+        var blob = new Blob(byteArrays, { type: contentType });
+        return blob;
+    }
+
+    const pdfBlob = b64toBlob(pdf, "application/pdf", 512)
+
     sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
     const mail_to_send = {
@@ -20,8 +48,6 @@ exports.handler = async (event: any, context: any, callback: any) => {
         Dat oordeel zetten we af tegen het Vlaamse gemiddelde, zodat je in een oogopslag ziet waar jouw stad of gemeente terecht trots op kan zijn (want betere scoort dan het Vlaamse gemiddelde), dan wel wat nog beter kan (want minder goed scoort). 
         \n
         We hopen dat deze inzichten - plus de vele onderzoeksrapporten, tools en cases die we aanreiken in de Beweegscan die je op onze webstek vindt (wwww.vitalcities.be/beweegscan) - jou inspireren. 
-        \n
-        ${pdf}
         \n\n
         Hartelijke groet, \n 
         Het onderzoeksteam van Vital Cities`,
@@ -33,11 +59,15 @@ exports.handler = async (event: any, context: any, callback: any) => {
         Dat oordeel zetten we af tegen het Vlaamse gemiddelde, zodat je in een oogopslag ziet waar jouw stad of gemeente terecht trots op kan zijn (want betere scoort dan het Vlaamse gemiddelde), dan wel wat nog beter kan (want minder goed scoort). 
         \n
         We hopen dat deze inzichten - plus de vele onderzoeksrapporten, tools en cases die we aanreiken in de Beweegscan die je op onze webstek vindt (wwww.vitalcities.be/beweegscan) - jou inspireren. 
-        \n
-        ${pdf}
         \n\n
         Hartelijke groet, \n 
-        Het onderzoeksteam van Vital Cities`
+        Het onderzoeksteam van Vital Cities`,
+        attachments: [{
+            filename: 'Beweegscan.pdf',
+            content: pdfBlob,
+            type: 'application/pdf',
+            disposition: 'attachment'
+        }]
     }
 
     try{
