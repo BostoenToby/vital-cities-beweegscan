@@ -722,15 +722,25 @@ async function genPDF(data: any) {
   footer()
 
   doc.save('BeweegscanRapport.pdf')
-  const blobPDF = new Blob([ doc.output('blob')], { type: 'application/pdf' })
-  const pdfString = JSON.stringify(blobPDF)
-  const pdfString64 = Buffer.from(pdfString).toString("base64")
+  const blobPDF = doc.output('blob')
+  URL.createObjectURL(blobPDF)
+  localStorage["pdf"] = URL.createObjectURL(blobPDF)
+  
+  // const base64PDF = btoa(unescape(encodeURIComponent(blobPDF)))
+  // var reader = new FileReader()
+  // let result: string = ""
+  // reader.onload = function() {
+  //   result += reader.result
+  // }
+  // const blobText = reader.readAsText(blobPDF, "base64") 
+  // console.log(result)
+  // console.log(blobText)
+  // const base64PDF = btoa(blobPDF)
   // TODO: geef pdf mee als param of in json om te versturen als attachement
   try {
     await axios.post('/.netlify/functions/sendmail',
       {
         message: "This is a test via Axios",
-        pdf: pdfString64
       } 
     )
     console.log("it worked")

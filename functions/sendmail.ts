@@ -4,21 +4,12 @@ const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 exports.handler = async (event: any, context: any, callback: any) => {
-    const { pdf } = JSON.parse(event.body)
 
     const mail_to_send = {
         from: "toby.bostoen@student.howest.be",
         subject: 'This is a new test with json in the post',
-        text: "This is a text message",
+        text: `This is a text message, Open this link for the pdf --> ${localStorage["pdf"]}`,
         html: "This is a html message",
-        attachments: [
-            {
-              content: pdf,
-              filename: "attachment.pdf",
-              type: "application/pdf",
-              disposition: "attachment"
-            }
-          ]
     }
     // TODO: fix json error at personalizations --> bad request so probably it's a json error
 
