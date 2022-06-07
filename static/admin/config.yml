@@ -18,6 +18,15 @@ collections:
       - { name: image, label: Foto, widget: image }
       - { name: tag, label: Tag }
 
+  - name: Titels
+    label: Titels
+    folder: src/cms/titels
+    create: true
+    fields: 
+      - { name: title, label: Titel }
+      - { name: subtitle, label: Subtitel }
+      - { name: page, label: Pagina, widget: select, multiple: false, options: ["Ambitie pagina", "Landings pagina"]}
+
   - name: Probleem
     label: Probleem
     folder: src/cms/problem
