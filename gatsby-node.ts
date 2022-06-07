@@ -1,6 +1,6 @@
-exports.createSchemaCustomization = ({ actions }: {actions: any}) => {
-    const { createTypes } = actions
-    const typeDefs = `
+exports.createSchemaCustomization = ({ actions }: { actions: any }) => {
+  const { createTypes } = actions
+  const typeDefs = `
         type MarkdownRemark implements Node {
             frontmatter: Frontmatter
         }
@@ -22,5 +22,5 @@ exports.createSchemaCustomization = ({ actions }: {actions: any}) => {
             thema: [String!]
         }
     `
-    createTypes(typeDefs)
+  createTypes(typeDefs)
 }

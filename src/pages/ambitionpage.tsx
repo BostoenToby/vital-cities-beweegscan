@@ -26,7 +26,7 @@ import { navigate } from 'gatsby'
 import { ChevronLeft } from 'lucide-react'
 import ThemeContext from '../context/themecontext'
 import { text } from 'stream/consumers'
-import { Benchmark, PercentageData } from '../interfaces/data'
+import Practice, { Benchmark, PercentageData } from '../interfaces/data'
 import { testData } from '../data/testGraph'
 import Donutdata from '../components/donutdata'
 import FadeInSection from '../components/scrollytelling'
@@ -37,6 +37,7 @@ import {
   getDataForCityAndAmbition,
   getGraphData,
   getLabelChart,
+  getMonthFromIndex,
   getPdfData,
 } from '../utils/filterData'
 import genPDF from '../components/pdf'
@@ -46,6 +47,7 @@ import Lottie, { useLottie } from 'lottie-react'
 import lightbulb from '../assets/animations/lightbulb.json'
 import long_arrow from '../assets/animations/long_arrow.json'
 import { colorify, flatten, getColors, replaceColor } from 'lottie-colorify'
+import { Paragraaf } from '../interfaces/testPractice'
 
 export default ({ location }: { location: any }) => {
   const [hasMounted, setHasMounted] = useState(false)
@@ -82,6 +84,7 @@ export default ({ location }: { location: any }) => {
     lastNameError: '',
     mailError: '',
   })
+  const [practices, setPractices] = useState<Practice>()
 
   useEffect(() => {
     setHasMounted(true)
@@ -103,8 +106,6 @@ export default ({ location }: { location: any }) => {
         selectedCities[0],
         selectedCities[1],
       )
-
-      console.log(data)
 
       let benches1: Benchmark[] = data[selectedCities[0]][0].benchmarks
       let benches2: Benchmark[] = []
@@ -756,8 +757,6 @@ export default ({ location }: { location: any }) => {
 
   const handleSearch = (input: any) => {
     setSearchQuery(input)
-    console.log(selectedCities)
-    console.log(searchQuery)
     const results = searchList(allAmbitionData, input, false)
 
     if (results?.includes(selectedCities[0])) {
@@ -858,7 +857,6 @@ export default ({ location }: { location: any }) => {
       })
     }
 
-    console.log(errorsMail, errorsFirstname, errorsLastname, errorsPlace)
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
       const dataAmb = getPdfData(allData, 'Antwerpen', 'Kortrijk')
       const pdfData = {
@@ -866,7 +864,7 @@ export default ({ location }: { location: any }) => {
         city: info.place,
         firstname: info.firstName,
         lastname: info.lastName,
-        mail: info.mail
+        mail: info.mail,
       }
       genPDF(pdfData)
     }
@@ -876,6 +874,63 @@ export default ({ location }: { location: any }) => {
     let list = searchList(allAmbitionData, typed, true)
     setSuggestions(list)
   }, [typed])
+
+  useEffect(() => {
+    if (goodPracs) {
+      console.log(goodPracs)
+      const data: Practice[] = []
+
+      goodPracs.forEach((p: goodPractice) => {
+        let practice: Practice = {
+          titel: '',
+          themas: [],
+          extra: [],
+          paragrafen: [],
+          datum: '',
+        }
+
+        practice.titel = p.title
+        practice.themas = p.themes
+
+        const datum = new Date(p.date)
+        practice.datum = `${datum.getDate()} ${getMonthFromIndex(
+          datum.getMonth(),
+        )} ${datum.getFullYear()}`
+
+        let titles = p.text.match(/#+ .+\n{2,}/g)
+        let paragraphs = p.text.split(/#+ .+\n{2,}/)
+        paragraphs.shift()
+        let parResults: any = []
+
+        titles?.forEach((title: string, index: number) => {
+          //@ts-ignore
+          titles[index] = title.replaceAll('#', '').replaceAll('\n', '').trim()
+        })
+
+        paragraphs.forEach((paragraaf: string, index: number) => {
+          const par: Paragraaf = {
+            //@ts-ignore
+            header: titles[index],
+            body: paragraaf.replaceAll('*', '•'),
+          }
+          parResults.push(par)
+        })
+
+        practice.paragrafen = parResults
+
+        let regLinks = p.resources.match(/[^\(]<.+>[^\)]/g)
+        let hyperLinks = p.resources.match(/\[.+\] ?\n?\(.+\)/g)
+
+        console.log(p.resources)
+        console.log(regLinks)
+        console.log(hyperLinks)
+
+        data.push(practice)
+      })
+
+      console.log(data)
+    }
+  }, [goodPracs])
 
   useEffect(() => {
     let bronnen: intBron[] = []
@@ -930,7 +985,7 @@ export default ({ location }: { location: any }) => {
             text: item.frontmatter.text,
             extra: item.frontmatter.extra,
             image: item.frontmatter.image,
-            resources: item.frontmatter.resources
+            resources: item.frontmatter.resources,
           })
         } else if (
           item.parent.internal.description.includes('header') &&
@@ -987,20 +1042,17 @@ export default ({ location }: { location: any }) => {
       //   locationShort,
       //   'Kortrijk',
       // )
-      const graphData = getGraphData(
-        allAmbitionData,
-        locationShort,
-        'Vlaams Gewest',
-        '',
-      )
-      const pdfData = getPdfData(allAmbitionData, 'Vlaams Gewest', '')
+      // const graphData = getGraphData(
+      //   allAmbitionData,
+      //   locationShort,
+      //   'Vlaams Gewest',
+      //   '',
+      // )
+      // const pdfData = getPdfData(allAmbitionData, 'Vlaams Gewest', '')
       // const testData = getAllDataForCity(allAmbitionData, 'Kortrijk')
       // const cities = getAllCities(allAmbitionData)
       // const testData = getPdfData(allAmbitionData, 'Kortrijk', 'Brugge')
       // console.log(cities)
-
-      console.log(allAmbitionData)
-      console.log(pdfData)
     }
   }, [locationAmb])
 
@@ -1128,18 +1180,18 @@ export default ({ location }: { location: any }) => {
                 id="Location"
               >
                 <div className="flex flex-col">
-                  <div className='flex items-center gap-4 justify-between'>
+                  <div className="flex items-center justify-between gap-4">
                     <h2
-                      className={`pb-2 font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl ${
+                      className={`flex flex-col justify-end h-full pb-2 font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl ${
                         context.dark ? 'opacity-90' : ''
                       }`}
                     >
                       {`Huidige situatie in ${selectedCities[0]}`}
                     </h2>
-                    <div className='hidden text-sm mr-2 tabletportrait:flex tabletportrait:flex-col laptopL:text-lg'>
-                      <div className='rotate-12'>
+                    <div className="mr-2 hidden text-sm tabletportrait:flex tabletportrait:flex-col laptopL:text-lg">
+                      <div className="rotate-12">
                         <Lottie
-                          className="h-10 w-10 m-auto laptopL:h-20 laptopL:w-20"
+                          className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
                           loop={true}
                           animationData={replaceColor(
                             '#000000',
@@ -1147,10 +1199,12 @@ export default ({ location }: { location: any }) => {
                             lightbulb,
                           )}
                         />
-                        <p className='text-[#91959c] text-center'>Selecteer hier <br></br> je stad/gemeente</p>
+                        <p className="text-center text-[#91959c]">
+                          Selecteer hier <br></br> je stad/gemeente
+                        </p>
                       </div>
                       <Lottie
-                        className="-rotate-12 h-28 w-28 mr-24 laptopL:h-36 laptopL:w-36"
+                        className="mr-24 h-28 w-28 -rotate-12 laptopL:h-36 laptopL:w-36"
                         loop={true}
                         animationData={replaceColor(
                           '#000000',
@@ -1160,7 +1214,7 @@ export default ({ location }: { location: any }) => {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="flex flex-col pt-6 tabletportrait:flex-row tabletportrait:justify-between">
                     <div className="relative mt-4 flex w-full max-w-xs flex-col tabletportrait:mt-0">
                       <label className="text-lg font-bold  opacity-90">
@@ -1598,7 +1652,6 @@ export default ({ location }: { location: any }) => {
                             rightTagColorText="black"
                             title={item.title}
                             subTitle={item.text}
-                            // subTitle={item.text}
                           />
                         )
                       } else {
