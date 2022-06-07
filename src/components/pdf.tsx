@@ -749,14 +749,7 @@ async function genPDF(dataPDF: any) {
         city: data.city,
         pdf: pdfString64
       } 
-    ).then((response) => ({
-      statusCode: 200,
-      body: JSON.stringify(response.data),
-    }))
-    .catch((error) => ({
-        statusCode: 500,
-        body: JSON.stringify(error.message),
-    }));
+    )
   } catch (error) {
     console.log(error)
     console.log("it didn't work")

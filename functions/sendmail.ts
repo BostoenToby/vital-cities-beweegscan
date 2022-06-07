@@ -4,7 +4,7 @@ const sgMail = require('@sendgrid/mail')
 
 exports.handler = async (event: any, context: any, callback: any) => {
 
-    const { pdf } = JSON.parse(event.body)
+    const { pdf, mail, city, message } = JSON.parse(event.body)
 
     function b64toBlob(b64Data: any, contentType: any, sliceSize: any) {
         contentType = contentType || '';
@@ -65,7 +65,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
             filename: 'Beweegscan.pdf',
             content: pdfBlob,
             type: 'application/pdf',
-            disposition: "attachment"
+            disposition: 'attachment'
         }]
     }
 
