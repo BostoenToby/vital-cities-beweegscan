@@ -172,7 +172,7 @@ export default ({ section }: { section: string }) => {
                             short: 'fiets- en wandelroutes',
                           }}
                         >
-                          Fiets- & wandelroutes
+                          Wandel- & fietsroutes
                         </Link>
                       </li>
                       <li
@@ -373,7 +373,7 @@ export default ({ section }: { section: string }) => {
                               short: 'fiets- en wandelroutes',
                             }}
                           >
-                            Fiets- & wandelroutes
+                            Wandel- & fietsroutes
                           </Link>
                         </li>
                         <li className="p-2 hover:opacity-80">

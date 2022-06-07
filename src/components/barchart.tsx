@@ -88,8 +88,6 @@ export default ({
     p1bigger = 0
   }
 
-  console.log(p1bigger)
-
   if (benchCity1.data.length == 1) {
     return (
       <ThemeContext.Consumer>

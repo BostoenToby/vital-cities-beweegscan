@@ -3,6 +3,24 @@ export interface PercentageData {
   label: string
 }
 
+export default interface Practice {
+  titel: string
+  themas: string[]
+  extra: Bron[]
+  paragrafen: Paragraaf[]
+  datum: string
+}
+
+export interface Paragraaf {
+  header: string
+  body: string
+}
+
+export interface Bron {
+  naam: string
+  url: string
+}
+
 export interface Benchmark {
   label: string
   data: any[]
