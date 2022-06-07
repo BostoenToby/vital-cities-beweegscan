@@ -4,9 +4,10 @@ import axios from 'axios'
 import { Buffer } from 'buffer';
 // import Base64 from 'base-64'
 
-async function genPDF(data: any) {
+async function genPDF(dataPDF: any) {
   var page = 1
-  console.log(data)
+  const data = dataPDF.data
+  console.log(dataPDF)
   const city1 = Object.keys(data)[0]
   const city2 = Object.keys(data)[1]
 
@@ -725,23 +726,15 @@ async function genPDF(data: any) {
   const blobPDF = doc.output('blob')
   URL.createObjectURL(blobPDF)
   localStorage["pdf"] = URL.createObjectURL(blobPDF)
-  
-  // const base64PDF = btoa(unescape(encodeURIComponent(blobPDF)))
-  // var reader = new FileReader()
-  // let result: string = ""
-  // reader.onload = function() {
-  //   result += reader.result
-  // }
-  // const blobText = reader.readAsText(blobPDF, "base64") 
-  // console.log(result)
-  // console.log(blobText)
-  // const base64PDF = btoa(blobPDF)
-  // TODO: geef pdf mee als param of in json om te versturen als attachement
+  const pdfString: string = localStorage["pdf"]
+
   try {
     return await axios.post('/.netlify/functions/sendmail',
       {
         message: "This is a test via Axios",
-        pdf: localStorage["pdf"]
+        mail: data.mail,
+        city: data.city,
+        pdf: pdfString
       } 
     ).then((response) => ({
       statusCode: 200,
@@ -751,7 +744,6 @@ async function genPDF(data: any) {
         statusCode: 500,
         body: JSON.stringify(error.message),
     }));
-    console.log("it worked")
   } catch (error) {
     console.log(error)
     console.log("it didn't work")

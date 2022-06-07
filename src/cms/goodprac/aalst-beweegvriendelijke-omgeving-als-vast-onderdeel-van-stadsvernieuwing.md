@@ -70,7 +70,7 @@ resources: >-
   [Stad Aalst (2020). RUP Immerzeel+. Procesnota. Opgenomen door het kenniscentrum] (https://www.complexestadsprojecten.be/Documents/Aalst_Immerzeel/RUP%20Immerzeel%20procesnota.pdf)
 
 
-  [Ontwerp woonzorgwijk] (<https://studiodott.be/2017/10/24/aipa/>)
+  [Ontwerp woonzorgwijk] (https://studiodott.be/2017/10/24/aipa/)
 
 
   [Concrete (meet)instrumenten voor leefbare woonwijken in Nederland] (https://aedes.nl/leefbare-en-veilige-wijken)

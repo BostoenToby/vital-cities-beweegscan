@@ -858,8 +858,15 @@ export default ({ location }: { location: any }) => {
 
     console.log(errorsMail, errorsFirstname, errorsLastname, errorsPlace)
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
-      const data = getPdfData(allData, 'Antwerpen', 'Kortrijk')
-      genPDF(data)
+      const dataAmb = getPdfData(allData, 'Antwerpen', 'Kortrijk')
+      const pdfData = {
+        data: dataAmb,
+        city: info.place,
+        firstname: info.firstName,
+        lastname: info.lastName,
+        mail: info.mail
+      }
+      genPDF(pdfData)
       // const to_send = {
       //   name: `${info.firstName} ${info.lastName}`,
       //   email: info.mail,
