@@ -1517,7 +1517,7 @@ export default ({ location }: { location: any }) => {
                   }`}
                 >
                   We maken je graag wegwijs in wat bronnen en instrumenten om de
-                  omgevint te analyseren en te ontwerpen op vlak van wandel- en
+                  omgeving te analyseren en te ontwerpen op vlak van wandel- en
                   fietsvriendelijkheid
                 </p>
                 <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
