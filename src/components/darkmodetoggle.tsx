@@ -15,7 +15,7 @@ export default () => {
               : 'navbreak:text-black navbreak:hover:text-mediumPurple'
           }`}
         >
-          {context.dark ? <Moon size={32} /> : <Sun size={32} />}
+          {context.dark ? <Moon size={32} className="hover:text-pink" /> : <Sun size={32} className="hover:text-pink" />}
         </button>
       )}
     </ThemeContext.Consumer>
