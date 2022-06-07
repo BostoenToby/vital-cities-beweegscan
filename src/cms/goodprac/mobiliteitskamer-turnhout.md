@@ -90,5 +90,5 @@ resources: >-
 
   [Wouter Verhaert, Trefdag Kind in de Stad, Stadsatelier ‘Veilig op straat’, 4 februari 2014.] 
 
-  (<https://www.youtube.com/watch?v=t64Kx2HiQw4>)
+  (https://www.youtube.com/watch?v=t64Kx2HiQw4)
 ---

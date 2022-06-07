@@ -149,7 +149,7 @@ resources: >-
   [speelnatuurkaart voor Vlaanderen](http://www.springzaad.be/speelnatuurkaart/) 
 
 
-  [Inspiratie om voortuinen kind- en spelvriendelijker te maken in de overgang tussen private en publieke ruimte van Kind en Samenleving.](<https://k-s.be/medialibrary/purl/nl/2095135/Kinderen & voortuinen - Bouwstenen en inspiratie voor kindgerichte voortuinen.pdf>) 
+  [Inspiratie om voortuinen kind- en spelvriendelijker te maken in de overgang tussen private en publieke ruimte van Kind en Samenleving.](https://k-s.be/medialibrary/purl/nl/2095135/Kinderen&voortuinen-Bouwsteneneninspiratievoor kindgerichtevoortuinen.pdf) 
 
 
   [Inspiratie en aandachtspunten aanleggen natuurspeelplekken in bebouwde omgeving ](http://www.coolnature.nl/) 
