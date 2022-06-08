@@ -1,4 +1,4 @@
 ---
-ambition: Stad en buurt als speelplein
+ambition: spelen
 name: Stad en buurt als speelplein
 ---
