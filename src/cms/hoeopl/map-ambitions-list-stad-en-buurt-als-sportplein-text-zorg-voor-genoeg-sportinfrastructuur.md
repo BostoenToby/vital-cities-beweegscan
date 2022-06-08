@@ -1,5 +1,5 @@
 ---
 ambitions:
-  - Stad en buurt als sportplein
+  - sporten
 text: Zorg voor voldoende sportinfrastructuur
 ---
