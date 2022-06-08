@@ -1,4 +1,4 @@
 ---
-ambition: actief bewegen
+ambition: Actief bewegen en verplaatsen
 name: Actief bewegen & verplaatsen
 ---
