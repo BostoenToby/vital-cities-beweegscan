@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Stad en buurt als speelplein
+  - spelen
 text: |-
   Creëer voldoende geschikte 
 
