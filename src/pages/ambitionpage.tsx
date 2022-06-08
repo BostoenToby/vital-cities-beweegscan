@@ -89,6 +89,8 @@ import youth from '../assets/animations/youth.json'
 import zorro from '../assets/animations/zorro.json'
 
 export default ({ location }: { location: any }) => {
+  var btnRapport = document.getElementById("BtnRapport")
+
   const [hasMounted, setHasMounted] = useState(false)
   const [locationShort, setLocationShort] = useState<string>()
   const [intBronnen, setIntBronnen] = useState<intBron[]>()
@@ -1018,6 +1020,7 @@ export default ({ location }: { location: any }) => {
   }
 
   const checkInfo = async () => {
+    console.log("CLICKED GEN PDF")
     let errorsMail = true
     let errorsFirstname = true
     let errorsLastname = true
@@ -1323,6 +1326,12 @@ export default ({ location }: { location: any }) => {
 
   if (!hasMounted) {
     return null
+  }
+
+  const ToggleRapport = () => {
+    var btnRapport = document.getElementById("BtnRapport")
+    console.log("BTNRAPPORT: ", btnRapport)
+    
   }
 
   return (
@@ -1950,7 +1959,7 @@ export default ({ location }: { location: any }) => {
               <StaticImage
                 src="../images/calltoaction.png"
                 alt="Picture of girls riding a bike"
-                className="ml-14 hidden h-auto border laptop:block"
+                className="ml-14 hidden h-auto border laptopL:block"
               />
               <div className="h-auto p-8 text-white">
                 <h2
@@ -1978,7 +1987,7 @@ export default ({ location }: { location: any }) => {
                 </p>
 
                 <div
-                  className="desktop:grid-cols-3 z-0 grid grid-cols-1 gap-4 pb-3 text-sm tabletportrait:grid-cols-3 tabletportrait:text-lg laptop:grid-cols-1 laptopL:grid-cols-3"
+                  className="z-0 grid grid-cols-1 gap-4 pb-3 text-sm tabletportrait:grid-cols-3 tabletportrait:grid-rows-3 tabletportrait:text-lg laptopL:grid-cols-3"
                   id="autoComplete"
                 >
                   <div className="flex max-w-min flex-col" id="#inputStad">
@@ -2076,7 +2085,7 @@ export default ({ location }: { location: any }) => {
                       </p>
                     )}
                   </div>
-                  <div className="flex max-w-min flex-col">
+                  <div className="flex max-w-min flex-col tabletportrait:col-span-3">
                     <Input
                       label="E-mail"
                       callback={(e: React.FormEvent<HTMLInputElement>) =>
@@ -2093,11 +2102,39 @@ export default ({ location }: { location: any }) => {
                       </p>
                     )}
                   </div>
+                 
+                    <div className='flex items-center gap-3 tabletportrait:col-span-3'>
+                      <input type="checkbox" name="credentials" id="credentials" onChange={() => {
+                        //var btnRapport = document.getElementById("BtnRapport")
+                        console.log("BTNRAPPORT: ", btnRapport)
+                        if (btnRapport?.hasAttribute("disabled")) {
+                          console.log("IS DISABLED")
+                          btnRapport?.removeAttribute("disabled")
+                          console.log("REMOVED: ", btnRapport)
+                        } else {
+                          console.log("IS NOT DISABLED")
+                          btnRapport?.setAttribute("disabled", "true")
+                          console.log("AANGEPAST: ", btnRapport)
+                        }
+                      }} />
+                      <label className='text-[12px] tabletportrait:text-sm' htmlFor="credentials">Ik ga akkoord dat Vital Cities mijn persoonsgegevens in haar databanken opneemt om mij de gevraagde informatie te bezorgen via e-mail en dit op te volgen.</label>
+                    </div>
+                    <div className='flex items-center gap-3 tabletportrait:col-span-3'>
+                      <input type="checkbox" name="news" id="news" />
+                      <label className='text-[12px] tabletportrait:text-sm' htmlFor="news">Ja! Bezorg mij inhoudelijke inspiratie en houd mij op de hoogte van nieuws via e-mail.</label>
+                    </div>
+                  
                   <button
+                    disabled
+                    id='BtnRapport'
                     className={`z-0 mt-8 border-2  px-2 py-1 text-white  focus:font-semibold  ${
                       context.dark
                         ? 'border-pinkDesat bg-pinkDesat hover:bg-opacity-0 hover:text-pinkDesat focus:bg-white focus:bg-opacity-0 focus:text-pinkDesat'
                         : 'border-pink bg-pink hover:bg-white hover:text-pink focus:bg-white focus:text-pink'
+                    } ${
+                      btnRapport?.hasAttribute("disabled")
+                      ? 'border-darkGray bg-gray pointer-events-none'
+                      : 'border-pink bg-pink'
                     }`}
                     onClick={() => checkInfo()}
                   >
