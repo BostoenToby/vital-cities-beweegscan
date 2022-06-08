@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Bruikbaar, gevarieerd en voldoende groen
+  - groen
 text: |-
   Maak parken, bossen en groenvoorzieningen
 
