@@ -54,7 +54,7 @@ export default function RevPrac({
               className="relative h-96 w-full"
             />
           )}
-          <div className="relative bottom-3 left-3 flex items-center text-xs tabletportrait:text-sm laptop:text-lg">
+          <div className="relative bottom-3 left-3 flex items-center text-sm tabletportrait:text-base laptop:text-lg">
             <Tag
               text={leftTagText}
               classes={
@@ -63,14 +63,16 @@ export default function RevPrac({
             />
           </div>
           <h3
-            className={`mb-3 pl-3 text-3xl font-semibold ${
+            className={`mb-3 pl-3 text-xl font-semibold tabletportrait:text-2xl laptop:text-3xl ${
               context.dark ? 'opacity-90' : ''
             }`}
           >
             {practice.titel}
           </h3>
           <p
-            className={`pl-3 line-clamp-3 ${context.dark ? 'opacity-75' : ''}`}
+            className={`pl-3 text-base line-clamp-3 tabletportrait:text-lg ${
+              context.dark ? 'opacity-75' : ''
+            }`}
           >
             {practice.paragrafen[0].body}
           </p>
