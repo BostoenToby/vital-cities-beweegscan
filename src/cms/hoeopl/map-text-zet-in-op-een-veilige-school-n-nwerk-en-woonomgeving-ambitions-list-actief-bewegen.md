@@ -4,5 +4,5 @@ ambitions:
 text: |-
   Zet in op een veilige school-, 
 
-  werk- en woonomgeving .
+  werk- en woonomgeving
 ---
