@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Bruikbaar, gevarieerd en voldoende groen
+  - groen
 title: Visie voor een groen speelweefsel
 link: https://k-s.be/groen-speelweefsel/ontwikkel-een-groen-speelweefsel-visie-en-achtergrond/visie-voor-een-groen-speelweefsel/
 text: Op deze website brengt Kind & Samenleving handige instrumenten samen om 
