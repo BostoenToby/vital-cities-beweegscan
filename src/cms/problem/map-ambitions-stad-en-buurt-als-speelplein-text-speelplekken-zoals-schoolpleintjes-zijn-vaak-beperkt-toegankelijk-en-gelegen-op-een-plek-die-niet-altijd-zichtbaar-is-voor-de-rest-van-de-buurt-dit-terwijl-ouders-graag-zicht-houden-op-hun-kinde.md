@@ -1,5 +1,5 @@
 ---
-ambition: Stad en buurt als speelplein
+ambition: spelen
 text: Speelplekken zoals schoolpleintjes zijn vaak beperkt toegankelijk en
   gelegen op een plek die niet altijd zichtbaar is voor de rest van de buurt.
   Dit terwijl ouders graag zicht houden op hun kinderen als ze aan het spelen
