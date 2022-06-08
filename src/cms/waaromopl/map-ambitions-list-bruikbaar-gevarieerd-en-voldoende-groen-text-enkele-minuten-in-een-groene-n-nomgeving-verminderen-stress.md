@@ -1,8 +1,9 @@
 ---
 ambitions:
-  - Bruikbaar, gevarieerd en voldoende groen
+  - groen
 text: |-
   Enkele minuten in een groene 
 
   omgeving **verminderen stress**
+animation: arrows
 ---

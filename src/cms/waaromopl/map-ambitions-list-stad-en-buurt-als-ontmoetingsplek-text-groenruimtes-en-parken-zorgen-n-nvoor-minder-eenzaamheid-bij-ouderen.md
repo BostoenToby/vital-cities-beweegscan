@@ -1,8 +1,9 @@
 ---
 ambitions:
-  - Stad en buurt als ontmoetingsplek
+  - ontmoeten
 text: |-
   Groenruimtes en parken zorgen
 
   voor **minder eenzaamheid** bij ouderen
+animation: arrows
 ---
