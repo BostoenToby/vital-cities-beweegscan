@@ -1653,7 +1653,7 @@ export default ({ location }: { location: any }) => {
                       context.dark ? 'opacity-90' : ''
                     }`}
                   >
-                    Relevante good practices
+                    Relevante praktijkvoorbeelden
                   </h2>
                 </div>
                 <p
@@ -1661,7 +1661,7 @@ export default ({ location }: { location: any }) => {
                     context.dark ? 'opacity-75' : ''
                   }`}
                 >
-                  Je wil je door nog meer good practices laten inspireren?
+                  Je wil je door nog meer praktijkvoorbeelden laten inspireren?
                   Ontdek ze{' '}
                   <Link
                     to="/overviewpagepractices"

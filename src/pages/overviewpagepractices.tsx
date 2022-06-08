@@ -198,13 +198,14 @@ export default () => {
           <TopNavigation section="#Contact" />
           <main className="mx-auto my-8 w-full max-w-[104rem] px-3  gridbreak:my-16 gridbreak:px-10">
             <header className="mb-14 flex flex-col gridbreak:flex-row gridbreak:justify-between">
-              <h1
-                className={`mb-4 font-raleway  text-5xl font-bold gridbreak:mb-0 ${
+              <div
+                className={`mb-4 flex flex-col font-raleway text-4xl font-bold mobileM:text-5xl mobile:flex-row  gridbreak:mb-0 gridbreak:flex-col columnbreak:flex-row ${
                   context.dark ? 'text-white text-opacity-90' : 'text-dark'
                 }`}
               >
-                Good practices
-              </h1>
+                <h1>Praktijk</h1>
+                <h1>voorbeelden</h1>
+              </div>
               <div className="my-auto">
                 <span className="group relative block">
                   {/* note: I hate select  */}
@@ -223,13 +224,13 @@ export default () => {
                       className={context.dark ? 'bg-darkGray' : ''}
                       value="filter practices"
                     >
-                      Filter practices
+                      Filter voorbeelden
                     </option>
                     <option
                       className={context.dark ? 'bg-darkGray' : ''}
                       value="alle practices"
                     >
-                      Alle practices
+                      Alle voorbeelden
                     </option>
                     <option
                       className={context.dark ? 'bg-darkGray' : ''}

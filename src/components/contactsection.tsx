@@ -49,7 +49,7 @@ export default () => {
             </div>
             <div className="flex space-x-2 text-white">
               <Phone />
-              <p>+32 485 98 89 02</p>
+              <p>+32 485 98 89 92</p>
             </div>
           </div>
         </div>

@@ -104,7 +104,7 @@ export default ({ location }: { location: any }) => {
                       : 'text-purple hover:text-lightPurple'
                   }`}
                 >
-                  naar overzicht van alle good practices
+                  naar overzicht van alle praktijkvoorbeelden
                 </p>
               </button>
             </header>
