@@ -1,8 +1,9 @@
 ---
 ambition: Stad en buurt als ontmoetingsplek
 title: Stad en buurt als ontmoetingsplek
-subtitle: Als de openbare ruimte meer gebruikt wordt, dan zorgt dit ervoor dat
-  mensen zich meer thuis voelen in de buurt
+subtitle: Als mensen elkaar kunnen ontmoeten in de buurt, dan voelen ze zich
+  hier ook meer thuis. Ze zijn meer betrokken en bij kwetsbare doelgroepen,
+  ouderen in het bijzonder neemt de eenzaamheid af.
 image: /stad-en-buurt-als-ontmoetingsplek.png
 tag: ontmoeten
 ---
