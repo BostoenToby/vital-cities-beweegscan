@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Bruikbaar, gevarieerd en voldoende groen
+  - groen
 title: Groentool van Stad Antwerpen
 link: https://groentool.antwerpen.be/
 text: "Dit is een instrument van Stad Antwerpen voor iedereen die bezig is met
