@@ -1625,6 +1625,7 @@ export default ({ location }: { location: any }) => {
                   }
                 })}
                 <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
+                  {/* TODO: See more button om alle interessante bronnen te bekijken */}
                   {intBronnen &&
                     intBronnen.map((item: intBron, val: number) => {
                       if (val < 4) {

@@ -23,7 +23,7 @@ export interface header {
     title: string
     subtitle: string
     image: string
-    tag: string
+    tag?: string
 }
 
 export interface problem {
@@ -36,4 +36,14 @@ export interface ambitionTitle {
     subtitle: string
     section: string
     ambitions: string[]
+}
+
+export interface sectionLandingspage {
+    title: string
+    text: string
+}
+
+export interface ambition {
+    ambition: string
+    name: string
 }

@@ -19,6 +19,7 @@ exports.createSchemaCustomization = ({ actions }: { actions: any }) => {
             date: String
             tag: String
             boldpart: String
+            name: String
             thema: [String!]
         }
     `

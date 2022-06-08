@@ -9,18 +9,84 @@ import Topnavigation from '../components/topnavigation'
 import { Bron } from '../interfaces/data'
 import AmbitionPage from './ambitionpage'
 import Pdf from '../components/pdf'
-import { graphql } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import ThemeContext from '../context/themecontext'
 import FadeInSection from '../components/scrollytelling'
+import { ambition, header, sectionLandingspage } from '../interfaces/cmsInterfaces'
 
 // remove excel files because this can't be processed by Linux
 
 const IndexPage = ({ data }: { data: any }) => {
   const [hasMounted, setHasMounted] = useState(false)
+  const [texts, setTexts] = useState<sectionLandingspage[]>()
+  const [header, setHeader] = useState<header>()
+  const [ambitions, setAmbitions] = useState<ambition[]>()
 
   useEffect(() => {
     setHasMounted(true)
+    let textList: sectionLandingspage[] = []
+    let ambitionList: ambition[] = []
+    console.log(cms)
+    for(let item of cms.nodes){
+      if(item.parent.internal.description.includes("header") && item.frontmatter.ambition == "Landingspagina"){
+        setHeader({
+          title: item.frontmatter.title,
+          subtitle: item.frontmatter.subtitle,
+          image: item.frontmatter.image
+        })
+      }
+      else if (item.parent.internal.description.includes("landingspage")){
+        textList.push(
+          {
+            title: item.frontmatter.title,
+            text: item.frontmatter.text
+          }
+        )
+      } else if (item.parent.internal.description.includes("ambitienamen")){
+        ambitionList.push(
+          {
+            ambition: item.frontmatter.ambition,
+            name: item.frontmatter.name
+          }
+        )
+      }
+    }
+    setTexts(textList)
+    console.log(ambitionList)
+    setAmbitions(ambitionList)
   }, [])
+
+  const { cms } = useStaticQuery(
+    graphql`
+      query {
+        cms: allMarkdownRemark {
+          nodes {
+            frontmatter {
+              ambition
+              ambitions
+              date
+              extra
+              title
+              link
+              text
+              subtitle
+              image
+              tag
+              name
+              boldpart
+              thema
+              resources
+            }
+            parent {
+              internal {
+                description
+              }
+            }
+          }
+        }
+      }
+    `
+  )
 
   if (!hasMounted) {
     return null
@@ -69,11 +135,10 @@ const IndexPage = ({ data }: { data: any }) => {
               }`}
             >
               <h1 className="mb-8 max-w-2xl font-raleway text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
-                Beweegscan van Vital Cities
+                {header?.title}
               </h1>
               <p className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
-                Meet de beweegvriendelijkheid van jouw stad of gemeente en vind
-                de inspiratie om die nog te verbeteren
+                {header?.subtitle}
               </p>
               <p
                 className={`mb-2 font-semibold ${
@@ -102,103 +167,109 @@ const IndexPage = ({ data }: { data: any }) => {
                 context.dark ? 'text-white' : 'text-dark'
               }`}
             >
-              <h2
-                className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                  context.dark ? 'opacity-90' : ''
-                }`}
-              >
-                Over de beweegscan
-              </h2>
-              <p className={`mb-8 ${context.dark ? 'opacity-75' : ''}`}>
-                Een beweegvriendelijke leefomgeving is een omgeving die mensen
-                faciliteert en stimuleert om te bewegen, te spelen, te sporten
-                en te ontmoeten. Als je dus wil bouwen aan een
-                beweegvriendelijke leefomgeving, dan kan je werk maken van de
-                volgende ambities.
-              </p>
+              {texts && texts.map((item: sectionLandingspage, val: number) =>{
+                if(item.title == "Over de beweegscan"){
+                  return(
+                    <>
+                      <h2
+                        className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                          context.dark ? 'opacity-90' : ''
+                        }`}
+                      >
+                        {item.title}
+                      </h2>
+                      <p className={`mb-8 whitespace-pre-line ${context.dark ? 'opacity-75' : ''}`}>
+                        {item.text}
+                      </p>
+                    </>
+                  )
+                } else {
+                  return(
+                    <></>
+                  )
+                }
+              })}
               <FadeInSection>
                 <div className="mb-8 grid grid-cols-1 flex-col gap-8 tabletportrait:grid-cols-2 laptop:grid-cols-3 4K:grid-cols-4">
-                  <Ambitionblock
-                    header="Ambitie 1"
-                    text="Actief bewegen en verplaatsen"
-                    shorttext="actief bewegen"
-                  />
-                  <Ambitionblock
-                    header="Ambitie 2"
-                    text="Verbonden stadskern"
-                    shorttext="verbonden stadskern"
-                  />
-                  <Ambitionblock
-                    header="Ambitie 3"
-                    text="Aantrekkelijke en veilige wandel- en fietsroutes"
-                    shorttext="fiets- en wandelroutes"
-                  />
-                  <Ambitionblock
-                    header="Ambitie 4"
-                    text="Stad en buurt als sportplein"
-                    shorttext="sporten"
-                  />
-                  <Ambitionblock
-                    header="Ambitie 5"
-                    text="Stad en buurt als speelplein"
-                    shorttext="spelen"
-                  />
-                  <Ambitionblock
-                    header="Ambitie 6"
-                    text="Stad en buurt als ontmoetingsplek"
-                    shorttext="ontmoeten"
-                  />
-                  <Ambitionblock
-                    header="Ambitie 7"
-                    text="Bruikbaar, gevarieerd en voldoende groen"
-                    shorttext="groen"
-                  />
+                  {ambitions && ambitions.map((item: ambition, val: number) =>{
+                    let short: string = ""
+                    if(item.ambition.includes("bewegen")){
+                      short = "actief bewegen"
+                    }
+                    else if(item.ambition.includes("stadskern")){
+                      short = "verbonden stadskern"
+                    }
+                    else if(item.ambition.includes("wandel")){
+                      short = "fiets- en wandelroutes"
+                    }
+                    else if(item.ambition.includes("sport")){
+                      short = "sporten"
+                    }
+                    else if(item.ambition.includes("speel")){
+                      short = "spelen"
+                    }
+                    else if(item.ambition.includes("ontmoet")){
+                      short = "ontmoeten"
+                    }
+                    else if(item.ambition.includes("groen")){
+                      short = "groen"
+                    }
+                    return(
+                    <Ambitionblock
+                      header={`Ambitie ${val+1}`}
+                      text={item.name}
+                      shorttext={short}
+                    />
+                    )
+                  })}
                 </div>
               </FadeInSection>
               <FadeInSection>
-                <h2
-                  className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                    context.dark ? 'opacity-90' : ''
-                  }`}
-                >
-                  In een oogopslag
-                </h2>
-                <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
-                  In welke mate jouw stad of gemeente elk van deze ambities
-                  vandaag al waarmaakt: dat ontdek je met de Beweegscan van
-                  Vital Cities
-                </p>
-                <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
-                  Met de handige zoekfunctie selecteer je voor elk van de
-                  ambities van beweegvriendelijkheid, de voor jouw stad of
-                  gemeente relevante cijfers uit de recentste Gemeente - en
-                  Stadsmonitor. En zet je die af tegen het Vlaams gemiddelde.
-                </p>
-                <p className={`mb-8 ${context.dark ? 'opacity-75' : ''}`}>
-                  Zo zie je in een oogopslag waarop jouw stad of gemeente
-                  terecht trots kan zijn (want beter scoort dan het Vlaams
-                  gemiddelde), dan wel wat nog beter kan (want minder goed
-                  scoort).
-                </p>
+              {texts && texts.map((item: sectionLandingspage, val: number) =>{
+                if(item.title == "In een oogopslag"){
+                  return(
+                    <>
+                      <h2
+                        className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                          context.dark ? 'opacity-90' : ''
+                        }`}
+                      >
+                        {item.title}
+                      </h2>
+                      <p className={`mb-8 whitespace-pre-line ${context.dark ? 'opacity-75' : ''}`}>
+                        {item.text}
+                      </p>
+                    </>
+                  )
+                } else {
+                  return(
+                    <></>
+                  )
+                }
+              })}
 
-                <h2
-                  className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                    context.dark ? 'opacity-90' : ''
-                  }`}
-                >
-                  Inspirerend
-                </h2>
-                <p className={`mb-2 ${context.dark ? 'opacity-75' : ''}`}>
-                  De inzichten die voornoemde cijfers jou geven, vullen we aan
-                  met andere onderzoeksresultaten, proven tools en good
-                  practises. Zij zullen jou beslist inspireren om de
-                  beweegvriendelijkheid van jouw stad of gemeente nog te
-                  verbeteren.
-                </p>
-                <p className={`mb-8 ${context.dark ? 'opacity-75' : ''}`}>
-                  Om je te laten inspireren: klik in het overzicht van de
-                  ambities op één ervan.
-                </p>
+              {texts && texts.map((item: sectionLandingspage, val: number) =>{
+                if(item.title == "Inspirerend"){
+                  return(
+                    <>
+                      <h2
+                        className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                          context.dark ? 'opacity-90' : ''
+                        }`}
+                      >
+                        {item.title}
+                      </h2>
+                      <p className={`mb-8 whitespace-pre-line ${context.dark ? 'opacity-75' : ''}`}>
+                        {item.text}
+                      </p>
+                    </>
+                  )
+                } else {
+                  return(
+                    <></>
+                  )
+                }
+              })}
               </FadeInSection>
             </div>
           </main>

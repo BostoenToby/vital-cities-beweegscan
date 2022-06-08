@@ -12,14 +12,14 @@ collections:
     folder: src/cms/header
     create: true
     fields:
-      - { name: ambition, label: Ambitie, widget: select, multiple: false, options: ["Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"] }
+      - { name: ambition, label: Ambitie, widget: select, multiple: false, options: ["Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen", "Landingspagina"] }
       - { name: title, label: Titel }
       - { name: subtitle, label: Subtitels }
       - { name: image, label: Foto, widget: image }
-      - { name: tag, label: Tag }
+      - { name: tag, label: Tag, required: false }
 
   - name: Titels
-    label: Titels
+    label: Titels Ambitiepagina
     folder: src/cms/titels
     create: true
     fields: 
@@ -27,6 +27,22 @@ collections:
       - { name: subtitle, label: Subtitel }
       - { name: section, label: Sectie, widget: select, multiple: false, options: ["Waarom", "Hoe", "Interessante bronnen", "Relevante good practises"]}
       - { name: ambitions, label: Ambitie, widget: select, multiple: true, options: ["Algemene ambitie", "Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"]}
+
+  - name: Landingspagina
+    label: Landingspagina secties
+    folder: src/cms/landingspage
+    create: true
+    fields:
+      - { name: title, label: Titel, widget: select, multiple: false, options: ["Over de beweegscan", "In een oogopslag", "Inspirerend"]}
+      - { name: text, label: Tekst, widget: markdown }
+
+  - name: Ambitienamen
+    label: Ambitienamen
+    folder: src/cms/ambitienamen
+    create: true
+    fields:
+      - { name: ambition, label: Ambitie, widget: select, multiple: false, options: ["Actief bewegen en verplaatsen", "Verbonden stadskern", "Aantrekkelijke en veilige wandel- en fietsroutes", "Stad en buurt als sportplein", "Stad en buurt als speelplein", "Stad en buurt als ontmoetingsplek", "Bruikbaar, gevarieerd en voldoende groen"]}
+      - { name: name, label: Name }
 
   - name: Probleem
     label: Probleem

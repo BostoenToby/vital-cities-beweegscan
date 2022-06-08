@@ -13,7 +13,7 @@ export default ({
 }) => {
   // switch statement die kijkt naar de text voor een icon?
   const getIcon = (number: string) => {
-    if (number == '1') {
+    if (shorttext == "actief bewegen") {
       return (
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-lightxPurple opacity-50">
           <svg
@@ -37,7 +37,7 @@ export default ({
           </svg>
         </div>
       )
-    } else if (number == '2') {
+    } else if (shorttext == "verbonden stadskern") {
       return (
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-lightxPurple opacity-50">
           <svg
@@ -52,7 +52,7 @@ export default ({
           </svg>
         </div>
       )
-    } else if (number == '3') {
+    } else if (shorttext == "fiets- en wandelroutes") {
       return (
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-lightxPurple opacity-50">
           <svg
@@ -67,7 +67,7 @@ export default ({
           </svg>
         </div>
       )
-    } else if (number == '4') {
+    } else if (shorttext == "sporten") {
       return (
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-lightxPurple opacity-50">
           <svg
@@ -112,7 +112,7 @@ export default ({
           </svg>
         </div>
       )
-    } else if (number == '5') {
+    } else if (shorttext == "spelen") {
       return (
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-lightxPurple opacity-50">
           <svg
@@ -153,7 +153,7 @@ export default ({
           </svg>
         </div>
       )
-    } else if (number == '6') {
+    } else if (shorttext == "ontmoeten") {
       return (
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-lightxPurple opacity-50">
           <svg
@@ -180,7 +180,7 @@ export default ({
           </svg>
         </div>
       )
-    } else if (number == '7') {
+    } else if (shorttext == "groen") {
       return (
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-lightxPurple opacity-50">
           <svg
