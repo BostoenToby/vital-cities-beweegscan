@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Stad en buurt als ontmoetingsplek
+  - ontmoeten
 title: Placemaking Europe Toolbox
 link: https://placemaking-europe.eu/tools/
 text: Hier brengt Placemaking Europe een verzameling samen van gecureerde tools
