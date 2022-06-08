@@ -4,5 +4,5 @@ ambitions:
 text: |-
   Maak het centrum van je 
 
-  gemeente of buurt autoluw.
+  gemeente of buurt autoluw
 ---
