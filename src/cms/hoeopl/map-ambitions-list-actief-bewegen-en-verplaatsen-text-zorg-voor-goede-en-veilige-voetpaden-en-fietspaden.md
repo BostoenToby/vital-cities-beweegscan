@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Actief bewegen en verplaatsen
+  - actief bewegen
 text: |-
   Zorg voor goede en veilige 
 
