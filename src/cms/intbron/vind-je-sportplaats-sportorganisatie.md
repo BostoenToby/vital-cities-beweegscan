@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Stad en buurt als sportplein
+  - sporten
 title: Vind je sportplaats/sportorganisatie
 link: https://www.sport.vlaanderen/waar-sporten/vind-je-sportplaats/
 text: Dit zijn gebruiksvriendelijke zoekinstrumenten voor sporters overal in
