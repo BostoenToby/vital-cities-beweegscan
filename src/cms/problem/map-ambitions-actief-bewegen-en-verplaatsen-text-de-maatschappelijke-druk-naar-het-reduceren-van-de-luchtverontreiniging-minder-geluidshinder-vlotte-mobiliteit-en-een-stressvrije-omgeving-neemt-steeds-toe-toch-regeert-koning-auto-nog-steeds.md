@@ -1,5 +1,5 @@
 ---
-ambition: Actief bewegen en verplaatsen
+ambition: actief bewegen
 text: Er gaan meer en meer stemmen op voor betere luchtkwaliteit, minder
   geluidshinder en vlottere mobiliteit voor fietsers en wandelaars. Eureka! En
   toch domineert Koning Auto nog steeds het straatbeeld.
