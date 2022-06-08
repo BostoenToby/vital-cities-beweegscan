@@ -1,6 +1,6 @@
 ---
-ambitions: 
-  - Actief bewegen en verplaatsen
+ambitions:
+  - actief bewegen
 text: |-
   Zo weinig mogelijk
 
