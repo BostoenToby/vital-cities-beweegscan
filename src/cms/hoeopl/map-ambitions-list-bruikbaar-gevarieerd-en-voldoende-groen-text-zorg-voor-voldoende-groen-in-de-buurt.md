@@ -1,5 +1,5 @@
 ---
 ambitions:
-  - Bruikbaar, gevarieerd en voldoende groen
+  - groen
 text: Zorg voor voldoende groen in de buurt
 ---
