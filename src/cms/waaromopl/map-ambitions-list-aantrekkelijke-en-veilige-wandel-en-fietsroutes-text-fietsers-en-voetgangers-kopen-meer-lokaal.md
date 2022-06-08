@@ -1,5 +1,6 @@
 ---
 ambitions:
-  - Aantrekkelijke en veilige wandel- en fietsroutes
+  - fiets- en wandelroutes
 text: Fietsers en voetgangers **kopen** meer **lokaal**
+animation: arrows
 ---
