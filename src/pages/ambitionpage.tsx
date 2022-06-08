@@ -24,7 +24,7 @@ import { navigate } from 'gatsby'
 import { ChevronLeft } from 'lucide-react'
 import ThemeContext from '../context/themecontext'
 import { text } from 'stream/consumers'
-import Practice, { Benchmark} from '../interfaces/data'
+import Practice, { Benchmark } from '../interfaces/data'
 import FadeInSection from '../components/scrollytelling'
 import {
   getAllCities,
@@ -89,7 +89,7 @@ import youth from '../assets/animations/youth.json'
 import zorro from '../assets/animations/zorro.json'
 
 export default ({ location }: { location: any }) => {
-  var btnRapport = document.getElementById("BtnRapport")
+  var btnRapport = document.getElementById('BtnRapport')
 
   const [hasMounted, setHasMounted] = useState(false)
   const [locationShort, setLocationShort] = useState<string>()
@@ -1020,7 +1020,7 @@ export default ({ location }: { location: any }) => {
   }
 
   const checkInfo = async () => {
-    console.log("CLICKED GEN PDF")
+    console.log('CLICKED GEN PDF')
     let errorsMail = true
     let errorsFirstname = true
     let errorsLastname = true
@@ -1329,9 +1329,8 @@ export default ({ location }: { location: any }) => {
   }
 
   const ToggleRapport = () => {
-    var btnRapport = document.getElementById("BtnRapport")
-    console.log("BTNRAPPORT: ", btnRapport)
-    
+    var btnRapport = document.getElementById('BtnRapport')
+    console.log('BTNRAPPORT: ', btnRapport)
   }
 
   return (
@@ -1431,19 +1430,19 @@ export default ({ location }: { location: any }) => {
             </section>
           </header>
           <div
-            className={`mx-auto max-w-[104rem] ${
+            className={`mx-auto max-w-[104rem]  tabletportrait:mt-[-3.8rem] ${
               context.dark ? 'text-white' : 'text-dark'
             }`}
           >
             <FadeInSection>
               <section
-                className="tab mx-4 mt-16 grid grid-cols-1 gap-6 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-12 laptopL:mt-20"
+                className="tab mx-4 mt-16 grid grid-cols-1 gap-6 mobile:mx-8 columnbreak:mx-16 columnbreak:gap-12"
                 id="Location"
               >
                 <div className="flex flex-col">
                   <div className="flex items-center justify-between gap-4">
                     <h2
-                      className={`flex h-full flex-col justify-end pb-2 font-raleway text-xl font-xxbold tabletportrait:text-3xl laptop:text-4xl ${
+                      className={`flex h-full flex-col justify-end pb-2 font-raleway text-2xl font-xxbold tabletportrait:text-3xl laptop:text-4xl ${
                         context.dark ? 'opacity-90' : ''
                       }`}
                     >
@@ -1767,12 +1766,15 @@ export default ({ location }: { location: any }) => {
                         <p
                           className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
                             context.dark ? 'opacity-75' : ''
-                          }`}>{item.subtitle}</p>
-                        </>
-                      )
-                    }
-                  })}
-                <div className="grid grid-cols-1 gap-8 justify-center items-center tabletportrait:text-lg tabletportrait:grid-cols-2 laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
+                          }`}
+                        >
+                          {item.subtitle}
+                        </p>
+                      </>
+                    )
+                  }
+                })}
+                <div className="grid grid-cols-1 items-center justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
                   {whys &&
                     whys.map((item: any) => {
                       const animation = getAnimation(item.animation)
@@ -1818,12 +1820,15 @@ export default ({ location }: { location: any }) => {
                         <p
                           className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
                             context.dark ? 'opacity-75' : ''
-                          }`}>{item.subtitle}</p>
-                        </>
-                      )
-                    }
-                  })}
-                <div className="grid grid-cols-1 gap-8 justify-center tabletportrait:text-lg tabletportrait:grid-cols-2 laptop:grid-cols-3 laptopL:grid-cols-4">
+                          }`}
+                        >
+                          {item.subtitle}
+                        </p>
+                      </>
+                    )
+                  }
+                })}
+                <div className="grid grid-cols-1 justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptopL:grid-cols-4">
                   {hows &&
                     hows.map((item: HoeWaarom) => {
                       const animation = getAnimation(item.animation)
@@ -1928,7 +1933,7 @@ export default ({ location }: { location: any }) => {
                     hier
                   </Link>
                 </p>
-                <div className="grid grid-cols-1 gap-16 text-sm mobile:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
+                <div className="grid grid-cols-1 gap-16 text-sm tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:text-xl">
                   {practices &&
                     practices.length >= 1 &&
                     practices.map((item: Practice, val: number) => {
@@ -2102,39 +2107,57 @@ export default ({ location }: { location: any }) => {
                       </p>
                     )}
                   </div>
-                 
-                    <div className='flex items-center gap-3 tabletportrait:col-span-3'>
-                      <input type="checkbox" name="credentials" id="credentials" onChange={() => {
+
+                  <div className="flex items-center gap-3 tabletportrait:col-span-3">
+                    <input
+                      type="checkbox"
+                      name="credentials"
+                      id="credentials"
+                      onChange={() => {
                         //var btnRapport = document.getElementById("BtnRapport")
-                        console.log("BTNRAPPORT: ", btnRapport)
-                        if (btnRapport?.hasAttribute("disabled")) {
-                          console.log("IS DISABLED")
-                          btnRapport?.removeAttribute("disabled")
-                          console.log("REMOVED: ", btnRapport)
+                        console.log('BTNRAPPORT: ', btnRapport)
+                        if (btnRapport?.hasAttribute('disabled')) {
+                          console.log('IS DISABLED')
+                          btnRapport?.removeAttribute('disabled')
+                          console.log('REMOVED: ', btnRapport)
                         } else {
-                          console.log("IS NOT DISABLED")
-                          btnRapport?.setAttribute("disabled", "true")
-                          console.log("AANGEPAST: ", btnRapport)
+                          console.log('IS NOT DISABLED')
+                          btnRapport?.setAttribute('disabled', 'true')
+                          console.log('AANGEPAST: ', btnRapport)
                         }
-                      }} />
-                      <label className='text-[12px] tabletportrait:text-sm' htmlFor="credentials">Ik ga akkoord dat Vital Cities mijn persoonsgegevens in haar databanken opneemt om mij de gevraagde informatie te bezorgen via e-mail en dit op te volgen.</label>
-                    </div>
-                    <div className='flex items-center gap-3 tabletportrait:col-span-3'>
-                      <input type="checkbox" name="news" id="news" />
-                      <label className='text-[12px] tabletportrait:text-sm' htmlFor="news">Ja! Bezorg mij inhoudelijke inspiratie en houd mij op de hoogte van nieuws via e-mail.</label>
-                    </div>
-                  
+                      }}
+                    />
+                    <label
+                      className="text-[12px] tabletportrait:text-sm"
+                      htmlFor="credentials"
+                    >
+                      Ik ga akkoord dat Vital Cities mijn persoonsgegevens in
+                      haar databanken opneemt om mij de gevraagde informatie te
+                      bezorgen via e-mail en dit op te volgen.
+                    </label>
+                  </div>
+                  <div className="flex items-center gap-3 tabletportrait:col-span-3">
+                    <input type="checkbox" name="news" id="news" />
+                    <label
+                      className="text-[12px] tabletportrait:text-sm"
+                      htmlFor="news"
+                    >
+                      Ja! Bezorg mij inhoudelijke inspiratie en houd mij op de
+                      hoogte van nieuws via e-mail.
+                    </label>
+                  </div>
+
                   <button
                     disabled
-                    id='BtnRapport'
+                    id="BtnRapport"
                     className={`z-0 mt-8 border-2  px-2 py-1 text-white  focus:font-semibold  ${
                       context.dark
                         ? 'border-pinkDesat bg-pinkDesat hover:bg-opacity-0 hover:text-pinkDesat focus:bg-white focus:bg-opacity-0 focus:text-pinkDesat'
                         : 'border-pink bg-pink hover:bg-white hover:text-pink focus:bg-white focus:text-pink'
                     } ${
-                      btnRapport?.hasAttribute("disabled")
-                      ? 'border-darkGray bg-gray pointer-events-none'
-                      : 'border-pink bg-pink'
+                      btnRapport?.hasAttribute('disabled')
+                        ? 'pointer-events-none border-darkGray bg-gray'
+                        : 'border-pink bg-pink'
                     }`}
                     onClick={() => checkInfo()}
                   >

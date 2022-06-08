@@ -77,7 +77,7 @@ export default ({ section }: { section: string }) => {
               className={`flex h-24 w-full flex-row drop-shadow-sm ${
                 context.dark
                   ? ' bg-darkGray'
-                  : 'border-b-1 border-purple bg-white'
+                  : 'border-b-[1px] border-lightGray bg-white'
               }`}
             >
               <div
@@ -146,7 +146,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            short: 'actief bewegen'
+                            short: 'actief bewegen',
                           }}
                         >
                           Actief bewegen & verplaatsen
@@ -163,7 +163,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            short: 'verbonden stadskern'
+                            short: 'verbonden stadskern',
                           }}
                         >
                           verbonden stadskern
@@ -180,7 +180,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            short: 'fiets- en wandelroutes'
+                            short: 'fiets- en wandelroutes',
                           }}
                         >
                           Wandel- & fietsroutes
@@ -197,7 +197,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            short: 'sporten'
+                            short: 'sporten',
                           }}
                         >
                           Sporten
@@ -214,7 +214,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            short: 'spelen'
+                            short: 'spelen',
                           }}
                         >
                           Spelen
@@ -231,7 +231,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            short: 'ontmoeten'
+                            short: 'ontmoeten',
                           }}
                         >
                           Ontmoeten
@@ -248,7 +248,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            short: 'groen'
+                            short: 'groen',
                           }}
                         >
                           Groen
