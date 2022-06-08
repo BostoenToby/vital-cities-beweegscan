@@ -5,5 +5,5 @@ text: |-
   Hogere betrokkenheid **vermindert**
 
   **eenzaamheid** bij ouderen
-animation: arrows
+animation: old_person
 ---
