@@ -4,5 +4,5 @@ ambitions:
 text: |-
   Investeer in een goed netwerk van 
 
-  openbaar vervoer of deelsystemen.
+  openbaar vervoer of deelsystemen
 ---
