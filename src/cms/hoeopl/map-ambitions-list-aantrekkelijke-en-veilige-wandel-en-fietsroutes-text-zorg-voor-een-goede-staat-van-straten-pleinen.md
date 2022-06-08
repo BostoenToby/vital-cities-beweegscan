@@ -1,5 +1,5 @@
 ---
 ambitions:
-  - Aantrekkelijke en veilige wandel- en fietsroutes
+  - fiets- en wandelroutes
 text: Zorg voor een goede staat van straten & pleinen
 ---
