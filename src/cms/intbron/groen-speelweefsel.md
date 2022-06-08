@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Stad en buurt als speelplein
+  - spelen
 title: Groen speelweefsel
 link: https://k-s.be/groen-speelweefsel/
 text: Op deze website van Kind & Samenleving vind je een schat aan informatie,
