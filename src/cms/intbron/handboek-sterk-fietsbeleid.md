@@ -1,7 +1,7 @@
 ---
 ambitions:
-  - Actief bewegen en verplaatsen
-  - Aantrekkelijke en veilige wandel- en fietsroutes
+  - actief bewegen
+  - fiets- en wandelroutes
 title: Handboek sterk fietsbeleid
 link: https://fietsberaad.be/documenten/sterk-fietsbeleid-handboek-voor-lokale-actie/
 text: Dit rapport van Fietsberaad uit 2018 bundelt inzichten en tips voor een

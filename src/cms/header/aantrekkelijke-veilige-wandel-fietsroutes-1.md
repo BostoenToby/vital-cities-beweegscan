@@ -1,9 +1,9 @@
 ---
-ambition: Aantrekkelijke en veilige wandel- en fietsroutes
+ambition: fiets- en wandelroutes
 title: Aantrekkelijke & veilige wandel- & fietsroutes
 subtitle: Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een
-  actieve levensstijl en faciliteren mensen om lopend of fietsend naar
-  voorzieningen of het werk of school voorzieningen te gaan
+  actieve levensstijl en faciliteren mensen om wandelend of fietsend naar
+  voorzieningen of het werk of school te gaan.
 image: /stad-en-buurt-als-sportplein.png
 tag: fiets- en wandelroutes
 ---

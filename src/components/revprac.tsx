@@ -7,15 +7,11 @@ import ThemeContext from '../context/themecontext'
 import Practice from '../interfaces/data'
 
 export default function RevPrac({
-  image,
-  imageAlt,
   leftTagText,
   leftTagColorBg,
   leftTagColorText,
   practice,
 }: {
-  image: string
-  imageAlt: string
   leftTagText: string
   leftTagColorBg: string
   leftTagColorText: string
@@ -36,7 +32,7 @@ export default function RevPrac({
   const [img, setImg] = React.useState<any>()
   React.useEffect(() => {
     for (let i of allImageSharp.nodes) {
-      if (i.gatsbyImageData.images.fallback.src.includes(image)) {
+      if (i.gatsbyImageData.images.fallback.src.includes(practice.image)) {
         setImg(getImage(i))
       }
     }
@@ -54,7 +50,7 @@ export default function RevPrac({
           {img != '' && (
             <GatsbyImage
               image={img}
-              alt="Test"
+              alt={practice.titel}
               className="relative h-96 w-full"
             />
           )}

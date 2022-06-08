@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Actief bewegen en verplaatsen
+  - actief bewegen
 title: Gezondheidscalculator Modal Shift
 link: https://www.gezondleven.be/projecten/modal-shift-tool
 text: De Gezondheidscalculator Modal Shift berekent de maatschappelijke

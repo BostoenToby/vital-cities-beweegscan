@@ -1,8 +1,8 @@
 ---
 ambitions:
-  - Actief bewegen en verplaatsen
-  - Aantrekkelijke en veilige wandel- en fietsroutes
-  - Verbonden stadskern
+  - actief bewegen
+  - fiets- en wandelroutes
+  - verbonden stadskern
 title: Walkabilityscore-tool
 link: https://walkability.marvin.vito.be/
 text: "Deze tool van Vito in opdracht van Gezond Leven brengt de

@@ -1,9 +1,10 @@
 ---
-ambition: Bruikbaar, gevarieerd en voldoende groen
+ambition: groen
 title: Bruikbaar, gevarieerd en voldoende groen
-subtitle: Parken, bossen en groenruimte zijn het meest aantrekkelijk als er
-  variatie is in type groen en gebruik en als verschillende doelgroepen er naast
-  elkaar kunnen verblijven
+subtitle: Groen in het straatbeeld, parkjes, bossen en stadsgroen, … Ze verhogen
+  de leefbaarheid van je stad of gemeente. Er moet voldoende groen zijn. Maar
+  ook variatie, bespeelbaarheid en de mogelijkheid om er intergenerationeel te
+  ontmoeten is fijn.
 image: /bruikbaar-gevarieerd-en-voldoende-groen.png
 tag: groen
 ---

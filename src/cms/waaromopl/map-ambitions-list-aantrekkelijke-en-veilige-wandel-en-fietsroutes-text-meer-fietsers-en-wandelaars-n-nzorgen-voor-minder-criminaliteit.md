@@ -1,8 +1,9 @@
 ---
 ambitions:
-  - Aantrekkelijke en veilige wandel- en fietsroutes
+  - fiets- en wandelroutes
 text: |-
   Meer fietsers en wandelaars 
 
   zorgen voor **minder criminaliteit**
+animation: arrows
 ---

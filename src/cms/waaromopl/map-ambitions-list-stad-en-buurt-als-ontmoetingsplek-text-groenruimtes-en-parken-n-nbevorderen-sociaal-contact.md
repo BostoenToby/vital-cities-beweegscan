@@ -1,8 +1,9 @@
 ---
 ambitions:
-  - Stad en buurt als ontmoetingsplek
+  - ontmoeten
 text: |-
   Groenruimtes en parken 
 
   bevorderen sociaal **contact**
+animation: arrows
 ---

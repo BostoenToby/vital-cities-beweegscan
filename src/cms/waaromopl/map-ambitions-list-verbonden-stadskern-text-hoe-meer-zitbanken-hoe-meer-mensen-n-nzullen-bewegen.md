@@ -1,9 +1,10 @@
 ---
 ambitions:
-  - Verbonden stadskern
-  - Stad en buurt als ontmoetingsplek
+  - verbonden stadskern
+  - ontmoeten
 text: |-
   Hoe **meer zitbanken**, hoe meer mensen
 
   zullen bewegen
+animation: benches
 ---

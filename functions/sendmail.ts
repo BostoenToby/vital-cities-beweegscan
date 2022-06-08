@@ -1,7 +1,3 @@
-import { atob, Blob } from "buffer";
-import request from 'request';
-import { Personlization } from "../src/interfaces/sendgrid";
-
 const sgMail = require('@sendgrid/mail')
 
 exports.handler = async (event: any, context: any, callback: any) => {

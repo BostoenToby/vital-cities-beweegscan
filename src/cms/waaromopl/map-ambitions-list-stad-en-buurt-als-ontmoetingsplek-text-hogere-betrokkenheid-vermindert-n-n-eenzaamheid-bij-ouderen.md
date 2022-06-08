@@ -1,8 +1,9 @@
 ---
 ambitions:
-  - Stad en buurt als ontmoetingsplek
+  - ontmoeten
 text: |-
   Hogere betrokkenheid **vermindert**
 
   **eenzaamheid** bij ouderen
+animation: arrows
 ---

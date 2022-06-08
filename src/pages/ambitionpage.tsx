@@ -3,7 +3,6 @@ import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
 import { ArrowDown, ChevronDown, Search } from 'lucide-react'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import DonutChart from '../components/donutchart'
 import Input from '../components/input'
 import Intsrc from '../components/Intsrc'
 import RevPrac from '../components/revprac'
@@ -12,7 +11,6 @@ import Topnavigation from '../components/topnavigation'
 import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
 import { searchList } from '../utils/autoComplete'
-import Darkmodetoggle from '../components/darkmodetoggle'
 import {
   ambitionTitle,
   goodPractice,
@@ -26,9 +24,7 @@ import { navigate } from 'gatsby'
 import { ChevronLeft } from 'lucide-react'
 import ThemeContext from '../context/themecontext'
 import { text } from 'stream/consumers'
-import Practice, { Benchmark, PercentageData } from '../interfaces/data'
-import { testData } from '../data/testGraph'
-import Donutdata from '../components/donutdata'
+import Practice, { Benchmark} from '../interfaces/data'
 import FadeInSection from '../components/scrollytelling'
 import {
   getAllCities,
@@ -46,6 +42,48 @@ import Barchart from '../components/barchart'
 import Lottie, { useLottie } from 'lottie-react'
 import lightbulb from '../assets/animations/lightbulb.json'
 import long_arrow from '../assets/animations/long_arrow.json'
+import arrows from '../assets/animations/arrows.json'
+import balance from '../assets/animations/balance.json'
+import basket from '../assets/animations/basket.json'
+import bench from '../assets/animations/bench.json'
+import benches from '../assets/animations/benches.json'
+import bike from '../assets/animations/bike.json'
+import bus from '../assets/animations/bus.json'
+import car_free from '../assets/animations/car_free.json'
+import car from '../assets/animations/car.json'
+import children from '../assets/animations/children.json'
+import city from '../assets/animations/city.json'
+import concentration from '../assets/animations/concentration.json'
+import criminal from '../assets/animations/criminal.json'
+import euro_hand from '../assets/animations/euro_hand.json'
+import euro from '../assets/animations/euro.json'
+import evolution from '../assets/animations/evolution.json'
+import families from '../assets/animations/families.json'
+import family from '../assets/animations/family.json'
+import familyseat from '../assets/animations/familyseat.json'
+import fitness from '../assets/animations/fitness.json'
+import handshake from '../assets/animations/handshake.json'
+import house from '../assets/animations/house.json'
+import houseprice from '../assets/animations/houseprice.json'
+import landscape from '../assets/animations/landscape.json'
+import leaf from '../assets/animations/leaf.json'
+import link from '../assets/animations/link.json'
+import lock from '../assets/animations/lock.json'
+import loneliness from '../assets/animations/loneliness.json'
+import nature from '../assets/animations/nature.json'
+import old_person from '../assets/animations/old_person.json'
+import park from '../assets/animations/park.json'
+import pet from '../assets/animations/pet.json'
+import restaurant from '../assets/animations/restaurant.json'
+import school from '../assets/animations/school.json'
+import shield from '../assets/animations/shield.json'
+import shoppingcart from '../assets/animations/shoppingcart.json'
+import thermometer from '../assets/animations/thermometer.json'
+import virus from '../assets/animations/virus.json'
+import walking from '../assets/animations/walking.json'
+import wrench from '../assets/animations/wrench.json'
+import youth from '../assets/animations/youth.json'
+import zorro from '../assets/animations/zorro.json'
 import { colorify, flatten, getColors, replaceColor } from 'lottie-colorify'
 import { Bron, Paragraaf } from '../interfaces/data'
 import { url } from 'inspector'
@@ -91,7 +129,7 @@ export default ({ location }: { location: any }) => {
 
   useEffect(() => {
     setHasMounted(true)
-    setLocationAmb(location.state.ambition)
+    console.log(location.state.short)
     setLocationShort(location.state.short)
     setSelectedCities(['Vlaams Gewest', ''])
 
@@ -881,7 +919,6 @@ export default ({ location }: { location: any }) => {
 
   useEffect(() => {
     if (goodPracs) {
-      console.log(goodPracs)
       const data: Practice[] = []
 
       goodPracs.forEach((p: goodPractice) => {
@@ -917,8 +954,10 @@ export default ({ location }: { location: any }) => {
           const par: Paragraaf = {
             //@ts-ignore
             header: titles[index],
-            body: paragraaf,
-            // body: paragraaf.replace(/\*[^*]/g, '•'),
+            body: paragraaf
+              .replace(/\n+$/, '')
+              .replace(/^\* /, '• ')
+              .replace(/\n\* /g, '\n\n • '),
           }
           parResults.push(par)
         })
@@ -970,15 +1009,16 @@ export default ({ location }: { location: any }) => {
     let goodPracs: goodPractice[] = []
     let titles: ambitionTitle[] = []
 
-    if (locationAmb && locationShort) {
+    if (locationShort) {
       for (let item of cms.nodes) {
+        console.log(item)
         if (item.frontmatter.ambitions == null) {
           item.frontmatter.ambitions = ['']
         }
         if (
           item.parent.internal.description.includes('hoeopl') &&
-          (item.frontmatter.ambition == locationAmb ||
-            item.frontmatter.ambitions.includes(locationAmb))
+          (item.frontmatter.ambition == locationShort ||
+            item.frontmatter.ambitions.includes(locationShort))
         ) {
           hoeList.push({
             text: item.frontmatter.text,
@@ -986,8 +1026,8 @@ export default ({ location }: { location: any }) => {
           })
         } else if (
           item.parent.internal.description.includes('waaromopl') &&
-          (item.frontmatter.ambition == locationAmb ||
-            item.frontmatter.ambitions.includes(locationAmb))
+          (item.frontmatter.ambition == locationShort ||
+            item.frontmatter.ambitions.includes(locationShort))
         ) {
           waaromList.push({
             text: item.frontmatter.text,
@@ -995,8 +1035,8 @@ export default ({ location }: { location: any }) => {
           })
         } else if (
           item.parent.internal.description.includes('intbron') &&
-          (item.frontmatter.ambition == locationAmb ||
-            item.frontmatter.ambitions.includes(locationAmb))
+          (item.frontmatter.ambition == locationShort ||
+            item.frontmatter.ambitions.includes(locationShort))
         ) {
           bronnen.push({
             title: item.frontmatter.title,
@@ -1007,7 +1047,6 @@ export default ({ location }: { location: any }) => {
           item.parent.internal.description.includes('goodprac') &&
           item.frontmatter.thema.includes(locationShort)
         ) {
-          console.log(item.frontmatter)
           // TODO: add good practises
           goodPracs.push({
             title: item.frontmatter.title,
@@ -1020,7 +1059,7 @@ export default ({ location }: { location: any }) => {
           })
         } else if (
           item.parent.internal.description.includes('header') &&
-          item.frontmatter.ambition == locationAmb
+          item.frontmatter.ambition == locationShort
         ) {
           setHeader({
             title: item.frontmatter.title,
@@ -1039,8 +1078,8 @@ export default ({ location }: { location: any }) => {
           }
         } else if (
           item.parent.internal.description.includes('problem') &&
-          (item.frontmatter.ambition == locationAmb ||
-            item.frontmatter.ambitions.includes(locationAmb))
+          (item.frontmatter.ambition == locationShort ||
+            item.frontmatter.ambitions.includes(locationShort))
         ) {
           setProblem({
             text: item.frontmatter.text,
@@ -1049,7 +1088,7 @@ export default ({ location }: { location: any }) => {
         } else if (
           item.parent.internal.description.includes('titels') &&
           (item.frontmatter.ambitions.includes('Algemene ambitie') ||
-            item.frontmatter.ambitions.includes(locationAmb))
+            item.frontmatter.ambitions.includes(locationShort))
         ) {
           titles.push({
             title: item.frontmatter.title,
@@ -1086,7 +1125,7 @@ export default ({ location }: { location: any }) => {
       // const testData = getPdfData(allAmbitionData, 'Kortrijk', 'Brugge')
       // console.log(cities)
     }
-  }, [locationAmb])
+  }, [locationShort])
 
   const handleClick = (e: any) => {
     const isOutsideStad = !e.target.closest('#inputStad')
@@ -1531,7 +1570,6 @@ export default ({ location }: { location: any }) => {
                 id="Solution"
               >
                 {titles?.map((item: ambitionTitle) => {
-                  console.log(titles)
                   if (item.title.includes('Waarom')) {
                     return (
                       <>
@@ -1568,11 +1606,15 @@ export default ({ location }: { location: any }) => {
             <FadeInSection>
               <section className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16">
                 {titles?.map((item: ambitionTitle) => {
-                    console.log(titles)
-                    if(item.title.includes("Hoe") && (item.ambitions.includes(String(locationAmb)) || item.ambitions.includes("Algemene ambitie"))){
-                      return(
-                        <>
-                          <h2 className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                  if (
+                    item.title.includes('Hoe') &&
+                    (item.ambitions.includes(String(locationShort)) ||
+                      item.ambitions.includes('Algemene ambitie'))
+                  ) {
+                    return (
+                      <>
+                        <h2
+                          className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                             context.dark ? 'opacity-90' : ''
                           }`}
                         >
@@ -1611,7 +1653,6 @@ export default ({ location }: { location: any }) => {
                 id="Resources"
               >
                 {titles?.map((item: ambitionTitle) => {
-                  console.log(titles)
                   if (item.title.includes('bronnen')) {
                     return (
                       <>
@@ -1634,6 +1675,7 @@ export default ({ location }: { location: any }) => {
                   }
                 })}
                 <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
+                  {/* TODO: See more button om alle interessante bronnen te bekijken */}
                   {intBronnen &&
                     intBronnen.map((item: intBron, val: number) => {
                       if (val < 4) {
@@ -1662,7 +1704,7 @@ export default ({ location }: { location: any }) => {
                       context.dark ? 'opacity-90' : ''
                     }`}
                   >
-                    Relevante good practices
+                    Relevante praktijkvoorbeelden
                   </h2>
                 </div>
                 <p
@@ -1670,7 +1712,7 @@ export default ({ location }: { location: any }) => {
                     context.dark ? 'opacity-75' : ''
                   }`}
                 >
-                  Je wil je door nog meer good practices laten inspireren?
+                  Je wil je door nog meer praktijkvoorbeelden laten inspireren?
                   Ontdek ze{' '}
                   <Link
                     to="/overviewpagepractices"
@@ -1690,8 +1732,6 @@ export default ({ location }: { location: any }) => {
                       if (val < 2) {
                         return (
                           <RevPrac
-                            image={item.image}
-                            imageAlt="Relevant cases"
                             leftTagText={header?.tag!}
                             leftTagColorBg="pink"
                             leftTagColorText="black"

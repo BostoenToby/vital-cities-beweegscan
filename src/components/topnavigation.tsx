@@ -77,7 +77,7 @@ export default ({ section }: { section: string }) => {
               className={`flex h-24 w-full flex-row drop-shadow-sm ${
                 context.dark
                   ? ' bg-darkGray'
-                  : 'border-b-2 border-purple bg-white'
+                  : 'border-b-2 border-darkGray bg-white'
               }`}
             >
               <div
@@ -97,6 +97,21 @@ export default ({ section }: { section: string }) => {
                   context.dark ? 'text-white text-opacity-75' : 'text-dark'
                 }`}
               >
+                <li className=" mr-14">
+                  <Link
+                    activeStyle={{
+                      color: context.dark ? '#ffffff' : '#E7348C',
+                    }}
+                    to="/"
+                    className={
+                      context.dark
+                        ? 'hover:text-lightPurpleDesat'
+                        : 'hover:text-mediumPurple'
+                    }
+                  >
+                    Home
+                  </Link>
+                </li>
                 <li className="mr-14" id="ambitionsList">
                   <button
                     className={
@@ -131,8 +146,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition: 'Actief bewegen en verplaatsen',
-                            short: 'actief bewegen',
+                            short: 'actief bewegen'
                           }}
                         >
                           Actief bewegen & verplaatsen
@@ -149,8 +163,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition: 'Verbonden stadskern',
-                            short: 'verbonden stadskern',
+                            short: 'verbonden stadskern'
                           }}
                         >
                           verbonden stadskern
@@ -167,9 +180,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition:
-                              'Aantrekkelijke en veilige wandel- en fietsroutes',
-                            short: 'fiets- en wandelroutes',
+                            short: 'fiets- en wandelroutes'
                           }}
                         >
                           Wandel- & fietsroutes
@@ -186,8 +197,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition: 'Stad en buurt als sportplein',
-                            short: 'sporten',
+                            short: 'sporten'
                           }}
                         >
                           Sporten
@@ -204,8 +214,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition: 'Stad en buurt als speelplein',
-                            short: 'spelen',
+                            short: 'spelen'
                           }}
                         >
                           Spelen
@@ -222,8 +231,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition: 'Stad en buurt als ontmoetingsplek',
-                            short: 'ontmoeten',
+                            short: 'ontmoeten'
                           }}
                         >
                           Ontmoeten
@@ -240,9 +248,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition:
-                              'Bruikbaar, gevarieerd en voldoende groen',
-                            short: 'groen',
+                            short: 'groen'
                           }}
                         >
                           Groen
@@ -263,7 +269,7 @@ export default ({ section }: { section: string }) => {
                         : 'hover:text-mediumPurple'
                     }
                   >
-                    Good practices
+                    Praktijkvoorbeelden
                   </Link>
                 </li>
                 <li className="mr-14 hover:text-mediumPurple">
@@ -285,7 +291,12 @@ export default ({ section }: { section: string }) => {
             </nav>
           ) : (
             <div>
-              {/* <div className="absolute z-0 top-0 w-full h-24 bg-purple"></div> */}
+              {showSideNav ? (
+                <div
+                  className="absolute top-0 z-0 h-screen w-screen bg-dark opacity-50"
+                  onClick={() => handleSideBar()}
+                />
+              ) : null}
               <nav className="h-24">
                 <div
                   className={`flex h-full w-32 flex-col justify-center ${
@@ -318,7 +329,7 @@ export default ({ section }: { section: string }) => {
                 <header className="mt-4 mb-16 flex flex-row">
                   <X
                     size={32}
-                    className="text-white cursor-pointer hover:text-pink"
+                    className="cursor-pointer text-white hover:text-pink"
                     onClick={() => handleSideBar()}
                   />
                   <a
@@ -329,6 +340,12 @@ export default ({ section }: { section: string }) => {
                   </a>
                 </header>
                 <ul className="font-poppins" id="ambitionsList">
+                  <li className="my-6 text-2xl font-medium text-white hover:text-pink">
+                    <Link to="/" className="flex flex-row items-center">
+                      <p>Home</p>
+                      <ChevronRight size={24} className="ml-6 text-white" />
+                    </Link>
+                  </li>
                   <li className="my-6 text-2xl font-medium text-white hover:text-pink">
                     <button
                       className="flex flex-row items-center"
@@ -433,7 +450,10 @@ export default ({ section }: { section: string }) => {
                       to="/overviewpagepractices"
                       className="flex flex-row items-center"
                     >
-                      <p>Good practices</p>
+                      <div className="flex flex-col mobileM:flex-row">
+                        <p>Praktijk</p>
+                        <p>voorbeelden</p>
+                      </div>
                       <ChevronRight size={24} className="ml-6 text-white" />
                     </Link>
                   </li>
