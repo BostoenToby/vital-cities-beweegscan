@@ -1,5 +1,5 @@
 ---
-ambition: Stad en buurt als speelplein
+ambition: spelen
 title: Stad en buurt als speelplein
 subtitle: Formele en informele speel- en hangplekken in de buurt nodigen
   kinderen en jongeren uit om te spelen.  Meer en meer lokale besturen willen
