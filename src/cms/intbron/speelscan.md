@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Stad en buurt als speelplein
+  - spelen
 title: Speelscan
 link: https://tools.kenniscentrumsportenbewegen.nl/stappenplan-bvo/onderwerp/speelscan/
 text: Deze tool helpt om de bruikbaarheid (potentiële gebruikswaarde) en
