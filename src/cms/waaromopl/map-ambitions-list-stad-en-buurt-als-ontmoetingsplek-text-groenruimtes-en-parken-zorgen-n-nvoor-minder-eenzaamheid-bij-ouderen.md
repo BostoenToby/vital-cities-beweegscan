@@ -5,5 +5,5 @@ text: |-
   Groenruimtes en parken zorgen
 
   voor **minder eenzaamheid** bij ouderen
-animation: arrows
+animation: old_person
 ---
