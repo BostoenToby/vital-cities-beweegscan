@@ -1,4 +1,4 @@
 ---
-ambition: ontmoeten
+ambition: sporten
 name: Stad en buurt als sportplein
 ---
