@@ -5,5 +5,5 @@ text: |-
   Waar meer **paden**, **pleinen** en **parken** zijn
 
   gaan mensen **meer wandelen**
-animation: arrows
+animation: walking
 ---
