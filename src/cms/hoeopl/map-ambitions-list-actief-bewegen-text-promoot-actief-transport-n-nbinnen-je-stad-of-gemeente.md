@@ -4,5 +4,5 @@ ambitions:
 text: |-
   Promoot actief transport 
 
-  binnen je stad of gemeente.
+  binnen je stad of gemeente
 ---
