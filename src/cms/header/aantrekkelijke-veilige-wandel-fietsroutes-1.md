@@ -1,5 +1,5 @@
 ---
-ambition: Aantrekkelijke en veilige wandel- en fietsroutes
+ambition: fiets- en wandelroutes
 title: Aantrekkelijke & veilige wandel- & fietsroutes
 subtitle: Aantrekkelijke en veilige wandel- en fietsroutes stimuleren een
   actieve levensstijl en faciliteren mensen om wandelend of fietsend naar
