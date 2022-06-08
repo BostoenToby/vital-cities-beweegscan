@@ -1,5 +1,5 @@
 ---
-ambition: Bruikbaar, gevarieerd en voldoende groen
+ambition: groen
 title: Bruikbaar, gevarieerd en voldoende groen
 subtitle: Groen in het straatbeeld, parkjes, bossen en stadsgroen, … Ze verhogen
   de leefbaarheid van je stad of gemeente. Er moet voldoende groen zijn. Maar
