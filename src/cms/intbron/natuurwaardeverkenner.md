@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Bruikbaar, gevarieerd en voldoende groen
+  - groen
 title: Natuurwaardeverkenner
 link: https://natuurwaardeverkenner.be/
 text: Deze tool helpt om de maatschappelijke waarde of impact van natuur in
