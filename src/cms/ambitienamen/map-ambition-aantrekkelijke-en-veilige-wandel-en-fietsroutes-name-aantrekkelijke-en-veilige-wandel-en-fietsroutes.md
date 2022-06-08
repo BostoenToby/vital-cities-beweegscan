@@ -1,4 +1,4 @@
 ---
-ambition: Aantrekkelijke en veilige wandel- en fietsroutes
+ambition: fiets- en wandelroutes
 name: Aantrekkelijke en veilige wandel- en fietsroutes
 ---
