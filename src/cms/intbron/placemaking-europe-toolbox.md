@@ -1,6 +1,5 @@
 ---
 ambitions:
-  - Aantrekkelijke en veilige wandel- en fietsroutes
   - Stad en buurt als ontmoetingsplek
 title: Placemaking Europe Toolbox
 link: https://placemaking-europe.eu/tools/
