@@ -1,5 +1,5 @@
 ---
-ambition: Verbonden stadskern
+ambition: verbonden stadskern
 title: Verbonden stadskern
 subtitle: Vroeger werden woonzones, bedrijvenzones, winkelzones van elkaar
   gescheiden in onze steden. Men nam dan al snel de auto om zich tussen deze
