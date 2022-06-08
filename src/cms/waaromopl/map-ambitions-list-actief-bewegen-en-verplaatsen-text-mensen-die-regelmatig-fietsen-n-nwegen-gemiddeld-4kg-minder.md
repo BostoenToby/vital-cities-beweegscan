@@ -5,5 +5,5 @@ text: |-
   Mensen die regelmatig **fietsen**
 
   wegen gemiddeld **4kg minder**
-animation: arrows
+animation: balance
 ---
