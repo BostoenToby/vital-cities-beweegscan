@@ -1,8 +1,9 @@
 ---
 ambitions:
-  - Stad en buurt als speelplein
+  - spelen
 text: |-
   Buiten spelen is een **belangrijke**
 
   vorm van **beweging** voor kinderen
+animation: children
 ---
