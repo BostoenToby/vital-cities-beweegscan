@@ -1,5 +1,5 @@
 ---
-ambition: Stad en buurt als ontmoetingsplek
+ambition: ontmoeten
 title: Stad en buurt als ontmoetingsplek
 subtitle: Als mensen elkaar kunnen ontmoeten in de buurt, dan voelen ze zich
   hier ook meer thuis. Ze zijn meer betrokken en bij kwetsbare doelgroepen,
