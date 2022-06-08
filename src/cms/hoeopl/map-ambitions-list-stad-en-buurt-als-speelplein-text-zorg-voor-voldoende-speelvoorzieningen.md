@@ -1,5 +1,5 @@
 ---
 ambitions:
-  - Stad en buurt als speelplein
+  - spelen
 text: Zorg voor voldoende speelvoorzieningen
 ---
