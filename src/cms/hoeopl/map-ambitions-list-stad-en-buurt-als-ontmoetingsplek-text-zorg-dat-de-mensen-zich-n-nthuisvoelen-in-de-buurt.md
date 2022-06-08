@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Stad en buurt als ontmoetingsplek
+  - ontmoeten
 text: |-
   Zorg dat de mensen zich
 
