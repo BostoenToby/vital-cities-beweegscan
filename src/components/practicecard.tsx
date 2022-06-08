@@ -1,18 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../assets/tailwind.css'
-import TestPractice from '../interfaces/testPractice'
-import { Link } from 'gatsby'
+import TestPractice from '../interfaces/data'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import ThemeContext from '../context/themecontext'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 export default ({ practice }: { practice: TestPractice }) => {
+  const [img, setImg] = useState<any>()
+
+  const { allImageSharp } = useStaticQuery(
+    graphql`
+      query {
+        allImageSharp {
+          nodes {
+            gatsbyImageData
+          }
+        }
+      }
+    `,
+  )
+
+  useEffect(() => {
+    for (let i of allImageSharp.nodes) {
+      if (i.gatsbyImageData.images.fallback.src.includes(practice.image)) {
+        setImg(getImage(i))
+      }
+    }
+  }, [])
+
   return (
     <ThemeContext.Consumer>
       {(context) => (
         <div className="flex flex-col justify-between gridbreak:max-w-lg">
           <div>
-            <section className=" mb-[6.5rem] h-80 gridbreak:mb-8">
-              {/* // image placeholder */}
-              <div className="mb-4 h-full w-full bg-gray opacity-50 gridbreak:mb-0"></div>
+            <section className="mb-12 h-80 gridbreak:mb-8">
+              {img ? (
+                <GatsbyImage
+                  image={img}
+                  alt={practice ? practice.titel : 'no description found'}
+                  class="h-full w-full"
+                />
+              ) : (
+                <div className="h-full w-full bg-gray opacity-50"/>
+              )}
               <div className=" flex flex-col font-poppins text-base font-semibold text-white gridbreak:relative gridbreak:bottom-5 gridbreak:left-4 gridbreak:flex-row">
                 <div
                   className={`py-1 px-2 gridbreak:-skew-x-12  ${
@@ -20,13 +50,6 @@ export default ({ practice }: { practice: TestPractice }) => {
                   }`}
                 >
                   {practice.themas[0]}
-                </div>
-                <div
-                  className={`py-1 px-2 gridbreak:-skew-x-12 ${
-                    context.dark ? 'bg-purpleDesat' : 'bg-purple'
-                  }`}
-                >
-                  {practice.datum}
                 </div>
               </div>
             </section>

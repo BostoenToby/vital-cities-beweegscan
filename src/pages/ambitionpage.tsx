@@ -3,7 +3,6 @@ import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
 import { ArrowDown, ChevronDown, Search } from 'lucide-react'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
-import DonutChart from '../components/donutchart'
 import Input from '../components/input'
 import Intsrc from '../components/Intsrc'
 import RevPrac from '../components/revprac'
@@ -12,7 +11,6 @@ import Topnavigation from '../components/topnavigation'
 import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
 import { searchList } from '../utils/autoComplete'
-import Darkmodetoggle from '../components/darkmodetoggle'
 import {
   ambitionTitle,
   goodPractice,
@@ -26,9 +24,7 @@ import { navigate } from 'gatsby'
 import { ChevronLeft } from 'lucide-react'
 import ThemeContext from '../context/themecontext'
 import { text } from 'stream/consumers'
-import Practice, { Benchmark, PercentageData } from '../interfaces/data'
-import { testData } from '../data/testGraph'
-import Donutdata from '../components/donutdata'
+import Practice, { Benchmark} from '../interfaces/data'
 import FadeInSection from '../components/scrollytelling'
 import {
   getAllCities,
@@ -878,7 +874,6 @@ export default ({ location }: { location: any }) => {
 
   useEffect(() => {
     if (goodPracs) {
-      console.log(goodPracs)
       const data: Practice[] = []
 
       goodPracs.forEach((p: goodPractice) => {
@@ -914,8 +909,10 @@ export default ({ location }: { location: any }) => {
           const par: Paragraaf = {
             //@ts-ignore
             header: titles[index],
-            body: paragraaf,
-            // body: paragraaf.replace(/\*[^*]/g, '•'),
+            body: paragraaf
+              .replace(/\n+$/, '')
+              .replace(/^\* /, '• ')
+              .replace(/\n\* /g, '\n\n • '),
           }
           parResults.push(par)
         })
@@ -1004,7 +1001,6 @@ export default ({ location }: { location: any }) => {
           item.parent.internal.description.includes('goodprac') &&
           item.frontmatter.thema.includes(locationShort)
         ) {
-          console.log(item.frontmatter)
           // TODO: add good practises
           goodPracs.push({
             title: item.frontmatter.title,
@@ -1522,7 +1518,6 @@ export default ({ location }: { location: any }) => {
                 id="Solution"
               >
                 {titles?.map((item: ambitionTitle) => {
-                  console.log(titles)
                   if (item.title.includes('Waarom')) {
                     return (
                       <>
@@ -1559,11 +1554,15 @@ export default ({ location }: { location: any }) => {
             <FadeInSection>
               <section className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16">
                 {titles?.map((item: ambitionTitle) => {
-                    console.log(titles)
-                    if(item.title.includes("Hoe") && (item.ambitions.includes(String(locationAmb)) || item.ambitions.includes("Algemene ambitie"))){
-                      return(
-                        <>
-                          <h2 className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                  if (
+                    item.title.includes('Hoe') &&
+                    (item.ambitions.includes(String(locationAmb)) ||
+                      item.ambitions.includes('Algemene ambitie'))
+                  ) {
+                    return (
+                      <>
+                        <h2
+                          className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                             context.dark ? 'opacity-90' : ''
                           }`}
                         >
@@ -1602,7 +1601,6 @@ export default ({ location }: { location: any }) => {
                 id="Resources"
               >
                 {titles?.map((item: ambitionTitle) => {
-                  console.log(titles)
                   if (item.title.includes('bronnen')) {
                     return (
                       <>
@@ -1681,8 +1679,6 @@ export default ({ location }: { location: any }) => {
                       if (val < 2) {
                         return (
                           <RevPrac
-                            image={item.image}
-                            imageAlt="Relevant cases"
                             leftTagText={header?.tag!}
                             leftTagColorBg="pink"
                             leftTagColorText="black"

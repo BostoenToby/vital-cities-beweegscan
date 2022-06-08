@@ -1,32 +1,167 @@
 import React, { useEffect, useState } from 'react'
 import '../assets/tailwind.css'
 import TopNavigation from '../components/topnavigation'
-import { Link } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import { testJSON } from '../data/testPractices'
 import PracticeCard from '../components/practicecard'
-import TestPractice from '../interfaces/data'
+import Practice, { Bron, Paragraaf } from '../interfaces/data'
 import { ChevronDown } from 'lucide-react'
 import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
 import ThemeContext from '../context/themecontext'
 import FadeInSection from '../components/scrollytelling'
+import { goodPractice } from '../interfaces/cmsInterfaces'
+import { getMonthFromIndex } from '../utils/filterData'
 
 export default () => {
-  const [originalPractices, setOriginalPractices] = useState<TestPractice[]>()
-  const [currentPractices, setCurrentPractices] = useState<TestPractice[]>()
+  const [originalPractices, setOriginalPractices] = useState<Practice[]>()
+  const [currentPractices, setCurrentPractices] = useState<Practice[]>()
   const [selected, setSelected] = useState<string>()
   const [hasMounted, setHasMounted] = useState(false)
+  const [pracs, setPracs] = useState<goodPractice[]>()
+
+  const { cms } = useStaticQuery(
+    graphql`
+      query {
+        cms: allMarkdownRemark {
+          nodes {
+            frontmatter {
+              ambition
+              ambitions
+              date
+              extra
+              title
+              link
+              text
+              subtitle
+              image
+              tag
+              boldpart
+              thema
+              resources
+            }
+            parent {
+              internal {
+                description
+              }
+            }
+          }
+        }
+      }
+    `,
+  )
 
   useEffect(() => {
     setHasMounted(true)
-    setOriginalPractices(testJSON)
-    setCurrentPractices(testJSON)
+
+    const results: goodPractice[] = []
+    for (let item of cms.nodes) {
+      if (item.parent.internal.description.includes('goodprac')) {
+        results.push({
+          title: item.frontmatter.title,
+          date: item.frontmatter.date,
+          themes: item.frontmatter.thema,
+          text: item.frontmatter.text,
+          extra: item.frontmatter.extra,
+          image: item.frontmatter.image,
+          resources: item.frontmatter.resources,
+        })
+      }
+    }
+
+    setPracs(results)
   }, [])
+
+  useEffect(() => {
+    if (pracs) {
+      const data: Practice[] = []
+
+      pracs.forEach((p: goodPractice) => {
+        let practice: Practice = {
+          titel: '',
+          themas: [],
+          extra: [],
+          paragrafen: [],
+          datum: '',
+          image: '',
+        }
+
+        practice.titel = p.title
+        practice.themas = p.themes
+        practice.image = p.image
+
+        const datum = new Date(p.date)
+        practice.datum = `${datum.getDate()} ${getMonthFromIndex(
+          datum.getMonth(),
+        )} ${datum.getFullYear()}`
+
+        let titles = p.text.match(/#+ .+\n{2,}/g)
+        let paragraphs = p.text.split(/#+ .+\n{2,}/)
+        paragraphs.shift()
+        let parResults: any = []
+
+        titles?.forEach((title: string, index: number) => {
+          //@ts-ignore
+          titles[index] = title.replaceAll('#', '').replaceAll('\n', '').trim()
+        })
+
+        paragraphs.forEach((paragraaf: string, index: number) => {
+          const par: Paragraaf = {
+            //@ts-ignore
+            header: titles[index],
+            body: paragraaf
+              .replace(/\n+$/, '')
+              .replace(/^\* /, '• ')
+              .replace(/\n\* /g, '\n\n • '),
+          }
+          parResults.push(par)
+        })
+
+        practice.paragrafen = parResults
+
+        let regLinks = p.resources.match(/[^(]<.+>/g)
+        let hyperLinks = p.resources.match(/\[.+\] ?\n?\(.+\)/g)
+        let processedLinks: Bron[] = []
+
+        regLinks?.forEach((link: string) => {
+          const bron: Bron = {
+            naam: '',
+            url: link.replaceAll('\n', '').replace(/^</, '').replace(/>$/, ''),
+          }
+
+          processedLinks.push(bron)
+        })
+        hyperLinks?.forEach((link: string) => {
+          const l = link.split(/\] ?\n?\(/)
+          let url = ''
+
+          const naam = l[0].replace(/^\[/, '')
+          if (l[1]) {
+            url = l[1].replace(/\)$/, '').replace(/^</, '').replace(/>$/, '')
+          }
+
+          const bron: Bron = {
+            naam: naam,
+            url: url,
+          }
+
+          processedLinks.push(bron)
+        })
+        practice.extra = processedLinks
+
+        data.push(practice)
+      })
+
+      console.log(data)
+      setOriginalPractices(data)
+      setCurrentPractices(data)
+    }
+  }, [pracs])
 
   useEffect(() => {
     if (selected && originalPractices && originalPractices.length >= 1) {
       let practices = originalPractices
-      let result: TestPractice[] = []
+      let result: Practice[] = []
 
       if (selected !== 'filter practices' && selected !== 'alle practices') {
         practices.forEach((p) => {
