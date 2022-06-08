@@ -1,5 +1,5 @@
 ---
-ambition: Stad en buurt als sportplein
+ambition: sporten
 text: Sportaccommodaties zoals sporthallen en zwembaden zijn vaak aan de rand
   van de bebouwde omgeving te vinden. Dit betekent dat ze vaak moeilijk lopend
   of met de fiets te bereiken zijn. Vaak ligt er een grote parking rond en
