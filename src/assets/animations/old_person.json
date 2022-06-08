@@ -1,1 +1,1051 @@
-{"v":"4.8.0","meta":{"g":"LottieFiles AE 1.1.0","a":"","k":"","d":"","tc":""},"fr":30,"ip":0,"op":129,"w":596,"h":842,"nm":"walker","ddd":0,"assets":[],"layers":[{"ddd":0,"ind":1,"ty":4,"nm":"head Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[360.507,227.025,0],"ix":2},"a":{"a":0,"k":[54.371,54.372,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[-12.189,-23.159],[23.159,-12.189],[12.19,23.158],[-23.159,12.19]],"o":[[12.189,23.159],[-23.158,12.19],[-12.189,-23.159],[23.158,-12.189]],"v":[[41.933,-22.071],[22.071,41.932],[-41.933,22.071],[-22.071,-41.933]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0,0,0,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[54.371,54.372],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":210,"st":0,"bm":0},{"ddd":0,"ind":3,"ty":4,"nm":"leg L Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[0]},{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":64,"s":[-40]},{"t":128,"s":[0]}],"ix":10,"x":"var $bm_rt;\nfunction easeandwizz_outBounce(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction easeandwizz_inBounce(t, b, c, d) {\n    return $bm_sum($bm_sub(c, easeandwizz_outBounce($bm_sub(d, t), 0, c, d)), b);\n}\nfunction easeandwizz_inoutBounce(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(easeandwizz_inBounce($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return easeandwizz_outBounce(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction easeAndWizz() {\n    var t, d, sX, eX, sY, eY, sZ, eZ, val1, val2, val2, val3;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    t = $bm_sub(time, key1.time);\n    d = $bm_sub(key2.time, key1.time);\n    sX = key1[0];\n    eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        sY = key1[1];\n        eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            sZ = key1[2];\n            eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easeandwizz_inoutBounce(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easeandwizz_inoutBounce(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easeandwizz_inoutBounce(t, sY, eY, d);\n            val3 = easeandwizz_inoutBounce(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\n$bm_rt = easeAndWizz() || value;"},"p":{"a":0,"k":[495.842,445.66,0],"ix":2},"a":{"a":0,"k":[122,0,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[10.077,4.487],[0,0],[-4.486,10.076],[0,0],[-10.077,-4.487],[4.487,-10.076],[0,0]],"o":[[0,0],[-10.077,-4.487],[0,0],[4.486,-10.077],[10.077,4.487],[0,0],[-4.486,10.077]],"v":[[-45.659,102.546],[-45.659,102.546],[-55.781,76.177],[19.289,-92.424],[45.658,-102.546],[55.78,-76.176],[-19.29,92.424]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0,0,0,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[60.517,107.283],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":210,"st":0,"bm":0},{"ddd":0,"ind":5,"ty":4,"nm":"leg R Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[0]},{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":64,"s":[35]},{"t":128,"s":[0]}],"ix":10,"x":"var $bm_rt;\nfunction easeandwizz_outBounce(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction easeandwizz_inBounce(t, b, c, d) {\n    return $bm_sum($bm_sub(c, easeandwizz_outBounce($bm_sub(d, t), 0, c, d)), b);\n}\nfunction easeandwizz_inoutBounce(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(easeandwizz_inBounce($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return easeandwizz_outBounce(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction easeAndWizz() {\n    var t, d, sX, eX, sY, eY, sZ, eZ, val1, val2, val2, val3;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    t = $bm_sub(time, key1.time);\n    d = $bm_sub(key2.time, key1.time);\n    sX = key1[0];\n    eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        sY = key1[1];\n        eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            sZ = key1[2];\n            eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easeandwizz_inoutBounce(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easeandwizz_inoutBounce(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easeandwizz_inoutBounce(t, sY, eY, d);\n            val3 = easeandwizz_inoutBounce(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\n$bm_rt = easeAndWizz() || value;"},"p":{"a":0,"k":[459.989,451.667,0],"ix":2},"a":{"a":0,"k":[0,0,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[10.694,-2.702],[0,0],[2.703,10.694],[0,0],[-10.694,2.702],[0,0],[-2.702,-10.694],[0,0]],"o":[[0,0],[-10.694,2.702],[0,0],[-2.703,-10.695],[0,0],[10.694,-2.702],[0,0],[2.702,10.695]],"v":[[27.5,108.83],[27.5,108.83],[3.242,94.359],[-41.97,-84.574],[-27.5,-108.831],[-27.499,-108.831],[-3.242,-94.359],[41.97,84.574]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0,0,0,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[44.923,111.783],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":210,"st":0,"bm":0},{"ddd":0,"ind":7,"ty":4,"nm":"arm L Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[349.757,383.279,0],"ix":2},"a":{"a":0,"k":[62.361,83.86,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[7.59,7.755],[0,0],[7.755,-7.59],[0,0],[-7.591,-7.755],[-7.754,7.591],[0,0]],"o":[[0,0],[-7.59,-7.755],[0,0],[-7.755,7.591],[7.59,7.755],[0,0],[7.754,-7.591]],"v":[[42.936,-42.026],[42.936,-42.026],[15.15,-42.324],[-42.637,14.24],[-42.935,42.025],[-15.15,42.322],[42.638,-14.241]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0,0,0,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[50.775,117.556],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[3.371,-10.114],[0,0],[10.114,3.371],[-3.37,10.113],[0,0],[-10.113,-3.371]],"o":[[0,0],[-3.371,10.113],[-10.113,-3.371],[0,0],[3.37,-10.114],[10.114,3.37]],"v":[[29.111,-26.298],[7.514,38.503],[-16.902,50.712],[-29.111,26.297],[-7.514,-38.504],[16.902,-50.713]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0,0,0,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[91.991,54.334],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 2","np":2,"cix":2,"bm":0,"ix":2,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":210,"st":0,"bm":0},{"ddd":0,"ind":9,"ty":4,"nm":"arm R Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[344.003,376.948,0],"ix":2},"a":{"a":0,"k":[71.967,77.98,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[4.771,-9.533],[0,0],[9.533,4.771],[-4.771,9.533],[0,0],[-9.533,-4.771]],"o":[[0,0],[-4.771,9.533],[-9.534,-4.771],[0,0],[4.771,-9.533],[9.533,4.771]],"v":[[32.546,-21.903],[1.977,39.18],[-23.923,47.803],[-32.546,21.903],[-1.977,-39.18],[23.923,-47.803]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0,0,0,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[106.368,52.824],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[6.227,8.887],[0,0],[8.887,-6.227],[0,0],[-6.227,-8.886],[-8.886,6.228],[0,0]],"o":[[0,0],[-6.227,-8.887],[0,0],[-8.886,6.227],[6.227,8.887],[0,0],[8.886,-6.227]],"v":[[49.202,-34.479],[49.202,-34.479],[21.836,-39.293],[-44.387,7.112],[-49.202,34.478],[-21.836,39.293],[44.387,-7.112]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0,0,0,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[55.679,110.191],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 2","np":2,"cix":2,"bm":0,"ix":2,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":210,"st":0,"bm":0},{"ddd":0,"ind":11,"ty":4,"nm":"body Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":0,"k":0,"ix":10},"p":{"a":0,"k":[441.308,376.816,0],"ix":2},"a":{"a":0,"k":[80.743,110.415,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[20.334,-10.703],[0,0],[10.703,20.334],[0,0],[-20.334,10.703],[-10.703,-20.334],[0,0]],"o":[[0,0],[-20.334,10.703],[0,0],[-10.703,-20.335],[20.335,-10.703],[0,0],[10.703,20.334]],"v":[[52.351,99.462],[52.351,99.462],[-3.847,82.023],[-69.79,-43.264],[-52.351,-99.462],[3.847,-82.022],[69.79,43.264]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0,0,0,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[80.743,110.415],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":210,"st":0,"bm":0},{"ddd":0,"ind":13,"ty":4,"nm":"carry Outlines","sr":1,"ks":{"o":{"a":0,"k":100,"ix":11},"r":{"a":1,"k":[{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":0,"s":[0]},{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":32,"s":[5]},{"i":{"x":[0.833],"y":[0.833]},"o":{"x":[0.167],"y":[0.167]},"t":96,"s":[-3]},{"t":128,"s":[0]}],"ix":10,"x":"var $bm_rt;\nfunction easeandwizz_outBounce(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction easeandwizz_inBounce(t, b, c, d) {\n    return $bm_sum($bm_sub(c, easeandwizz_outBounce($bm_sub(d, t), 0, c, d)), b);\n}\nfunction easeandwizz_inoutBounce(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(easeandwizz_inBounce($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return easeandwizz_outBounce(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction easeAndWizz() {\n    var t, d, sX, eX, sY, eY, sZ, eZ, val1, val2, val2, val3;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    t = $bm_sub(time, key1.time);\n    d = $bm_sub(key2.time, key1.time);\n    sX = key1[0];\n    eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        sY = key1[1];\n        eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            sZ = key1[2];\n            eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easeandwizz_inoutBounce(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easeandwizz_inoutBounce(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easeandwizz_inoutBounce(t, sY, eY, d);\n            val3 = easeandwizz_inoutBounce(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\n$bm_rt = easeAndWizz() || value;"},"p":{"a":0,"k":[194.959,541.142,0],"ix":2},"a":{"a":0,"k":[122.524,127.603,0],"ix":1},"s":{"a":0,"k":[100,100,100],"ix":6}},"ao":0,"shapes":[{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,-15.278],[15.278,0],[0,15.278],[-15.278,0]],"o":[[0,15.278],[-15.278,0],[0,-15.278],[15.278,0]],"v":[[27.663,0],[0,27.663],[-27.663,0],[0,-27.663]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"fl","c":{"a":0,"k":[0,0,0,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[27.913,227.293],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 1","np":2,"cix":2,"bm":0,"ix":1,"mn":"ADBE Vector Group","hd":false},{"ty":"gr","it":[{"ind":0,"ty":"sh","ix":1,"ks":{"a":0,"k":{"i":[[0,0],[0,0],[-32.268,0],[0,0],[-5.725,0],[0,0]],"o":[[0,0],[19.97,-39.278],[0,0],[0,5.726],[0,0],[0,0]],"v":[[96.551,-42.185],[-14.046,-42.185],[37.801,-88.694],[37.801,-84.084],[48.167,-73.717],[96.551,-73.717]],"c":true},"ix":2},"nm":"Path 1","mn":"ADBE Vector Shape - Group","hd":false},{"ind":1,"ty":"sh","ix":2,"ks":{"a":0,"k":{"i":[[0,0],[0,0],[0,0],[0,0]],"o":[[0,0],[0,0],[0,0],[0,0]],"v":[[96.551,71.659],[-71.927,71.659],[-24.587,-21.45],[96.551,-21.45]],"c":true},"ix":2},"nm":"Path 2","mn":"ADBE Vector Shape - Group","hd":false},{"ind":2,"ty":"sh","ix":3,"ks":{"a":0,"k":{"i":[[5.726,0],[0,0],[0,-5.726],[0,0],[0,0],[8.847,-17.401],[0,0],[-6.17,12.135],[0,0],[0,0],[0,0],[0,13.715],[0,0]],"o":[[0,0],[-5.726,0],[0,0],[0,0],[-19.522,0],[0,0],[-6.228,12.248],[0,0],[0,0],[0,0],[0,13.7],[0,0],[-0.001,-5.726]],"v":[[106.917,-124.407],[48.169,-124.407],[37.801,-114.04],[37.801,-109.429],[28.532,-109.429],[-17.46,-81.218],[-111.058,102.874],[-92.576,112.272],[-82.469,92.395],[96.551,92.395],[96.551,107.573],[117.286,107.573],[117.286,-114.04]],"c":true},"ix":2},"nm":"Path 3","mn":"ADBE Vector Shape - Group","hd":false},{"ty":"mm","mm":1,"nm":"Merge Paths 1","mn":"ADBE Vector Filter - Merge","hd":false},{"ty":"fl","c":{"a":0,"k":[0,0,0,1],"ix":4},"o":{"a":0,"k":100,"ix":5},"r":1,"bm":0,"nm":"Fill 1","mn":"ADBE Vector Graphic - Fill","hd":false},{"ty":"tr","p":{"a":0,"k":[127.512,124.657],"ix":2},"a":{"a":0,"k":[0,0],"ix":1},"s":{"a":0,"k":[100,100],"ix":3},"r":{"a":0,"k":0,"ix":6},"o":{"a":0,"k":100,"ix":7},"sk":{"a":0,"k":0,"ix":4},"sa":{"a":0,"k":0,"ix":5},"nm":"Transform"}],"nm":"Group 2","np":5,"cix":2,"bm":0,"ix":2,"mn":"ADBE Vector Group","hd":false}],"ip":0,"op":210,"st":0,"bm":0}],"markers":[]}
+{
+  "v": "4.8.0",
+  "meta": { "g": "LottieFiles AE 1.1.0", "a": "", "k": "", "d": "", "tc": "" },
+  "fr": 30,
+  "ip": 0,
+  "op": 129,
+  "w": 596,
+  "h": 842,
+  "nm": "walker",
+  "ddd": 0,
+  "assets": [],
+  "layers": [
+    {
+      "ddd": 0,
+      "ind": 1,
+      "ty": 4,
+      "nm": "head Outlines",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [360.507, 227.025, 0], "ix": 2 },
+        "a": { "a": 0, "k": [54.371, 54.372, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [-12.189, -23.159],
+                    [23.159, -12.189],
+                    [12.19, 23.158],
+                    [-23.159, 12.19]
+                  ],
+                  "o": [
+                    [12.189, 23.159],
+                    [-23.158, 12.19],
+                    [-12.189, -23.159],
+                    [23.158, -12.189]
+                  ],
+                  "v": [
+                    [41.933, -22.071],
+                    [22.071, 41.932],
+                    [-41.933, 22.071],
+                    [-22.071, -41.933]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [54.371, 54.372], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 1",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 3,
+      "ty": 4,
+      "nm": "leg L Outlines",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 0,
+              "s": [0]
+            },
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 64,
+              "s": [-40]
+            },
+            { "t": 128, "s": [0] }
+          ],
+          "ix": 10,
+          "x": "var $bm_rt;\nfunction easeandwizz_outBounce(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction easeandwizz_inBounce(t, b, c, d) {\n    return $bm_sum($bm_sub(c, easeandwizz_outBounce($bm_sub(d, t), 0, c, d)), b);\n}\nfunction easeandwizz_inoutBounce(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(easeandwizz_inBounce($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return easeandwizz_outBounce(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction easeAndWizz() {\n    var t, d, sX, eX, sY, eY, sZ, eZ, val1, val2, val2, val3;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    t = $bm_sub(time, key1.time);\n    d = $bm_sub(key2.time, key1.time);\n    sX = key1[0];\n    eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        sY = key1[1];\n        eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            sZ = key1[2];\n            eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easeandwizz_inoutBounce(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easeandwizz_inoutBounce(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easeandwizz_inoutBounce(t, sY, eY, d);\n            val3 = easeandwizz_inoutBounce(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\n$bm_rt = easeAndWizz() || value;"
+        },
+        "p": { "a": 0, "k": [495.842, 445.66, 0], "ix": 2 },
+        "a": { "a": 0, "k": [122, 0, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [10.077, 4.487],
+                    [0, 0],
+                    [-4.486, 10.076],
+                    [0, 0],
+                    [-10.077, -4.487],
+                    [4.487, -10.076],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [-10.077, -4.487],
+                    [0, 0],
+                    [4.486, -10.077],
+                    [10.077, 4.487],
+                    [0, 0],
+                    [-4.486, 10.077]
+                  ],
+                  "v": [
+                    [-45.659, 102.546],
+                    [-45.659, 102.546],
+                    [-55.781, 76.177],
+                    [19.289, -92.424],
+                    [45.658, -102.546],
+                    [55.78, -76.176],
+                    [-19.29, 92.424]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [60.517, 107.283], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 1",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 5,
+      "ty": 4,
+      "nm": "leg R Outlines",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 0,
+              "s": [0]
+            },
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 64,
+              "s": [35]
+            },
+            { "t": 128, "s": [0] }
+          ],
+          "ix": 10,
+          "x": "var $bm_rt;\nfunction easeandwizz_outBounce(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction easeandwizz_inBounce(t, b, c, d) {\n    return $bm_sum($bm_sub(c, easeandwizz_outBounce($bm_sub(d, t), 0, c, d)), b);\n}\nfunction easeandwizz_inoutBounce(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(easeandwizz_inBounce($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return easeandwizz_outBounce(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction easeAndWizz() {\n    var t, d, sX, eX, sY, eY, sZ, eZ, val1, val2, val2, val3;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    t = $bm_sub(time, key1.time);\n    d = $bm_sub(key2.time, key1.time);\n    sX = key1[0];\n    eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        sY = key1[1];\n        eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            sZ = key1[2];\n            eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easeandwizz_inoutBounce(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easeandwizz_inoutBounce(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easeandwizz_inoutBounce(t, sY, eY, d);\n            val3 = easeandwizz_inoutBounce(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\n$bm_rt = easeAndWizz() || value;"
+        },
+        "p": { "a": 0, "k": [459.989, 451.667, 0], "ix": 2 },
+        "a": { "a": 0, "k": [0, 0, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [10.694, -2.702],
+                    [0, 0],
+                    [2.703, 10.694],
+                    [0, 0],
+                    [-10.694, 2.702],
+                    [0, 0],
+                    [-2.702, -10.694],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [-10.694, 2.702],
+                    [0, 0],
+                    [-2.703, -10.695],
+                    [0, 0],
+                    [10.694, -2.702],
+                    [0, 0],
+                    [2.702, 10.695]
+                  ],
+                  "v": [
+                    [27.5, 108.83],
+                    [27.5, 108.83],
+                    [3.242, 94.359],
+                    [-41.97, -84.574],
+                    [-27.5, -108.831],
+                    [-27.499, -108.831],
+                    [-3.242, -94.359],
+                    [41.97, 84.574]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [44.923, 111.783], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 1",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 7,
+      "ty": 4,
+      "nm": "arm L Outlines",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [349.757, 383.279, 0], "ix": 2 },
+        "a": { "a": 0, "k": [62.361, 83.86, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [7.59, 7.755],
+                    [0, 0],
+                    [7.755, -7.59],
+                    [0, 0],
+                    [-7.591, -7.755],
+                    [-7.754, 7.591],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [-7.59, -7.755],
+                    [0, 0],
+                    [-7.755, 7.591],
+                    [7.59, 7.755],
+                    [0, 0],
+                    [7.754, -7.591]
+                  ],
+                  "v": [
+                    [42.936, -42.026],
+                    [42.936, -42.026],
+                    [15.15, -42.324],
+                    [-42.637, 14.24],
+                    [-42.935, 42.025],
+                    [-15.15, 42.322],
+                    [42.638, -14.241]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [50.775, 117.556], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 1",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [3.371, -10.114],
+                    [0, 0],
+                    [10.114, 3.371],
+                    [-3.37, 10.113],
+                    [0, 0],
+                    [-10.113, -3.371]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [-3.371, 10.113],
+                    [-10.113, -3.371],
+                    [0, 0],
+                    [3.37, -10.114],
+                    [10.114, 3.37]
+                  ],
+                  "v": [
+                    [29.111, -26.298],
+                    [7.514, 38.503],
+                    [-16.902, 50.712],
+                    [-29.111, 26.297],
+                    [-7.514, -38.504],
+                    [16.902, -50.713]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [91.991, 54.334], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 2",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 2,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 9,
+      "ty": 4,
+      "nm": "arm R Outlines",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [344.003, 376.948, 0], "ix": 2 },
+        "a": { "a": 0, "k": [71.967, 77.98, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [4.771, -9.533],
+                    [0, 0],
+                    [9.533, 4.771],
+                    [-4.771, 9.533],
+                    [0, 0],
+                    [-9.533, -4.771]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [-4.771, 9.533],
+                    [-9.534, -4.771],
+                    [0, 0],
+                    [4.771, -9.533],
+                    [9.533, 4.771]
+                  ],
+                  "v": [
+                    [32.546, -21.903],
+                    [1.977, 39.18],
+                    [-23.923, 47.803],
+                    [-32.546, 21.903],
+                    [-1.977, -39.18],
+                    [23.923, -47.803]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [106.368, 52.824], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 1",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [6.227, 8.887],
+                    [0, 0],
+                    [8.887, -6.227],
+                    [0, 0],
+                    [-6.227, -8.886],
+                    [-8.886, 6.228],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [-6.227, -8.887],
+                    [0, 0],
+                    [-8.886, 6.227],
+                    [6.227, 8.887],
+                    [0, 0],
+                    [8.886, -6.227]
+                  ],
+                  "v": [
+                    [49.202, -34.479],
+                    [49.202, -34.479],
+                    [21.836, -39.293],
+                    [-44.387, 7.112],
+                    [-49.202, 34.478],
+                    [-21.836, 39.293],
+                    [44.387, -7.112]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [55.679, 110.191], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 2",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 2,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 11,
+      "ty": 4,
+      "nm": "body Outlines",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [441.308, 376.816, 0], "ix": 2 },
+        "a": { "a": 0, "k": [80.743, 110.415, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [20.334, -10.703],
+                    [0, 0],
+                    [10.703, 20.334],
+                    [0, 0],
+                    [-20.334, 10.703],
+                    [-10.703, -20.334],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [-20.334, 10.703],
+                    [0, 0],
+                    [-10.703, -20.335],
+                    [20.335, -10.703],
+                    [0, 0],
+                    [10.703, 20.334]
+                  ],
+                  "v": [
+                    [52.351, 99.462],
+                    [52.351, 99.462],
+                    [-3.847, 82.023],
+                    [-69.79, -43.264],
+                    [-52.351, -99.462],
+                    [3.847, -82.022],
+                    [69.79, 43.264]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [80.743, 110.415], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 1",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 13,
+      "ty": 4,
+      "nm": "carry Outlines",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 0,
+              "s": [0]
+            },
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 32,
+              "s": [5]
+            },
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 96,
+              "s": [-3]
+            },
+            { "t": 128, "s": [0] }
+          ],
+          "ix": 10,
+          "x": "var $bm_rt;\nfunction easeandwizz_outBounce(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction easeandwizz_inBounce(t, b, c, d) {\n    return $bm_sum($bm_sub(c, easeandwizz_outBounce($bm_sub(d, t), 0, c, d)), b);\n}\nfunction easeandwizz_inoutBounce(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(easeandwizz_inBounce($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return easeandwizz_outBounce(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction easeAndWizz() {\n    var t, d, sX, eX, sY, eY, sZ, eZ, val1, val2, val2, val3;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    t = $bm_sub(time, key1.time);\n    d = $bm_sub(key2.time, key1.time);\n    sX = key1[0];\n    eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        sY = key1[1];\n        eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            sZ = key1[2];\n            eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easeandwizz_inoutBounce(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easeandwizz_inoutBounce(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easeandwizz_inoutBounce(t, sY, eY, d);\n            val3 = easeandwizz_inoutBounce(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\n$bm_rt = easeAndWizz() || value;"
+        },
+        "p": { "a": 0, "k": [194.959, 541.142, 0], "ix": 2 },
+        "a": { "a": 0, "k": [122.524, 127.603, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, -15.278],
+                    [15.278, 0],
+                    [0, 15.278],
+                    [-15.278, 0]
+                  ],
+                  "o": [
+                    [0, 15.278],
+                    [-15.278, 0],
+                    [0, -15.278],
+                    [15.278, 0]
+                  ],
+                  "v": [
+                    [27.663, 0],
+                    [0, 27.663],
+                    [-27.663, 0],
+                    [0, -27.663]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [27.913, 227.293], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 1",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        },
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0],
+                    [-32.268, 0],
+                    [0, 0],
+                    [-5.725, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [19.97, -39.278],
+                    [0, 0],
+                    [0, 5.726],
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [96.551, -42.185],
+                    [-14.046, -42.185],
+                    [37.801, -88.694],
+                    [37.801, -84.084],
+                    [48.167, -73.717],
+                    [96.551, -73.717]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ind": 1,
+              "ty": "sh",
+              "ix": 2,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [96.551, 71.659],
+                    [-71.927, 71.659],
+                    [-24.587, -21.45],
+                    [96.551, -21.45]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 2",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ind": 2,
+              "ty": "sh",
+              "ix": 3,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [5.726, 0],
+                    [0, 0],
+                    [0, -5.726],
+                    [0, 0],
+                    [0, 0],
+                    [8.847, -17.401],
+                    [0, 0],
+                    [-6.17, 12.135],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 13.715],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [-5.726, 0],
+                    [0, 0],
+                    [0, 0],
+                    [-19.522, 0],
+                    [0, 0],
+                    [-6.228, 12.248],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 13.7],
+                    [0, 0],
+                    [-0.001, -5.726]
+                  ],
+                  "v": [
+                    [106.917, -124.407],
+                    [48.169, -124.407],
+                    [37.801, -114.04],
+                    [37.801, -109.429],
+                    [28.532, -109.429],
+                    [-17.46, -81.218],
+                    [-111.058, 102.874],
+                    [-92.576, 112.272],
+                    [-82.469, 92.395],
+                    [96.551, 92.395],
+                    [96.551, 107.573],
+                    [117.286, 107.573],
+                    [117.286, -114.04]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 3",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "mm",
+              "mm": 1,
+              "nm": "Merge Paths 1",
+              "mn": "ADBE Vector Filter - Merge",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [127.512, 124.657], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 2",
+          "np": 5,
+          "cix": 2,
+          "bm": 0,
+          "ix": 2,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    }
+  ],
+  "markers": []
+}
