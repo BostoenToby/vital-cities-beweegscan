@@ -1,7 +1,7 @@
 ---
 ambitions:
-  - Actief bewegen en verplaatsen
-  - Verbonden stadskern
+  - actief bewegen
+  - verbonden stadskern
 text: |-
   Zorg voor een goede connectie
 
