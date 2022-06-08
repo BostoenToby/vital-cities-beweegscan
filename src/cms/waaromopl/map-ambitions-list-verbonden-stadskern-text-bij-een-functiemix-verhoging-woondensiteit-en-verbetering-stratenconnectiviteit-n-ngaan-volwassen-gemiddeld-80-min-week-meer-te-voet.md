@@ -6,5 +6,5 @@ text: >-
   stratenconnectiviteit 
 
   gaan volwassen **gemiddeld 80 min/week** meer te **voet**
-animation: walking
+animation: city
 ---
