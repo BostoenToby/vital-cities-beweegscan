@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Actief bewegen en verplaatsen
+  - actief bewegen
 text: |-
   Zet in op een veilige school-,
 
