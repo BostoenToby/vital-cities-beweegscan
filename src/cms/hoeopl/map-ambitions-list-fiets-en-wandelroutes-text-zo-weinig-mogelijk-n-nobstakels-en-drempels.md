@@ -1,8 +1,5 @@
 ---
 ambitions:
   - fiets- en wandelroutes
-text: |-
-  Zo weinig mogelijk 
-
-  obstakels en drempels
+text: Zo weinig mogelijk obstakels en drempels
 ---

@@ -1,8 +1,5 @@
 ---
 ambitions:
   - sporten
-text: |-
-  Creëer ook voldoende 
-
-  informele sportplekken
+text: Creëer ook voldoende informele sportplekken
 ---
