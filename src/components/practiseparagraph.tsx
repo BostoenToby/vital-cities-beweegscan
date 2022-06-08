@@ -1,7 +1,7 @@
 import React from 'react'
 import '../assets/tailwind.css'
 import ThemeContext from '../context/themecontext'
-import { Paragraaf } from '../interfaces/testPractice'
+import { Paragraaf } from '../interfaces/data'
 import {
   checkheader,
   checkIfRegular,
@@ -14,7 +14,7 @@ export default ({ paragraaf }: { paragraaf: Paragraaf }) => {
       {(context) => {
         if (checkIfRegular(paragraaf.header)) {
           return (
-            <div className="break-inside-avoid-column font-poppins">
+            <div className="break-inside-avoid-column overflow-x-hidden font-poppins">
               {checkheader(paragraaf.header) ? (
                 <h2
                   className={`mb-6 font-raleway text-2xl font-bold columnbreak:text-3xl ${

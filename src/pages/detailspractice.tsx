@@ -3,7 +3,7 @@ import '../assets/tailwind.css'
 import TopNavigation from '../components/topnavigation'
 import Practice from '../interfaces/data'
 import { ChevronLeft } from 'lucide-react'
-import { navigate } from 'gatsby'
+import { graphql, navigate, useStaticQuery } from 'gatsby'
 import ThemaCard from '../components/themacard'
 import PracticeParagraph from '../components/practiseparagraph'
 import { findIndexesSubstring } from '../utils/practiceFunctions'
@@ -11,6 +11,7 @@ import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
 import ThemeContext from '../context/themecontext'
 import FadeInSection from '../components/scrollytelling'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 // NOTE TO SELF: FADE-IN ON A P SECTION SPLIT BETWEEN 2 COLUMNS IS NOT A GOOD IDEA
 
@@ -19,11 +20,34 @@ export default ({ location }: { location: any }) => {
   const [ambities, setAmbities] = useState<string[]>()
   const [overigeThemas, setOverigeThemas] = useState<string[]>()
   const [hasMounted, setHasMounted] = useState(false)
+  const [img, setImg] = useState<any>()
+
+  const { allImageSharp } = useStaticQuery(
+    graphql`
+      query {
+        allImageSharp {
+          nodes {
+            gatsbyImageData
+          }
+        }
+      }
+    `,
+  )
 
   useEffect(() => {
     setHasMounted(true)
     setPractice(location.state.practice)
   }, [])
+
+  useEffect(() => {
+    if (practice) {
+      for (let i of allImageSharp.nodes) {
+        if (i.gatsbyImageData.images.fallback.src.includes(practice.image)) {
+          setImg(getImage(i))
+        }
+      }
+    }
+  }, [practice])
 
   useEffect(() => {
     if (practice && practice.themas && practice.themas.length >= 1) {
@@ -44,28 +68,6 @@ export default ({ location }: { location: any }) => {
 
       setAmbities(arrayA)
       setOverigeThemas(arrayT)
-    }
-    if (practice && practice.paragrafen && practice.paragrafen.length >= 3) {
-      let prac = practice
-
-      prac.paragrafen.forEach((par) => {
-        if (par.body.includes('•')) {
-          let indexes = findIndexesSubstring(par.body, '•')
-          let result = ''
-          let text = ''
-          indexes.forEach((i) => {
-            if (indexes.indexOf(i) + 1 == indexes.length) {
-              text = par.body.slice(i - 1, i) + '\n' + par.body.slice(i)
-            } else if (indexes.indexOf(i) !== 0) {
-              text = par.body.slice(indexes[indexes.indexOf(i) - 1], i) + '\n\n'
-            }
-            result += text
-          })
-          par.body = result
-        }
-      })
-
-      setPractice(prac)
     }
   }, [practice])
 
@@ -146,7 +148,11 @@ export default ({ location }: { location: any }) => {
                 </div>
               </div>
               <div className="h-[calc(100vw-40px)] max-h-[520px] w-full columnbreak:w-1/2">
-                <div className="h-full w-full bg-gray opacity-50"></div>
+                <GatsbyImage
+                  image={img}
+                  alt={practice ? practice.titel : 'no description found'}
+                  class="h-full w-full"
+                />
               </div>
             </section>
             <section>
