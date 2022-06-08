@@ -32,7 +32,7 @@ text: >-
   6. **Regionale excellentie** op vlak van zorg, gezondheid, **sport en recreatie**
 
 
-  n het kader van beweegvriendelijke gemeentes geven we meer uitleg bij drie van die principes omdat ze bijdragen tot de zeven ambities die door Vital Cities beschreven worden als belangrijk om te komen tot beweegvriendelijke gemeentes: toegankelijkheid voor iedereen, gezonde buitenomgeving en excellentie op vlak van sport en recreatie.
+  In het kader van beweegvriendelijke gemeentes geven we meer uitleg bij drie van die principes omdat ze bijdragen tot de zeven ambities die door Vital Cities beschreven worden als belangrijk om te komen tot beweegvriendelijke gemeentes: toegankelijkheid voor iedereen, gezonde buitenomgeving en excellentie op vlak van sport en recreatie.
 
 
   ### 1. Toegankelijkheid voor iedereen
