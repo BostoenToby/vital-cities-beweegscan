@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Verbonden stadskern
+  - verbonden stadskern
 text: |-
   Zorg voor autovrije
 
