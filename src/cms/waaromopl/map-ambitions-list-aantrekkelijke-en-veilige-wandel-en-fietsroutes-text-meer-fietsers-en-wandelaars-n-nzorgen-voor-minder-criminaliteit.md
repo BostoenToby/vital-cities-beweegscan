@@ -5,5 +5,5 @@ text: |-
   Meer fietsers en wandelaars 
 
   zorgen voor **minder criminaliteit**
-animation: arrows
+animation: zorro
 ---
