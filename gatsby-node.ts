@@ -20,6 +20,7 @@ exports.createSchemaCustomization = ({ actions }: { actions: any }) => {
             tag: String
             boldpart: String
             name: String
+            animation: String
             thema: [String!]
         }
     `

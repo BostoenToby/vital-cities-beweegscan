@@ -7,6 +7,7 @@ export interface intBron {
 export interface HoeWaarom {
     ambition: string
     text: string
+    animation: string
 }
 
 export interface goodPractice {

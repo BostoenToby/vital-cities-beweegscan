@@ -42,6 +42,9 @@ import Barchart from '../components/barchart'
 import Lottie, { useLottie } from 'lottie-react'
 import lightbulb from '../assets/animations/lightbulb.json'
 import long_arrow from '../assets/animations/long_arrow.json'
+import { colorify, flatten, getColors, replaceColor } from 'lottie-colorify'
+import { Bron, Paragraaf } from '../interfaces/data'
+import { url } from 'inspector'
 import arrows from '../assets/animations/arrows.json'
 import balance from '../assets/animations/balance.json'
 import basket from '../assets/animations/basket.json'
@@ -84,13 +87,9 @@ import walking from '../assets/animations/walking.json'
 import wrench from '../assets/animations/wrench.json'
 import youth from '../assets/animations/youth.json'
 import zorro from '../assets/animations/zorro.json'
-import { colorify, flatten, getColors, replaceColor } from 'lottie-colorify'
-import { Bron, Paragraaf } from '../interfaces/data'
-import { url } from 'inspector'
 
 export default ({ location }: { location: any }) => {
   const [hasMounted, setHasMounted] = useState(false)
-  const [locationAmb, setLocationAmb] = useState<string | undefined>(undefined)
   const [locationShort, setLocationShort] = useState<string>()
   const [intBronnen, setIntBronnen] = useState<intBron[]>()
   const [titles, setTitles] = useState<ambitionTitle[]>()
@@ -213,6 +212,7 @@ export default ({ location }: { location: any }) => {
               tag
               boldpart
               thema
+              animation
               resources
             }
             parent {
@@ -794,6 +794,188 @@ export default ({ location }: { location: any }) => {
     ambitie7bench4,
   ]
 
+  const getAnimation = (animation: string) => {
+    let animationChosen
+    switch(animation){
+      case "arrows":
+        animationChosen = arrows
+        break
+
+      case "balance":
+        animationChosen = balance
+        break
+
+      case "basket":
+        animationChosen = basket
+        break
+
+      case "bench":
+        animationChosen = bench
+        break
+
+      case "benches":
+        animationChosen = benches
+        break
+
+      case "bike":
+        animationChosen = bike
+        break
+
+      case "bus":
+        animationChosen = bus
+        break
+
+      case "car_free":
+        animationChosen = car_free
+        break
+
+      case "car":
+        animationChosen = car
+        break
+
+      case "children":
+        animationChosen = children
+        break
+
+      case "city":
+        animationChosen = city
+        break
+
+      case "concentration":
+        animationChosen = concentration
+        break
+
+      case "criminal":
+        animationChosen = criminal
+        break
+
+      case "euro_hand":
+        animationChosen = euro_hand
+        break
+
+      case "euro":
+        animationChosen = euro
+        break
+
+      case "evolution":
+        animationChosen = evolution
+        break
+    
+      case "families":
+        animationChosen = families
+        break
+
+      case "family":
+        animationChosen = family
+        break
+
+      case "familyseat":
+        animationChosen = familyseat
+        break
+
+      case "fitness":
+        animationChosen = fitness
+        break
+
+      case "handshake":
+        animationChosen = handshake
+        break
+
+      case "house":
+        animationChosen = house
+        break
+    
+      case "houseprice":
+        animationChosen = houseprice
+        break
+
+      case "landscape":
+        animationChosen = landscape
+        break
+
+      case "leaf":
+        animationChosen = leaf
+        break
+
+      case "lightbulb":
+        animationChosen = lightbulb
+        break
+
+      case "link":
+        animationChosen = link
+        break
+
+      case "lock":
+        animationChosen = lock
+        break
+
+      case "loneliness":
+        animationChosen = loneliness
+        break
+
+      case "long_arrow":
+        animationChosen = long_arrow
+        break
+
+      case "nature":
+        animationChosen = nature
+        break
+
+      case "old_person":
+        animationChosen = old_person
+        break
+
+      case "park":
+        animationChosen = park
+        break
+
+      case "pet":
+        animationChosen = pet
+        break
+
+      case "restaurant":
+        animationChosen = restaurant
+        break
+
+      case "school":
+        animationChosen = school
+        break
+
+      case "shield":
+        animationChosen = shield
+        break
+
+      case "shoppingcart":
+        animationChosen = shoppingcart
+        break
+
+      case "thermometer":
+        animationChosen = thermometer
+        break
+
+      case "virus":
+        animationChosen = virus
+        break
+
+      case "walking":
+        animationChosen = walking
+        break
+
+      case "wrench":
+        animationChosen = wrench
+        break
+
+      case "youth":
+        animationChosen = youth
+        break
+
+      case "zorro":
+        animationChosen = zorro
+        break
+    }
+    return animationChosen
+  }
+
   const handleSearch = (input: any) => {
     setSearchQuery(input)
     const results = searchList(allAmbitionData, input, false)
@@ -1020,6 +1202,7 @@ export default ({ location }: { location: any }) => {
           hoeList.push({
             text: item.frontmatter.text,
             ambition: item.frontmatter.ambition,
+            animation: item.frontmatter.animation
           })
         } else if (
           item.parent.internal.description.includes('waaromopl') &&
@@ -1029,6 +1212,7 @@ export default ({ location }: { location: any }) => {
           waaromList.push({
             text: item.frontmatter.text,
             ambition: item.frontmatter.ambition,
+            animation: item.frontmatter.animation
           })
         } else if (
           item.parent.internal.description.includes('intbron') &&
@@ -1581,16 +1765,27 @@ export default ({ location }: { location: any }) => {
                   })}
                 <div className="grid grid-cols-1 gap-8 justify-center items-center tabletportrait:text-lg tabletportrait:grid-cols-2 laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
                   {whys &&
-                    whys.map((item: any) => (
-                      <Textblock
-                        text={item.text}
-                        classes={
-                          context.dark
-                            ? 'bg-lightPurpleDesat bg-opacity-[0.08] text-lightPurpleDesat'
-                            : 'bg-lightPink text-purple '
-                        }
-                      />
-                    ))}
+                    whys.map((item: any) => {
+                      const animation = getAnimation(item.animation)
+                      console.log(animation)
+                    //   const anim = replaceColor(
+                    //     '#000000',
+                    //     '#91959c',
+                    //     animation
+                    // )
+                      return(
+                        <Textblock
+                          text={item.text}
+                          classes={
+                            context.dark
+                              ? 'bg-lightPurpleDesat bg-opacity-[0.08] text-lightPurpleDesat'
+                              : 'bg-lightPink text-purple '
+                          }
+                          animation={animation}
+                          animationColor="purple"
+                        />
+                      )
+                      })}
                 </div>
               </section>
             </FadeInSection>
@@ -1622,6 +1817,12 @@ export default ({ location }: { location: any }) => {
                 <div className="grid grid-cols-1 gap-8 justify-center tabletportrait:text-lg tabletportrait:grid-cols-2 laptop:grid-cols-3 laptopL:grid-cols-4">
                   {hows &&
                     hows.map((item: HoeWaarom) => {
+                      const animation = getAnimation(item.animation)
+                    //   const anim = replaceColor(
+                    //     '#000000',
+                    //     '#91959c',
+                    //     animation
+                    // )
                       return (
                         <Textblock
                           text={item.text}
@@ -1630,6 +1831,8 @@ export default ({ location }: { location: any }) => {
                               ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
                               : 'bg-lightGreen text-green'
                           }`}
+                          animation={animation}
+                          animationColor="green"
                         />
                       )
                     })}
