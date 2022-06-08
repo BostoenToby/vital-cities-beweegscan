@@ -89,7 +89,7 @@ import youth from '../assets/animations/youth.json'
 import zorro from '../assets/animations/zorro.json'
 
 export default ({ location }: { location: any }) => {
-  var btnRapport = document.getElementById('BtnRapport')
+  const [btnRapport, setBtnRapport] = useState<boolean>(false)
 
   const [hasMounted, setHasMounted] = useState(false)
   const [locationShort, setLocationShort] = useState<string>()
@@ -1021,6 +1021,7 @@ export default ({ location }: { location: any }) => {
 
   const checkInfo = async () => {
     console.log('CLICKED GEN PDF')
+    console.log({info})
     let errorsMail = true
     let errorsFirstname = true
     let errorsLastname = true
@@ -1083,6 +1084,7 @@ export default ({ location }: { location: any }) => {
 
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
       const dataAmb = getPdfData(allData, 'Antwerpen', 'Kortrijk')
+      // TODO: verander steden bij getPdfData naar de gekozen steden
       const pdfData = {
         data: dataAmb,
         city: info.place,
@@ -1090,6 +1092,7 @@ export default ({ location }: { location: any }) => {
         lastname: info.lastName,
         mail: info.mail,
       }
+      console.log({pdfData})
       genPDF(pdfData)
     }
   }
@@ -1326,11 +1329,6 @@ export default ({ location }: { location: any }) => {
 
   if (!hasMounted) {
     return null
-  }
-
-  const ToggleRapport = () => {
-    var btnRapport = document.getElementById('BtnRapport')
-    console.log('BTNRAPPORT: ', btnRapport)
   }
 
   return (
@@ -1778,12 +1776,6 @@ export default ({ location }: { location: any }) => {
                   {whys &&
                     whys.map((item: any) => {
                       const animation = getAnimation(item.animation)
-                      console.log(animation)
-                    //   const anim = replaceColor(
-                    //     '#000000',
-                    //     '#91959c',
-                    //     animation
-                    // )
                       return(
                         <Textblock
                           text={item.text}
@@ -2013,7 +2005,7 @@ export default ({ location }: { location: any }) => {
                           allAmbitionData,
                           ev.target.value,
                           true,
-                        )
+                        )<
                         setSuggestions(list)
                       }}
                       onInput={(e: React.FormEvent<HTMLInputElement>) =>
@@ -2114,16 +2106,10 @@ export default ({ location }: { location: any }) => {
                       name="credentials"
                       id="credentials"
                       onChange={() => {
-                        //var btnRapport = document.getElementById("BtnRapport")
-                        console.log('BTNRAPPORT: ', btnRapport)
-                        if (btnRapport?.hasAttribute('disabled')) {
-                          console.log('IS DISABLED')
-                          btnRapport?.removeAttribute('disabled')
-                          console.log('REMOVED: ', btnRapport)
+                        if(btnRapport == false){
+                          setBtnRapport(true)
                         } else {
-                          console.log('IS NOT DISABLED')
-                          btnRapport?.setAttribute('disabled', 'true')
-                          console.log('AANGEPAST: ', btnRapport)
+                          setBtnRapport(false)
                         }
                       }}
                     />
@@ -2148,16 +2134,15 @@ export default ({ location }: { location: any }) => {
                   </div>
 
                   <button
-                    disabled
                     id="BtnRapport"
                     className={`z-0 mt-8 border-2  px-2 py-1 text-white  focus:font-semibold  ${
                       context.dark
                         ? 'border-pinkDesat bg-pinkDesat hover:bg-opacity-0 hover:text-pinkDesat focus:bg-white focus:bg-opacity-0 focus:text-pinkDesat'
                         : 'border-pink bg-pink hover:bg-white hover:text-pink focus:bg-white focus:text-pink'
                     } ${
-                      btnRapport?.hasAttribute('disabled')
-                        ? 'pointer-events-none border-darkGray bg-gray'
-                        : 'border-pink bg-pink'
+                      btnRapport
+                        ? 'border-pink bg-pink'
+                        : 'pointer-events-none border-darkGray bg-gray'
                     }`}
                     onClick={() => checkInfo()}
                   >
