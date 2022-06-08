@@ -1,4 +1,4 @@
 ---
-ambition: Verbonden stadskern
+ambition: verbonden stadskern
 name: Verbonden stadskern
 ---
