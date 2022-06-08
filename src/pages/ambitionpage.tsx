@@ -1541,7 +1541,7 @@ export default ({ location }: { location: any }) => {
                       )
                     }
                   })}
-                <div className="grid grid-cols-1 gap-6 justify-center text-sm tabletportrait:text-lg tabletportrait:grid-cols-2 laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
+                <div className="grid grid-cols-1 gap-8 justify-center items-center tabletportrait:text-lg tabletportrait:grid-cols-2 laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
                   {whys &&
                     whys.map((item: any) => (
                       <Textblock
@@ -1577,7 +1577,7 @@ export default ({ location }: { location: any }) => {
                       )
                     }
                   })}
-                <div className="grid grid-cols-1 gap-6 justify-center tabletportrait:text-lg tabletportrait:grid-cols-2 laptop:grid-cols-3 laptopL:grid-cols-4">
+                <div className="grid grid-cols-1 gap-8 justify-center tabletportrait:text-lg tabletportrait:grid-cols-2 laptop:grid-cols-3 laptopL:grid-cols-4">
                   {hows &&
                     hows.map((item: HoeWaarom) => {
                       return (
