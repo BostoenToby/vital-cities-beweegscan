@@ -1,5 +1,5 @@
 ---
 ambitions:
-  - Stad en buurt als ontmoetingsplek
+  - ontmoeten
 text: Zorg voor voldoende rust- & ontmoetingsplekken
 ---
