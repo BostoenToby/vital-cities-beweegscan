@@ -85,7 +85,7 @@ export default ({ location }: { location: any }) => {
 
   useEffect(() => {
     setHasMounted(true)
-    setLocationAmb(location.state.ambition)
+    console.log(location.state.short)
     setLocationShort(location.state.short)
     setSelectedCities(['Vlaams Gewest', ''])
 
@@ -964,15 +964,16 @@ export default ({ location }: { location: any }) => {
     let goodPracs: goodPractice[] = []
     let titles: ambitionTitle[] = []
 
-    if (locationAmb && locationShort) {
+    if (locationShort) {
       for (let item of cms.nodes) {
+        console.log(item)
         if (item.frontmatter.ambitions == null) {
           item.frontmatter.ambitions = ['']
         }
         if (
           item.parent.internal.description.includes('hoeopl') &&
-          (item.frontmatter.ambition == locationAmb ||
-            item.frontmatter.ambitions.includes(locationAmb))
+          (item.frontmatter.ambition == locationShort ||
+            item.frontmatter.ambitions.includes(locationShort))
         ) {
           hoeList.push({
             text: item.frontmatter.text,
@@ -980,8 +981,8 @@ export default ({ location }: { location: any }) => {
           })
         } else if (
           item.parent.internal.description.includes('waaromopl') &&
-          (item.frontmatter.ambition == locationAmb ||
-            item.frontmatter.ambitions.includes(locationAmb))
+          (item.frontmatter.ambition == locationShort ||
+            item.frontmatter.ambitions.includes(locationShort))
         ) {
           waaromList.push({
             text: item.frontmatter.text,
@@ -989,8 +990,8 @@ export default ({ location }: { location: any }) => {
           })
         } else if (
           item.parent.internal.description.includes('intbron') &&
-          (item.frontmatter.ambition == locationAmb ||
-            item.frontmatter.ambitions.includes(locationAmb))
+          (item.frontmatter.ambition == locationShort ||
+            item.frontmatter.ambitions.includes(locationShort))
         ) {
           bronnen.push({
             title: item.frontmatter.title,
@@ -1013,7 +1014,7 @@ export default ({ location }: { location: any }) => {
           })
         } else if (
           item.parent.internal.description.includes('header') &&
-          item.frontmatter.ambition == locationAmb
+          item.frontmatter.ambition == locationShort
         ) {
           setHeader({
             title: item.frontmatter.title,
@@ -1032,8 +1033,8 @@ export default ({ location }: { location: any }) => {
           }
         } else if (
           item.parent.internal.description.includes('problem') &&
-          (item.frontmatter.ambition == locationAmb ||
-            item.frontmatter.ambitions.includes(locationAmb))
+          (item.frontmatter.ambition == locationShort ||
+            item.frontmatter.ambitions.includes(locationShort))
         ) {
           setProblem({
             text: item.frontmatter.text,
@@ -1042,7 +1043,7 @@ export default ({ location }: { location: any }) => {
         } else if (
           item.parent.internal.description.includes('titels') &&
           (item.frontmatter.ambitions.includes('Algemene ambitie') ||
-            item.frontmatter.ambitions.includes(locationAmb))
+            item.frontmatter.ambitions.includes(locationShort))
         ) {
           titles.push({
             title: item.frontmatter.title,
@@ -1079,7 +1080,7 @@ export default ({ location }: { location: any }) => {
       // const testData = getPdfData(allAmbitionData, 'Kortrijk', 'Brugge')
       // console.log(cities)
     }
-  }, [locationAmb])
+  }, [locationShort])
 
   const handleClick = (e: any) => {
     const isOutsideStad = !e.target.closest('#inputStad')
@@ -1556,7 +1557,7 @@ export default ({ location }: { location: any }) => {
                 {titles?.map((item: ambitionTitle) => {
                   if (
                     item.title.includes('Hoe') &&
-                    (item.ambitions.includes(String(locationAmb)) ||
+                    (item.ambitions.includes(String(locationShort)) ||
                       item.ambitions.includes('Algemene ambitie'))
                   ) {
                     return (

@@ -131,8 +131,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition: 'Actief bewegen en verplaatsen',
-                            short: 'actief bewegen',
+                            short: 'actief bewegen'
                           }}
                         >
                           Actief bewegen & verplaatsen
@@ -149,8 +148,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition: 'Verbonden stadskern',
-                            short: 'verbonden stadskern',
+                            short: 'verbonden stadskern'
                           }}
                         >
                           verbonden stadskern
@@ -167,9 +165,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition:
-                              'Aantrekkelijke en veilige wandel- en fietsroutes',
-                            short: 'fiets- en wandelroutes',
+                            short: 'fiets- en wandelroutes'
                           }}
                         >
                           Wandel- & fietsroutes
@@ -186,8 +182,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition: 'Stad en buurt als sportplein',
-                            short: 'sporten',
+                            short: 'sporten'
                           }}
                         >
                           Sporten
@@ -204,8 +199,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition: 'Stad en buurt als speelplein',
-                            short: 'spelen',
+                            short: 'spelen'
                           }}
                         >
                           Spelen
@@ -222,8 +216,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition: 'Stad en buurt als ontmoetingsplek',
-                            short: 'ontmoeten',
+                            short: 'ontmoeten'
                           }}
                         >
                           Ontmoeten
@@ -240,9 +233,7 @@ export default ({ section }: { section: string }) => {
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
-                            ambition:
-                              'Bruikbaar, gevarieerd en voldoende groen',
-                            short: 'groen',
+                            short: 'groen'
                           }}
                         >
                           Groen

@@ -216,7 +216,7 @@ export default ({
       {(context) => (
         <Link
           to="/ambitionpage/"
-          state={{ ambition: text, short: shorttext }}
+          state={{ short: shorttext }}
           className={` flex min-h-[288px] flex-col justify-center   px-6 py-12 drop-shadow-sm ${
             context.dark
               ? ' bg-white bg-opacity-[0.06] hover:bg-opacity-10 focus:bg-opacity-10'
