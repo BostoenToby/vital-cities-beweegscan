@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Stad en buurt als sportplein
+  - sporten
 title: Buurtsport Impact Wizard
 link: https://buurtsport.impactwizard.be/
 text: Dit is een instrument ontwikkeld door de VUB en UGent in opdracht van
