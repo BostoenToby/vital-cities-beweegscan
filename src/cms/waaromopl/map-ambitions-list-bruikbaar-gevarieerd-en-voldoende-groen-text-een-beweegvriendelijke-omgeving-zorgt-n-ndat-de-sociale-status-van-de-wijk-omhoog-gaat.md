@@ -7,5 +7,5 @@ text: |-
   dat de **sociale status** van de wijk omhoog gaat
 
   en zo de **woningprijs daalt**
-animation: arrows
+animation: houseprice
 ---
