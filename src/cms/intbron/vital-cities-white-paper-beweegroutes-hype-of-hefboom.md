@@ -1,6 +1,6 @@
 ---
 ambitions:
-  - Stad en buurt als ontmoetingsplek
+  - ontmoeten
 title: "Vital Cities White paper: Beweegroutes: hype of hefboom"
 link: https://vitalcities.be/onewebmedia/Vital Cities White paper Beweegroutes
   2020.pdf
