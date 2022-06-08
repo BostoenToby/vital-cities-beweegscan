@@ -4,5 +4,5 @@ ambitions:
 text: |-
   Kijk naar de walkability 
 
-  van je gemeente.
+  van je gemeente
 ---
