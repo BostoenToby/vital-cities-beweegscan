@@ -1,7 +1,7 @@
 ---
 ambitions:
-  - Stad en buurt als speelplein
-  - Stad en buurt als ontmoetingsplek
+  - spelen
+  - ontmoeten
 text: |-
   Voldoende fietsen-
 
