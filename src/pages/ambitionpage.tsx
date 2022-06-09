@@ -95,8 +95,8 @@ import Barchartgeneric from '../components/barchartgeneric'
 export default ({ location }: { location: any }) => {
   const [btnRapport, setBtnRapport] = useState<boolean>(false)
   const [netlifyError, setNetlifyError] = useState<netlifyError>({
-    mail: false,
-    google: false,
+    mail: true,
+    google: true,
     changed: false
   })
   const [hasMounted, setHasMounted] = useState(false)
