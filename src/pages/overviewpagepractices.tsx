@@ -111,7 +111,14 @@ export default () => {
             body: paragraaf
               .replace(/\n+$/, '')
               .replace(/^\* /, '• ')
-              .replace(/\n\* /g, '\n\n • '),
+              .replace(/\n\* /g, '\n\n • ')
+              .replace(/^\*\*/, ' <strong class="font-semibold">')
+              .replace(/\*\*$/, ' </strong>')
+              .replace(/ \*\*/g, ' <strong class="font-semibold">')
+              .replace(/\n\*\*/g, '\n<strong class="font-semibold">')
+              .replace(/\*\*\n/g, ' </strong>\n')
+              .replace(/\*\* /g, ' </strong>')
+              .replace(/\*\*,/, ' </strong>,'),
           }
           parResults.push(par)
         })

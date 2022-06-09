@@ -29,8 +29,10 @@ export default ({ paragraaf }: { paragraaf: Paragraaf }) => {
                 className={`mb-8 whitespace-pre-line text-base  columnbreak:text-lg ${
                   context.dark ? 'text-white text-opacity-80' : 'text-dark'
                 }`}
+                dangerouslySetInnerHTML={{
+                  __html: `<div>${paragraaf.body}</div>`,
+                }}
               >
-                {paragraaf.body}
               </p>
             </div>
           )

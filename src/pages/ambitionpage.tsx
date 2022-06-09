@@ -125,7 +125,7 @@ export default ({ location }: { location: any }) => {
     firstName: '',
     lastName: '',
     mail: '',
-    newsletter: false
+    newsletter: false,
   })
   const [error, setErrors] = useState<FormError>({
     placeError: '',
@@ -1112,7 +1112,7 @@ export default ({ location }: { location: any }) => {
         firstName: info.firstName,
         lastName: info.lastName,
         mail: info.mail,
-        newsletter: info.newsletter
+        newsletter: info.newsletter,
       }
       console.log("netlify functions going to do")
       netlifyFunctions(netlifyData)
@@ -1164,7 +1164,14 @@ export default ({ location }: { location: any }) => {
             body: paragraaf
               .replace(/\n+$/, '')
               .replace(/^\* /, '• ')
-              .replace(/\n\* /g, '\n\n • '),
+              .replace(/\n\* /g, '\n\n • ')
+              .replace(/^\*\*/, ' <strong class="font-semibold">')
+              .replace(/\*\*$/, ' </strong>')
+              .replace(/ \*\*/g, ' <strong class="font-semibold">')
+              .replace(/\n\*\*/g, '\n<strong class="font-semibold">')
+              .replace(/\*\*\n/g, ' </strong>\n')
+              .replace(/\*\* /g, ' </strong>')
+              .replace(/\*\*,/, ' </strong>,'),
           }
           parResults.push(par)
         })
@@ -1203,6 +1210,7 @@ export default ({ location }: { location: any }) => {
 
         data.push(practice)
       })
+
       setPractices(data)
     }
   }, [goodPracs])
@@ -1774,8 +1782,6 @@ export default ({ location }: { location: any }) => {
                                   'Verplaatsingen vrije tijd: per vervoermiddel' &&
                                 !toggleBenches
                               ) {
-                                console.log(graphData)
-
                                 const transportData1: PercentageData[] = []
                                 const transportData2: PercentageData[] = []
 
@@ -1834,7 +1840,6 @@ export default ({ location }: { location: any }) => {
                                   'Verplaatsingen woon-werk/woon-school: dominant vervoersmiddel' &&
                                 toggleBenches
                               ) {
-                                console.log(graphData)
                                 return [
                                   <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
                                     Auto
@@ -2356,13 +2361,18 @@ export default ({ location }: { location: any }) => {
                     </label>
                   </div>
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
-                    <input type="checkbox" name="news" id="news" onChange={(e: React.FormEvent<HTMLInputElement>) => {
-                      setInfo((u: PersonalInfo) => {
-                        //@ts-ignore
-                        u.newsletter = e.target.value
-                        return { ...u }
-                      })
-                    }}/>
+                    <input
+                      type="checkbox"
+                      name="news"
+                      id="news"
+                      onChange={(e: React.FormEvent<HTMLInputElement>) => {
+                        setInfo((u: PersonalInfo) => {
+                          //@ts-ignore
+                          u.newsletter = e.target.value
+                          return { ...u }
+                        })
+                      }}
+                    />
                     <label
                       className="text-[12px] tabletportrait:text-sm"
                       htmlFor="news"
