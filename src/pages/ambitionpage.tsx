@@ -1767,7 +1767,11 @@ export default ({ location }: { location: any }) => {
                               ? 'bg-lightPurpleDesat bg-opacity-[0.08] text-lightPurpleDesat'
                               : 'bg-lightPink text-purple '
                           }
-                          animation={animation}
+                          animation={replaceColor(
+                            '#000000',
+                            '#492784',
+                            animation,
+                          )}
                           animationColor="purple"
                         />
                       )
@@ -1807,11 +1811,6 @@ export default ({ location }: { location: any }) => {
                   {hows &&
                     hows.map((item: HoeWaarom) => {
                       const animation = getAnimation(item.animation)
-                      //   const anim = replaceColor(
-                      //     '#000000',
-                      //     '#91959c',
-                      //     animation
-                      // )
                       return (
                         <Textblock
                           text={item.text}
@@ -1820,7 +1819,11 @@ export default ({ location }: { location: any }) => {
                               ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
                               : 'bg-lightGreen text-green'
                           }`}
-                          animation={animation}
+                          animation={replaceColor(
+                            '#000000',
+                            '#02866C',
+                            animation,
+                          )}
                           animationColor="green"
                         />
                       )
