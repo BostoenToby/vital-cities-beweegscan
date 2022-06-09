@@ -236,7 +236,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie1bench1: allGsVitalCitiesDataZoS03(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -251,7 +251,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie1bench2: allGsVitalCitiesDataMoS12(
-          filter: { jaar: { eq: "2020" } }
+          filter: { jaar: { gte: "2020" } }
         ) {
           edges {
             node {
@@ -266,7 +266,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie1bench3: allGsVitalCitiesDataMoS07(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -279,7 +279,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie1bench4: allGsVitalCitiesDataMoS11(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -293,7 +293,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie2bench1: allGsVitalCitiesDataMoS17(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -306,7 +306,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie2bench2: allGsVitalCitiesDataMoS04(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -320,7 +320,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie2bench3: allGsVitalCitiesDataMoS09(
           filter: {
-            jaar: { eq: 2020 }
+            jaar: { gte: 2020 }
             item: { eq: "Autoluwe en autovrije zones" }
           }
         ) {
@@ -336,7 +336,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie2bench4: allGsVitalCitiesDataMoS09(
-          filter: { jaar: { eq: 2020 }, item: { eq: "Deelsystemen" } }
+          filter: { jaar: { gte: 2020 }, item: { eq: "Deelsystemen" } }
         ) {
           edges {
             node {
@@ -351,7 +351,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie2bench5: allGsVitalCitiesDataMoS13(
           filter: {
-            jaar: { eq: "2020" }
+            jaar: { gte: "2020" }
             item: { eq: "Lidmaatschap autodelen" }
           }
         ) {
@@ -366,7 +366,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie2bench6: allGsVitalCitiesDataMoS13(
           filter: {
-            jaar: { eq: "2020" }
+            jaar: { gte: "2020" }
             item: { eq: "Lidmaatschap fietsdelen" }
           }
         ) {
@@ -381,7 +381,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie3bench1: allGsVitalCitiesDataMoS01(
           filter: {
-            jaar: { eq: 2020 }
+            jaar: { gte: 2020 }
             item: { eq: "Fietspaden in goede staat" }
           }
         ) {
@@ -398,7 +398,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie3bench2: allGsVitalCitiesDataMoS01(
           filter: {
-            jaar: { eq: 2020 }
+            jaar: { gte: 2020 }
             item: { eq: "Straten en pleinen in goede staat" }
           }
         ) {
@@ -415,7 +415,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie3bench3: allGsVitalCitiesDataMoS01(
           filter: {
-            jaar: { eq: 2020 }
+            jaar: { gte: 2020 }
             item: { eq: "Voetpaden in goede staat" }
           }
         ) {
@@ -431,7 +431,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench4: allGsVitalCitiesDataMoS03(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -444,7 +444,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench5: allGsVitalCitiesDataMoS09(
-          filter: { jaar: { eq: 2020 }, item: { eq: "Fietsinfrastructuur" } }
+          filter: { jaar: { gte: 2020 }, item: { eq: "Fietsinfrastructuur" } }
         ) {
           edges {
             node {
@@ -458,7 +458,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench6: allGsVitalCitiesDataMoS02(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -471,7 +471,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench7: allGsVitalCitiesDataMoS06(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -484,7 +484,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie4bench1: allGsVitalCitiesDataCuS11(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -498,7 +498,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie4bench2: allGsVitalCitiesDataCuS10(
           filter: {
-            jaar: { eq: 2020 }
+            jaar: { gte: 2020 }
             item: { eq: "Sporten in eigen gemeente" }
           }
         ) {
@@ -515,7 +515,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie4bench3: allGsVitalCitiesDataCuS10(
           filter: {
-            jaar: { eq: 2020 }
+            jaar: { gte: 2020 }
             item: { eq: "Sporten in andere gemeente" }
           }
         ) {
@@ -531,7 +531,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie4bench4: allGsVitalCitiesDataCuS13(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -545,7 +545,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie4bench5: allGsVitalCitiesDataCuS12(
           filter: {
-            jaar: { eq: 2020 }
+            jaar: { gte: 2020 }
             item: { eq: "Tevredenheid over sportvoorzieningen" }
           }
         ) {
@@ -561,7 +561,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie4bench6: allGsVitalCitiesDataCuS07(
-          filter: { jaar: { eq: "2020" } }
+          filter: { jaar: { gte: "2020" } }
         ) {
           edges {
             node {
@@ -573,7 +573,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie5bench1: allGsVitalCitiesDataCuS24(
           filter: {
-            jaar: { eq: 2020 }
+            jaar: { gte: 2020 }
             item: { eq: "Voldoende geschikte plekken voor jeugd" }
           }
         ) {
@@ -590,7 +590,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie5bench2: allGsVitalCitiesDataCuS24(
           filter: {
-            jaar: { eq: 2020 }
+            jaar: { gte: 2020 }
             item: {
               eq: "Voldoende speelvoorzieningen voor kinderen en jongeren"
             }
@@ -608,7 +608,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie5bench3: allGsVitalCitiesDataCuS21(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -621,7 +621,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie6bench1: allGsVitalCitiesDataSaS18(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -635,7 +635,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie6bench2: allGsVitalCitiesDataSaS17(
           filter: {
-            jaar: { eq: 2020 }
+            jaar: { gte: 2020 }
             item: { eq: "Voldoende ontmoetingsplekken" }
           }
         ) {
@@ -651,7 +651,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie6bench3: allGsVitalCitiesDataSaS17(
-          filter: { jaar: { eq: 2020 }, item: { eq: "Voldoende rustplekken" } }
+          filter: { jaar: { gte: 2020 }, item: { eq: "Voldoende rustplekken" } }
         ) {
           edges {
             node {
@@ -666,7 +666,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie7bench1: allGsVitalCitiesDataKlS01(
           filter: {
-            jaar: { eq: 2020 }
+            jaar: { gte: 2020 }
             item: { eq: "Bezoek park, bos, groenzone in andere gemeente" }
           }
         ) {
@@ -684,7 +684,7 @@ export default ({ location }: { location: any }) => {
         }
         ambitie7bench2: allGsVitalCitiesDataKlS01(
           filter: {
-            jaar: { eq: 2020 }
+            jaar: { gte: 2020 }
             item: { eq: "Bezoek park, bos, groenzone in eigen gemeente" }
           }
         ) {
@@ -701,7 +701,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie7bench3: allGsVitalCitiesDataKlS02(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
@@ -714,7 +714,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie7bench4: allGsVitalCitiesDataKlS03(
-          filter: { jaar: { eq: 2020 } }
+          filter: { jaar: { gte: 2020 } }
         ) {
           edges {
             node {
