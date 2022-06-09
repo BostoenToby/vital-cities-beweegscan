@@ -6,7 +6,6 @@ import { Buffer } from 'buffer';
 
 async function genPDF(dataPDF: any) {
   var page = 1
-  console.log({dataPDF})
   const data = dataPDF.data
   const city1 = Object.keys(data)[0]
   const city2 = Object.keys(data)[1]
@@ -561,20 +560,6 @@ async function genPDF(dataPDF: any) {
     // doc.setFont('Raleway', 'normal')
     doc.text(data[city1][5].benchmarks[0].data[0].oneens____, 10, 86)
 
-    if(data[city1][5].benchmarks[3].data[0] && data[city2][5].benchmarks[3].data[0]){
-      doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
-      doc.text('Onveiligheidsgevoel buurt', 10, 110)
-      // doc.setFont('Raleway', 'normal')
-      doc.text(data[city1][5].benchmarks[3].data[0].nooit_zelden____, 10, 116)
-    }
-
-    if(data[city1][5].benchmarks[4].data[0] && data[city2][5].benchmarks[3].data[0]){
-      doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
-      doc.text('Onveiligheidsgevoel gemeente', 90, 95)
-      // doc.setFont('Raleway', 'normal')
-      doc.text(data[city1][5].benchmarks[4].data[0].nooit_zelden____, 90, 101)
-    }
-
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Voldoende rustplekken', 90, 80)
     // doc.setFont('Raleway', 'normal')
@@ -595,20 +580,6 @@ async function genPDF(dataPDF: any) {
     doc.text('Thuis voelen in de buurt', 10, 165)
     // doc.setFont('Raleway', 'normal')
     doc.text(data[city2][5].benchmarks[0].data[0].oneens____, 10, 171)
-
-    if(data[city2][5].benchmarks[3].data[0]){
-      doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
-      doc.text('Onveiligheidsgevoel buurt', 10, 195)
-      // doc.setFont('Raleway', 'normal')
-      doc.text(data[city2][5].benchmarks[3].data[0].nooit_zelden____, 10, 201)
-    }
-
-    if(data[city2][5].benchmarks[4].data[0]){
-      doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
-      doc.text('Onveiligheidsgevoel gemeente', 90, 180)
-      // doc.setFont('Raleway', 'normal')
-      doc.text(data[city2][5].benchmarks[4].data[0].nooit_zelden____, 90, 186)
-    }
 
     doc.setTextColor('#111111').setFontSize(15).setFont('Tahoma', 'normal')
     doc.text('Voldoende rustplekken', 90, 165)
@@ -743,6 +714,33 @@ async function genPDF(dataPDF: any) {
     }
   } 
 
+  async function writeSheets(){
+    try {
+      console.log(dataPDF.firstName)
+      console.log(dataPDF.lastName)
+      console.log(dataPDF.mail)
+      console.log(dataPDF.place)
+      console.log(dataPDF.newsletter)
+      let newsletter: string
+      if(dataPDF.newsletter == false){
+        newsletter = "Nee"
+      } else {
+        newsletter = "Ja"
+      }
+      return await axios.post('/.netlify/functions/writesheets',
+      {
+        Voornaam: dataPDF.firstName,
+        Naam: dataPDF.lastName,
+        Mail: dataPDF.mail,
+        Stad: dataPDF.place,
+        Nieuwsbrief: newsletter
+      })
+    } catch (error) {
+      console.log(error)
+      console.log("writing to sheets didn't work")
+    }
+  }
+
   async function blobToBase64(blob: any) {
     var reader = new FileReader()
     reader.readAsDataURL(blob)
@@ -750,17 +748,10 @@ async function genPDF(dataPDF: any) {
       var dataUrl: string = String(reader.result)
       var base64 = dataUrl.split(',')[1]
       sendgridMail(base64)
+      writeSheets()
     }
   }
-
   blobToBase64(blobPDF)
-
-  // fetch('/.netlify/functions/sendmail')
-  //     .then(() => console.log("The mail has been sent"))
-  //     .catch(function(error) {
-  //       console.log(error)
-  //       console.log("Mail didn't succeed")
-  // }) 
 }
 
 function pdf() {

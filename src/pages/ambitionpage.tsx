@@ -117,6 +117,7 @@ export default ({ location }: { location: any }) => {
     firstName: '',
     lastName: '',
     mail: '',
+    newsletter: false
   })
   const [error, setErrors] = useState<FormError>({
     placeError: '',
@@ -1045,14 +1046,16 @@ export default ({ location }: { location: any }) => {
     }
 
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
-      const dataAmb = getPdfData(allData, 'Antwerpen', 'Kortrijk')
+      const dataAmb = getPdfData(allData, 'Kortrijk', 'Wevelgem')
       // TODO: verander steden bij getPdfData naar de gekozen steden
+      console.log({info})
       const pdfData = {
         data: dataAmb,
-        city: info.place,
-        firstname: info.firstName,
-        lastname: info.lastName,
+        place: info.place,
+        firstName: info.firstName,
+        lastName: info.lastName,
         mail: info.mail,
+        newsletter: info.newsletter
       }
       console.log({ pdfData })
       genPDF(pdfData)
@@ -2109,7 +2112,13 @@ export default ({ location }: { location: any }) => {
                     </label>
                   </div>
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
-                    <input type="checkbox" name="news" id="news" />
+                    <input type="checkbox" name="news" id="news" onChange={(e: React.FormEvent<HTMLInputElement>) => {
+                      setInfo((u: PersonalInfo) => {
+                        //@ts-ignore
+                        u.newsletter = e.target.value
+                        return { ...u }
+                      })
+                    }}/>
                     <label
                       className="text-[12px] tabletportrait:text-sm"
                       htmlFor="news"
