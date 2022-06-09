@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from 'react'
 import Lottie, { useLottie } from 'lottie-react'
 import { colorify, flatten, getColors, replaceColor } from 'lottie-colorify'
 import arrows from '../assets/animations/arrows.json'
@@ -44,24 +44,47 @@ import wrench from '../assets/animations/wrench.json'
 import youth from '../assets/animations/youth.json'
 import zorro from '../assets/animations/zorro.json'
 
-
-export default ({classes, text, animation, animationColor}: {classes: string, text: string, animation: any, animationColor: string}) => {
-    let animColor: string
-    if(animationColor == "purple"){
-        animColor = '#492784'
-    } else if (animationColor == "green"){
-        animColor = '#02866C'
-    } else {
-        animColor = '#000000'
-    }
-    return(
-        <div className={`flex skew-x-12 max-w-[240px] items-center leading-7 relative justify-self-center tabletportrait:max-w-[450px] ${classes}`}>
-            <p className="px-7 py-5 -skew-x-12 desktop:line-clamp-2">{text}</p>
-            <Lottie
-                className="m-auto h-10 w-20 laptopL:h-20 laptopL:w-40 absolute -skew-x-12 bottom-[-30px] right-[-70px]"
-                loop={true}
-                animationData={animation}
-            />
-        </div>
-    )
+export default ({
+  classes,
+  text,
+  animation,
+  animationColor,
+}: {
+  classes: string
+  text: string
+  animation: any
+  animationColor: string
+}) => {
+  let animColor: string
+  if (animationColor == 'purple') {
+    animColor = '#492784'
+  } else if (animationColor == 'green') {
+    animColor = '#02866C'
+  } else {
+    animColor = '#000000'
+  }
+  return (
+    <div
+      className={`relative flex max-w-[240px] skew-x-12 items-center justify-self-center leading-7 tabletportrait:max-w-[450px] ${classes}`}
+    >
+      <p
+        className="desktop:line-clamp-2 -skew-x-12 px-7 py-5"
+        dangerouslySetInnerHTML={{
+          __html: `<div>${text
+            .replace(/^\*\*/, ' <strong class="font-semibold">')
+            .replace(/\*\*$/, ' </strong>')
+            .replace(/ \*\*/g, ' <strong class="font-semibold">')
+            .replace(/\n\*\*/g, '\n<strong class="font-semibold">')
+            .replace(/\*\*\n/g, ' </strong>\n')
+            .replace(/\*\* /g, ' </strong>')
+            .replace(/\*\*,/, ' </strong>,')}</div>`,
+        }}
+      ></p>
+      <Lottie
+        className="absolute bottom-[-30px] right-[-70px] m-auto h-10 w-20 -skew-x-12 laptopL:h-20 laptopL:w-40"
+        loop={true}
+        animationData={animation}
+      />
+    </div>
+  )
 }
