@@ -2341,7 +2341,7 @@ export default ({ location }: { location: any }) => {
                   <div className="flex items-center">
                     <button
                       id="BtnRapport"
-                      className={`z-0 mt-8 border-2  px-2 py-1 text-white  focus:font-semibold  ${
+                      className={`z-0 mt-8 border-2  px-2 py-1 text-white  focus:font-semibold ${
                         context.dark
                           ? 'border-pinkDesat bg-pinkDesat hover:bg-opacity-0 hover:text-pinkDesat focus:bg-white focus:bg-opacity-0 focus:text-pinkDesat'
                           : 'border-pink bg-pink hover:bg-white hover:text-pink focus:bg-white focus:text-pink'
@@ -2354,19 +2354,19 @@ export default ({ location }: { location: any }) => {
                     >
                       Maak rapport
                     </button>
-                    <div className="mt-8 ml-8">
-                      {netlifyError.changed == true && netlifyError.google == true && (
-                        <Lottie
-                        className="m-auto h-20 w-20 laptopL:h-40 laptopL:w-40"
-                        loop={false}
-                        animationData={complete}
-                        />
-                      )}
+                    <div className="mt-8 ml-8 z-10">
                       {netlifyError.changed == true && netlifyError.google == false && (
                         <Lottie
                         className="m-auto h-4 w-4 laptopL:h-8 laptopL:w-8"
                         loop={false}
                         animationData={erroranim}
+                        />
+                      )}
+                      {netlifyError.changed == true && netlifyError.google == true && (
+                        <Lottie
+                        className="m-auto h-4 w-4 laptopL:h-8 laptopL:w-8"
+                        loop={false}
+                        animationData={complete}
                         />
                       )}
                     </div>
