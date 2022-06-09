@@ -1045,7 +1045,7 @@ export default ({ location }: { location: any }) => {
     }
 
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
-      const dataAmb = getPdfData(allData, 'Antwerpen', 'Kortrijk')
+      const dataAmb = getPdfData(allData, 'Kortrijk', 'Wevelgem')
       // TODO: verander steden bij getPdfData naar de gekozen steden
       const pdfData = {
         data: dataAmb,

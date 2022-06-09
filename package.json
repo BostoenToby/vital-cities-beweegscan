@@ -39,6 +39,7 @@
     "gatsby-transformer-excel": "^4.14.0",
     "gatsby-transformer-remark": "^5.14.0",
     "gatsby-transformer-sharp": "^4.14.0",
+    "google-spreadsheet": "^3.3.0",
     "jspdf": "^2.5.1",
     "lottie-colorify": "^0.8.0",
     "lottie-react": "^2.2.1",
