@@ -58,7 +58,7 @@ export default ({classes, text, animation, animationColor}: {classes: string, te
         <div className={`flex skew-x-12 max-w-[240px] items-center leading-7 relative justify-self-center tabletportrait:max-w-[450px] ${classes}`}>
             <p className="px-7 py-5 -skew-x-12 desktop:line-clamp-2">{text}</p>
             <Lottie
-                className="m-auto h-10 w-20 laptopL:h-20 laptopL:w-40 absolute -skew-x-12 bottom-[-30px] right-[-70px]"
+                className="m-auto h-10 w-20 laptopL:h-20 laptopL:w-40 absolute -skew-x-12 bottom-[-30px] right-[-35px]"
                 loop={true}
                 animationData={animation}
             />

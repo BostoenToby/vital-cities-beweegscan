@@ -87,7 +87,7 @@ import walking from '../assets/animations/walking.json'
 import wrench from '../assets/animations/wrench.json'
 import youth from '../assets/animations/youth.json'
 import zorro from '../assets/animations/zorro.json'
-import error from '../assets/animations/error.json'
+import erroranim from '../assets/animations/erroranim.json'
 import complete from '../assets/animations/complete.json'
 import { netlifyError } from '../interfaces/sendgrid'
 import Barchartgeneric from '../components/barchartgeneric'
@@ -146,6 +146,10 @@ export default ({ location }: { location: any }) => {
       return () => window.removeEventListener('click', handleClick)
     }
   }, [])
+
+  const checkNetlifyError = () => {
+    console.log({netlifyError})
+  }
 
   useEffect(() => {
     if (selectedCities && locationShort) {
@@ -991,13 +995,52 @@ export default ({ location }: { location: any }) => {
   }
 
   const netlifyFunctions = async (data: object) => {
-    const errors = await genPDF(data)
-    console.log({errors})
+    const errors: netlifyError = await genPDF(data)
+    console.log(errors)
     setNetlifyError((currentError: netlifyError) => {
       currentError.mail = errors.mail,
       currentError.google = errors.google
+      currentError.changed = errors.changed
       return { ...currentError }
     })
+    // console.log(mail, google, changed)
+    // if(changed == true){
+    //   setNetlifyError((currentErrors: netlifyError) => {
+    //     currentErrors.changed = true
+    //     return { ...currentErrors }
+    //   })
+    // }
+    // if(mail == true){
+    //   setNetlifyError((currentErrors: netlifyError) => {
+    //     currentErrors.mail = true
+    //     return { ...currentErrors }
+    //   })
+    // }
+    // if(google == true){
+    //   setNetlifyError((currentErrors: netlifyError) => {
+    //     currentErrors.google = true
+    //     return { ...currentErrors }
+    //   })
+    // }
+    // if(changed == false){
+    //   setNetlifyError((currentErrors: netlifyError) => {
+    //     currentErrors.changed = false
+    //     return { ...currentErrors }
+    //   })
+    // }
+    // if(mail == false){
+    //   setNetlifyError((currentErrors: netlifyError) => {
+    //     currentErrors.mail = false
+    //     return { ...currentErrors }
+    //   })
+    // }
+    // if(google == false){
+    //   setNetlifyError((currentErrors: netlifyError) => {
+    //     currentErrors.google = false
+    //     return { ...currentErrors }
+    //   })
+    // }
+    console.log("errors has been added")
   }
 
   const checkInfo = async () => {
@@ -1071,6 +1114,7 @@ export default ({ location }: { location: any }) => {
         mail: info.mail,
         newsletter: info.newsletter
       }
+      console.log("netlify functions going to do")
       netlifyFunctions(netlifyData)
     }
   }
@@ -2343,7 +2387,27 @@ export default ({ location }: { location: any }) => {
                   >
                     Maak rapport
                   </button>
-                  {netlifyError.changed === true && (netlifyError.mail === true && netlifyError.google === true) || (netlifyError.mail == true && netlifyError.google == false) || (netlifyError.mail == false && netlifyError.google == true) && (
+                  {netlifyError.changed == false && (
+                    <button onClick={() => checkNetlifyError()}>Testing</button>
+                  )}
+                  {netlifyError.changed == true && (
+                    <button onClick={() => checkNetlifyError()}>Testing2</button>
+                  )}
+                  {netlifyError.changed == true && netlifyError.mail == true && netlifyError.google == true && (
+                    <Lottie
+                    className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
+                    loop={false}
+                    animationData={complete}
+                    />
+                  )}
+                  {netlifyError.changed == true && (netlifyError.mail == false || netlifyError.google == false) && (
+                    <Lottie
+                    className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
+                    loop={false}
+                    animationData={erroranim}
+                    />
+                  )}
+                  {/* {netlifyError.changed === true && (netlifyError.mail === true && netlifyError.google === true) || (netlifyError.mail == true && netlifyError.google == false) || (netlifyError.mail == false && netlifyError.google == true) && (
                     <Lottie
                     className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
                     loop={false}
@@ -2356,7 +2420,7 @@ export default ({ location }: { location: any }) => {
                     loop={false}
                     animationData={complete}
                   />
-                  )}
+                  )} */}
                 </div>
               </div>
             </section>
