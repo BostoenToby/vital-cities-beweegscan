@@ -95,7 +95,6 @@ import Barchartgeneric from '../components/barchartgeneric'
 export default ({ location }: { location: any }) => {
   const [btnRapport, setBtnRapport] = useState<boolean>(false)
   const [netlifyError, setNetlifyError] = useState<netlifyError>({
-    mail: true,
     google: true,
     changed: false
   })
@@ -146,10 +145,6 @@ export default ({ location }: { location: any }) => {
       return () => window.removeEventListener('click', handleClick)
     }
   }, [])
-
-  const checkNetlifyError = () => {
-    console.log({netlifyError})
-  }
 
   useEffect(() => {
     if (selectedCities && locationShort) {
@@ -998,49 +993,10 @@ export default ({ location }: { location: any }) => {
     const errors: netlifyError = await genPDF(data)
     console.log(errors)
     setNetlifyError((currentError: netlifyError) => {
-      currentError.mail = errors.mail,
       currentError.google = errors.google
       currentError.changed = errors.changed
       return { ...currentError }
     })
-    // console.log(mail, google, changed)
-    // if(changed == true){
-    //   setNetlifyError((currentErrors: netlifyError) => {
-    //     currentErrors.changed = true
-    //     return { ...currentErrors }
-    //   })
-    // }
-    // if(mail == true){
-    //   setNetlifyError((currentErrors: netlifyError) => {
-    //     currentErrors.mail = true
-    //     return { ...currentErrors }
-    //   })
-    // }
-    // if(google == true){
-    //   setNetlifyError((currentErrors: netlifyError) => {
-    //     currentErrors.google = true
-    //     return { ...currentErrors }
-    //   })
-    // }
-    // if(changed == false){
-    //   setNetlifyError((currentErrors: netlifyError) => {
-    //     currentErrors.changed = false
-    //     return { ...currentErrors }
-    //   })
-    // }
-    // if(mail == false){
-    //   setNetlifyError((currentErrors: netlifyError) => {
-    //     currentErrors.mail = false
-    //     return { ...currentErrors }
-    //   })
-    // }
-    // if(google == false){
-    //   setNetlifyError((currentErrors: netlifyError) => {
-    //     currentErrors.google = false
-    //     return { ...currentErrors }
-    //   })
-    // }
-    console.log("errors has been added")
   }
 
   const checkInfo = async () => {
@@ -2397,40 +2353,20 @@ export default ({ location }: { location: any }) => {
                   >
                     Maak rapport
                   </button>
-                  {netlifyError.changed == false && (
-                    <button onClick={() => checkNetlifyError()}>Testing</button>
-                  )}
-                  {netlifyError.changed == true && (
-                    <button onClick={() => checkNetlifyError()}>Testing2</button>
-                  )}
-                  {netlifyError.changed == true && netlifyError.mail == true && netlifyError.google == true && (
+                  {netlifyError.changed == true && netlifyError.google == true && (
                     <Lottie
                     className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
                     loop={false}
                     animationData={complete}
                     />
                   )}
-                  {netlifyError.changed == true && (netlifyError.mail == false || netlifyError.google == false) && (
+                  {netlifyError.changed == true && netlifyError.google == false && (
                     <Lottie
                     className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
                     loop={false}
                     animationData={erroranim}
                     />
                   )}
-                  {/* {netlifyError.changed === true && (netlifyError.mail === true && netlifyError.google === true) || (netlifyError.mail == true && netlifyError.google == false) || (netlifyError.mail == false && netlifyError.google == true) && (
-                    <Lottie
-                    className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
-                    loop={false}
-                    animationData={error}
-                  />
-                  )}
-                  {netlifyError.changed === true && netlifyError.mail === false && netlifyError.google === false && (
-                    <Lottie
-                    className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
-                    loop={false}
-                    animationData={complete}
-                  />
-                  )} */}
                 </div>
               </div>
             </section>

@@ -8,7 +8,6 @@ export interface Mail {
 }
 
 export interface netlifyError {
-    mail: boolean,
     google: boolean,
     changed: boolean
 }

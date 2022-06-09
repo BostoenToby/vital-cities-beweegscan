@@ -702,6 +702,7 @@ async function genPDF(dataPDF: any) {
   const blobPDF = doc.output('blob')
   async function sendgridMail(baseString: any) {
     try {
+      console.log("trying sendgrid mail")
       return await axios.post('/.netlify/functions/sendmail',
         {
           mail: dataPDF.mail,
@@ -709,9 +710,7 @@ async function genPDF(dataPDF: any) {
           pdf: baseString
         } 
       )
-      errorNet.mail = true
     } catch (error) {
-      errorNet.mail = false
       console.log(error)
       console.log("it didn't work")
     }
@@ -725,7 +724,6 @@ async function genPDF(dataPDF: any) {
       } else {
         newsletter = "Ja"
       }
-      errorNet.google = true
       return await axios.post('/.netlify/functions/writesheets',
       {
         Voornaam: dataPDF.firstName,
@@ -749,10 +747,10 @@ async function genPDF(dataPDF: any) {
       var dataUrl: string = String(reader.result)
       var base64 = dataUrl.split(',')[1]
       await sendgridMail(base64)
-      await writeSheets()
     }
   }
   await blobToBase64(blobPDF)
+  await writeSheets()
   console.log(errorNet)
   return(errorNet)
 }
