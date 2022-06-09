@@ -117,6 +117,7 @@ export default ({ location }: { location: any }) => {
     firstName: '',
     lastName: '',
     mail: '',
+    newsletter: false
   })
   const [error, setErrors] = useState<FormError>({
     placeError: '',
@@ -1053,6 +1054,7 @@ export default ({ location }: { location: any }) => {
         firstname: info.firstName,
         lastname: info.lastName,
         mail: info.mail,
+        newsletter: info.newsletter
       }
       console.log({ pdfData })
       genPDF(pdfData)
@@ -2109,7 +2111,13 @@ export default ({ location }: { location: any }) => {
                     </label>
                   </div>
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
-                    <input type="checkbox" name="news" id="news" />
+                    <input type="checkbox" name="news" id="news" onChange={(e: React.FormEvent<HTMLInputElement>) => {
+                      setInfo((u: PersonalInfo) => {
+                        //@ts-ignore
+                        u.newsletter = e.target.value
+                        return { ...u }
+                      })
+                    }}/>
                     <label
                       className="text-[12px] tabletportrait:text-sm"
                       htmlFor="news"

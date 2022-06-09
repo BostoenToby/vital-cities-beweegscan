@@ -7,7 +7,6 @@ import { Buffer } from 'buffer';
 async function genPDF(dataPDF: any) {
   var page = 1
   const data = dataPDF.data
-  console.log({data})
   const city1 = Object.keys(data)[0]
   const city2 = Object.keys(data)[1]
 
@@ -719,11 +718,11 @@ async function genPDF(dataPDF: any) {
     try {
       return await axios.post('/.netlify/functions/writesheets',
       {
-        Voornaam: "Toby",
-        Naam: "Bostoen",
-        Mail: "toby.bostoen@student.howest.be",
-        Stad: "Kortrijk",
-        Nieuwsbrief: "ja"
+        Voornaam: dataPDF.firstName,
+        Naam: dataPDF.lastName,
+        Mail: dataPDF.mail,
+        Stad: dataPDF.place,
+        Nieuwsbrief: dataPDF.newsletter
       })
     } catch (error) {
       console.log(error)
@@ -741,15 +740,7 @@ async function genPDF(dataPDF: any) {
       writeSheets()
     }
   }
-
   blobToBase64(blobPDF)
-
-  // fetch('/.netlify/functions/sendmail')
-  //     .then(() => console.log("The mail has been sent"))
-  //     .catch(function(error) {
-  //       console.log(error)
-  //       console.log("Mail didn't succeed")
-  // }) 
 }
 
 function pdf() {
