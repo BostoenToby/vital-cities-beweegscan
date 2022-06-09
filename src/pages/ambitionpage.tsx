@@ -1977,7 +1977,7 @@ export default ({ location }: { location: any }) => {
                   id="autoComplete"
                 >
                   <div className="flex max-w-min flex-col" id="#inputStad">
-                    <label htmlFor="Stad">Naam gemeente:</label>
+                    <label htmlFor="Stad">Naam gemeente *</label>
                     <input
                       type="text"
                       id="Stad"
@@ -2039,7 +2039,7 @@ export default ({ location }: { location: any }) => {
                   </div>
                   <div className="flex max-w-min flex-col">
                     <Input
-                      label="Voornaam"
+                      label="Voornaam *"
                       callback={(e: React.FormEvent<HTMLInputElement>) =>
                         setInfo((u: PersonalInfo) => {
                           //@ts-ignore
@@ -2056,7 +2056,7 @@ export default ({ location }: { location: any }) => {
                   </div>
                   <div className="flex max-w-min flex-col">
                     <Input
-                      label="Naam"
+                      label="Naam *"
                       callback={(e: React.FormEvent<HTMLInputElement>) =>
                         setInfo((u: PersonalInfo) => {
                           //@ts-ignore
@@ -2073,7 +2073,7 @@ export default ({ location }: { location: any }) => {
                   </div>
                   <div className="flex max-w-min flex-col tabletportrait:col-span-3">
                     <Input
-                      label="E-mail"
+                      label="E-mail *"
                       callback={(e: React.FormEvent<HTMLInputElement>) =>
                         setInfo((u: PersonalInfo) => {
                           //@ts-ignore
@@ -2108,7 +2108,7 @@ export default ({ location }: { location: any }) => {
                     >
                       Ik ga akkoord dat Vital Cities mijn persoonsgegevens in
                       haar databanken opneemt om mij de gevraagde informatie te
-                      bezorgen via e-mail en dit op te volgen.
+                      bezorgen via e-mail en dit op te volgen. *
                     </label>
                   </div>
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
