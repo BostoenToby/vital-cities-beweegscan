@@ -15,7 +15,7 @@ export default ({ label, callback }: { label: string; callback: any }) => {
                 ? 'border-lightGray bg-dark text-white focus-within:border-lightPurpleDesat hover:border-lightPurpleDesat active:border-lightPurpleDesat'
                 : ' border-lightPink text-dark focus-within:border-pink hover:border-pink active:border-pink'
             }`}
-            placeholder={label}
+            placeholder={label.substring(0, label.length-1)}
             onInput={callback}
           />
           {/* {error.firstNameError && (<p className="text-red font-semibold text-sm">{error.firstNameError}</p>)} */}
