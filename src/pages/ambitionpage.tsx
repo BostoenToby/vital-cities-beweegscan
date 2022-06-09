@@ -97,7 +97,7 @@ export default ({ location }: { location: any }) => {
   const [netlifyError, setNetlifyError] = useState<netlifyError>({
     mail: false,
     google: false,
-    changed: false
+    changed: false,
   })
   const [hasMounted, setHasMounted] = useState(false)
   const [locationShort, setLocationShort] = useState<string>()
@@ -992,10 +992,9 @@ export default ({ location }: { location: any }) => {
 
   const netlifyFunctions = async (data: object) => {
     const errors = await genPDF(data)
-    console.log({errors})
+    console.log({ errors })
     setNetlifyError((currentError: netlifyError) => {
-      currentError.mail = errors.mail,
-      currentError.google = errors.google
+      ;(currentError.mail = errors.mail), (currentError.google = errors.google)
       return { ...currentError }
     })
   }
@@ -1062,7 +1061,7 @@ export default ({ location }: { location: any }) => {
     }
 
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
-    const dataAmb = getPdfData(allData, typed, 'Vlaams gewest')
+      const dataAmb = getPdfData(allData, typed, 'Vlaams gewest')
       const netlifyData = {
         data: dataAmb,
         place: info.place,
@@ -1114,20 +1113,47 @@ export default ({ location }: { location: any }) => {
         })
 
         paragraphs.forEach((paragraaf: string, index: number) => {
+          const proBody = paragraaf
+            .replace(/\n+$/, '')
+            .replace(/^\* /, '• ')
+            .replace(/\n\* /g, '\n\n • ')
+            .replace(/^\*\*/, ' <strong class="font-semibold">')
+            .replace(/\*\*$/, ' </strong>')
+            .replace(/ \*\*/g, ' <strong class="font-semibold">')
+            .replace(/\n\*\*/g, '\n<strong class="font-semibold">')
+            .replace(/\*\*\n/g, ' </strong>\n')
+            .replace(/\*\* /g, ' </strong>')
+            .replace(/\*\*,/, ' </strong>,')
+            .replace(/\*\*\./, ' </strong>.')
+            .replace(/\*\*!/, ' </strong>!')
+            .replace(/\*\*\?/, ' </strong>?')
+
+          let matches = [...proBody.matchAll(/\[.*?\] ?\(.*?\)/g)]
+          const links: any[] = []
+
+          matches.forEach((m: any, index: number) => {
+            const parts = m[0].split(/\] ?\(/)
+            console.log(parts)
+            let bron: Bron = {
+              naam: parts[0].replace(/^\[/, ''),
+              url: parts[1]
+                .replace(/^<\*/, '')
+                .replace(/\)$/, '')
+                .replace(/>$/, ''),
+            }
+
+            const result = [bron, m.index, m[0].length]
+            links.push(result)
+          })
+
+          console.log(links)
+
+          const bodyResult = ''
+
           const par: Paragraaf = {
             //@ts-ignore
             header: titles[index],
-            body: paragraaf
-              .replace(/\n+$/, '')
-              .replace(/^\* /, '• ')
-              .replace(/\n\* /g, '\n\n • ')
-              .replace(/^\*\*/, ' <strong class="font-semibold">')
-              .replace(/\*\*$/, ' </strong>')
-              .replace(/ \*\*/g, ' <strong class="font-semibold">')
-              .replace(/\n\*\*/g, '\n<strong class="font-semibold">')
-              .replace(/\*\*\n/g, ' </strong>\n')
-              .replace(/\*\* /g, ' </strong>')
-              .replace(/\*\*,/, ' </strong>,'),
+            body: bodyResult,
           }
           parResults.push(par)
         })
@@ -2353,20 +2379,28 @@ export default ({ location }: { location: any }) => {
                   >
                     Maak rapport
                   </button>
-                  {netlifyError.changed === true && (netlifyError.mail === true && netlifyError.google === true) || (netlifyError.mail == true && netlifyError.google == false) || (netlifyError.mail == false && netlifyError.google == true) && (
-                    <Lottie
-                    className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
-                    loop={false}
-                    animationData={error}
-                  />
-                  )}
-                  {netlifyError.changed === true && netlifyError.mail === false && netlifyError.google === false && (
-                    <Lottie
-                    className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
-                    loop={false}
-                    animationData={complete}
-                  />
-                  )}
+                  {(netlifyError.changed === true &&
+                    netlifyError.mail === true &&
+                    netlifyError.google === true) ||
+                    (netlifyError.mail == true &&
+                      netlifyError.google == false) ||
+                    (netlifyError.mail == false &&
+                      netlifyError.google == true && (
+                        <Lottie
+                          className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
+                          loop={false}
+                          animationData={error}
+                        />
+                      ))}
+                  {netlifyError.changed === true &&
+                    netlifyError.mail === false &&
+                    netlifyError.google === false && (
+                      <Lottie
+                        className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
+                        loop={false}
+                        animationData={complete}
+                      />
+                    )}
                 </div>
               </div>
             </section>
