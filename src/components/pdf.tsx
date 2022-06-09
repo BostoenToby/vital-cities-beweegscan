@@ -719,10 +719,10 @@ async function genPDF(dataPDF: any) {
     try {
       return await axios.post('/.netlify/functions/writesheets',
       {
-        voornaam: "Toby",
-        naam: "Bostoen",
-        mail: "toby.bostoen@student.howest.be",
-        stad: "Kortrijk",
+        Voornaam: "Toby",
+        Naam: "Bostoen",
+        Mail: "toby.bostoen@student.howest.be",
+        Stad: "Kortrijk",
         Nieuwsbrief: "ja"
       })
     } catch (error) {
