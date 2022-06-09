@@ -175,9 +175,9 @@ const checkIndex = (index: number): string => {
     return 'sporten'
   } else if (23 <= index && index <= 25) {
     return 'spelen'
-  } else if (26 <= index && index <= 30) {
+  } else if (26 <= index && index <= 28) {
     return 'ontmoeten'
-  } else if (31 <= index && index <= 34) {
+  } else if (29 <= index && index <= 32) {
     return 'groen'
   } else {
     return 'no ambition found'
@@ -200,8 +200,6 @@ export const getLabelChart = (labelBench: string) => {
   switch (labelBench.toLowerCase()) {
     case 'actief bewegen':
       return 'Beweegt niet wekelijks'
-    case 'verplaatsingen woon-werk/woon-school: dominant vervoersmiddel':
-      return 'Gaat vooral met de auto naar het werk/school'
     case 'veilig naar school':
       return 'Vindt de weg naar school onveilig'
 

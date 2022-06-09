@@ -12,7 +12,11 @@ import Pdf from '../components/pdf'
 import { graphql, useStaticQuery } from 'gatsby'
 import ThemeContext from '../context/themecontext'
 import FadeInSection from '../components/scrollytelling'
-import { ambition, header, sectionLandingspage } from '../interfaces/cmsInterfaces'
+import {
+  ambition,
+  header,
+  sectionLandingspage,
+} from '../interfaces/cmsInterfaces'
 
 // remove excel files because this can't be processed by Linux
 
@@ -27,28 +31,26 @@ const IndexPage = ({ data }: { data: any }) => {
     let textList: sectionLandingspage[] = []
     let ambitionList: ambition[] = []
     console.log(cms)
-    for(let item of cms.nodes){
-      if(item.parent.internal.description.includes("header") && item.frontmatter.ambition == "Landingspagina"){
+    for (let item of cms.nodes) {
+      if (
+        item.parent.internal.description.includes('header') &&
+        item.frontmatter.ambition == 'Landingspagina'
+      ) {
         setHeader({
           title: item.frontmatter.title,
           subtitle: item.frontmatter.subtitle,
-          image: item.frontmatter.image
+          image: item.frontmatter.image,
         })
-      }
-      else if (item.parent.internal.description.includes("landingspage")){
-        textList.push(
-          {
-            title: item.frontmatter.title,
-            text: item.frontmatter.text
-          }
-        )
-      } else if (item.parent.internal.description.includes("ambitienamen")){
-        ambitionList.push(
-          {
-            ambition: item.frontmatter.ambition,
-            name: item.frontmatter.name
-          }
-        )
+      } else if (item.parent.internal.description.includes('landingspage')) {
+        textList.push({
+          title: item.frontmatter.title,
+          text: item.frontmatter.text,
+        })
+      } else if (item.parent.internal.description.includes('ambitienamen')) {
+        ambitionList.push({
+          ambition: item.frontmatter.ambition,
+          name: item.frontmatter.name,
+        })
       }
     }
     setTexts(textList)
@@ -85,7 +87,7 @@ const IndexPage = ({ data }: { data: any }) => {
           }
         }
       }
-    `
+    `,
   )
 
   if (!hasMounted) {
@@ -123,14 +125,14 @@ const IndexPage = ({ data }: { data: any }) => {
           <header
             className={`flex w-full flex-col columnbreak:flex-row columnbreak:items-center  ${
               context.dark
-                ? 'laptopXL:bg-white laptopXL:bg-opacity-[0.08]'
-                : 'laptopXL:bg-purple'
+                ? 'indexbreak:bg-white indexbreak:bg-opacity-[0.08]'
+                : 'indexbreak:bg-purple'
             }`}
           >
             <section
               className={`h-full w-full p-7 pb-5 columnbreak:w-1/2 columnbreak:p-14 columnbreak:pb-10 ${
                 context.dark
-                  ? 'bg-white bg-opacity-[0.08] laptopXL:bg-opacity-0'
+                  ? 'bg-white bg-opacity-[0.08] indexbreak:bg-opacity-0'
                   : 'bg-purple'
               }`}
             >
@@ -167,109 +169,113 @@ const IndexPage = ({ data }: { data: any }) => {
                 context.dark ? 'text-white' : 'text-dark'
               }`}
             >
-              {texts && texts.map((item: sectionLandingspage, val: number) =>{
-                if(item.title == "Over de beweegscan"){
-                  return(
-                    <>
-                      <h2
-                        className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                          context.dark ? 'opacity-90' : ''
-                        }`}
-                      >
-                        {item.title}
-                      </h2>
-                      <p className={`mb-8 whitespace-pre-line ${context.dark ? 'opacity-75' : ''}`}>
-                        {item.text}
-                      </p>
-                    </>
-                  )
-                } else {
-                  return(
-                    <></>
-                  )
-                }
-              })}
+              {texts &&
+                texts.map((item: sectionLandingspage, val: number) => {
+                  if (item.title == 'Over de beweegscan') {
+                    return (
+                      <>
+                        <h2
+                          className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                            context.dark ? 'opacity-90' : ''
+                          }`}
+                        >
+                          {item.title}
+                        </h2>
+                        <p
+                          className={`mb-8 whitespace-pre-line ${
+                            context.dark ? 'opacity-75' : ''
+                          }`}
+                        >
+                          {item.text}
+                        </p>
+                      </>
+                    )
+                  } else {
+                    return <></>
+                  }
+                })}
               <FadeInSection>
                 <div className="mb-8 grid grid-cols-1 flex-col gap-8 tabletportrait:grid-cols-2 laptop:grid-cols-3 4K:grid-cols-4">
-                  {ambitions && ambitions.map((item: ambition, val: number) =>{
-                    let short: string = ""
-                    if(item.ambition.includes("bewegen")){
-                      short = "actief bewegen"
-                    }
-                    else if(item.ambition.includes("stadskern")){
-                      short = "verbonden stadskern"
-                    }
-                    else if(item.ambition.includes("wandel")){
-                      short = "fiets- en wandelroutes"
-                    }
-                    else if(item.ambition.includes("sport")){
-                      short = "sporten"
-                    }
-                    else if(item.ambition.includes("speel")){
-                      short = "spelen"
-                    }
-                    else if(item.ambition.includes("ontmoet")){
-                      short = "ontmoeten"
-                    }
-                    else if(item.ambition.includes("groen")){
-                      short = "groen"
-                    }
-                    return(
-                    <Ambitionblock
-                      header={`Ambitie ${val+1}`}
-                      text={item.name}
-                      shorttext={short}
-                    />
-                    )
-                  })}
+                  {ambitions &&
+                    ambitions.map((item: ambition, val: number) => {
+                      let short: string = ''
+                      if (item.ambition.includes('bewegen')) {
+                        short = 'actief bewegen'
+                      } else if (item.ambition.includes('stadskern')) {
+                        short = 'verbonden stadskern'
+                      } else if (item.ambition.includes('wandel')) {
+                        short = 'fiets- en wandelroutes'
+                      } else if (item.ambition.includes('sport')) {
+                        short = 'sporten'
+                      } else if (item.ambition.includes('speel')) {
+                        short = 'spelen'
+                      } else if (item.ambition.includes('ontmoet')) {
+                        short = 'ontmoeten'
+                      } else if (item.ambition.includes('groen')) {
+                        short = 'groen'
+                      }
+                      return (
+                        <Ambitionblock
+                          header={`Ambitie ${val + 1}`}
+                          text={item.name}
+                          shorttext={short}
+                        />
+                      )
+                    })}
                 </div>
               </FadeInSection>
               <FadeInSection>
-              {texts && texts.map((item: sectionLandingspage, val: number) =>{
-                if(item.title == "In een oogopslag"){
-                  return(
-                    <>
-                      <h2
-                        className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                          context.dark ? 'opacity-90' : ''
-                        }`}
-                      >
-                        {item.title}
-                      </h2>
-                      <p className={`mb-8 whitespace-pre-line ${context.dark ? 'opacity-75' : ''}`}>
-                        {item.text}
-                      </p>
-                    </>
-                  )
-                } else {
-                  return(
-                    <></>
-                  )
-                }
-              })}
+                {texts &&
+                  texts.map((item: sectionLandingspage, val: number) => {
+                    if (item.title == 'In een oogopslag') {
+                      return (
+                        <>
+                          <h2
+                            className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                              context.dark ? 'opacity-90' : ''
+                            }`}
+                          >
+                            {item.title}
+                          </h2>
+                          <p
+                            className={`mb-8 whitespace-pre-line ${
+                              context.dark ? 'opacity-75' : ''
+                            }`}
+                          >
+                            {item.text}
+                          </p>
+                        </>
+                      )
+                    } else {
+                      return <></>
+                    }
+                  })}
 
-              {texts && texts.map((item: sectionLandingspage, val: number) =>{
-                if(item.title == "Inspirerend"){
-                  return(
-                    <>
-                      <h2
-                        className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                          context.dark ? 'opacity-90' : ''
-                        }`}
-                      >
-                        {item.title}
-                      </h2>
-                      <p className={`mb-8 whitespace-pre-line ${context.dark ? 'opacity-75' : ''}`}>
-                        {item.text}
-                      </p>
-                    </>
-                  )
-                } else {
-                  return(
-                    <></>
-                  )
-                }
-              })}
+                {texts &&
+                  texts.map((item: sectionLandingspage, val: number) => {
+                    if (item.title == 'Inspirerend') {
+                      return (
+                        <>
+                          <h2
+                            className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                              context.dark ? 'opacity-90' : ''
+                            }`}
+                          >
+                            {item.title}
+                          </h2>
+                          <p
+                            className={`mb-8 whitespace-pre-line ${
+                              context.dark ? 'opacity-75' : ''
+                            }`}
+                          >
+                            {item.text}
+                          </p>
+                        </>
+                      )
+                    } else {
+                      return <></>
+                    }
+                  })}
               </FadeInSection>
             </div>
           </main>

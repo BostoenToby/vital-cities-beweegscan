@@ -190,8 +190,6 @@ export default ({ location }: { location: any }) => {
     ambitie6bench1,
     ambitie6bench2,
     ambitie6bench3,
-    ambitie6bench4,
-    ambitie6bench5,
     ambitie7bench1,
     ambitie7bench2,
     ambitie7bench3,
@@ -658,40 +656,6 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie6bench4: allGsVitalCitiesDataSaS19(
-          filter: {
-            jaar: { eq: 2020 }
-            item: { eq: "Onveiligheidsgevoel buurt/wijk" }
-          }
-        ) {
-          edges {
-            node {
-              gemeente
-              afEnToe____
-              nooit_zelden____
-              vaak_altijd____
-              item
-              indicator
-            }
-          }
-        }
-        ambitie6bench5: allGsVitalCitiesDataSaS19(
-          filter: {
-            jaar: { eq: 2020 }
-            item: { eq: "Onveiligheidsgevoel gemeente/stad" }
-          }
-        ) {
-          edges {
-            node {
-              gemeente
-              afEnToe____
-              nooit_zelden____
-              vaak_altijd____
-              item
-              indicator
-            }
-          }
-        }
         ambitie7bench1: allGsVitalCitiesDataKlS01(
           filter: {
             jaar: { eq: 2020 }
@@ -788,8 +752,6 @@ export default ({ location }: { location: any }) => {
     ambitie6bench1,
     ambitie6bench2,
     ambitie6bench3,
-    ambitie6bench4,
-    ambitie6bench5,
     ambitie7bench1,
     ambitie7bench2,
     ambitie7bench3,
@@ -798,180 +760,180 @@ export default ({ location }: { location: any }) => {
 
   const getAnimation = (animation: string) => {
     let animationChosen
-    switch(animation){
-      case "arrows":
+    switch (animation) {
+      case 'arrows':
         animationChosen = arrows
         break
 
-      case "balance":
+      case 'balance':
         animationChosen = balance
         break
 
-      case "basket":
+      case 'basket':
         animationChosen = basket
         break
 
-      case "bench":
+      case 'bench':
         animationChosen = bench
         break
 
-      case "benches":
+      case 'benches':
         animationChosen = benches
         break
 
-      case "bike":
+      case 'bike':
         animationChosen = bike
         break
 
-      case "bus":
+      case 'bus':
         animationChosen = bus
         break
 
-      case "car_free":
+      case 'car_free':
         animationChosen = car_free
         break
 
-      case "car":
+      case 'car':
         animationChosen = car
         break
 
-      case "children":
+      case 'children':
         animationChosen = children
         break
 
-      case "city":
+      case 'city':
         animationChosen = city
         break
 
-      case "concentration":
+      case 'concentration':
         animationChosen = concentration
         break
 
-      case "criminal":
+      case 'criminal':
         animationChosen = criminal
         break
 
-      case "euro_hand":
+      case 'euro_hand':
         animationChosen = euro_hand
         break
 
-      case "euro":
+      case 'euro':
         animationChosen = euro
         break
 
-      case "evolution":
+      case 'evolution':
         animationChosen = evolution
         break
-    
-      case "families":
+
+      case 'families':
         animationChosen = families
         break
 
-      case "family":
+      case 'family':
         animationChosen = family
         break
 
-      case "familyseat":
+      case 'familyseat':
         animationChosen = familyseat
         break
 
-      case "fitness":
+      case 'fitness':
         animationChosen = fitness
         break
 
-      case "handshake":
+      case 'handshake':
         animationChosen = handshake
         break
 
-      case "house":
+      case 'house':
         animationChosen = house
         break
-    
-      case "houseprice":
+
+      case 'houseprice':
         animationChosen = houseprice
         break
 
-      case "landscape":
+      case 'landscape':
         animationChosen = landscape
         break
 
-      case "leaf":
+      case 'leaf':
         animationChosen = leaf
         break
 
-      case "lightbulb":
+      case 'lightbulb':
         animationChosen = lightbulb
         break
 
-      case "link":
+      case 'link':
         animationChosen = link
         break
 
-      case "lock":
+      case 'lock':
         animationChosen = lock
         break
 
-      case "loneliness":
+      case 'loneliness':
         animationChosen = loneliness
         break
 
-      case "long_arrow":
+      case 'long_arrow':
         animationChosen = long_arrow
         break
 
-      case "nature":
+      case 'nature':
         animationChosen = nature
         break
 
-      case "old_person":
+      case 'old_person':
         animationChosen = old_person
         break
 
-      case "park":
+      case 'park':
         animationChosen = park
         break
 
-      case "pet":
+      case 'pet':
         animationChosen = pet
         break
 
-      case "restaurant":
+      case 'restaurant':
         animationChosen = restaurant
         break
 
-      case "school":
+      case 'school':
         animationChosen = school
         break
 
-      case "shield":
+      case 'shield':
         animationChosen = shield
         break
 
-      case "shoppingcart":
+      case 'shoppingcart':
         animationChosen = shoppingcart
         break
 
-      case "thermometer":
+      case 'thermometer':
         animationChosen = thermometer
         break
 
-      case "virus":
+      case 'virus':
         animationChosen = virus
         break
 
-      case "walking":
+      case 'walking':
         animationChosen = walking
         break
 
-      case "wrench":
+      case 'wrench':
         animationChosen = wrench
         break
 
-      case "youth":
+      case 'youth':
         animationChosen = youth
         break
 
-      case "zorro":
+      case 'zorro':
         animationChosen = zorro
         break
     }
@@ -1021,7 +983,7 @@ export default ({ location }: { location: any }) => {
 
   const checkInfo = async () => {
     console.log('CLICKED GEN PDF')
-    console.log({info})
+    console.log({ info })
     let errorsMail = true
     let errorsFirstname = true
     let errorsLastname = true
@@ -1092,7 +1054,7 @@ export default ({ location }: { location: any }) => {
         lastname: info.lastName,
         mail: info.mail,
       }
-      console.log({pdfData})
+      console.log({ pdfData })
       genPDF(pdfData)
     }
   }
@@ -1208,7 +1170,7 @@ export default ({ location }: { location: any }) => {
           hoeList.push({
             text: item.frontmatter.text,
             ambition: item.frontmatter.ambition,
-            animation: item.frontmatter.animation
+            animation: item.frontmatter.animation,
           })
         } else if (
           item.parent.internal.description.includes('waaromopl') &&
@@ -1218,7 +1180,7 @@ export default ({ location }: { location: any }) => {
           waaromList.push({
             text: item.frontmatter.text,
             ambition: item.frontmatter.ambition,
-            animation: item.frontmatter.animation
+            animation: item.frontmatter.animation,
           })
         } else if (
           item.parent.internal.description.includes('intbron') &&
@@ -1689,31 +1651,52 @@ export default ({ location }: { location: any }) => {
                   </div>
                 </div>
                 {graphData && graphData.length >= 1 ? (
-                  <div>
+                  <section>
                     <label className="font-mono text-xs font-xxbold opacity-50 tabletportrait:text-sm laptop:text-lg">
                       HOEVEEL % VAN INWONERS ...
                     </label>
                     <div className="mt-4 flex flex-col gridbreak:grid gridbreak:auto-rows-fr gridbreak:grid-cols-5 gridbreak:items-center">
-                      {graphData[0].map((bench: Benchmark, index: number) => [
-                        <label
-                          className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
-                          key={bench.label}
-                        >
-                          {getLabelChart(bench.label)}
-                        </label>,
-                        <div
-                          className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
-                            context.dark ? 'border-lightGray' : 'border-dark'
-                          }`}
-                        >
-                          <Barchart
-                            benchCity1={bench}
-                            benchCity2={graphData[1][index]}
-                          />
-                        </div>,
-                      ])}
+                      {graphData[0].map((bench: Benchmark, index: number) => {
+                        if (
+                          bench.label ==
+                            'Verplaatsingen vrije tijd: per vervoermiddel' ||
+                          bench.label ==
+                            'Verplaatsingen woon-werk/woon-school: dominant vervoersmiddel'
+                        ) {
+                          return null
+                        } else {
+                          return [
+                            <label
+                              className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                              key={bench.label}
+                            >
+                              {getLabelChart(bench.label)}
+                            </label>,
+                            <div
+                              className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                                context.dark
+                                  ? 'border-lightGray'
+                                  : 'border-dark'
+                              }`}
+                            >
+                              <Barchart
+                                benchCity1={bench}
+                                benchCity2={graphData[1][index]}
+                              />
+                            </div>,
+                          ]
+                        }
+                      })}
                     </div>
-                  </div>
+
+                    {locationShort == 'actief bewegen' ? (
+                      <div className="mt-8">
+                        <label className=" font-mono text-xs font-xxbold opacity-50 tabletportrait:text-sm laptop:text-lg">
+                          VERPLAATSINGEN PER VERVOERSMIDDEL
+                        </label>
+                      </div>
+                    ) : null}
+                  </section>
                 ) : null}
               </section>
             </FadeInSection>
@@ -1776,7 +1759,7 @@ export default ({ location }: { location: any }) => {
                   {whys &&
                     whys.map((item: any) => {
                       const animation = getAnimation(item.animation)
-                      return(
+                      return (
                         <Textblock
                           text={item.text}
                           classes={
@@ -1788,7 +1771,7 @@ export default ({ location }: { location: any }) => {
                           animationColor="purple"
                         />
                       )
-                      })}
+                    })}
                 </div>
               </section>
             </FadeInSection>
@@ -1824,11 +1807,11 @@ export default ({ location }: { location: any }) => {
                   {hows &&
                     hows.map((item: HoeWaarom) => {
                       const animation = getAnimation(item.animation)
-                    //   const anim = replaceColor(
-                    //     '#000000',
-                    //     '#91959c',
-                    //     animation
-                    // )
+                      //   const anim = replaceColor(
+                      //     '#000000',
+                      //     '#91959c',
+                      //     animation
+                      // )
                       return (
                         <Textblock
                           text={item.text}
@@ -2005,7 +1988,7 @@ export default ({ location }: { location: any }) => {
                           allAmbitionData,
                           ev.target.value,
                           true,
-                        )<
+                        )
                         setSuggestions(list)
                       }}
                       onInput={(e: React.FormEvent<HTMLInputElement>) =>
@@ -2106,7 +2089,7 @@ export default ({ location }: { location: any }) => {
                       name="credentials"
                       id="credentials"
                       onChange={() => {
-                        if(btnRapport == false){
+                        if (btnRapport == false) {
                           setBtnRapport(true)
                         } else {
                           setBtnRapport(false)
