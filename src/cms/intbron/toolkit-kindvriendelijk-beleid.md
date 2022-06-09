@@ -1,10 +1,10 @@
 ---
 ambitions:
   - spelen
-title: Toolkit kindvriendelijk beleid
-link: https://bataljong.be/boost-je-kennis/kindvriendelijke-steden-en-gemeenten/kindvriendelijk-beleid/ga-aan-de-slag-met-onze
-text: Deze toolkit helpt om de kindvriendelijkheid van de stad of gemeente in
-  kaart te brengen en een strategie rond kindvriendelijkheid uit te tekenen.
-  Lokale besturen die lid zijn van Bataljong kunnen gratis gebruik maken van de
-  tools.
+title: Kindvriendelijk beleid
+link: https://bataljong.be/boost-je-kennis/kindvriendelijke-steden-en-gemeenten
+text: Een kindvriendelijke stad of gemeente verbindt zich ertoe de rechten van
+  het kind te realiseren en te implementeren doorheen alle beleidsdomeinen.
+  Bataljong brengt alle info hierrond samen zodat je als lokale bestuur zelf aan
+  de slag kunt met dit thema.
 ---
