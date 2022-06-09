@@ -8,8 +8,8 @@ import { netlifyError } from '../interfaces/sendgrid';
 
 async function genPDF(dataPDF: any) {
   let errorNet: netlifyError =  {
-    mail: false,
-    google: false,
+    mail: true,
+    google: true,
     changed: false
   }
   var page = 1
@@ -700,9 +700,6 @@ async function genPDF(dataPDF: any) {
 
   // doc.save('BeweegscanRapport.pdf')
   const blobPDF = doc.output('blob')
-  URL.createObjectURL(blobPDF)
-  localStorage["pdf"] = URL.createObjectURL(blobPDF)
-
   async function sendgridMail(baseString: any) {
     try {
       return await axios.post('/.netlify/functions/sendmail',
@@ -712,8 +709,9 @@ async function genPDF(dataPDF: any) {
           pdf: baseString
         } 
       )
-    } catch (error) {
       errorNet.mail = true
+    } catch (error) {
+      errorNet.mail = false
       console.log(error)
       console.log("it didn't work")
     }
@@ -727,6 +725,7 @@ async function genPDF(dataPDF: any) {
       } else {
         newsletter = "Ja"
       }
+      errorNet.google = true
       return await axios.post('/.netlify/functions/writesheets',
       {
         Voornaam: dataPDF.firstName,
@@ -736,7 +735,7 @@ async function genPDF(dataPDF: any) {
         Nieuwsbrief: newsletter
       })
     } catch (error) {
-      errorNet.google = true
+      errorNet.google = false
       console.log(error)
       console.log("writing to sheets didn't work")
     }
@@ -745,15 +744,16 @@ async function genPDF(dataPDF: any) {
   async function blobToBase64(blob: any) {
     var reader = new FileReader()
     reader.readAsDataURL(blob)
-    reader.onload = function(){
+    errorNet.changed = true
+    reader.onload = async function(){
       var dataUrl: string = String(reader.result)
       var base64 = dataUrl.split(',')[1]
-      sendgridMail(base64)
-      writeSheets()
-      errorNet.changed = true
+      await sendgridMail(base64)
+      await writeSheets()
     }
   }
-  blobToBase64(blobPDF)
+  await blobToBase64(blobPDF)
+  console.log(errorNet)
   return(errorNet)
 }
 
