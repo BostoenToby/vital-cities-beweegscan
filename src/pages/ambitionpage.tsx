@@ -1048,11 +1048,12 @@ export default ({ location }: { location: any }) => {
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
       const dataAmb = getPdfData(allData, 'Kortrijk', 'Wevelgem')
       // TODO: verander steden bij getPdfData naar de gekozen steden
+      console.log({info})
       const pdfData = {
         data: dataAmb,
-        city: info.place,
-        firstname: info.firstName,
-        lastname: info.lastName,
+        place: info.place,
+        firstName: info.firstName,
+        lastName: info.lastName,
         mail: info.mail,
         newsletter: info.newsletter
       }

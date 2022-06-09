@@ -716,13 +716,24 @@ async function genPDF(dataPDF: any) {
 
   async function writeSheets(){
     try {
+      console.log(dataPDF.firstName)
+      console.log(dataPDF.lastName)
+      console.log(dataPDF.mail)
+      console.log(dataPDF.place)
+      console.log(dataPDF.newsletter)
+      let newsletter: string
+      if(dataPDF.newsletter == false){
+        newsletter = "Nee"
+      } else {
+        newsletter = "Ja"
+      }
       return await axios.post('/.netlify/functions/writesheets',
       {
         Voornaam: dataPDF.firstName,
         Naam: dataPDF.lastName,
         Mail: dataPDF.mail,
         Stad: dataPDF.place,
-        Nieuwsbrief: dataPDF.newsletter
+        Nieuwsbrief: newsletter
       })
     } catch (error) {
       console.log(error)
