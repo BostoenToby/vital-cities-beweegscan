@@ -81,7 +81,7 @@ export default ({
         }}
       ></p>
       <Lottie
-        className="absolute bottom-[-30px] right-[-70px] m-auto h-10 w-20 -skew-x-12 laptopL:h-20 laptopL:w-40"
+        className="absolute bottom-[-15px] right-[-15px] m-auto h-10 w-20 -skew-x-12 tabletportrait:bottom-[-15px] tabletportrait:right-[-10px] tabletportrait:h-12 tabletportrait:w-22 laptopL:h-20 laptopL:w-40 laptopL:bottom-[-30px] laptopL:right-[-35px] laptopXL:bottom-[-35px] laptopXL:right-[-75px]"
         loop={true}
         animationData={animation}
       />
