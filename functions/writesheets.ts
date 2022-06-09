@@ -1,7 +1,7 @@
 const { GoogleSpreadsheet } = require('google-spreadsheet')
 
 exports.handler = async (event: any, context: any, callback: any) => {
-    try {
+    try { 
         const doc = new GoogleSpreadsheet(process.env.SPREADSHEET_ID_WRITE)
         await doc.useServiceAccountAuth({
             "type": process.env.PROJECT_TYPE,

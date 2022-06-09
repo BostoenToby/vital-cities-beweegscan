@@ -87,11 +87,18 @@ import walking from '../assets/animations/walking.json'
 import wrench from '../assets/animations/wrench.json'
 import youth from '../assets/animations/youth.json'
 import zorro from '../assets/animations/zorro.json'
+import error from '../assets/animations/error.json'
+import complete from '../assets/animations/complete.json'
+import { netlifyError } from '../interfaces/sendgrid'
 import Barchartgeneric from '../components/barchartgeneric'
 
 export default ({ location }: { location: any }) => {
   const [btnRapport, setBtnRapport] = useState<boolean>(false)
-
+  const [netlifyError, setNetlifyError] = useState<netlifyError>({
+    mail: false,
+    google: false,
+    changed: false
+  })
   const [hasMounted, setHasMounted] = useState(false)
   const [locationShort, setLocationShort] = useState<string>()
   const [intBronnen, setIntBronnen] = useState<intBron[]>()
@@ -983,6 +990,16 @@ export default ({ location }: { location: any }) => {
     setTyped(value)
   }
 
+  const netlifyFunctions = async (data: object) => {
+    const errors = await genPDF(data)
+    console.log({errors})
+    setNetlifyError((currentError: netlifyError) => {
+      currentError.mail = errors.mail,
+      currentError.google = errors.google
+      return { ...currentError }
+    })
+  }
+
   const checkInfo = async () => {
     let errorsMail = true
     let errorsFirstname = true
@@ -1045,8 +1062,8 @@ export default ({ location }: { location: any }) => {
     }
 
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
-      const dataAmb = getPdfData(allData, typed, 'Vlaams gewest')
-      const pdfData = {
+    const dataAmb = getPdfData(allData, typed, 'Vlaams gewest')
+      const netlifyData = {
         data: dataAmb,
         place: info.place,
         firstName: info.firstName,
@@ -1054,7 +1071,7 @@ export default ({ location }: { location: any }) => {
         mail: info.mail,
         newsletter: info.newsletter,
       }
-      genPDF(pdfData)
+      netlifyFunctions(netlifyData)
     }
   }
 
@@ -1256,27 +1273,7 @@ export default ({ location }: { location: any }) => {
       setWhys(waaromList)
       setGoodPracs(goodPracs)
       setTitles(titles)
-
-      // const testData = getDataForAmbition(allAmbitionData, locationShort)
-      // console.log(allAmbitionData)
       setAllData(allAmbitionData)
-      // const testData = getAllData(allAmbitionData)
-      // const testData = getDataForCityAndAmbition(
-      //   allAmbitionData,
-      //   locationShort,
-      //   'Kortrijk',
-      // )
-      // const graphData = getGraphData(
-      //   allAmbitionData,
-      //   locationShort,
-      //   'Vlaams Gewest',
-      //   '',
-      // )
-      // const pdfData = getPdfData(allAmbitionData, 'Vlaams Gewest', '')
-      // const testData = getAllDataForCity(allAmbitionData, 'Kortrijk')
-      // const cities = getAllCities(allAmbitionData)
-      // const testData = getPdfData(allAmbitionData, 'Kortrijk', 'Brugge')
-      // console.log(cities)
     }
   }, [locationShort])
 
@@ -2356,6 +2353,20 @@ export default ({ location }: { location: any }) => {
                   >
                     Maak rapport
                   </button>
+                  {netlifyError.changed === true && (netlifyError.mail === true && netlifyError.google === true) || (netlifyError.mail == true && netlifyError.google == false) || (netlifyError.mail == false && netlifyError.google == true) && (
+                    <Lottie
+                    className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
+                    loop={false}
+                    animationData={error}
+                  />
+                  )}
+                  {netlifyError.changed === true && netlifyError.mail === false && netlifyError.google === false && (
+                    <Lottie
+                    className="m-auto h-10 w-10 laptopL:h-20 laptopL:w-20"
+                    loop={false}
+                    animationData={complete}
+                  />
+                  )}
                 </div>
               </div>
             </section>

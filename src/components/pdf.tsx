@@ -1,16 +1,21 @@
 import * as React from 'react'
+import { useState } from 'react'
 import jsPDF from 'jspdf'
 import axios from 'axios'
 import { Buffer } from 'buffer';
+import { netlifyError } from '../interfaces/sendgrid';
 // import Base64 from 'base-64'
 
 async function genPDF(dataPDF: any) {
+  let errorNet: netlifyError =  {
+    mail: false,
+    google: false,
+    changed: false
+  }
   var page = 1
   const data = dataPDF.data
   const city1 = Object.keys(data)[0]
   const city2 = Object.keys(data)[1]
-
-  console.log(data[city1][0])
 
   function genRaleway() {
     doc.addFileToVFS(
@@ -700,7 +705,6 @@ async function genPDF(dataPDF: any) {
 
   async function sendgridMail(baseString: any) {
     try {
-      console.log(baseString)
       return await axios.post('/.netlify/functions/sendmail',
         {
           mail: dataPDF.mail,
@@ -709,6 +713,7 @@ async function genPDF(dataPDF: any) {
         } 
       )
     } catch (error) {
+      errorNet.mail = true
       console.log(error)
       console.log("it didn't work")
     }
@@ -716,11 +721,6 @@ async function genPDF(dataPDF: any) {
 
   async function writeSheets(){
     try {
-      console.log(dataPDF.firstName)
-      console.log(dataPDF.lastName)
-      console.log(dataPDF.mail)
-      console.log(dataPDF.place)
-      console.log(dataPDF.newsletter)
       let newsletter: string
       if(dataPDF.newsletter == false){
         newsletter = "Nee"
@@ -736,6 +736,7 @@ async function genPDF(dataPDF: any) {
         Nieuwsbrief: newsletter
       })
     } catch (error) {
+      errorNet.google = true
       console.log(error)
       console.log("writing to sheets didn't work")
     }
@@ -749,9 +750,11 @@ async function genPDF(dataPDF: any) {
       var base64 = dataUrl.split(',')[1]
       sendgridMail(base64)
       writeSheets()
+      errorNet.changed = true
     }
   }
   blobToBase64(blobPDF)
+  return(errorNet)
 }
 
 function pdf() {
