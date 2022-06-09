@@ -725,6 +725,7 @@ async function genPDF(dataPDF: any) {
       } else {
         newsletter = "Ja"
       }
+      errorNet.google = true
       return await axios.post('/.netlify/functions/writesheets',
       {
         Voornaam: dataPDF.firstName,
@@ -733,7 +734,6 @@ async function genPDF(dataPDF: any) {
         Stad: dataPDF.place,
         Nieuwsbrief: newsletter
       })
-      errorNet.google = true
     } catch (error) {
       errorNet.google = false
       console.log(error)
@@ -744,13 +744,13 @@ async function genPDF(dataPDF: any) {
   async function blobToBase64(blob: any) {
     var reader = new FileReader()
     reader.readAsDataURL(blob)
+    errorNet.changed = true
     reader.onload = async function(){
       var dataUrl: string = String(reader.result)
       var base64 = dataUrl.split(',')[1]
       await sendgridMail(base64)
       await writeSheets()
     }
-    errorNet.changed = true
   }
   await blobToBase64(blobPDF)
   console.log(errorNet)
