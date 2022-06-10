@@ -1505,8 +1505,8 @@ export default ({ location }: { location: any }) => {
                               className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center rounded-l-xl border-2 border-pink py-2 ${
                                 context.dark
                                   ? toggleBenches
-                                    ? 'border-gray bg-pinkDesat bg-opacity-90 text-white'
-                                    : 'border-gray hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
+                                    ? 'border-pinkDesat bg-pinkDesat bg-opacity-90 text-white'
+                                    : 'border-pink hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
                                   : toggleBenches
                                   ? 'border-lightGray bg-pink bg-opacity-90 text-white'
                                   : 'border-lightGray hover:bg-neutral hover:text-purple'
@@ -1518,8 +1518,8 @@ export default ({ location }: { location: any }) => {
                               className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center rounded-r-xl border-2 border-l-0 border-pink py-2 ${
                                 context.dark
                                   ? !toggleBenches
-                                    ? 'border-gray bg-pinkDesat bg-opacity-90 text-white'
-                                    : 'border-gray hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
+                                    ? 'border-pinkDesat bg-pinkDesat bg-opacity-90 text-white'
+                                    : 'border-pink hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
                                   : !toggleBenches
                                   ? 'border-lightGray bg-pink bg-opacity-90 text-white'
                                   : 'border-lightGray hover:bg-neutral hover:text-purple'
