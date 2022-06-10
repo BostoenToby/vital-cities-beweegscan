@@ -81,12 +81,3 @@ export default function RevPrac({
     </ThemeContext.Consumer>
   )
 }
-
-// query HeaderQuery {
-//   allImageSharp {
-//       nodes {
-//         gatsbyImageData
-//       }
-//   }
-// }
-// `
