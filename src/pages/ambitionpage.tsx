@@ -724,11 +724,6 @@ export default ({ location }: { location: any }) => {
     ambitie7bench4,
   ]
 
-  const getAnimation = (animation: string) => {
-    const animationChosen = require(`../assets/animations/${animation}.json`)
-    return animationChosen
-  }
-
   const handleSearch = (input: any) => {
     setSearchQuery(input)
     const results = searchList(allAmbitionData, input, false)
@@ -1776,9 +1771,7 @@ export default ({ location }: { location: any }) => {
                 })}
                 <div className="grid grid-cols-1 items-center justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
                   {whys &&
-                    whys.map((item: any) => {
-                      const animation = getAnimation(item.animation)
-                      return (
+                    whys.map((item: any) => (
                         <Textblock
                           text={item.text}
                           classes={
@@ -1789,12 +1782,12 @@ export default ({ location }: { location: any }) => {
                           animation={replaceColor(
                             '#000000',
                             '#492784',
-                            animation,
+                            require(`../assets/animations/${item.animation}.json`),
                           )}
                           animationColor="purple"
                         />
                       )
-                    })}
+                    )}
                 </div>
               </section>
             </FadeInSection>
@@ -1819,9 +1812,7 @@ export default ({ location }: { location: any }) => {
                 })}
                 <div className="grid grid-cols-1 justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptopL:grid-cols-4">
                   {hows &&
-                    hows.map((item: HoeWaarom) => {
-                      const animation = getAnimation(item.animation)
-                      return (
+                    hows.map((item: HoeWaarom) => (
                         <Textblock
                           text={item.text}
                           classes={`font-medium ${
@@ -1832,12 +1823,12 @@ export default ({ location }: { location: any }) => {
                           animation={replaceColor(
                             '#000000',
                             '#02866C',
-                            animation,
+                            require(`../assets/animations/${item.animation}.json`),
                           )}
                           animationColor="green"
                         />
                       )
-                    })}
+                    )}
                 </div>
               </section>
             </FadeInSection>

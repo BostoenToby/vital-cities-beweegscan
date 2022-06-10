@@ -23,7 +23,7 @@ export default ({
             <a href={link} className="mb-1 text-[17px] font-semibold underline">
               {title}
             </a>
-            <ExternalLink />
+            <ExternalLink className="flex-shrink-0"/>
           </div>
           <p
             className={`line-clamp-4 ${
