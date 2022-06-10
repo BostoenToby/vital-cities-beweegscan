@@ -1510,27 +1510,27 @@ export default ({ location }: { location: any }) => {
                             }}
                           >
                             <span
-                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center rounded-l-xl border-2 border-pink py-2 ${
+                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center rounded-l-xl border-2 py-2 ${
                                 context.dark
                                   ? toggleBenches
-                                    ? 'border-pinkDesat bg-pinkDesat bg-opacity-90 text-white'
-                                    : 'border-pink hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
+                                    ? 'border-pinkDesat border-opacity-90 bg-pinkDesat bg-opacity-90 text-white'
+                                    : 'border-pinkDesat hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
                                   : toggleBenches
-                                  ? 'border-lightGray bg-pink bg-opacity-90 text-white'
-                                  : 'border-lightGray hover:bg-neutral hover:text-purple'
+                                  ? 'border-pink border-opacity-90 bg-pink bg-opacity-90 text-white'
+                                  : 'border-pink hover:bg-neutral hover:text-purple'
                               }`}
                             >
                               Woon-werk/school
                             </span>
                             <span
-                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center rounded-r-xl border-2 border-l-0 border-pink py-2 ${
+                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center rounded-r-xl border-2 border-l-0 py-2 ${
                                 context.dark
                                   ? !toggleBenches
-                                    ? 'border-pinkDesat bg-pinkDesat bg-opacity-90 text-white'
-                                    : 'border-pink hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
+                                    ? 'border-pinkDesat border-opacity-90 bg-pinkDesat bg-opacity-90 text-white'
+                                    : 'border-pinkDesat hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
                                   : !toggleBenches
-                                  ? 'border-lightGray bg-pink bg-opacity-90 text-white'
-                                  : 'border-lightGray hover:bg-neutral hover:text-purple'
+                                  ? 'border-pink border-opacity-90 bg-pink bg-opacity-90 text-white'
+                                  : 'border-pink hover:bg-neutral hover:text-purple'
                               }`}
                             >
                               Vrije tijd
