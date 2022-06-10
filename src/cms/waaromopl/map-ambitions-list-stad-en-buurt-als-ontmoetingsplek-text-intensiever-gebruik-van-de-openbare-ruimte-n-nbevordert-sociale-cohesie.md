@@ -5,5 +5,5 @@ text: |-
   Intensiever gebruik van de **openbare ruimte**
 
   bevordert **sociale cohesie**
-animation: families
+animation: family
 ---
