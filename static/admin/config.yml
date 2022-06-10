@@ -111,7 +111,7 @@ collections:
           { label: "kind met bal", value: "playing_child" },
           { label: "glijbaan", value: "slide" },
           { label: "tennis", value: "tennis" },
-          { label: "urbansports", value: "urban" },
+          { label: "urban", value: "urbansports" },
           { label: "wandelaar & fietser", value: "walk_bike" }
           { label: "stad", value: "city" },
           { label: "concentratie", value: "concentration" },
