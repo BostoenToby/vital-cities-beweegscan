@@ -5,5 +5,5 @@ text: |-
   De tijd die kinderen doorbrengen op
 
   een plein is tussen **25%** en **54%** matig **intensief**
-animation: children
+animation: playing_child
 ---
