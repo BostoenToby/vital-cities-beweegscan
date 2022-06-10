@@ -42,7 +42,7 @@ export default function RevPrac({
     <ThemeContext.Consumer>
       {(context) => (
         <Link
-          className="opacity-90 hover:opacity-100"
+          className="opacity-100 hover:opacity-90"
           to="/detailspractice/"
           state={{
             practice: practice,

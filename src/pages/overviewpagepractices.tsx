@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../assets/tailwind.css'
 import TopNavigation from '../components/topnavigation'
 import { graphql, Link, useStaticQuery } from 'gatsby'
@@ -49,6 +49,8 @@ export default () => {
       }
     `,
   )
+
+  const contextB = useContext(ThemeContext)
 
   useEffect(() => {
     setHasMounted(true)
@@ -141,22 +143,23 @@ export default () => {
           let htmlResult = proBody
 
           links.forEach((link: any) => {
-            // htmlResult =
-            //   htmlResult.substring(0, link[1]) +
-            //   `<a href="${link[0].url}">${link[0].naam}</a>` +
-            //   htmlResult.substring(link[1] + link[2])
-
             if (link[1].includes('[')) {
               htmlResult = htmlResult.replace(
                 link[1],
-                `<a class="text-purple font-semibold underline" href="${
+                `<a class="${
+                  contextB.dark ? 'text-lightPurpleDesat' : 'text-purple js-switchcolor'
+                } font-semibold underline" href="${
                   link[0].url
                 }">${link[0].naam.replace(/\\#/, '#')}</a>`,
               )
             } else {
               htmlResult = htmlResult.replace(
                 link[1],
-                `<a class="text-purple font-semibold underline" href="${link[0]}">${link[0]}</a>`,
+                `<a class="${
+                  contextB.dark ? 'text-lightPurpleDesat' : 'text-purple'
+                } font-semibold underline js-switchcolor" href="${link[0]}">${
+                  link[0]
+                }</a>`,
               )
             }
           })
@@ -218,7 +221,7 @@ export default () => {
       setOriginalPractices(data)
       setCurrentPractices(data)
     }
-  }, [pracs])
+  }, [pracs, contextB])
 
   useEffect(() => {
     if (selected && originalPractices && originalPractices.length >= 1) {
