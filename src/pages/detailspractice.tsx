@@ -177,8 +177,8 @@ export default ({ location }: { location: any }) => {
                           <li
                             className={`mb-6 text-base font-semibold columnbreak:text-lg ${
                               context.dark
-                                ? 'text-lightPurpleDesat text-opacity-80'
-                                : 'text-purple '
+                                ? 'text-lightPurpleDesat text-opacity-80 hover:text-lightPurpleDesat'
+                                : 'text-purple hover:text-lightPurpleDesat '
                             }`}
                             key={i}
                           >

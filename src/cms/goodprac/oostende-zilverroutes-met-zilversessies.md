@@ -112,7 +112,7 @@ resources: >-
   # Meer weten
 
 
-  [www.oostende.be/zilverroutes](www.oostende.be/zilverroutes)
+  [https://www.oostende.be/zilverroutes](https://www.oostende.be/zilverroutes)
 
 
   [Decorte, A., Cuypers, L. & Pelgrims, E. (2020). Beweegroutes: Hype of hefboom voor oudere en minder mobiele burgers? \[White paper\]. Howest.] 
