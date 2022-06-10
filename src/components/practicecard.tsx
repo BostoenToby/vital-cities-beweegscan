@@ -41,7 +41,7 @@ export default ({ practice }: { practice: TestPractice }) => {
                   class="h-full w-full"
                 />
               ) : (
-                <div className="h-full w-full bg-gray opacity-50"/>
+                <div className="h-full w-full bg-gray opacity-50" />
               )}
               <div className=" flex flex-col font-poppins text-base font-semibold text-white gridbreak:relative gridbreak:bottom-5 gridbreak:left-4 gridbreak:flex-row">
                 <div
@@ -79,7 +79,15 @@ export default ({ practice }: { practice: TestPractice }) => {
                 : 'text-purple text-opacity-90'
             }`}
           >
-            <Link to="/detailspractice/" state={{ practice: practice }}>
+            <Link
+              className={`hover:text-lightPurpleDesat  ${
+                context.dark
+                  ? 'text-lightPurpleDesat text-opacity-80 hover:text-lightPurpleDesat'
+                  : 'text-purple hover:text-lightPurpleDesat'
+              }`}
+              to="/detailspractice/"
+              state={{ practice: practice }}
+            >
               Lees meer
             </Link>
             <div
