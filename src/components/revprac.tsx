@@ -73,9 +73,8 @@ export default function RevPrac({
           <p
             className={`pl-3 text-base line-clamp-3 tabletportrait:text-lg ${
               context.dark ? 'opacity-75' : ''
-            }`}
+            }`} dangerouslySetInnerHTML={{__html: `<div>${practice.paragrafen[0].body}</div>`}}
           >
-            {practice.paragrafen[0].body}
           </p>
         </Link>
       )}

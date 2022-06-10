@@ -105,20 +105,76 @@ export default () => {
         })
 
         paragraphs.forEach((paragraaf: string, index: number) => {
+          const proBody = paragraaf
+            .replace(/\n+$/, '')
+            .replace(/^\* /, '• ')
+            .replace(/\n\* /g, '\n\n • ')
+
+          let matches = [...proBody.matchAll(/\[.*?\] ?\(.*?\)/g)].concat([
+            ...proBody.matchAll(/\<.*?\>/g),
+          ])
+          const links: any[] = []
+
+          matches.forEach((m: any, index: number) => {
+            let result
+            if (m[0].includes('[')) {
+              const parts = m[0].split(/\] ?\(/)
+              console.log(parts)
+              let bron: Bron = {
+                naam: parts[0].replace(/^\[/, ''),
+                url: parts[1]
+                  .replace(/^<\*/, '')
+                  .replace(/^</, '')
+                  .replace(/\)$/, '')
+                  .replace(/>$/, ''),
+              }
+
+              result = [bron, m[0]]
+            } else {
+              result = [m[0].replace(/</, ' ').replace(/>/, ' '), m[0]]
+            }
+
+            links.push(result)
+          })
+
+          console.log(links)
+          let htmlResult = proBody
+
+          links.forEach((link: any) => {
+            // htmlResult =
+            //   htmlResult.substring(0, link[1]) +
+            //   `<a href="${link[0].url}">${link[0].naam}</a>` +
+            //   htmlResult.substring(link[1] + link[2])
+
+            if (link[1].includes('[')) {
+              htmlResult = htmlResult.replace(
+                link[1],
+                `<a class="text-purple font-semibold underline" href="${
+                  link[0].url
+                }">${link[0].naam.replace(/\\#/, '#')}</a>`,
+              )
+            } else {
+              htmlResult = htmlResult.replace(
+                link[1],
+                `<a class="text-purple font-semibold underline" href="${link[0]}">${link[0]}</a>`,
+              )
+            }
+          })
+
           const par: Paragraaf = {
             //@ts-ignore
             header: titles[index],
-            body: paragraaf
-              .replace(/\n+$/, '')
-              .replace(/^\* /, '• ')
-              .replace(/\n\* /g, '\n\n • ')
+            body: htmlResult
               .replace(/^\*\*/, ' <strong class="font-semibold">')
               .replace(/\*\*$/, ' </strong>')
               .replace(/ \*\*/g, ' <strong class="font-semibold">')
               .replace(/\n\*\*/g, '\n<strong class="font-semibold">')
               .replace(/\*\*\n/g, ' </strong>\n')
               .replace(/\*\* /g, ' </strong>')
-              .replace(/\*\*,/, ' </strong>,'),
+              .replace(/\*\*,/, ' </strong>,')
+              .replace(/\*\*\./, ' </strong>.')
+              .replace(/\*\*!/, ' </strong>!')
+              .replace(/\*\*\?/, ' </strong>?'),
           }
           parResults.push(par)
         })
