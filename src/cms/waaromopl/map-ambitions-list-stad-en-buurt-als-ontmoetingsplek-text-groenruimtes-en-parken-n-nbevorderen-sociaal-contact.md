@@ -5,5 +5,5 @@ text: |-
   Groenruimtes en parken 
 
   bevorderen sociaal **contact**
-animation: nature
+animation: park
 ---
