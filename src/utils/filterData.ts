@@ -72,18 +72,6 @@ export const getGraphData = (
   return combinedData
 }
 
-export const getAllData = (allData: any) => {
-  const results: Ambitie[] = []
-
-  ambitions.forEach((ambition: string) => {
-    const ambitionResults: Ambitie[] = getDataForAmbition(allData, ambition)
-
-    results.push({ label: ambition, benchmarks: ambitionResults[0].benchmarks })
-  })
-
-  return results
-}
-
 export const getAllDataForCity = (allData: any, city: string) => {
   const results: Ambitie[] = []
 
@@ -127,8 +115,17 @@ export const getDataForAmbition = (allData: any, ambition: string) => {
       label = edge[0].node.item
     }
 
+    let year = 0
     edge.forEach((node: any) => {
-      nodes.push(node.node)
+      if (node.node.jaar >= year) {
+        year = node.node.jaar
+      }
+    })
+
+    edge.forEach((node: any) => {
+      if (node.node.jaar == year) {
+        nodes.push(node.node)
+      }
     })
 
     benches.push({ label: label, data: nodes })
@@ -161,6 +158,7 @@ export const getDataForCityAndAmbition = (
     results[0].benchmarks.push(bench)
   })
 
+  console.log(results)
   return removeSpacesCities(results)
 }
 

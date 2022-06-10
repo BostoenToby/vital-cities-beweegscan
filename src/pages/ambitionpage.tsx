@@ -193,9 +193,7 @@ export default ({ location }: { location: any }) => {
             gatsbyImageData
           }
         }
-        ambitie1bench1: allGsVitalCitiesDataZoS03(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie1bench1: allGsVitalCitiesDataZoS03 {
           edges {
             node {
               jaar
@@ -209,9 +207,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie1bench2: allGsVitalCitiesDataMoS12(
-          filter: { jaar: { gte: "2020" } }
-        ) {
+        ambitie1bench2: allGsVitalCitiesDataMoS12 {
           edges {
             node {
               jaar
@@ -225,9 +221,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie1bench3: allGsVitalCitiesDataMoS07(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie1bench3: allGsVitalCitiesDataMoS07 {
           edges {
             node {
               jaar
@@ -239,9 +233,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie1bench4: allGsVitalCitiesDataMoS11(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie1bench4: allGsVitalCitiesDataMoS11 {
           edges {
             node {
               jaar
@@ -254,9 +246,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie2bench1: allGsVitalCitiesDataMoS17(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie2bench1: allGsVitalCitiesDataMoS17 {
           edges {
             node {
               jaar
@@ -268,9 +258,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie2bench2: allGsVitalCitiesDataMoS04(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie2bench2: allGsVitalCitiesDataMoS04 {
           edges {
             node {
               jaar
@@ -283,10 +271,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie2bench3: allGsVitalCitiesDataMoS09(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Autoluwe en autovrije zones" }
-          }
+          filter: { item: { eq: "Autoluwe en autovrije zones" } }
         ) {
           edges {
             node {
@@ -300,9 +285,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie2bench4: allGsVitalCitiesDataMoS09(
-          filter: { jaar: { gte: 2020 }, item: { eq: "Deelsystemen" } }
-        ) {
+        ambitie2bench4: allGsVitalCitiesDataMoS09 {
           edges {
             node {
               jaar
@@ -316,10 +299,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie2bench5: allGsVitalCitiesDataMoS13(
-          filter: {
-            jaar: { gte: "2020" }
-            item: { eq: "Lidmaatschap autodelen" }
-          }
+          filter: { item: { eq: "Lidmaatschap autodelen" } }
         ) {
           edges {
             node {
@@ -332,10 +312,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie2bench6: allGsVitalCitiesDataMoS13(
-          filter: {
-            jaar: { gte: "2020" }
-            item: { eq: "Lidmaatschap fietsdelen" }
-          }
+          filter: { item: { eq: "Lidmaatschap fietsdelen" } }
         ) {
           edges {
             node {
@@ -348,10 +325,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench1: allGsVitalCitiesDataMoS01(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Fietspaden in goede staat" }
-          }
+          filter: { item: { eq: "Fietspaden in goede staat" } }
         ) {
           edges {
             node {
@@ -366,10 +340,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench2: allGsVitalCitiesDataMoS01(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Straten en pleinen in goede staat" }
-          }
+          filter: { item: { eq: "Straten en pleinen in goede staat" } }
         ) {
           edges {
             node {
@@ -384,10 +355,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench3: allGsVitalCitiesDataMoS01(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Voetpaden in goede staat" }
-          }
+          filter: { item: { eq: "Voetpaden in goede staat" } }
         ) {
           edges {
             node {
@@ -401,9 +369,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie3bench4: allGsVitalCitiesDataMoS03(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie3bench4: allGsVitalCitiesDataMoS03 {
           edges {
             node {
               jaar
@@ -416,7 +382,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench5: allGsVitalCitiesDataMoS09(
-          filter: { jaar: { gte: 2020 }, item: { eq: "Fietsinfrastructuur" } }
+          filter: {item: { eq: "Fietsinfrastructuur" }}
         ) {
           edges {
             node {
@@ -430,9 +396,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie3bench6: allGsVitalCitiesDataMoS02(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie3bench6: allGsVitalCitiesDataMoS02 {
           edges {
             node {
               jaar
@@ -444,9 +408,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie3bench7: allGsVitalCitiesDataMoS06(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie3bench7: allGsVitalCitiesDataMoS06 {
           edges {
             node {
               jaar
@@ -458,9 +420,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie4bench1: allGsVitalCitiesDataCuS11(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie4bench1: allGsVitalCitiesDataCuS11 {
           edges {
             node {
               jaar
@@ -473,10 +433,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie4bench2: allGsVitalCitiesDataCuS10(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Sporten in eigen gemeente" }
-          }
+          filter: { item: { eq: "Sporten in eigen gemeente" } }
         ) {
           edges {
             node {
@@ -491,10 +448,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie4bench3: allGsVitalCitiesDataCuS10(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Sporten in andere gemeente" }
-          }
+          filter: { item: { eq: "Sporten in andere gemeente" } }
         ) {
           edges {
             node {
@@ -508,9 +462,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie4bench4: allGsVitalCitiesDataCuS13(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie4bench4: allGsVitalCitiesDataCuS13 {
           edges {
             node {
               jaar
@@ -523,10 +475,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie4bench5: allGsVitalCitiesDataCuS12(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Tevredenheid over sportvoorzieningen" }
-          }
+          filter: { item: { eq: "Tevredenheid over sportvoorzieningen" } }
         ) {
           edges {
             node {
@@ -540,9 +489,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie4bench6: allGsVitalCitiesDataCuS07(
-          filter: { jaar: { gte: "2020" } }
-        ) {
+        ambitie4bench6: allGsVitalCitiesDataCuS07 {
           edges {
             node {
               jaar
@@ -553,10 +500,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie5bench1: allGsVitalCitiesDataCuS24(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Voldoende geschikte plekken voor jeugd" }
-          }
+          filter: { item: { eq: "Voldoende geschikte plekken voor jeugd" } }
         ) {
           edges {
             node {
@@ -572,7 +516,6 @@ export default ({ location }: { location: any }) => {
         }
         ambitie5bench2: allGsVitalCitiesDataCuS24(
           filter: {
-            jaar: { gte: 2020 }
             item: {
               eq: "Voldoende speelvoorzieningen voor kinderen en jongeren"
             }
@@ -590,9 +533,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie5bench3: allGsVitalCitiesDataCuS21(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie5bench3: allGsVitalCitiesDataCuS21 {
           edges {
             node {
               jaar
@@ -604,9 +545,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie6bench1: allGsVitalCitiesDataSaS18(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie6bench1: allGsVitalCitiesDataSaS18 {
           edges {
             node {
               jaar
@@ -619,10 +558,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie6bench2: allGsVitalCitiesDataSaS17(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Voldoende ontmoetingsplekken" }
-          }
+          filter: { item: { eq: "Voldoende ontmoetingsplekken" } }
         ) {
           edges {
             node {
@@ -637,7 +573,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie6bench3: allGsVitalCitiesDataSaS17(
-          filter: { jaar: { gte: 2020 }, item: { eq: "Voldoende rustplekken" } }
+          filter: { item: { eq: "Voldoende rustplekken" } }
         ) {
           edges {
             node {
@@ -653,7 +589,6 @@ export default ({ location }: { location: any }) => {
         }
         ambitie7bench1: allGsVitalCitiesDataKlS01(
           filter: {
-            jaar: { gte: 2020 }
             item: { eq: "Bezoek park, bos, groenzone in andere gemeente" }
           }
         ) {
@@ -672,7 +607,6 @@ export default ({ location }: { location: any }) => {
         }
         ambitie7bench2: allGsVitalCitiesDataKlS01(
           filter: {
-            jaar: { gte: 2020 }
             item: { eq: "Bezoek park, bos, groenzone in eigen gemeente" }
           }
         ) {
@@ -689,9 +623,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie7bench3: allGsVitalCitiesDataKlS02(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie7bench3: allGsVitalCitiesDataKlS02 {
           edges {
             node {
               jaar
@@ -703,9 +635,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie7bench4: allGsVitalCitiesDataKlS03(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie7bench4: allGsVitalCitiesDataKlS03 {
           edges {
             node {
               jaar
@@ -800,7 +730,6 @@ export default ({ location }: { location: any }) => {
 
   const netlifyFunctions = async (data: object) => {
     const errors: netlifyError = await genPDF(data)
-    console.log(errors)
     setNetlifyError((currentError: netlifyError) => {
       currentError.google = errors.google
       currentError.changed = errors.changed
@@ -879,7 +808,6 @@ export default ({ location }: { location: any }) => {
         mail: info.mail,
         newsletter: info.newsletter,
       }
-      console.log('netlify functions going to do')
       netlifyFunctions(netlifyData)
     }
   }
@@ -940,7 +868,6 @@ export default ({ location }: { location: any }) => {
             let result
             if (m[0].includes('[')) {
               const parts = m[0].split(/\] ?\(/)
-              console.log(parts)
               let bron: Bron = {
                 naam: parts[0].replace(/^\[/, ''),
                 url: parts[1]
@@ -958,7 +885,6 @@ export default ({ location }: { location: any }) => {
             links.push(result)
           })
 
-          console.log(links)
           let htmlResult = proBody
 
           links.forEach((link: any) => {
@@ -1834,22 +1760,21 @@ export default ({ location }: { location: any }) => {
                 <div className="grid grid-cols-1 items-center justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
                   {whys &&
                     whys.map((item: any) => (
-                        <Textblock
-                          text={item.text}
-                          classes={
-                            context.dark
-                              ? 'bg-lightPurpleDesat bg-opacity-[0.08] text-lightPurpleDesat'
-                              : 'bg-lightPink text-purple '
-                          }
-                          animation={replaceColor(
-                            '#000000',
-                            '#492784',
-                            require(`../assets/animations/${item.animation}.json`),
-                          )}
-                          animationColor="purple"
-                        />
-                      )
-                    )}
+                      <Textblock
+                        text={item.text}
+                        classes={
+                          context.dark
+                            ? 'bg-lightPurpleDesat bg-opacity-[0.08] text-lightPurpleDesat'
+                            : 'bg-lightPink text-purple '
+                        }
+                        animation={replaceColor(
+                          '#000000',
+                          '#492784',
+                          require(`../assets/animations/${item.animation}.json`),
+                        )}
+                        animationColor="purple"
+                      />
+                    ))}
                 </div>
               </section>
             </FadeInSection>
@@ -1862,35 +1787,34 @@ export default ({ location }: { location: any }) => {
                       item.ambitions.includes('Algemene ambitie'))
                   ) {
                     return (
-                        <h2
-                          className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                            context.dark ? 'opacity-90' : ''
-                          }`}
-                        >
-                          {item.title}
-                        </h2>
+                      <h2
+                        className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                          context.dark ? 'opacity-90' : ''
+                        }`}
+                      >
+                        {item.title}
+                      </h2>
                     )
                   }
                 })}
                 <div className="grid grid-cols-1 justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptopL:grid-cols-4">
                   {hows &&
                     hows.map((item: HoeWaarom) => (
-                        <Textblock
-                          text={item.text}
-                          classes={`font-medium ${
-                            context.dark
-                              ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
-                              : 'bg-lightGreen text-green'
-                          }`}
-                          animation={replaceColor(
-                            '#000000',
-                            '#02866C',
-                            require(`../assets/animations/${item.animation}.json`),
-                          )}
-                          animationColor="green"
-                        />
-                      )
-                    )}
+                      <Textblock
+                        text={item.text}
+                        classes={`font-medium ${
+                          context.dark
+                            ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
+                            : 'bg-lightGreen text-green'
+                        }`}
+                        animation={replaceColor(
+                          '#000000',
+                          '#02866C',
+                          require(`../assets/animations/${item.animation}.json`),
+                        )}
+                        animationColor="green"
+                      />
+                    ))}
                 </div>
               </section>
             </FadeInSection>
@@ -2041,7 +1965,7 @@ export default ({ location }: { location: any }) => {
                     <input
                       type="text"
                       id="Stad"
-                      className={`peer w-48 border-2 rounded  px-2 py-1 outline-none  ${
+                      className={`peer w-48 rounded border-2  px-2 py-1 outline-none  ${
                         context.dark
                           ? 'border-lightGray bg-dark text-white focus-within:border-lightPurpleDesat hover:border-lightPurpleDesat active:border-lightPurpleDesat'
                           : ' border-lightPink text-dark focus-within:border-pink hover:border-pink active:border-pink'
@@ -2190,7 +2114,7 @@ export default ({ location }: { location: any }) => {
                   <div className="flex items-center">
                     <button
                       id="BtnRapport"
-                      className={`z-0 mt-8 border-2 rounded px-2 py-1 text-white  focus:font-semibold ${
+                      className={`z-0 mt-8 rounded border-2 px-2 py-1 text-white  focus:font-semibold ${
                         context.dark
                           ? 'border-pinkDesat bg-pinkDesat hover:bg-opacity-0 hover:text-pinkDesat focus:bg-white focus:bg-opacity-0 focus:text-pinkDesat'
                           : 'border-pink bg-pink hover:bg-white hover:text-pink focus:bg-white focus:text-pink'
