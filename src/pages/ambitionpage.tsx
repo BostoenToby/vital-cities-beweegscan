@@ -2255,12 +2255,12 @@ export default ({ location }: { location: any }) => {
                     <input
                       type="text"
                       id="Stad"
-                      className={`peer w-48 border-2   px-2 py-1 outline-none  ${
+                      className={`peer w-48 border-2 rounded  px-2 py-1 outline-none  ${
                         context.dark
                           ? 'border-lightGray bg-dark text-white focus-within:border-lightPurpleDesat hover:border-lightPurpleDesat active:border-lightPurpleDesat'
                           : ' border-lightPink text-dark focus-within:border-pink hover:border-pink active:border-pink'
                       }`}
-                      placeholder="stad/gemeente"
+                      placeholder="Stad/gemeente"
                       value={typed}
                       onChange={(ev: any) => {
                         setTyped(ev.target.value)
@@ -2359,6 +2359,7 @@ export default ({ location }: { location: any }) => {
 
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
                     <input
+                      className='form-checkbox rounded text-pink'
                       type="checkbox"
                       name="credentials"
                       id="credentials"
@@ -2381,6 +2382,7 @@ export default ({ location }: { location: any }) => {
                   </div>
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
                     <input
+                      className='form-checkbox rounded text-pink'
                       type="checkbox"
                       name="news"
                       id="news"
@@ -2404,7 +2406,7 @@ export default ({ location }: { location: any }) => {
                   <div className="flex items-center">
                     <button
                       id="BtnRapport"
-                      className={`z-0 mt-8 border-2  px-2 py-1 text-white  focus:font-semibold ${
+                      className={`z-0 mt-8 border-2 rounded px-2 py-1 text-white  focus:font-semibold ${
                         context.dark
                           ? 'border-pinkDesat bg-pinkDesat hover:bg-opacity-0 hover:text-pinkDesat focus:bg-white focus:bg-opacity-0 focus:text-pinkDesat'
                           : 'border-pink bg-pink hover:bg-white hover:text-pink focus:bg-white focus:text-pink'
