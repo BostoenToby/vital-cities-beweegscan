@@ -1061,7 +1061,7 @@ export default ({ location }: { location: any }) => {
     }
 
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
-    const dataAmb = getPdfData(allData, typed, 'Vlaams gewest')
+      const dataAmb = getPdfData(allData, typed, 'Vlaams gewest')
       const netlifyData = {
         data: dataAmb,
         place: info.place,
@@ -1114,20 +1114,47 @@ export default ({ location }: { location: any }) => {
         })
 
         paragraphs.forEach((paragraaf: string, index: number) => {
+          const proBody = paragraaf
+            .replace(/\n+$/, '')
+            .replace(/^\* /, '• ')
+            .replace(/\n\* /g, '\n\n • ')
+            .replace(/^\*\*/, ' <strong class="font-semibold">')
+            .replace(/\*\*$/, ' </strong>')
+            .replace(/ \*\*/g, ' <strong class="font-semibold">')
+            .replace(/\n\*\*/g, '\n<strong class="font-semibold">')
+            .replace(/\*\*\n/g, ' </strong>\n')
+            .replace(/\*\* /g, ' </strong>')
+            .replace(/\*\*,/, ' </strong>,')
+            .replace(/\*\*\./, ' </strong>.')
+            .replace(/\*\*!/, ' </strong>!')
+            .replace(/\*\*\?/, ' </strong>?')
+
+          let matches = [...proBody.matchAll(/\[.*?\] ?\(.*?\)/g)]
+          const links: any[] = []
+
+          matches.forEach((m: any, index: number) => {
+            const parts = m[0].split(/\] ?\(/)
+            console.log(parts)
+            let bron: Bron = {
+              naam: parts[0].replace(/^\[/, ''),
+              url: parts[1]
+                .replace(/^<\*/, '')
+                .replace(/\)$/, '')
+                .replace(/>$/, ''),
+            }
+
+            const result = [bron, m.index, m[0].length]
+            links.push(result)
+          })
+
+          console.log(links)
+
+          const bodyResult = ''
+
           const par: Paragraaf = {
             //@ts-ignore
             header: titles[index],
-            body: paragraaf
-              .replace(/\n+$/, '')
-              .replace(/^\* /, '• ')
-              .replace(/\n\* /g, '\n\n • ')
-              .replace(/^\*\*/, ' <strong class="font-semibold">')
-              .replace(/\*\*$/, ' </strong>')
-              .replace(/ \*\*/g, ' <strong class="font-semibold">')
-              .replace(/\n\*\*/g, '\n<strong class="font-semibold">')
-              .replace(/\*\*\n/g, ' </strong>\n')
-              .replace(/\*\* /g, ' </strong>')
-              .replace(/\*\*,/, ' </strong>,'),
+            body: bodyResult,
           }
           parResults.push(par)
         })
