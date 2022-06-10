@@ -112,7 +112,7 @@ collections:
           { label: "glijbaan", value: "slide" },
           { label: "tennis", value: "tennis" },
           { label: "urban", value: "urbansports" },
-          { label: "wandelaar & fietser", value: "walk_bike" }
+          { label: "wandelaar & fietser", value: "walk_bike" },
           { label: "stad", value: "city" },
           { label: "concentratie", value: "concentration" },
           { label: "crimineel", value: "criminal" },
