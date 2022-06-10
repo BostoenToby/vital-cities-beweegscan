@@ -285,7 +285,9 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie2bench4: allGsVitalCitiesDataMoS09 {
+        ambitie2bench4: allGsVitalCitiesDataMoS09(
+          filter: { item: { eq: "Deelsystemen" } }
+        ) {
           edges {
             node {
               jaar
@@ -382,7 +384,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench5: allGsVitalCitiesDataMoS09(
-          filter: {item: { eq: "Fietsinfrastructuur" }}
+          filter: { item: { eq: "Fietsinfrastructuur" } }
         ) {
           edges {
             node {
@@ -973,6 +975,9 @@ export default ({ location }: { location: any }) => {
     let titles: ambitionTitle[] = []
 
     if (locationShort) {
+      console.log(
+        getDataForCityAndAmbition(allAmbitionData, locationShort, 'Nevele'),
+      )
       for (let item of cms.nodes) {
         if (item.frontmatter.ambitions == null) {
           item.frontmatter.ambitions = ['']
@@ -1497,7 +1502,7 @@ export default ({ location }: { location: any }) => {
                             }}
                           >
                             <span
-                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center border-2 border-pink py-2 rounded-l-xl ${
+                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center rounded-l-xl border-2 border-pink py-2 ${
                                 context.dark
                                   ? toggleBenches
                                     ? 'border-gray bg-pinkDesat bg-opacity-90 text-white'
@@ -1510,7 +1515,7 @@ export default ({ location }: { location: any }) => {
                               Woon-werk/school
                             </span>
                             <span
-                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center border-2 border-pink border-l-0 py-2 rounded-r-xl ${
+                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center rounded-r-xl border-2 border-l-0 border-pink py-2 ${
                                 context.dark
                                   ? !toggleBenches
                                     ? 'border-gray bg-pinkDesat bg-opacity-90 text-white'
@@ -1535,33 +1540,39 @@ export default ({ location }: { location: any }) => {
                                 const transportData1: PercentageData[] = []
                                 const transportData2: PercentageData[] = []
 
-                                bench.data.forEach(
-                                  (item: any, index: number) => {
-                                    const p1: PercentageData = {
-                                      label: item.item,
-                                      percentage: item.vaak_altijd____,
-                                    }
-                                    transportData1.push(p1)
-
-                                    let p2: PercentageData = {
-                                      label: '',
-                                      percentage: '',
-                                    }
-                                    if (graphData[1][3]) {
-                                      p2 = {
-                                        label: graphData[1][3].data[index].item,
-                                        percentage:
-                                          graphData[1][3].data[index]
-                                            .vaak_altijd____,
+                                console.log(bench)
+                                if (bench.data.length >= 1) {
+                                  bench.data.forEach(
+                                    (item: any, index: number) => {
+                                      const p1: PercentageData = {
+                                        label: item.item,
+                                        percentage: item.vaak_altijd____,
                                       }
-                                      transportData2.push(p2)
-                                    }
-                                  },
-                                )
+                                      transportData1.push(p1)
 
-                                return transportData1.map(
-                                  (p: PercentageData, index: number) => {
-                                    return [
+                                      let p2: PercentageData = {
+                                        label: '',
+                                        percentage: '',
+                                      }
+                                      if (
+                                        graphData[1].length >= 1 &&
+                                        graphData[1][3] &&
+                                        graphData[1][3].data.length >= 1
+                                      ) {
+                                        p2 = {
+                                          label:
+                                            graphData[1][3].data[index].item,
+                                          percentage:
+                                            graphData[1][3].data[index]
+                                              .vaak_altijd____,
+                                        }
+                                        transportData2.push(p2)
+                                      }
+                                    },
+                                  )
+
+                                  return transportData1.map(
+                                    (p: PercentageData, index: number) => [
                                       <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
                                         {p.label}
                                       </label>,
@@ -1582,114 +1593,125 @@ export default ({ location }: { location: any }) => {
                                           }
                                         />
                                       </div>,
-                                    ]
-                                  },
-                                )
+                                    ],
+                                  )
+                                } else {
+                                  return <p>geen data beschikbaar</p>
+                                }
                               } else if (
                                 bench.label ==
                                   'Verplaatsingen woon-werk/woon-school: dominant vervoersmiddel' &&
                                 toggleBenches
                               ) {
-                                return [
-                                  <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
-                                    Auto
-                                  </label>,
-                                  <div
-                                    className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
-                                      context.dark
-                                        ? 'border-lightGray'
-                                        : 'border-dark'
-                                    }`}
-                                  >
-                                    <Barchartgeneric
-                                      percentage1={bench.data[0].auto____}
-                                      percentage2={
-                                        graphData[1][1]
-                                          ? graphData[1][1].data[0].auto____
-                                          : null
-                                      }
-                                    />
-                                  </div>,
-                                  <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
-                                    Openbaar vervoer
-                                  </label>,
-                                  <div
-                                    className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
-                                      context.dark
-                                        ? 'border-lightGray'
-                                        : 'border-dark'
-                                    }`}
-                                  >
-                                    <Barchartgeneric
-                                      percentage1={
-                                        bench.data[0].openbaarVervoer____
-                                      }
-                                      percentage2={
-                                        graphData[1][1]
-                                          ? graphData[1][1].data[0]
-                                              .openbaarVervoer____
-                                          : null
-                                      }
-                                    />
-                                  </div>,
-                                  <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
-                                    Fiets
-                                  </label>,
-                                  <div
-                                    className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
-                                      context.dark
-                                        ? 'border-lightGray'
-                                        : 'border-dark'
-                                    }`}
-                                  >
-                                    <Barchartgeneric
-                                      percentage1={bench.data[0].fiets____}
-                                      percentage2={
-                                        graphData[1][1]
-                                          ? graphData[1][1].data[0].fiets____
-                                          : null
-                                      }
-                                    />
-                                  </div>,
-                                  <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
-                                    Te voet
-                                  </label>,
-                                  <div
-                                    className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
-                                      context.dark
-                                        ? 'border-lightGray'
-                                        : 'border-dark'
-                                    }`}
-                                  >
-                                    <Barchartgeneric
-                                      percentage1={bench.data[0].teVoet____}
-                                      percentage2={
-                                        graphData[1][1]
-                                          ? graphData[1][1].data[0].teVoet____
-                                          : null
-                                      }
-                                    />
-                                  </div>,
-                                  <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
-                                    Andere
-                                  </label>,
-                                  <div
-                                    className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
-                                      context.dark
-                                        ? 'border-lightGray'
-                                        : 'border-dark'
-                                    }`}
-                                  >
-                                    <Barchartgeneric
-                                      percentage1={bench.data[0].andere____}
-                                      percentage2={
-                                        graphData[1][1]
-                                          ? graphData[1][1].data[0].andere____
-                                          : null
-                                      }
-                                    />
-                                  </div>,
-                                ]
+                                if (bench.data.length >= 1) {
+                                  return [
+                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                      Auto
+                                    </label>,
+                                    <div
+                                      className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                                        context.dark
+                                          ? 'border-lightGray'
+                                          : 'border-dark'
+                                      }`}
+                                    >
+                                      <Barchartgeneric
+                                        percentage1={bench.data[0].auto____}
+                                        percentage2={
+                                          graphData[1][1] &&
+                                          graphData[1][1].data.length >= 1
+                                            ? graphData[1][1].data[0].auto____
+                                            : null
+                                        }
+                                      />
+                                    </div>,
+                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                      Openbaar vervoer
+                                    </label>,
+                                    <div
+                                      className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                                        context.dark
+                                          ? 'border-lightGray'
+                                          : 'border-dark'
+                                      }`}
+                                    >
+                                      <Barchartgeneric
+                                        percentage1={
+                                          bench.data[0].openbaarVervoer____
+                                        }
+                                        percentage2={
+                                          graphData[1][1] &&
+                                          graphData[1][1].data.length >= 1
+                                            ? graphData[1][1].data[0]
+                                                .openbaarVervoer____
+                                            : null
+                                        }
+                                      />
+                                    </div>,
+                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                      Fiets
+                                    </label>,
+                                    <div
+                                      className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                                        context.dark
+                                          ? 'border-lightGray'
+                                          : 'border-dark'
+                                      }`}
+                                    >
+                                      <Barchartgeneric
+                                        percentage1={bench.data[0].fiets____}
+                                        percentage2={
+                                          graphData[1][1] &&
+                                          graphData[1][1].data.length >= 1
+                                            ? graphData[1][1].data[0].fiets____
+                                            : null
+                                        }
+                                      />
+                                    </div>,
+                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                      Te voet
+                                    </label>,
+                                    <div
+                                      className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                                        context.dark
+                                          ? 'border-lightGray'
+                                          : 'border-dark'
+                                      }`}
+                                    >
+                                      <Barchartgeneric
+                                        percentage1={bench.data[0].teVoet____}
+                                        percentage2={
+                                          graphData[1][1] &&
+                                          graphData[1][1].data.length >= 1
+                                            ? graphData[1][1].data[0].teVoet____
+                                            : null
+                                        }
+                                      />
+                                    </div>,
+                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                      Andere
+                                    </label>,
+                                    <div
+                                      className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                                        context.dark
+                                          ? 'border-lightGray'
+                                          : 'border-dark'
+                                      }`}
+                                    >
+                                      <Barchartgeneric
+                                        percentage1={bench.data[0].andere____}
+                                        percentage2={
+                                          graphData[1][1] &&
+                                          graphData[1][1].data.length >= 1
+                                            ? graphData[1][1].data[0].andere____
+                                            : null
+                                        }
+                                      />
+                                    </div>,
+                                  ]
+                                } else {
+                                  return <p>geen data beschikbaar</p>
+                                }
                               } else {
                                 return null
                               }

@@ -20,7 +20,7 @@ export default ({
       let maand = parseInt(benchCity1.data[0].meerdereKerenPerMaand____)
       percentage1 = `${nooit + maand}%`
 
-      if (benchCity2) {
+      if (benchCity2 && benchCity2.data.length >= 1) {
         nooit = parseInt(benchCity2.data[0].nooit_minderDan1KeerPerMaand____)
         maand = parseInt(benchCity2.data[0].meerdereKerenPerMaand____)
         percentage2 = `${nooit + maand}%`
@@ -30,7 +30,7 @@ export default ({
       let andere = parseInt(benchCity1.data[0].andere____)
       percentage1 = `${auto + andere}%`
 
-      if (benchCity2) {
+      if (benchCity2 && benchCity2.data.length >= 1) {
         auto = parseInt(benchCity2.data[0].auto____)
         andere = parseInt(benchCity2.data[0].andere____)
         percentage2 = `${auto + andere}%`
@@ -38,7 +38,7 @@ export default ({
     } else if (benchCity1.data[0].hasOwnProperty('oneens____')) {
       percentage1 = benchCity1.data[0].oneens____
 
-      if (benchCity2) {
+      if (benchCity2 && benchCity2.data.length >= 1) {
         percentage2 = benchCity2.data[0].oneens____
       }
     } else if (
@@ -48,7 +48,7 @@ export default ({
       let maand = parseInt(benchCity1.data[0].minstensMaandelijks____)
       percentage1 = `${nooit + maand}%`
 
-      if (benchCity2) {
+      if (benchCity2 && benchCity2.data.length >= 1) {
         nooit = parseInt(benchCity2.data[0].nooit_eenUitzonderlijkeKeer____)
         maand = parseInt(benchCity2.data[0].minstensMaandelijks____)
         percentage2 = `${nooit + maand}%`
@@ -56,25 +56,25 @@ export default ({
     } else if (benchCity1.data[0].hasOwnProperty('resultaatGemeente')) {
       percentage1 = `${100 - parseInt(benchCity1.data[0].resultaatGemeente)}%`
 
-      if (benchCity2) {
+      if (benchCity2 && benchCity2.data.length >= 1) {
         percentage2 = `${100 - parseInt(benchCity2.data[0].resultaatGemeente)}%`
       }
     } else if (benchCity1.data[0].hasOwnProperty('nooit____')) {
       percentage1 = `${benchCity1.data[0].nooit____}`
 
-      if (benchCity2) {
+      if (benchCity2 && benchCity2.data.length >= 1) {
         percentage2 = `${benchCity2.data[0].nooit____}`
       }
     } else if (benchCity1.data[0].hasOwnProperty('ontevreden____')) {
       percentage1 = `${benchCity1.data[0].ontevreden____}`
 
-      if (benchCity2) {
+      if (benchCity2 && benchCity2.data.length >= 1) {
         percentage2 = `${benchCity2.data[0].ontevreden____}`
       }
     } else if (benchCity1.data[0].hasOwnProperty('percentage')) {
       percentage1 = `${100 - parseInt(benchCity1.data[0].percentage)}%`
 
-      if (benchCity2) {
+      if (benchCity2 && benchCity2.data.length >= 1) {
         percentage2 = `${100 - parseInt(benchCity2.data[0].percentage)}%`
       }
     }
@@ -118,7 +118,7 @@ export default ({
               </div>
             </div>
             {/* enkel tweede bar indien tweede gemeente geselecteerd */}
-            {benchCity2 ? (
+            {benchCity2 && benchCity2.data.length >= 1 ? (
               <div className="mt-2 flex h-8 flex-row">
                 <div
                   className={`h-full w-[${percentage2}] ${
