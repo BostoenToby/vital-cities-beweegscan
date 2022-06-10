@@ -1497,11 +1497,11 @@ export default ({ location }: { location: any }) => {
                             }}
                           >
                             <span
-                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center border-2 border-pink py-2 rounded-l-xl ${
+                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center border-2 py-2 rounded-l-xl ${
                                 context.dark
                                   ? toggleBenches
-                                    ? 'border-gray bg-pinkDesat bg-opacity-90 text-white'
-                                    : 'border-gray hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
+                                    ? 'border-pinkDesat bg-pinkDesat bg-opacity-90 text-white'
+                                    : 'border-pink hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
                                   : toggleBenches
                                   ? 'border-lightGray bg-pink bg-opacity-90 text-white'
                                   : 'border-lightGray hover:bg-neutral hover:text-purple'
@@ -1510,11 +1510,11 @@ export default ({ location }: { location: any }) => {
                               Woon-werk/school
                             </span>
                             <span
-                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center border-2 border-pink border-l-0 py-2 rounded-r-xl ${
+                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center border-2 border-l-0 py-2 rounded-r-xl ${
                                 context.dark
                                   ? !toggleBenches
-                                    ? 'border-gray bg-pinkDesat bg-opacity-90 text-white'
-                                    : 'border-gray hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
+                                    ? 'border-pinkDesat bg-pinkDesat bg-opacity-90 text-white'
+                                    : 'border-pink hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
                                   : !toggleBenches
                                   ? 'border-lightGray bg-pink bg-opacity-90 text-white'
                                   : 'border-lightGray hover:bg-neutral hover:text-purple'
