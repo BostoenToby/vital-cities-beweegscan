@@ -104,7 +104,7 @@ export default ({ location }: { location: any }) => {
   const [btnRapport, setBtnRapport] = useState<boolean>(false)
   const [netlifyError, setNetlifyError] = useState<netlifyError>({
     google: true,
-    changed: false
+    changed: false,
   })
   const [hasMounted, setHasMounted] = useState(false)
   const [locationShort, setLocationShort] = useState<string>()
@@ -1109,14 +1109,17 @@ export default ({ location }: { location: any }) => {
         mail: info.mail,
         newsletter: info.newsletter,
       }
-      console.log("netlify functions going to do")
+      console.log('netlify functions going to do')
       netlifyFunctions(netlifyData)
     }
   }
 
   useEffect(() => {
-    let list = searchList(allAmbitionData, typed, true)
-    setSuggestions(list)
+    // const timeOutId = setTimeout(
+    setSuggestions(searchList(allAmbitionData, typed, true))
+    //   1000,
+    // )
+    // return () => clearTimeout(timeOutId)
   }, [typed])
 
   useEffect(() => {
@@ -2261,12 +2264,6 @@ export default ({ location }: { location: any }) => {
                       value={typed}
                       onChange={(ev: any) => {
                         setTyped(ev.target.value)
-                        let list = searchList(
-                          allAmbitionData,
-                          ev.target.value,
-                          true,
-                        )
-                        setSuggestions(list)
                       }}
                       onInput={(e: React.FormEvent<HTMLInputElement>) =>
                         setInfo((u: PersonalInfo) => {
@@ -2420,21 +2417,23 @@ export default ({ location }: { location: any }) => {
                     >
                       Maak rapport
                     </button>
-                    <div className="mt-8 ml-8 z-10">
-                      {netlifyError.changed == true && netlifyError.google == false && (
-                        <Lottie
-                        className="m-auto h-4 w-4 laptopL:h-8 laptopL:w-8"
-                        loop={false}
-                        animationData={erroranim}
-                        />
-                      )}
-                      {netlifyError.changed == true && netlifyError.google == true && (
-                        <Lottie
-                        className="m-auto h-4 w-4 laptopL:h-8 laptopL:w-8"
-                        loop={false}
-                        animationData={complete}
-                        />
-                      )}
+                    <div className="z-10 mt-8 ml-8">
+                      {netlifyError.changed == true &&
+                        netlifyError.google == false && (
+                          <Lottie
+                            className="m-auto h-4 w-4 laptopL:h-8 laptopL:w-8"
+                            loop={false}
+                            animationData={erroranim}
+                          />
+                        )}
+                      {netlifyError.changed == true &&
+                        netlifyError.google == true && (
+                          <Lottie
+                            className="m-auto h-4 w-4 laptopL:h-8 laptopL:w-8"
+                            loop={false}
+                            animationData={complete}
+                          />
+                        )}
                     </div>
                   </div>
                 </div>

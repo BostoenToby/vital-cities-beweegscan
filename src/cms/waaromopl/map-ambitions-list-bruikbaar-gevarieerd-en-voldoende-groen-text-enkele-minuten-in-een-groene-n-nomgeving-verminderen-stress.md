@@ -5,5 +5,5 @@ text: |-
   Enkele minuten in een groene 
 
   omgeving **verminderen stress**
-animation: nature
+animation: flowers
 ---
