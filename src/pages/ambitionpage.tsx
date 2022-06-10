@@ -52,6 +52,7 @@ import Barchartgeneric from '../components/barchartgeneric'
 
 export default ({ location }: { location: any }) => {
   const [btnRapport, setBtnRapport] = useState<boolean>(false)
+  const [checkNews, setCheckNews] = useState<boolean>(false)
   const [netlifyError, setNetlifyError] = useState<netlifyError>({
     google: true,
     changed: false,
@@ -2067,8 +2068,9 @@ export default ({ location }: { location: any }) => {
                     )}
                   </div>
 
-                  <div className="flex items-center gap-3 tabletportrait:col-span-3">
+                  <div className="flex items-center flex-col gap-3 tabletportrait:col-span-3">
                     <input
+                      className='sr-only'
                       type="checkbox"
                       name="credentials"
                       id="credentials"
@@ -2084,6 +2086,15 @@ export default ({ location }: { location: any }) => {
                       className="text-[12px] tabletportrait:text-sm"
                       htmlFor="credentials"
                     >
+                      <span className={`flex justify-center items-center w-4 h-4 bg-white rounded ${
+                        btnRapport? 'bg-pink' : ''
+                      }`}>
+                        <svg className={`block opacity-0 scale-75 fill-white ${
+                          btnRapport? 'opacity-100': ''
+                        }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
+                          <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+                        </svg>
+                      </span>
                       Ik ga akkoord dat Vital Cities mijn persoonsgegevens in
                       haar databanken opneemt om mij de gevraagde informatie te
                       bezorgen via e-mail en dit op te volgen. *
@@ -2091,6 +2102,7 @@ export default ({ location }: { location: any }) => {
                   </div>
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
                     <input
+                      className='sr-only'
                       type="checkbox"
                       name="news"
                       id="news"
@@ -2100,12 +2112,28 @@ export default ({ location }: { location: any }) => {
                           u.newsletter = e.target.value
                           return { ...u }
                         })
+
+                        if (checkNews == false) {
+                          setCheckNews(true)
+                        } else {
+                          setCheckNews(false)
+                        }
                       }}
                     />
+                 
                     <label
                       className="text-[12px] tabletportrait:text-sm"
                       htmlFor="news"
                     >
+                      <span className={`flex justify-center items-center w-4 h-4 bg-white rounded ${
+                        checkNews? 'bg-pink' : ''
+                      }`}>
+                        <svg className={`block opacity-0 scale-75 fill-white ${
+                          checkNews? 'opacity-100': ''
+                        }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
+                          <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+                        </svg>
+                      </span>
                       Ja! Bezorg mij inhoudelijke inspiratie en houd mij op de
                       hoogte van nieuws via e-mail.
                     </label>
@@ -2121,7 +2149,7 @@ export default ({ location }: { location: any }) => {
                       } ${
                         btnRapport
                           ? 'border-pink bg-pink'
-                          : 'pointer-events-none border-darkGray bg-gray text-lightGray'
+                          : 'pointer-events-none border-gray bg-gray text-lightGray'
                       }`}
                       onClick={() => checkInfo()}
                     >
