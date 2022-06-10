@@ -166,7 +166,7 @@ export default ({ section }: { section: string }) => {
                             short: 'verbonden stadskern',
                           }}
                         >
-                          verbonden stadskern
+                          Verbonden stadskern
                         </Link>
                       </li>
                       <li
