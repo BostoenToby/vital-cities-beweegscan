@@ -42,6 +42,7 @@ export default function RevPrac({
     <ThemeContext.Consumer>
       {(context) => (
         <Link
+          className="opacity-90 hover:opacity-100"
           to="/detailspractice/"
           state={{
             practice: practice,
@@ -49,9 +50,9 @@ export default function RevPrac({
         >
           {img != '' && (
             <GatsbyImage
+              className="relative h-96 w-full"
               image={img}
               alt={practice.titel}
-              className="relative h-96 w-full"
             />
           )}
           <div className="relative bottom-3 left-3 flex items-center text-sm tabletportrait:text-base laptop:text-lg">
