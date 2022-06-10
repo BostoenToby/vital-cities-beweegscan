@@ -198,6 +198,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               dagelijks____
               meerdereKerenPerMaand____
@@ -213,6 +214,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               andere____
               auto____
@@ -228,6 +230,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -241,6 +244,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               afEnToe____
               nooit_zelden____
@@ -255,6 +259,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               minstensMaandelijks____
               minstensWekelijks____
@@ -268,6 +273,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               neutraal____
               oneens____
@@ -284,6 +290,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -298,6 +305,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -315,6 +323,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               resultaatGemeente
               item
               indicator
@@ -330,6 +339,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               resultaatGemeente
               indicator
               item
@@ -345,6 +355,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -362,6 +373,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -379,6 +391,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -393,6 +406,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -406,6 +420,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -420,6 +435,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -433,6 +449,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -446,6 +463,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               minstensMaandelijks____
               minstensWekelijks____
@@ -462,6 +480,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               _12KeerOfMinder____
               meerDan12Keer____
@@ -479,6 +498,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               _12KeerOfMinder____
               meerDan12Keer____
@@ -493,6 +513,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -509,6 +530,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               neutraal____
               ontevreden____
@@ -523,6 +545,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               indicator
               gemeente
               percentage
@@ -537,6 +560,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -556,6 +580,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -570,6 +595,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -583,6 +609,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -599,6 +626,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -613,6 +641,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -630,6 +659,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               meerDan12Keer____
               nietAanwezigInDeEigenGemeente____
@@ -648,6 +678,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               meerDan12Keer____
               nietAanwezigInDeEigenGemeente____
@@ -663,6 +694,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               neutraal____
               ontevreden____
@@ -676,6 +708,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
