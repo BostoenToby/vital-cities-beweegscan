@@ -2359,7 +2359,6 @@ export default ({ location }: { location: any }) => {
 
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
                     <input
-                      className='form-checkbox rounded text-pink'
                       type="checkbox"
                       name="credentials"
                       id="credentials"
@@ -2382,7 +2381,6 @@ export default ({ location }: { location: any }) => {
                   </div>
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
                     <input
-                      className='form-checkbox rounded text-pink'
                       type="checkbox"
                       name="news"
                       id="news"
