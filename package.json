@@ -19,6 +19,7 @@
     "postinstall": "netlify-lambda install"
   },
   "dependencies": {
+    "@material-tailwind/react": "^1.0.3",
     "@netlify/functions": "^1.0.0",
     "@sendgrid/mail": "^7.7.0",
     "@tailwindcss/line-clamp": "^0.4.0",
