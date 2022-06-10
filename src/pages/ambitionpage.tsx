@@ -2005,7 +2005,7 @@ export default ({ location }: { location: any }) => {
               <StaticImage
                 src="../images/calltoaction.png"
                 alt="Picture of girls riding a bike"
-                className="ml-14 hidden h-auto border laptopL:block"
+                className="ml-14 hidden h-auto laptopL:block"
               />
               <div className="h-auto p-8 text-white">
                 <h2
@@ -2197,7 +2197,7 @@ export default ({ location }: { location: any }) => {
                       } ${
                         btnRapport
                           ? 'border-pink bg-pink'
-                          : 'pointer-events-none border-darkGray bg-gray'
+                          : 'pointer-events-none border-darkGray bg-gray text-lightGray'
                       }`}
                       onClick={() => checkInfo()}
                     >
