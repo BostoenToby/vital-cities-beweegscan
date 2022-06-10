@@ -87,6 +87,14 @@ import walking from '../assets/animations/walking.json'
 import wrench from '../assets/animations/wrench.json'
 import youth from '../assets/animations/youth.json'
 import zorro from '../assets/animations/zorro.json'
+import flowers from '../assets/animations/flowers.json'
+import loop from '../assets/animations/loop.json'
+import obstacle from '../assets/animations/obstacle.json'
+import playing_child from '../assets/animations/playing_child.json'
+import slide from '../assets/animations/slide.json'
+import tennis from '../assets/animations/tennis.json'
+import urbansports from '../assets/animations/urbansports.json'
+import walk_bike from '../assets/animations/walk_bike.json'
 import erroranim from '../assets/animations/erroranim.json'
 import complete from '../assets/animations/complete.json'
 import { netlifyError } from '../interfaces/sendgrid'
@@ -849,6 +857,10 @@ export default ({ location }: { location: any }) => {
         animationChosen = fitness
         break
 
+      case 'flowers':
+        animationChosen = flowers
+        break
+
       case 'handshake':
         animationChosen = handshake
         break
@@ -889,8 +901,16 @@ export default ({ location }: { location: any }) => {
         animationChosen = long_arrow
         break
 
+      case 'loop':
+        animationChosen = loop
+        break
+
       case 'nature':
         animationChosen = nature
+        break
+
+      case 'obstacle':
+        animationChosen = obstacle
         break
 
       case 'old_person':
@@ -903,6 +923,10 @@ export default ({ location }: { location: any }) => {
 
       case 'pet':
         animationChosen = pet
+        break
+
+      case 'playing_child':
+        animationChosen = playing_child
         break
 
       case 'restaurant':
@@ -921,12 +945,27 @@ export default ({ location }: { location: any }) => {
         animationChosen = shoppingcart
         break
 
+      case 'slide':
+        animationChosen = slide
+        break
+
+      case 'tennis':
+        animationChosen = tennis
+        break
+
       case 'thermometer':
         animationChosen = thermometer
         break
 
+      case 'urbansports':
+        animationChosen = urbansports
+
       case 'virus':
         animationChosen = virus
+        break
+
+      case 'walk_bike':
+        animationChosen = walk_bike
         break
 
       case 'walking':
