@@ -45,56 +45,6 @@ import long_arrow from '../assets/animations/long_arrow.json'
 import { colorify, flatten, getColors, replaceColor } from 'lottie-colorify'
 import { Bron, Paragraaf } from '../interfaces/data'
 import { url } from 'inspector'
-import arrows from '../assets/animations/arrows.json'
-import balance from '../assets/animations/balance.json'
-import basket from '../assets/animations/basket.json'
-import bench from '../assets/animations/bench.json'
-import benches from '../assets/animations/benches.json'
-import bike from '../assets/animations/bike.json'
-import bus from '../assets/animations/bus.json'
-import car_free from '../assets/animations/car_free.json'
-import car from '../assets/animations/car.json'
-import children from '../assets/animations/children.json'
-import city from '../assets/animations/city.json'
-import concentration from '../assets/animations/concentration.json'
-import criminal from '../assets/animations/criminal.json'
-import euro_hand from '../assets/animations/euro_hand.json'
-import euro from '../assets/animations/euro.json'
-import evolution from '../assets/animations/evolution.json'
-import families from '../assets/animations/families.json'
-import family from '../assets/animations/family.json'
-import familyseat from '../assets/animations/familyseat.json'
-import fitness from '../assets/animations/fitness.json'
-import handshake from '../assets/animations/handshake.json'
-import house from '../assets/animations/house.json'
-import houseprice from '../assets/animations/houseprice.json'
-import landscape from '../assets/animations/landscape.json'
-import leaf from '../assets/animations/leaf.json'
-import link from '../assets/animations/link.json'
-import lock from '../assets/animations/lock.json'
-import loneliness from '../assets/animations/loneliness.json'
-import nature from '../assets/animations/nature.json'
-import old_person from '../assets/animations/old_person.json'
-import park from '../assets/animations/park.json'
-import pet from '../assets/animations/pet.json'
-import restaurant from '../assets/animations/restaurant.json'
-import school from '../assets/animations/school.json'
-import shield from '../assets/animations/shield.json'
-import shoppingcart from '../assets/animations/shoppingcart.json'
-import thermometer from '../assets/animations/thermometer.json'
-import virus from '../assets/animations/virus.json'
-import walking from '../assets/animations/walking.json'
-import wrench from '../assets/animations/wrench.json'
-import youth from '../assets/animations/youth.json'
-import zorro from '../assets/animations/zorro.json'
-import flowers from '../assets/animations/flowers.json'
-import loop from '../assets/animations/loop.json'
-import obstacle from '../assets/animations/obstacle.json'
-import playing_child from '../assets/animations/playing_child.json'
-import slide from '../assets/animations/slide.json'
-import tennis from '../assets/animations/tennis.json'
-import urbansports from '../assets/animations/urbansports.json'
-import walk_bike from '../assets/animations/walk_bike.json'
 import erroranim from '../assets/animations/erroranim.json'
 import complete from '../assets/animations/complete.json'
 import { netlifyError } from '../interfaces/sendgrid'
@@ -248,6 +198,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               dagelijks____
               meerdereKerenPerMaand____
@@ -263,6 +214,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               andere____
               auto____
@@ -278,6 +230,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -291,6 +244,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               afEnToe____
               nooit_zelden____
@@ -305,6 +259,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               minstensMaandelijks____
               minstensWekelijks____
@@ -318,6 +273,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               neutraal____
               oneens____
@@ -334,6 +290,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -348,6 +305,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -365,6 +323,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               resultaatGemeente
               item
               indicator
@@ -380,6 +339,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               resultaatGemeente
               indicator
               item
@@ -395,6 +355,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -412,6 +373,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -429,6 +391,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -443,6 +406,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -456,6 +420,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -470,6 +435,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -483,6 +449,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -496,6 +463,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               minstensMaandelijks____
               minstensWekelijks____
@@ -512,6 +480,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               _12KeerOfMinder____
               meerDan12Keer____
@@ -529,6 +498,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               _12KeerOfMinder____
               meerDan12Keer____
@@ -543,6 +513,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -559,6 +530,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               neutraal____
               ontevreden____
@@ -573,6 +545,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               indicator
               gemeente
               percentage
@@ -587,6 +560,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -606,6 +580,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -620,6 +595,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -633,6 +609,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -649,6 +626,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -663,6 +641,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -680,6 +659,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               meerDan12Keer____
               nietAanwezigInDeEigenGemeente____
@@ -698,6 +678,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               meerDan12Keer____
               nietAanwezigInDeEigenGemeente____
@@ -713,6 +694,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               neutraal____
               ontevreden____
@@ -726,6 +708,7 @@ export default ({ location }: { location: any }) => {
         ) {
           edges {
             node {
+              jaar
               gemeente
               eens____
               neutraal____
@@ -773,219 +756,6 @@ export default ({ location }: { location: any }) => {
     ambitie7bench3,
     ambitie7bench4,
   ]
-
-  const getAnimation = (animation: string) => {
-    let animationChosen
-    switch (animation) {
-      case 'arrows':
-        animationChosen = arrows
-        break
-
-      case 'balance':
-        animationChosen = balance
-        break
-
-      case 'basket':
-        animationChosen = basket
-        break
-
-      case 'bench':
-        animationChosen = bench
-        break
-
-      case 'benches':
-        animationChosen = benches
-        break
-
-      case 'bike':
-        animationChosen = bike
-        break
-
-      case 'bus':
-        animationChosen = bus
-        break
-
-      case 'car_free':
-        animationChosen = car_free
-        break
-
-      case 'car':
-        animationChosen = car
-        break
-
-      case 'children':
-        animationChosen = children
-        break
-
-      case 'city':
-        animationChosen = city
-        break
-
-      case 'concentration':
-        animationChosen = concentration
-        break
-
-      case 'criminal':
-        animationChosen = criminal
-        break
-
-      case 'euro_hand':
-        animationChosen = euro_hand
-        break
-
-      case 'euro':
-        animationChosen = euro
-        break
-
-      case 'evolution':
-        animationChosen = evolution
-        break
-
-      case 'families':
-        animationChosen = families
-        break
-
-      case 'family':
-        animationChosen = family
-        break
-
-      case 'familyseat':
-        animationChosen = familyseat
-        break
-
-      case 'fitness':
-        animationChosen = fitness
-        break
-
-      case 'flowers':
-        animationChosen = flowers
-        break
-
-      case 'handshake':
-        animationChosen = handshake
-        break
-
-      case 'house':
-        animationChosen = house
-        break
-
-      case 'houseprice':
-        animationChosen = houseprice
-        break
-
-      case 'landscape':
-        animationChosen = landscape
-        break
-
-      case 'leaf':
-        animationChosen = leaf
-        break
-
-      case 'lightbulb':
-        animationChosen = lightbulb
-        break
-
-      case 'link':
-        animationChosen = link
-        break
-
-      case 'lock':
-        animationChosen = lock
-        break
-
-      case 'loneliness':
-        animationChosen = loneliness
-        break
-
-      case 'long_arrow':
-        animationChosen = long_arrow
-        break
-
-      case 'loop':
-        animationChosen = loop
-        break
-
-      case 'nature':
-        animationChosen = nature
-        break
-
-      case 'obstacle':
-        animationChosen = obstacle
-        break
-
-      case 'old_person':
-        animationChosen = old_person
-        break
-
-      case 'park':
-        animationChosen = park
-        break
-
-      case 'pet':
-        animationChosen = pet
-        break
-
-      case 'playing_child':
-        animationChosen = playing_child
-        break
-
-      case 'restaurant':
-        animationChosen = restaurant
-        break
-
-      case 'school':
-        animationChosen = school
-        break
-
-      case 'shield':
-        animationChosen = shield
-        break
-
-      case 'shoppingcart':
-        animationChosen = shoppingcart
-        break
-
-      case 'slide':
-        animationChosen = slide
-        break
-
-      case 'tennis':
-        animationChosen = tennis
-        break
-
-      case 'thermometer':
-        animationChosen = thermometer
-        break
-
-      case 'urbansports':
-        animationChosen = urbansports
-
-      case 'virus':
-        animationChosen = virus
-        break
-
-      case 'walk_bike':
-        animationChosen = walk_bike
-        break
-
-      case 'walking':
-        animationChosen = walking
-        break
-
-      case 'wrench':
-        animationChosen = wrench
-        break
-
-      case 'youth':
-        animationChosen = youth
-        break
-
-      case 'zorro':
-        animationChosen = zorro
-        break
-    }
-    return animationChosen
-  }
 
   const handleSearch = (input: any) => {
     setSearchQuery(input)
@@ -1115,11 +885,11 @@ export default ({ location }: { location: any }) => {
   }
 
   useEffect(() => {
-    // const timeOutId = setTimeout(
-    setSuggestions(searchList(allAmbitionData, typed, true))
-    //   1000,
-    // )
-    // return () => clearTimeout(timeOutId)
+    const timeOutId = setTimeout(
+      () => setSuggestions(searchList(allAmbitionData, typed, true)),
+      1000,
+    )
+    return () => clearTimeout(timeOutId)
   }, [typed])
 
   useEffect(() => {
@@ -1160,43 +930,72 @@ export default ({ location }: { location: any }) => {
             .replace(/\n+$/, '')
             .replace(/^\* /, '• ')
             .replace(/\n\* /g, '\n\n • ')
-            .replace(/^\*\*/, ' <strong class="font-semibold">')
-            .replace(/\*\*$/, ' </strong>')
-            .replace(/ \*\*/g, ' <strong class="font-semibold">')
-            .replace(/\n\*\*/g, '\n<strong class="font-semibold">')
-            .replace(/\*\*\n/g, ' </strong>\n')
-            .replace(/\*\* /g, ' </strong>')
-            .replace(/\*\*,/, ' </strong>,')
-            .replace(/\*\*\./, ' </strong>.')
-            .replace(/\*\*!/, ' </strong>!')
-            .replace(/\*\*\?/, ' </strong>?')
 
-          let matches = [...proBody.matchAll(/\[.*?\] ?\(.*?\)/g)]
+          let matches = [...proBody.matchAll(/\[.*?\] ?\(.*?\)/g)].concat([
+            ...proBody.matchAll(/\<.*?\>/g),
+          ])
           const links: any[] = []
 
           matches.forEach((m: any, index: number) => {
-            const parts = m[0].split(/\] ?\(/)
-            console.log(parts)
-            let bron: Bron = {
-              naam: parts[0].replace(/^\[/, ''),
-              url: parts[1]
-                .replace(/^<\*/, '')
-                .replace(/\)$/, '')
-                .replace(/>$/, ''),
+            let result
+            if (m[0].includes('[')) {
+              const parts = m[0].split(/\] ?\(/)
+              console.log(parts)
+              let bron: Bron = {
+                naam: parts[0].replace(/^\[/, ''),
+                url: parts[1]
+                  .replace(/^<\*/, '')
+                  .replace(/^</, '')
+                  .replace(/\)$/, '')
+                  .replace(/>$/, ''),
+              }
+
+              result = [bron, m[0]]
+            } else {
+              result = [m[0].replace(/</, ' ').replace(/>/, ' '), m[0]]
             }
 
-            const result = [bron, m.index, m[0].length]
             links.push(result)
           })
 
           console.log(links)
+          let htmlResult = proBody
 
-          const bodyResult = ''
+          links.forEach((link: any) => {
+            // htmlResult =
+            //   htmlResult.substring(0, link[1]) +
+            //   `<a href="${link[0].url}">${link[0].naam}</a>` +
+            //   htmlResult.substring(link[1] + link[2])
+
+            if (link[1].includes('[')) {
+              htmlResult = htmlResult.replace(
+                link[1],
+                `<a class="text-purple font-semibold underline" href="${
+                  link[0].url
+                }">${link[0].naam.replace(/\\#/, '#')}</a>`,
+              )
+            } else {
+              htmlResult = htmlResult.replace(
+                link[1],
+                `<a class="text-purple font-semibold underline" href="${link[0]}">${link[0]}</a>`,
+              )
+            }
+          })
 
           const par: Paragraaf = {
             //@ts-ignore
             header: titles[index],
-            body: bodyResult,
+            body: htmlResult
+              .replace(/^\*\*/, ' <strong class="font-semibold">')
+              .replace(/\*\*$/, ' </strong>')
+              .replace(/ \*\*/g, ' <strong class="font-semibold">')
+              .replace(/\n\*\*/g, '\n<strong class="font-semibold">')
+              .replace(/\*\*\n/g, ' </strong>\n')
+              .replace(/\*\* /g, ' </strong>')
+              .replace(/\*\*,/, ' </strong>,')
+              .replace(/\*\*\./, ' </strong>.')
+              .replace(/\*\*!/, ' </strong>!')
+              .replace(/\*\*\?/, ' </strong>?'),
           }
           parResults.push(par)
         })
@@ -2034,9 +1833,7 @@ export default ({ location }: { location: any }) => {
                 })}
                 <div className="grid grid-cols-1 items-center justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
                   {whys &&
-                    whys.map((item: any) => {
-                      const animation = getAnimation(item.animation)
-                      return (
+                    whys.map((item: any) => (
                         <Textblock
                           text={item.text}
                           classes={
@@ -2047,12 +1844,12 @@ export default ({ location }: { location: any }) => {
                           animation={replaceColor(
                             '#000000',
                             '#492784',
-                            animation,
+                            require(`../assets/animations/${item.animation}.json`),
                           )}
                           animationColor="purple"
                         />
                       )
-                    })}
+                    )}
                 </div>
               </section>
             </FadeInSection>
@@ -2065,7 +1862,6 @@ export default ({ location }: { location: any }) => {
                       item.ambitions.includes('Algemene ambitie'))
                   ) {
                     return (
-                      <>
                         <h2
                           className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                             context.dark ? 'opacity-90' : ''
@@ -2073,22 +1869,12 @@ export default ({ location }: { location: any }) => {
                         >
                           {item.title}
                         </h2>
-                        <p
-                          className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
-                            context.dark ? 'opacity-75' : ''
-                          }`}
-                        >
-                          {item.subtitle}
-                        </p>
-                      </>
                     )
                   }
                 })}
                 <div className="grid grid-cols-1 justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptopL:grid-cols-4">
                   {hows &&
-                    hows.map((item: HoeWaarom) => {
-                      const animation = getAnimation(item.animation)
-                      return (
+                    hows.map((item: HoeWaarom) => (
                         <Textblock
                           text={item.text}
                           classes={`font-medium ${
@@ -2099,12 +1885,12 @@ export default ({ location }: { location: any }) => {
                           animation={replaceColor(
                             '#000000',
                             '#02866C',
-                            animation,
+                            require(`../assets/animations/${item.animation}.json`),
                           )}
                           animationColor="green"
                         />
                       )
-                    })}
+                    )}
                 </div>
               </section>
             </FadeInSection>

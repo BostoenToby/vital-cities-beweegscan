@@ -67,9 +67,10 @@ export default ({ practice }: { practice: TestPractice }) => {
                     ? 'text-white opacity-75'
                     : 'text-dark opacity-90'
                 }`}
-              >
-                {practice.paragrafen[0].body}
-              </p>
+                dangerouslySetInnerHTML={{
+                  __html: `<div>${practice.paragrafen[0].body}</div>`,
+                }}
+              ></p>
             </section>
           </div>
           <button

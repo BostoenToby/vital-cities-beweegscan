@@ -12,6 +12,7 @@ import Pdf from '../components/pdf'
 import { graphql, useStaticQuery } from 'gatsby'
 import ThemeContext from '../context/themecontext'
 import FadeInSection from '../components/scrollytelling'
+import { Helmet } from 'react-helmet'
 import {
   ambition,
   header,
@@ -104,6 +105,15 @@ const IndexPage = ({ data }: { data: any }) => {
               : 'selection:bg-pink'
           }`}
         >
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>Vital Cities beweegscan</title>
+            <meta
+              name="description"
+              content="Meet de beweegvriendelijkheid van jouw stad of gemeente en vind de inspiratie om die nog te verbeteren."
+            />
+          </Helmet>
+
           <Topnavigation section="#Contact" />
           <div
             className={`absolute top-0 left-0 h-24 w-full tabletportrait:w-1/2 ${
