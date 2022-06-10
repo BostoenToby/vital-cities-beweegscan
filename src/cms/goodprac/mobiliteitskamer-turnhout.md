@@ -78,7 +78,7 @@ text: >-
 
   Stad Turnhout ontwikkelde ondertussen instrumenten en richtlijnen voor het inrichten van publieke ruimte en een betere mobiliteitsstructuur voor kinderen en jongeren. Het zijn instrumenten op maat van mobiliteits- en ruimtelijke ordeningsprofessionals en gaan daarmee standaard aan de slag.
 
-  Ondertussen heeft Turnhout een circulatieplan. Daarover is er monitoring d.m.v. online bevragingen bij jongeren over mobiliteit in schoolomgevingen en de woonwijk, bevragingen van ouders van schoolkinderen over veiligheid en zelfstandigheid van hun kinderen, observatie van spelende kinderen en verkeerstellingen. Daarmee heeft Stad Turnhout kunnen vaststellen dat het aantal auto’s dat rondrijdt in wijken en schoolomgevingen is gehalveerd en het aantal fietsers is verdubbeld.[](https://www.youtube.com/watch?v=t64Kx2HiQw4)
+  Ondertussen heeft Turnhout een circulatieplan. Daarover is er monitoring d.m.v. online bevragingen bij jongeren over mobiliteit in schoolomgevingen en de woonwijk, bevragingen van ouders van schoolkinderen over veiligheid en zelfstandigheid van hun kinderen, observatie van spelende kinderen en verkeerstellingen. Daarmee heeft Stad Turnhout kunnen vaststellen dat het aantal auto’s dat rondrijdt in wijken en schoolomgevingen is gehalveerd en het aantal fietsers is verdubbeld.<https://www.youtube.com/watch?v=t64Kx2HiQw4>
 resources: >-
   # Meer weten
 
