@@ -51,20 +51,20 @@ export default ({ location }: { location: any }) => {
     }
   }, [practice])
 
-  useEffect(() => {
-    if (contextB.dark) {
-      let elements = document.querySelectorAll('.js-switchcolor')
-      elements.forEach((e) => {
-        if (contextB.dark) {
-          e.classList.add('text-lightPurpleDesat')
-          e.classList.remove('text-purple')
-        } else {
-          e.classList.add('text-purple')
-          e.classList.remove('text-lightPurpleDesat')
-        }
-      })
-    }
-  }, [contextB])
+  // useEffect(() => {
+  //   if (contextB.dark) {
+  //     let elements = document.querySelectorAll('.js-switchcolor')
+  //     elements.forEach((e) => {
+  //       if (contextB.dark) {
+  //         e.classList.add('text-lightPurpleDesat')
+  //         e.classList.remove('text-purple')
+  //       } else {
+  //         e.classList.add('text-purple')
+  //         e.classList.remove('text-lightPurpleDesat')
+  //       }
+  //     })
+  //   }
+  // }, [contextB])
 
   useEffect(() => {
     if (practice && practice.themas && practice.themas.length >= 1) {
