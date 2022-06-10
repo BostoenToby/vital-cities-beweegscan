@@ -2,7 +2,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
 import { ArrowDown, ChevronDown, Search } from 'lucide-react'
 import * as React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import Input from '../components/input'
 import Intsrc from '../components/Intsrc'
 import RevPrac from '../components/revprac'
@@ -689,6 +689,8 @@ export default ({ location }: { location: any }) => {
     ambitie7bench4,
   ]
 
+  const contextB = useContext(ThemeContext)
+
   const handleSearch = (input: any) => {
     setSearchQuery(input)
     const results = searchList(allAmbitionData, input, false)
@@ -898,14 +900,20 @@ export default ({ location }: { location: any }) => {
             if (link[1].includes('[')) {
               htmlResult = htmlResult.replace(
                 link[1],
-                `<a class="text-purple font-semibold underline" href="${
+                `<a class="${
+                  contextB.dark ? 'text-lightPurpleDesat' : 'text-purple'
+                } font-semibold underline js-switchcolor" href="${
                   link[0].url
                 }">${link[0].naam.replace(/\\#/, '#')}</a>`,
               )
             } else {
               htmlResult = htmlResult.replace(
                 link[1],
-                `<a class="text-purple font-semibold underline" href="${link[0]}">${link[0]}</a>`,
+                `<a class="${
+                  contextB.dark ? 'text-lightPurpleDesat' : 'text-purple'
+                } font-semibold underline js-switchcolor" href="${link[0]}">${
+                  link[0]
+                }</a>`,
               )
             }
           })
@@ -965,7 +973,7 @@ export default ({ location }: { location: any }) => {
 
       setPractices(data)
     }
-  }, [goodPracs])
+  }, [goodPracs, contextB])
 
   useEffect(() => {
     let bronnen: intBron[] = []
