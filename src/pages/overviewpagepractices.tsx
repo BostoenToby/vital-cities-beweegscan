@@ -270,14 +270,8 @@ export default () => {
                 <h1>Praktijk</h1>
                 <h1>voorbeelden</h1>
               </div>
-              <div
-                className={`my-auto ${context.dark ? 'bg-dark' : 'bg-white'}`}
-              >
-                <span
-                  className={`group relative block ${
-                    context.dark ? 'bg-dark' : 'bg-white'
-                  }`}
-                >
+              <div className="my-auto bg-[transparent]">
+                <span className="group relative block bg-[transparent]">
                   {/* note: I hate select  */}
                   <select
                     defaultValue="filter practices"
