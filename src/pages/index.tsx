@@ -194,7 +194,7 @@ const IndexPage = () => {
                       </div>
                     )
                   } else {
-                    return <></>
+                    return null
                   }
                 })}
               <FadeInSection>
@@ -251,7 +251,7 @@ const IndexPage = () => {
                         </div>
                       )
                     } else {
-                      return <></>
+                      return null
                     }
                   })}
 
@@ -277,7 +277,7 @@ const IndexPage = () => {
                         </div>
                       )
                     } else {
-                      return <></>
+                      return null
                     }
                   })}
               </FadeInSection>
