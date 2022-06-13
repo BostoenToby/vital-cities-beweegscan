@@ -158,7 +158,6 @@ export const getDataForCityAndAmbition = (
     results[0].benchmarks.push(bench)
   })
 
-  console.log(results)
   return removeSpacesCities(results)
 }
 

@@ -8,7 +8,6 @@ import { netlifyError } from '../interfaces/sendgrid';
 
 async function genPDF(dataPDF: any) {
   let errorNet: netlifyError =  {
-    mail: true,
     google: true,
     changed: false
   }
@@ -702,7 +701,6 @@ async function genPDF(dataPDF: any) {
   const blobPDF = doc.output('blob')
   async function sendgridMail(baseString: any) {
     try {
-      console.log("trying sendgrid mail")
       return await axios.post('/.netlify/functions/sendmail',
         {
           mail: dataPDF.mail,
@@ -751,7 +749,6 @@ async function genPDF(dataPDF: any) {
   }
   await blobToBase64(blobPDF)
   await writeSheets()
-  console.log(errorNet)
   return(errorNet)
 }
 
