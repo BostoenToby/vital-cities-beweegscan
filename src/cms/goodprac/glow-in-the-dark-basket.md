@@ -2,7 +2,7 @@
 thema:
   - sporten
 title: Glow in the dark basket
-image: /glow-in-the-dark-basket2.png
+image: /glow_in_the_dark.png
 date: 2022-03-29T08:07:37.119Z
 text: >-
   # Wat
