@@ -1827,7 +1827,7 @@ export default ({ location }: { location: any }) => {
                     )
                   }
                 })}
-                <div className="grid grid-cols-1 items-center justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
+                <div className="grid grid-cols-1 items-center justify-center gap-8 gap-y-12 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
                   {cmsData.whys &&
                     cmsData.whys.map((item: any) => (
                       <Textblock
