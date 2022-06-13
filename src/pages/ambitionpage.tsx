@@ -1515,7 +1515,7 @@ export default ({ location }: { location: any }) => {
                                 context.dark
                                   ? toggleBenches
                                     ? 'border-pinkDesat border-opacity-90 bg-pinkDesat bg-opacity-90 text-white'
-                                    : 'border-pinkDesat hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
+                                    : 'border-pinkDesat hover:bg-neutral hover:bg-opacity-10 hover:text-pink'
                                   : toggleBenches
                                   ? 'border-pink border-opacity-90 bg-pink bg-opacity-90 text-white'
                                   : 'border-pink hover:bg-neutral hover:text-purple'
@@ -1528,7 +1528,7 @@ export default ({ location }: { location: any }) => {
                                 context.dark
                                   ? !toggleBenches
                                     ? 'border-pinkDesat border-opacity-90 bg-pinkDesat bg-opacity-90 text-white'
-                                    : 'border-pinkDesat hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
+                                    : 'border-pinkDesat hover:bg-neutral hover:bg-opacity-10 hover:text-pink'
                                   : !toggleBenches
                                   ? 'border-pink border-opacity-90 bg-pink bg-opacity-90 text-white'
                                   : 'border-pink hover:bg-neutral hover:text-purple'
