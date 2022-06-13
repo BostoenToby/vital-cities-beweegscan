@@ -1,0 +1,268 @@
+backend:
+  name: github
+  repo: BostoenToby/vital-cities-beweegscan
+  branch: dev
+
+media_folder: src/images
+public_folder: /
+
+collections:
+  - name: Header
+    label: Header
+    folder: src/cms/header
+    create: true
+    fields:
+      - { name: ambition, label: Ambitie, widget: select, multiple: false, options: [{ label: "Actief bewegen en verplaatsen", value: "actief bewegen"},
+          { label: "Verbonden stadskern", value: "verbonden stadskern"},
+          { label: "Aantrekkelijke en veilige wandel- en fietsroutes", value: "fiets- en wandelroutes"},
+          { label: "Stad en buurt als sportplein", value: "sporten"},
+          { label: "Stad en buurt als speelplein", value: "spelen"},
+          { label: "Stad en buurt als ontmoetingsplek", value: "ontmoeten"},
+          { label: "Bruikbaar, gevarieerd en voldoende groen", value: "groen"},
+          { label: "Landingspagina", value: "Landingspagina"}]
+        }
+      - { name: title, label: Titel }
+      - { name: subtitle, label: Subtitels }
+      - { name: image, label: Foto, widget: image }
+      - { name: tag, label: Tag, required: false }
+
+  - name: Titels
+    label: Titels Ambitiepagina
+    folder: src/cms/titels
+    create: true
+    fields: 
+      - { name: title, label: Titel }
+      - { name: subtitle, label: Subtitel }
+      - { name: section, label: Sectie, widget: select, multiple: false, options: ["Waarom", "Hoe", "Interessante bronnen", "Relevante good practises"]}
+      - { name: ambitions, label: Ambitie, widget: select, multiple: true, options: [{ label: "Actief bewegen en verplaatsen", value: "actief bewegen"},
+          { label: "Algemene ambitie", value: "Algemene ambitie"},
+          { label: "Verbonden stadskern", value: "verbonden stadskern"},
+          { label: "Aantrekkelijke en veilige wandel- en fietsroutes", value: "fiets- en wandelroutes"},
+          { label: "Stad en buurt als sportplein", value: "sporten"},
+          { label: "Stad en buurt als speelplein", value: "spelen"},
+          { label: "Stad en buurt als ontmoetingsplek", value: "ontmoeten"},
+          { label: "Bruikbaar, gevarieerd en voldoende groen", value: "groen"}]
+        }
+
+  - name: Landingspagina
+    label: Landingspagina secties
+    folder: src/cms/landingspage
+    create: true
+    fields:
+      - { name: title, label: Titel, widget: select, multiple: false, options: ["Over de beweegscan", "In een oogopslag", "Inspirerend"]}
+      - { name: text, label: Tekst, widget: markdown }
+
+  - name: Ambitienamen
+    label: Ambitienamen
+    folder: src/cms/ambitienamen
+    create: true
+    fields:
+      - { name: ambition, label: Ambitie, widget: select, multiple: false, options: [{ label: "Actief bewegen en verplaatsen", value: "actief bewegen"},
+          { label: "Verbonden stadskern", value: "verbonden stadskern"},
+          { label: "Aantrekkelijke en veilige wandel- en fietsroutes", value: "fiets- en wandelroutes"},
+          { label: "Stad en buurt als sportplein", value: "sporten"},
+          { label: "Stad en buurt als speelplein", value: "spelen"},
+          { label: "Stad en buurt als ontmoetingsplek", value: "ontmoeten"},
+          { label: "Bruikbaar, gevarieerd en voldoende groen", value: "groen"}]
+        }
+      - { name: name, label: Name }
+
+  - name: Probleem
+    label: Probleem
+    folder: src/cms/problem
+    create: true
+    fields:
+      - { name: ambition, label: Ambitie, widget: select, multiple: false, options: [{ label: "Actief bewegen en verplaatsen", value: "actief bewegen"},
+          { label: "Verbonden stadskern", value: "verbonden stadskern"},
+          { label: "Aantrekkelijke en veilige wandel- en fietsroutes", value: "fiets- en wandelroutes"},
+          { label: "Stad en buurt als sportplein", value: "sporten"},
+          { label: "Stad en buurt als speelplein", value: "spelen"},
+          { label: "Stad en buurt als ontmoetingsplek", value: "ontmoeten"},
+          { label: "Bruikbaar, gevarieerd en voldoende groen", value: "groen"}]
+        }
+      - { name: text, label: Tekst, widget: text }
+      - { name: boldpart, label: Tekst vetjes, widget: string}
+
+  - name: Waarom
+    label: Waarom oplossen?
+    folder: src/cms/waaromopl
+    create: true
+    fields:
+      - { name: ambitions, label: Ambitie, widget: select, multiple: true, options: [{ label: "Actief bewegen en verplaatsen", value: "actief bewegen"},
+          { label: "Verbonden stadskern", value: "verbonden stadskern"},
+          { label: "Aantrekkelijke en veilige wandel- en fietsroutes", value: "fiets- en wandelroutes"},
+          { label: "Stad en buurt als sportplein", value: "sporten"},
+          { label: "Stad en buurt als speelplein", value: "spelen"},
+          { label: "Stad en buurt als ontmoetingsplek", value: "ontmoeten"},
+          { label: "Bruikbaar, gevarieerd en voldoende groen", value: "groen"}]
+        }
+      - { name: text, label: Tekst, widget: markdown }
+      - { name: animation, label: Animatie, widget: select, multiple: false, options: [{ label: "pijlen", value: "arrows" },
+          { label: "weegschaal", value: "balance" },
+          { label: "basketbal", value: "basket" },
+          { label: "bank", value: "bench" },
+          { label: "banken-100m", value: "benches" },
+          { label: "fiets", value: "bike" },
+          { label: "bus", value: "bus" },
+          { label: "bloemen", value: "flowers" },
+          { label: "autoloos", value: "car_free" },
+          { label: "auto", value: "car" },
+          { label: "kinderen", value: "children" },
+          { label: "kind met bal", value: "playing_child" },
+          { label: "glijbaan", value: "slide" },
+          { label: "tennis", value: "tennis" },
+          { label: "urban", value: "urbansports" },
+          { label: "wandelaar & fietser", value: "walk_bike" },
+          { label: "stad", value: "city" },
+          { label: "concentratie", value: "concentration" },
+          { label: "crimineel", value: "criminal" },
+          { label: "geld-hand", value: "euro_hand" },
+          { label: "geld", value: "euro" },
+          { label: "evolutie", value: "evolution" },
+          { label: "families", value: "families" },
+          { label: "familie", value: "family" },
+          { label: "familie-zetel", value: "familyseat" },
+          { label: "fitness", value: "fitness" },
+          { label: "handshake", value: "handshake" },
+          { label: "huis", value: "house" },
+          { label: "huisprijs", value: "houseprice" },
+          { label: "landschap", value: "landscape" },
+          { label: "blaadje", value: "leaf" },
+          { label: "lamp", value: "lightbulb" },
+          { label: "link", value: "link" },
+          { label: "slot", value: "lock" },
+          { label: "eenzaamheid", value: "loneliness" },
+          { label: "lange pijl", value: "long_arrow" },
+          { label: "natuur", value: "nature" },
+          { label: "obstakel", value: "obstacle" },
+          { label: "oude persoon", value: "old_person" },
+          { label: "park", value: "park" },
+          { label: "huisdier", value: "pet" },
+          { label: "restaurant", value: "restaurant" },
+          { label: "school", value: "school" },
+          { label: "schild", value: "shield" },
+          { label: "winkelkar", value: "shoppingcart" },
+          { label: "thermometer", value: "thermometer" },
+          { label: "vergrootglas", value: "loop" },
+          { label: "ziekte", value: "virus" },
+          { label: "wandelen", value: "walking" },
+          { label: "moersleutel", value: "wrench" },
+          { label: "jeugd", value: "youth" },
+          { label: "masker", value: "zorro" }]
+        }
+
+  - name: Hoe
+    label: Hoe oplossen?
+    folder: src/cms/hoeopl
+    create: true
+    fields: 
+      - { name: ambitions, label: Ambitie, widget: select, multiple: true, options: [{ label: "Actief bewegen en verplaatsen", value: "actief bewegen"},
+          { label: "Verbonden stadskern", value: "verbonden stadskern"},
+          { label: "Aantrekkelijke en veilige wandel- en fietsroutes", value: "fiets- en wandelroutes"},
+          { label: "Stad en buurt als sportplein", value: "sporten"},
+          { label: "Stad en buurt als speelplein", value: "spelen"},
+          { label: "Stad en buurt als ontmoetingsplek", value: "ontmoeten"},
+          { label: "Bruikbaar, gevarieerd en voldoende groen", value: "groen"}]
+        }
+      - { name: text, label: Tekst, widget: markdown }
+      - { name: animation, label: Animatie, widget: select, multiple: false, options: [{ label: "pijlen", value: "arrows" },
+          { label: "weegschaal", value: "balance" },
+          { label: "basketbal", value: "basket" },
+          { label: "bank", value: "bench" },
+          { label: "banken-100m", value: "benches" },
+          { label: "fiets", value: "bike" },
+          { label: "bus", value: "bus" },
+          { label: "bloemen", value: "flowers" },
+          { label: "autoloos", value: "car_free" },
+          { label: "auto", value: "car" },
+          { label: "kinderen", value: "children" },
+          { label: "kind met bal", value: "playing_child" },
+          { label: "glijbaan", value: "slide" },
+          { label: "tennis", value: "tennis" },
+          { label: "urban", value: "urbansports" },
+          { label: "wandelaar & fietser", value: "walk_bike" },
+          { label: "stad", value: "city" },
+          { label: "concentratie", value: "concentration" },
+          { label: "crimineel", value: "criminal" },
+          { label: "geld-hand", value: "euro_hand" },
+          { label: "geld", value: "euro" },
+          { label: "evolutie", value: "evolution" },
+          { label: "families", value: "families" },
+          { label: "familie", value: "family" },
+          { label: "familie-zetel", value: "familyseat" },
+          { label: "fitness", value: "fitness" },
+          { label: "handshake", value: "handshake" },
+          { label: "huis", value: "house" },
+          { label: "huisprijs", value: "houseprice" },
+          { label: "landschap", value: "landscape" },
+          { label: "blaadje", value: "leaf" },
+          { label: "lamp", value: "lightbulb" },
+          { label: "link", value: "link" },
+          { label: "slot", value: "lock" },
+          { label: "eenzaamheid", value: "loneliness" },
+          { label: "lange pijl", value: "long_arrow" },
+          { label: "natuur", value: "nature" },
+          { label: "obstakel", value: "obstacle" },
+          { label: "oude persoon", value: "old_person" },
+          { label: "park", value: "park" },
+          { label: "huisdier", value: "pet" },
+          { label: "restaurant", value: "restaurant" },
+          { label: "school", value: "school" },
+          { label: "schild", value: "shield" },
+          { label: "winkelkar", value: "shoppingcart" },
+          { label: "thermometer", value: "thermometer" },
+          { label: "vergrootglas", value: "loop" },
+          { label: "ziekte", value: "virus" },
+          { label: "wandelen", value: "walking" },
+          { label: "moersleutel", value: "wrench" },
+          { label: "jeugd", value: "youth" },
+          { label: "masker", value: "zorro" }]
+        }
+
+  - name: IntBron
+    label: Interessante bronnen
+    folder: src/cms/intbron
+    create: true
+    fields:
+      - { name: ambitions, label: Ambitie, widget: select, multiple: true, options: [{ label: "Actief bewegen en verplaatsen", value: "actief bewegen"},
+          { label: "Verbonden stadskern", value: "verbonden stadskern"},
+          { label: "Aantrekkelijke en veilige wandel- en fietsroutes", value: "fiets- en wandelroutes"},
+          { label: "Stad en buurt als sportplein", value: "sporten"},
+          { label: "Stad en buurt als speelplein", value: "spelen"},
+          { label: "Stad en buurt als ontmoetingsplek", value: "ontmoeten"},
+          { label: "Bruikbaar, gevarieerd en voldoende groen", value: "groen"}]
+        }
+      - { name: title, label: Titel }
+      - { name: link, label: Link }
+      - { name: text, label: Tekst, widget: markdown }
+
+  - name: GoodPractices
+    label: Good Practices
+    folder: src/cms/goodprac
+    create: true
+    fields:
+      # - name: thema
+      #   label: Thema
+      #   widget: select
+      #   multiple: true
+      #   options:
+      #     - { label: "Actief bewegen en verplaatsen", value: "Actief bewegen"}
+      #     - { label: "Verbonden stadskern", value: "verbonden stadskern"}
+      - { name: thema, label: Thema, widget: select, multiple: true, options: 
+          [{ label: "Actief bewegen en verplaatsen", value: "actief bewegen"},
+          { label: "Verbonden stadskern", value: "verbonden stadskern"},
+          { label: "Aantrekkelijke en veilige wandel- en fietsroutes", value: "fiets- en wandelroutes"},
+          { label: "Stad en buurt als sportplein", value: "sporten"},
+          { label: "Stad en buurt als speelplein", value: "spelen"},
+          { label: "Stad en buurt als ontmoetingsplek", value: "ontmoeten"},
+          { label: "Bruikbaar, gevarieerd en voldoende groen", value: "groen"},
+          { label: "Technologie/data", value: "technologie/data"},
+          { label: "Transversaal beleid", value: "transversaal"},
+          { label: "Participatie & inspraak", value: "participatie"}]
+       }
+      - { name: title, label: Title}
+      - { name: image, label: Image, widget: image }
+      - { name: date, label: Datum, widget: datetime }
+      - { name: text, label: Tekst, widget: markdown}
+      - { name: resources, label: Bronnen, widget: markdown}
+      - { name: warning, label: Warning, widget: markdown, required: false}

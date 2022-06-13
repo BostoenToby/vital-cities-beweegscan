@@ -1,0 +1,802 @@
+{
+  "v": "4.8.0",
+  "meta": { "g": "LottieFiles AE 1.1.0", "a": "", "k": "", "d": "", "tc": "" },
+  "fr": 30,
+  "ip": 0,
+  "op": 78,
+  "w": 60,
+  "h": 60,
+  "nm": "concentration",
+  "ddd": 0,
+  "assets": [],
+  "layers": [
+    {
+      "ddd": 0,
+      "ind": 1,
+      "ty": 4,
+      "nm": "Smartphone",
+      "sr": 1,
+      "ks": {
+        "o": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 20,
+              "s": [100]
+            },
+            { "t": 36, "s": [0] }
+          ],
+          "ix": 11,
+          "x": "var $bm_rt;\nfunction doIt() {\n    var easingEquation, val1, val2, val3;\n    var ew_one = backOut;\n    var ew_two = expoIn;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n        if (n < 2) {\n            easingEquation = ew_one;\n        } else if (n >= $bm_sub(numKeys, 1)) {\n            easingEquation = ew_two;\n        } else {\n            return null;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    var t = $bm_sub(time, key1.time);\n    var d = $bm_sub(key2.time, key1.time);\n    var sX = key1[0];\n    var eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        var sY = key1[1];\n        var eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            var sZ = key1[2];\n            var eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easingEquation(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easingEquation(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easingEquation(t, sY, eY, d);\n            val3 = easingEquation(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\nvar IN_EXPO_CORRECTION = 0.000976563;\nvar OUT_EXPO_CORRECTION = 1.000976563;\nvar s = 1.70158;\nvar p = 0.81;\nvar a = 50;\nfunction bounceOut(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction bounceIn(t, b, c, d) {\n    return $bm_sum($bm_sub(c, bounceOut($bm_sub(d, t), 0, c, d)), b);\n}\nfunction bounceInOut(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(bounceIn($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return bounceOut(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction backIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul(c, t /= d), t), $bm_sub($bm_mul($bm_sum(s, 1), t), s)), b);\n}\nfunction backInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div(c, 2), $bm_mul($bm_mul(t, t), $bm_sub($bm_mul($bm_sum(s *= 1.525, 1), t), s))), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul(t -= 2, t), $bm_sum($bm_mul($bm_sum(s *= 1.525, 1), t), s)), 2)), b);\n}\nfunction backOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(t = t / d - 1, t), $bm_sum($bm_mul($bm_sum(s, 1), t), s)), 1)), b);\n}\nfunction circIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t /= d, t))), 1)), b);\n}\nfunction circInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t, t))), 1)), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum(Math.sqrt($bm_sub(1, $bm_mul(t -= 2, t))), 1)), b);\n}\nfunction circOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sqrt($bm_sub(1, $bm_mul(t = t / d - 1, t)))), b);\n}\nfunction elasticIn(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_neg($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n}\nfunction elasticInOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d / 2) == 2)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3 * 1.5);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    if (t < 1)\n        return $bm_sum($bm_mul(-0.5, $bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n    return $bm_sum($bm_sum($bm_mul($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), 0.5), c), b);\n}\nfunction elasticOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_sum($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), c), b);\n}\nfunction expoIn(t, b, c, d) {\n    return t == 0 ? b : c * (Math.pow(2, 10 * (t / d - 1)) - IN_EXPO_CORRECTION) + b;\n}\nfunction expoInOut(t, b, c, d) {\n    var v;\n    if ((t /= d / 2) < 1) {\n        v = $bm_sub(Math.pow(2, $bm_mul(10, $bm_sub(t, 1))), IN_EXPO_CORRECTION);\n    } else {\n        v = $bm_sum($bm_sum($bm_neg(Math.pow(2, $bm_mul(-10, $bm_sub(t, 1)))), 2), IN_EXPO_CORRECTION);\n    }\n    return $bm_sum(b, $bm_mul($bm_div(v, 2), c));\n}\nfunction expoOut(t, b, c, d) {\n    return t == d ? b + c : c * OUT_EXPO_CORRECTION * (-Math.pow(2, -10 * t / d) + 1) + b;\n}\nfunction quadIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul(c, t /= d), t), b);\n}\nfunction quadInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_div(c, 2), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul(--t, $bm_sub(t, 2)), 1)), b);\n}\nfunction quadOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_neg(c), t /= d), $bm_sub(t, 2)), b);\n}\nfunction quartIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), b);\n}\nfunction quartInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), 2)), b);\n}\nfunction quartOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), 1)), b);\n}\nfunction quintIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), t), b);\n}\nfunction quintInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), t), 2)), b);\n}\nfunction quintOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), t), 1)), b);\n}\nfunction sineIn(t, b, c, d) {\n    return $bm_sum($bm_sum($bm_mul($bm_neg(c), Math.cos($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), c), b);\n}\nfunction sineInOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.cos($bm_div($bm_mul(Math.PI, t), d)), 1)), b);\n}\nfunction sineOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sin($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), b);\n}\n$bm_rt = doIt() || value;"
+        },
+        "r": { "a": 0, "k": 16, "ix": 10 },
+        "p": { "a": 0, "k": [30.5, 28.25, 0], "ix": 2 },
+        "a": { "a": 0, "k": [0, 0, 0], "ix": 1 },
+        "s": { "a": 0, "k": [99, 99, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ty": "rc",
+              "d": 1,
+              "s": { "a": 0, "k": [0.25, 8.25], "ix": 2 },
+              "p": { "a": 0, "k": [0, 0], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 4 },
+              "nm": "Rectangle Path 1",
+              "mn": "ADBE Vector Shape - Rect",
+              "hd": false
+            },
+            {
+              "ty": "st",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 3 },
+              "o": { "a": 0, "k": 100, "ix": 4 },
+              "w": { "a": 0, "k": 0, "ix": 5 },
+              "lc": 1,
+              "lj": 1,
+              "ml": 4,
+              "bm": 0,
+              "nm": "Stroke 1",
+              "mn": "ADBE Vector Graphic - Stroke",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [7.625, -12.875], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [488.167, 101], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Rectangle 1",
+          "np": 3,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 2,
+      "ty": 4,
+      "nm": "Seat Outlines",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": 0.833, "y": 0.833 },
+              "o": { "x": 0.167, "y": 0.167 },
+              "t": 20,
+              "s": [25.93, 43.502, 0],
+              "to": [0, 0, 0],
+              "ti": [0, 0, 0]
+            },
+            { "t": 64, "s": [19.68, 43.502, 0] }
+          ],
+          "ix": 2,
+          "x": "var $bm_rt;\nfunction doIt() {\n    var easingEquation, val1, val2, val3;\n    var ew_one = backOut;\n    var ew_two = expoIn;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n        if (n < 2) {\n            easingEquation = ew_one;\n        } else if (n >= $bm_sub(numKeys, 1)) {\n            easingEquation = ew_two;\n        } else {\n            return null;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    var t = $bm_sub(time, key1.time);\n    var d = $bm_sub(key2.time, key1.time);\n    var sX = key1[0];\n    var eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        var sY = key1[1];\n        var eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            var sZ = key1[2];\n            var eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easingEquation(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easingEquation(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easingEquation(t, sY, eY, d);\n            val3 = easingEquation(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\nvar IN_EXPO_CORRECTION = 0.000976563;\nvar OUT_EXPO_CORRECTION = 1.000976563;\nvar s = 1.70158;\nvar p = 0.81;\nvar a = 50;\nfunction bounceOut(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction bounceIn(t, b, c, d) {\n    return $bm_sum($bm_sub(c, bounceOut($bm_sub(d, t), 0, c, d)), b);\n}\nfunction bounceInOut(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(bounceIn($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return bounceOut(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction backIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul(c, t /= d), t), $bm_sub($bm_mul($bm_sum(s, 1), t), s)), b);\n}\nfunction backInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div(c, 2), $bm_mul($bm_mul(t, t), $bm_sub($bm_mul($bm_sum(s *= 1.525, 1), t), s))), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul(t -= 2, t), $bm_sum($bm_mul($bm_sum(s *= 1.525, 1), t), s)), 2)), b);\n}\nfunction backOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(t = t / d - 1, t), $bm_sum($bm_mul($bm_sum(s, 1), t), s)), 1)), b);\n}\nfunction circIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t /= d, t))), 1)), b);\n}\nfunction circInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t, t))), 1)), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum(Math.sqrt($bm_sub(1, $bm_mul(t -= 2, t))), 1)), b);\n}\nfunction circOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sqrt($bm_sub(1, $bm_mul(t = t / d - 1, t)))), b);\n}\nfunction elasticIn(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_neg($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n}\nfunction elasticInOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d / 2) == 2)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3 * 1.5);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    if (t < 1)\n        return $bm_sum($bm_mul(-0.5, $bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n    return $bm_sum($bm_sum($bm_mul($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), 0.5), c), b);\n}\nfunction elasticOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_sum($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), c), b);\n}\nfunction expoIn(t, b, c, d) {\n    return t == 0 ? b : c * (Math.pow(2, 10 * (t / d - 1)) - IN_EXPO_CORRECTION) + b;\n}\nfunction expoInOut(t, b, c, d) {\n    var v;\n    if ((t /= d / 2) < 1) {\n        v = $bm_sub(Math.pow(2, $bm_mul(10, $bm_sub(t, 1))), IN_EXPO_CORRECTION);\n    } else {\n        v = $bm_sum($bm_sum($bm_neg(Math.pow(2, $bm_mul(-10, $bm_sub(t, 1)))), 2), IN_EXPO_CORRECTION);\n    }\n    return $bm_sum(b, $bm_mul($bm_div(v, 2), c));\n}\nfunction expoOut(t, b, c, d) {\n    return t == d ? b + c : c * OUT_EXPO_CORRECTION * (-Math.pow(2, -10 * t / d) + 1) + b;\n}\nfunction quadIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul(c, t /= d), t), b);\n}\nfunction quadInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_div(c, 2), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul(--t, $bm_sub(t, 2)), 1)), b);\n}\nfunction quadOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_neg(c), t /= d), $bm_sub(t, 2)), b);\n}\nfunction quartIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), b);\n}\nfunction quartInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), 2)), b);\n}\nfunction quartOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), 1)), b);\n}\nfunction quintIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), t), b);\n}\nfunction quintInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), t), 2)), b);\n}\nfunction quintOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), t), 1)), b);\n}\nfunction sineIn(t, b, c, d) {\n    return $bm_sum($bm_sum($bm_mul($bm_neg(c), Math.cos($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), c), b);\n}\nfunction sineInOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.cos($bm_div($bm_mul(Math.PI, t), d)), 1)), b);\n}\nfunction sineOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sin($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), b);\n}\n$bm_rt = doIt() || value;"
+        },
+        "a": { "a": 0, "k": [7.299, 1.989, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [-7.049, -1.738],
+                    [7.049, -1.738],
+                    [7.049, 1.738],
+                    [-7.049, 1.738]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [7.299, 1.989], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 1",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 4,
+      "ty": 4,
+      "nm": "Body Outlines",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 20,
+              "s": [-20]
+            },
+            { "t": 64, "s": [0] }
+          ],
+          "ix": 10,
+          "x": "var $bm_rt;\nfunction doIt() {\n    var easingEquation, val1, val2, val3;\n    var ew_one = backOut;\n    var ew_two = expoIn;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n        if (n < 2) {\n            easingEquation = ew_one;\n        } else if (n >= $bm_sub(numKeys, 1)) {\n            easingEquation = ew_two;\n        } else {\n            return null;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    var t = $bm_sub(time, key1.time);\n    var d = $bm_sub(key2.time, key1.time);\n    var sX = key1[0];\n    var eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        var sY = key1[1];\n        var eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            var sZ = key1[2];\n            var eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easingEquation(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easingEquation(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easingEquation(t, sY, eY, d);\n            val3 = easingEquation(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\nvar IN_EXPO_CORRECTION = 0.000976563;\nvar OUT_EXPO_CORRECTION = 1.000976563;\nvar s = 1.70158;\nvar p = 0.81;\nvar a = 50;\nfunction bounceOut(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction bounceIn(t, b, c, d) {\n    return $bm_sum($bm_sub(c, bounceOut($bm_sub(d, t), 0, c, d)), b);\n}\nfunction bounceInOut(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(bounceIn($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return bounceOut(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction backIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul(c, t /= d), t), $bm_sub($bm_mul($bm_sum(s, 1), t), s)), b);\n}\nfunction backInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div(c, 2), $bm_mul($bm_mul(t, t), $bm_sub($bm_mul($bm_sum(s *= 1.525, 1), t), s))), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul(t -= 2, t), $bm_sum($bm_mul($bm_sum(s *= 1.525, 1), t), s)), 2)), b);\n}\nfunction backOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(t = t / d - 1, t), $bm_sum($bm_mul($bm_sum(s, 1), t), s)), 1)), b);\n}\nfunction circIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t /= d, t))), 1)), b);\n}\nfunction circInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t, t))), 1)), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum(Math.sqrt($bm_sub(1, $bm_mul(t -= 2, t))), 1)), b);\n}\nfunction circOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sqrt($bm_sub(1, $bm_mul(t = t / d - 1, t)))), b);\n}\nfunction elasticIn(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_neg($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n}\nfunction elasticInOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d / 2) == 2)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3 * 1.5);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    if (t < 1)\n        return $bm_sum($bm_mul(-0.5, $bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n    return $bm_sum($bm_sum($bm_mul($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), 0.5), c), b);\n}\nfunction elasticOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_sum($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), c), b);\n}\nfunction expoIn(t, b, c, d) {\n    return t == 0 ? b : c * (Math.pow(2, 10 * (t / d - 1)) - IN_EXPO_CORRECTION) + b;\n}\nfunction expoInOut(t, b, c, d) {\n    var v;\n    if ((t /= d / 2) < 1) {\n        v = $bm_sub(Math.pow(2, $bm_mul(10, $bm_sub(t, 1))), IN_EXPO_CORRECTION);\n    } else {\n        v = $bm_sum($bm_sum($bm_neg(Math.pow(2, $bm_mul(-10, $bm_sub(t, 1)))), 2), IN_EXPO_CORRECTION);\n    }\n    return $bm_sum(b, $bm_mul($bm_div(v, 2), c));\n}\nfunction expoOut(t, b, c, d) {\n    return t == d ? b + c : c * OUT_EXPO_CORRECTION * (-Math.pow(2, -10 * t / d) + 1) + b;\n}\nfunction quadIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul(c, t /= d), t), b);\n}\nfunction quadInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_div(c, 2), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul(--t, $bm_sub(t, 2)), 1)), b);\n}\nfunction quadOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_neg(c), t /= d), $bm_sub(t, 2)), b);\n}\nfunction quartIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), b);\n}\nfunction quartInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), 2)), b);\n}\nfunction quartOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), 1)), b);\n}\nfunction quintIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), t), b);\n}\nfunction quintInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), t), 2)), b);\n}\nfunction quintOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), t), 1)), b);\n}\nfunction sineIn(t, b, c, d) {\n    return $bm_sum($bm_sum($bm_mul($bm_neg(c), Math.cos($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), c), b);\n}\nfunction sineInOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.cos($bm_div($bm_mul(Math.PI, t), d)), 1)), b);\n}\nfunction sineOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sin($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), b);\n}\n$bm_rt = doIt() || value;"
+        },
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": 0.833, "y": 0.833 },
+              "o": { "x": 0.167, "y": 0.167 },
+              "t": 20,
+              "s": [35.501, 32.816, 0],
+              "to": [0, 0, 0],
+              "ti": [0, 0, 0]
+            },
+            { "t": 64, "s": [25.501, 34.941, 0] }
+          ],
+          "ix": 2,
+          "x": "var $bm_rt;\nfunction doIt() {\n    var easingEquation, val1, val2, val3;\n    var ew_one = backOut;\n    var ew_two = expoIn;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n        if (n < 2) {\n            easingEquation = ew_one;\n        } else if (n >= $bm_sub(numKeys, 1)) {\n            easingEquation = ew_two;\n        } else {\n            return null;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    var t = $bm_sub(time, key1.time);\n    var d = $bm_sub(key2.time, key1.time);\n    var sX = key1[0];\n    var eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        var sY = key1[1];\n        var eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            var sZ = key1[2];\n            var eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easingEquation(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easingEquation(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easingEquation(t, sY, eY, d);\n            val3 = easingEquation(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\nvar IN_EXPO_CORRECTION = 0.000976563;\nvar OUT_EXPO_CORRECTION = 1.000976563;\nvar s = 1.70158;\nvar p = 0.81;\nvar a = 50;\nfunction bounceOut(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction bounceIn(t, b, c, d) {\n    return $bm_sum($bm_sub(c, bounceOut($bm_sub(d, t), 0, c, d)), b);\n}\nfunction bounceInOut(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(bounceIn($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return bounceOut(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction backIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul(c, t /= d), t), $bm_sub($bm_mul($bm_sum(s, 1), t), s)), b);\n}\nfunction backInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div(c, 2), $bm_mul($bm_mul(t, t), $bm_sub($bm_mul($bm_sum(s *= 1.525, 1), t), s))), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul(t -= 2, t), $bm_sum($bm_mul($bm_sum(s *= 1.525, 1), t), s)), 2)), b);\n}\nfunction backOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(t = t / d - 1, t), $bm_sum($bm_mul($bm_sum(s, 1), t), s)), 1)), b);\n}\nfunction circIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t /= d, t))), 1)), b);\n}\nfunction circInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t, t))), 1)), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum(Math.sqrt($bm_sub(1, $bm_mul(t -= 2, t))), 1)), b);\n}\nfunction circOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sqrt($bm_sub(1, $bm_mul(t = t / d - 1, t)))), b);\n}\nfunction elasticIn(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_neg($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n}\nfunction elasticInOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d / 2) == 2)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3 * 1.5);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    if (t < 1)\n        return $bm_sum($bm_mul(-0.5, $bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n    return $bm_sum($bm_sum($bm_mul($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), 0.5), c), b);\n}\nfunction elasticOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_sum($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), c), b);\n}\nfunction expoIn(t, b, c, d) {\n    return t == 0 ? b : c * (Math.pow(2, 10 * (t / d - 1)) - IN_EXPO_CORRECTION) + b;\n}\nfunction expoInOut(t, b, c, d) {\n    var v;\n    if ((t /= d / 2) < 1) {\n        v = $bm_sub(Math.pow(2, $bm_mul(10, $bm_sub(t, 1))), IN_EXPO_CORRECTION);\n    } else {\n        v = $bm_sum($bm_sum($bm_neg(Math.pow(2, $bm_mul(-10, $bm_sub(t, 1)))), 2), IN_EXPO_CORRECTION);\n    }\n    return $bm_sum(b, $bm_mul($bm_div(v, 2), c));\n}\nfunction expoOut(t, b, c, d) {\n    return t == d ? b + c : c * OUT_EXPO_CORRECTION * (-Math.pow(2, -10 * t / d) + 1) + b;\n}\nfunction quadIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul(c, t /= d), t), b);\n}\nfunction quadInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_div(c, 2), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul(--t, $bm_sub(t, 2)), 1)), b);\n}\nfunction quadOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_neg(c), t /= d), $bm_sub(t, 2)), b);\n}\nfunction quartIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), b);\n}\nfunction quartInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), 2)), b);\n}\nfunction quartOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), 1)), b);\n}\nfunction quintIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), t), b);\n}\nfunction quintInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), t), 2)), b);\n}\nfunction quintOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), t), 1)), b);\n}\nfunction sineIn(t, b, c, d) {\n    return $bm_sum($bm_sum($bm_mul($bm_neg(c), Math.cos($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), c), b);\n}\nfunction sineInOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.cos($bm_div($bm_mul(Math.PI, t), d)), 1)), b);\n}\nfunction sineOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sin($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), b);\n}\n$bm_rt = doIt() || value;"
+        },
+        "a": { "a": 0, "k": [13.574, 17.694, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0.983, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 1.663],
+                    [0, 0],
+                    [-0.34, 0],
+                    [0, -0.34],
+                    [0, 0],
+                    [-0.982, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [1.058, 0],
+                    [0, 0],
+                    [0, 0],
+                    [1.058, 0.151],
+                    [0.453, -0.038],
+                    [0.529, -4.044],
+                    [-0.378, -3.44],
+                    [-2.305, -0.264],
+                    [-0.265, 0],
+                    [0, 0],
+                    [0, 0],
+                    [-1.399, 0.605],
+                    [0.643, 1.436]
+                  ],
+                  "o": [
+                    [-0.454, -1.021],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [-1.663, 0],
+                    [0, 0],
+                    [0, -0.34],
+                    [0.341, 0],
+                    [0, 0],
+                    [0, 1.096],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, -1.02],
+                    [0, 0],
+                    [0, 0],
+                    [0, -1.021],
+                    [-0.34, -0.038],
+                    [-3.818, 0.265],
+                    [-0.416, 3.591],
+                    [0.34, 2.116],
+                    [0.227, 0.038],
+                    [0, 0],
+                    [0, 0],
+                    [0.643, 1.399],
+                    [1.398, -0.605],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [6.369, 1.493],
+                    [3.874, -0.132],
+                    [-3.836, -0.132],
+                    [-3.836, -3.496],
+                    [-3.723, -3.496],
+                    [-6.785, -6.558],
+                    [-6.785, -11.472],
+                    [-6.256, -12.001],
+                    [-5.726, -11.472],
+                    [-5.726, -6.52],
+                    [-3.799, -4.592],
+                    [0.85, -4.592],
+                    [0.85, -6.596],
+                    [9.053, -6.596],
+                    [9.053, -6.634],
+                    [7.201, -8.486],
+                    [-1.795, -8.486],
+                    [-1.795, -15.478],
+                    [-3.534, -17.406],
+                    [-4.63, -17.406],
+                    [-12.832, -9.96],
+                    [-12.946, 1.191],
+                    [-8.675, 5.348],
+                    [-7.956, 5.386],
+                    [2.06, 5.386],
+                    [7.654, 15.516],
+                    [11.321, 16.839],
+                    [12.681, 13.135]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [13.574, 17.694], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 1",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 5,
+      "ty": 3,
+      "nm": "Body",
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 20,
+              "s": [-20]
+            },
+            { "t": 64, "s": [0] }
+          ],
+          "ix": 10,
+          "x": "var $bm_rt;\nfunction doIt() {\n    var easingEquation, val1, val2, val3;\n    var ew_one = backOut;\n    var ew_two = expoIn;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n        if (n < 2) {\n            easingEquation = ew_one;\n        } else if (n >= $bm_sub(numKeys, 1)) {\n            easingEquation = ew_two;\n        } else {\n            return null;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    var t = $bm_sub(time, key1.time);\n    var d = $bm_sub(key2.time, key1.time);\n    var sX = key1[0];\n    var eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        var sY = key1[1];\n        var eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            var sZ = key1[2];\n            var eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easingEquation(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easingEquation(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easingEquation(t, sY, eY, d);\n            val3 = easingEquation(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\nvar IN_EXPO_CORRECTION = 0.000976563;\nvar OUT_EXPO_CORRECTION = 1.000976563;\nvar s = 1.70158;\nvar p = 0.81;\nvar a = 50;\nfunction bounceOut(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction bounceIn(t, b, c, d) {\n    return $bm_sum($bm_sub(c, bounceOut($bm_sub(d, t), 0, c, d)), b);\n}\nfunction bounceInOut(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(bounceIn($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return bounceOut(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction backIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul(c, t /= d), t), $bm_sub($bm_mul($bm_sum(s, 1), t), s)), b);\n}\nfunction backInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div(c, 2), $bm_mul($bm_mul(t, t), $bm_sub($bm_mul($bm_sum(s *= 1.525, 1), t), s))), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul(t -= 2, t), $bm_sum($bm_mul($bm_sum(s *= 1.525, 1), t), s)), 2)), b);\n}\nfunction backOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(t = t / d - 1, t), $bm_sum($bm_mul($bm_sum(s, 1), t), s)), 1)), b);\n}\nfunction circIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t /= d, t))), 1)), b);\n}\nfunction circInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t, t))), 1)), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum(Math.sqrt($bm_sub(1, $bm_mul(t -= 2, t))), 1)), b);\n}\nfunction circOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sqrt($bm_sub(1, $bm_mul(t = t / d - 1, t)))), b);\n}\nfunction elasticIn(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_neg($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n}\nfunction elasticInOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d / 2) == 2)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3 * 1.5);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    if (t < 1)\n        return $bm_sum($bm_mul(-0.5, $bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n    return $bm_sum($bm_sum($bm_mul($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), 0.5), c), b);\n}\nfunction elasticOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_sum($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), c), b);\n}\nfunction expoIn(t, b, c, d) {\n    return t == 0 ? b : c * (Math.pow(2, 10 * (t / d - 1)) - IN_EXPO_CORRECTION) + b;\n}\nfunction expoInOut(t, b, c, d) {\n    var v;\n    if ((t /= d / 2) < 1) {\n        v = $bm_sub(Math.pow(2, $bm_mul(10, $bm_sub(t, 1))), IN_EXPO_CORRECTION);\n    } else {\n        v = $bm_sum($bm_sum($bm_neg(Math.pow(2, $bm_mul(-10, $bm_sub(t, 1)))), 2), IN_EXPO_CORRECTION);\n    }\n    return $bm_sum(b, $bm_mul($bm_div(v, 2), c));\n}\nfunction expoOut(t, b, c, d) {\n    return t == d ? b + c : c * OUT_EXPO_CORRECTION * (-Math.pow(2, -10 * t / d) + 1) + b;\n}\nfunction quadIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul(c, t /= d), t), b);\n}\nfunction quadInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_div(c, 2), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul(--t, $bm_sub(t, 2)), 1)), b);\n}\nfunction quadOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_neg(c), t /= d), $bm_sub(t, 2)), b);\n}\nfunction quartIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), b);\n}\nfunction quartInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), 2)), b);\n}\nfunction quartOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), 1)), b);\n}\nfunction quintIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), t), b);\n}\nfunction quintInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), t), 2)), b);\n}\nfunction quintOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), t), 1)), b);\n}\nfunction sineIn(t, b, c, d) {\n    return $bm_sum($bm_sum($bm_mul($bm_neg(c), Math.cos($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), c), b);\n}\nfunction sineInOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.cos($bm_div($bm_mul(Math.PI, t), d)), 1)), b);\n}\nfunction sineOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sin($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), b);\n}\n$bm_rt = doIt() || value;"
+        },
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": 0.833, "y": 0.833 },
+              "o": { "x": 0.167, "y": 0.167 },
+              "t": 20,
+              "s": [35.501, 32.816, 0],
+              "to": [0, 0, 0],
+              "ti": [0, 0, 0]
+            },
+            { "t": 64, "s": [25.501, 34.941, 0] }
+          ],
+          "ix": 2,
+          "x": "var $bm_rt;\nfunction doIt() {\n    var easingEquation, val1, val2, val3;\n    var ew_one = backOut;\n    var ew_two = expoIn;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n        if (n < 2) {\n            easingEquation = ew_one;\n        } else if (n >= $bm_sub(numKeys, 1)) {\n            easingEquation = ew_two;\n        } else {\n            return null;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    var t = $bm_sub(time, key1.time);\n    var d = $bm_sub(key2.time, key1.time);\n    var sX = key1[0];\n    var eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        var sY = key1[1];\n        var eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            var sZ = key1[2];\n            var eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easingEquation(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easingEquation(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easingEquation(t, sY, eY, d);\n            val3 = easingEquation(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\nvar IN_EXPO_CORRECTION = 0.000976563;\nvar OUT_EXPO_CORRECTION = 1.000976563;\nvar s = 1.70158;\nvar p = 0.81;\nvar a = 50;\nfunction bounceOut(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction bounceIn(t, b, c, d) {\n    return $bm_sum($bm_sub(c, bounceOut($bm_sub(d, t), 0, c, d)), b);\n}\nfunction bounceInOut(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(bounceIn($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return bounceOut(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction backIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul(c, t /= d), t), $bm_sub($bm_mul($bm_sum(s, 1), t), s)), b);\n}\nfunction backInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div(c, 2), $bm_mul($bm_mul(t, t), $bm_sub($bm_mul($bm_sum(s *= 1.525, 1), t), s))), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul(t -= 2, t), $bm_sum($bm_mul($bm_sum(s *= 1.525, 1), t), s)), 2)), b);\n}\nfunction backOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(t = t / d - 1, t), $bm_sum($bm_mul($bm_sum(s, 1), t), s)), 1)), b);\n}\nfunction circIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t /= d, t))), 1)), b);\n}\nfunction circInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t, t))), 1)), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum(Math.sqrt($bm_sub(1, $bm_mul(t -= 2, t))), 1)), b);\n}\nfunction circOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sqrt($bm_sub(1, $bm_mul(t = t / d - 1, t)))), b);\n}\nfunction elasticIn(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_neg($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n}\nfunction elasticInOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d / 2) == 2)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3 * 1.5);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    if (t < 1)\n        return $bm_sum($bm_mul(-0.5, $bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n    return $bm_sum($bm_sum($bm_mul($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), 0.5), c), b);\n}\nfunction elasticOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_sum($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), c), b);\n}\nfunction expoIn(t, b, c, d) {\n    return t == 0 ? b : c * (Math.pow(2, 10 * (t / d - 1)) - IN_EXPO_CORRECTION) + b;\n}\nfunction expoInOut(t, b, c, d) {\n    var v;\n    if ((t /= d / 2) < 1) {\n        v = $bm_sub(Math.pow(2, $bm_mul(10, $bm_sub(t, 1))), IN_EXPO_CORRECTION);\n    } else {\n        v = $bm_sum($bm_sum($bm_neg(Math.pow(2, $bm_mul(-10, $bm_sub(t, 1)))), 2), IN_EXPO_CORRECTION);\n    }\n    return $bm_sum(b, $bm_mul($bm_div(v, 2), c));\n}\nfunction expoOut(t, b, c, d) {\n    return t == d ? b + c : c * OUT_EXPO_CORRECTION * (-Math.pow(2, -10 * t / d) + 1) + b;\n}\nfunction quadIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul(c, t /= d), t), b);\n}\nfunction quadInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_div(c, 2), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul(--t, $bm_sub(t, 2)), 1)), b);\n}\nfunction quadOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_neg(c), t /= d), $bm_sub(t, 2)), b);\n}\nfunction quartIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), b);\n}\nfunction quartInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), 2)), b);\n}\nfunction quartOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), 1)), b);\n}\nfunction quintIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), t), b);\n}\nfunction quintInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), t), 2)), b);\n}\nfunction quintOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), t), 1)), b);\n}\nfunction sineIn(t, b, c, d) {\n    return $bm_sum($bm_sum($bm_mul($bm_neg(c), Math.cos($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), c), b);\n}\nfunction sineInOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.cos($bm_div($bm_mul(Math.PI, t), d)), 1)), b);\n}\nfunction sineOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sin($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), b);\n}\n$bm_rt = doIt() || value;"
+        },
+        "a": { "a": 0, "k": [13.574, 17.694, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 6,
+      "ty": 4,
+      "nm": "Head Outlines",
+      "parent": 5,
+      "sr": 1,
+      "ks": {
+        "o": { "a": 0, "k": 100, "ix": 11 },
+        "r": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 20,
+              "s": [-10]
+            },
+            { "t": 64, "s": [0] }
+          ],
+          "ix": 10,
+          "x": "var $bm_rt;\nfunction doIt() {\n    var easingEquation, val1, val2, val3;\n    var ew_one = backOut;\n    var ew_two = expoIn;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n        if (n < 2) {\n            easingEquation = ew_one;\n        } else if (n >= $bm_sub(numKeys, 1)) {\n            easingEquation = ew_two;\n        } else {\n            return null;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    var t = $bm_sub(time, key1.time);\n    var d = $bm_sub(key2.time, key1.time);\n    var sX = key1[0];\n    var eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        var sY = key1[1];\n        var eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            var sZ = key1[2];\n            var eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easingEquation(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easingEquation(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easingEquation(t, sY, eY, d);\n            val3 = easingEquation(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\nvar IN_EXPO_CORRECTION = 0.000976563;\nvar OUT_EXPO_CORRECTION = 1.000976563;\nvar s = 1.70158;\nvar p = 0.81;\nvar a = 50;\nfunction bounceOut(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction bounceIn(t, b, c, d) {\n    return $bm_sum($bm_sub(c, bounceOut($bm_sub(d, t), 0, c, d)), b);\n}\nfunction bounceInOut(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(bounceIn($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return bounceOut(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction backIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul(c, t /= d), t), $bm_sub($bm_mul($bm_sum(s, 1), t), s)), b);\n}\nfunction backInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div(c, 2), $bm_mul($bm_mul(t, t), $bm_sub($bm_mul($bm_sum(s *= 1.525, 1), t), s))), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul(t -= 2, t), $bm_sum($bm_mul($bm_sum(s *= 1.525, 1), t), s)), 2)), b);\n}\nfunction backOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(t = t / d - 1, t), $bm_sum($bm_mul($bm_sum(s, 1), t), s)), 1)), b);\n}\nfunction circIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t /= d, t))), 1)), b);\n}\nfunction circInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t, t))), 1)), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum(Math.sqrt($bm_sub(1, $bm_mul(t -= 2, t))), 1)), b);\n}\nfunction circOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sqrt($bm_sub(1, $bm_mul(t = t / d - 1, t)))), b);\n}\nfunction elasticIn(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_neg($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n}\nfunction elasticInOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d / 2) == 2)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3 * 1.5);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    if (t < 1)\n        return $bm_sum($bm_mul(-0.5, $bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n    return $bm_sum($bm_sum($bm_mul($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), 0.5), c), b);\n}\nfunction elasticOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_sum($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), c), b);\n}\nfunction expoIn(t, b, c, d) {\n    return t == 0 ? b : c * (Math.pow(2, 10 * (t / d - 1)) - IN_EXPO_CORRECTION) + b;\n}\nfunction expoInOut(t, b, c, d) {\n    var v;\n    if ((t /= d / 2) < 1) {\n        v = $bm_sub(Math.pow(2, $bm_mul(10, $bm_sub(t, 1))), IN_EXPO_CORRECTION);\n    } else {\n        v = $bm_sum($bm_sum($bm_neg(Math.pow(2, $bm_mul(-10, $bm_sub(t, 1)))), 2), IN_EXPO_CORRECTION);\n    }\n    return $bm_sum(b, $bm_mul($bm_div(v, 2), c));\n}\nfunction expoOut(t, b, c, d) {\n    return t == d ? b + c : c * OUT_EXPO_CORRECTION * (-Math.pow(2, -10 * t / d) + 1) + b;\n}\nfunction quadIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul(c, t /= d), t), b);\n}\nfunction quadInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_div(c, 2), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul(--t, $bm_sub(t, 2)), 1)), b);\n}\nfunction quadOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_neg(c), t /= d), $bm_sub(t, 2)), b);\n}\nfunction quartIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), b);\n}\nfunction quartInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), 2)), b);\n}\nfunction quartOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), 1)), b);\n}\nfunction quintIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), t), b);\n}\nfunction quintInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), t), 2)), b);\n}\nfunction quintOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), t), 1)), b);\n}\nfunction sineIn(t, b, c, d) {\n    return $bm_sum($bm_sum($bm_mul($bm_neg(c), Math.cos($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), c), b);\n}\nfunction sineInOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.cos($bm_div($bm_mul(Math.PI, t), d)), 1)), b);\n}\nfunction sineOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sin($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), b);\n}\n$bm_rt = doIt() || value;"
+        },
+        "p": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": 0.833, "y": 0.833 },
+              "o": { "x": 0.167, "y": 0.167 },
+              "t": 20,
+              "s": [12.629, -3.851, 0],
+              "to": [0, 0, 0],
+              "ti": [0, 0, 0]
+            },
+            { "t": 64, "s": [12.629, -3.851, 0] }
+          ],
+          "ix": 2,
+          "x": "var $bm_rt;\nfunction doIt() {\n    var easingEquation, val1, val2, val3;\n    var ew_one = backOut;\n    var ew_two = expoIn;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n        if (n < 2) {\n            easingEquation = ew_one;\n        } else if (n >= $bm_sub(numKeys, 1)) {\n            easingEquation = ew_two;\n        } else {\n            return null;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    var t = $bm_sub(time, key1.time);\n    var d = $bm_sub(key2.time, key1.time);\n    var sX = key1[0];\n    var eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        var sY = key1[1];\n        var eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            var sZ = key1[2];\n            var eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easingEquation(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easingEquation(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easingEquation(t, sY, eY, d);\n            val3 = easingEquation(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\nvar IN_EXPO_CORRECTION = 0.000976563;\nvar OUT_EXPO_CORRECTION = 1.000976563;\nvar s = 1.70158;\nvar p = 0.81;\nvar a = 50;\nfunction bounceOut(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction bounceIn(t, b, c, d) {\n    return $bm_sum($bm_sub(c, bounceOut($bm_sub(d, t), 0, c, d)), b);\n}\nfunction bounceInOut(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(bounceIn($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return bounceOut(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction backIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul(c, t /= d), t), $bm_sub($bm_mul($bm_sum(s, 1), t), s)), b);\n}\nfunction backInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div(c, 2), $bm_mul($bm_mul(t, t), $bm_sub($bm_mul($bm_sum(s *= 1.525, 1), t), s))), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul(t -= 2, t), $bm_sum($bm_mul($bm_sum(s *= 1.525, 1), t), s)), 2)), b);\n}\nfunction backOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(t = t / d - 1, t), $bm_sum($bm_mul($bm_sum(s, 1), t), s)), 1)), b);\n}\nfunction circIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t /= d, t))), 1)), b);\n}\nfunction circInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t, t))), 1)), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum(Math.sqrt($bm_sub(1, $bm_mul(t -= 2, t))), 1)), b);\n}\nfunction circOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sqrt($bm_sub(1, $bm_mul(t = t / d - 1, t)))), b);\n}\nfunction elasticIn(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_neg($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n}\nfunction elasticInOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d / 2) == 2)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3 * 1.5);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    if (t < 1)\n        return $bm_sum($bm_mul(-0.5, $bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n    return $bm_sum($bm_sum($bm_mul($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), 0.5), c), b);\n}\nfunction elasticOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_sum($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), c), b);\n}\nfunction expoIn(t, b, c, d) {\n    return t == 0 ? b : c * (Math.pow(2, 10 * (t / d - 1)) - IN_EXPO_CORRECTION) + b;\n}\nfunction expoInOut(t, b, c, d) {\n    var v;\n    if ((t /= d / 2) < 1) {\n        v = $bm_sub(Math.pow(2, $bm_mul(10, $bm_sub(t, 1))), IN_EXPO_CORRECTION);\n    } else {\n        v = $bm_sum($bm_sum($bm_neg(Math.pow(2, $bm_mul(-10, $bm_sub(t, 1)))), 2), IN_EXPO_CORRECTION);\n    }\n    return $bm_sum(b, $bm_mul($bm_div(v, 2), c));\n}\nfunction expoOut(t, b, c, d) {\n    return t == d ? b + c : c * OUT_EXPO_CORRECTION * (-Math.pow(2, -10 * t / d) + 1) + b;\n}\nfunction quadIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul(c, t /= d), t), b);\n}\nfunction quadInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_div(c, 2), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul(--t, $bm_sub(t, 2)), 1)), b);\n}\nfunction quadOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_neg(c), t /= d), $bm_sub(t, 2)), b);\n}\nfunction quartIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), b);\n}\nfunction quartInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), 2)), b);\n}\nfunction quartOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), 1)), b);\n}\nfunction quintIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), t), b);\n}\nfunction quintInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), t), 2)), b);\n}\nfunction quintOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), t), 1)), b);\n}\nfunction sineIn(t, b, c, d) {\n    return $bm_sum($bm_sum($bm_mul($bm_neg(c), Math.cos($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), c), b);\n}\nfunction sineInOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.cos($bm_div($bm_mul(Math.PI, t), d)), 1)), b);\n}\nfunction sineOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sin($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), b);\n}\n$bm_rt = doIt() || value;"
+        },
+        "a": { "a": 0, "k": [6.127, 4.918, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [-3.477, -1.247],
+                    [-0.756, 2.192],
+                    [2.155, 0.756],
+                    [1.096, -0.907],
+                    [0.189, -0.076],
+                    [0.529, 1.058],
+                    [0, 0.189]
+                  ],
+                  "o": [
+                    [2.23, 0.756],
+                    [0.794, -2.23],
+                    [-1.549, -0.529],
+                    [-0.114, 0.113],
+                    [-1.096, 0.491],
+                    [-0.114, -0.151],
+                    [-0.718, 3.628]
+                  ],
+                  "v": [
+                    [-0.359, 3.912],
+                    [5.083, 1.342],
+                    [2.551, -4.139],
+                    [-1.645, -3.383],
+                    [-2.098, -3.118],
+                    [-4.971, -4.139],
+                    [-5.16, -4.668]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [6.127, 4.918], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 1",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 8,
+      "ty": 4,
+      "nm": "Computer Outlines",
+      "sr": 1,
+      "ks": {
+        "o": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 0,
+              "s": [0]
+            },
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 20,
+              "s": [0]
+            },
+            { "t": 64, "s": [100] }
+          ],
+          "ix": 11,
+          "x": "var $bm_rt;\nfunction doIt() {\n    var easingEquation, val1, val2, val3;\n    var ew_one = backOut;\n    var ew_two = expoIn;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n        if (n < 2) {\n            easingEquation = ew_one;\n        } else if (n >= $bm_sub(numKeys, 1)) {\n            easingEquation = ew_two;\n        } else {\n            return null;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    var t = $bm_sub(time, key1.time);\n    var d = $bm_sub(key2.time, key1.time);\n    var sX = key1[0];\n    var eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        var sY = key1[1];\n        var eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            var sZ = key1[2];\n            var eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easingEquation(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easingEquation(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easingEquation(t, sY, eY, d);\n            val3 = easingEquation(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\nvar IN_EXPO_CORRECTION = 0.000976563;\nvar OUT_EXPO_CORRECTION = 1.000976563;\nvar s = 1.70158;\nvar p = 0.81;\nvar a = 50;\nfunction bounceOut(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction bounceIn(t, b, c, d) {\n    return $bm_sum($bm_sub(c, bounceOut($bm_sub(d, t), 0, c, d)), b);\n}\nfunction bounceInOut(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(bounceIn($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return bounceOut(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction backIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul(c, t /= d), t), $bm_sub($bm_mul($bm_sum(s, 1), t), s)), b);\n}\nfunction backInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div(c, 2), $bm_mul($bm_mul(t, t), $bm_sub($bm_mul($bm_sum(s *= 1.525, 1), t), s))), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul(t -= 2, t), $bm_sum($bm_mul($bm_sum(s *= 1.525, 1), t), s)), 2)), b);\n}\nfunction backOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(t = t / d - 1, t), $bm_sum($bm_mul($bm_sum(s, 1), t), s)), 1)), b);\n}\nfunction circIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t /= d, t))), 1)), b);\n}\nfunction circInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t, t))), 1)), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum(Math.sqrt($bm_sub(1, $bm_mul(t -= 2, t))), 1)), b);\n}\nfunction circOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sqrt($bm_sub(1, $bm_mul(t = t / d - 1, t)))), b);\n}\nfunction elasticIn(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_neg($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n}\nfunction elasticInOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d / 2) == 2)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3 * 1.5);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    if (t < 1)\n        return $bm_sum($bm_mul(-0.5, $bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n    return $bm_sum($bm_sum($bm_mul($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), 0.5), c), b);\n}\nfunction elasticOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_sum($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), c), b);\n}\nfunction expoIn(t, b, c, d) {\n    return t == 0 ? b : c * (Math.pow(2, 10 * (t / d - 1)) - IN_EXPO_CORRECTION) + b;\n}\nfunction expoInOut(t, b, c, d) {\n    var v;\n    if ((t /= d / 2) < 1) {\n        v = $bm_sub(Math.pow(2, $bm_mul(10, $bm_sub(t, 1))), IN_EXPO_CORRECTION);\n    } else {\n        v = $bm_sum($bm_sum($bm_neg(Math.pow(2, $bm_mul(-10, $bm_sub(t, 1)))), 2), IN_EXPO_CORRECTION);\n    }\n    return $bm_sum(b, $bm_mul($bm_div(v, 2), c));\n}\nfunction expoOut(t, b, c, d) {\n    return t == d ? b + c : c * OUT_EXPO_CORRECTION * (-Math.pow(2, -10 * t / d) + 1) + b;\n}\nfunction quadIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul(c, t /= d), t), b);\n}\nfunction quadInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_div(c, 2), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul(--t, $bm_sub(t, 2)), 1)), b);\n}\nfunction quadOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_neg(c), t /= d), $bm_sub(t, 2)), b);\n}\nfunction quartIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), b);\n}\nfunction quartInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), 2)), b);\n}\nfunction quartOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), 1)), b);\n}\nfunction quintIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), t), b);\n}\nfunction quintInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), t), 2)), b);\n}\nfunction quintOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), t), 1)), b);\n}\nfunction sineIn(t, b, c, d) {\n    return $bm_sum($bm_sum($bm_mul($bm_neg(c), Math.cos($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), c), b);\n}\nfunction sineInOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.cos($bm_div($bm_mul(Math.PI, t), d)), 1)), b);\n}\nfunction sineOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sin($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), b);\n}\n$bm_rt = doIt() || value;"
+        },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [42.302, 17.535, 0], "ix": 2 },
+        "a": { "a": 0, "k": [3.992, 10.758, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [-0.605, 0.983],
+                    [2.268, 8.996],
+                    [-2.684, 8.996],
+                    [-2.684, 10.508],
+                    [3.742, 10.508],
+                    [3.742, 10.017],
+                    [3.742, 8.996],
+                    [0.038, -1.247],
+                    [2.343, -10.016],
+                    [0.68, -10.508],
+                    [-3.742, 5.897],
+                    [-2.041, 6.35]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [3.992, 10.758], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 1",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    },
+    {
+      "ddd": 0,
+      "ind": 10,
+      "ty": 4,
+      "nm": "Table Outlines",
+      "sr": 1,
+      "ks": {
+        "o": {
+          "a": 1,
+          "k": [
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 0,
+              "s": [0]
+            },
+            {
+              "i": { "x": [0.833], "y": [0.833] },
+              "o": { "x": [0.167], "y": [0.167] },
+              "t": 20,
+              "s": [0]
+            },
+            { "t": 64, "s": [100] }
+          ],
+          "ix": 11,
+          "x": "var $bm_rt;\nfunction doIt() {\n    var easingEquation, val1, val2, val3;\n    var ew_one = backOut;\n    var ew_two = expoIn;\n    var n = 0;\n    if (numKeys > 0) {\n        n = nearestKey(time).index;\n        if (key(n).time > time) {\n            n--;\n        }\n        if (n < 2) {\n            easingEquation = ew_one;\n        } else if (n >= $bm_sub(numKeys, 1)) {\n            easingEquation = ew_two;\n        } else {\n            return null;\n        }\n    }\n    try {\n        var key1 = key(n);\n        var key2 = key($bm_sum(n, 1));\n    } catch (e) {\n        return null;\n    }\n    var dim = 1;\n    try {\n        key(1)[1].length;\n        dim = 2;\n        key(1)[2].length;\n        dim = 3;\n    } catch (e) {\n    }\n    var t = $bm_sub(time, key1.time);\n    var d = $bm_sub(key2.time, key1.time);\n    var sX = key1[0];\n    var eX = $bm_sub(key2[0], key1[0]);\n    if (dim >= 2) {\n        var sY = key1[1];\n        var eY = $bm_sub(key2[1], key1[1]);\n        if (dim >= 3) {\n            var sZ = key1[2];\n            var eZ = $bm_sub(key2[2], key1[2]);\n        }\n    }\n    if (time < key1.time || time > key2.time) {\n        return value;\n    } else {\n        val1 = easingEquation(t, sX, eX, d);\n        switch (dim) {\n        case 1:\n            return val1;\n            break;\n        case 2:\n            val2 = easingEquation(t, sY, eY, d);\n            return [\n                val1,\n                val2\n            ];\n            break;\n        case 3:\n            val2 = easingEquation(t, sY, eY, d);\n            val3 = easingEquation(t, sZ, eZ, d);\n            return [\n                val1,\n                val2,\n                val3\n            ];\n            break;\n        default:\n            return null;\n        }\n    }\n}\nvar IN_EXPO_CORRECTION = 0.000976563;\nvar OUT_EXPO_CORRECTION = 1.000976563;\nvar s = 1.70158;\nvar p = 0.81;\nvar a = 50;\nfunction bounceOut(t, b, c, d) {\n    if ((t /= d) < 1 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_mul($bm_mul(7.5625, t), t)), b);\n    } else if (t < 2 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 1.5 / 2.75), t), 0.75)), b);\n    } else if (t < 2.5 / 2.75) {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.25 / 2.75), t), 0.9375)), b);\n    } else {\n        return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(7.5625, t -= 2.625 / 2.75), t), 0.984375)), b);\n    }\n}\nfunction bounceIn(t, b, c, d) {\n    return $bm_sum($bm_sub(c, bounceOut($bm_sub(d, t), 0, c, d)), b);\n}\nfunction bounceInOut(t, b, c, d) {\n    if (t < $bm_div(d, 2))\n        return $bm_sum($bm_mul(bounceIn($bm_mul(t, 2), 0, c, d), 0.5), b);\n    else\n        return bounceOut(t * 2 - d, 0, c, d) * 0.5 + c * 0.5 + b;\n}\nfunction backIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul(c, t /= d), t), $bm_sub($bm_mul($bm_sum(s, 1), t), s)), b);\n}\nfunction backInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div(c, 2), $bm_mul($bm_mul(t, t), $bm_sub($bm_mul($bm_sum(s *= 1.525, 1), t), s))), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul(t -= 2, t), $bm_sum($bm_mul($bm_sum(s *= 1.525, 1), t), s)), 2)), b);\n}\nfunction backOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul(t = t / d - 1, t), $bm_sum($bm_mul($bm_sum(s, 1), t), s)), 1)), b);\n}\nfunction circIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t /= d, t))), 1)), b);\n}\nfunction circInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.sqrt($bm_sub(1, $bm_mul(t, t))), 1)), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum(Math.sqrt($bm_sub(1, $bm_mul(t -= 2, t))), 1)), b);\n}\nfunction circOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sqrt($bm_sub(1, $bm_mul(t = t / d - 1, t)))), b);\n}\nfunction elasticIn(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_neg($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n}\nfunction elasticInOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d / 2) == 2)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3 * 1.5);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    if (t < 1)\n        return $bm_sum($bm_mul(-0.5, $bm_mul($bm_mul(a, Math.pow(2, $bm_mul(10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p)))), b);\n    return $bm_sum($bm_sum($bm_mul($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t -= 1))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), 0.5), c), b);\n}\nfunction elasticOut(t, b, c, d) {\n    if (t == 0)\n        return b;\n    if ((t /= d) == 1)\n        return $bm_sum(b, c);\n    if (!p)\n        p = $bm_mul(d, 0.3);\n    if (!a || a < Math.abs(c)) {\n        a = c;\n        s = $bm_div(p, 4);\n    } else\n        s = $bm_mul($bm_div(p, $bm_mul(2, Math.PI)), Math.asin($bm_div(c, a)));\n    return $bm_sum($bm_sum($bm_mul($bm_mul(a, Math.pow(2, $bm_mul(-10, t))), Math.sin($bm_div($bm_mul($bm_sub($bm_mul(t, d), s), $bm_mul(2, Math.PI)), p))), c), b);\n}\nfunction expoIn(t, b, c, d) {\n    return t == 0 ? b : c * (Math.pow(2, 10 * (t / d - 1)) - IN_EXPO_CORRECTION) + b;\n}\nfunction expoInOut(t, b, c, d) {\n    var v;\n    if ((t /= d / 2) < 1) {\n        v = $bm_sub(Math.pow(2, $bm_mul(10, $bm_sub(t, 1))), IN_EXPO_CORRECTION);\n    } else {\n        v = $bm_sum($bm_sum($bm_neg(Math.pow(2, $bm_mul(-10, $bm_sub(t, 1)))), 2), IN_EXPO_CORRECTION);\n    }\n    return $bm_sum(b, $bm_mul($bm_div(v, 2), c));\n}\nfunction expoOut(t, b, c, d) {\n    return t == d ? b + c : c * OUT_EXPO_CORRECTION * (-Math.pow(2, -10 * t / d) + 1) + b;\n}\nfunction quadIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul(c, t /= d), t), b);\n}\nfunction quadInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_div(c, 2), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul(--t, $bm_sub(t, 2)), 1)), b);\n}\nfunction quadOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_neg(c), t /= d), $bm_sub(t, 2)), b);\n}\nfunction quartIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), b);\n}\nfunction quartInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), 2)), b);\n}\nfunction quartOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_neg(c), $bm_sub($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), 1)), b);\n}\nfunction quintIn(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul(c, t /= d), t), t), t), t), b);\n}\nfunction quintInOut(t, b, c, d) {\n    if ((t /= d / 2) < 1)\n        return $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul($bm_mul($bm_div(c, 2), t), t), t), t), t), b);\n    return $bm_sum($bm_mul($bm_div(c, 2), $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t -= 2, t), t), t), t), 2)), b);\n}\nfunction quintOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, $bm_sum($bm_mul($bm_mul($bm_mul($bm_mul(t = t / d - 1, t), t), t), t), 1)), b);\n}\nfunction sineIn(t, b, c, d) {\n    return $bm_sum($bm_sum($bm_mul($bm_neg(c), Math.cos($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), c), b);\n}\nfunction sineInOut(t, b, c, d) {\n    return $bm_sum($bm_mul($bm_div($bm_neg(c), 2), $bm_sub(Math.cos($bm_div($bm_mul(Math.PI, t), d)), 1)), b);\n}\nfunction sineOut(t, b, c, d) {\n    return $bm_sum($bm_mul(c, Math.sin($bm_mul($bm_div(t, d), $bm_div(Math.PI, 2)))), b);\n}\n$bm_rt = doIt() || value;"
+        },
+        "r": { "a": 0, "k": 0, "ix": 10 },
+        "p": { "a": 0, "k": [38.995, 31.236, 0], "ix": 2 },
+        "a": { "a": 0, "k": [11.798, 2.083, 0], "ix": 1 },
+        "s": { "a": 0, "k": [100, 100, 100], "ix": 6 }
+      },
+      "ao": 0,
+      "shapes": [
+        {
+          "ty": "gr",
+          "it": [
+            {
+              "ind": 0,
+              "ty": "sh",
+              "ix": 1,
+              "ks": {
+                "a": 0,
+                "k": {
+                  "i": [
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "o": [
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+                  ],
+                  "v": [
+                    [-11.548, -1.833],
+                    [11.548, -1.833],
+                    [11.548, 1.833],
+                    [-11.548, 1.833]
+                  ],
+                  "c": true
+                },
+                "ix": 2
+              },
+              "nm": "Path 1",
+              "mn": "ADBE Vector Shape - Group",
+              "hd": false
+            },
+            {
+              "ty": "fl",
+              "c": { "a": 0, "k": [0, 0, 0, 1], "ix": 4 },
+              "o": { "a": 0, "k": 100, "ix": 5 },
+              "r": 1,
+              "bm": 0,
+              "nm": "Fill 1",
+              "mn": "ADBE Vector Graphic - Fill",
+              "hd": false
+            },
+            {
+              "ty": "tr",
+              "p": { "a": 0, "k": [11.797, 2.083], "ix": 2 },
+              "a": { "a": 0, "k": [0, 0], "ix": 1 },
+              "s": { "a": 0, "k": [100, 100], "ix": 3 },
+              "r": { "a": 0, "k": 0, "ix": 6 },
+              "o": { "a": 0, "k": 100, "ix": 7 },
+              "sk": { "a": 0, "k": 0, "ix": 4 },
+              "sa": { "a": 0, "k": 0, "ix": 5 },
+              "nm": "Transform"
+            }
+          ],
+          "nm": "Group 1",
+          "np": 2,
+          "cix": 2,
+          "bm": 0,
+          "ix": 1,
+          "mn": "ADBE Vector Group",
+          "hd": false
+        }
+      ],
+      "ip": 0,
+      "op": 210,
+      "st": 0,
+      "bm": 0
+    }
+  ],
+  "markers": []
+}
