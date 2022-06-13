@@ -2119,8 +2119,8 @@ export default ({ location }: { location: any }) => {
                       <span className={`flex justify-center items-center w-4 h-4 bg-white rounded ${
                         btnRapport? 'bg-pink' : ''
                       }`}>
-                        <svg className={`block opacity-0 scale-75 fill-white ${
-                          btnRapport? 'opacity-100': ''
+                        <svg className={`block opacity-100 scale-75 fill-white ${
+                          btnRapport? '': 'opacity-0'
                         }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
                           <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
                         </svg>
@@ -2158,8 +2158,8 @@ export default ({ location }: { location: any }) => {
                       <span className={`flex justify-center items-center w-4 h-4 bg-white rounded ${
                         checkNews? 'bg-pink' : ''
                       }`}>
-                        <svg className={`block opacity-0 scale-75 fill-white ${
-                          checkNews? 'opacity-100': ''
+                        <svg className={`block opacity-100 scale-75 fill-white ${
+                          checkNews? '': 'opacity-0'
                         }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
                           <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
                         </svg>
