@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import '../assets/tailwind.css'
 import TopNavigation from '../components/topnavigation'
 import Practice from '../interfaces/data'
@@ -34,6 +34,8 @@ export default ({ location }: { location: any }) => {
     `,
   )
 
+  const contextB = useContext(ThemeContext)
+
   useEffect(() => {
     setHasMounted(true)
     setPractice(location.state.practice)
@@ -48,6 +50,21 @@ export default ({ location }: { location: any }) => {
       }
     }
   }, [practice])
+
+  // useEffect(() => {
+  //   if (contextB.dark) {
+  //     let elements = document.querySelectorAll('.js-switchcolor')
+  //     elements.forEach((e) => {
+  //       if (contextB.dark) {
+  //         e.classList.add('text-lightPurpleDesat')
+  //         e.classList.remove('text-purple')
+  //       } else {
+  //         e.classList.add('text-purple')
+  //         e.classList.remove('text-lightPurpleDesat')
+  //       }
+  //     })
+  //   }
+  // }, [contextB])
 
   useEffect(() => {
     if (practice && practice.themas && practice.themas.length >= 1) {

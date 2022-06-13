@@ -32,8 +32,7 @@ export default ({ paragraaf }: { paragraaf: Paragraaf }) => {
                 dangerouslySetInnerHTML={{
                   __html: `<div>${paragraaf.body}</div>`,
                 }}
-              >
-              </p>
+              ></p>
             </div>
           )
         } else if (!checkIfRegular(paragraaf.header)) {
@@ -71,9 +70,10 @@ export default ({ paragraaf }: { paragraaf: Paragraaf }) => {
                   context.dark ? '!opacity-80' : ''
                 }
                 `}
-              >
-                {paragraaf.body}
-              </p>
+                dangerouslySetInnerHTML={{
+                  __html: `<div>${paragraaf.body}</div>`,
+                }}
+              ></p>
             </div>
           )
         } else {

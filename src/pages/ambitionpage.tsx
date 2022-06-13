@@ -2,7 +2,7 @@ import { graphql, Link, useStaticQuery } from 'gatsby'
 import { GatsbyImage, getImage, StaticImage } from 'gatsby-plugin-image'
 import { ArrowDown, ChevronDown, Search } from 'lucide-react'
 import * as React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import Input from '../components/input'
 import Intsrc from '../components/Intsrc'
 import RevPrac from '../components/revprac'
@@ -52,6 +52,7 @@ import Barchartgeneric from '../components/barchartgeneric'
 
 export default ({ location }: { location: any }) => {
   const [btnRapport, setBtnRapport] = useState<boolean>(false)
+  const [checkNews, setCheckNews] = useState<boolean>(false)
   const [netlifyError, setNetlifyError] = useState<netlifyError>({
     google: true,
     changed: false,
@@ -205,9 +206,7 @@ export default ({ location }: { location: any }) => {
             gatsbyImageData
           }
         }
-        ambitie1bench1: allGsVitalCitiesDataZoS03(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie1bench1: allGsVitalCitiesDataZoS03 {
           edges {
             node {
               jaar
@@ -221,9 +220,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie1bench2: allGsVitalCitiesDataMoS12(
-          filter: { jaar: { gte: "2020" } }
-        ) {
+        ambitie1bench2: allGsVitalCitiesDataMoS12 {
           edges {
             node {
               jaar
@@ -237,9 +234,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie1bench3: allGsVitalCitiesDataMoS07(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie1bench3: allGsVitalCitiesDataMoS07 {
           edges {
             node {
               jaar
@@ -251,9 +246,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie1bench4: allGsVitalCitiesDataMoS11(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie1bench4: allGsVitalCitiesDataMoS11 {
           edges {
             node {
               jaar
@@ -266,9 +259,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie2bench1: allGsVitalCitiesDataMoS17(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie2bench1: allGsVitalCitiesDataMoS17 {
           edges {
             node {
               jaar
@@ -280,9 +271,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie2bench2: allGsVitalCitiesDataMoS04(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie2bench2: allGsVitalCitiesDataMoS04 {
           edges {
             node {
               jaar
@@ -295,10 +284,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie2bench3: allGsVitalCitiesDataMoS09(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Autoluwe en autovrije zones" }
-          }
+          filter: { item: { eq: "Autoluwe en autovrije zones" } }
         ) {
           edges {
             node {
@@ -313,7 +299,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie2bench4: allGsVitalCitiesDataMoS09(
-          filter: { jaar: { gte: 2020 }, item: { eq: "Deelsystemen" } }
+          filter: { item: { eq: "Deelsystemen" } }
         ) {
           edges {
             node {
@@ -328,10 +314,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie2bench5: allGsVitalCitiesDataMoS13(
-          filter: {
-            jaar: { gte: "2020" }
-            item: { eq: "Lidmaatschap autodelen" }
-          }
+          filter: { item: { eq: "Lidmaatschap autodelen" } }
         ) {
           edges {
             node {
@@ -344,10 +327,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie2bench6: allGsVitalCitiesDataMoS13(
-          filter: {
-            jaar: { gte: "2020" }
-            item: { eq: "Lidmaatschap fietsdelen" }
-          }
+          filter: { item: { eq: "Lidmaatschap fietsdelen" } }
         ) {
           edges {
             node {
@@ -360,10 +340,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench1: allGsVitalCitiesDataMoS01(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Fietspaden in goede staat" }
-          }
+          filter: { item: { eq: "Fietspaden in goede staat" } }
         ) {
           edges {
             node {
@@ -378,10 +355,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench2: allGsVitalCitiesDataMoS01(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Straten en pleinen in goede staat" }
-          }
+          filter: { item: { eq: "Straten en pleinen in goede staat" } }
         ) {
           edges {
             node {
@@ -396,10 +370,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench3: allGsVitalCitiesDataMoS01(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Voetpaden in goede staat" }
-          }
+          filter: { item: { eq: "Voetpaden in goede staat" } }
         ) {
           edges {
             node {
@@ -413,9 +384,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie3bench4: allGsVitalCitiesDataMoS03(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie3bench4: allGsVitalCitiesDataMoS03 {
           edges {
             node {
               jaar
@@ -428,7 +397,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie3bench5: allGsVitalCitiesDataMoS09(
-          filter: { jaar: { gte: 2020 }, item: { eq: "Fietsinfrastructuur" } }
+          filter: { item: { eq: "Fietsinfrastructuur" } }
         ) {
           edges {
             node {
@@ -442,9 +411,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie3bench6: allGsVitalCitiesDataMoS02(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie3bench6: allGsVitalCitiesDataMoS02 {
           edges {
             node {
               jaar
@@ -456,9 +423,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie3bench7: allGsVitalCitiesDataMoS06(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie3bench7: allGsVitalCitiesDataMoS06 {
           edges {
             node {
               jaar
@@ -470,9 +435,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie4bench1: allGsVitalCitiesDataCuS11(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie4bench1: allGsVitalCitiesDataCuS11 {
           edges {
             node {
               jaar
@@ -485,10 +448,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie4bench2: allGsVitalCitiesDataCuS10(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Sporten in eigen gemeente" }
-          }
+          filter: { item: { eq: "Sporten in eigen gemeente" } }
         ) {
           edges {
             node {
@@ -503,10 +463,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie4bench3: allGsVitalCitiesDataCuS10(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Sporten in andere gemeente" }
-          }
+          filter: { item: { eq: "Sporten in andere gemeente" } }
         ) {
           edges {
             node {
@@ -520,9 +477,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie4bench4: allGsVitalCitiesDataCuS13(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie4bench4: allGsVitalCitiesDataCuS13 {
           edges {
             node {
               jaar
@@ -535,10 +490,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie4bench5: allGsVitalCitiesDataCuS12(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Tevredenheid over sportvoorzieningen" }
-          }
+          filter: { item: { eq: "Tevredenheid over sportvoorzieningen" } }
         ) {
           edges {
             node {
@@ -552,9 +504,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie4bench6: allGsVitalCitiesDataCuS07(
-          filter: { jaar: { gte: "2020" } }
-        ) {
+        ambitie4bench6: allGsVitalCitiesDataCuS07 {
           edges {
             node {
               jaar
@@ -565,10 +515,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie5bench1: allGsVitalCitiesDataCuS24(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Voldoende geschikte plekken voor jeugd" }
-          }
+          filter: { item: { eq: "Voldoende geschikte plekken voor jeugd" } }
         ) {
           edges {
             node {
@@ -584,7 +531,6 @@ export default ({ location }: { location: any }) => {
         }
         ambitie5bench2: allGsVitalCitiesDataCuS24(
           filter: {
-            jaar: { gte: 2020 }
             item: {
               eq: "Voldoende speelvoorzieningen voor kinderen en jongeren"
             }
@@ -602,9 +548,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie5bench3: allGsVitalCitiesDataCuS21(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie5bench3: allGsVitalCitiesDataCuS21 {
           edges {
             node {
               jaar
@@ -616,9 +560,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie6bench1: allGsVitalCitiesDataSaS18(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie6bench1: allGsVitalCitiesDataSaS18 {
           edges {
             node {
               jaar
@@ -631,10 +573,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie6bench2: allGsVitalCitiesDataSaS17(
-          filter: {
-            jaar: { gte: 2020 }
-            item: { eq: "Voldoende ontmoetingsplekken" }
-          }
+          filter: { item: { eq: "Voldoende ontmoetingsplekken" } }
         ) {
           edges {
             node {
@@ -649,7 +588,7 @@ export default ({ location }: { location: any }) => {
           }
         }
         ambitie6bench3: allGsVitalCitiesDataSaS17(
-          filter: { jaar: { gte: 2020 }, item: { eq: "Voldoende rustplekken" } }
+          filter: { item: { eq: "Voldoende rustplekken" } }
         ) {
           edges {
             node {
@@ -665,7 +604,6 @@ export default ({ location }: { location: any }) => {
         }
         ambitie7bench1: allGsVitalCitiesDataKlS01(
           filter: {
-            jaar: { gte: 2020 }
             item: { eq: "Bezoek park, bos, groenzone in andere gemeente" }
           }
         ) {
@@ -684,7 +622,6 @@ export default ({ location }: { location: any }) => {
         }
         ambitie7bench2: allGsVitalCitiesDataKlS01(
           filter: {
-            jaar: { gte: 2020 }
             item: { eq: "Bezoek park, bos, groenzone in eigen gemeente" }
           }
         ) {
@@ -701,9 +638,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie7bench3: allGsVitalCitiesDataKlS02(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie7bench3: allGsVitalCitiesDataKlS02 {
           edges {
             node {
               jaar
@@ -715,9 +650,7 @@ export default ({ location }: { location: any }) => {
             }
           }
         }
-        ambitie7bench4: allGsVitalCitiesDataKlS03(
-          filter: { jaar: { gte: 2020 } }
-        ) {
+        ambitie7bench4: allGsVitalCitiesDataKlS03 {
           edges {
             node {
               jaar
@@ -769,6 +702,8 @@ export default ({ location }: { location: any }) => {
     ambitie7bench4,
   ]
 
+  const contextB = useContext(ThemeContext)
+
   const handleSearch = (input: any) => {
     setSearchQuery(input)
     const results = searchList(allAmbitionData, input, false)
@@ -812,7 +747,6 @@ export default ({ location }: { location: any }) => {
 
   const netlifyFunctions = async (data: object) => {
     const errors: netlifyError = await genPDF(data)
-    console.log(errors)
     setNetlifyError((currentError: netlifyError) => {
       currentError.google = errors.google
       currentError.changed = errors.changed
@@ -891,13 +825,16 @@ export default ({ location }: { location: any }) => {
         mail: info.mail,
         newsletter: info.newsletter,
       }
-      console.log('netlify functions going to do')
       netlifyFunctions(netlifyData)
     }
   }
 
   useEffect(() => {
-    setSuggestions(searchList(allAmbitionData, typed, true))
+    const timeOutId = setTimeout(
+      () => setSuggestions(searchList(allAmbitionData, typed, true)),
+      1000,
+    )
+    return () => clearTimeout(timeOutId)
   }, [typed])
 
   useEffect(() => {
@@ -938,43 +875,76 @@ export default ({ location }: { location: any }) => {
             .replace(/\n+$/, '')
             .replace(/^\* /, '• ')
             .replace(/\n\* /g, '\n\n • ')
-            .replace(/^\*\*/, ' <strong class="font-semibold">')
-            .replace(/\*\*$/, ' </strong>')
-            .replace(/ \*\*/g, ' <strong class="font-semibold">')
-            .replace(/\n\*\*/g, '\n<strong class="font-semibold">')
-            .replace(/\*\*\n/g, ' </strong>\n')
-            .replace(/\*\* /g, ' </strong>')
-            .replace(/\*\*,/, ' </strong>,')
-            .replace(/\*\*\./, ' </strong>.')
-            .replace(/\*\*!/, ' </strong>!')
-            .replace(/\*\*\?/, ' </strong>?')
 
-          let matches = [...proBody.matchAll(/\[.*?\] ?\(.*?\)/g)]
+          let matches = [...proBody.matchAll(/\[.*?\] ?\(.*?\)/g)].concat([
+            ...proBody.matchAll(/\<.*?\>/g),
+          ])
           const links: any[] = []
 
           matches.forEach((m: any, index: number) => {
-            const parts = m[0].split(/\] ?\(/)
-            console.log(parts)
-            let bron: Bron = {
-              naam: parts[0].replace(/^\[/, ''),
-              url: parts[1]
-                .replace(/^<\*/, '')
-                .replace(/\)$/, '')
-                .replace(/>$/, ''),
+            let result
+            if (m[0].includes('[')) {
+              const parts = m[0].split(/\] ?\(/)
+              let bron: Bron = {
+                naam: parts[0].replace(/^\[/, ''),
+                url: parts[1]
+                  .replace(/^<\*/, '')
+                  .replace(/^</, '')
+                  .replace(/\)$/, '')
+                  .replace(/>$/, ''),
+              }
+
+              result = [bron, m[0]]
+            } else {
+              result = [m[0].replace(/</, ' ').replace(/>/, ' '), m[0]]
             }
 
-            const result = [bron, m.index, m[0].length]
             links.push(result)
           })
 
-          console.log(links)
+          let htmlResult = proBody
 
-          const bodyResult = ''
+          links.forEach((link: any) => {
+            // htmlResult =
+            //   htmlResult.substring(0, link[1]) +
+            //   `<a href="${link[0].url}">${link[0].naam}</a>` +
+            //   htmlResult.substring(link[1] + link[2])
+
+            if (link[1].includes('[')) {
+              htmlResult = htmlResult.replace(
+                link[1],
+                `<a class="${
+                  contextB.dark ? 'text-lightPurpleDesat' : 'text-purple'
+                } font-semibold underline js-switchcolor" href="${
+                  link[0].url
+                }">${link[0].naam.replace(/\\#/, '#')}</a>`,
+              )
+            } else {
+              htmlResult = htmlResult.replace(
+                link[1],
+                `<a class="${
+                  contextB.dark ? 'text-lightPurpleDesat' : 'text-purple'
+                } font-semibold underline js-switchcolor" href="${link[0]}">${
+                  link[0]
+                }</a>`,
+              )
+            }
+          })
 
           const par: Paragraaf = {
             //@ts-ignore
             header: titles[index],
-            body: bodyResult,
+            body: htmlResult
+              .replace(/^\*\*/, ' <strong class="font-semibold">')
+              .replace(/\*\*$/, ' </strong>')
+              .replace(/ \*\*/g, ' <strong class="font-semibold">')
+              .replace(/\n\*\*/g, '\n<strong class="font-semibold">')
+              .replace(/\*\*\n/g, ' </strong>\n')
+              .replace(/\*\* /g, ' </strong>')
+              .replace(/\*\*,/, ' </strong>,')
+              .replace(/\*\*\./, ' </strong>.')
+              .replace(/\*\*!/, ' </strong>!')
+              .replace(/\*\*\?/, ' </strong>?'),
           }
           parResults.push(par)
         })
@@ -1016,7 +986,7 @@ export default ({ location }: { location: any }) => {
 
       setPractices(data)
     }
-  }, [cmsData.goodPracs])
+  }, [cmsData.goodPracs, contextB])
 
   useEffect(() => {
     let bronnen: intBron[] = []
@@ -1026,6 +996,9 @@ export default ({ location }: { location: any }) => {
     let titles: ambitionTitle[] = []
 
     if (locationShort) {
+      console.log(
+        getDataForCityAndAmbition(allAmbitionData, locationShort, 'Nevele'),
+      )
       for (let item of cms.nodes) {
         if (item.frontmatter.ambitions == null) {
           item.frontmatter.ambitions = ['']
@@ -1551,27 +1524,27 @@ export default ({ location }: { location: any }) => {
                             }}
                           >
                             <span
-                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center border-2 py-2  ${
+                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center rounded-l-xl border-2 py-2 ${
                                 context.dark
                                   ? toggleBenches
-                                    ? 'border-gray bg-pinkDesat bg-opacity-90 text-white'
-                                    : 'border-gray hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
+                                    ? 'border-pinkDesat border-opacity-90 bg-pinkDesat bg-opacity-90 text-white'
+                                    : 'border-pinkDesat hover:bg-neutral hover:bg-opacity-10 hover:text-pink'
                                   : toggleBenches
-                                  ? 'border-lightGray bg-pink bg-opacity-90 text-white'
-                                  : 'border-lightGray hover:bg-neutral hover:text-purple'
+                                  ? 'border-pink border-opacity-90 bg-pink bg-opacity-90 text-white'
+                                  : 'border-pink hover:bg-neutral hover:text-purple'
                               }`}
                             >
                               Woon-werk/school
                             </span>
                             <span
-                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center border-2 border-l-0 py-2  ${
+                              className={`md:w-1/2 flex w-full  max-w-[14rem] flex-col justify-center rounded-r-xl border-2 border-l-0 py-2 ${
                                 context.dark
                                   ? !toggleBenches
-                                    ? 'border-gray bg-pinkDesat bg-opacity-90 text-white'
-                                    : 'border-gray hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
+                                    ? 'border-pinkDesat border-opacity-90 bg-pinkDesat bg-opacity-90 text-white'
+                                    : 'border-pinkDesat hover:bg-neutral hover:bg-opacity-10 hover:text-pink'
                                   : !toggleBenches
-                                  ? 'border-lightGray bg-pink bg-opacity-90 text-white'
-                                  : 'border-lightGray hover:bg-neutral hover:text-purple'
+                                  ? 'border-pink border-opacity-90 bg-pink bg-opacity-90 text-white'
+                                  : 'border-pink hover:bg-neutral hover:text-purple'
                               }`}
                             >
                               Vrije tijd
@@ -1589,33 +1562,39 @@ export default ({ location }: { location: any }) => {
                                 const transportData1: PercentageData[] = []
                                 const transportData2: PercentageData[] = []
 
-                                bench.data.forEach(
-                                  (item: any, index: number) => {
-                                    const p1: PercentageData = {
-                                      label: item.item,
-                                      percentage: item.vaak_altijd____,
-                                    }
-                                    transportData1.push(p1)
-
-                                    let p2: PercentageData = {
-                                      label: '',
-                                      percentage: '',
-                                    }
-                                    if (graphData[1][3]) {
-                                      p2 = {
-                                        label: graphData[1][3].data[index].item,
-                                        percentage:
-                                          graphData[1][3].data[index]
-                                            .vaak_altijd____,
+                                console.log(bench)
+                                if (bench.data.length >= 1) {
+                                  bench.data.forEach(
+                                    (item: any, index: number) => {
+                                      const p1: PercentageData = {
+                                        label: item.item,
+                                        percentage: item.vaak_altijd____,
                                       }
-                                      transportData2.push(p2)
-                                    }
-                                  },
-                                )
+                                      transportData1.push(p1)
 
-                                return transportData1.map(
-                                  (p: PercentageData, index: number) => {
-                                    return [
+                                      let p2: PercentageData = {
+                                        label: '',
+                                        percentage: '',
+                                      }
+                                      if (
+                                        graphData[1].length >= 1 &&
+                                        graphData[1][3] &&
+                                        graphData[1][3].data.length >= 1
+                                      ) {
+                                        p2 = {
+                                          label:
+                                            graphData[1][3].data[index].item,
+                                          percentage:
+                                            graphData[1][3].data[index]
+                                              .vaak_altijd____,
+                                        }
+                                        transportData2.push(p2)
+                                      }
+                                    },
+                                  )
+
+                                  return transportData1.map(
+                                    (p: PercentageData, index: number) => [
                                       <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
                                         {p.label}
                                       </label>,
@@ -1636,114 +1615,125 @@ export default ({ location }: { location: any }) => {
                                           }
                                         />
                                       </div>,
-                                    ]
-                                  },
-                                )
+                                    ],
+                                  )
+                                } else {
+                                  return <p>geen data beschikbaar</p>
+                                }
                               } else if (
                                 bench.label ==
                                   'Verplaatsingen woon-werk/woon-school: dominant vervoersmiddel' &&
                                 toggleBenches
                               ) {
-                                return [
-                                  <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
-                                    Auto
-                                  </label>,
-                                  <div
-                                    className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
-                                      context.dark
-                                        ? 'border-lightGray'
-                                        : 'border-dark'
-                                    }`}
-                                  >
-                                    <Barchartgeneric
-                                      percentage1={bench.data[0].auto____}
-                                      percentage2={
-                                        graphData[1][1]
-                                          ? graphData[1][1].data[0].auto____
-                                          : null
-                                      }
-                                    />
-                                  </div>,
-                                  <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
-                                    Openbaar vervoer
-                                  </label>,
-                                  <div
-                                    className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
-                                      context.dark
-                                        ? 'border-lightGray'
-                                        : 'border-dark'
-                                    }`}
-                                  >
-                                    <Barchartgeneric
-                                      percentage1={
-                                        bench.data[0].openbaarVervoer____
-                                      }
-                                      percentage2={
-                                        graphData[1][1]
-                                          ? graphData[1][1].data[0]
-                                              .openbaarVervoer____
-                                          : null
-                                      }
-                                    />
-                                  </div>,
-                                  <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
-                                    Fiets
-                                  </label>,
-                                  <div
-                                    className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
-                                      context.dark
-                                        ? 'border-lightGray'
-                                        : 'border-dark'
-                                    }`}
-                                  >
-                                    <Barchartgeneric
-                                      percentage1={bench.data[0].fiets____}
-                                      percentage2={
-                                        graphData[1][1]
-                                          ? graphData[1][1].data[0].fiets____
-                                          : null
-                                      }
-                                    />
-                                  </div>,
-                                  <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
-                                    Te voet
-                                  </label>,
-                                  <div
-                                    className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
-                                      context.dark
-                                        ? 'border-lightGray'
-                                        : 'border-dark'
-                                    }`}
-                                  >
-                                    <Barchartgeneric
-                                      percentage1={bench.data[0].teVoet____}
-                                      percentage2={
-                                        graphData[1][1]
-                                          ? graphData[1][1].data[0].teVoet____
-                                          : null
-                                      }
-                                    />
-                                  </div>,
-                                  <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
-                                    Andere
-                                  </label>,
-                                  <div
-                                    className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
-                                      context.dark
-                                        ? 'border-lightGray'
-                                        : 'border-dark'
-                                    }`}
-                                  >
-                                    <Barchartgeneric
-                                      percentage1={bench.data[0].andere____}
-                                      percentage2={
-                                        graphData[1][1]
-                                          ? graphData[1][1].data[0].andere____
-                                          : null
-                                      }
-                                    />
-                                  </div>,
-                                ]
+                                if (bench.data.length >= 1) {
+                                  return [
+                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                      Auto
+                                    </label>,
+                                    <div
+                                      className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                                        context.dark
+                                          ? 'border-lightGray'
+                                          : 'border-dark'
+                                      }`}
+                                    >
+                                      <Barchartgeneric
+                                        percentage1={bench.data[0].auto____}
+                                        percentage2={
+                                          graphData[1][1] &&
+                                          graphData[1][1].data.length >= 1
+                                            ? graphData[1][1].data[0].auto____
+                                            : null
+                                        }
+                                      />
+                                    </div>,
+                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                      Openbaar vervoer
+                                    </label>,
+                                    <div
+                                      className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                                        context.dark
+                                          ? 'border-lightGray'
+                                          : 'border-dark'
+                                      }`}
+                                    >
+                                      <Barchartgeneric
+                                        percentage1={
+                                          bench.data[0].openbaarVervoer____
+                                        }
+                                        percentage2={
+                                          graphData[1][1] &&
+                                          graphData[1][1].data.length >= 1
+                                            ? graphData[1][1].data[0]
+                                                .openbaarVervoer____
+                                            : null
+                                        }
+                                      />
+                                    </div>,
+                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                      Fiets
+                                    </label>,
+                                    <div
+                                      className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                                        context.dark
+                                          ? 'border-lightGray'
+                                          : 'border-dark'
+                                      }`}
+                                    >
+                                      <Barchartgeneric
+                                        percentage1={bench.data[0].fiets____}
+                                        percentage2={
+                                          graphData[1][1] &&
+                                          graphData[1][1].data.length >= 1
+                                            ? graphData[1][1].data[0].fiets____
+                                            : null
+                                        }
+                                      />
+                                    </div>,
+                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                      Te voet
+                                    </label>,
+                                    <div
+                                      className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                                        context.dark
+                                          ? 'border-lightGray'
+                                          : 'border-dark'
+                                      }`}
+                                    >
+                                      <Barchartgeneric
+                                        percentage1={bench.data[0].teVoet____}
+                                        percentage2={
+                                          graphData[1][1] &&
+                                          graphData[1][1].data.length >= 1
+                                            ? graphData[1][1].data[0].teVoet____
+                                            : null
+                                        }
+                                      />
+                                    </div>,
+                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                      Andere
+                                    </label>,
+                                    <div
+                                      className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
+                                        context.dark
+                                          ? 'border-lightGray'
+                                          : 'border-dark'
+                                      }`}
+                                    >
+                                      <Barchartgeneric
+                                        percentage1={bench.data[0].andere____}
+                                        percentage2={
+                                          graphData[1][1] &&
+                                          graphData[1][1].data.length >= 1
+                                            ? graphData[1][1].data[0].andere____
+                                            : null
+                                        }
+                                      />
+                                    </div>,
+                                  ]
+                                } else {
+                                  return <p>geen data beschikbaar</p>
+                                }
                               } else {
                                 return null
                               }
@@ -1842,13 +1832,13 @@ export default ({ location }: { location: any }) => {
                       item.ambitions.includes('Algemene ambitie'))
                   ) {
                     return (
-                        <h2
-                          className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                            context.dark ? 'opacity-90' : ''
-                          }`}
-                        >
-                          {item.title}
-                        </h2>
+                      <h2
+                        className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                          context.dark ? 'opacity-90' : ''
+                        }`}
+                      >
+                        {item.title}
+                      </h2>
                     )
                   }
                 })}
@@ -1985,7 +1975,7 @@ export default ({ location }: { location: any }) => {
               <StaticImage
                 src="../images/calltoaction.png"
                 alt="Picture of girls riding a bike"
-                className="ml-14 hidden h-auto border laptopL:block"
+                className="ml-14 hidden h-auto laptopL:block"
               />
               <div className="h-auto p-8 text-white">
                 <h2
@@ -2021,7 +2011,7 @@ export default ({ location }: { location: any }) => {
                     <input
                       type="text"
                       id="Stad"
-                      className={`peer w-48 border-2 rounded  px-2 py-1 outline-none  ${
+                      className={`peer w-48 rounded border-2  px-2 py-1 outline-none  ${
                         context.dark
                           ? 'border-lightGray bg-dark text-white focus-within:border-lightPurpleDesat hover:border-lightPurpleDesat active:border-lightPurpleDesat'
                           : ' border-lightPink text-dark focus-within:border-pink hover:border-pink active:border-pink'
@@ -2123,9 +2113,9 @@ export default ({ location }: { location: any }) => {
                     )}
                   </div>
 
-                  <div className="flex items-center gap-3 tabletportrait:col-span-3">
+                  <div className="flex items-center flex-col gap-3 tabletportrait:col-span-3">
                     <input
-                      className='form-checkbox rounded text-pink'
+                      className='sr-only'
                       type="checkbox"
                       name="credentials"
                       id="credentials"
@@ -2141,6 +2131,15 @@ export default ({ location }: { location: any }) => {
                       className="text-[12px] tabletportrait:text-sm"
                       htmlFor="credentials"
                     >
+                      <span className={`flex justify-center items-center w-4 h-4 bg-white rounded ${
+                        btnRapport? 'bg-pink' : ''
+                      }`}>
+                        <svg className={`block opacity-100 scale-75 fill-white ${
+                          btnRapport? '': 'opacity-0'
+                        }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
+                          <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+                        </svg>
+                      </span>
                       Ik ga akkoord dat Vital Cities mijn persoonsgegevens in
                       haar databanken opneemt om mij de gevraagde informatie te
                       bezorgen via e-mail en dit op te volgen. *
@@ -2148,7 +2147,7 @@ export default ({ location }: { location: any }) => {
                   </div>
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
                     <input
-                      className='form-checkbox rounded text-pink'
+                      className='sr-only'
                       type="checkbox"
                       name="news"
                       id="news"
@@ -2158,12 +2157,28 @@ export default ({ location }: { location: any }) => {
                           u.newsletter = e.target.value
                           return { ...u }
                         })
+
+                        if (checkNews == false) {
+                          setCheckNews(true)
+                        } else {
+                          setCheckNews(false)
+                        }
                       }}
                     />
+                 
                     <label
                       className="text-[12px] tabletportrait:text-sm"
                       htmlFor="news"
                     >
+                      <span className={`flex justify-center items-center w-4 h-4 bg-white rounded ${
+                        checkNews? 'bg-pink' : ''
+                      }`}>
+                        <svg className={`block opacity-100 scale-75 fill-white ${
+                          checkNews? '': 'opacity-0'
+                        }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
+                          <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+                        </svg>
+                      </span>
                       Ja! Bezorg mij inhoudelijke inspiratie en houd mij op de
                       hoogte van nieuws via e-mail.
                     </label>
@@ -2172,14 +2187,14 @@ export default ({ location }: { location: any }) => {
                   <div className="flex items-center">
                     <button
                       id="BtnRapport"
-                      className={`z-0 mt-8 border-2 rounded px-2 py-1 text-white  focus:font-semibold ${
+                      className={`z-0 mt-8 rounded border-2 px-2 py-1 text-white  focus:font-semibold ${
                         context.dark
                           ? 'border-pinkDesat bg-pinkDesat hover:bg-opacity-0 hover:text-pinkDesat focus:bg-white focus:bg-opacity-0 focus:text-pinkDesat'
                           : 'border-pink bg-pink hover:bg-white hover:text-pink focus:bg-white focus:text-pink'
                       } ${
                         btnRapport
                           ? 'border-pink bg-pink'
-                          : 'pointer-events-none border-darkGray bg-gray'
+                          : 'pointer-events-none border-gray bg-gray text-lightGray'
                       }`}
                       onClick={() => checkInfo()}
                     >

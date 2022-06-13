@@ -70,5 +70,5 @@ module.exports = {
       redDesat: '#CF6679',
     },
   },
-  plugins: [require('@tailwindcss/line-clamp'), require('@tailwindcss/forms')],
+  plugins: [require('@tailwindcss/line-clamp')],
 }
