@@ -121,7 +121,6 @@ export default () => {
             let result
             if (m[0].includes('[')) {
               const parts = m[0].split(/\] ?\(/)
-              console.log(parts)
               let bron: Bron = {
                 naam: parts[0].replace(/^\[/, ''),
                 url: parts[1]
@@ -139,7 +138,6 @@ export default () => {
             links.push(result)
           })
 
-          console.log(links)
           let htmlResult = proBody
 
           links.forEach((link: any) => {
@@ -147,7 +145,9 @@ export default () => {
               htmlResult = htmlResult.replace(
                 link[1],
                 `<a class="${
-                  contextB.dark ? 'text-lightPurpleDesat' : 'text-purple js-switchcolor'
+                  contextB.dark
+                    ? 'text-lightPurpleDesat'
+                    : 'text-purple js-switchcolor'
                 } font-semibold underline" href="${
                   link[0].url
                 }">${link[0].naam.replace(/\\#/, '#')}</a>`,
@@ -217,7 +217,6 @@ export default () => {
         data.push(practice)
       })
 
-      console.log(data)
       setOriginalPractices(data)
       setCurrentPractices(data)
     }
@@ -377,7 +376,7 @@ export default () => {
             {currentPractices && currentPractices.length >= 1 ? (
               <div className="flex flex-col gap-y-20 gridbreak:grid gridbreak:grid-cols-2 gridbreak:gap-x-10 navbreak:grid-cols-3 navbreak:gap-x-14">
                 {currentPractices.map((e, i) => (
-                  <FadeInSection>
+                  <FadeInSection key={i}>
                     <PracticeCard practice={e} key={e.titel} />
                   </FadeInSection>
                 ))}

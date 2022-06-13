@@ -1487,12 +1487,13 @@ export default ({ location }: { location: any }) => {
                         } else {
                           return [
                             <label
-                              className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
                               key={bench.label}
+                              className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
                             >
                               {getLabelChart(bench.label)}
                             </label>,
                             <div
+                              key={bench.data[0]}
                               className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                 context.dark
                                   ? 'border-lightGray'
@@ -1592,10 +1593,14 @@ export default ({ location }: { location: any }) => {
 
                                   return transportData1.map(
                                     (p: PercentageData, index: number) => [
-                                      <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                      <label
+                                        key={p.label}
+                                        className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                                      >
                                         {p.label}
                                       </label>,
                                       <div
+                                        key={p.label + p.percentage}
                                         className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                           context.dark
                                             ? 'border-lightGray'
@@ -1615,7 +1620,9 @@ export default ({ location }: { location: any }) => {
                                     ],
                                   )
                                 } else {
-                                  return <p>geen data beschikbaar</p>
+                                  return (
+                                    <p key={index}>geen data beschikbaar</p>
+                                  )
                                 }
                               } else if (
                                 bench.label ==
@@ -1624,10 +1631,14 @@ export default ({ location }: { location: any }) => {
                               ) {
                                 if (bench.data.length >= 1) {
                                   return [
-                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                    <label
+                                      key={'auto'}
+                                      className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                                    >
                                       Auto
                                     </label>,
                                     <div
+                                      key={'auto-data'}
                                       className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                         context.dark
                                           ? 'border-lightGray'
@@ -1644,10 +1655,14 @@ export default ({ location }: { location: any }) => {
                                         }
                                       />
                                     </div>,
-                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                    <label
+                                      key={'openbaarvervoer'}
+                                      className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                                    >
                                       Openbaar vervoer
                                     </label>,
                                     <div
+                                      key={'openbaarverver-data'}
                                       className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                         context.dark
                                           ? 'border-lightGray'
@@ -1667,10 +1682,14 @@ export default ({ location }: { location: any }) => {
                                         }
                                       />
                                     </div>,
-                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                    <label
+                                      key={'fiets'}
+                                      className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                                    >
                                       Fiets
                                     </label>,
                                     <div
+                                      key={'fiets-data'}
                                       className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                         context.dark
                                           ? 'border-lightGray'
@@ -1687,10 +1706,14 @@ export default ({ location }: { location: any }) => {
                                         }
                                       />
                                     </div>,
-                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                    <label
+                                      key={'tevoet'}
+                                      className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                                    >
                                       Te voet
                                     </label>,
                                     <div
+                                      key={'tevoet-data'}
                                       className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                         context.dark
                                           ? 'border-lightGray'
@@ -1707,10 +1730,14 @@ export default ({ location }: { location: any }) => {
                                         }
                                       />
                                     </div>,
-                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                    <label
+                                      key={'andere'}
+                                      className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                                    >
                                       Andere
                                     </label>,
                                     <div
+                                      key={'andere-data'}
                                       className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                         context.dark
                                           ? 'border-lightGray'
@@ -1729,7 +1756,7 @@ export default ({ location }: { location: any }) => {
                                     </div>,
                                   ]
                                 } else {
-                                  return <p>geen data beschikbaar</p>
+                                  return <p key={index}>geen data beschikbaar</p>
                                 }
                               } else {
                                 return null
@@ -1779,7 +1806,7 @@ export default ({ location }: { location: any }) => {
                 {cmsData.sectionTitles.map((item: ambitionTitle) => {
                   if (item.title.includes('Waarom')) {
                     return (
-                      <>
+                      <div key={item.title}>
                         <h2
                           className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                             context.dark ? 'opacity-90' : ''
@@ -1794,29 +1821,29 @@ export default ({ location }: { location: any }) => {
                         >
                           {item.subtitle}
                         </p>
-                      </>
+                      </div>
                     )
                   }
                 })}
                 <div className="grid grid-cols-1 items-center justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
-                  {cmsData.whys &&
-                    cmsData.whys.map((item: any) => (
-                        <Textblock
-                          text={item.text}
-                          classes={
-                            context.dark
-                              ? 'bg-lightPurpleDesat bg-opacity-[0.08] text-lightPurpleDesat'
-                              : 'bg-lightPink text-purple '
-                          }
-                          animation={replaceColor(
-                            '#000000',
-                            '#492784',
-                            require(`../assets/animations/${item.animation}.json`),
-                          )}
-                          animationColor="purple"
-                        />
-                      )
-                    )}
+                  {whys &&
+                    whys.map((item: any) => (
+                      <Textblock
+                        text={item.text}
+                        key={item.text}
+                        classes={
+                          context.dark
+                            ? 'bg-lightPurpleDesat bg-opacity-[0.08] text-lightPurpleDesat'
+                            : 'bg-lightPink text-purple '
+                        }
+                        animation={replaceColor(
+                          '#000000',
+                          '#492784',
+                          require(`../assets/animations/${item.animation}.json`),
+                        )}
+                        animationColor="purple"
+                      />
+                    ))}
                 </div>
               </section>
             </FadeInSection>
@@ -1830,6 +1857,7 @@ export default ({ location }: { location: any }) => {
                   ) {
                     return (
                       <h2
+                        key={item.title}
                         className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                           context.dark ? 'opacity-90' : ''
                         }`}
@@ -1840,24 +1868,24 @@ export default ({ location }: { location: any }) => {
                   }
                 })}
                 <div className="grid grid-cols-1 justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptopL:grid-cols-4">
-                  {cmsData.hows &&
-                    cmsData.hows.map((item: hoeWaarom) => (
-                        <Textblock
-                          text={item.text}
-                          classes={`font-medium ${
-                            context.dark
-                              ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
-                              : 'bg-lightGreen text-green'
-                          }`}
-                          animation={replaceColor(
-                            '#000000',
-                            '#02866C',
-                            require(`../assets/animations/${item.animation}.json`),
-                          )}
-                          animationColor="green"
-                        />
-                      )
-                    )}
+                  {hows &&
+                    hows.map((item: HoeWaarom) => (
+                      <Textblock
+                        key={item.text}
+                        text={item.text}
+                        classes={`font-medium ${
+                          context.dark
+                            ? 'bg-lightGreen bg-opacity-[0.08] text-lightGreen'
+                            : 'bg-lightGreen text-green'
+                        }`}
+                        animation={replaceColor(
+                          '#000000',
+                          '#02866C',
+                          require(`../assets/animations/${item.animation}.json`),
+                        )}
+                        animationColor="green"
+                      />
+                    ))}
                 </div>
               </section>
             </FadeInSection>
@@ -1871,7 +1899,7 @@ export default ({ location }: { location: any }) => {
                 {cmsData.sectionTitles?.map((item: ambitionTitle) => {
                   if (item.title.includes('bronnen')) {
                     return (
-                      <>
+                      <div key={item.title}>
                         <h2
                           className={`mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                             context.dark ? 'opacity-90' : ''
@@ -1886,7 +1914,7 @@ export default ({ location }: { location: any }) => {
                         >
                           {item.subtitle}
                         </p>
-                      </>
+                      </div>
                     )
                   }
                 })}
@@ -1897,13 +1925,14 @@ export default ({ location }: { location: any }) => {
                       if (val < 4) {
                         return (
                           <Intsrc
+                            key={val}
                             title={item.title}
                             text={item.text}
                             link={item.link}
                           />
                         )
                       } else {
-                        return <></>
+                        return null
                       }
                     })}
                 </div>
@@ -1948,14 +1977,15 @@ export default ({ location }: { location: any }) => {
                       if (val < 2) {
                         return (
                           <RevPrac
-                            leftTagText={cmsData.header.tag!}
+                            key={val}
+                            leftTagText={header?.tag!}
                             leftTagColorBg="pink"
                             leftTagColorText="black"
                             practice={item}
                           />
                         )
                       } else {
-                        return <></>
+                        return null
                       }
                     })}
                 </div>
@@ -2110,9 +2140,9 @@ export default ({ location }: { location: any }) => {
                     )}
                   </div>
 
-                  <div className="flex items-center flex-col gap-3 tabletportrait:col-span-3">
+                  <div className="flex flex-col items-center gap-3 tabletportrait:col-span-3">
                     <input
-                      className='sr-only'
+                      className="sr-only"
                       type="checkbox"
                       name="credentials"
                       id="credentials"
@@ -2128,13 +2158,22 @@ export default ({ location }: { location: any }) => {
                       className="text-[12px] tabletportrait:text-sm"
                       htmlFor="credentials"
                     >
-                      <span className={`flex justify-center items-center w-4 h-4 bg-white rounded ${
-                        btnRapport? 'bg-pink' : ''
-                      }`}>
-                        <svg className={`block opacity-100 scale-75 fill-white ${
-                          btnRapport? '': 'opacity-0'
-                        }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
-                          <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+                      <span
+                        className={`flex h-4 w-4 items-center justify-center rounded bg-white ${
+                          btnRapport ? 'bg-pink' : ''
+                        }`}
+                      >
+                        <svg
+                          className={`block scale-75 fill-white opacity-100 ${
+                            btnRapport ? '' : 'opacity-0'
+                          }`}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 9 6.75"
+                        >
+                          <path
+                            d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5"
+                            transform="translate(-1.5 -2.75)"
+                          />
                         </svg>
                       </span>
                       Ik ga akkoord dat Vital Cities mijn persoonsgegevens in
@@ -2144,7 +2183,7 @@ export default ({ location }: { location: any }) => {
                   </div>
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
                     <input
-                      className='sr-only'
+                      className="sr-only"
                       type="checkbox"
                       name="news"
                       id="news"
@@ -2162,18 +2201,27 @@ export default ({ location }: { location: any }) => {
                         }
                       }}
                     />
-                 
+
                     <label
                       className="text-[12px] tabletportrait:text-sm"
                       htmlFor="news"
                     >
-                      <span className={`flex justify-center items-center w-4 h-4 bg-white rounded ${
-                        checkNews? 'bg-pink' : ''
-                      }`}>
-                        <svg className={`block opacity-100 scale-75 fill-white ${
-                          checkNews? '': 'opacity-0'
-                        }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
-                          <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+                      <span
+                        className={`flex h-4 w-4 items-center justify-center rounded bg-white ${
+                          checkNews ? 'bg-pink' : ''
+                        }`}
+                      >
+                        <svg
+                          className={`block scale-75 fill-white opacity-0 ${
+                            checkNews ? 'opacity-100' : ''
+                          }`}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 9 6.75"
+                        >
+                          <path
+                            d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5"
+                            transform="translate(-1.5 -2.75)"
+                          />
                         </svg>
                       </span>
                       Ja! Bezorg mij inhoudelijke inspiratie en houd mij op de
