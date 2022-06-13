@@ -105,6 +105,7 @@ const IndexPage = () => {
               name="description"
               content="Meet de beweegvriendelijkheid van jouw stad of gemeente en vind de inspiratie om die nog te verbeteren."
             />
+            <link rel="icon" type="image/x-icon" href="../favicon.ico" />
           </Helmet>
 
           <Topnavigation section="#Contact" />

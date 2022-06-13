@@ -816,7 +816,6 @@ export default ({ location }: { location: any }) => {
     }
 
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
-      console.log(allData)
       const dataAmb = getPdfData(allData, typed, 'Vlaams gewest')
       const netlifyData = {
         data: dataAmb,
@@ -997,9 +996,6 @@ export default ({ location }: { location: any }) => {
     let titles: ambitionTitle[] = []
 
     if (locationShort) {
-      console.log(
-        getDataForCityAndAmbition(allAmbitionData, locationShort, 'Nevele'),
-      )
       for (let item of cms.nodes) {
         if (item.frontmatter.ambitions == null) {
           item.frontmatter.ambitions = ['']
@@ -1564,7 +1560,6 @@ export default ({ location }: { location: any }) => {
                                 const transportData1: PercentageData[] = []
                                 const transportData2: PercentageData[] = []
 
-                                console.log(bench)
                                 if (bench.data.length >= 1) {
                                   bench.data.forEach(
                                     (item: any, index: number) => {
