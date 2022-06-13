@@ -101,8 +101,6 @@ const IndexPage = () => {
           <Helmet htmlAttributes={{
               lang: 'en',
             }}>
-            X-Content-Type-Options: nosniff
-            X-XSS-Protection: 1; mode=block
             <meta charSet="utf-8" />
             <title>Vital Cities beweegscan</title>
             <meta
