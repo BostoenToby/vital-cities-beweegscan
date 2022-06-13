@@ -62,20 +62,20 @@ export default ({ location }: { location: any }) => {
 
   const [cmsData, setCmsData] = useState<cmsInt>({
     header: {
-      title: "",
-      subtitle: "",
-      image: "",
-      tag: ""
+      title: '',
+      subtitle: '',
+      image: '',
+      tag: '',
     },
     sectionTitles: [],
     problem: {
-      text: "",
-      bold: ""
+      text: '',
+      bold: '',
     },
     hows: [],
     whys: [],
     intBron: [],
-    goodPracs: []
+    goodPracs: [],
   })
 
   const [img, setImg] = useState<any>()
@@ -1056,7 +1056,7 @@ export default ({ location }: { location: any }) => {
               title: item.frontmatter.title,
               subtitle: item.frontmatter.subtitle,
               image: item.frontmatter.image,
-              tag: item.frontmatter.tag
+              tag: item.frontmatter.tag,
             }
             return { ...u }
           })
@@ -1077,7 +1077,7 @@ export default ({ location }: { location: any }) => {
           setCmsData((u: cmsInt) => {
             u.problem = {
               text: item.frontmatter.text,
-              bold: item.frontmatter.boldpart
+              bold: item.frontmatter.boldpart,
             }
             return { ...u }
           })
@@ -1761,7 +1761,9 @@ export default ({ location }: { location: any }) => {
                                     </div>,
                                   ]
                                 } else {
-                                  return <p key={index}>geen data beschikbaar</p>
+                                  return (
+                                    <p key={index}>geen data beschikbaar</p>
+                                  )
                                 }
                               } else {
                                 return null
@@ -1831,8 +1833,8 @@ export default ({ location }: { location: any }) => {
                   }
                 })}
                 <div className="grid grid-cols-1 items-center justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
-                  {whys &&
-                    whys.map((item: any) => (
+                  {cmsData.whys &&
+                    cmsData.whys.map((item: any) => (
                       <Textblock
                         text={item.text}
                         key={item.text}
@@ -1873,8 +1875,8 @@ export default ({ location }: { location: any }) => {
                   }
                 })}
                 <div className="grid grid-cols-1 justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptopL:grid-cols-4">
-                  {hows &&
-                    hows.map((item: HoeWaarom) => (
+                  {cmsData.hows &&
+                    cmsData.hows.map((item: hoeWaarom) => (
                       <Textblock
                         key={item.text}
                         text={item.text}
@@ -1983,7 +1985,7 @@ export default ({ location }: { location: any }) => {
                         return (
                           <RevPrac
                             key={val}
-                            leftTagText={header?.tag!}
+                            leftTagText={cmsData.header.tag!}
                             leftTagColorBg="pink"
                             leftTagColorText="black"
                             practice={item}
