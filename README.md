@@ -1,54 +1,31 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal TypeScript starter
-</h1>
+## Vital Cities Webtool
 
-## 🚀 Quick start
+**Features**
 
-1.  **Create a Gatsby site.**
+1. **Duidelijk overzicht beweegscan**
+De beweegscan wordt opgesplitst in verschillende ambities/indicatoren met telkens:
+- Duidelijk overzicht van het probleem.
+- Beweegredenen, waarom moeten beleidsmakers zich inzetten om beter te scoren op deze ambitie? Welk voordeel valt er hier uit te halen voor de gemeenschap?
+- Mogelijke oplossingen.
+- Bijhorende animaties om de aandacht te trekken, oplossingen en beweegredenen te verduidelijken, maar ook visueel aantrekkelijker te maken.
+- Interessante externe bronnen en tools.
+- Relevante praktijkvoorbeelden voor de bepaalde ambitie.
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+2. **Bijhorende benchmark**
+Standaard staat bij elke ambitie een overzicht over hoe goed/slecht het Vlaams Gewest scoort op verschillende indicatoren of benchmarks. Voor de ambitie 'Actief bewegen & verplaatsen' kan dat bijvoorbeeld 'hoeveel % van inwoners beweegt niet wekelijks' zijn. U kunt er ook voor kiezen om de cijfers van een gemeente naar keuze te zien en deze eventueel te vergelijken met een andere gemeente (of bvb. terug het Vlaamse gemiddelde). Dit wordt telkens visueel duidelijk gemaakt aan de hand van barcharts en kleurgebruik.
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby
-    ```
+3. **Rapport genereren**
+Onderaan de pagina voor elke ambitie kunt u een rapport genereren voor een gekozen gemeente in de vorm van een PDF. U laat enkele persoonsgegevens na en in ruil wordt deze in uw mailbox bezorgd. Deze bevat de data voor alle ambities van die gemeente vergeleken met Vlaamse Gewest.
 
-2.  **Start developing.**
+4. **Overzicht van praktijkvoorbeelden**
+U kunt ook alle praktijkvoorbeelden terug vinden op een apparte pagina, waar deze gefilterd kunnen worden aan de hand van een aantal thema's (incusief de ambities).
 
-    Navigate into your new site’s directory and start it up.
+5. **Toegangkelijk**
+We hebben ons best gedaan om de webtool zo toegangkelijk mogelijk te maken. Dit houdt in dat:
+- Deze goed functioneerd op zowel mobile als desktop. 
+- Er is gekeken naar keyboard navigation en contrast 
+- Er een light en dark mode voorzien is
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+6. **Content Management System**
+Dankzij de netlify CMS hoeft u geen ervaring te hebben in web development om de inhoud van de site aan te passen. We hebben zo veel mogelijk aanpasbaar gemaakt van de landingspagina tot de details van de praktijkvoorbeelden.
 
-3.  **Open the code and start customizing!**
-
-    Your site is now running at http://localhost:8000!
-
-    Edit `src/pages/index.tsx` to see your site update in real-time!
-
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)
