@@ -1260,7 +1260,7 @@ export default ({ location }: { location: any }) => {
                       <label className="text-lg font-bold  opacity-90">
                         Gemeente of cluster
                       </label>
-                      <div className="w-full" id="gemeenteselector2">
+                      <div className="w-full max-w-sm" id="gemeenteselector1">
                         <div
                           className={`mt-2 flex flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
                             context.dark
@@ -1366,7 +1366,7 @@ export default ({ location }: { location: any }) => {
                       <label className="text-lg font-bold  opacity-90">
                         Vergelijk met...
                       </label>
-                      <div className="w-full" id="gemeenteselector2">
+                      <div className="w-full max-w-sm" id="gemeenteselector2">
                         <div
                           className={`mt-2 flex flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
                             context.dark
