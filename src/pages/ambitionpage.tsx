@@ -62,20 +62,20 @@ export default ({ location }: { location: any }) => {
 
   const [cmsData, setCmsData] = useState<cmsInt>({
     header: {
-      title: "",
-      subtitle: "",
-      image: "",
-      tag: ""
+      title: '',
+      subtitle: '',
+      image: '',
+      tag: '',
     },
     sectionTitles: [],
     problem: {
-      text: "",
-      bold: ""
+      text: '',
+      bold: '',
     },
     hows: [],
     whys: [],
     intBron: [],
-    goodPracs: []
+    goodPracs: [],
   })
 
   const [img, setImg] = useState<any>()
@@ -1052,7 +1052,7 @@ export default ({ location }: { location: any }) => {
               title: item.frontmatter.title,
               subtitle: item.frontmatter.subtitle,
               image: item.frontmatter.image,
-              tag: item.frontmatter.tag
+              tag: item.frontmatter.tag,
             }
             return { ...u }
           })
@@ -1073,7 +1073,7 @@ export default ({ location }: { location: any }) => {
           setCmsData((u: cmsInt) => {
             u.problem = {
               text: item.frontmatter.text,
-              bold: item.frontmatter.boldpart
+              bold: item.frontmatter.boldpart,
             }
             return { ...u }
           })
@@ -1756,7 +1756,9 @@ export default ({ location }: { location: any }) => {
                                     </div>,
                                   ]
                                 } else {
-                                  return <p key={index}>geen data beschikbaar</p>
+                                  return (
+                                    <p key={index}>geen data beschikbaar</p>
+                                  )
                                 }
                               } else {
                                 return null
