@@ -816,6 +816,7 @@ export default ({ location }: { location: any }) => {
     }
 
     if (!errorsMail && !errorsFirstname && !errorsLastname && !errorsPlace) {
+      console.log(allData)
       const dataAmb = getPdfData(allData, typed, 'Vlaams gewest')
       const netlifyData = {
         data: dataAmb,
@@ -1101,6 +1102,7 @@ export default ({ location }: { location: any }) => {
         u.goodPracs = goodPracs
         return u
       })
+      setAllData(allAmbitionData)
     }
   }, [locationShort])
 
