@@ -2142,9 +2142,9 @@ export default ({ location }: { location: any }) => {
                     )}
                   </div>
 
-                  <div className="flex flex-col items-center gap-3 tabletportrait:col-span-3">
+                  <div className="flex items-center gap-3 tabletportrait:col-span-3">
                     <input
-                      className="sr-only"
+                      className="sr-only float-left"
                       type="checkbox"
                       name="credentials"
                       id="credentials"
@@ -2178,14 +2178,16 @@ export default ({ location }: { location: any }) => {
                           />
                         </svg>
                       </span>
-                      Ik ga akkoord dat Vital Cities mijn persoonsgegevens in
-                      haar databanken opneemt om mij de gevraagde informatie te
-                      bezorgen via e-mail en dit op te volgen. *
+                      <div className="ml-7 -mt-[18px]">
+                        Ik ga akkoord dat Vital Cities mijn persoonsgegevens in
+                        haar databanken opneemt om mij de gevraagde informatie
+                        te bezorgen via e-mail en dit op te volgen. *
+                      </div>
                     </label>
                   </div>
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
                     <input
-                      className="sr-only"
+                      className="sr-only float-left"
                       type="checkbox"
                       name="news"
                       id="news"
@@ -2214,8 +2216,8 @@ export default ({ location }: { location: any }) => {
                         }`}
                       >
                         <svg
-                          className={`block scale-75 fill-white opacity-0 ${
-                            checkNews ? 'opacity-100' : ''
+                          className={`block scale-75 fill-white opacity-100 ${
+                            checkNews ? '' : 'opacity-0'
                           }`}
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 9 6.75"
@@ -2226,8 +2228,10 @@ export default ({ location }: { location: any }) => {
                           />
                         </svg>
                       </span>
-                      Ja! Bezorg mij inhoudelijke inspiratie en houd mij op de
-                      hoogte van nieuws via e-mail.
+                      <div className="ml-7 -mt-[18px]">
+                        Ja! Bezorg mij inhoudelijke inspiratie en houd mij op de
+                        hoogte van nieuws via e-mail.
+                      </div>
                     </label>
                   </div>
 
