@@ -13,9 +13,10 @@ import Footer from '../components/footer'
 import { searchList } from '../utils/autoComplete'
 import {
   ambitionTitle,
+  cmsInt,
   goodPractice,
   header,
-  HoeWaarom,
+  hoeWaarom,
   intBron,
   problem,
 } from '../interfaces/cmsInterfaces'
@@ -42,9 +43,8 @@ import Barchart from '../components/barchart'
 import Lottie, { useLottie } from 'lottie-react'
 import lightbulb from '../assets/animations/lightbulb.json'
 import long_arrow from '../assets/animations/long_arrow.json'
-import { colorify, flatten, getColors, replaceColor } from 'lottie-colorify'
+import { replaceColor } from 'lottie-colorify'
 import { Bron, Paragraaf } from '../interfaces/data'
-import { url } from 'inspector'
 import erroranim from '../assets/animations/erroranim.json'
 import complete from '../assets/animations/complete.json'
 import { netlifyError } from '../interfaces/sendgrid'
@@ -59,14 +59,26 @@ export default ({ location }: { location: any }) => {
   })
   const [hasMounted, setHasMounted] = useState(false)
   const [locationShort, setLocationShort] = useState<string>()
-  const [intBronnen, setIntBronnen] = useState<intBron[]>()
-  const [titles, setTitles] = useState<ambitionTitle[]>()
+
+  const [cmsData, setCmsData] = useState<cmsInt>({
+    header: {
+      title: '',
+      subtitle: '',
+      image: '',
+      tag: '',
+    },
+    sectionTitles: [],
+    problem: {
+      text: '',
+      bold: '',
+    },
+    hows: [],
+    whys: [],
+    intBron: [],
+    goodPracs: [],
+  })
+
   const [img, setImg] = useState<any>()
-  const [hows, setHows] = useState<HoeWaarom[]>()
-  const [whys, setWhys] = useState<HoeWaarom[]>()
-  const [goodPracs, setGoodPracs] = useState<goodPractice[]>()
-  const [header, setHeader] = useState<header>()
-  const [problem, setProblem] = useState<problem>()
   const [suggestions, setSuggestions] = useState<string[]>()
   const [typed, setTyped] = useState<string>('')
   const [searchQuery, setSearchQuery] = useState<string>()
@@ -826,10 +838,10 @@ export default ({ location }: { location: any }) => {
   }, [typed])
 
   useEffect(() => {
-    if (goodPracs) {
+    if (cmsData.goodPracs) {
       const data: Practice[] = []
 
-      goodPracs.forEach((p: goodPractice) => {
+      cmsData.goodPracs.forEach((p: goodPractice) => {
         let practice: Practice = {
           titel: '',
           themas: [],
@@ -974,19 +986,16 @@ export default ({ location }: { location: any }) => {
 
       setPractices(data)
     }
-  }, [goodPracs, contextB])
+  }, [cmsData.goodPracs, contextB])
 
   useEffect(() => {
     let bronnen: intBron[] = []
-    let hoeList: HoeWaarom[] = []
-    let waaromList: HoeWaarom[] = []
+    let hoeList: hoeWaarom[] = []
+    let waaromList: hoeWaarom[] = []
     let goodPracs: goodPractice[] = []
     let titles: ambitionTitle[] = []
 
     if (locationShort) {
-      console.log(
-        getDataForCityAndAmbition(allAmbitionData, locationShort, 'Nevele'),
-      )
       for (let item of cms.nodes) {
         if (item.frontmatter.ambitions == null) {
           item.frontmatter.ambitions = ['']
@@ -1025,7 +1034,6 @@ export default ({ location }: { location: any }) => {
           item.parent.internal.description.includes('goodprac') &&
           item.frontmatter.thema.includes(locationShort)
         ) {
-          // TODO: add good practises
           goodPracs.push({
             title: item.frontmatter.title,
             date: item.frontmatter.date,
@@ -1039,11 +1047,14 @@ export default ({ location }: { location: any }) => {
           item.parent.internal.description.includes('header') &&
           item.frontmatter.ambition == locationShort
         ) {
-          setHeader({
-            title: item.frontmatter.title,
-            subtitle: item.frontmatter.subtitle,
-            image: item.frontmatter.image,
-            tag: item.frontmatter.tag,
+          setCmsData((u: cmsInt) => {
+            u.header = {
+              title: item.frontmatter.title,
+              subtitle: item.frontmatter.subtitle,
+              image: item.frontmatter.image,
+              tag: item.frontmatter.tag,
+            }
+            return { ...u }
           })
           for (let i of allImages.nodes) {
             if (
@@ -1059,9 +1070,12 @@ export default ({ location }: { location: any }) => {
           (item.frontmatter.ambition == locationShort ||
             item.frontmatter.ambitions.includes(locationShort))
         ) {
-          setProblem({
-            text: item.frontmatter.text,
-            bold: item.frontmatter.boldpart,
+          setCmsData((u: cmsInt) => {
+            u.problem = {
+              text: item.frontmatter.text,
+              bold: item.frontmatter.boldpart,
+            }
+            return { ...u }
           })
         } else if (
           item.parent.internal.description.includes('titels') &&
@@ -1076,11 +1090,14 @@ export default ({ location }: { location: any }) => {
           })
         }
       }
-      setIntBronnen(bronnen)
-      setHows(hoeList)
-      setWhys(waaromList)
-      setGoodPracs(goodPracs)
-      setTitles(titles)
+      setCmsData((u: cmsInt) => {
+        u.sectionTitles = titles
+        u.hows = hoeList
+        u.whys = waaromList
+        u.intBron = bronnen
+        u.goodPracs = goodPracs
+        return u
+      })
       setAllData(allAmbitionData)
     }
   }, [locationShort])
@@ -1158,7 +1175,7 @@ export default ({ location }: { location: any }) => {
                 </p>
               </button>
               <Tag
-                text={header?.tag!}
+                text={cmsData.header.tag!}
                 classes={
                   context.dark
                     ? 'bg-pinkDesat text-white'
@@ -1166,10 +1183,10 @@ export default ({ location }: { location: any }) => {
                 }
               />
               <h1 className="mb-8 max-w-2xl font-raleway text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
-                {header?.title}
+                {cmsData.header.title}
               </h1>
               <p className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
-                {header?.subtitle}
+                {cmsData.header.subtitle}
               </p>
               <p
                 className={`mb-2 font-semibold ${
@@ -1185,12 +1202,6 @@ export default ({ location }: { location: any }) => {
               />
             </section>
             <section className="h-full w-full columnbreak:w-1/2">
-              {/* <StaticImage
-                // src={`../../static/assets/${header?.image}`}
-                src="../images/beweegscan.jpg"
-                alt="header picture"
-                className="h-full w-full"
-              /> */}
               <GatsbyImage
                 image={img}
                 alt="Header image"
@@ -1476,12 +1487,13 @@ export default ({ location }: { location: any }) => {
                         } else {
                           return [
                             <label
-                              className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
                               key={bench.label}
+                              className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
                             >
                               {getLabelChart(bench.label)}
                             </label>,
                             <div
+                              key={bench.data[0]}
                               className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                 context.dark
                                   ? 'border-lightGray'
@@ -1515,7 +1527,7 @@ export default ({ location }: { location: any }) => {
                                 context.dark
                                   ? toggleBenches
                                     ? 'border-pinkDesat border-opacity-90 bg-pinkDesat bg-opacity-90 text-white'
-                                    : 'border-pinkDesat hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
+                                    : 'border-pinkDesat hover:bg-neutral hover:bg-opacity-10 hover:text-pink'
                                   : toggleBenches
                                   ? 'border-pink border-opacity-90 bg-pink bg-opacity-90 text-white'
                                   : 'border-pink hover:bg-neutral hover:text-purple'
@@ -1528,7 +1540,7 @@ export default ({ location }: { location: any }) => {
                                 context.dark
                                   ? !toggleBenches
                                     ? 'border-pinkDesat border-opacity-90 bg-pinkDesat bg-opacity-90 text-white'
-                                    : 'border-pinkDesat hover:bg-neutral hover:bg-opacity-10 hover:text-lightPurpleDesat'
+                                    : 'border-pinkDesat hover:bg-neutral hover:bg-opacity-10 hover:text-pink'
                                   : !toggleBenches
                                   ? 'border-pink border-opacity-90 bg-pink bg-opacity-90 text-white'
                                   : 'border-pink hover:bg-neutral hover:text-purple'
@@ -1549,7 +1561,6 @@ export default ({ location }: { location: any }) => {
                                 const transportData1: PercentageData[] = []
                                 const transportData2: PercentageData[] = []
 
-                                console.log(bench)
                                 if (bench.data.length >= 1) {
                                   bench.data.forEach(
                                     (item: any, index: number) => {
@@ -1582,10 +1593,14 @@ export default ({ location }: { location: any }) => {
 
                                   return transportData1.map(
                                     (p: PercentageData, index: number) => [
-                                      <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                      <label
+                                        key={p.label}
+                                        className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                                      >
                                         {p.label}
                                       </label>,
                                       <div
+                                        key={p.label + p.percentage}
                                         className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                           context.dark
                                             ? 'border-lightGray'
@@ -1605,7 +1620,9 @@ export default ({ location }: { location: any }) => {
                                     ],
                                   )
                                 } else {
-                                  return <p>geen data beschikbaar</p>
+                                  return (
+                                    <p key={index}>geen data beschikbaar</p>
+                                  )
                                 }
                               } else if (
                                 bench.label ==
@@ -1614,10 +1631,14 @@ export default ({ location }: { location: any }) => {
                               ) {
                                 if (bench.data.length >= 1) {
                                   return [
-                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                    <label
+                                      key={'auto'}
+                                      className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                                    >
                                       Auto
                                     </label>,
                                     <div
+                                      key={'auto-data'}
                                       className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                         context.dark
                                           ? 'border-lightGray'
@@ -1634,10 +1655,14 @@ export default ({ location }: { location: any }) => {
                                         }
                                       />
                                     </div>,
-                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                    <label
+                                      key={'openbaarvervoer'}
+                                      className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                                    >
                                       Openbaar vervoer
                                     </label>,
                                     <div
+                                      key={'openbaarverver-data'}
                                       className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                         context.dark
                                           ? 'border-lightGray'
@@ -1657,10 +1682,14 @@ export default ({ location }: { location: any }) => {
                                         }
                                       />
                                     </div>,
-                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                    <label
+                                      key={'fiets'}
+                                      className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                                    >
                                       Fiets
                                     </label>,
                                     <div
+                                      key={'fiets-data'}
                                       className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                         context.dark
                                           ? 'border-lightGray'
@@ -1677,10 +1706,14 @@ export default ({ location }: { location: any }) => {
                                         }
                                       />
                                     </div>,
-                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                    <label
+                                      key={'tevoet'}
+                                      className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                                    >
                                       Te voet
                                     </label>,
                                     <div
+                                      key={'tevoet-data'}
                                       className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                         context.dark
                                           ? 'border-lightGray'
@@ -1697,10 +1730,14 @@ export default ({ location }: { location: any }) => {
                                         }
                                       />
                                     </div>,
-                                    <label className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0">
+                                    <label
+                                      key={'andere'}
+                                      className="col-span-1 mt-4 py-4 pr-2 font-medium gridbreak:mt-0"
+                                    >
                                       Andere
                                     </label>,
                                     <div
+                                      key={'andere-data'}
                                       className={`col-span-4 flex h-full flex-col justify-center border-l-2  border-opacity-50 py-6 ${
                                         context.dark
                                           ? 'border-lightGray'
@@ -1719,7 +1756,9 @@ export default ({ location }: { location: any }) => {
                                     </div>,
                                   ]
                                 } else {
-                                  return <p>geen data beschikbaar</p>
+                                  return (
+                                    <p key={index}>geen data beschikbaar</p>
+                                  )
                                 }
                               } else {
                                 return null
@@ -1750,14 +1789,14 @@ export default ({ location }: { location: any }) => {
                     context.dark ? 'opacity-75' : ''
                   }`}
                 >
-                  {problem?.text}
+                  {cmsData.problem.text}
                 </p>
                 <p
                   className={`text-sm font-bold tabletportrait:text-lg laptop:text-xl ${
                     context.dark ? 'opacity-90' : ''
                   }`}
                 >
-                  {problem?.bold}
+                  {cmsData.problem.bold}
                 </p>
               </section>
             </FadeInSection>
@@ -1766,10 +1805,10 @@ export default ({ location }: { location: any }) => {
                 className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16"
                 id="Solution"
               >
-                {titles?.map((item: ambitionTitle) => {
+                {cmsData.sectionTitles.map((item: ambitionTitle) => {
                   if (item.title.includes('Waarom')) {
                     return (
-                      <>
+                      <div key={item.title}>
                         <h2
                           className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                             context.dark ? 'opacity-90' : ''
@@ -1784,15 +1823,16 @@ export default ({ location }: { location: any }) => {
                         >
                           {item.subtitle}
                         </p>
-                      </>
+                      </div>
                     )
                   }
                 })}
                 <div className="grid grid-cols-1 items-center justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
-                  {whys &&
-                    whys.map((item: any) => (
+                  {cmsData.whys &&
+                    cmsData.whys.map((item: any) => (
                       <Textblock
                         text={item.text}
+                        key={item.text}
                         classes={
                           context.dark
                             ? 'bg-lightPurpleDesat bg-opacity-[0.08] text-lightPurpleDesat'
@@ -1811,7 +1851,7 @@ export default ({ location }: { location: any }) => {
             </FadeInSection>
             <FadeInSection>
               <section className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16">
-                {titles?.map((item: ambitionTitle) => {
+                {cmsData.sectionTitles?.map((item: ambitionTitle) => {
                   if (
                     item.title.includes('Hoe') &&
                     (item.ambitions.includes(String(locationShort)) ||
@@ -1819,6 +1859,7 @@ export default ({ location }: { location: any }) => {
                   ) {
                     return (
                       <h2
+                        key={item.title}
                         className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                           context.dark ? 'opacity-90' : ''
                         }`}
@@ -1829,9 +1870,10 @@ export default ({ location }: { location: any }) => {
                   }
                 })}
                 <div className="grid grid-cols-1 justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptopL:grid-cols-4">
-                  {hows &&
-                    hows.map((item: HoeWaarom) => (
+                  {cmsData.hows &&
+                    cmsData.hows.map((item: hoeWaarom) => (
                       <Textblock
+                        key={item.text}
                         text={item.text}
                         classes={`font-medium ${
                           context.dark
@@ -1856,10 +1898,10 @@ export default ({ location }: { location: any }) => {
                 }`}
                 id="Resources"
               >
-                {titles?.map((item: ambitionTitle) => {
+                {cmsData.sectionTitles?.map((item: ambitionTitle) => {
                   if (item.title.includes('bronnen')) {
                     return (
-                      <>
+                      <div key={item.title}>
                         <h2
                           className={`mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                             context.dark ? 'opacity-90' : ''
@@ -1874,24 +1916,25 @@ export default ({ location }: { location: any }) => {
                         >
                           {item.subtitle}
                         </p>
-                      </>
+                      </div>
                     )
                   }
                 })}
                 <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
                   {/* TODO: See more button om alle interessante bronnen te bekijken */}
-                  {intBronnen &&
-                    intBronnen.map((item: intBron, val: number) => {
+                  {cmsData.intBron &&
+                    cmsData.intBron.map((item: intBron, val: number) => {
                       if (val < 4) {
                         return (
                           <Intsrc
+                            key={val}
                             title={item.title}
                             text={item.text}
                             link={item.link}
                           />
                         )
                       } else {
-                        return <></>
+                        return null
                       }
                     })}
                 </div>
@@ -1936,14 +1979,15 @@ export default ({ location }: { location: any }) => {
                       if (val < 2) {
                         return (
                           <RevPrac
-                            leftTagText={header?.tag!}
+                            key={val}
+                            leftTagText={cmsData.header.tag!}
                             leftTagColorBg="pink"
                             leftTagColorText="black"
                             practice={item}
                           />
                         )
                       } else {
-                        return <></>
+                        return null
                       }
                     })}
                 </div>
@@ -2098,9 +2142,9 @@ export default ({ location }: { location: any }) => {
                     )}
                   </div>
 
-                  <div className="flex items-center flex-col gap-3 tabletportrait:col-span-3">
+                  <div className="flex items-center gap-3 tabletportrait:col-span-3">
                     <input
-                      className='sr-only'
+                      className="sr-only float-left"
                       type="checkbox"
                       name="credentials"
                       id="credentials"
@@ -2116,23 +2160,34 @@ export default ({ location }: { location: any }) => {
                       className="text-[12px] tabletportrait:text-sm"
                       htmlFor="credentials"
                     >
-                      <span className={`flex justify-center items-center w-4 h-4 bg-white rounded ${
-                        btnRapport? 'bg-pink' : ''
-                      }`}>
-                        <svg className={`block opacity-100 scale-75 fill-white ${
-                          btnRapport? '': 'opacity-0'
-                        }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
-                          <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+                      <span
+                        className={`flex h-4 w-4 items-center justify-center rounded bg-white ${
+                          btnRapport ? 'bg-pink' : ''
+                        }`}
+                      >
+                        <svg
+                          className={`block scale-75 fill-white opacity-100 ${
+                            btnRapport ? '' : 'opacity-0'
+                          }`}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 9 6.75"
+                        >
+                          <path
+                            d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5"
+                            transform="translate(-1.5 -2.75)"
+                          />
                         </svg>
                       </span>
-                      Ik ga akkoord dat Vital Cities mijn persoonsgegevens in
-                      haar databanken opneemt om mij de gevraagde informatie te
-                      bezorgen via e-mail en dit op te volgen. *
+                      <div className="ml-7 -mt-[18px]">
+                        Ik ga akkoord dat Vital Cities mijn persoonsgegevens in
+                        haar databanken opneemt om mij de gevraagde informatie
+                        te bezorgen via e-mail en dit op te volgen. *
+                      </div>
                     </label>
                   </div>
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
                     <input
-                      className='sr-only'
+                      className="sr-only float-left"
                       type="checkbox"
                       name="news"
                       id="news"
@@ -2150,22 +2205,33 @@ export default ({ location }: { location: any }) => {
                         }
                       }}
                     />
-                 
+
                     <label
                       className="text-[12px] tabletportrait:text-sm"
                       htmlFor="news"
                     >
-                      <span className={`flex justify-center items-center w-4 h-4 bg-white rounded ${
-                        checkNews? 'bg-pink' : ''
-                      }`}>
-                        <svg className={`block opacity-100 scale-75 fill-white ${
-                          checkNews? '': 'opacity-0'
-                        }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
-                          <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
+                      <span
+                        className={`flex h-4 w-4 items-center justify-center rounded bg-white ${
+                          checkNews ? 'bg-pink' : ''
+                        }`}
+                      >
+                        <svg
+                          className={`block scale-75 fill-white opacity-100 ${
+                            checkNews ? '' : 'opacity-0'
+                          }`}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 9 6.75"
+                        >
+                          <path
+                            d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5"
+                            transform="translate(-1.5 -2.75)"
+                          />
                         </svg>
                       </span>
-                      Ja! Bezorg mij inhoudelijke inspiratie en houd mij op de
-                      hoogte van nieuws via e-mail.
+                      <div className="ml-7 -mt-[18px]">
+                        Ja! Bezorg mij inhoudelijke inspiratie en houd mij op de
+                        hoogte van nieuws via e-mail.
+                      </div>
                     </label>
                   </div>
 

@@ -6,9 +6,6 @@ import Ambitionblock from '../components/ambitionblock'
 import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
 import Topnavigation from '../components/topnavigation'
-import { Bron } from '../interfaces/data'
-import AmbitionPage from './ambitionpage'
-import Pdf from '../components/pdf'
 import { graphql, useStaticQuery } from 'gatsby'
 import ThemeContext from '../context/themecontext'
 import FadeInSection from '../components/scrollytelling'
@@ -19,9 +16,7 @@ import {
   sectionLandingspage,
 } from '../interfaces/cmsInterfaces'
 
-// remove excel files because this can't be processed by Linux
-
-const IndexPage = ({ data }: { data: any }) => {
+const IndexPage = () => {
   const [hasMounted, setHasMounted] = useState(false)
   const [texts, setTexts] = useState<sectionLandingspage[]>()
   const [header, setHeader] = useState<header>()
@@ -31,7 +26,6 @@ const IndexPage = ({ data }: { data: any }) => {
     setHasMounted(true)
     let textList: sectionLandingspage[] = []
     let ambitionList: ambition[] = []
-    console.log(cms)
     for (let item of cms.nodes) {
       if (
         item.parent.internal.description.includes('header') &&
@@ -55,7 +49,6 @@ const IndexPage = ({ data }: { data: any }) => {
       }
     }
     setTexts(textList)
-    console.log(ambitionList)
     setAmbitions(ambitionList)
   }, [])
 
@@ -112,6 +105,7 @@ const IndexPage = ({ data }: { data: any }) => {
               name="description"
               content="Meet de beweegvriendelijkheid van jouw stad of gemeente en vind de inspiratie om die nog te verbeteren."
             />
+            <link rel="icon" type="image/x-icon" href="../favicon.ico" />
           </Helmet>
 
           <Topnavigation section="#Contact" />
@@ -183,7 +177,7 @@ const IndexPage = ({ data }: { data: any }) => {
                 texts.map((item: sectionLandingspage, val: number) => {
                   if (item.title == 'Over de beweegscan') {
                     return (
-                      <>
+                      <div key={val}>
                         <h2
                           className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                             context.dark ? 'opacity-90' : ''
@@ -198,10 +192,10 @@ const IndexPage = ({ data }: { data: any }) => {
                         >
                           {item.text}
                         </p>
-                      </>
+                      </div>
                     )
                   } else {
-                    return <></>
+                    return null
                   }
                 })}
               <FadeInSection>
@@ -229,6 +223,7 @@ const IndexPage = ({ data }: { data: any }) => {
                           header={`Ambitie ${val + 1}`}
                           text={item.name}
                           shorttext={short}
+                          key={val}
                         />
                       )
                     })}
@@ -239,7 +234,7 @@ const IndexPage = ({ data }: { data: any }) => {
                   texts.map((item: sectionLandingspage, val: number) => {
                     if (item.title == 'In een oogopslag') {
                       return (
-                        <>
+                        <div key={val}>
                           <h2
                             className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                               context.dark ? 'opacity-90' : ''
@@ -254,10 +249,10 @@ const IndexPage = ({ data }: { data: any }) => {
                           >
                             {item.text}
                           </p>
-                        </>
+                        </div>
                       )
                     } else {
-                      return <></>
+                      return null
                     }
                   })}
 
@@ -265,7 +260,7 @@ const IndexPage = ({ data }: { data: any }) => {
                   texts.map((item: sectionLandingspage, val: number) => {
                     if (item.title == 'Inspirerend') {
                       return (
-                        <>
+                        <div key={val}>
                           <h2
                             className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                               context.dark ? 'opacity-90' : ''
@@ -280,10 +275,10 @@ const IndexPage = ({ data }: { data: any }) => {
                           >
                             {item.text}
                           </p>
-                        </>
+                        </div>
                       )
                     } else {
-                      return <></>
+                      return null
                     }
                   })}
               </FadeInSection>

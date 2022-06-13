@@ -4,7 +4,7 @@ export interface intBron {
     text: string
 }
 
-export interface HoeWaarom {
+export interface hoeWaarom {
     ambition: string
     text: string
     animation: string
@@ -16,7 +16,7 @@ export interface goodPractice {
     themes: string[]
     text: string
     extra: string[]
-    image: string,
+    image: string
     resources: string
 }
 
@@ -47,4 +47,15 @@ export interface sectionLandingspage {
 export interface ambition {
     ambition: string
     name: string
+}
+
+export interface cmsInt {
+    header: header
+    sectionTitles: ambitionTitle[]
+    problem: problem
+    hows: hoeWaarom[]
+    whys: hoeWaarom[]
+    intBron: intBron[]
+    goodPracs: goodPractice[]
+
 }
