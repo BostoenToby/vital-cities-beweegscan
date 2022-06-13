@@ -86,6 +86,7 @@ export default ({ section }: { section: string }) => {
                 }`}
               >
                 <a
+                  tabIndex={1}
                   className="absolute left-16 flex h-20 w-auto"
                   href="https://vitalcities.be/"
                 >
@@ -99,6 +100,7 @@ export default ({ section }: { section: string }) => {
               >
                 <li className=" mr-14">
                   <Link
+                  tabIndex={2}
                     activeStyle={{
                       color: context.dark ? '#ffffff' : '#E7348C',
                     }}
@@ -106,7 +108,7 @@ export default ({ section }: { section: string }) => {
                     className={
                       context.dark
                         ? 'hover:text-lightPurpleDesat'
-                        : 'hover:text-mediumPurple'
+                        : 'hover:text-mediumPurple focus:text-mediumPurple'
                     }
                   >
                     Home
@@ -114,6 +116,7 @@ export default ({ section }: { section: string }) => {
                 </li>
                 <li className="mr-14" id="ambitionsList">
                   <button
+                    tabIndex={3}
                     className={
                       context.dark
                         ? isAmbitions
@@ -143,6 +146,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          tabIndex={4}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -160,6 +164,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          tabIndex={5}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -177,6 +182,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          tabIndex={6}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -194,6 +200,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          tabIndex={7}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -211,6 +218,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          tabIndex={8}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -228,6 +236,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          tabIndex={9}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -245,6 +254,7 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
+                          tabIndex={10}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -259,6 +269,7 @@ export default ({ section }: { section: string }) => {
                 </li>
                 <li className=" mr-14">
                   <Link
+                    tabIndex={11}
                     activeStyle={{
                       color: context.dark ? '#ffffff' : '#E7348C',
                     }}
@@ -274,6 +285,7 @@ export default ({ section }: { section: string }) => {
                 </li>
                 <li className="mr-14 hover:text-mediumPurple">
                   <a
+                    tabIndex={12}
                     className={
                       context.dark
                         ? 'hover:text-lightPurpleDesat'

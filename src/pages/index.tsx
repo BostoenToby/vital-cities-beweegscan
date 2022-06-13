@@ -6,9 +6,6 @@ import Ambitionblock from '../components/ambitionblock'
 import Contactsection from '../components/contactsection'
 import Footer from '../components/footer'
 import Topnavigation from '../components/topnavigation'
-import { Bron } from '../interfaces/data'
-import AmbitionPage from './ambitionpage'
-import Pdf from '../components/pdf'
 import { graphql, useStaticQuery } from 'gatsby'
 import ThemeContext from '../context/themecontext'
 import FadeInSection from '../components/scrollytelling'
@@ -19,9 +16,7 @@ import {
   sectionLandingspage,
 } from '../interfaces/cmsInterfaces'
 
-// remove excel files because this can't be processed by Linux
-
-const IndexPage = ({ data }: { data: any }) => {
+const IndexPage = () => {
   const [hasMounted, setHasMounted] = useState(false)
   const [texts, setTexts] = useState<sectionLandingspage[]>()
   const [header, setHeader] = useState<header>()
@@ -31,7 +26,6 @@ const IndexPage = ({ data }: { data: any }) => {
     setHasMounted(true)
     let textList: sectionLandingspage[] = []
     let ambitionList: ambition[] = []
-    console.log(cms)
     for (let item of cms.nodes) {
       if (
         item.parent.internal.description.includes('header') &&
@@ -55,7 +49,6 @@ const IndexPage = ({ data }: { data: any }) => {
       }
     }
     setTexts(textList)
-    console.log(ambitionList)
     setAmbitions(ambitionList)
   }, [])
 
