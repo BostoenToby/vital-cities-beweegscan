@@ -6,7 +6,7 @@ thema:
   - transversaal
   - participatie
 title: Mobiliteitskamer Turnhout
-image: /mobiliteitskamer.png
+image: /mobiliteitskamers.png
 date: 2021-12-12T09:24:49.530Z
 text: >-
   # Zachte mobiliteit en kindvriendelijke buurten
