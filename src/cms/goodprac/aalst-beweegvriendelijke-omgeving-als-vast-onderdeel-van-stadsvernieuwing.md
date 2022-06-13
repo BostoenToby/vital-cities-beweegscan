@@ -7,7 +7,7 @@ thema:
   - transversaal
   - participatie
 title: "Aalst: Beweegvriendelijke omgeving als vast onderdeel van stadsvernieuwing"
-image: /aalst-beweegvriendelijk.png
+image: /aalst.png
 date: 2021-12-20T08:34:22.298Z
 text: >-
   # Wat
