@@ -183,7 +183,7 @@ const IndexPage = ({ data }: { data: any }) => {
                 texts.map((item: sectionLandingspage, val: number) => {
                   if (item.title == 'Over de beweegscan') {
                     return (
-                      <>
+                      <div key={val}>
                         <h2
                           className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                             context.dark ? 'opacity-90' : ''
@@ -198,7 +198,7 @@ const IndexPage = ({ data }: { data: any }) => {
                         >
                           {item.text}
                         </p>
-                      </>
+                      </div>
                     )
                   } else {
                     return <></>
@@ -229,6 +229,7 @@ const IndexPage = ({ data }: { data: any }) => {
                           header={`Ambitie ${val + 1}`}
                           text={item.name}
                           shorttext={short}
+                          key={val}
                         />
                       )
                     })}
@@ -239,7 +240,7 @@ const IndexPage = ({ data }: { data: any }) => {
                   texts.map((item: sectionLandingspage, val: number) => {
                     if (item.title == 'In een oogopslag') {
                       return (
-                        <>
+                        <div key={val}>
                           <h2
                             className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                               context.dark ? 'opacity-90' : ''
@@ -254,7 +255,7 @@ const IndexPage = ({ data }: { data: any }) => {
                           >
                             {item.text}
                           </p>
-                        </>
+                        </div>
                       )
                     } else {
                       return <></>
@@ -265,7 +266,7 @@ const IndexPage = ({ data }: { data: any }) => {
                   texts.map((item: sectionLandingspage, val: number) => {
                     if (item.title == 'Inspirerend') {
                       return (
-                        <>
+                        <div key={val}>
                           <h2
                             className={`mb-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                               context.dark ? 'opacity-90' : ''
@@ -280,7 +281,7 @@ const IndexPage = ({ data }: { data: any }) => {
                           >
                             {item.text}
                           </p>
-                        </>
+                        </div>
                       )
                     } else {
                       return <></>

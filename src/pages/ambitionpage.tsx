@@ -2098,9 +2098,9 @@ export default ({ location }: { location: any }) => {
                     )}
                   </div>
 
-                  <div className="flex items-center flex-col gap-3 tabletportrait:col-span-3">
+                  <div className="flex flex-col items-center gap-3 tabletportrait:col-span-3">
                     <input
-                      className='sr-only'
+                      className="sr-only"
                       type="checkbox"
                       name="credentials"
                       id="credentials"
@@ -2132,7 +2132,7 @@ export default ({ location }: { location: any }) => {
                   </div>
                   <div className="flex items-center gap-3 tabletportrait:col-span-3">
                     <input
-                      className='sr-only'
+                      className="sr-only"
                       type="checkbox"
                       name="news"
                       id="news"
@@ -2150,7 +2150,7 @@ export default ({ location }: { location: any }) => {
                         }
                       }}
                     />
-                 
+
                     <label
                       className="text-[12px] tabletportrait:text-sm"
                       htmlFor="news"
@@ -2158,8 +2158,8 @@ export default ({ location }: { location: any }) => {
                       <span className={`flex justify-center items-center w-4 h-4 bg-white rounded ${
                         checkNews? 'bg-pink' : ''
                       }`}>
-                        <svg className={`block opacity-100 scale-75 fill-white ${
-                          checkNews? '': 'opacity-0'
+                        <svg className={`block opacity-0 scale-75 fill-white ${
+                          checkNews? 'opacity-100': ''
                         }`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 6.75">
                           <path d="M4.75,9.5a1,1,0,0,1-.707-.293l-2.25-2.25A1,1,0,1,1,3.207,5.543L4.75,7.086,8.793,3.043a1,1,0,0,1,1.414,1.414l-4.75,4.75A1,1,0,0,1,4.75,9.5" transform="translate(-1.5 -2.75)"/>
                         </svg>
