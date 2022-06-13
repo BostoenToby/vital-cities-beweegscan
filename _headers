@@ -1,0 +1,7 @@
+X-Frame-Options: DENY
+X-Content-Type-Options: nosniff
+Referrer-Policy: no-referrer
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=31536000
+Permission-Policy: accelerometer=(), camera=(), fullscreen=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), sync-xhr=(), usb=()
+Content-Security-Policy: default-src 'self'; script-src 'self' 'nonce-DhcnhD3khTMePgXw' 'strict-dynamic' https://www.google-analytics.com/analytics.js; style-src 'self'; img-src 'self' *.example.com https://www.google-analytics.com/collect; connect-src 'self' *.example.com; font-src 'self'; object-src 'none'; media-src 'none'; frame-src 'none'; child-src 'none'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; worker-src 'none'; manifest-src 'self'; prefetch-src 'self'; navigate-to 'self';
