@@ -3,7 +3,7 @@ thema:
   - sporten
   - participatie
 title: Beweegcontainer Brugge
-image: /beweegcontainer-brugge.png
+image: /beweegcontainerbrugge.png
 date: 2022-05-11T07:25:46.318Z
 text: >-
   # Wat
