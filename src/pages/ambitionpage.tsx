@@ -13,9 +13,10 @@ import Footer from '../components/footer'
 import { searchList } from '../utils/autoComplete'
 import {
   ambitionTitle,
+  cmsInt,
   goodPractice,
   header,
-  HoeWaarom,
+  hoeWaarom,
   intBron,
   problem,
 } from '../interfaces/cmsInterfaces'
@@ -42,9 +43,8 @@ import Barchart from '../components/barchart'
 import Lottie, { useLottie } from 'lottie-react'
 import lightbulb from '../assets/animations/lightbulb.json'
 import long_arrow from '../assets/animations/long_arrow.json'
-import { colorify, flatten, getColors, replaceColor } from 'lottie-colorify'
+import { replaceColor } from 'lottie-colorify'
 import { Bron, Paragraaf } from '../interfaces/data'
-import { url } from 'inspector'
 import erroranim from '../assets/animations/erroranim.json'
 import complete from '../assets/animations/complete.json'
 import { netlifyError } from '../interfaces/sendgrid'
@@ -58,14 +58,26 @@ export default ({ location }: { location: any }) => {
   })
   const [hasMounted, setHasMounted] = useState(false)
   const [locationShort, setLocationShort] = useState<string>()
-  const [intBronnen, setIntBronnen] = useState<intBron[]>()
-  const [titles, setTitles] = useState<ambitionTitle[]>()
+
+  const [cmsData, setCmsData] = useState<cmsInt>({
+    header: {
+      title: "",
+      subtitle: "",
+      image: "",
+      tag: ""
+    },
+    sectionTitles: [],
+    problem: {
+      text: "",
+      bold: ""
+    },
+    hows: [],
+    whys: [],
+    intBron: [],
+    goodPracs: []
+  })
+
   const [img, setImg] = useState<any>()
-  const [hows, setHows] = useState<HoeWaarom[]>()
-  const [whys, setWhys] = useState<HoeWaarom[]>()
-  const [goodPracs, setGoodPracs] = useState<goodPractice[]>()
-  const [header, setHeader] = useState<header>()
-  const [problem, setProblem] = useState<problem>()
   const [suggestions, setSuggestions] = useState<string[]>()
   const [typed, setTyped] = useState<string>('')
   const [searchQuery, setSearchQuery] = useState<string>()
@@ -885,18 +897,14 @@ export default ({ location }: { location: any }) => {
   }
 
   useEffect(() => {
-    // const timeOutId = setTimeout(
     setSuggestions(searchList(allAmbitionData, typed, true))
-    //   1000,
-    // )
-    // return () => clearTimeout(timeOutId)
   }, [typed])
 
   useEffect(() => {
-    if (goodPracs) {
+    if (cmsData.goodPracs) {
       const data: Practice[] = []
 
-      goodPracs.forEach((p: goodPractice) => {
+      cmsData.goodPracs.forEach((p: goodPractice) => {
         let practice: Practice = {
           titel: '',
           themas: [],
@@ -1008,12 +1016,12 @@ export default ({ location }: { location: any }) => {
 
       setPractices(data)
     }
-  }, [goodPracs])
+  }, [cmsData.goodPracs])
 
   useEffect(() => {
     let bronnen: intBron[] = []
-    let hoeList: HoeWaarom[] = []
-    let waaromList: HoeWaarom[] = []
+    let hoeList: hoeWaarom[] = []
+    let waaromList: hoeWaarom[] = []
     let goodPracs: goodPractice[] = []
     let titles: ambitionTitle[] = []
 
@@ -1056,7 +1064,6 @@ export default ({ location }: { location: any }) => {
           item.parent.internal.description.includes('goodprac') &&
           item.frontmatter.thema.includes(locationShort)
         ) {
-          // TODO: add good practises
           goodPracs.push({
             title: item.frontmatter.title,
             date: item.frontmatter.date,
@@ -1070,11 +1077,14 @@ export default ({ location }: { location: any }) => {
           item.parent.internal.description.includes('header') &&
           item.frontmatter.ambition == locationShort
         ) {
-          setHeader({
-            title: item.frontmatter.title,
-            subtitle: item.frontmatter.subtitle,
-            image: item.frontmatter.image,
-            tag: item.frontmatter.tag,
+          setCmsData((u: cmsInt) => {
+            u.header = {
+              title: item.frontmatter.title,
+              subtitle: item.frontmatter.subtitle,
+              image: item.frontmatter.image,
+              tag: item.frontmatter.tag
+            }
+            return { ...u }
           })
           for (let i of allImages.nodes) {
             if (
@@ -1090,9 +1100,12 @@ export default ({ location }: { location: any }) => {
           (item.frontmatter.ambition == locationShort ||
             item.frontmatter.ambitions.includes(locationShort))
         ) {
-          setProblem({
-            text: item.frontmatter.text,
-            bold: item.frontmatter.boldpart,
+          setCmsData((u: cmsInt) => {
+            u.problem = {
+              text: item.frontmatter.text,
+              bold: item.frontmatter.boldpart
+            }
+            return { ...u }
           })
         } else if (
           item.parent.internal.description.includes('titels') &&
@@ -1107,12 +1120,14 @@ export default ({ location }: { location: any }) => {
           })
         }
       }
-      setIntBronnen(bronnen)
-      setHows(hoeList)
-      setWhys(waaromList)
-      setGoodPracs(goodPracs)
-      setTitles(titles)
-      setAllData(allAmbitionData)
+      setCmsData((u: cmsInt) => {
+        u.sectionTitles = titles
+        u.hows = hoeList
+        u.whys = waaromList
+        u.intBron = bronnen
+        u.goodPracs = goodPracs
+        return u
+      })
     }
   }, [locationShort])
 
@@ -1189,7 +1204,7 @@ export default ({ location }: { location: any }) => {
                 </p>
               </button>
               <Tag
-                text={header?.tag!}
+                text={cmsData.header.tag!}
                 classes={
                   context.dark
                     ? 'bg-pinkDesat text-white'
@@ -1197,10 +1212,10 @@ export default ({ location }: { location: any }) => {
                 }
               />
               <h1 className="mb-8 max-w-2xl font-raleway text-3xl font-xxbold leading-tight text-white tabletportrait:text-4xl laptop:text-6xl laptopL:text-7xl">
-                {header?.title}
+                {cmsData.header.title}
               </h1>
               <p className="mb-12 max-w-2xl text-xl font-xlight leading-6 text-white opacity-75 laptop:text-2xl">
-                {header?.subtitle}
+                {cmsData.header.subtitle}
               </p>
               <p
                 className={`mb-2 font-semibold ${
@@ -1216,12 +1231,6 @@ export default ({ location }: { location: any }) => {
               />
             </section>
             <section className="h-full w-full columnbreak:w-1/2">
-              {/* <StaticImage
-                // src={`../../static/assets/${header?.image}`}
-                src="../images/beweegscan.jpg"
-                alt="header picture"
-                className="h-full w-full"
-              /> */}
               <GatsbyImage
                 image={img}
                 alt="Header image"
@@ -1764,14 +1773,14 @@ export default ({ location }: { location: any }) => {
                     context.dark ? 'opacity-75' : ''
                   }`}
                 >
-                  {problem?.text}
+                  {cmsData.problem.text}
                 </p>
                 <p
                   className={`text-sm font-bold tabletportrait:text-lg laptop:text-xl ${
                     context.dark ? 'opacity-90' : ''
                   }`}
                 >
-                  {problem?.bold}
+                  {cmsData.problem.bold}
                 </p>
               </section>
             </FadeInSection>
@@ -1780,7 +1789,7 @@ export default ({ location }: { location: any }) => {
                 className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16"
                 id="Solution"
               >
-                {titles?.map((item: ambitionTitle) => {
+                {cmsData.sectionTitles.map((item: ambitionTitle) => {
                   if (item.title.includes('Waarom')) {
                     return (
                       <>
@@ -1803,8 +1812,8 @@ export default ({ location }: { location: any }) => {
                   }
                 })}
                 <div className="grid grid-cols-1 items-center justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
-                  {whys &&
-                    whys.map((item: any) => (
+                  {cmsData.whys &&
+                    cmsData.whys.map((item: any) => (
                         <Textblock
                           text={item.text}
                           classes={
@@ -1826,7 +1835,7 @@ export default ({ location }: { location: any }) => {
             </FadeInSection>
             <FadeInSection>
               <section className="mx-4 mb-16 mobile:mx-8 columnbreak:mx-16">
-                {titles?.map((item: ambitionTitle) => {
+                {cmsData.sectionTitles?.map((item: ambitionTitle) => {
                   if (
                     item.title.includes('Hoe') &&
                     (item.ambitions.includes(String(locationShort)) ||
@@ -1844,8 +1853,8 @@ export default ({ location }: { location: any }) => {
                   }
                 })}
                 <div className="grid grid-cols-1 justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptopL:grid-cols-4">
-                  {hows &&
-                    hows.map((item: HoeWaarom) => (
+                  {cmsData.hows &&
+                    cmsData.hows.map((item: hoeWaarom) => (
                         <Textblock
                           text={item.text}
                           classes={`font-medium ${
@@ -1872,7 +1881,7 @@ export default ({ location }: { location: any }) => {
                 }`}
                 id="Resources"
               >
-                {titles?.map((item: ambitionTitle) => {
+                {cmsData.sectionTitles?.map((item: ambitionTitle) => {
                   if (item.title.includes('bronnen')) {
                     return (
                       <>
@@ -1896,8 +1905,8 @@ export default ({ location }: { location: any }) => {
                 })}
                 <div className="grid grid-cols-1 gap-10 text-sm tabletportrait:grid-cols-2 laptop:text-lg laptopL:grid-cols-4">
                   {/* TODO: See more button om alle interessante bronnen te bekijken */}
-                  {intBronnen &&
-                    intBronnen.map((item: intBron, val: number) => {
+                  {cmsData.intBron &&
+                    cmsData.intBron.map((item: intBron, val: number) => {
                       if (val < 4) {
                         return (
                           <Intsrc
@@ -1952,7 +1961,7 @@ export default ({ location }: { location: any }) => {
                       if (val < 2) {
                         return (
                           <RevPrac
-                            leftTagText={header?.tag!}
+                            leftTagText={cmsData.header.tag!}
                             leftTagColorBg="pink"
                             leftTagColorText="black"
                             practice={item}
