@@ -107,7 +107,7 @@ export default ({ section }: { section: string }) => {
                     to="/"
                     className={
                       context.dark
-                        ? 'hover:text-lightPurpleDesat'
+                        ? 'hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
                         : 'hover:text-mediumPurple focus:text-mediumPurple'
                     }
                   >
@@ -121,10 +121,10 @@ export default ({ section }: { section: string }) => {
                       context.dark
                         ? isAmbitions
                           ? 'text-white text-opacity-100'
-                          : 'hover:text-lightPurpleDesat'
+                          : 'hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
                         : isAmbitions
                         ? 'text-pink'
-                        : 'hover:text-mediumPurple'
+                        : 'hover:text-mediumPurple focus:text-mediumPurple'
                     }
                     onClick={() => handleAmbitions()}
                   >
@@ -141,12 +141,15 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
-                            : ' hover:bg-neutral hover:text-mediumPurple '
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12] focus-within:bg-white focus-within:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple'
                         }`}
                       >
                         <Link
                           tabIndex={4}
+                          className={context.dark
+                            ? ""
+                            : "focus:text-mediumPurple"}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -159,12 +162,15 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
-                            : ' hover:bg-neutral hover:text-mediumPurple '
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12] focus-within:bg-white focus-within:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple'
                         }`}
                       >
                         <Link
                           tabIndex={5}
+                          className={context.dark
+                            ? ""
+                            : "focus:text-mediumPurple"}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -177,12 +183,15 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
-                            : ' hover:bg-neutral hover:text-mediumPurple '
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12] focus-within:bg-white focus-within:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple'
                         }`}
                       >
                         <Link
                           tabIndex={6}
+                          className={context.dark
+                            ? ""
+                            : "focus:text-mediumPurple"}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -195,12 +204,15 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
-                            : ' hover:bg-neutral hover:text-mediumPurple '
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12] focus-within:bg-white focus-within:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple'
                         }`}
                       >
                         <Link
                           tabIndex={7}
+                          className={context.dark
+                            ? ""
+                            : "focus:text-mediumPurple"}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -213,12 +225,15 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12] focus-within:bg-white focus-within:bg-opacity-[0.12]'
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
                         <Link
                           tabIndex={8}
+                          className={context.dark
+                            ? ""
+                            : "focus:text-mediumPurple"}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -231,12 +246,15 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12] focus-within:bg-white focus-within:bg-opacity-[0.12]'
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
                         <Link
                           tabIndex={9}
+                          className={context.dark
+                            ? ""
+                            : "focus:text-mediumPurple"} 
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -249,12 +267,15 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12] focus-within:bg-white focus-within:bg-opacity-[0.12]'
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
                         <Link
                           tabIndex={10}
+                          className={context.dark
+                            ? ""
+                            : "focus:text-mediumPurple"}
                           onClick={() => handleLink()}
                           to="/ambitionpage/"
                           state={{
@@ -276,8 +297,8 @@ export default ({ section }: { section: string }) => {
                     to="/overviewpagepractices"
                     className={
                       context.dark
-                        ? 'hover:text-lightPurpleDesat'
-                        : 'hover:text-mediumPurple'
+                        ? 'hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
+                        : 'hover:text-mediumPurple focus:text-mediumPurple'
                     }
                   >
                     Praktijkvoorbeelden
@@ -288,8 +309,8 @@ export default ({ section }: { section: string }) => {
                     tabIndex={12}
                     className={
                       context.dark
-                        ? 'hover:text-lightPurpleDesat'
-                        : 'hover:text-mediumPurple'
+                        ? 'hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
+                        : 'hover:text-mediumPurple focus:text-mediumPurple'
                     }
                     href={section}
                   >
@@ -317,8 +338,9 @@ export default ({ section }: { section: string }) => {
                 >
                   <div>
                     <Menu
+                      tabIndex={1}
                       size={32}
-                      className={`m-8 cursor-pointer hover:text-pink ${
+                      className={`m-8 cursor-pointer hover:text-pink focus:text-pink ${
                         context.dark ? 'text-white' : 'text-dark'
                       }`}
                       onClick={() => handleSideBar()}
@@ -340,11 +362,13 @@ export default ({ section }: { section: string }) => {
               >
                 <header className="mt-4 mb-16 flex flex-row">
                   <X
+                    tabIndex={14}
                     size={32}
-                    className="cursor-pointer text-white hover:text-pink"
+                    className="cursor-pointer text-white hover:text-pink focus:text-pink"
                     onClick={() => handleSideBar()}
                   />
                   <a
+                    tabIndex={2}
                     className="absolute right-4 flex h-20 w-auto"
                     href="https://vitalcities.be/"
                   >
@@ -352,14 +376,15 @@ export default ({ section }: { section: string }) => {
                   </a>
                 </header>
                 <ul className="font-poppins" id="ambitionsList">
-                  <li className="my-6 text-2xl font-medium text-white hover:text-pink">
-                    <Link to="/" className="flex flex-row items-center">
+                  <li className="my-6 text-2xl font-medium text-white hover:text-pink focus-within:text-pink">
+                    <Link tabIndex={3} to="/" className="flex flex-row items-center">
                       <p>Home</p>
                       <ChevronRight size={24} className="ml-6 text-white" />
                     </Link>
                   </li>
-                  <li className="my-6 text-2xl font-medium text-white hover:text-pink">
+                  <li className="my-6 text-2xl font-medium text-white hover:text-pink focus-within:text-pink">
                     <button
+                      tabIndex={4}
                       className="flex flex-row items-center"
                       onClick={() => handleAmbitions()}
                     >
@@ -370,6 +395,7 @@ export default ({ section }: { section: string }) => {
                       <ul className="mt-4 ml-2 text-lg font-medium text-white">
                         <li className="p-2 hover:opacity-80">
                           <Link
+                            tabIndex={5}
                             onClick={() => handleLink()}
                             to="/ambitionpage/"
                             state={{
@@ -382,6 +408,7 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
+                            tabIndex={6}
                             onClick={() => handleLink()}
                             to="/ambitionpage/"
                             state={{
@@ -394,6 +421,7 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-90">
                           <Link
+                            tabIndex={7}
                             onClick={() => handleLink()}
                             to="/ambitionpage/"
                             state={{
@@ -407,6 +435,7 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
+                            tabIndex={8}
                             onClick={() => handleLink()}
                             to="/ambitionpage/"
                             state={{
@@ -419,6 +448,7 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
+                            tabIndex={9}
                             onClick={() => handleLink()}
                             to="/ambitionpage/"
                             state={{
@@ -431,6 +461,7 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
+                            tabIndex={10}
                             onClick={() => handleLink()}
                             to="/ambitionpage/"
                             state={{
@@ -443,6 +474,7 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
+                            tabIndex={11}
                             onClick={() => handleLink()}
                             to="/ambitionpage/"
                             state={{
@@ -457,8 +489,9 @@ export default ({ section }: { section: string }) => {
                       </ul>
                     ) : null}
                   </li>
-                  <li className="my-6 text-2xl font-medium text-white hover:text-pink">
+                  <li className="my-6 text-2xl font-medium text-white hover:text-pink focus-within:text-pink">
                     <Link
+                      tabIndex={12}
                       to="/overviewpagepractices"
                       className="flex flex-row items-center"
                     >
@@ -470,10 +503,10 @@ export default ({ section }: { section: string }) => {
                     </Link>
                   </li>
                   <li
-                    className="my-6 text-2xl font-medium text-white hover:text-pink"
+                    className="my-6 text-2xl font-medium text-white hover:text-pink focus-within:text-pink"
                     onClick={() => handleSideBar()}
                   >
-                    <a href={section} className="flex flex-row items-center">
+                    <a tabIndex={13} href={section} className="flex flex-row items-center">
                       <p>Contact</p>
                       <ChevronRight size={24} className="ml-6 text-white" />
                     </a>
