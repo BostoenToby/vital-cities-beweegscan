@@ -1826,8 +1826,8 @@ export default ({ location }: { location: any }) => {
                   }
                 })}
                 <div className="grid grid-cols-1 items-center justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptop:text-xl laptopL:grid-cols-3">
-                  {whys &&
-                    whys.map((item: any) => (
+                  {cmsData.whys &&
+                    cmsData.whys.map((item: any) => (
                       <Textblock
                         text={item.text}
                         key={item.text}
@@ -1868,8 +1868,8 @@ export default ({ location }: { location: any }) => {
                   }
                 })}
                 <div className="grid grid-cols-1 justify-center gap-8 tabletportrait:grid-cols-2 tabletportrait:text-lg laptop:grid-cols-3 laptopL:grid-cols-4">
-                  {hows &&
-                    hows.map((item: HoeWaarom) => (
+                  {cmsData.hows &&
+                    cmsData.hows.map((item: hoeWaarom) => (
                       <Textblock
                         key={item.text}
                         text={item.text}
@@ -1978,7 +1978,7 @@ export default ({ location }: { location: any }) => {
                         return (
                           <RevPrac
                             key={val}
-                            leftTagText={header?.tag!}
+                            leftTagText={cmsData.header.tag!}
                             leftTagColorBg="pink"
                             leftTagColorText="black"
                             practice={item}
