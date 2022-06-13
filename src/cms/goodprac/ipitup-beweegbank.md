@@ -3,7 +3,7 @@ thema:
   - sporten
   - technologie/data
 title: IPitup-beweegbank
-image: /ipitup.jpg
+image: /ipitup.png
 date: 2022-04-24T08:19:50.612Z
 text: >-
   # Wat?
