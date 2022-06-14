@@ -1159,7 +1159,7 @@ export default ({ location }: { location: any }) => {
                   ? 'bg-white bg-opacity-[0.08] 4K:bg-opacity-0'
                   : 'bg-purple'
               }`}
-            >   
+            >
               <button
                 onClick={() => navigate('../')}
                 className="mb-11 flex flex-row items-center text-center"
@@ -1265,8 +1265,8 @@ export default ({ location }: { location: any }) => {
                         <div
                           className={`mt-2 flex flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
                             context.dark
-                              ? 'border-lightGray bg-darkGray hover:border-pink focus-within:border-pink'
-                              : 'border-dark hover:border-pink focus-within:border-pink'
+                              ? 'border-lightGray bg-darkGray focus-within:border-pink hover:border-pink'
+                              : 'border-dark focus-within:border-pink hover:border-pink'
                           }`}
                           onClick={() => handleCitySelectionShown(0)}
                         >
@@ -1299,8 +1299,8 @@ export default ({ location }: { location: any }) => {
                             <div
                               className={`m-1 mt-0 flex flex-row border-[1px] border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 focus-within:border-pinkDesat active:border-2 active:border-pinkDesat ${
                                 context.dark
-                                  ? 'border-lightGray hover:border-pink focus-within:border-pink'
-                                  : 'border-dark hover:border-pink focus-within:border-pink'
+                                  ? 'border-lightGray focus-within:border-pink hover:border-pink'
+                                  : 'border-dark focus-within:border-pink hover:border-pink'
                               }`}
                             >
                               <input
@@ -1371,17 +1371,15 @@ export default ({ location }: { location: any }) => {
                         <div
                           className={`mt-2 flex flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
                             context.dark
-                              ? 'border-lightGray bg-darkGray hover:border-purpleDesat focus-within:border-purpleDesat'
-                              : 'border-dark hover:border-purple focus-within:border-purple'
+                              ? 'border-lightGray bg-darkGray focus-within:border-purpleDesat hover:border-purpleDesat'
+                              : 'border-dark focus-within:border-purple hover:border-purple'
                           }`}
                           onClick={() => handleCitySelectionShown(1)}
                         >
                           <div className="flex flex-row items-center">
                             <span
                               className={`mr-1 h-4  w-4 rounded-full ${
-                                context.dark 
-                                ? 'bg-purpleDesat ' 
-                                : 'bg-purple '
+                                context.dark ? 'bg-purpleDesat ' : 'bg-purple '
                               }`}
                             />
                             <input
@@ -1405,7 +1403,7 @@ export default ({ location }: { location: any }) => {
                             }`}
                           >
                             <div
-                              className={`m-1 mt-0 flex flex-row border-[1px] border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 hover:border-purple focus-within:border-purple active:border-2 active:border-purple ${
+                              className={`m-1 mt-0 flex flex-row border-[1px] border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 focus-within:border-purple hover:border-purple active:border-2 active:border-purple ${
                                 context.dark
                                   ? 'border-lightGray '
                                   : 'border-dark '
@@ -1520,7 +1518,7 @@ export default ({ location }: { location: any }) => {
                             {'VERPLAATSINGEN PER VERVOERSMIDDEL (VAAK/ALTIJD) '}
                           </label>
                           <button
-                            className="flex w-full max-w-[24rem] flex-row items-stretch text-sm font-medium mobileM:text-base mobileL:text-lg focus:border-2"
+                            className="flex w-full max-w-[24rem] flex-row items-stretch text-sm font-medium focus-within:border-2 mobileM:text-base mobileL:text-lg"
                             onClick={() => {
                               setToggleBenches(!toggleBenches)
                             }}
@@ -2268,8 +2266,8 @@ export default ({ location }: { location: any }) => {
                       id="BtnRapport"
                       className={`z-0 mt-8 rounded border-2 px-2 py-1 text-white  focus:font-semibold ${
                         context.dark
-                          ? 'border-pinkDesat bg-pinkDesat hover:bg-opacity-0 hover:text-pinkDesat focus:bg-white focus:bg-opacity-0 focus:text-pinkDesat'
-                          : 'border-pink bg-pink hover:bg-white hover:text-pink focus:bg-white focus:text-pink'
+                          ? 'border-pinkDesat bg-pinkDesat hover:bg-opacity-0 hover:text-pinkDesat focus-visible:bg-white focus-visible:bg-opacity-0 focus-visible:text-pinkDesat'
+                          : 'border-pink bg-pink hover:bg-white hover:text-pink focus-visible:bg-white focus-visible:text-pink'
                       } ${
                         btnRapport
                           ? 'border-pink bg-pink'

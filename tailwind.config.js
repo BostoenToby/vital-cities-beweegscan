@@ -10,6 +10,7 @@ module.exports = {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         raleway: ['Raleway', 'sans-serif'],
+        display: ['Poppins', 'sans-serif'],
       },
       height: {
         tablet: '34rem',
