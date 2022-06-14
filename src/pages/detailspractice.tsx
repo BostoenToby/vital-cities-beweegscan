@@ -191,22 +191,24 @@ export default ({ location }: { location: any }) => {
                       </h2>
                       <ul>
                         {practice.extra.map((e, i) => (
-                          <li
-                            className={`mb-6 text-base font-semibold columnbreak:text-lg ${
-                              context.dark
-                                ? 'text-lightPurpleDesat text-opacity-80 hover:text-lightPurpleDesat'
-                                : 'text-purple hover:text-lightPurpleDesat '
-                            }`}
-                            key={i}
-                          >
-                            {e.url ? (
-                              <a className=" underline" href={e.url}>
-                                {e.naam ? e.naam : e.url}
-                              </a>
-                            ) : (
-                              <a>{e.naam}</a>
-                            )}
-                          </li>
+                          <FadeInSection>
+                            <li
+                              className={`mb-6 text-base font-semibold columnbreak:text-lg ${
+                                context.dark
+                                  ? 'text-lightPurpleDesat text-opacity-80 hover:text-lightPurpleDesat'
+                                  : 'text-purple hover:text-lightPurpleDesat '
+                              }`}
+                              key={i}
+                            >
+                              {e.url ? (
+                                <a className=" underline" href={e.url}>
+                                  {e.naam ? e.naam : e.url}
+                                </a>
+                              ) : (
+                                <a>{e.naam}</a>
+                              )}
+                            </li>
+                          </FadeInSection>
                         ))}
                       </ul>
                     </div>
