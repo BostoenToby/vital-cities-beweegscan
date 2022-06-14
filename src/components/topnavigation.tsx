@@ -119,7 +119,7 @@ export default ({ section }: { section: string }) => {
                 }`}
               >
                 <a
-                  area-label="Link naar Vital Cities"
+                  aria-label="Link naar Vital Cities"
                   tabIndex={1}
                   className="absolute left-16 flex h-20 w-auto"
                   href="https://vitalcities.be/"
@@ -151,7 +151,7 @@ export default ({ section }: { section: string }) => {
                 </li>
                 <li className="mr-14" id="ambitionsList">
                   <button
-                    area-label="themeswitcher"
+                    aria-label="themeswitcher"
                     tabIndex={3}
                     className={
                       context.dark
