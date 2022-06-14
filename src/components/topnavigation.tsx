@@ -10,6 +10,7 @@ import { useLocation } from '@reach/router'
 import Darkmodetoggle from './darkmodetoggle'
 import { text } from 'stream/consumers'
 import { type } from 'os'
+import { Helmet } from 'react-helmet'
 
 export default ({ section }: { section: string }) => {
   const [isFullsize, setFullsize] = useState(false)
@@ -100,6 +101,18 @@ export default ({ section }: { section: string }) => {
                   : 'border-b-[1px] border-lightGray bg-white'
               }`}
             >
+            <Helmet
+            htmlAttributes={{
+              lang: 'en',
+            }}
+          >
+            <meta charSet="utf-8" />
+            <title>Vital Cities beweegscan</title>
+            <meta
+              name="description"
+              content="Meet de beweegvriendelijkheid van jouw stad of gemeente en vind de inspiratie om die nog te verbeteren."
+            />
+          </Helmet>
               <div
                 className={`flex h-full w-32 flex-col justify-center ${
                   context.dark ? 'bg-darkGray' : 'bg-yellow'
@@ -115,7 +128,7 @@ export default ({ section }: { section: string }) => {
                 </a>
               </div>
               <ul
-                className={`my-auto ml-32 flex flex-row font-poppins text-2xl font-medium ${
+                className={`my-auto ml-32 flex flex-row font-poppins text-2xl font-medium font-display-auto ${
                   context.dark ? 'text-white text-opacity-75' : 'text-dark'
                 }`}
               >
