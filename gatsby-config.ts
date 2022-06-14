@@ -82,13 +82,22 @@ const config: GatsbyConfig = {
       },
     },
     {
-      resolve: `gatsby-plugin-csp-nonce`,
+      resolve: `gatsby-plugin-csp`,
       options: {
-          disableOnDev: false,
-          enableLogs: false,
-          nonce: 'my-custom-nonce',
-      },
+        disableOnDev: true,
+        reportOnly: false, // Changes header to Content-Security-Policy-Report-Only for csp testing purposes
+        mergeScriptHashes: true, // you can disable scripts sha256 hashes
+        mergeStyleHashes: false, // you can disable styles sha256 hashes
+        mergeDefaultDirectives: true,
+        directives: {
+          "script-src": "'self' 'unsafe-inline'",
+          "style-src": "'self' 'unsafe-inline'",
+          "img-src": "'self' data: www.google-analytics.com"
+          // you can add your directives or override defaults
+        }
+      }
     },
+    `gatsby-plugin-csp-nonce`,
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
