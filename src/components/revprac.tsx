@@ -64,7 +64,7 @@ export default function RevPrac({
             />
           </div>
           <h3
-            className={`mb-3 pl-3 text-xl font-semibold tabletportrait:text-2xl laptop:text-3xl ${
+            className={`mb-3 pl-3 text-xl font-semibold tabletportrait:text-2xl laptop:text-3xl hover:underline hover:underline-offset-1 ${
               context.dark ? 'opacity-90' : ''
             }`}
           >

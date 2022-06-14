@@ -1161,7 +1161,6 @@ export default ({ location }: { location: any }) => {
               }`}
             >   
               <button
-                tabIndex={1}
                 onClick={() => navigate('../')}
                 className="mb-11 flex flex-row items-center text-center"
               >
