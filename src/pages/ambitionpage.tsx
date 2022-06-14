@@ -1903,7 +1903,7 @@ export default ({ location }: { location: any }) => {
                   if (item.title.includes('bronnen')) {
                     return (
                       <div key={item.title}>
-                        <div className="flex w-full flex-row items-center justify-between">
+                        <div className="flex flex-col tabletportrait:w-full tabletportrait:flex-row tabletportrait:items-center tabletportrait:justify-between">
                           <h2
                             className={`mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
                               context.dark ? 'opacity-90' : ''
@@ -1913,7 +1913,7 @@ export default ({ location }: { location: any }) => {
                           </h2>
                           {cmsData.intBron && cmsData.intBron.length > 4 ? (
                             <button
-                              className={`text-lg font-semibold hover:opacity-75 ${
+                              className={`mb-4 text-left text-base font-semibold hover:opacity-75 tabletportrait:mb-0 tabletportrait:text-lg ${
                                 context.dark
                                   ? 'text-lightPurpleDesat'
                                   : 'text-purple'
