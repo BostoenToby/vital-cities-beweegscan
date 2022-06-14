@@ -81,14 +81,7 @@ const config: GatsbyConfig = {
         },
       },
     },
-    {
-      resolve: `gatsby-plugin-csp-nonce`,
-      options: {
-          disableOnDev: false,
-          enableLogs: false,
-          nonce: 'my-custom-nonce',
-      },
-    },
+
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
