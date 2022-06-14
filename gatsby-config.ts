@@ -97,6 +97,7 @@ const config: GatsbyConfig = {
         }
       }
     },
+    `gatsby-plugin-csp-nonce`,
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
