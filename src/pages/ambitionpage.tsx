@@ -1924,18 +1924,14 @@ export default ({ location }: { location: any }) => {
                   {/* TODO: See more button om alle interessante bronnen te bekijken */}
                   {cmsData.intBron &&
                     cmsData.intBron.map((item: intBron, val: number) => {
-                      if (val < 4) {
-                        return (
-                          <Intsrc
-                            key={val}
-                            title={item.title}
-                            text={item.text}
-                            link={item.link}
-                          />
-                        )
-                      } else {
-                        return null
-                      }
+                      return (
+                        <Intsrc
+                          key={val}
+                          title={item.title}
+                          text={item.text}
+                          link={item.link}
+                        />
+                      )
                     })}
                 </div>
               </section>
