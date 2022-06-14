@@ -22,12 +22,6 @@ export default ({ section }: { section: string }) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       checkIfAmbitions()
-      console.log('OK')
-      const data = localStorage.getItem('currentAmbition')
-      if (data) {
-        console.log('OK2')
-        setCurrentAmbition(data)
-      }
       const updateSize = () => {
         if (window.innerWidth > 1304) {
           setFullsize(true)
@@ -45,6 +39,15 @@ export default ({ section }: { section: string }) => {
       }
     }
   }, [])
+
+  useEffect(() => {
+    const data = localStorage.getItem('currentAmbition')
+    if (data && isAmbitions) {
+      setCurrentAmbition(data)
+    } else {
+      setCurrentAmbition('outside')
+    }
+  }, [isAmbitions])
 
   useEffect(() => {
     if (currentAmbition) {

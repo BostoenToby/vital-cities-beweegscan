@@ -105,6 +105,7 @@ export default ({ location }: { location: any }) => {
   })
   const [practices, setPractices] = useState<Practice[]>()
   const [toggleBenches, setToggleBenches] = useState(true)
+  const [showMore, setShowMore] = useState(false)
 
   useEffect(() => {
     setHasMounted(true)
@@ -1902,13 +1903,27 @@ export default ({ location }: { location: any }) => {
                   if (item.title.includes('bronnen')) {
                     return (
                       <div key={item.title}>
-                        <h2
-                          className={`mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
-                            context.dark ? 'opacity-90' : ''
-                          }`}
-                        >
-                          {item.title}
-                        </h2>
+                        <div className="flex flex-col tabletportrait:w-full tabletportrait:flex-row tabletportrait:items-center tabletportrait:justify-between">
+                          <h2
+                            className={`mb-4 pt-4 font-raleway text-xl font-bold tabletportrait:text-3xl laptop:text-4xl ${
+                              context.dark ? 'opacity-90' : ''
+                            }`}
+                          >
+                            {item.title}
+                          </h2>
+                          {cmsData.intBron && cmsData.intBron.length > 4 ? (
+                            <button
+                              className={`mb-4 text-left text-base font-semibold hover:opacity-75 tabletportrait:mb-0 tabletportrait:text-lg ${
+                                context.dark
+                                  ? 'text-lightPurpleDesat'
+                                  : 'text-purple'
+                              }`}
+                              onClick={() => setShowMore(!showMore)}
+                            >
+                              {showMore ? 'Minder weergeven' : 'Meer weergeven'}
+                            </button>
+                          ) : null}
+                        </div>
                         <p
                           className={`mb-6 text-sm tabletportrait:text-lg laptop:w-4/5 laptop:text-xl ${
                             context.dark ? 'opacity-75' : ''
@@ -1924,14 +1939,29 @@ export default ({ location }: { location: any }) => {
                   {/* TODO: See more button om alle interessante bronnen te bekijken */}
                   {cmsData.intBron &&
                     cmsData.intBron.map((item: intBron, val: number) => {
-                      return (
-                        <Intsrc
-                          key={val}
-                          title={item.title}
-                          text={item.text}
-                          link={item.link}
-                        />
-                      )
+                      if (showMore) {
+                        return (
+                          <Intsrc
+                            key={val}
+                            title={item.title}
+                            text={item.text}
+                            link={item.link}
+                          />
+                        )
+                      } else {
+                        if (val < 4) {
+                          return (
+                            <Intsrc
+                              key={val}
+                              title={item.title}
+                              text={item.text}
+                              link={item.link}
+                            />
+                          )
+                        } else {
+                          return null
+                        }
+                      }
                     })}
                 </div>
               </section>
