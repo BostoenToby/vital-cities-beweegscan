@@ -362,7 +362,7 @@ export default ({ section }: { section: string }) => {
               >
                 <header className="mt-4 mb-16 flex flex-row">
                   <X
-                    tabIndex={14}
+                    tabIndex={15}
                     size={32}
                     className="cursor-pointer text-white hover:text-pink focus:text-pink"
                     onClick={() => handleSideBar()}
