@@ -1159,8 +1159,9 @@ export default ({ location }: { location: any }) => {
                   ? 'bg-white bg-opacity-[0.08] 4K:bg-opacity-0'
                   : 'bg-purple'
               }`}
-            >
+            >   
               <button
+                tabIndex={1}
                 onClick={() => navigate('../')}
                 className="mb-11 flex flex-row items-center text-center"
               >
@@ -1168,8 +1169,8 @@ export default ({ location }: { location: any }) => {
                 <p
                   className={`text-lg font-semibold text-opacity-90 columnbreak:text-2xl ${
                     context.dark
-                      ? 'text-white hover:text-lightPurpleDesat'
-                      : 'text-white hover:text-lightGray'
+                      ? 'text-white hover:text-lightPurpleDesat focus-visible:text-lightPurpleDesat'
+                      : 'text-white hover:text-lightGray focus-visible:text-lightGray'
                   }`}
                 >
                   naar overzicht ambities
@@ -1265,8 +1266,8 @@ export default ({ location }: { location: any }) => {
                         <div
                           className={`mt-2 flex flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
                             context.dark
-                              ? 'border-lightGray bg-darkGray'
-                              : 'border-dark'
+                              ? 'border-lightGray bg-darkGray hover:border-pink focus-within:border-pink'
+                              : 'border-dark hover:border-pink focus-within:border-pink'
                           }`}
                           onClick={() => handleCitySelectionShown(0)}
                         >
@@ -1292,15 +1293,15 @@ export default ({ location }: { location: any }) => {
                           <div
                             className={`relative z-20 w-full border-[1px] border-t-0  border-opacity-25  pt-1 tabletportrait:absolute ${
                               context.dark
-                                ? 'border-lightGray bg-darkGray '
+                                ? 'border-lightGray bg-darkGray'
                                 : 'border-dark bg-white'
                             }`}
                           >
                             <div
                               className={`m-1 mt-0 flex flex-row border-[1px] border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 focus-within:border-pinkDesat active:border-2 active:border-pinkDesat ${
                                 context.dark
-                                  ? 'border-lightGray'
-                                  : 'border-dark '
+                                  ? 'border-lightGray hover:border-pink focus-within:border-pink'
+                                  : 'border-dark hover:border-pink focus-within:border-pink'
                               }`}
                             >
                               <input
@@ -1371,15 +1372,17 @@ export default ({ location }: { location: any }) => {
                         <div
                           className={`mt-2 flex flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
                             context.dark
-                              ? 'border-lightGray bg-darkGray'
-                              : 'border-dark'
+                              ? 'border-lightGray bg-darkGray hover:border-purpleDesat focus-within:border-purpleDesat'
+                              : 'border-dark hover:border-purple focus-within:border-purple'
                           }`}
                           onClick={() => handleCitySelectionShown(1)}
                         >
                           <div className="flex flex-row items-center">
                             <span
                               className={`mr-1 h-4  w-4 rounded-full ${
-                                context.dark ? 'bg-purpleDesat' : 'bg-purple'
+                                context.dark 
+                                ? 'bg-purpleDesat ' 
+                                : 'bg-purple '
                               }`}
                             />
                             <input
@@ -1403,9 +1406,9 @@ export default ({ location }: { location: any }) => {
                             }`}
                           >
                             <div
-                              className={`m-1 mt-0 flex flex-row border-[1px] border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 focus-within:border-pinkDesat active:border-2 active:border-pinkDesat ${
+                              className={`m-1 mt-0 flex flex-row border-[1px] border-opacity-25 py-2 px-4 text-lg font-medium focus-within:border-2 hover:border-purple focus-within:border-purple active:border-2 active:border-purple ${
                                 context.dark
-                                  ? 'border-lightGray'
+                                  ? 'border-lightGray '
                                   : 'border-dark '
                               }`}
                             >
@@ -1518,7 +1521,7 @@ export default ({ location }: { location: any }) => {
                             {'VERPLAATSINGEN PER VERVOERSMIDDEL (VAAK/ALTIJD) '}
                           </label>
                           <button
-                            className="flex w-full max-w-[24rem] flex-row items-stretch text-sm font-medium mobileM:text-base mobileL:text-lg "
+                            className="flex w-full max-w-[24rem] flex-row items-stretch text-sm font-medium mobileM:text-base mobileL:text-lg focus:border-2"
                             onClick={() => {
                               setToggleBenches(!toggleBenches)
                             }}

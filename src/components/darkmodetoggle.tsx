@@ -8,7 +8,7 @@ export default () => {
     <ThemeContext.Consumer>
       {(context) => (
         <button
-          tabIndex={13}
+          tabIndex={14}
           onClick={() => context.setDark(!context.dark)}
           className={`text-white ${
             context.dark
