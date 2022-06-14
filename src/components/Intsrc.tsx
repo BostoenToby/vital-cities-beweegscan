@@ -20,7 +20,7 @@ export default ({
           }`}
         >
           <div className={`flex space-x-2 ${context.dark ? 'opacity-90' : ''}`}>
-            <a href={link} className="mb-1 text-[17px] font-semibold underline">
+            <a href={link} className="mb-1 text-[17px] font-semibold underline pb-[3px] underline-offset-1 hover:decoration-2">
               {title}
             </a>
             <ExternalLink className="flex-shrink-0"/>
