@@ -9,7 +9,7 @@ exports.handler = async (event: any, context: any, callback: any) => {
     const mail_to_send = {
         from: "toby.bostoen@student.howest.be",
         to: mail,
-        cc: "robbe.saelens@student.howest.be",
+        cc: "lore.cuypers@howest.be",
         subject: 'Rapport over de beweegvriendelijkheid van jouw stad of gemeente',
         templateId: 'd-576874eea4064991ba604911edead40f',
         dynamicTemplateData: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../assets/tailwind.css'
 import ThemeContext from '../context/themecontext'
 
@@ -10,12 +10,15 @@ import { useLocation } from '@reach/router'
 import Darkmodetoggle from './darkmodetoggle'
 import { text } from 'stream/consumers'
 import { type } from 'os'
+import { Helmet } from 'react-helmet'
 
 export default ({ section }: { section: string }) => {
   const [isFullsize, setFullsize] = useState(false)
   const [showSideNav, setShowSideNav] = useState(false)
   const [isAmbitions, setIsAmbitions] = useState(false)
   const [showAmbitions, setShowAmbitions] = useState(false)
+  const [currentAmbition, setCurrentAmbition] = useState<string>()
+  const [clicked, setClicked] = useState(false)
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -37,6 +40,25 @@ export default ({ section }: { section: string }) => {
       }
     }
   }, [])
+
+  useEffect(() => {
+    const data = localStorage.getItem('currentAmbition')
+    if (data && isAmbitions) {
+      setCurrentAmbition(data)
+    } else {
+      setCurrentAmbition('outside')
+    }
+  }, [isAmbitions])
+
+  useEffect(() => {
+    if (currentAmbition) {
+      console.log(currentAmbition)
+      localStorage.setItem('currentAmbition', currentAmbition)
+      if (isAmbitions && clicked) {
+        window.location.reload()
+      }
+    }
+  }, [currentAmbition])
 
   const handleSideBar = () => {
     setShowSideNav(!showSideNav)
@@ -62,10 +84,9 @@ export default ({ section }: { section: string }) => {
     }
   }
 
-  const handleLink = () => {
-    if (isAmbitions) {
-      window.location.reload()
-    }
+  const handleLink = (short: string) => {
+    setCurrentAmbition(short)
+    setClicked(true)
   }
 
   return (
@@ -80,12 +101,25 @@ export default ({ section }: { section: string }) => {
                   : 'border-b-[1px] border-lightGray bg-white'
               }`}
             >
+            <Helmet
+            htmlAttributes={{
+              lang: 'en',
+            }}
+          >
+            <meta charSet="utf-8" />
+            <title>Vital Cities beweegscan</title>
+            <meta
+              name="description"
+              content="Meet de beweegvriendelijkheid van jouw stad of gemeente en vind de inspiratie om die nog te verbeteren."
+            />
+          </Helmet>
               <div
                 className={`flex h-full w-32 flex-col justify-center ${
                   context.dark ? 'bg-darkGray' : 'bg-yellow'
                 }`}
               >
                 <a
+                  aria-label="Link naar Vital Cities"
                   className="absolute left-16 flex h-20 w-auto"
                   href="https://vitalcities.be/"
                 >
@@ -93,7 +127,7 @@ export default ({ section }: { section: string }) => {
                 </a>
               </div>
               <ul
-                className={`my-auto ml-32 flex flex-row font-poppins text-2xl font-medium ${
+                className={`my-auto ml-32 flex flex-row font-poppins text-2xl font-medium font-display-auto ${
                   context.dark ? 'text-white text-opacity-75' : 'text-dark'
                 }`}
               >
@@ -103,10 +137,11 @@ export default ({ section }: { section: string }) => {
                       color: context.dark ? '#ffffff' : '#E7348C',
                     }}
                     to="/"
+                    onClick={() => setCurrentAmbition('outside')}
                     className={
                       context.dark
-                        ? 'hover:text-lightPurpleDesat'
-                        : 'hover:text-mediumPurple'
+                        ? 'hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
+                        : 'hover:text-mediumPurple focus:text-mediumPurple'
                     }
                   >
                     Home
@@ -114,14 +149,15 @@ export default ({ section }: { section: string }) => {
                 </li>
                 <li className="mr-14" id="ambitionsList">
                   <button
+                    aria-label="themeswitcher"
                     className={
                       context.dark
                         ? isAmbitions
                           ? 'text-white text-opacity-100'
-                          : 'hover:text-lightPurpleDesat'
+                          : 'hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
                         : isAmbitions
                         ? 'text-pink'
-                        : 'hover:text-mediumPurple'
+                        : 'hover:text-mediumPurple focus:text-mediumPurple'
                     }
                     onClick={() => handleAmbitions()}
                   >
@@ -138,12 +174,20 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
-                            : ' hover:bg-neutral hover:text-mediumPurple '
+                            ? ' border-opacity-50 focus-within:bg-white focus-within:bg-opacity-[0.12] hover:bg-white hover:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple'
                         }`}
                       >
                         <Link
-                          onClick={() => handleLink()}
+                          className={`${
+                            context.dark ? '' : 'focus:text-mediumPurple'
+                          }
+                            ${
+                              currentAmbition == 'actief bewegen'
+                                ? 'text-pinkDesat'
+                                : ''
+                            }`}
+                          onClick={() => handleLink('actief bewegen')}
                           to="/ambitionpage/"
                           state={{
                             short: 'actief bewegen',
@@ -155,12 +199,19 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
-                            : ' hover:bg-neutral hover:text-mediumPurple '
+                            ? ' border-opacity-50 focus-within:bg-white focus-within:bg-opacity-[0.12] hover:bg-white hover:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple'
                         }`}
                       >
                         <Link
-                          onClick={() => handleLink()}
+                          className={`${
+                            context.dark ? '' : 'focus:text-mediumPurple'
+                          } ${
+                            currentAmbition == 'verbonden stadskern'
+                              ? 'text-pinkDesat'
+                              : ''
+                          }`}
+                          onClick={() => handleLink('verbonden stadkern')}
                           to="/ambitionpage/"
                           state={{
                             short: 'verbonden stadskern',
@@ -172,12 +223,19 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
-                            : ' hover:bg-neutral hover:text-mediumPurple '
+                            ? ' border-opacity-50 focus-within:bg-white focus-within:bg-opacity-[0.12] hover:bg-white hover:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple'
                         }`}
                       >
                         <Link
-                          onClick={() => handleLink()}
+                          className={`${
+                            context.dark ? '' : 'focus:text-mediumPurple'
+                          } ${
+                            currentAmbition == 'fiets- en wandelroutes'
+                              ? 'text-pinkDesat'
+                              : ''
+                          }`}
+                          onClick={() => handleLink('fiets- en wandelroutes')}
                           to="/ambitionpage/"
                           state={{
                             short: 'fiets- en wandelroutes',
@@ -189,12 +247,17 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
-                            : ' hover:bg-neutral hover:text-mediumPurple '
+                            ? ' border-opacity-50 focus-within:bg-white focus-within:bg-opacity-[0.12] hover:bg-white hover:bg-opacity-[0.12]'
+                            : ' hover:bg-neutral hover:text-mediumPurple'
                         }`}
                       >
                         <Link
-                          onClick={() => handleLink()}
+                          className={`${
+                            context.dark ? '' : 'focus:text-mediumPurple'
+                          } ${
+                            currentAmbition == 'sporten' ? 'text-pinkDesat' : ''
+                          }`}
+                          onClick={() => handleLink('sporten')}
                           to="/ambitionpage/"
                           state={{
                             short: 'sporten',
@@ -206,12 +269,17 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            ? ' border-opacity-50 focus-within:bg-white focus-within:bg-opacity-[0.12] hover:bg-white hover:bg-opacity-[0.12]'
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
                         <Link
-                          onClick={() => handleLink()}
+                          className={`${
+                            context.dark ? '' : 'focus:text-mediumPurple'
+                          } ${
+                            currentAmbition == 'spelen' ? 'text-pinkDesat' : ''
+                          }`}
+                          onClick={() => handleLink('spelen')}
                           to="/ambitionpage/"
                           state={{
                             short: 'spelen',
@@ -223,12 +291,19 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            ? ' border-opacity-50 focus-within:bg-white focus-within:bg-opacity-[0.12] hover:bg-white hover:bg-opacity-[0.12]'
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
                         <Link
-                          onClick={() => handleLink()}
+                          className={`${
+                            context.dark ? '' : 'focus:text-mediumPurple'
+                          } ${
+                            currentAmbition == 'ontmoeten'
+                              ? 'text-pinkDesat'
+                              : ''
+                          }`}
+                          onClick={() => handleLink('ontmoeten')}
                           to="/ambitionpage/"
                           state={{
                             short: 'ontmoeten',
@@ -240,12 +315,17 @@ export default ({ section }: { section: string }) => {
                       <li
                         className={` rounded-t-md border-b-[1px] border-lightGray  p-4  ${
                           context.dark
-                            ? ' border-opacity-50 hover:bg-white hover:bg-opacity-[0.12]'
+                            ? ' border-opacity-50 focus-within:bg-white focus-within:bg-opacity-[0.12] hover:bg-white hover:bg-opacity-[0.12]'
                             : ' hover:bg-neutral hover:text-mediumPurple '
                         }`}
                       >
                         <Link
-                          onClick={() => handleLink()}
+                          className={`${
+                            context.dark ? '' : 'focus:text-mediumPurple'
+                          } ${
+                            currentAmbition == 'groen' ? 'text-pinkDesat' : ''
+                          }`}
+                          onClick={() => handleLink('groen')}
                           to="/ambitionpage/"
                           state={{
                             short: 'groen',
@@ -265,9 +345,10 @@ export default ({ section }: { section: string }) => {
                     to="/overviewpagepractices"
                     className={
                       context.dark
-                        ? 'hover:text-lightPurpleDesat'
-                        : 'hover:text-mediumPurple'
+                        ? 'hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
+                        : 'hover:text-mediumPurple focus:text-mediumPurple'
                     }
+                    onClick={() => setCurrentAmbition('outside')}
                   >
                     Praktijkvoorbeelden
                   </Link>
@@ -276,8 +357,8 @@ export default ({ section }: { section: string }) => {
                   <a
                     className={
                       context.dark
-                        ? 'hover:text-lightPurpleDesat'
-                        : 'hover:text-mediumPurple'
+                        ? 'hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
+                        : 'hover:text-mediumPurple focus:text-mediumPurple'
                     }
                     href={section}
                   >
@@ -305,8 +386,9 @@ export default ({ section }: { section: string }) => {
                 >
                   <div>
                     <Menu
+                      tabIndex={1}
                       size={32}
-                      className={`m-8 cursor-pointer hover:text-pink ${
+                      className={`m-8 cursor-pointer hover:text-pink focus:text-pink ${
                         context.dark ? 'text-white' : 'text-dark'
                       }`}
                       onClick={() => handleSideBar()}
@@ -329,7 +411,7 @@ export default ({ section }: { section: string }) => {
                 <header className="mt-4 mb-16 flex flex-row">
                   <X
                     size={32}
-                    className="cursor-pointer text-white hover:text-pink"
+                    className="cursor-pointer text-white hover:text-pink focus:text-pink"
                     onClick={() => handleSideBar()}
                   />
                   <a
@@ -340,13 +422,17 @@ export default ({ section }: { section: string }) => {
                   </a>
                 </header>
                 <ul className="font-poppins" id="ambitionsList">
-                  <li className="my-6 text-2xl font-medium text-white hover:text-pink">
-                    <Link to="/" className="flex flex-row items-center">
+                  <li className="my-6 text-2xl font-medium text-white focus-within:text-pink hover:text-pink">
+                    <Link
+                      to="/"
+                      className="flex flex-row items-center"
+                      onClick={() => setCurrentAmbition('outside')}
+                    >
                       <p>Home</p>
                       <ChevronRight size={24} className="ml-6 text-white" />
                     </Link>
                   </li>
-                  <li className="my-6 text-2xl font-medium text-white hover:text-pink">
+                  <li className="my-6 text-2xl font-medium text-white focus-within:text-pink hover:text-pink">
                     <button
                       className="flex flex-row items-center"
                       onClick={() => handleAmbitions()}
@@ -358,7 +444,7 @@ export default ({ section }: { section: string }) => {
                       <ul className="mt-4 ml-2 text-lg font-medium text-white">
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            onClick={() => handleLink()}
+                            onClick={() => handleLink('actief bewegen')}
                             to="/ambitionpage/"
                             state={{
                               ambition: 'Actief bewegen en verplaatsen',
@@ -370,7 +456,7 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            onClick={() => handleLink()}
+                            onClick={() => handleLink('verbonden stadskern')}
                             to="/ambitionpage/"
                             state={{
                               ambition: 'Verbonden stadskern',
@@ -382,7 +468,7 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-90">
                           <Link
-                            onClick={() => handleLink()}
+                            onClick={() => handleLink('fiets- en wandelroutes')}
                             to="/ambitionpage/"
                             state={{
                               ambition:
@@ -395,7 +481,7 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            onClick={() => handleLink()}
+                            onClick={() => handleLink('sporten')}
                             to="/ambitionpage/"
                             state={{
                               ambition: 'Stad en buurt als sportplein',
@@ -407,7 +493,7 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            onClick={() => handleLink()}
+                            onClick={() => handleLink('spelen')}
                             to="/ambitionpage/"
                             state={{
                               ambition: 'Stad en buurt als speelplein',
@@ -419,7 +505,7 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            onClick={() => handleLink()}
+                            onClick={() => handleLink('ontmoeten')}
                             to="/ambitionpage/"
                             state={{
                               ambition: 'Stad en buurt als ontmoetingsplek',
@@ -431,7 +517,7 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            onClick={() => handleLink()}
+                            onClick={() => handleLink('groen')}
                             to="/ambitionpage/"
                             state={{
                               ambition:
@@ -445,10 +531,11 @@ export default ({ section }: { section: string }) => {
                       </ul>
                     ) : null}
                   </li>
-                  <li className="my-6 text-2xl font-medium text-white hover:text-pink">
+                  <li className="my-6 text-2xl font-medium text-white focus-within:text-pink hover:text-pink">
                     <Link
                       to="/overviewpagepractices"
                       className="flex flex-row items-center"
+                      onClick={() => setCurrentAmbition('outside')}
                     >
                       <div className="flex flex-col mobileM:flex-row">
                         <p>Praktijk</p>
@@ -458,10 +545,13 @@ export default ({ section }: { section: string }) => {
                     </Link>
                   </li>
                   <li
-                    className="my-6 text-2xl font-medium text-white hover:text-pink"
+                    className="my-6 text-2xl font-medium text-white focus-within:text-pink hover:text-pink"
                     onClick={() => handleSideBar()}
                   >
-                    <a href={section} className="flex flex-row items-center">
+                    <a
+                      href={section}
+                      className="flex flex-row items-center"
+                    >
                       <p>Contact</p>
                       <ChevronRight size={24} className="ml-6 text-white" />
                     </a>

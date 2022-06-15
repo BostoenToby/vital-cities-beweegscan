@@ -86,7 +86,7 @@ const config: GatsbyConfig = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-smoothscroll`,
     `gatsby-plugin-netlify-cms`,
-    `gatsby-transformer-remark`,
+    `gatsby-transformer-remark`
   ],
 }
 

@@ -5,6 +5,8 @@ export default (props: SVGProps<SVGSVGElement>) => (
   <svg
     id="a"
     xmlns="http://www.w3.org/2000/svg"
+    width={'10rem'}
+    height={'5rem'}
     viewBox="0 0 251 133"
     {...props}
   >
