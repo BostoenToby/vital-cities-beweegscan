@@ -107,8 +107,8 @@ export default ({ location }: { location: any }) => {
   useEffect(() => {
     setHasMounted(true)
     let chosenLocation
-    if(location.state == null || location.state == undefined){
-      chosenLocation = "actief bewegen"
+    if (location.state == null || location.state == undefined) {
+      chosenLocation = 'actief bewegen'
     } else {
       chosenLocation = location.state.short
     }
@@ -1521,7 +1521,7 @@ export default ({ location }: { location: any }) => {
                             {'VERPLAATSINGEN PER VERVOERSMIDDEL (VAAK/ALTIJD) '}
                           </label>
                           <button
-                            className="flex w-full max-w-[24rem] flex-row items-stretch text-sm font-medium focus-within:border-2 mobileM:text-base mobileL:text-lg"
+                            className="flex w-full max-w-[24rem] flex-row items-stretch text-sm font-medium focus-visible:border-2 mobileM:text-base mobileL:text-lg"
                             onClick={() => {
                               setToggleBenches(!toggleBenches)
                             }}
@@ -2276,7 +2276,10 @@ export default ({ location }: { location: any }) => {
                           ? 'border-pink bg-pink'
                           : 'pointer-events-none border-gray bg-gray text-lightGray'
                       }`}
-                      onClick={async() => {setBtnRapport(false); await checkInfo()}}
+                      onClick={async () => {
+                        setBtnRapport(false)
+                        await checkInfo()
+                      }}
                     >
                       Maak rapport
                     </button>
