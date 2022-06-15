@@ -120,7 +120,6 @@ export default ({ section }: { section: string }) => {
               >
                 <a
                   aria-label="Link naar Vital Cities"
-                  tabIndex={1}
                   className="absolute left-16 flex h-20 w-auto"
                   href="https://vitalcities.be/"
                 >
@@ -134,7 +133,6 @@ export default ({ section }: { section: string }) => {
               >
                 <li className=" mr-14">
                   <Link
-                    tabIndex={2}
                     activeStyle={{
                       color: context.dark ? '#ffffff' : '#E7348C',
                     }}
@@ -152,7 +150,6 @@ export default ({ section }: { section: string }) => {
                 <li className="mr-14" id="ambitionsList">
                   <button
                     aria-label="themeswitcher"
-                    tabIndex={3}
                     className={
                       context.dark
                         ? isAmbitions
@@ -182,7 +179,6 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          tabIndex={4}
                           className={`${
                             context.dark ? '' : 'focus:text-mediumPurple'
                           }
@@ -208,7 +204,6 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          tabIndex={5}
                           className={`${
                             context.dark ? '' : 'focus:text-mediumPurple'
                           } ${
@@ -233,7 +228,6 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          tabIndex={6}
                           className={`${
                             context.dark ? '' : 'focus:text-mediumPurple'
                           } ${
@@ -258,7 +252,6 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          tabIndex={7}
                           className={`${
                             context.dark ? '' : 'focus:text-mediumPurple'
                           } ${
@@ -281,7 +274,6 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          tabIndex={8}
                           className={`${
                             context.dark ? '' : 'focus:text-mediumPurple'
                           } ${
@@ -304,7 +296,6 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          tabIndex={9}
                           className={`${
                             context.dark ? '' : 'focus:text-mediumPurple'
                           } ${
@@ -329,7 +320,6 @@ export default ({ section }: { section: string }) => {
                         }`}
                       >
                         <Link
-                          tabIndex={10}
                           className={`${
                             context.dark ? '' : 'focus:text-mediumPurple'
                           } ${
@@ -349,7 +339,6 @@ export default ({ section }: { section: string }) => {
                 </li>
                 <li className=" mr-14">
                   <Link
-                    tabIndex={11}
                     activeStyle={{
                       color: context.dark ? '#ffffff' : '#E7348C',
                     }}
@@ -366,7 +355,6 @@ export default ({ section }: { section: string }) => {
                 </li>
                 <li className="mr-14 hover:text-mediumPurple">
                   <a
-                    tabIndex={12}
                     className={
                       context.dark
                         ? 'hover:text-lightPurpleDesat focus:text-lightPurpleDesat'
@@ -422,13 +410,11 @@ export default ({ section }: { section: string }) => {
               >
                 <header className="mt-4 mb-16 flex flex-row">
                   <X
-                    tabIndex={15}
                     size={32}
                     className="cursor-pointer text-white hover:text-pink focus:text-pink"
                     onClick={() => handleSideBar()}
                   />
                   <a
-                    tabIndex={2}
                     className="absolute right-4 flex h-20 w-auto"
                     href="https://vitalcities.be/"
                   >
@@ -438,7 +424,6 @@ export default ({ section }: { section: string }) => {
                 <ul className="font-poppins" id="ambitionsList">
                   <li className="my-6 text-2xl font-medium text-white focus-within:text-pink hover:text-pink">
                     <Link
-                      tabIndex={3}
                       to="/"
                       className="flex flex-row items-center"
                       onClick={() => setCurrentAmbition('outside')}
@@ -449,7 +434,6 @@ export default ({ section }: { section: string }) => {
                   </li>
                   <li className="my-6 text-2xl font-medium text-white focus-within:text-pink hover:text-pink">
                     <button
-                      tabIndex={4}
                       className="flex flex-row items-center"
                       onClick={() => handleAmbitions()}
                     >
@@ -460,7 +444,6 @@ export default ({ section }: { section: string }) => {
                       <ul className="mt-4 ml-2 text-lg font-medium text-white">
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            tabIndex={5}
                             onClick={() => handleLink('actief bewegen')}
                             to="/ambitionpage/"
                             state={{
@@ -473,7 +456,6 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            tabIndex={6}
                             onClick={() => handleLink('verbonden stadskern')}
                             to="/ambitionpage/"
                             state={{
@@ -486,7 +468,6 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-90">
                           <Link
-                            tabIndex={7}
                             onClick={() => handleLink('fiets- en wandelroutes')}
                             to="/ambitionpage/"
                             state={{
@@ -500,7 +481,6 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            tabIndex={8}
                             onClick={() => handleLink('sporten')}
                             to="/ambitionpage/"
                             state={{
@@ -513,7 +493,6 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            tabIndex={9}
                             onClick={() => handleLink('spelen')}
                             to="/ambitionpage/"
                             state={{
@@ -526,7 +505,6 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            tabIndex={10}
                             onClick={() => handleLink('ontmoeten')}
                             to="/ambitionpage/"
                             state={{
@@ -539,7 +517,6 @@ export default ({ section }: { section: string }) => {
                         </li>
                         <li className="p-2 hover:opacity-80">
                           <Link
-                            tabIndex={11}
                             onClick={() => handleLink('groen')}
                             to="/ambitionpage/"
                             state={{
@@ -556,7 +533,6 @@ export default ({ section }: { section: string }) => {
                   </li>
                   <li className="my-6 text-2xl font-medium text-white focus-within:text-pink hover:text-pink">
                     <Link
-                      tabIndex={12}
                       to="/overviewpagepractices"
                       className="flex flex-row items-center"
                       onClick={() => setCurrentAmbition('outside')}
@@ -573,7 +549,6 @@ export default ({ section }: { section: string }) => {
                     onClick={() => handleSideBar()}
                   >
                     <a
-                      tabIndex={13}
                       href={section}
                       className="flex flex-row items-center"
                     >
