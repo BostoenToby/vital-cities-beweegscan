@@ -29,20 +29,17 @@ import Practice, { Benchmark, PercentageData } from '../interfaces/data'
 import FadeInSection from '../components/scrollytelling'
 import {
   getAllCities,
-  getAllDataForCity,
-  getDataForAmbition,
-  getDataForCityAndAmbition,
   getGraphData,
   getLabelChart,
   getMonthFromIndex,
   getPdfData,
 } from '../utils/filterData'
 import genPDF from '../components/pdf'
-import axios from 'axios'
 import Barchart from '../components/barchart'
 import Lottie, { useLottie } from 'lottie-react'
 import lightbulb from '../assets/animations/lightbulb.json'
 import long_arrow from '../assets/animations/long_arrow.json'
+import loader from '../assets/animations/loader.json'
 import { replaceColor } from 'lottie-colorify'
 import { Bron, Paragraaf } from '../interfaces/data'
 import erroranim from '../assets/animations/erroranim.json'
@@ -2279,11 +2276,18 @@ export default ({ location }: { location: any }) => {
                           ? 'border-pink bg-pink'
                           : 'pointer-events-none border-gray bg-gray text-lightGray'
                       }`}
-                      onClick={() => checkInfo()}
+                      onClick={() => {setBtnRapport(false); checkInfo()}}
                     >
                       Maak rapport
                     </button>
                     <div className="z-10 mt-8 ml-8">
+                      {netlifyError.changed == false && (
+                        <Lottie
+                        className="m-auto h-4 w-4 laptopL:h-8 laptopL:w-8"
+                        loop={false}
+                        animationData={loader}
+                      />
+                      )}
                       {netlifyError.changed == true &&
                         netlifyError.google == false && (
                           <Lottie
