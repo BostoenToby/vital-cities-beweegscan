@@ -15,8 +15,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit",
-    "postinstall": "netlify-lambda install"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@material-tailwind/react": "^1.0.3",
