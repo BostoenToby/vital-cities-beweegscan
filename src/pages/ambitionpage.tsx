@@ -2286,7 +2286,7 @@ export default ({ location }: { location: any }) => {
                       Maak rapport
                     </button>
                     <div className="z-10 mt-8 ml-8">
-                      {netlifyError.changed == false && (
+                      {netlifyError.start == true && netlifyError.changed == false && (
                         <Lottie
                         className="m-auto h-4 w-4 laptopL:h-8 laptopL:w-8"
                         loop={false}
