@@ -53,6 +53,7 @@ export default ({ location }: { location: any }) => {
   const [netlifyError, setNetlifyError] = useState<netlifyError>({
     google: true,
     changed: false,
+    start: false,
   })
   const [hasMounted, setHasMounted] = useState(false)
   const [locationShort, setLocationShort] = useState<string>()
@@ -754,6 +755,7 @@ export default ({ location }: { location: any }) => {
     setNetlifyError((currentError: netlifyError) => {
       currentError.google = errors.google
       currentError.changed = errors.changed
+      currentError.start = errors.start
       return { ...currentError }
     })
   }
@@ -2276,7 +2278,10 @@ export default ({ location }: { location: any }) => {
                           ? 'border-pink bg-pink'
                           : 'pointer-events-none border-gray bg-gray text-lightGray'
                       }`}
-                      onClick={() => {setBtnRapport(false); checkInfo()}}
+                      onClick={async() => {setBtnRapport(false); await checkInfo(); setNetlifyError((currentError: netlifyError) => {
+                        currentError.start = false
+                        return { ...currentError }
+                      })}}
                     >
                       Maak rapport
                     </button>
