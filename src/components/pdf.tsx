@@ -9,8 +9,7 @@ import { netlifyError } from '../interfaces/sendgrid';
 async function genPDF(dataPDF: any) {
   let errorNet: netlifyError =  {
     google: true,
-    changed: false,
-    start: true
+    changed: false
   }
   var page = 1
   const data = dataPDF.data

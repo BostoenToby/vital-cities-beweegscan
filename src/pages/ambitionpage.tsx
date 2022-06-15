@@ -53,7 +53,6 @@ export default ({ location }: { location: any }) => {
   const [netlifyError, setNetlifyError] = useState<netlifyError>({
     google: true,
     changed: false,
-    start: false,
   })
   const [hasMounted, setHasMounted] = useState(false)
   const [locationShort, setLocationShort] = useState<string>()
@@ -709,6 +708,18 @@ export default ({ location }: { location: any }) => {
 
   const contextB = useContext(ThemeContext)
 
+  const clearValues = () => {
+    setInfo((u: PersonalInfo) => {
+      //@ts-ignore
+      u.place = ''
+      u.firstName = ''
+      u.lastName = ''
+      u.mail = ''
+      u.newsletter = false
+      return { ...u }
+    })
+  }
+
   const handleSearch = (input: any) => {
     setSearchQuery(input)
     const results = searchList(allAmbitionData, input, false)
@@ -755,7 +766,6 @@ export default ({ location }: { location: any }) => {
     setNetlifyError((currentError: netlifyError) => {
       currentError.google = errors.google
       currentError.changed = errors.changed
-      currentError.start = errors.start
       return { ...currentError }
     })
   }
@@ -2278,21 +2288,11 @@ export default ({ location }: { location: any }) => {
                           ? 'border-pink bg-pink'
                           : 'pointer-events-none border-gray bg-gray text-lightGray'
                       }`}
-                      onClick={async() => {setBtnRapport(false); await checkInfo(); setNetlifyError((currentError: netlifyError) => {
-                        currentError.start = false
-                        return { ...currentError }
-                      })}}
+                      onClick={async() => {setBtnRapport(false); await checkInfo(); await clearValues()}}
                     >
                       Maak rapport
                     </button>
                     <div className="z-10 mt-8 ml-8">
-                      {netlifyError.start == true && netlifyError.changed == false && (
-                        <Lottie
-                        className="m-auto h-4 w-4 laptopL:h-8 laptopL:w-8"
-                        loop={false}
-                        animationData={loader}
-                      />
-                      )}
                       {netlifyError.changed == true &&
                         netlifyError.google == false && (
                           <Lottie
