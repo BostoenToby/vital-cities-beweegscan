@@ -109,7 +109,13 @@ export default ({ location }: { location: any }) => {
 
   useEffect(() => {
     setHasMounted(true)
-    setLocationShort(location.state.short)
+    let chosenLocation
+    if(location.state == null || location.state == undefined){
+      chosenLocation = "actief bewegen"
+    } else {
+      chosenLocation = location.state.short
+    }
+    setLocationShort(chosenLocation)
     setSelectedCities(['Vlaams Gewest', ''])
 
     if (typeof window !== 'undefined') {
