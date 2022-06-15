@@ -215,7 +215,6 @@ export default ({
     <ThemeContext.Consumer>
       {(context) => (
         <Link
-          tabIndex={14}
           to="/ambitionpage/"
           state={{ short: shorttext }}
           className={` flex min-h-[288px] flex-col justify-center   px-6 py-12 drop-shadow-sm ${
