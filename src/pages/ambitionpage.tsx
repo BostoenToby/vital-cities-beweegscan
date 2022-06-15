@@ -708,18 +708,6 @@ export default ({ location }: { location: any }) => {
 
   const contextB = useContext(ThemeContext)
 
-  const clearValues = () => {
-    setInfo((u: PersonalInfo) => {
-      //@ts-ignore
-      u.place = ''
-      u.firstName = ''
-      u.lastName = ''
-      u.mail = ''
-      u.newsletter = false
-      return { ...u }
-    })
-  }
-
   const handleSearch = (input: any) => {
     setSearchQuery(input)
     const results = searchList(allAmbitionData, input, false)
@@ -2288,7 +2276,7 @@ export default ({ location }: { location: any }) => {
                           ? 'border-pink bg-pink'
                           : 'pointer-events-none border-gray bg-gray text-lightGray'
                       }`}
-                      onClick={async() => {setBtnRapport(false); await checkInfo(); await clearValues()}}
+                      onClick={async() => {setBtnRapport(false); await checkInfo()}}
                     >
                       Maak rapport
                     </button>
