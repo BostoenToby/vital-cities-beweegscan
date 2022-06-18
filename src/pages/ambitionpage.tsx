@@ -1264,7 +1264,10 @@ export default ({ location }: { location: any }) => {
                       <label className="text-lg font-bold  opacity-90">
                         Gemeente of cluster
                       </label>
-                      <div className="w-full max-w-sm" id="gemeenteselector1">
+                      <div
+                        className="w-full max-w-sm overflow-x-hidden"
+                        id="gemeenteselector1"
+                      >
                         <div
                           className={`relative mt-2 border-[1px]  border-opacity-25 py-2 px-10 ${
                             context.dark
@@ -1368,7 +1371,10 @@ export default ({ location }: { location: any }) => {
                       <label className="text-lg font-bold  opacity-90">
                         Vergelijk met...
                       </label>
-                      <div className="w-full max-w-sm" id="gemeenteselector2">
+                      <div
+                        className="w-full max-w-sm overflow-x-hidden"
+                        id="gemeenteselector2"
+                      >
                         <div
                           className={`relative mt-2 border-[1px]  border-opacity-25 py-2 px-10 ${
                             context.dark
