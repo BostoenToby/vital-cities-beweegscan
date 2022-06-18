@@ -1273,22 +1273,20 @@ export default ({ location }: { location: any }) => {
                           }`}
                           onClick={() => handleCitySelectionShown(0)}
                         >
-                          <div className="flex flex-row items-center">
-                            <span
-                              className={`mr-1 h-4  w-4 rounded-full ${
-                                context.dark ? 'bg-pinkDesat' : 'bg-pink'
-                              }`}
-                            />
-                            <input
-                              type="text"
-                              className={`pointer-events-none text-lg font-medium ${
-                                context.dark ? 'bg-darkGray' : ''
-                              }`}
-                              value={selectedCities[0]}
-                              placeholder="Maak een keuze"
-                              readOnly
-                            />
-                          </div>
+                          <span
+                            className={`mr-1 h-4  w-4 rounded-full ${
+                              context.dark ? 'bg-pinkDesat' : 'bg-pink'
+                            }`}
+                          />
+                          <input
+                            type="text"
+                            className={`pointer-events-none text-lg font-medium ${
+                              context.dark ? 'bg-darkGray' : ''
+                            }`}
+                            value={selectedCities[0]}
+                            placeholder="Maak een keuze"
+                            readOnly
+                          />
                           <ChevronDown className="ml-2" />
                         </div>
                         {showCitySelection[0] ? (
@@ -1379,22 +1377,20 @@ export default ({ location }: { location: any }) => {
                           }`}
                           onClick={() => handleCitySelectionShown(1)}
                         >
-                          <div className="flex flex-row items-center">
-                            <span
-                              className={`mr-1 h-4  w-4 rounded-full ${
-                                context.dark ? 'bg-purpleDesat ' : 'bg-purple '
-                              }`}
-                            />
-                            <input
-                              type="text"
-                              className={`pointer-events-none text-lg font-medium ${
-                                context.dark ? 'bg-darkGray' : ''
-                              }`}
-                              value={selectedCities[1]}
-                              placeholder="Maak een keuze"
-                              readOnly
-                            />
-                          </div>
+                          <span
+                            className={`mr-1 h-4  w-4 rounded-full ${
+                              context.dark ? 'bg-purpleDesat ' : 'bg-purple '
+                            }`}
+                          />
+                          <input
+                            type="text"
+                            className={`pointer-events-none text-lg font-medium ${
+                              context.dark ? 'bg-darkGray' : ''
+                            }`}
+                            value={selectedCities[1]}
+                            placeholder="Maak een keuze"
+                            readOnly
+                          />
                           <ChevronDown className="ml-2" />
                         </div>
                         {showCitySelection[1] ? (
