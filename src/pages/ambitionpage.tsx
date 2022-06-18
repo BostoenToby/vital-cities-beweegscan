@@ -1266,7 +1266,7 @@ export default ({ location }: { location: any }) => {
                       </label>
                       <div className="w-full max-w-sm" id="gemeenteselector1">
                         <div
-                          className={`mt-2 flex flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
+                          className={`mt-2 flex max-w-[20rem] flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
                             context.dark
                               ? 'border-lightGray bg-darkGray focus-within:border-pink hover:border-pink'
                               : 'border-dark focus-within:border-pink hover:border-pink'
@@ -1370,7 +1370,7 @@ export default ({ location }: { location: any }) => {
                       </label>
                       <div className="w-full max-w-sm" id="gemeenteselector2">
                         <div
-                          className={`mt-2 flex flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
+                          className={`mt-2 flex max-w-[20rem] flex-row items-center justify-between  border-[1px] border-opacity-25 py-2 px-4 ${
                             context.dark
                               ? 'border-lightGray bg-darkGray focus-within:border-purpleDesat hover:border-purpleDesat'
                               : 'border-dark focus-within:border-purple hover:border-purple'
