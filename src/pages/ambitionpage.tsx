@@ -1278,7 +1278,7 @@ export default ({ location }: { location: any }) => {
                         >
                           <input
                             type="text"
-                            className={`pointer-events-none text-lg font-medium ${
+                            className={`pointer-events-none max-w-[15rem] text-lg font-medium ${
                               context.dark ? 'bg-darkGray' : ''
                             }`}
                             value={selectedCities[0]}
@@ -1385,7 +1385,7 @@ export default ({ location }: { location: any }) => {
                         >
                           <input
                             type="text"
-                            className={`pointer-events-none text-lg font-medium ${
+                            className={`pointer-events-none max-w-[15rem] text-lg font-medium ${
                               context.dark ? 'bg-darkGray' : ''
                             }`}
                             value={selectedCities[1]}
