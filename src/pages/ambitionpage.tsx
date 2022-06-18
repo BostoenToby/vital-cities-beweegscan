@@ -1266,18 +1266,13 @@ export default ({ location }: { location: any }) => {
                       </label>
                       <div className="w-full max-w-sm" id="gemeenteselector1">
                         <div
-                          className={`mt-2 flex w-full max-w-[20rem] flex-row items-center justify-between border-[1px]  border-opacity-25 py-2 px-4 ${
+                          className={`relative mt-2 border-[1px]  border-opacity-25 py-2 px-10 ${
                             context.dark
                               ? 'border-lightGray bg-darkGray focus-within:border-pink hover:border-pink'
                               : 'border-dark focus-within:border-pink hover:border-pink'
                           }`}
                           onClick={() => handleCitySelectionShown(0)}
                         >
-                          <span
-                            className={`mr-1 h-4  w-4 rounded-full ${
-                              context.dark ? 'bg-pinkDesat' : 'bg-pink'
-                            }`}
-                          />
                           <input
                             type="text"
                             className={`pointer-events-none text-lg font-medium ${
@@ -1287,7 +1282,12 @@ export default ({ location }: { location: any }) => {
                             placeholder="Maak een keuze"
                             readOnly
                           />
-                          <ChevronDown className="ml-2" />
+                          <span
+                            className={`absolute top-[15px] left-4 h-4  w-4 rounded-full ${
+                              context.dark ? 'bg-pinkDesat' : 'bg-pink'
+                            }`}
+                          />
+                          <ChevronDown className="absolute top-[11px] right-4" />
                         </div>
                         {showCitySelection[0] ? (
                           <div
@@ -1370,18 +1370,13 @@ export default ({ location }: { location: any }) => {
                       </label>
                       <div className="w-full max-w-sm" id="gemeenteselector2">
                         <div
-                          className={`mt-2 flex w-full max-w-[20rem] flex-row items-center justify-between  border-[1px] border-opacity-25 py-2 px-4 ${
+                          className={`relative mt-2 border-[1px]  border-opacity-25 py-2 px-10 ${
                             context.dark
-                              ? 'border-lightGray bg-darkGray focus-within:border-purpleDesat hover:border-purpleDesat'
+                              ? 'border-lightGray bg-darkGray focus-within:border-purple hover:border-purple'
                               : 'border-dark focus-within:border-purple hover:border-purple'
                           }`}
                           onClick={() => handleCitySelectionShown(1)}
                         >
-                          <span
-                            className={`mr-1 h-4  w-4 rounded-full ${
-                              context.dark ? 'bg-purpleDesat ' : 'bg-purple '
-                            }`}
-                          />
                           <input
                             type="text"
                             className={`pointer-events-none text-lg font-medium ${
@@ -1391,7 +1386,12 @@ export default ({ location }: { location: any }) => {
                             placeholder="Maak een keuze"
                             readOnly
                           />
-                          <ChevronDown className="ml-2" />
+                          <span
+                            className={`absolute top-[15px] left-4 h-4  w-4 rounded-full ${
+                              context.dark ? 'bg-purpleDesat' : 'bg-purple'
+                            }`}
+                          />
+                          <ChevronDown className="absolute top-[11px] right-4" />
                         </div>
                         {showCitySelection[1] ? (
                           <div
